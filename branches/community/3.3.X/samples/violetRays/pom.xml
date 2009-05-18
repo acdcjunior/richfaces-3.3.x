@@ -4,18 +4,18 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>violetRays</artifactId>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<name>violetRays</name>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.1-SNAPSHOT</version>
+				<version>3.3.2-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<id>generate-sources</id>
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

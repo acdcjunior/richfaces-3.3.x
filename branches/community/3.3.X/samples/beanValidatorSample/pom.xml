@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>beanValidatorSample</artifactId>
 	<packaging>war</packaging>
 	<name>beanValidatorSample Maven Webapp</name>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<build>
 		<finalName>richfaces-validator</finalName>
 		<plugins>
@@ -52,7 +52,7 @@
 		<!--
 			<dependency> <groupId>org.richfaces.ui</groupId>
 			<artifactId>beanValidator</artifactId>
-			<version>3.3.1-SNAPSHOT</version> </dependency>
+			<version>3.3.2-SNAPSHOT</version> </dependency>
 		-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.uwyn</groupId>

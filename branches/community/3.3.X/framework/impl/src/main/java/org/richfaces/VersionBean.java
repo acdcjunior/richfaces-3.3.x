@@ -38,7 +38,7 @@ public class VersionBean {
 	 * Revision version, must be auto modified by  CVS 
 	 */
 	
-	public static final String REVISION = "1-SNAPSHOT" ;
+	public static final String REVISION = "2-SNAPSHOT" ;
 	public static final String SCM_REVISION = "	SVN $Revision$ $Date$";//$Revision$ $Date$";
 	public static final Version _version = new Version();
 	

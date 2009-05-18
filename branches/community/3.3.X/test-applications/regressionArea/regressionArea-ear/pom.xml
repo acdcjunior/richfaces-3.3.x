@@ -6,9 +6,9 @@
 	 <parent>
         <groupId>org.richfaces.test-applications</groupId>
         <artifactId>regressionArea</artifactId>
-        <version>3.3.1-SNAPSHOT</version>
+        <version>3.3.2-SNAPSHOT</version>
     </parent>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<groupId>org.richfaces.test-applications.regressionArea</groupId>
 	<artifactId>regressionArea-ear</artifactId>
 	<name>Regression Area Ear Module</name>

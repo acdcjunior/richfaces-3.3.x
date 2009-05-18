@@ -4,7 +4,7 @@
   <artifactId>richfacesguide-archetype</artifactId>
   <packaging>maven-archetype</packaging>
   <name>richfacesguide-archetype</name>
-  <version>3.3.1-SNAPSHOT</version>
+  <version>3.3.2-SNAPSHOT</version>
   <build>
     <extensions>
       <extension>

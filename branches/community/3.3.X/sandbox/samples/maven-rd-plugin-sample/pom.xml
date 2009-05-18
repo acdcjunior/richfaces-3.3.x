@@ -2,14 +2,14 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces.sandbox</groupId>
-    <version>3.3.1-SNAPSHOT</version>
+    <version>3.3.2-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces.cdk.sandbox</groupId>
   <artifactId>maven-rd-plugin-sample</artifactId>
   <packaging>war</packaging>
   <name>maven-rd-plugin-sample Maven Webapp</name>
-  <version>3.3.1-SNAPSHOT</version>
+  <version>3.3.2-SNAPSHOT</version>
   
    <pluginRepositories>
     <pluginRepository>
@@ -33,7 +33,7 @@
       <plugin>
         <artifactId>maven-resource-dependency-plugin</artifactId>
         <groupId>org.richfaces.cdk</groupId>
- 		<version>3.3.1-SNAPSHOT</version>
+ 		<version>3.3.2-SNAPSHOT</version>
  		<configuration>
  			 <scriptFilePath>scripts/custom-dependencies.js</scriptFilePath>
  			 <styleFilePath>css/custom-dependencies.xcss</styleFilePath>
@@ -59,7 +59,7 @@
     <dependency>
       <groupId>org.richfaces.ui</groupId>
       <artifactId>richfaces-ui</artifactId>
-      <version>3.3.1-SNAPSHOT</version>
+      <version>3.3.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

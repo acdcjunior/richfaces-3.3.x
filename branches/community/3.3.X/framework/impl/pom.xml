@@ -3,13 +3,13 @@
 	<parent>
 		<artifactId>framework</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.framework</groupId>
 	<artifactId>richfaces-impl</artifactId>
 	<name>Java Server Faces AJAX framework implementation</name>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<build>
 		<resources>
 			<resource>
@@ -161,7 +161,7 @@
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-api</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

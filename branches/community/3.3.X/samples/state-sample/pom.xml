@@ -2,7 +2,7 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.1-SNAPSHOT</version>
+    <version>3.3.2-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces</groupId>
@@ -16,17 +16,17 @@
     <dependency>
       <groupId>org.richfaces.ui</groupId>
       <artifactId>state</artifactId>
-      <version>3.3.1-SNAPSHOT</version>
+      <version>3.3.2-SNAPSHOT</version>
     </dependency>
 	<dependency>
 		<groupId>org.richfaces.ui</groupId>
 		<artifactId>core</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency> 
         <dependency>
             <groupId>org.richfaces.samples</groupId>
             <artifactId>skins</artifactId>
-            <version>3.3.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
         </dependency>
   </dependencies>
 </project>

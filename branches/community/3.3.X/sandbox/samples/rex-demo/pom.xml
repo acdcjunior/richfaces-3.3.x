@@ -2,7 +2,7 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.1-SNAPSHOT</version>
+    <version>3.3.2-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces.samples</groupId>
@@ -178,7 +178,7 @@
     <dependency>
       <groupId>org.richfaces.ui</groupId>
       <artifactId>richfaces-ui</artifactId>
-      <version>3.3.1-SNAPSHOT</version>
+      <version>3.3.2-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.uwyn</groupId>
@@ -193,28 +193,28 @@
 	<dependency>
 		<groupId>org.richfaces.sandbox.ui</groupId>
 		<artifactId>rex-resizable</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.richfaces.sandbox.ui</groupId>
 		<artifactId>rex-button</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.richfaces.sandbox.ui</groupId>
 		<artifactId>rex-messageBox</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.richfaces.ui</groupId>
 		<artifactId>componentControl</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 
 	<groupId>org.richfaces.sandbox</groupId>
 		<artifactId>richfaces-sandbox-impl</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</dependency>
 
 

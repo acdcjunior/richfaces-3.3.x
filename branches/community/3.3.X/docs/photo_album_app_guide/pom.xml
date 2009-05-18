@@ -4,13 +4,13 @@
 	<parent>
 		<artifactId>docs</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.docs</groupId>
 	<artifactId>photo_album_app_guide</artifactId>
 	<packaging>pom</packaging>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<name>RichFaces Photo Album Application Guide</name>
 	<description>RichFaces Photo Album Application Guide</description>
 	<pluginRepositories>

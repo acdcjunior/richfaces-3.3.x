@@ -8,7 +8,7 @@
     <name>sample application</name>
     <properties>
 		<projectName>seamApp</projectName>
-		<rfVersion>3.3.1-SNAPSHOT</rfVersion>
+		<rfVersion>3.3.2-SNAPSHOT</rfVersion>
 		<seamVersion>2.1.0.SP1</seamVersion>
 		<jbossDownloadURL>http://downloads.sourceforge.net/jboss/jboss-4.2.2.GA.zip</jbossDownloadURL>
 		<jbossDeployDir>jboss-4.2.2.GA/jboss-4.2.2.GA/server/default/</jbossDeployDir>
