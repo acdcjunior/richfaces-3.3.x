@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.richfaces.samples.seamEAR</groupId>
 		<artifactId>wars</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 	</parent>
 	<build>
 		<finalName>seamWebapp</finalName>
@@ -22,17 +22,17 @@
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-impl</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-api</artifactId>
-			<version>3.3.1-SNAPSHOT</version>
+			<version>3.3.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

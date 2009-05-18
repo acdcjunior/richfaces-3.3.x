@@ -2,14 +2,14 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.1-SNAPSHOT</version>
+    <version>3.3.2-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces</groupId>
   <artifactId>queue-sample</artifactId>
   <packaging>war</packaging>
   <name>queue-sample Maven Webapp</name>
-  <version>3.3.1-SNAPSHOT</version>
+  <version>3.3.2-SNAPSHOT</version>
   <build>
     <finalName>queue-sample</finalName>
     <plugins>

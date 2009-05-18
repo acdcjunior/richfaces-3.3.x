@@ -3,7 +3,7 @@
     <parent>
         <artifactId>samples</artifactId>
         <groupId>org.richfaces</groupId>
-        <version>3.3.1-SNAPSHOT</version>
+        <version>3.3.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.richfaces.samples</groupId>
@@ -35,7 +35,7 @@
             <groupId>org.richfaces.framework
             </groupId>
             <artifactId>richfaces-impl</artifactId>
-            <version>3.3.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.samples
@@ -46,17 +46,17 @@
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>core</artifactId>
-            <version>3.3.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>dataTable</artifactId>
-            <version>3.3.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>colorPicker</artifactId>
-            <version>3.3.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

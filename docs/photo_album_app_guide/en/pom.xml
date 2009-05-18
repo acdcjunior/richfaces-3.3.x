@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.richfaces.docs</groupId>
 		<artifactId>photo_album_app_guide</artifactId>
-		<version>3.3.1-SNAPSHOT</version>
+		<version>3.3.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>org.richfaces.docs.photo_album_app_guide</groupId>
 	<artifactId>${translation}</artifactId>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>RichFaces Photo Album application Guide (${translation})</name>
 

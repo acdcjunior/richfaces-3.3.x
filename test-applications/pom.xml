@@ -2,7 +2,7 @@
 	<parent>
     		<artifactId>samples</artifactId>
     		<groupId>org.richfaces</groupId>
-	    	<version>3.3.1-SNAPSHOT</version>
+	    	<version>3.3.2-SNAPSHOT</version>
 		<relativePath>../samples</relativePath>
 	</parent>
 
@@ -50,11 +50,11 @@
 	<groupId>org.richfaces</groupId>
 	<artifactId>test-applications</artifactId>
 	<packaging>pom</packaging>
-	<version>3.3.1-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 	<name>RichFaces Test Applications</name>
 
 	<properties>
-		<rfVersion>3.3.1-SNAPSHOT</rfVersion>
+		<rfVersion>3.3.2-SNAPSHOT</rfVersion>
 	</properties>
 
 	<modules>
