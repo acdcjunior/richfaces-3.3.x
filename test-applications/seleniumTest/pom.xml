@@ -19,7 +19,7 @@
 	</properties>
 	<repositories>
 		<repository>
-			<id>openqa</id>
+			<id>nexus-openqa</id>
 			<name>OpenQA Repository</name>
 			<url>http://nexus.openqa.org/content/repositories/releases</url>
 			<layout>default</layout>
@@ -31,7 +31,7 @@
 			</releases>
 		</repository>
 		<repository>
-			<id>openqa-snapshots</id>
+			<id>nexus-openqa-snapshots</id>
 			<name>OpenQA Snapshots Repository</name>
 			<url>http://nexus.openqa.org/content/repositories/snapshots</url>
 			<layout>default</layout>
