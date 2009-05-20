@@ -13,13 +13,14 @@
 	<f:clientid var="clientId"/>
     <h:styles>css/editor.xcss</h:styles>
     <h:scripts>new org.ajax4jsf.javascript.AjaxScript(), new org.ajax4jsf.javascript.PrototypeScript(), scripts/tiny_mce/tiny_mce_src.js, scripts/editor.js</h:scripts>
+
+    <div id="#{clientId}" x:passThruWithExclusions="id,value,styleClass,class" 
+    		class="rich-editor #{component.attributes['styleClass']}">		
     <jsp:scriptlet>
 		<![CDATA[
 		    if(shouldRenderTinyMCE(component)) {
     	]]>
 	</jsp:scriptlet>
-    <div id="#{clientId}" x:passThruWithExclusions="id,value,styleClass,class" 
-    		class="rich-editor #{component.attributes['styleClass']}">		
 			
 		<textarea id="#{clientId}TextArea" name="#{clientId}TextArea"
 			style="visibility: hidden">
@@ -36,23 +37,22 @@
        		
         	new RichEditor('#{clientId}', richParams, tinyMceParams);
 		</script>		
-	</div> 
+
 	<jsp:scriptlet>
 		<![CDATA[
 		    } else {
     	]]>
 	</jsp:scriptlet>
-	<div id="#{clientId}" x:passThruWithExclusions="id,value,styleClass,class" 
-    		class="rich-editor #{component.attributes['styleClass']}" style="#{component.attributes['style']}">		
+
 		<textarea id="#{clientId}TextArea" name="#{clientId}TextArea"  
 					style="#{this:getTextAreaStyle(component)}"
 					tabindex="#{component.attributes['tabindex']}">
 				#{this:getFormattedComponentStringValue(context, component)}
 		</textarea>
-	</div>
 	<jsp:scriptlet>
 		<![CDATA[
 		    }
     	]]>
 	</jsp:scriptlet>
+	</div>
 </f:root>
