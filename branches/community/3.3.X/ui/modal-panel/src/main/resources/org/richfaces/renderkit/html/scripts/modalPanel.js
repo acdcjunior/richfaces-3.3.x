@@ -333,19 +333,9 @@ ModalPanel.prototype = {
 				newLastPanel.enableInnerSelects();
 			}
 		} else {
-			var children = document.body.childNodes;
-			for (var k = 0; k < children.length; k++) {
-				var child = children[k];
-				
-				if (!child.getElementsByTagName) {
-					continue;
-				}
-				
-				var selects = child.getElementsByTagName("SELECT");
-
-				for (var i = 0; i < selects.length; i++) {
-					this.enableSelect(selects[i]);
-				}
+			var selects = document.body.getElementsByTagName("SELECT");
+			for (var i = 0; i < selects.length; i++) {
+				this.enableSelect(selects[i]);
 			}
 		}
 	},
@@ -363,24 +353,28 @@ ModalPanel.prototype = {
 			this.enableInnerSelects();
 		} else {
 			//disable all outer 
-			var children = document.body.childNodes;
-			for (var k = 0; k < children.length; k++) {
-				var child = children[k];
-				
-				if (child == this.id) {
-					continue;
-				}
-				
-				if (!child.getElementsByTagName) {
-					continue;
-				}
-				
-				var selects = child.getElementsByTagName("SELECT");
+			var selects = document.body.getElementsByTagName("SELECT");
 
-				for (var i = 0; i < selects.length; i++) {
-					this.disableSelect(selects[i]);
+			var innerSelects = this.id.getElementsByTagName("SELECT");
+			var firstInnerSelect = innerSelects[0];
+			var lastInnerSelect = innerSelects[innerSelects.length - 1];
+			
+			var selectsAreInner = false;
+			
+			for (var i = 0; i < selects.length; i++) {
+				var select = selects[i];
+				if (select == firstInnerSelect) {
+					selectsAreInner = true;
 				}
-			}				
+				
+				if (!selectsAreInner) {
+					this.disableSelect(select);
+				}
+				
+				if (select == lastInnerSelect) {
+					selectsAreInner = false;
+				}
+			}
 		}
 	},
 	
