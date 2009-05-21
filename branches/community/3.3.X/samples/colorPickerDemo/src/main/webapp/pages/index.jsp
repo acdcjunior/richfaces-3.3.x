@@ -24,7 +24,7 @@
                             <h:outputText value="Data Table" />
                         </f:facet>
 
-                        <colorPicker:colorPicker id="cp" value="#ff0000" />
+                        <colorPicker:colorPicker id="cp" value="#ff0000" inputSize="3"/>
                         
                         <h:outputText value="#{row}"/>
                     </rich:column>
