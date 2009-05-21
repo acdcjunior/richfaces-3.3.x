@@ -50,6 +50,16 @@
 <book>
     <bookinfo>
         <title>RichFaces CDK Developer Guide</title>
+                <corpauthor>
+                    <inlinemediaobject>
+                        <imageobject role="fo">
+                            <imagedata format="PNG" fileref="images/richfaces_logo.png" />
+                        </imageobject>	
+                        <imageobject role="html">
+                            <imagedata/>
+                        </imageobject>	
+                    </inlinemediaobject>           
+                </corpauthor>
 	<author>
 		<firstname>Gleb</firstname>
 		<surname>Galkin</surname>
