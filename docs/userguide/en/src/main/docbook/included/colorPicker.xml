@@ -370,11 +370,11 @@ HtmlColorPicker myColorPicker = new ColorPicker();
         </thead>
         <tbody>
           <row>
-            <entry>.rich-colorPicker-span input</entry>
+            <entry>.rich-colorpicker-span input</entry>
             <entry>Defines styles for the input field that contains selected color</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-icon</entry>
+            <entry>.rich-colorpicker-icon</entry>
             <entry>Defines styles for the icon</entry>
           </row>
         </tbody>
@@ -391,23 +391,23 @@ HtmlColorPicker myColorPicker = new ColorPicker();
         </thead>
         <tbody>
           <row>
-            <entry>.rich-colorPicker-ext</entry>
+            <entry>.rich-colorpicker-ext</entry>
             <entry>Defines styles for the wrapper &lt;div&gt; element of a widget</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-color</entry>
+            <entry>.rich-colorpicker-color</entry>
             <entry>Defines styles for the color palette</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-current-color</entry>
+            <entry>.rich-colorpicker-current-color</entry>
             <entry>Defines styles for the currently selected color</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-new-color</entry>
+            <entry>.rich-colorpicker-new-color</entry>
             <entry>Defines styles for the already selected color</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-colors-input</entry>
+            <entry>.rich-colorpicker-colors-input</entry>
             <entry>Defines styles for the hex, RGB, and HSB input fileds</entry>
           </row>
         </tbody>
@@ -424,11 +424,11 @@ HtmlColorPicker myColorPicker = new ColorPicker();
         </thead>
         <tbody>
           <row>
-            <entry>.rich-colorPicker-submit</entry>
+            <entry>.rich-colorpicker-submit</entry>
             <entry>Defines styles for the &quot;Apply&quot; button</entry>
           </row>
           <row>
-            <entry>.rich-colorPicker-cancel</entry>
+            <entry>.rich-colorpicker-cancel</entry>
             <entry>Defines styles for the &quot;Cancel&quot; button</entry>
           </row>
         </tbody>
