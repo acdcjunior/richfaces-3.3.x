@@ -36,7 +36,7 @@
 		<jsp:scriptlet><![CDATA[
 			}else{
 		]]></jsp:scriptlet>
-                <img src="#{arrow}" class="rich-color-picker-icon #{component.attributes['iconClass']}" style="#{component.attributes['iconStyle']}" vertical-align="middle"/>
+                <img src="#{arrow}" class="rich-color-picker-icon #{component.attributes['iconClass']}" style="#{component.attributes['iconStyle']}" alt="icon"/>
         <jsp:scriptlet><![CDATA[
 			}
 		]]></jsp:scriptlet>
@@ -72,31 +72,31 @@
 		<div class="rich-color-picker-new-color"></div>
 		<div class="rich-color-picker-current-color"></div>
 		<div class="rich-color-picker-hex-wrapper">
-			<label for="rich-color-picker-hex-wrapper" title="hex">#:</label>
+			<label for="#{clientId}-colorPicker-hex" title="hex">#:</label>
 			<input id="#{clientId}-colorPicker-hex" class="rich-color-picker-colors-input" type="text" maxlength="6" size="6" />
 		</div>
 		<div class="rich-color-picker-rgb-wrapper rich-color-picker-rgb-r">
-				<label for="rgb">R:</label>
+				<label for="#{clientId}-colorPicker-rgb-r">R:</label>
 				<input id="#{clientId}-colorPicker-rgb-r" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
         </div>
 		<div class="rich-color-picker-rgb-wrapper rich-color-picker-rgb-g">
-				<label for="rgb-g">G:</label>
+				<label for="#{clientId}-colorPicker-rgb-g">G:</label>
 				<input id="#{clientId}-colorPicker-rgb-g" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>
 		<div class="rich-color-picker-rgb-wrapper rich-color-picker-rgb-b">
-				<label for="rgb-b">B:</label>
+				<label for="#{clientId}-colorPicker-rgb-b">B:</label>
 				<input id="#{clientId}-colorPicker-rgb-b" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>
 		<div class="rich-color-picker-hsb-h rich-color-picker-hsb-wrapper">
-				<label for="hsb-h">H:</label>
+				<label for="#{clientId}-colorPicker-hsb-h">H:</label>
 				<input id="#{clientId}-colorPicker-hsb-h" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>
 		<div class="rich-color-picker-hsb-s rich-color-picker-hsb-wrapper">
-				<label for="hsb-s">S:</label>
+				<label for="#{clientId}-colorPicker-hsb-s">S:</label>
 				<input id="#{clientId}-colorPicker-hsb-s" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>		
 		<div class="rich-color-picker-hsb-b rich-color-picker-hsb-wrapper">		
-				<label for="hsb-b">B:</label>
+				<label for="#{clientId}-colorPicker-hsb-b">B:</label>
 				<input id="#{clientId}-colorPicker-hsb-b" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>
 		<button type="button" class="rich-color-picker-submit" name="submit">Apply</button>
