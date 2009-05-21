@@ -28,6 +28,15 @@ h3.author{
 	margin: 0px;
 }
 
+#title a.doc_href {
+    display:block;
+    height:89px;
+    background:transparent url(../images/rf_logo.png) top right no-repeat;
+}
+.corpauthor img{
+	display:none !important;
+}
+
 div.book, div.chapter, div.section{
 	width:1000px;
 	margin:0 auto;
@@ -317,11 +326,6 @@ documentElement.scrollTop
 #feedback-link img{
 	width: 47px;
 	height:315px;
-}
-#title a.doc_href {
-    display:block;
-    height:89px;
-    background:transparent url(../images/rf_logo.png) top right no-repeat;
 }
 .remark{
 	font-size: 11px;
