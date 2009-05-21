@@ -56,6 +56,13 @@
 		    </description>
 		    <defaultvalue><![CDATA["#ffffff"]]></defaultvalue>
 		</property>
+		<property>
+		    <name>inputSize</name>
+		    <classname>java.lang.Integer</classname>
+		    <description>
+		        inputSize - way to set the size of the edit box
+		    </description>
+		</property>
 		
         &ui_component_attributes;
 		&html_events;
