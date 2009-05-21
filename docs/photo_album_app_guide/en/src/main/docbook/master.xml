@@ -27,6 +27,16 @@
 <book>
       <bookinfo>
             <title>RichFaces Photo Album Application Guide</title>
+      	<corpauthor>
+      		<inlinemediaobject>
+      			<imageobject role="fo">
+      				<imagedata format="PNG" fileref="images/richfaces_logo.png" />
+      			</imageobject>	
+      			<imageobject role="html">
+      				<imagedata/>
+      			</imageobject>	
+      		</inlinemediaobject>           
+      	</corpauthor>
             <subtitle>This documentation is work in progress, thus some mistakes or incompleteness is possible</subtitle>
             <author>
                   <firstname>Alex</firstname>
