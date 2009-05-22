@@ -371,11 +371,10 @@ Richfaces.ComboBox.prototype = {
 
 		var value = jQuery(this.comboList.activeItem).text();
 		
-		if(this.comboValue && value) {
-			if(this.comboValue.value != value) {
-				Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:value});
-			}	
+		if(this.comboValue.value != value) {
+			Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:value});
 		}	
+
 			
 		if (toSetOnly) {
 			var oV = this.field.value; 
