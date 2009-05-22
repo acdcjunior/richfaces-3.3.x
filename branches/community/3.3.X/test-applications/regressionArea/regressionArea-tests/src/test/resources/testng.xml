@@ -31,6 +31,7 @@
 			<package name="org.richfaces.testng.rf6035" />
 			<package name="org.richfaces.testng.rf6267" />
 			<package name="org.richfaces.testng.rf6547" />
+			<package name="org.richfaces.testng.rf5773" />
 		</packages>
 	</test>
 </suite>
