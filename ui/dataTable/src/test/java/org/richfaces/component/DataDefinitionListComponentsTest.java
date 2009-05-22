@@ -154,7 +154,7 @@ public class DataDefinitionListComponentsTest extends AbstractAjax4JsfTestCase {
         assertNotNull(dl);
         assertEquals("dl", dl.getNodeName());
         String classAttr = dl.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-deflist rich-deflist"));
+        assertTrue(classAttr.contains("rich-deflist"));
 
         List dds = dl.getHtmlElementsByTagName("dd");
         assertTrue(dds.size() > 0);
@@ -162,7 +162,7 @@ public class DataDefinitionListComponentsTest extends AbstractAjax4JsfTestCase {
         HtmlElement dd = (HtmlElement) dds.get(0);
         assertNotNull(dd);
         classAttr = dd.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-definition rich-definition"));
+        assertTrue(classAttr.contains("rich-definition"));
     }
 
     /**
@@ -187,7 +187,7 @@ public class DataDefinitionListComponentsTest extends AbstractAjax4JsfTestCase {
         assertNotNull(dl);
         assertEquals("dl", dl.getNodeName());
         String classAttr = dl.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-deflist rich-deflist"));
+        assertTrue(classAttr.contains("rich-deflist"));
 
         List dts = dl.getHtmlElementsByTagName("dt");
         assertTrue(dts.size() > 0);
@@ -196,7 +196,7 @@ public class DataDefinitionListComponentsTest extends AbstractAjax4JsfTestCase {
         assertNotNull(dt);
         classAttr = dt.getAttributeValue("class");
         assertTrue(classAttr
-                .contains("dr-definition-term rich-definition-term"));
+                .contains("rich-definition-term"));
 
         List dds = dl.getHtmlElementsByTagName("dd");
         assertTrue(dds.size() > 0);
@@ -204,7 +204,7 @@ public class DataDefinitionListComponentsTest extends AbstractAjax4JsfTestCase {
         HtmlElement dd = (HtmlElement) dds.get(0);
         assertNotNull(dd);
         classAttr = dd.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-definition rich-definition"));
+        assertTrue(classAttr.contains("rich-definition"));
 
         Iterator fixedChildren = dataList.fixedChildren();
         assertNotNull(fixedChildren);

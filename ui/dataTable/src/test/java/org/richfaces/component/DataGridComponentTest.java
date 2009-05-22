@@ -147,13 +147,13 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(table);
         assertEquals("table", table.getNodeName());
         String classAttr = table.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table rich-table"));
+        assertTrue(classAttr.contains("rich-table"));
 
         List captions = table.getHtmlElementsByTagName("caption");
         assertNotNull(captions);
         assertEquals(1, captions.size());
         classAttr = ((HtmlElement) captions.get(0)).getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-caption rich-table-caption"));
+        assertTrue(classAttr.contains("rich-table-caption"));
 
         List headers = table.getHtmlElementsByTagName("thead");
         assertNotNull(headers);
@@ -164,7 +164,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         HtmlElement tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-header rich-table-header"));
+        assertTrue(classAttr.contains("rich-table-header"));
 
         List tds = tr.getHtmlElementsByTagName("th");
         assertTrue(tds.size() > 0);
@@ -172,7 +172,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
         assertTrue(classAttr
-                .contains("dr-table-headercell rich-table-headercell"));
+                .contains("rich-table-headercell"));
 
         List footers = table.getHtmlElementsByTagName("tfoot");
         assertNotNull(footers);
@@ -182,7 +182,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-footer rich-table-footer"));
+        assertTrue(classAttr.contains("rich-table-footer"));
 
         tds = tr.getHtmlElementsByTagName("td");
         assertTrue(tds.size() > 0);
@@ -190,7 +190,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
         assertTrue(classAttr
-                .contains("dr-table-footercell rich-table-footercell"));
+                .contains("rich-table-footercell"));
 
         List bodies = table.getHtmlElementsByTagName("tbody");
         assertEquals(1, bodies.size());
@@ -199,7 +199,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-row rich-table-row"));
+        assertTrue(classAttr.contains("rich-table-row"));
         assertTrue(classAttr.contains("row1"));
 
         tds = tr.getHtmlElementsByTagName("td");
@@ -207,7 +207,7 @@ public class DataGridComponentTest extends AbstractAjax4JsfTestCase {
         td = (HtmlElement) tds.get(0);
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-cell rich-table-cell"));
+        assertTrue(classAttr.contains("rich-table-cell"));
         assertTrue(classAttr.contains("A"));
     }
 

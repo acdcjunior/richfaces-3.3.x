@@ -173,24 +173,24 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 		    
 		    ResponseWriter writer = context.getResponseWriter();
 			writer.startElement("thead", table);
-			writer.writeAttribute(HTML.class_ATTRIBUTE, "dr-table-thead", null);
+			writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-table-thead", null);
 			String headerClass = (String) table.getAttributes().get("headerClass");
 			if (header != null) {
 				encodeTableHeaderFacet(context, numberOfColumns, writer, header,
-						"dr-table-header rich-table-header",
-						"dr-table-header-continue rich-table-header-continue",
-						"dr-table-headercell rich-table-headercell",
+						"rich-table-header",
+						"rich-table-header-continue",
+						"rich-table-headercell",
 						headerClass, "th");
 			}
 
 			if (columnFacetPresent || isFilterByPresent) {
 				writer.startElement("tr", table);
 				encodeStyleClass(writer, null,
-						"dr-table-subheader rich-table-subheader", null,
+						"rich-table-subheader", null,
 						headerClass);
 				
 				encodeHeaderFacets(context, writer, table.columns(),
-						"dr-table-subheadercell rich-table-subheadercell",
+						"rich-table-subheadercell",
 						headerClass, "header", "th", numberOfColumns);
 				
 				writer.endElement("tr");
@@ -318,20 +318,20 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 			if (columnFacetPresent) {
 				writer.startElement("tr", table);
 				encodeStyleClass(writer, null,
-						"dr-table-subfooter rich-table-subfooter", null,
+						"rich-table-subfooter", null,
 						footerClass);
 		
 				encodeHeaderFacets(context, writer, tableColumns,
-						"dr-table-subfootercell rich-table-subfootercell",
+						"rich-table-subfootercell",
 						footerClass, "footer", "td",columns);
 				
 				writer.endElement("tr");
 			}
 			if (footer != null) {
 				encodeTableHeaderFacet(context, columns, writer, footer,
-						"dr-table-footer rich-table-footer",
-						"dr-table-footer-continue rich-table-footer-continue",
-						"dr-table-footercell rich-table-footercell",
+						"rich-table-footer",
+						"rich-table-footer-continue",
+						"rich-table-footercell",
 						footerClass, "td");
 			}
 			writer.endElement("tfoot");
@@ -425,21 +425,21 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 	 * @return
 	 */
 	protected String getRowSkinClass() {
-		return "dr-table-row rich-table-row";
+		return "rich-table-row";
 	}
 
 	/**
 	 * @return
 	 */
 	protected String getFirstRowSkinClass() {
-		return "dr-table-firstrow rich-table-firstrow";
+		return "rich-table-firstrow";
 	}
 
 	/**
 	 * @return
 	 */
 	protected String getCellSkinClass() {
-		return "dr-table-cell rich-table-cell";
+		return "rich-table-cell";
 	}
 
 	protected void encodeRowStart(FacesContext context, String skinClass,
@@ -746,7 +746,7 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 				
 				if (sortableColumn) {
 					writer.startElement(HTML.SPAN_ELEM, column);
-					writer.writeAttribute(HTML.class_ATTRIBUTE, "dr-table-sortable-header", null);
+					writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-table-sortable-header", null);
 				}
 		}
 
@@ -782,7 +782,7 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 						writer.writeAttribute(HTML.alt_ATTRIBUTE, "", null);
 						writer.writeAttribute(HTML.width_ATTRIBUTE, "15", null);
 						writer.writeAttribute(HTML.height_ATTRIBUTE, "15", null);
-						writer.writeAttribute(HTML.class_ATTRIBUTE, "dr-table-header-sort-img rich-sort-icon", null);
+						writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-sort-icon", null);
 						writer.endElement(HTML.IMG_ELEMENT);
 					}
 					writer.endElement(HTML.SPAN_ELEM);

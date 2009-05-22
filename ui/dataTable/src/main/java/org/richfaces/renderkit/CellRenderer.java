@@ -46,7 +46,7 @@ public class CellRenderer extends RendererBase {
 		if (null != parentPredefined) {
 			styleClass.append(parentPredefined).append(" ");			
 		} else {
-			styleClass.append("dr-table-cell rich-table-cell ");
+			styleClass.append("rich-table-cell ");
 		}
 		// Append class from parent component.
 		Object parent = requestMap.get(AbstractRowsRenderer.CELL_CLASS_KEY);

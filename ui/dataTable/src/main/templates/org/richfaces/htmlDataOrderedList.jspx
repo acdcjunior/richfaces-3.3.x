@@ -12,7 +12,7 @@
 	>
 	<f:clientid var="clientId"/>
 	<ol id="#{clientId}"
-	    class="dr-list rich-orderedlist #{component.attributes['styleClass']}"
+	    class="rich-orderedlist #{component.attributes['styleClass']}"
 		x:passThruWithExclusions="id,class"
 		>
 	<vcp:body>

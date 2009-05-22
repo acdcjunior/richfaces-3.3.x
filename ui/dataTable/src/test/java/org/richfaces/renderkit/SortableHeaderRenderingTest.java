@@ -178,8 +178,7 @@ public class SortableHeaderRenderingTest extends AbstractAjax4JsfTestCase {
         
         String clazz = span.getAttributeValue(HTML.class_ATTRIBUTE);
         assertNotNull(clazz);
-        //assertTrue(clazz.contains("dr-table-header-sort-up"));
-        assertTrue(clazz.contains("dr-table-sortable-header"));
+        assertTrue(clazz.contains("rich-table-sortable-header"));
         
         DomText text = (DomText) span.getFirstDomChild();
         assertNotNull(text);

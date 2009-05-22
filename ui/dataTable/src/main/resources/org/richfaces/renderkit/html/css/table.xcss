@@ -2,7 +2,7 @@
 <f:template xmlns:f='http:/jsf.exadel.com/template'
    xmlns:u='http:/jsf.exadel.com/template/util' 
    xmlns="http://www.w3.org/1999/xhtml" >
-<u:selector name=".dr-table" >
+<u:selector name=".rich-table" >
 	<u:style name="border-top" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -17,7 +17,7 @@
 	<u:style name="border-collapse" value="collapse" />
 </u:selector>
 
-<u:selector name=".dr-table-cell" >
+<u:selector name=".rich-table-cell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -32,7 +32,7 @@
 	<u:style name="font-family" skin="generalFamilyFont"/> <!--generalFamilyFont-->
 </u:selector>
 
-<u:selector name=".dr-subtable-cell" >
+<u:selector name=".rich-subtable-cell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -47,7 +47,7 @@
 	<u:style name="font-family" skin="generalFamilyFont"/> <!--generalFamilyFont-->
 </u:selector>
 
-<u:selector name=".dr-table-header" >
+<u:selector name=".rich-table-header" >
 	<u:style name="background-color" skin="headerBackgroundColor"/> <!--headerBackgroundColor-->
 	<u:style name="background-image" > <!--from headerGradientColor to headerBackgroundColor-->
     	<f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
@@ -56,11 +56,11 @@
 	<u:style name="background-repeat" value="repeat-x"/>
 </u:selector>
 
-<u:selector name=".dr-table-header-continue" >
+<u:selector name=".rich-table-header-continue" >
 	<u:style name="background-color" skin="headerBackgroundColor"/> <!--headerBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-table-headercell" >
+<u:selector name=".rich-table-headercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -77,18 +77,18 @@
 	<u:style name="font-family" skin="generalFamilyFont"/> <!--generalFamilyFont-->
 </u:selector>
 
-<u:selector name=".dr-table-subheader" >
+<u:selector name=".rich-table-subheader" >
 	<u:style name="background-color" skin="additionalBackgroundColor"/> <!--additionalBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-table-thead" >
+<u:selector name=".rich-table-thead" >
 	<u:style name="border-bottom" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
 	</u:style>
 </u:selector>
 
-<u:selector name=".dr-table-subheadercell" >
+<u:selector name=".rich-table-subheadercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -102,13 +102,13 @@
 </u:selector>
 
 <f:verbatim>
-	.dr-table-sortable-header {
+	.rich-table-sortable-header {
 		background-position: right center;
 		background-repeat: no-repeat;
 		white-space : nowrap;
 	}
 	
-	.dr-table-cursor-pointer {
+	.rich-table-cursor-pointer {
 		cursor: pointer;
 	}
 	
@@ -116,21 +116,21 @@
 		cursor: default;
 	}
 	
-	.dr-table-header-sort-img {
+	.rich-sort-icon {
 		vertical-align: middle;
 	}
 </f:verbatim>
 
-<u:selector name=".dr-table-footer" >
+<u:selector name=".rich-table-footer" >
 	<u:style name="background-color" skin="tableFooterBackgroundColor"/> <!--tableFooterBackgroundColor-->
 </u:selector>
 
 
-<u:selector name=".dr-table-footer-continue" >
+<u:selector name=".rich-table-footer-continue" >
 	<u:style name="background-color" skin="tableFooterBackgroundColor"/> <!--tableFooterBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-table-footercell" >
+<u:selector name=".rich-table-footercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -147,11 +147,11 @@
 	<u:style name="font-family" skin="generalFamilyFont"/> <!--generalFamilyFont-->
 </u:selector>
 
-<u:selector name=".dr-table-subfooter" >
+<u:selector name=".rich-table-subfooter" >
 	<u:style name="background-color" skin="tableSubfooterBackgroundColor"/> <!--tableSubfooterBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-table-subfootercell" >
+<u:selector name=".rich-table-subfootercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -167,21 +167,21 @@
 	<u:style name="font-family" skin="generalFamilyFont"/> <!--generalFamilyFont-->
 </u:selector>
 
-<u:selector name=".dr-table-firstrow .dr-table-cell" >
+<u:selector name=".rich-table-firstrow .rich-table-cell" >
 <!--	<u:style name="border-top" value="2px solid">
 	  <f:verbatim skin="tableBorderColor" />
 	</u:style> -->
 </u:selector>
 
-<u:selector name=".dr-subtable-firstrow .dr-subtable-cell" >
+<u:selector name=".rich-subtable-firstrow .rich-subtable-cell" >
 	<!-- <u:style name="border" value="2px solid #c0c0c0"/>-->
 </u:selector>
 
-<u:selector name=".dr-subtable-header" >
+<u:selector name=".rich-subtable-header" >
 	<u:style name="background-color" skin="additionalBackgroundColor"/> <!--additionalBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-subtable-headercell" >
+<u:selector name=".rich-subtable-headercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />
@@ -198,11 +198,11 @@
 </u:selector>
 
 
-<u:selector name=".dr-subtable-footer" >
+<u:selector name=".rich-subtable-footer" >
 	<u:style name="background-color" skin="tableSubfooterBackgroundColor"/> <!--tableSubfooterBackgroundColor-->
 </u:selector>
 
-<u:selector name=".dr-subtable-footercell" >
+<u:selector name=".rich-subtable-footercell" >
 	<u:style name="border-right" value="solid">  <!--tableBorderColor-->
 		<f:verbatim skin="tableBorderWidth" />
 		<f:verbatim skin="tableBorderColor" />

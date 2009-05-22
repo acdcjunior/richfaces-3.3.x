@@ -214,7 +214,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         assertNotNull(table);
         assertEquals("table", table.getNodeName());
         String classAttr = table.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table rich-table"));
+        assertTrue(classAttr.contains("rich-table"));
 
         List<?> elements = table.getHtmlElementsByTagName("col");
         assertEquals(2, elements.size());
@@ -230,7 +230,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         HtmlElement tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-firstrow rich-table-firstrow"));
+        assertTrue(classAttr.contains("rich-table-firstrow"));
         classAttr = tr.getAttributeValue("onmouseover");
         assertTrue(classAttr.contains("onRowMouseOver"));
         for (int i = 1; i < trs.size(); i++) {
@@ -242,8 +242,6 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
                     classAttr.contains("onRowMouseOver"));
 
             classAttr = tr.getAttributeValue("class");
-            assertFalse("Row i = " + i + " have 'dr-table-firstrow' style",
-                    classAttr.contains("dr-table-firstrow"));
             assertFalse("Row i = " + i + " have 'rich-table-firstrow' style", 
                     classAttr.contains("rich-table-firstrow"));
         }
@@ -253,7 +251,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         HtmlElement td = (HtmlElement) tds.next();
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-cell rich-table-cell"));
+        assertTrue(classAttr.contains("rich-table-cell"));
     }
 
     /**
@@ -309,7 +307,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         assertEquals(1, captions.size());
         String classAttr = ((HtmlElement) captions.get(0))
                 .getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-caption rich-table-caption"));
+        assertTrue(classAttr.contains("rich-table-caption"));
 
         List<?> headers = table.getHtmlElementsByTagName("thead");
         assertNotNull(headers);
@@ -319,7 +317,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         HtmlElement tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-header rich-table-header"));
+        assertTrue(classAttr.contains("rich-table-header"));
 
         Iterator<?> tds = tr.getChildIterator();
         assertNotNull(tds);
@@ -327,7 +325,7 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         HtmlElement td = (HtmlElement) tds.next();
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-headercell rich-table-headercell"));
+        assertTrue(classAttr.contains("rich-table-headercell"));
         assertTrue(classAttr.contains("cola"));
 
         List<?> footers = table.getHtmlElementsByTagName("tfoot");
@@ -338,14 +336,14 @@ public class DataTableRenderingTest extends AbstractAjax4JsfTestCase {
         tr = (HtmlElement) trs.get(0);
         assertNotNull(tr);
         classAttr = tr.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-footer rich-table-footer "));
+        assertTrue(classAttr.contains("rich-table-footer "));
   
         tds = tr.getChildIterator();
         assertTrue(tds.hasNext());
         td = (HtmlElement) tds.next();
         assertNotNull(td);
         classAttr = td.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-table-footercell rich-table-footercell "));
+        assertTrue(classAttr.contains("rich-table-footercell "));
 
         Iterator<?> fixedChildren = dataTable.fixedChildren();
         assertNotNull(fixedChildren);
