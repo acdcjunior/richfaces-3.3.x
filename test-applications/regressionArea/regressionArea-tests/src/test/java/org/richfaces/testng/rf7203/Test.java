@@ -8,9 +8,20 @@ public class Test extends SeleniumTestBase{
 	public void testExecute() throws Exception {
 		renderPage();
 		
-		clickCommandAndWait("form:link");
+		clickById("form:link");
 		AssertVisible("form:contextMenu");
-		clickAjaxCommandAndWait("form:contextMenu:menuItem");		
+		
+		clickAjaxCommandAndWait("form:menuItem");		
+		String str = selenium.getAlert();
+		System.out.println(str);
+		
+		try{
+		if(str.equalsIgnoreCase("oncomplete")){
+			throw new AssertionError("'oncomplete' alert still appears.");
+		}}catch (Exception e) {
+			System.err.println(e.getStackTrace());
+		}		
+		 
 	}
 	
 	@Override
