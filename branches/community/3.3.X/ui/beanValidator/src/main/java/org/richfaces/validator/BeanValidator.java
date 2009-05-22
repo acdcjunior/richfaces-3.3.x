@@ -15,6 +15,7 @@ import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorContext;
 import javax.validation.ValidatorFactory;
+import javax.validation.groups.Default;
 
 /**
  * @author asmirnov
@@ -22,6 +23,7 @@ import javax.validation.ValidatorFactory;
  */
 public class BeanValidator extends ObjectValidator {
 
+	private static final Class[] DEFAULT_PROFILE = new Class[] {};
 	private volatile ValidatorFactory validatorFactory = null;
 
 	BeanValidator() {
@@ -38,8 +40,10 @@ public class BeanValidator extends ObjectValidator {
 	@Override
 	protected String[] validate(Object base, String property, Object value,
 			Locale locale, Set<String> profiles) {
-		return extractMessages(getValidator(locale).validateProperty(base,
-				property, getGroups(profiles)));
+		Class beanType = base.getClass();
+		Set<ConstraintViolation<Object>> constrains = getValidator(locale)
+				.validateValue(beanType, property, value, getGroups(profiles));
+		return extractMessages(constrains);
 	}
 
 	/*
@@ -79,6 +83,8 @@ public class BeanValidator extends ObjectValidator {
 				i++;
 			}
 
+		} else {
+			groups = DEFAULT_PROFILE;
 		}
 		return groups;
 	}
@@ -88,7 +94,7 @@ public class BeanValidator extends ObjectValidator {
 		if (null != violations && violations.size() > 0) {
 			messages = new String[violations.size()];
 			int i = 0;
-			for (ConstraintViolation<Object> constraintViolation : violations) {
+			for (ConstraintViolation<? extends Object> constraintViolation : violations) {
 				messages[i++] = constraintViolation.getMessage();
 			}
 
@@ -97,7 +103,6 @@ public class BeanValidator extends ObjectValidator {
 	}
 
 	protected Validator getValidator(Locale locale) {
-		validatorFactory = null;
 		if (null == validatorFactory) {
 			synchronized (this) {
 				if (null == validatorFactory) {
@@ -134,7 +139,13 @@ public class BeanValidator extends ObjectValidator {
 		}
 
 		public String interpolate(String messageTemplate, Context context) {
-			return delegate.interpolate(messageTemplate, context, this.locale);
+
+			if (null != locale) {
+				return delegate.interpolate(messageTemplate, context,
+						this.locale);
+			} else {
+				return delegate.interpolate(messageTemplate, context);
+			}
 		}
 
 		public String interpolate(String messageTemplate, Context context,

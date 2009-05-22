@@ -1,11 +1,12 @@
 /**
  * 
  */
-package org.richfaces;
+package org.richfaces.example;
 
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotEmpty;
 import org.hibernate.validator.NotNull;
+import org.richfaces.Validable;
 
 /**
  * @author asmirnov

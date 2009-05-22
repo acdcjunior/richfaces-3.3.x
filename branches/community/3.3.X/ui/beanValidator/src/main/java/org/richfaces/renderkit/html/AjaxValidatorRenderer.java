@@ -48,13 +48,13 @@ import org.richfaces.event.ValidationEvent;
 
 
 /**
- * Renderer for component class org.richfaces.renderkit.html.BeanValidatorRenderer
+ * Renderer for component class org.richfaces.renderkit.html.AjaxValidatorRenderer
  */
-public class BeanValidatorRenderer extends AjaxComponentRendererBase {
+public class AjaxValidatorRenderer extends AjaxComponentRendererBase {
 
 	
 	public static final String RENDERER_TYPE = "org.richfaces.BeanValidatorRenderer";
-	public BeanValidatorRenderer () {
+	public AjaxValidatorRenderer () {
 		super();
 	}
 
@@ -103,7 +103,7 @@ public class BeanValidatorRenderer extends AjaxComponentRendererBase {
 	 * @return
 	 */
 	protected Class<? extends UIComponent> getComponentClass() {
-		return org.richfaces.component.UIBeanValidator.class;
+		return org.richfaces.component.UIAjaxValidator.class;
 	}		
 	
 

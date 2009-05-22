@@ -56,12 +56,12 @@ import org.richfaces.event.ValidationEvent;
  * JSF component class
  * 
  */
-public abstract class UIBeanValidator extends UIComponentBase implements
+public abstract class UIAjaxValidator extends UIComponentBase implements
 		AjaxComponent, AjaxSupport, AjaxContainer {
 
-	public static final String COMPONENT_TYPE = "org.richfaces.BeanValidator";
+	public static final String COMPONENT_TYPE = "org.richfaces.AjaxValidator";
 
-	public static final String COMPONENT_FAMILY = "org.richfaces.BeanValidator";
+	public static final String COMPONENT_FAMILY = "org.richfaces.AjaxValidator";
 
 	public static final String BEAN_VALIDATOR_FACET = "org.richfaces.validator.";
 

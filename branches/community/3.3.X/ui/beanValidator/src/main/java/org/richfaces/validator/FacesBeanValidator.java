@@ -33,6 +33,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import org.ajax4jsf.renderkit.AjaxRendererUtils;
+
 /**
  * Implementation of the JSF validator to use with Bean Validation / Hibernate
  * validator
@@ -54,7 +56,7 @@ public class FacesBeanValidator implements Validator,Serializable, GraphValidato
 	
 	private ValueExpression profilesExpression = null;
 
-	private Set<String> profiles = null;
+	private Object profiles = null;
 	/**
 	 * @return the summary
 	 */
@@ -119,30 +121,29 @@ public class FacesBeanValidator implements Validator,Serializable, GraphValidato
 	}
 
 	public String[] validateGraph(FacesContext context, UIComponent component,
-			Object value, Set<String> profiles)  throws ValidatorException {
+			Object value, Object profiles)  throws ValidatorException {
 		ObjectValidator beanValidator = HibernateValidator.getInstance(context);
-		String[] messages = beanValidator.validateGraph(context, value,profiles);
+		String[] messages = beanValidator.validateGraph(context, value,AjaxRendererUtils.asSet(profiles));
 		return messages;
 	}
 
 	/**
 	 * @return the profiles
 	 */
-	@SuppressWarnings("unchecked")
 	public Set<String> getProfiles() {
-		Set<String> profiles;
+		Object profiles;
 		if(null != profilesExpression){
-				profiles = (Set<String>) profilesExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+				profiles = profilesExpression.getValue(FacesContext.getCurrentInstance().getELContext());
 		}else {
 			profiles = this.profiles;
 		}
-		return profiles;
+		return AjaxRendererUtils.asSet(profiles);
 	}
 
 	/**
 	 * @param profiles the profiles to set
 	 */
-	public void setProfiles(Set<String> profiles) {
+	public void setProfiles(Object profiles) {
 		this.profiles = profiles;
 	}
 	

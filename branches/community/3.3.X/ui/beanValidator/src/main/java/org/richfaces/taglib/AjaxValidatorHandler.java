@@ -32,11 +32,12 @@ import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.webapp.taglib.AjaxComponentHandler;
-import org.richfaces.component.UIBeanValidator;
+import org.richfaces.component.UIAjaxValidator;
 import org.richfaces.validator.FacesBeanValidator;
 
 import com.sun.facelets.FaceletContext;
 import com.sun.facelets.FaceletException;
+import com.sun.facelets.tag.MetaRuleset;
 import com.sun.facelets.tag.TagAttribute;
 import com.sun.facelets.tag.TagException;
 import com.sun.facelets.tag.TagHandler;
@@ -74,9 +75,15 @@ public class AjaxValidatorHandler extends TagHandler {
 		_event = getAttribute("event");
 		_summary = getAttribute("summary");
 		_profiles = getAttribute("profiles");
-		_validatorHandler = new AjaxComponentHandler(config);
+		_validatorHandler = new AjaxComponentHandler(config){
+			@Override
+			protected MetaRuleset createMetaRuleset(Class type) {
+				return super.createMetaRuleset(type).ignore("summary").ignore("profiles");
+			}
+		};
 	}
 
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -107,7 +114,7 @@ public class AjaxValidatorHandler extends TagHandler {
 			}
 			if( null != _profiles){
 				if(_profiles.isLiteral()){
-					validator.setProfiles(AjaxRendererUtils.asSet(_profiles.getValue()));
+					validator.setProfiles(_profiles.getValue());
 				} else {
 					validator.setProfiles(_profiles.getValueExpression(ctx, Set.class));
 				}
@@ -119,7 +126,7 @@ public class AjaxValidatorHandler extends TagHandler {
 			UIFacet facet = new UIFacet();
 			// Find facet for client validation component
 			String eventName = _event.getValue();
-			String facetName = UIBeanValidator.BEAN_VALIDATOR_FACET + eventName;
+			String facetName = UIAjaxValidator.BEAN_VALIDATOR_FACET + eventName;
 			c = parent.getFacet(facetName);
 			if (null != c) {
 				parent.getFacets().remove(facetName);
