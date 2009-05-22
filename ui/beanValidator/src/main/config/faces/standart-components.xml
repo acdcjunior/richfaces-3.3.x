@@ -8,10 +8,15 @@
     <component-class>org.richfaces.component.html.HtmlInputText</component-class>
   </component>
   <component>
+    <description><![CDATA[<p>Represents an HTML <code><input type="password" ...</code> element.</p>]]></description>
+    <display-name>Input Secret</display-name>
+    <component-type>javax.faces.HtmlInputSecret</component-type>
+    <component-class>org.richfaces.component.html.HtmlInputSecret</component-class>
+  </component>
+  <component>
     <description><![CDATA[<p>Represents an HTML <code>textarea</code> element.</p>]]></description>
     <display-name>Input Textarea</display-name>
     <component-type>javax.faces.HtmlInputTextarea</component-type>
     <component-class>org.richfaces.component.html.HtmlInputTextarea</component-class>
-    
   </component>  
 </faces-config>

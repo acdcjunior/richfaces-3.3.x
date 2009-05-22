@@ -91,8 +91,9 @@ public class HibernateValidator extends ObjectValidator {
 	 */
 	protected InvalidValue[] validateClass(Class<? extends Object> beanClass,
 			String property, Object value, Locale locale) {
-		ClassValidator<? extends Object> classValidator = getValidator(
-				beanClass, locale);
+		ClassValidator<? extends Object> classValidator = 
+		    getValidator(beanClass, locale);
+		
 		InvalidValue[] invalidValues = classValidator
 				.getPotentialInvalidValues(property, value);
 		return invalidValues;
@@ -158,11 +159,11 @@ public class HibernateValidator extends ObjectValidator {
 	 */
 	protected InvalidValue[] validateBean(Object base, String property, Object value,
 			Locale locale) {
-				Class<? extends Object> beanClass = base.getClass();
-				InvalidValue[] invalidValues = validateClass(beanClass, property,
-						value, locale);
-				return invalidValues;
-			}
+		Class<? extends Object> beanClass = base.getClass();
+		
+		InvalidValue[] invalidValues = validateClass(beanClass, property, value, locale);
+		return invalidValues;
+	}
 
 	
 }
