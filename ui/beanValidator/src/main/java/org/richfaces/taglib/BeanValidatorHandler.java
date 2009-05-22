@@ -20,11 +20,15 @@
  */
 package org.richfaces.taglib;
 
+import java.util.Set;
+
 import javax.faces.validator.Validator;
 
+import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.richfaces.validator.FacesBeanValidator;
 
 import com.sun.facelets.FaceletContext;
+import com.sun.facelets.tag.MetaRuleset;
 import com.sun.facelets.tag.TagAttribute;
 import com.sun.facelets.tag.TagConfig;
 import com.sun.facelets.tag.jsf.ValidateHandler;
@@ -36,14 +40,17 @@ import com.sun.facelets.tag.jsf.ValidatorConfig;
  */
 public class BeanValidatorHandler extends ValidateHandler {
 
-	private TagAttribute _summary;
+
+	private TagAttribute _profiles;
+
+	
 
 	/**
 	 * @param config
 	 */
-	public BeanValidatorHandler(TagConfig config) {
+	public BeanValidatorHandler(ValidatorConfig config) {
 		super(config);
-		_summary = getAttribute("summary");
+		_profiles = getAttribute("profiles");
 	}
 
 	@Override
@@ -51,9 +58,12 @@ public class BeanValidatorHandler extends ValidateHandler {
 		FacesBeanValidator validator = (FacesBeanValidator) ctx.getFacesContext()
 				.getApplication().createValidator(
 						FacesBeanValidator.BEAN_VALIDATOR_TYPE);
-		if (null != _summary) {
-			validator
-					.setSummary(_summary.getValueExpression(ctx, String.class));
+		if(null != _profiles){
+			if(_profiles.isLiteral()){
+				validator.setProfiles(AjaxRendererUtils.asSet(_profiles.getValue()));
+			} else {
+				validator.setProfiles(_profiles.getValueExpression(ctx, Set.class));
+			}
 		}
 		return validator;
 	}

@@ -99,14 +99,14 @@ public abstract class UIGraphValidator extends UIComponentBase {
 	 * 
 	 * @return
 	 */
-	public abstract Set<String> getProfile();
+	public abstract Object getProfiles();
 
 	/**
 	 * Set set of profiles for validation
 	 * 
 	 * @param newvalue
 	 */
-	public abstract void setProfile(Set<String> newvalue);
+	public abstract void setProfiles(Object newvalue);
 	
 	/**
 	 * Get graph validator Id.
@@ -130,7 +130,7 @@ public abstract class UIGraphValidator extends UIComponentBase {
 			Validator validator = context.getApplication().createValidator(getType());
 			if (validator instanceof GraphValidator) {
 				GraphValidator graphValidator = (GraphValidator) validator;
-				String[] messages = graphValidator.validateGraph(context,this, value,getProfile());
+				String[] messages = graphValidator.validateGraph(context,this, value,getProfiles());
 				if (null != messages) {
 					context.renderResponse();
 					// send all validation messages.
@@ -155,6 +155,12 @@ public abstract class UIGraphValidator extends UIComponentBase {
 		super.encodeBegin(context);
 		FacesBeanValidator validator = (FacesBeanValidator)context.getApplication().createValidator(getType());
 		validator.setSummary(getSummary());
+		ValueExpression expression = getValueExpression("profiles");
+		if(null != expression){
+			validator.setProfiles(expression);
+		} else {
+			validator.setProfiles(getProfiles());
+		}
 		setupValidators(this,validator);
 	}
 	

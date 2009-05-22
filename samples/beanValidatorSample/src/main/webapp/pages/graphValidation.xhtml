@@ -17,7 +17,7 @@
 	<!-- content -->
 	<ui:define name="content">
 	<h:form id="form">
-			<rich:graphValidator value="#{graphValidatorBean}" id="validator">	
+			<rich:graphValidator value="#{graphValidatorBean}" id="validator" profiles="javax.validation.groups.Default">	
 			<h:panelGrid columns="3">
   				<h:outputLabel for="value0" value="First value:" />
 				<h:inputText id="value0" value="#{graphValidatorBean.first}" label="First" />

@@ -48,7 +48,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 public class BeanValidatorComponentTest extends AbstractAjax4JsfTestCase {
 
 	UIForm form = null;
-	UIBeanValidator validator = null;
+	UIAjaxValidator validator = null;
 	HtmlInputText input = null;
 	UIMessages messages = null;
 	private UIMessage message;
@@ -63,7 +63,7 @@ public class BeanValidatorComponentTest extends AbstractAjax4JsfTestCase {
 		form.setId("form");
 		facesContext.getViewRoot().getChildren().add(form);
 		input = (HtmlInputText)application.createComponent(HtmlInputText.COMPONENT_TYPE);
-		validator = (UIBeanValidator)application.createComponent(UIBeanValidator.COMPONENT_TYPE);
+		validator = (UIAjaxValidator)application.createComponent(UIAjaxValidator.COMPONENT_TYPE);
 		validator.setId("validator");
 		
 		input.setId("input");

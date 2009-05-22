@@ -9,17 +9,17 @@
  </managed-bean>
  <managed-bean>
  	<managed-bean-name>data</managed-bean-name>
- 	<managed-bean-class>org.richfaces.DataBean</managed-bean-class>
+ 	<managed-bean-class>org.richfaces.example.DataBean</managed-bean-class>
  	<managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
  	<managed-bean-name>lengthBean</managed-bean-name>
- 	<managed-bean-class>org.richfaces.LengthBean</managed-bean-class>
+ 	<managed-bean-class>org.richfaces.example.LengthBean</managed-bean-class>
  	<managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
  	<managed-bean-name>minMaxBean</managed-bean-name>
- 	<managed-bean-class>org.richfaces.MinMaxBean</managed-bean-class>
+ 	<managed-bean-class>org.richfaces.example.MinMaxBean</managed-bean-class>
  	<managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>

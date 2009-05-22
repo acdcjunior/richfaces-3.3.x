@@ -21,3 +21,4 @@
 ./org/richfaces/renderkit/html/css/panelMenu.xcss
 ./org/richfaces/renderkit/html/css/suggestionbox.xcss
 ./org/richfaces/renderkit/html/css/dataFilterSlider.xcss
+./org/richfaces/renderkit/html/css/page.xcss

@@ -48,6 +48,9 @@ public class BeanValidatorTag extends javax.faces.webapp.ValidatorELTag {
      * implements {@link HibernateValidator}.</p>
      */
     private ValueExpression binding = null;
+    
+    
+    private ValueExpression profiles = null;
 
     /**
 	 * Summary message for a validation errors. Setter for summary
@@ -70,6 +73,13 @@ public class BeanValidatorTag extends javax.faces.webapp.ValidatorELTag {
 		this.binding = binding;
 	}
 	
+	/**
+	 * @param profiles the profiles to set
+	 */
+	public void setProfiles(ValueExpression profiles) {
+		this.profiles = profiles;
+	}
+
 	protected Validator createValidator() throws JspException {
 		ValueExpression ve = this.binding;
 		
@@ -101,13 +111,29 @@ public class BeanValidatorTag extends javax.faces.webapp.ValidatorELTag {
 		return validator;
 	}
 
+	@Override
+	public void release() {
+		this.binding = null;
+		this._summary = null;
+		this.profiles = null;
+		super.release();
+	}
 	// Support method to wire in properties
 	private void _setProperties(FacesBeanValidator validator)
 			throws JspException {
 		if (_summary != null) {
-			if (_summary instanceof ValueExpression) {
+			if (_summary.isLiteralText()) {
+				validator.setSummary(_summary.getExpressionString());
+			} else {
 				validator.setSummary(_summary);
 			}
 		}
+		if(null != profiles){
+			if(profiles.isLiteralText()){
+				validator.setProfiles(profiles.getExpressionString());						
+			} else {
+				validator.setProfiles(profiles);
+			}
+	}
 	}
 }

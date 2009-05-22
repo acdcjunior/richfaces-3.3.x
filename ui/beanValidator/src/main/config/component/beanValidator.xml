@@ -5,16 +5,16 @@
 
 <!--AJAX VALIDATOR-->
 	<component>
-		<name>org.richfaces.BeanValidator</name>
-		<family>org.richfaces.BeanValidator</family>
+		<name>org.richfaces.AjaxValidator</name>
+		<family>org.richfaces.AjaxValidator</family>
 		<classname>
-			org.richfaces.component.html.HtmlBeanValidator
+			org.richfaces.component.html.HtmlAjaxValidator
 		</classname>
-		<superclass>org.richfaces.component.UIBeanValidator</superclass>
+		<superclass>org.richfaces.component.UIAjaxValidator</superclass>
 		<description><![CDATA[The <rich:ajaxValidator> is a component designed to provide ajax validation inside for JSF inputs.]]></description>
 		<renderer generate="false" override="true">
-			<name>org.richfaces.BeanValidatorRenderer</name>
-			<classname>org.richfaces.renderkit.html.BeanValidatorRenderer</classname>
+			<name>org.richfaces.AjaxValidatorRenderer</name>
+			<classname>org.richfaces.renderkit.html.AjaxValidatorRenderer</classname>
 		</renderer>
 		<tag>
 			<name>ajaxValidator</name>
@@ -42,6 +42,13 @@
 			<classname>java.lang.String</classname>
 			<description>
 				Summary message for a validation errors.
+			</description>
+		</property>
+		<property >
+			<name>profiles</name>
+			<classname>java.lang.Object</classname>
+			<description>
+				This attribute defines JavaBean Validation 'groups' feature (JSR-303). It is ignored if Hibernate Validator is used.
 			</description>
 		</property>
 		<property>
@@ -134,6 +141,9 @@
 			<icon>icon</icon>
 			<test />
 		</tag>
+		<taghandler>
+			<classname>org.richfaces.taglib.GraphValidatorHandler</classname>
+		</taghandler>
 		&ui_component_attributes;
 		
 		<property hidden="true">
@@ -141,10 +151,10 @@
 		</property>	
 		
 		<property >
-			<name>profile</name>
-			
+			<name>profiles</name>
+			<classname>java.lang.Object</classname>
 			<description>
-				This attribute is reserved till the implementation of JavaBean Validation feature (JSR-303).
+				This attribute defines JavaBean Validation 'groups' feature (JSR-303). It is ignored if Hibernate Validator is used.
 			</description>
 		</property>
 		
@@ -204,6 +214,13 @@
 			<classname>java.lang.String</classname>
 			<description>
 				Summary message for a validation errors.
+			</description>
+		</property>
+		<property exist="true">
+			<name>profiles</name>
+			<classname>java.lang.Object</classname>
+			<description>
+				This attribute defines JavaBean Validation 'groups' feature (JSR-303). It is ignored if Hibernate Validator is used.
 			</description>
 		</property>
 		<property exist="true">

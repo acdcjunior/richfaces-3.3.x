@@ -1,17 +1,18 @@
 /**
  * 
  */
-package org.richfaces;
+package org.richfaces.example;
 
-import org.hibernate.validator.NotNull;
+import org.hibernate.validation.constraints.NotEmpty;
+import org.richfaces.Validable;
 
 /**
  * @author asmirnov
  *
  */
-public class NotNullBean implements Validable {
+public class NotEmptyBean implements Validable {
 	
-	@NotNull
+	@NotEmpty
 	private String text;
 	
 	private int intValue;
@@ -45,7 +46,7 @@ public class NotNullBean implements Validable {
 	}
 
 	public String getTextDescription() {
-		return "Text Value, Not Null Validation";
+		return "Text value, Not Empty Validation";
 	}
 
 	public String getIntDescription() {
@@ -60,7 +61,7 @@ public class NotNullBean implements Validable {
 
 	public String getTextSummary() {
 		// TODO Auto-generated method stub
-		return "Invalid address";
+		return "Invalid password";
 	}
 
 }

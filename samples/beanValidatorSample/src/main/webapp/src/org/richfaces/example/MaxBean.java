@@ -1,27 +1,31 @@
 /**
  * 
  */
-package org.richfaces;
+package org.richfaces.example;
 
+import org.hibernate.validator.CreditCardNumber;
 import org.hibernate.validator.Length;
+import org.hibernate.validator.Max;
 import org.hibernate.validator.Min;
 import org.hibernate.validator.NotEmpty;
 import org.hibernate.validator.NotNull;
+import org.richfaces.Validable;
 
 /**
  * @author asmirnov
  *
  */
-public class MinBean implements Validable {
+public class MaxBean implements Validable {
 	
 	private String text;
 	
-	@Min(2)
+	@Max(10)
 	private int intValue;
 
 	/**
 	 * @return the text
 	 */
+	@CreditCardNumber
 	public String getText() {
 		return text;
 	}
@@ -48,22 +52,22 @@ public class MinBean implements Validable {
 	}
 
 	public String getTextDescription() {
-		return "Text value, no restrictions";
+		return "Text value, should be correct credit card number";
 	}
 
 	public String getIntDescription() {
 		// TODO Auto-generated method stub
-		return "Integer Value, more then 1";
+		return "Integer Value, less then 10";
 	}
 
 	public String getIntSummary() {
 		// TODO Auto-generated method stub
-		return "Invalid rooms qty";
+		return "Invalid number of items";
 	}
 
 	public String getTextSummary() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Invalid payment card";
 	}
 
 }

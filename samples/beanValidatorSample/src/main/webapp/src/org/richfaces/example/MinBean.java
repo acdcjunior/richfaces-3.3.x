@@ -1,20 +1,23 @@
 /**
  * 
  */
-package org.richfaces;
+package org.richfaces.example;
 
+import org.hibernate.validator.Length;
+import org.hibernate.validator.Min;
 import org.hibernate.validator.NotEmpty;
 import org.hibernate.validator.NotNull;
+import org.richfaces.Validable;
 
 /**
  * @author asmirnov
  *
  */
-public class NotEmptyBean implements Validable {
+public class MinBean implements Validable {
 	
-	@NotEmpty
 	private String text;
 	
+	@Min(2)
 	private int intValue;
 
 	/**
@@ -46,22 +49,22 @@ public class NotEmptyBean implements Validable {
 	}
 
 	public String getTextDescription() {
-		return "Text value, Not Empty Validation";
+		return "Text value, no restrictions";
 	}
 
 	public String getIntDescription() {
 		// TODO Auto-generated method stub
-		return "Integer Value, no restrictions";
+		return "Integer Value, more then 1";
 	}
 
 	public String getIntSummary() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Invalid rooms qty";
 	}
 
 	public String getTextSummary() {
 		// TODO Auto-generated method stub
-		return "Invalid password";
+		return null;
 	}
 
 }

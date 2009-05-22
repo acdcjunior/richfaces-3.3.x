@@ -1,14 +1,16 @@
 /**
  * 
  */
-package org.richfaces;
+package org.richfaces.example;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+
 import org.ajax4jsf.event.AjaxEvent;
-import org.hibernate.validator.Max;
-import org.hibernate.validator.Valid;
+import org.richfaces.Validable;
 
 /**
  * @author asmirnov

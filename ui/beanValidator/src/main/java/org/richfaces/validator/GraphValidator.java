@@ -19,6 +19,6 @@ import javax.faces.validator.ValidatorException;
 public interface GraphValidator {
 	
 	public String[] validateGraph(FacesContext context, UIComponent component, Object value,
-			Set<String> profiles)  throws ValidatorException ;
+			Object profiles)  throws ValidatorException ;
 
 }

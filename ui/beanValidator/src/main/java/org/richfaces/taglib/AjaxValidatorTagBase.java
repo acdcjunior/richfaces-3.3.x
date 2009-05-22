@@ -28,8 +28,8 @@ import javax.faces.webapp.UIComponentClassicTagBase;
 import javax.servlet.jsp.JspException;
 
 import org.ajax4jsf.webapp.taglib.UIComponentTagBase;
-import org.richfaces.component.UIBeanValidator;
-import org.richfaces.renderkit.html.BeanValidatorRenderer;
+import org.richfaces.component.UIAjaxValidator;
+import org.richfaces.renderkit.html.AjaxValidatorRenderer;
 import org.richfaces.validator.FacesBeanValidator;
 
 /**
@@ -45,6 +45,7 @@ public class AjaxValidatorTagBase extends UIComponentTagBase {
 
 	private ValueExpression summary = null;
 
+	private ValueExpression profiles = null;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -52,7 +53,7 @@ public class AjaxValidatorTagBase extends UIComponentTagBase {
 	 */
 	@Override
 	public String getComponentType() {
-		return UIBeanValidator.COMPONENT_TYPE;
+		return UIAjaxValidator.COMPONENT_TYPE;
 	}
 
 	/**
@@ -98,7 +99,18 @@ public class AjaxValidatorTagBase extends UIComponentTagBase {
 					.getApplication().createValidator(
 							FacesBeanValidator.BEAN_VALIDATOR_TYPE);
 			if (null != summary) {
-					validator.setSummary(summary);
+					if(summary.isLiteralText()){
+						validator.setSummary(summary.getExpressionString());
+					} else {
+						validator.setSummary(summary);
+					}
+			}
+			if(null != profiles){
+					if(profiles.isLiteralText()){
+						validator.setProfiles(profiles.getExpressionString());						
+					} else {
+						validator.setProfiles(profiles);
+					}
 			}
 			((EditableValueHolder) component).addValidator(validator);
 
@@ -117,6 +129,7 @@ public class AjaxValidatorTagBase extends UIComponentTagBase {
 		super.release();
 		event = null;
 		summary = null;
+		profiles = null;
 	}
 
 	/*
@@ -126,12 +139,12 @@ public class AjaxValidatorTagBase extends UIComponentTagBase {
 	 */
 	@Override
 	public String getRendererType() {
-		return BeanValidatorRenderer.RENDERER_TYPE;
+		return AjaxValidatorRenderer.RENDERER_TYPE;
 	}
 
 	@Override
 	protected String getFacetName() {
-		return UIBeanValidator.BEAN_VALIDATOR_FACET
+		return UIAjaxValidator.BEAN_VALIDATOR_FACET
 				+ (null == event ? "" : event);
 	}
 }
