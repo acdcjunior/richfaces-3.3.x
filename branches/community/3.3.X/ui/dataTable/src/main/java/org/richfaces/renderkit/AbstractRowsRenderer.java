@@ -149,9 +149,9 @@ public abstract class AbstractRowsRenderer extends HeaderResourcesRendererBase
 
 	    String captionClass = (String) table.getAttributes().get("captionClass");
 		if (captionClass != null) {
-			captionClass = "dr-table-caption rich-table-caption " + captionClass;
+			captionClass = "rich-table-caption " + captionClass;
 		} else {
-			captionClass = "dr-table-caption rich-table-caption";
+			captionClass = "rich-table-caption";
 		}
 		writer.writeAttribute("class", captionClass, "captionClass");
 		

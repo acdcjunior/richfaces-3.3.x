@@ -15,7 +15,7 @@
 	<h:styles>css/table.xcss</h:styles>
 	<f:clientid var="clientId"/>
 	<table id="#{clientId}"
-	    class="dr-table rich-table #{component.attributes['styleClass']}" style="#{component.attributes['style']}" >
+	    class="rich-table #{component.attributes['styleClass']}" style="#{component.attributes['style']}" >
 
 			<f:call name="utils.encodePassThruWithExclusions">
 				<f:parameter value="value,name,type,id,class,rows,style" />

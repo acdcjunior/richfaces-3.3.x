@@ -12,7 +12,7 @@
 	>
 	<f:clientid var="clientId"/>
 	<ul id="#{clientId}"
-	    class="dr-list rich-datalist #{component.attributes['styleClass']}"
+	    class="rich-datalist #{component.attributes['styleClass']}"
 		x:passThruWithExclusions="id,class"
 		>
 	<vcp:body>

@@ -156,7 +156,7 @@ public class DataListComponentsTest extends AbstractAjax4JsfTestCase {
         assertNotNull(ul);
         assertEquals("ul", ul.getNodeName());
         String classAttr = ul.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-list rich-datalist"));
+        assertTrue(classAttr.contains("rich-datalist"));
         classAttr = ul.getAttributeValue("type");
         
 
@@ -166,7 +166,7 @@ public class DataListComponentsTest extends AbstractAjax4JsfTestCase {
         HtmlElement li = (HtmlElement) lis.get(0);
         assertNotNull(li);
         classAttr = li.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-list-item rich-list-item"));
+        assertTrue(classAttr.contains("rich-list-item"));
     }
 
 }

@@ -66,8 +66,8 @@ public class SubTableRenderer extends AbstractTableRenderer {
 				facetName+"Class");
 		if (isColumnFacetPresent(dataTable, facetName)) {
 			writer.startElement(HTML.TR_ELEMENT, dataTable);
-			encodeStyleClass(writer, null, "dr-subtable-"+facetName+" rich-subtable-"+facetName, null, headerClass);	
-			encodeHeaderFacets(context, writer, columns, "dr-subtable-"+facetName+"cell rich-subtable-"+facetName+"cell", headerClass,
+			encodeStyleClass(writer, null, "rich-subtable-"+facetName, null, headerClass);	
+			encodeHeaderFacets(context, writer, columns, "rich-subtable-"+facetName+"cell", headerClass,
 					facetName, "td",colCount);
 			writer.endElement(HTML.TR_ELEMENT);
 		}
@@ -88,20 +88,20 @@ public class SubTableRenderer extends AbstractTableRenderer {
 	 * @return
 	 */
 	protected String getRowSkinClass() {
-		return "dr-subtable-row rich-subtable-row";
+		return "rich-subtable-row";
 	}
 	/**
 	 * @return
 	 */
 	protected String getFirstRowSkinClass() {
-		return "dr-subtable-firstrow rich-subtable-firstrow";
+		return "rich-subtable-firstrow";
 	}
 
 	/* (non-Javadoc)
 	 * @see org.richfaces.renderkit.AbstractTableRenderer#getCellSkinClass()
 	 */
 	protected String getCellSkinClass() {
-		return "dr-subtable-cell rich-subtable-cell";
+		return "rich-subtable-cell";
 	}
 	/*
 	 * (non-Javadoc)

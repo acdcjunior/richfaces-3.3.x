@@ -14,7 +14,7 @@
 	<h:styles>css/table.xcss</h:styles>
 	<f:clientid var="clientId"/>
 	<table id="#{clientId}"
-	    class="dr-table rich-table #{component.attributes['styleClass']}"
+	    class="rich-table #{component.attributes['styleClass']}"
 	    x:passThruWithExclusions="value,name,type,class,id"
 		>
 		<f:call name="encodeCaption" />

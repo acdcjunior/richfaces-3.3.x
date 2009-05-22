@@ -156,7 +156,7 @@ public class DataOrderedListComponentsTest extends AbstractAjax4JsfTestCase {
         assertNotNull(ol);
         assertEquals("ol", ol.getNodeName());
         String classAttr = ol.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-list rich-orderedlist"));
+        assertTrue(classAttr.contains("rich-orderedlist"));
         classAttr = ol.getAttributeValue("type");
 
         List lis = ol.getHtmlElementsByTagName("li");
@@ -165,7 +165,7 @@ public class DataOrderedListComponentsTest extends AbstractAjax4JsfTestCase {
         HtmlElement li = (HtmlElement) lis.get(0);
         assertNotNull(li);
         classAttr = li.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-list-item rich-list-item"));
+        assertTrue(classAttr.contains("rich-list-item"));
     }
 
 }

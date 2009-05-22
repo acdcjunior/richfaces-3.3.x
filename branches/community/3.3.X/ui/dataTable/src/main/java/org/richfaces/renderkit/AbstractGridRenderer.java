@@ -44,7 +44,7 @@ public abstract class AbstractGridRenderer extends AbstractRowsRenderer {
 		if(header != null ){
 	           writer.startElement("thead", table);
 	           String headerClass = (String) table.getAttributes().get("headerClass");
-	           encodeTableHeaderFacet(context, table.getColumns(), writer, header, "dr-table-header rich-table-header","dr-table-header-continue rich-table-header-continue", "dr-table-headercell rich-table-headercell", headerClass, "th");
+	           encodeTableHeaderFacet(context, table.getColumns(), writer, header, "rich-table-header","rich-table-header-continue", "rich-table-headercell", headerClass, "th");
                writer.endElement("thead");
 		}
 	}
@@ -55,7 +55,7 @@ public abstract class AbstractGridRenderer extends AbstractRowsRenderer {
 		if(footer != null ){
 	           writer.startElement("tfoot", table);
 	           String footerClass = (String) table.getAttributes().get("footerClass");
-	           encodeTableHeaderFacet(context, table.getColumns(), writer, footer, "dr-table-footer rich-table-footer","dr-table-footer-continue rich-table-footer-continue", "dr-table-footercell rich-table-footercell", footerClass, "td");
+	           encodeTableHeaderFacet(context, table.getColumns(), writer, footer, "rich-table-footer","rich-table-footer-continue", "rich-table-footercell", footerClass, "td");
                writer.endElement("tfoot");
 		}
 		
@@ -85,14 +85,14 @@ public abstract class AbstractGridRenderer extends AbstractRowsRenderer {
 
 			writer.startElement(HTML.TR_ELEMENT, table);
 			String rowClass = holder.getRowClass(gridRowCounter);
-			encodeStyleClass(writer, null, "dr-table-row rich-table-row", null, rowClass);
+			encodeStyleClass(writer, null, "rich-table-row", null, rowClass);
 			encodeRowEvents(context, table);
 			
 		}
 		writer.startElement(HTML.td_ELEM, table);
 		getUtils().encodeId(context, table);
 		String columnClass = holder.getColumnClass(currentRow-gridRowCounter*cols);
-		encodeStyleClass(writer, null, "dr-table-cell rich-table-cell", null, columnClass);
+		encodeStyleClass(writer, null, "rich-table-cell", null, columnClass);
 		renderChildren(context, table);
 		writer.endElement(HTML.td_ELEM);
 	}
@@ -114,7 +114,7 @@ public abstract class AbstractGridRenderer extends AbstractRowsRenderer {
 			for(int i = rest;i<columns.intValue();i++){
 				writer.startElement(HTML.td_ELEM, table);
 				String columnClass = tableHolder.getColumnClass(i);
-				encodeStyleClass(writer, null, "dr-table-cell rich-table-cell", null, columnClass);
+				encodeStyleClass(writer, null, "rich-table-cell", null, columnClass);
 				writer.writeText("\u00A0", null);// &nbsp;
 				writer.endElement(HTML.td_ELEM);				
 			}

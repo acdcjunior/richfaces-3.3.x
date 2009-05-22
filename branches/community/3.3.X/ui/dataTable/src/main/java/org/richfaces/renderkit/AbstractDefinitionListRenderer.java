@@ -46,14 +46,14 @@ public abstract class AbstractDefinitionListRenderer extends AbstractRowsRendere
 		if(null != dt){
 			writer.startElement("dt", dt);
 			String rowClass = holder.getColumnClass(currentRow);
-			encodeStyleClass(writer, null, "dr-definition-term rich-definition-term", null, rowClass);
+			encodeStyleClass(writer, null, "rich-definition-term", null, rowClass);
 			renderChild(context, dt);
 			writer.endElement("dt");			
 		}
 		writer.startElement("dd", table);
 		getUtils().encodeId(context, table);
 		String rowClass = holder.getRowClass();
-		encodeStyleClass(writer, null, "dr-definition rich-definition", null, rowClass);
+		encodeStyleClass(writer, null, "rich-definition", null, rowClass);
 		encodeRowEvents(context, table);
 		renderChildren(context, table);
 		writer.endElement("dd");

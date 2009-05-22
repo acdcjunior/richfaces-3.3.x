@@ -114,7 +114,7 @@ public class ColgroupRenderer extends AbstractRowsRenderer {
 					}
 					encodeStyleClass(context.getResponseWriter(), requestMap
 							.get(AbstractRowsRenderer.SKIN_CELL_CLASS_KEY),
-							"dr-table-cell rich-table-cell", requestMap
+							"rich-table-cell", requestMap
 									.get(AbstractRowsRenderer.CELL_CLASS_KEY),
 							styleClass);
 					// TODO - encode column attributes.
@@ -156,7 +156,7 @@ public class ColgroupRenderer extends AbstractRowsRenderer {
 				.get(AbstractRowsRenderer.SKIN_FIRST_ROW_CLASS_KEY)
 				: requestMap.get(AbstractRowsRenderer.SKIN_ROW_CLASS_KEY);
 		encodeStyleClass(context.getResponseWriter(), skinRowClass,
-				"dr-tablerow rich-tablerow", requestMap
+				"rich-tablerow", requestMap
 						.get(AbstractRowsRenderer.ROW_CLASS_KEY), styleClass);
 		encodeStyle(context.getResponseWriter(),null, null, null, style);
 		getUtils().encodePassThruWithExclusionsArray(context, colspan,EVENT_ATTRS);

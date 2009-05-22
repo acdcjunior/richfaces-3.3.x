@@ -44,7 +44,7 @@ public abstract class AbstractListRenderer extends AbstractRowsRenderer {
 		writer.startElement("li", table);
 		getUtils().encodeId(context, table);
 		String rowClass = holder.getRowClass();
-		encodeStyleClass(writer, null, "dr-list-item rich-list-item", null, rowClass);
+		encodeStyleClass(writer, null, "rich-list-item", null, rowClass);
 		encodeRowEvents(context, table);
 		renderChildren(context, table);
 		writer.endElement("li");
