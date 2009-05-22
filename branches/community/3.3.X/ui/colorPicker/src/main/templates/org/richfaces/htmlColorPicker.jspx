@@ -36,7 +36,7 @@
 		<jsp:scriptlet><![CDATA[
 			}else{
 		]]></jsp:scriptlet>
-                <img src="#{arrow}" class="rich-color-picker-icon #{component.attributes['iconClass']}" style="#{component.attributes['iconStyle']}" alt="icon"/>
+                <img src="#{arrow}" class="rich-color-picker-icon #{component.attributes['iconClass']}" style="#{component.attributes['iconStyle']}" alt=""/>
         <jsp:scriptlet><![CDATA[
 			}
 		]]></jsp:scriptlet>
