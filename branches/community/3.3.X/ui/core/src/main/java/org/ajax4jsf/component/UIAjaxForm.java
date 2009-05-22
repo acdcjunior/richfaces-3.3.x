@@ -42,7 +42,7 @@ import org.ajax4jsf.event.AjaxSource;
  * @version $Revision: 1.1.2.3 $ $Date: 2007/02/06 16:23:22 $
  *
  */
-public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSource 
+public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSource, IterationStateHolder 
 {
     public static final String COMPONENT_TYPE = "org.ajax4jsf.Form";
 
@@ -171,4 +171,11 @@ public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSo
 	
 	public abstract void setAjaxSubmit(boolean ajax);
  
+	public Object getIterationState() {
+		return isSubmitted() ? Boolean.TRUE : Boolean.FALSE;
+	}
+	
+	public void setIterationState(Object state) {
+		setSubmitted(Boolean.TRUE.equals(state));
+	}
 }
