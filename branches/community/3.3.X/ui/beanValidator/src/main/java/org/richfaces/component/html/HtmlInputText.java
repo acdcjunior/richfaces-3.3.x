@@ -80,19 +80,19 @@ public class HtmlInputText extends javax.faces.component.html.HtmlInputText {
 	private static boolean isEmpty(Object value) {
 
 		if (value == null) {
-			return (true);
+			return true;
 		} else if ((value instanceof String) && (((String) value).length() < 1)) {
-			return (true);
+			return true;
 		} else if (value.getClass().isArray()) {
 			if (0 == java.lang.reflect.Array.getLength(value)) {
-				return (true);
+				return true;
 			}
 		} else if (value instanceof List) {
-			if (((List) value).isEmpty()) {
-				return (true);
+			if (((List<?>) value).isEmpty()) {
+				return true;
 			}
 		}
-		return (false);
+		return false;
 	}
 
 }
