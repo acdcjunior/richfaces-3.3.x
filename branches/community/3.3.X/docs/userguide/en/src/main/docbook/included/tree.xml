@@ -554,11 +554,13 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                               </emphasis> component uses a data model to represent the tree-like
                               nodes structure on the page. To identify a particular node during a
                               client request, the model provides a set of unique keys for tree
-                              nodes. The <property>tree</property> can use strings as keys values
+                              nodes. The <emphasis role="bold">
+                                        <property>&lt;rich:tree&gt;</property>
+                              </emphasis> can use strings as keys values
                               which may contain special characters not allowed by browsers, such as
                               the left angle bracket (&lt;), ampersand (&amp;), ant etc. Thus, to
                               have a possibility to use unallowed characters in the
-                                        <property>tree</property> nodes, the following converters
+                                        <property>tree</property> nodes keys, the following converters
                               are provided: </para>
                     <itemizedlist>
                               <listitem>
@@ -632,17 +634,7 @@ for (int i = 0; i < components.length; i++) {
 }          
 ...]]></programlisting>
                     
-                    <para>This is the result:</para>
-                    
-                    <figure>
-                              <title>The tree with the <code>org.richfaces.TreeRowKeyConverter</code> usage</title>
-                              <mediaobject>
-                                        <imageobject>
-                                                  <imagedata fileref="images/treeRowKeyConverter.png"/>
-                                        </imageobject>
-                              </mediaobject>
-                    </figure>
-          </section>
+         </section>
 
           <section id="tsebro" role="updated">
                     <title>Built-In Drag and Drop</title>
