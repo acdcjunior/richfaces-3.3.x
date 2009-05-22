@@ -35,8 +35,6 @@ public class HtmlToSeamTransformer {
     
     private HtmlTag currentTag = null;
 
-    private boolean isHeaderProcessed = false;
-
     private boolean isFirstChars = false;
 
     public Stack<HtmlTag> getHtmlElementStack() {
@@ -107,68 +105,78 @@ public class HtmlToSeamTransformer {
         return false;
     }
     
-    public void text(char[] text, int start, int length) {
-        if (isFirstChars) {
-//            append(htmlElementStack.peek().printStartSuffix());
+    class StringCollector {
+        private int start = -1;
 
-            while (text[start] == '\n' && length > 0) {
-                start++;
-                length--;
-            }
-            isFirstChars = false;
+        public StringCollector(int start) {
+            this.start = start;
         }
-
-
+        
+        public void inc() {
+            start++;
+        }
+        
+        public void dec() {
+            start--;
+        }
+        
+        public void clear() {
+            start = -1;
+        }
+        
+        public int getStart() {
+            return start;
+        }
+    }
+    
+    public void text(char[] text, int start, int length) {
+        int localStart = -1;
+        
         while (length > 0) {
-            processChar(text, start, 1);
+            switch (text[start]) {
+                case '*': case '|': case '^' : case '+':
+                case '=': case '#': case '\\': case '~':
+                case '[': case ']': case '`' :
+                case '<': case '>': case '&':
+                    if (localStart != -1) {
+                        out(text, localStart, start - localStart);
+                        localStart = -1;
+                    } 
+                    
+                    seamCharacters(text, start, 1);
+                    break;
 
-            setHeaderProcessed();
+                case '\n': case '\r':
+                    if (localStart != -1) {
+                        out(text, localStart, start - localStart);
+                        localStart = -1;
+                    } 
+
+                    final HtmlTag token = htmlElementStack.peek();
+                    if (!(HtmlToSeamSAXParser.ROOT_TAG_NAME.equals(token.getName())
+                          || token.isList())) {
+                        out(text, start, 1);
+                    }
+
+                    break;
+                default:
+                    if (localStart == -1) {
+                        localStart = start;
+                    }
+            }
 
             start ++;
             length --;
         }
-    }
-
-    private void setHeaderProcessed() {
-        final HtmlTag token = htmlElementStack.peek();
-        if (!token.isParagraph() && isHeaderProcessed) {
-            isHeaderProcessed = false;
-        }
-    }
-
-    private void processChar(final char[] text, final int start, final int localLength) {
-        switch (text[start]) {
-            case '*': case '|': case '^' : case '+':
-            case '=': case '#': case '\\': case '~':
-            case '[': case ']': case '`' :
-            case '<': case '>': case '&':
-                seamCharacters(text, start, localLength);
-                break;
-
-            case '\n':
-                final HtmlTag token = htmlElementStack.peek();
-                if (!(/*token.isParagraph()
-                      ||*/ isHeaderProcessed
-                      || HtmlToSeamSAXParser.ROOT_TAG_NAME.equals(token.getName())
-                      || token.isList())) {
-                    out(text, start, localLength);
-                }
-
-                break;
-            default:
-                out(text, start, localLength);
-                break;
-        }
+        
+        if (localStart != -1) {
+            out(text, localStart, start - localStart);
+            localStart = -1;
+        } 
     }
 
     public void seamCharacters(char[] text, int start, int length) {
         appendBody(escapeSeamText(new String(text, start, length), preformatted));
-    }
-
-    public void plain(char[] text, int start, int length) {
-        out(text, start, length);
-
-        setHeaderProcessed();
     }
 
     public void out(char[] text, int start, int length) {
@@ -228,11 +236,7 @@ public class HtmlToSeamTransformer {
 
         if (tag.isLink()) {
             value = "";
-        } else if (tag.isParagraph()) {
-            isHeaderProcessed = false;
-        } else if (tag.isHeader()) {
-            isHeaderProcessed = true;
-        }
+        } 
         
         appendBody(value);
         appendEnd();

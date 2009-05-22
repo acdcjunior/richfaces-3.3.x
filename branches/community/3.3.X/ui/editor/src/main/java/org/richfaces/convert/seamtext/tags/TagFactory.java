@@ -55,31 +55,7 @@ public class TagFactory {
                 }
             },
             
-            new HtmlTag(P) {
-                @Override
-                public String printStart() {
-                    return "";
-                }
-
-                @Override
-                protected String printBody() {
-                    while (isBreakLineChild(body.getLast())) {
-                        body.removeLast();
-                    }
-                    
-                    return super.printBody();
-                }
-
-                @Override
-                public String printEnd() {
-                    return "\n\n"; 
-                }
-
-                @Override
-                public String printStartSuffix() {
-                    return "";
-                }
-            }, 
+            new ParagraphTag(), 
             
             new FormattingTag(I,   SEAM_STAR),
             new FormattingTag(DEL, SEAM_TWIDDLE),

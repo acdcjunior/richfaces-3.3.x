@@ -64,11 +64,12 @@ public class HtmlTag implements Cloneable, Serializable{
     }
 
     protected boolean isBreakLineChild(Object child) {
-        if (!(child instanceof String)) {
+        if (child == null || !(child instanceof String)) {
             return false;
         }
+        
         final String str = (String) child;
-        return "\r".equals(str) || "\n".equals(str) || "\r\n".equals(str);
+        return str.endsWith("\r") || str.endsWith("\n");
     }
     
     protected String printPlainStart(){
