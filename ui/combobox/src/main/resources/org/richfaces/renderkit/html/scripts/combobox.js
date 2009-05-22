@@ -7,7 +7,7 @@ Richfaces.ComboBox.prototype = {
 	initialize: function(combobox, listId, parentListId, valueFieldId, fieldId, buttonId, buttonBGId, shadowId, commonStyles,  userStyles, 
 						 listWidth, listHeight, itemsText, directInputSuggestions, filterNewValue, 
 						 selectFirstOnUpdate, onlistcall, onlistclose, onselected, defaultMessage, isDisabled, value,
-						 showDelay, hideDelay) {
+						 showDelay, hideDelay, onchange) {
 		
 		this.directInputSuggestions = directInputSuggestions;
 		this.filterNewValue = filterNewValue;
@@ -15,7 +15,8 @@ Richfaces.ComboBox.prototype = {
 		this.comboValue = document.getElementById(valueFieldId); 
 		this.field = document.getElementById(fieldId);  
 		this.tempItem;
-	
+		this.onchange = onchange;
+		
 		this.BUTTON_WIDTH = 17; //px
 		
 		this.classes = Richfaces.mergeStyles(userStyles,commonStyles.getCommonStyles());
@@ -369,7 +370,13 @@ Richfaces.ComboBox.prototype = {
 		}
 
 		var value = jQuery(this.comboList.activeItem).text();
-	
+		
+		if(this.comboValue && value) {
+			if(this.comboValue.value != value) {
+				Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:value});
+			}	
+		}	
+			
 		if (toSetOnly) {
 			var oV = this.field.value; 
 			if (oV == value) {
