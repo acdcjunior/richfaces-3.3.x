@@ -217,7 +217,6 @@
 					   value="#{value}" 
 					   x:onblur="#{component.attributes['onblur']}"
 					   onfocus = "#{component.attributes['onfocus']}"
-					   onchange = "#{component.attributes['onchange']}"
 					   style="width:#{correction}; #{inputInactiveStyle}"
 					   autocomplete="off"
 					   tabindex="#{component.attributes['tabindex']}"
@@ -360,7 +359,7 @@
 											   #{this:getAsEventHandler(context, component, "onselect")},
 											   "#{defaultLabel}",
 											   #{disabled}, #{convertedValue}, 
-											   #{component.attributes["showDelay"]},  #{component.attributes["hideDelay"]});
+											   #{component.attributes["showDelay"]},  #{component.attributes["hideDelay"]}, #{this:getAsEventHandler(context, component, "onchange")});
 	</script>
 </div>
 </f:root>	
