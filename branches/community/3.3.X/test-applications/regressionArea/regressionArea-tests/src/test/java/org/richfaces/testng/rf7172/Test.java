@@ -19,7 +19,7 @@ public class Test extends SeleniumTestBase {
 
 		try {
 			if (!str.equalsIgnoreCase("testValue"))
-				throw new AssertionError("params test failed.");
+				throw new AssertionError("params test failed. Actual value:" + str);
 		} catch (Exception e) {
 			System.err.println(e.getStackTrace());
 		}

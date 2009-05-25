@@ -16,7 +16,8 @@ public class Test extends SeleniumTestBase {
 		
 		clickAjaxCommandAndWait("form:toogleModes:0");		
 		
-		AssertTextEquals("//*[@id='tinymce']/h1", "header");		
+		selenium.assignId("//*[@id='tinymce']/h1", "expected");
+		AssertTextEquals("expected", "header", "expected:'header';actual:'" + getTextById("expected") + "'");		
 		
 	}
 
