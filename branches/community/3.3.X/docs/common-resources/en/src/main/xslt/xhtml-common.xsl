@@ -12,7 +12,16 @@
    <!--xsl:param name="generate.toc" select="'book toc'"/-->
    <xsl:param name="toc.section.depth" select="5"/>
    <xsl:param name="use.id.as.filename" select="1"/>
-	
+   <xsl:param name="generate.toc">
+book      toc
+chapter   toc
+sect1     toc
+sect2     toc
+sect3     toc
+sect4     toc
+sect5     toc
+section   toc
+</xsl:param>
 	
    
 	<!--
@@ -123,43 +132,7 @@ Version: 1.72.0
 		<a id="feedback-link" onclick="showPopup('feedback-maincontainer');">
 			<img src="images/feedback_logo.png" class="feedback-images" onload="init('feedback-summary', 'feedback-description');"/>
 		</a>
-	</div>
-	<!--div id="feedback-maincontainer" style="display:none">
-		<div id="feedback-header">
-			Send your remarks, comments or wishes to doc team
-		</div>
-		<a href="#" onclick="feedbackClose();" id="feedback-close">
-			<img src="images/close.png" class="feedback-images" />
-		</a>
-		<div id="feedback-state"><xsl:text> </xsl:text></div>
-		<iframe id='feedback-iFrame' name="feedback-iFrame"><xsl:text> </xsl:text></iframe>
-		<form id="feedback-mailform" method="post" action="http://192.168.0.194:8090/feedbackRF/FeedbackRF" target="feedback-iFrame">
-			<div class="feedback-textbox-div">
-			  Subject:<input type="text" id="subject" name="subject" title="Enter the subject of your message" class="feedback-textbox" />
-			</div>
-			<div class="feedback-textbox-div">
-			  <span style="vertical-align: top;">Message:</span>
-			  <textarea name="emailContent" title="Type here the text of your message" id="feedback-emailContent"><xsl:text> </xsl:text></textarea>
-			</div>
-			<div class="feedback-textbox-div">
-			  Your name:<input type="text" id="senderName" name="senderName" title="Enter your name" class="feedback-textbox" />
-			</div>
-			<div class="feedback-textbox-div">
-			  Your email:<input type="text" id="from" name="from" title="Enter your email address" class="feedback-textbox" />
-			</div>
-			<span class="feedback-button-container">
-				<input type="submit" value="Send Message" name="submit" class="feedback-formbutton" title="Send Message" />
-			</span>
-			<span class="feedback-button-container">
-				<input type="reset" value="Clear All Fields" class="feedback-formbutton" title="Clear All Fields" />
-			</span>
-	    </form>
-	</div>
-	<div id="feedback-wrapper">
-		<a id="feedback-link" onclick="feedbackAppear();">
-			<img src="images/feedback_logo.png" class="feedback-images" width="100px"/>
-		</a>
-	</div-->							
+	</div>							
  </xsl:template>
  
  <xsl:template name="header.navigation">
