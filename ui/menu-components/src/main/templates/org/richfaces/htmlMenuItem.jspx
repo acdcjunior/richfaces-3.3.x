@@ -42,7 +42,8 @@
 	<div id="#{clientId}" 		
 		class="#{menuItemClass}"
 		style="#{menuItemStyle}"
-		onclick="Event.stop(event);">
+		onclick="Event.stop(event);"
+        onContextMenu="false;" >
 		
 	<jsp:scriptlet><![CDATA[
 		} else {
@@ -65,6 +66,7 @@
 		onmouseup="Event.stop(event); #{component.attributes['onmouseup']}"
 		onmousedown="Event.stop(event); #{component.attributes['onmousedown']}"
 		onclick="#{onclick}"
+        onContextMenu="Event.stop(event); return false;"
 	
 		style="#{menuItemStyle}">
 		<f:call name="utils.encodeAttributes">
@@ -78,7 +80,8 @@
 		
 		<span id="#{clientId}:icon" 
 			class="dr-menu-icon rich-menu-item-icon #{iconDisabledClasses} #{component.attributes['iconClass']}"
-			style="#{component.attributes['iconStyle']}">
+			style="#{component.attributes['iconStyle']}" 
+            onContextMenu="Event.stop(event); return false;">
 			
 			<jsp:scriptlet><![CDATA[
 				UIComponent iconFacet = getIconFacet((org.richfaces.component.UIMenuItem) component);			
@@ -99,6 +102,7 @@
 		
 		<span id="#{clientId}:anchor"			
 			class="#{menuItemLabelClass}"
+            onContextMenu="Event.stop(event); return false;"
 			>
 			#{component.attributes['value']}
 			<f:call name="renderChildren" />
