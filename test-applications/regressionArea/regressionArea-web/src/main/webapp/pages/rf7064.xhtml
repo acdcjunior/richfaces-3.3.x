@@ -12,8 +12,7 @@
 			<h:panelGrid columns="2" width="100%" columnClasses="column,column">
 				<h:panelGroup style="height:320px;width:400px;" layout="block">
 					<rich:editor configuration="#{editorBean.currentConfiguration}"
-						id="editor" width="400" height="300"
-						validator="#{editorBean.validate}"
+						id="editor" width="400" height="300"						
 						viewMode="#{editorBean.viewMode}" value="#{editorBean.value}"
 						useSeamText="#{editorBean.useSeamText}">
 						<a4j:support event="onchange" reRender="result" ajaxSingle="true"
