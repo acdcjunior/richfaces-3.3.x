@@ -59,12 +59,6 @@
 			<version>${jsfversion}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>${jsfversion}</version>
-			<scope>provided</scope>
-		</dependency>
 	    <dependency>
             <groupId>com.sun.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
@@ -117,7 +111,7 @@
         </dependency>
     </dependencies>    
     <build>
-	<finalName>regressionArea</finalName>
+	<finalName>regressionArea-web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
