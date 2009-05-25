@@ -27,7 +27,22 @@
             <artifactId>jboss-seam</artifactId>
             <version>${seamversion}</version>
         </dependency>
- 
+        <dependency>
+            <groupId>org.jboss.seam</groupId>
+            <artifactId>jboss-seam</artifactId>
+            <version>${seamversion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.seam</groupId>
+            <artifactId>jboss-seam-ui</artifactId>
+            <version>${seamversion}</version>
+            <exclusions>
+                <exclusion>
+		            <artifactId>jboss-seam</artifactId>
+		            <groupId>org.jboss.seam</groupId>
+                </exclusion>
+            </exclusions> 
+        </dependency> 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
