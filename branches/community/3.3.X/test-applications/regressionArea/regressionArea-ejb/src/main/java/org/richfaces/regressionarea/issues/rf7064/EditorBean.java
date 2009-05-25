@@ -3,15 +3,11 @@ package org.richfaces.regressionarea.issues.rf7064;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.faces.validator.ValidatorException;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
-import org.jboss.seam.ui.validator.FormattedTextValidator;
 
 @Name("editorBean")
 @Scope(ScopeType.SESSION)
@@ -77,11 +73,6 @@ public class EditorBean {
 
 	public void setUseSeamText(boolean useSeamText) {
 		this.useSeamText = useSeamText;
-	}
+	}	
 	
-	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		if (useSeamText) {
-			new FormattedTextValidator().validate(context, component, value);
-		}
-	}
 }
