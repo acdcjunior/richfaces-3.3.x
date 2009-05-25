@@ -280,14 +280,6 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 		this.submittedValueHolder = (SubmittedValue) object;
 	}
 
-	protected Object saveIterationState() {
-		return valueHolder;
-	}
-
-	protected void restoreIterationState(Object object) {
-		this.valueHolder = (ValueHolder) object;
-	}
-
 	public abstract void setImmediate(boolean immediate);
 
 	public abstract void setRequired(boolean required);
@@ -444,7 +436,7 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 				ValueBinding vb = getValueBinding("value");
 				if (vb != null) {
 					vb.setValue(context, valueHolder.value);
-					setValue(null);
+					valueHolder.value = null;
 					setLocalValueSet(false);
 				}
 			}
@@ -557,6 +549,10 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 			throw new NullPointerException();
 		}
 
+		if (submittedValueHolder == null) {
+			return;
+		}
+
 //		http://jira.jboss.com/jira/browse/RF-3852 
 
 		Object previousValue = getValue();
@@ -599,10 +595,6 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 
 		validateValue(context, newValue);
 		
-		if (submittedValueHolder == null) {
-			return;
-		}
-
 		// If our value is valid, store the new value, erase the
 		// "submitted" value, and emit a ValueChangeEvent if appropriate
 		if (isValid()) {
@@ -686,7 +678,9 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 	}
 
 	public void setValue(Object value) {
-		if (value instanceof ValueHolder) {
+		if (value == null) {
+			this.valueHolder = null;
+		} else if (value instanceof ValueHolder) {
 			this.valueHolder = (ValueHolder) value;
 		} else {
 			createValueHolder();
