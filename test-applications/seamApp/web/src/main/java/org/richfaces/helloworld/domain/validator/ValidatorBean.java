@@ -17,7 +17,6 @@ import org.hibernate.validator.Size;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
-import org.richfaces.component.UIBeanValidator;
 import org.richfaces.helloworld.domain.util.componentInfo.ComponentInfo;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -42,7 +41,7 @@ public class ValidatorBean implements TestValidable{
 	@Size(min=1,max=5,message="Size validation failed!")
 	private ArrayList<SelectItem> sizeValues;
 	private String sizeValue;
-	private UIBeanValidator ajaxValidatorComponent = null;
+	private UIComponent ajaxValidatorComponent = null;
 	private boolean ajaxSingle;
 	private String bindLabel;
 	private boolean disableDefault;
@@ -198,11 +197,11 @@ public class ValidatorBean implements TestValidable{
 		return null;
 	}	
 	
-	public UIBeanValidator getAjaxValidatorComponent() {
+	public UIComponent getAjaxValidatorComponent() {
 		return ajaxValidatorComponent;
 	}
 
-	public void setAjaxValidatorComponent(UIBeanValidator ajaxValidatorComponent) {
+	public void setAjaxValidatorComponent(UIComponent ajaxValidatorComponent) {
 		this.ajaxValidatorComponent = ajaxValidatorComponent;
 	}
 
