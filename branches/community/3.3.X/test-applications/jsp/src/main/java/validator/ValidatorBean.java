@@ -22,7 +22,6 @@ import org.hibernate.validator.Past;
 import org.hibernate.validator.Pattern;
 import org.hibernate.validator.Range;
 import org.hibernate.validator.Size;
-import org.richfaces.component.UIBeanValidator;
 
 import util.componentInfo.ComponentInfo;
 
@@ -45,7 +44,7 @@ public class ValidatorBean implements TestValidable{
 	@Size(min=1,max=5,message="Size validation failed!")
 	private ArrayList<SelectItem> sizeValues;
 	private String sizeValue;
-	private UIBeanValidator ajaxValidatorComponent = null;
+	private UIComponent ajaxValidatorComponent = null;
 	private boolean ajaxSingle;
 	private String bindLabel;
 	private boolean disableDefault;
@@ -228,11 +227,11 @@ public class ValidatorBean implements TestValidable{
 		return null;
 	}	
 	
-	public UIBeanValidator getAjaxValidatorComponent() {
+	public UIComponent getAjaxValidatorComponent() {
 		return ajaxValidatorComponent;
 	}
 
-	public void setAjaxValidatorComponent(UIBeanValidator ajaxValidatorComponent) {
+	public void setAjaxValidatorComponent(UIComponent ajaxValidatorComponent) {
 		this.ajaxValidatorComponent = ajaxValidatorComponent;
 	}
 
