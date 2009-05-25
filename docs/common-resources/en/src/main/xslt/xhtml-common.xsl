@@ -11,6 +11,8 @@
    <xsl:import href="collapsing-navigation.xsl"/>
    <!--xsl:param name="generate.toc" select="'book toc'"/-->
    <xsl:param name="toc.section.depth" select="5"/>
+   <xsl:param name="generate.section.toc.level" select="3"/>
+   
    <xsl:param name="use.id.as.filename" select="1"/>
    <xsl:param name="generate.toc">
 book      toc
@@ -29,7 +31,7 @@ From: xhtml/docbook.xsl
 Reason: Remove inline style for draft mode
 Version: 1.72.0
 -->
-	
+
 <xsl:template name="head.content">
 	<xsl:param name="node" select="."/>
 	<xsl:param name="title">
