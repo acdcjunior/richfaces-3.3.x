@@ -24,15 +24,15 @@ Richfaces.Slider.prototype = {
 		this.orientation = this.options.orientation;
 		
 		this.classes = {};
-		this.classes.arrow = "dr-insldr-handler rich-inslider-handler";
-		this.classes.arrowSelected = "dr-insldr-handler-sel rich-inslider-handler-selected";
+		this.classes.arrow = "rich-inslider-handler";
+		this.classes.arrowSelected = "rich-inslider-handler-selected";
 		this.classes.temp = this.handle.className;
-		this.classes.base = " " + this.trim(this.classes.temp.replace("dr-insldr-handler rich-inslider-handler",""));
+		this.classes.base = " " + this.trim(this.classes.temp.replace("rich-inslider-handler",""));
 		
 		if(this.orientation=="vertical"){
-			  this.classes.arrow = "dr-insldr-handler-vertical rich-inslider-handler-vertical";
-			  this.classes.arrowSelected = "dr-insldr-handler-sel-vertical rich-inslider-handler-selected-vertical";
-			  this.classes.base = " " + this.trim(this.classes.temp.replace("dr-insldr-handler-vertical rich-inslider-handler-vertical",""));
+			  this.classes.arrow = "rich-inslider-handler-vertical";
+			  this.classes.arrowSelected = "rich-inslider-handler-selected-vertical";
+			  this.classes.base = " " + this.trim(this.classes.temp.replace("rich-inslider-handler-vertical",""));
 			}
 		
 		this.classes.handleSelected = " " + handleSelectedClass;
@@ -472,7 +472,7 @@ Richfaces.Slider.prototype = {
     
     increaseDown : function(event){
         this.arrowButton = $(event.target);
-        this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-sel");
+        this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-selected");
         window.document.onmouseup = this.eventIncreaseUp.bindAsEventListener(this);
         if(!this.disabled){
             if (this.options.currValue){
@@ -485,7 +485,7 @@ Richfaces.Slider.prototype = {
     
     decreaseDown : function(event){
         this.arrowButton = $(event.target);
-        this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-sel");
+        this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-selected");
         window.document.onmouseup = this.eventDecreaseUp.bindAsEventListener(this);
         if(!this.disabled){
             if (this.options.currValue){
@@ -501,7 +501,7 @@ Richfaces.Slider.prototype = {
         if (this.options.currValue){
             Element.hide(this.tipArrowInc);
         }
-        this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-sel","al");
+        this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-selected","al");
         window.document.onmouseup = this.prevMouseUp;
     },
     
@@ -510,7 +510,7 @@ Richfaces.Slider.prototype = {
         if (this.options.currValue){
             Element.hide(this.tipArrowDec);
         }
-        this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-sel","al");
+        this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-selected","al");
         window.document.onmouseup = this.prevMouseUp;
     },
 
