@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
 "http://www.docbook.org/xml/4.3CR3/docbookx.dtd" [
-
+	<!ENTITY rfcintro SYSTEM "modules/RFCintro.xml">
+	<!ENTITY rfctechreqs SYSTEM "modules/RFCtechreqs.xml">
+	<!ENTITY rfcGettingStarted SYSTEM "modules/RFCGettingStarted.xml">
+	<!ENTITY rfcSettings SYSTEM "modules/RFCSettings.xml">
+	<!ENTITY wadParams SYSTEM "modules/AUGWADParams.xml">
+	<!ENTITY rfcarchitectover SYSTEM "modules/RFCarchitectover.xml">
+	
+	<!ENTITY rfcidesupport SYSTEM "modules/RFCidesupport.xml">
+	<!ENTITY rfclinks SYSTEM "modules/RFClinks.xml">
+	
 	<!ENTITY a4j_actionparam SYSTEM "../../../target/generated/a4j_actionparam.xml">
 	<!ENTITY a4j_form SYSTEM "../../../target/generated/a4j_form.xml">
 	<!ENTITY a4j_region SYSTEM "../../../target/generated/a4j_region.xml">
@@ -333,7 +342,7 @@
 		&rich_message;
 		&rich_messages;
 		&rich_jQuery;
-	</section>
+	</section>	
 </chapter>
 
         &rfcidesupport;
