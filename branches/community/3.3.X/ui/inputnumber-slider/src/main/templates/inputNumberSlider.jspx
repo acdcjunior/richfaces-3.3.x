@@ -56,7 +56,7 @@
         ]]>
     </jsp:scriptlet>
     
-   <table id="#{clientId}" border="0" cellpadding="0" cellspacing="0" class="dr-insldr-vertical rich-slider #{component.attributes['styleClass']}"
+   <table id="#{clientId}" border="0" cellpadding="0" cellspacing="0" class="rich-inslider-vertical rich-slider #{component.attributes['styleClass']}"
            style="height: #{height};#{style}" x:passThruWithExclusions="id,boundClass,tipClass,class,width,height,style,border">
         <tbody>
             <tr>
@@ -71,7 +71,7 @@
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="text"
-                                        class="dr-insldr-field dr-insldr-field-top rich-inslider-field #{component.attributes['inputClass']}"
+                                        class="rich-inslider-field-top rich-inslider-field #{component.attributes['inputClass']}"
                                         style="#{component.attributes['inputStyle']}; #{color}"
                                         readonly="#{inputReadOnly}"
                                         disabled="#{inputDisabled}"
@@ -113,15 +113,15 @@
 	             if (((Boolean)variables.getVariable("showArrows")).booleanValue()) {
 	        ]]></jsp:scriptlet>
             <tr>
-                <td class="dr-insldr-td-arrow">
+                <td class="rich-inslider-td-arrow">
 	                <div style="position : relative">
-	                    <div id="#{clientId}TipArrowInc" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
+	                    <div id="#{clientId}TipArrowInc" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
 	                         <jsp:scriptlet><![CDATA[
 	                           writer.write("&#160;");
 	                         ]]></jsp:scriptlet>
 	                     </div>
 	                                <div  id="#{clientId}ArrowInc"
-	                                        class="dr-insldr-inc-vertical dr-insldr-arrow #{component.attributes['increaseClass']}"
+	                                        class="rich-inslider-inc-vertical rich-inslider-arrow #{component.attributes['increaseClass']}"
 	                                        style="#{component.attributes['increaseStyle']}"
 	                                />   
 	                </div>
@@ -135,13 +135,13 @@
                     <table border="0" cellpadding="0" cellspacing="0" style="height: 100%;">
 	                    <tbody>
 		                    <tr>
-                               <td rowspan="2" id="#{clientId}Track" class="dr-insldr-size-height">     
-                                   <div class="dr-insldr-track-vertical rich-inslider-track #{component.attributes['barClass']}" 
+                               <td rowspan="2" id="#{clientId}Track" class="rich-inslider-size-height">     
+                                   <div class="rich-inslider-track-vertical rich-inslider-track #{component.attributes['barClass']}" 
                                        style="#{component.attributes['barStyle']}">
-                                       <table class="dr-insldr-track-decor-1 rich-inslider-track-border" cellpadding="0" cellspacing="0" >
+                                       <table class="rich-inslider-track-decor-1 rich-inslider-track-border" cellpadding="0" cellspacing="0" >
                                            <tbody>
                                                <tr style="height: 98%">
-                                                   <td class="dr-insldr-track-decor-2">
+                                                   <td class="rich-inslider-track-decor-2">
                                                        <img src="#{spacer}" style="display: block;" />
                                                    </td>
                                                </tr>
@@ -149,12 +149,12 @@
                                        </table>
                                    </div>
                                    <div style="position : relative">
-                                       <div id="#{clientId}Tip" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none;left: 9px; #{component.attributes['tipStyle']}">
+                                       <div id="#{clientId}Tip" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none;left: 9px; #{component.attributes['tipStyle']}">
                                            <jsp:scriptlet><![CDATA[
                                              writer.write("&#160;");
                                            ]]></jsp:scriptlet>
                                        </div>
-                                       <div class="dr-insldr-handler-vertical #{component.attributes['handleClass']}" id="#{clientId}Handle" style="visibility:visible; top: -7px; left:1px;">
+                                       <div class="rich-inslider-handler-vertical #{component.attributes['handleClass']}" id="#{clientId}Handle" style="visibility:visible; top: -7px; left:1px;">
                                            <jsp:scriptlet><![CDATA[
                                              writer.write("&#160;");
                                            ]]></jsp:scriptlet>
@@ -164,7 +164,7 @@
                                     <jsp:scriptlet><![CDATA[
                                         if (attributeToBoolean(component, "showBoundaryValues")){
                                     ]]></jsp:scriptlet>
-                                    <td class="dr-insldr-top-num #{component.attributes['boundClass']}">
+                                    <td class="rich-inslider-top-num #{component.attributes['boundClass']}">
                                         #{component.attributes['maxValue']}
                                     </td>
                                     <jsp:scriptlet><![CDATA[
@@ -179,7 +179,7 @@
                                 <jsp:scriptlet><![CDATA[
                                     if (attributeToBoolean(component, "showBoundaryValues")){
                                 ]]></jsp:scriptlet>
-                                    <td class="dr-insldr-bottom-num #{component.attributes['boundClass']}">
+                                    <td class="rich-inslider-bottom-num #{component.attributes['boundClass']}">
                                     #{component.attributes['minValue']}
                                     </td>
                                     <jsp:scriptlet><![CDATA[
@@ -199,15 +199,15 @@
 		             if (((Boolean)variables.getVariable("showArrows")).booleanValue()) {
 		        ]]></jsp:scriptlet>
                 <tr>
-	                <td class="dr-insldr-td-arrow">
+	                <td class="rich-inslider-td-arrow">
 		                <div style="position : relative">
-	                    	<div id="#{clientId}TipArrowDec" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
+	                    	<div id="#{clientId}TipArrowDec" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
                              <jsp:scriptlet><![CDATA[
                                writer.write("&#160;");
                              ]]></jsp:scriptlet>
                            </div>
 		                                <div  id="#{clientId}ArrowDec"
-		                                        class="dr-insldr-dec-vertical dr-insldr-arrow #{component.attributes['decreaseClass']}"
+		                                        class="rich-inslider-dec-vertical rich-inslider-arrow #{component.attributes['decreaseClass']}"
 		                                        style="#{component.attributes['decreaseStyle']}"
 		                                />
 		                </div>
@@ -228,7 +228,7 @@
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="text"
-                                        class="dr-insldr-field dr-insldr-field-bottom rich-inslider-field #{component.attributes['inputClass']}"
+                                        class="rich-inslider-field-bottom rich-inslider-field #{component.attributes['inputClass']}"
                                         style="#{component.attributes['inputStyle']}; #{color}"
                                         readonly="#{inputReadOnly}"
                                         disabled="#{inputDisabled}"
@@ -310,7 +310,7 @@
         ]]>
     </jsp:scriptlet>
     
-   <table id="#{clientId}" border="0" cellpadding="0" cellspacing="0" class="dr-insldr rich-slider #{component.attributes['styleClass']}"
+   <table id="#{clientId}" border="0" cellpadding="0" cellspacing="0" class="rich-inslider rich-slider #{component.attributes['styleClass']}"
            style="width: #{width};#{style}" x:passThruWithExclusions="id,boundClass,tipClass,class,width,height,style,border">
 		<tbody>
 			<tr>
@@ -325,7 +325,7 @@
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="text"
-                                        class="dr-insldr-field dr-insldr-field-left rich-inslider-field #{component.attributes['inputClass']}"
+                                        class="rich-inslider-field-left rich-inslider-field #{component.attributes['inputClass']}"
                                         style="#{component.attributes['inputStyle']}; #{color}"
                                         readonly="#{inputReadOnly}"
                                         disabled="#{inputDisabled}"
@@ -366,15 +366,15 @@
 				<jsp:scriptlet><![CDATA[
 	                 if (((Boolean)variables.getVariable("showArrows")).booleanValue()) {
 	            ]]></jsp:scriptlet>
-				<td rowspan="2" class="dr-insldr-td-arrow">
+				<td rowspan="2" class="rich-inslider-td-arrow">
 	                <div style="position : relative">
-	                    <div id="#{clientId}TipArrowDec" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
+	                    <div id="#{clientId}TipArrowDec" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
 	                         <jsp:scriptlet><![CDATA[
 	                           writer.write("&#160;");
 	                         ]]></jsp:scriptlet>
 	                     </div>
 	                                <div  id="#{clientId}ArrowDec"
-	                                        class="dr-insldr-dec-horizontal dr-insldr-arrow #{component.attributes['decreaseClass']}"
+	                                        class="rich-inslider-dec-horizontal rich-inslider-arrow #{component.attributes['decreaseClass']}"
 	                                        style="#{component.attributes['decreaseStyle']}"
 	                                />     
 	                </div>
@@ -383,7 +383,7 @@
 	                 }
 	            ]]></jsp:scriptlet>
 	            
-                <td class="dr-insldr-left-num rich-inslider-left-num #{component.attributes['boundClass']}">
+                <td class="rich-inslider-left-num #{component.attributes['boundClass']}">
 				<jsp:scriptlet><![CDATA[
 				    if (attributeToBoolean(component, "showBoundaryValues")){
                 ]]></jsp:scriptlet>
@@ -392,7 +392,7 @@
 				    }
                 ]]></jsp:scriptlet>
 				</td>
-				<td class="dr-insldr-right-num rich-inslider-right-num #{component.attributes['boundClass']}">
+				<td class="rich-inslider-right-num #{component.attributes['boundClass']}">
 				<jsp:scriptlet><![CDATA[
 				    if (attributeToBoolean(component, "showBoundaryValues")){
                 ]]></jsp:scriptlet>
@@ -405,15 +405,15 @@
 				<jsp:scriptlet><![CDATA[
 	                 if (((Boolean)variables.getVariable("showArrows")).booleanValue()) {
 	           	]]></jsp:scriptlet>
-				<td rowspan="2" class="dr-insldr-td-arrow">
+				<td rowspan="2" class="rich-inslider-td-arrow">
 	                <div style="position : relative">
-	                     <div id="#{clientId}TipArrowInc" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
+	                     <div id="#{clientId}TipArrowInc" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none; #{component.attributes['tipStyle']}">
 	                         <jsp:scriptlet><![CDATA[
 	                           writer.write("&#160;");
 	                         ]]></jsp:scriptlet>
 	                     </div>
 	                                <div  id="#{clientId}ArrowInc"
-	                                        class="dr-insldr-inc-horizontal dr-insldr-arrow #{component.attributes['increaseClass']}"
+	                                        class="rich-inslider-inc-horizontal rich-inslider-arrow #{component.attributes['increaseClass']}"
 	                                        style="#{component.attributes['increaseStyle']}"
 	                                />
 	                </div>   
@@ -433,7 +433,7 @@
 										name="#{clientId}"
 										value="#{this:getInputValue(context,component)}"
 										type="text"
-										class="dr-insldr-field dr-insldr-field-right rich-inslider-field #{component.attributes['inputClass']}"
+										class="rich-inslider-field-right rich-inslider-field #{component.attributes['inputClass']}"
 										style="#{component.attributes['inputStyle']}; #{color}"
 										readonly="#{inputReadOnly}"
 										disabled="#{inputDisabled}"
@@ -472,28 +472,28 @@
                 ]]></jsp:scriptlet>
             </tr>
 			<tr>
-				<td colspan="2" class="dr-insldr-size dr-insldr-vert-spacer">
-					<table border="0" cellpadding="0" cellspacing="0" class="dr-insldr-size">
+				<td colspan="2" class="rich-inslider-size rich-inslider-vert-spacer">
+					<table border="0" cellpadding="0" cellspacing="0" class="rich-inslider-size">
 						<tbody>
 							<tr>
 								<td id="#{clientId}Track">
 									<div style="position : relative">
-										<div id="#{clientId}Tip" class="dr-insldr-tip rich-inslider-tip #{component.attributes['tipClass']}" style="display: none;#{component.attributes['tipStyle']}">
+										<div id="#{clientId}Tip" class="rich-inslider-tip #{component.attributes['tipClass']}" style="display: none;#{component.attributes['tipStyle']}">
                                             <jsp:scriptlet><![CDATA[
                                               writer.write("&#160;");
                                             ]]></jsp:scriptlet>
                                         </div>
-										<div class="dr-insldr-handler rich-inslider-handler #{component.attributes['handleClass']}" id="#{clientId}Handle" style="visibility:hidden;">
+										<div class="rich-inslider-handler #{component.attributes['handleClass']}" id="#{clientId}Handle" style="visibility:hidden;">
                                             <jsp:scriptlet><![CDATA[
                                               writer.write("&#160;");
                                             ]]></jsp:scriptlet>
                                         </div>
 									</div>
-									<div class="dr-insldr-track rich-inslider-track #{component.attributes['barClass']}" style="#{component.attributes['barStyle']}">
-										<table class="dr-insldr-track-decor-1" cellpadding="0" cellspacing="0">
+									<div class="rich-inslider-track #{component.attributes['barClass']}" style="#{component.attributes['barStyle']}">
+										<table class="rich-inslider-track-decor-1" cellpadding="0" cellspacing="0">
 											<tbody>
 												<tr>
-													<td class="dr-insldr-track-decor-2">
+													<td class="rich-inslider-track-decor-2">
 														<img src="#{spacer}" alt="" style="display: block;" />
 													</td>
 												</tr>

@@ -134,7 +134,7 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(htmlSlider);
 
         assertTrue(htmlSlider.getAttributeValue("class").contains(
-                "dr-insldr rich-slider"));
+                "rich-inslider rich-slider"));
 
         HtmlInput htmlSliderInput = (HtmlInput) renderedView.getHtmlElementById(
                 slider.getClientId(facesContext) + "Input");
@@ -143,31 +143,31 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 
         String a = htmlSliderInput.getClassAttribute();
         assertTrue(htmlSliderInput.getClassAttribute().contains(
-                "dr-insldr-field dr-insldr-field-right rich-inslider-field"));
+                "rich-inslider-field-right rich-inslider-field"));
         assertTrue(htmlSliderInput.getTypeAttribute().equals("text"));
 
         DomNode numContainer = htmlSliderInput.getParentNode()
                 .getPreviousSibling();
         assertTrue(((HtmlElement) numContainer).getAttributeValue(
                 "class").contains(
-                "dr-insldr-right-num rich-inslider-right-num"));
+                "rich-inslider-right-num"));
         assertTrue(((HtmlElement) (numContainer.getPreviousSibling()))
                 .getAttributeValue("class").contains(
-                "dr-insldr-left-num rich-inslider-left-num"));
+                "rich-inslider-left-num"));
 
         HtmlElement tip = renderedView.getHtmlElementById(slider.getClientId(
                 facesContext) + "Tip");
         assertTrue(tip.getAttributeValue("class").contains(
-                "dr-insldr-tip rich-inslider-tip"));
+                "rich-inslider-tip"));
 
         HtmlElement handle = renderedView.getHtmlElementById(slider.getClientId(
                 facesContext) + "Handle");
         assertTrue(handle.getAttributeValue("class").contains(
-                "dr-insldr-handler rich-inslider-handler"));
+                "rich-inslider-handler"));
 
         HtmlElement track = (HtmlElement) tip.getParentNode().getNextSibling();
         assertTrue(track.getAttributeValue("class").contains(
-                "dr-insldr-track rich-inslider-track"));
+                "rich-inslider-track"));
     }
 
     public void testHiddenInput() throws Exception {
@@ -367,7 +367,7 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 		assertNotNull(htmlSlider);
 
 		assertTrue(htmlSlider.getAttributeValue("class").contains(
-				"dr-insldr-vertical rich-slider "));
+				"rich-inslider-vertical rich-slider "));
 
 		HtmlInput htmlSliderInput = (HtmlInput) renderedView
 				.getHtmlElementById(slider.getClientId(facesContext) + "Input");
@@ -375,7 +375,7 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 		assertNotNull(htmlSliderInput);
 
 		assertTrue(htmlSliderInput.getClassAttribute().contains(
-				"dr-insldr-field dr-insldr-field-top rich-inslider-field "));
+				"rich-inslider-field-top rich-inslider-field "));
 		assertTrue(htmlSliderInput.getTypeAttribute().equals("text"));
 
 		HtmlDivision track = (HtmlDivision) ((HtmlElement) renderedView
@@ -383,26 +383,26 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 				.getFirstDomChild();
 
 		assertTrue(track.getAttributeValue("class").contains(
-				"dr-insldr-track-vertical rich-inslider-track"));
+				"rich-inslider-track-vertical rich-inslider-track"));
 
 		DomNode numContainer = track.getParentDomNode().getParentDomNode()
 				.getNextDomSibling().getFirstDomChild();
 		assertTrue(((HtmlElement) numContainer).getAttributeValue("class")
-				.contains("dr-insldr-bottom-num "));
+				.contains("rich-inslider-bottom-num "));
 		assertTrue(((HtmlElement) track.getParentDomNode().getNextDomSibling())
-				.getAttributeValue("class").contains("dr-insldr-top-num "));
+				.getAttributeValue("class").contains("rich-inslider-top-num "));
 
 		HtmlElement tip = renderedView.getHtmlElementById(slider
 				.getClientId(facesContext)
 				+ "Tip");
 		assertTrue(tip.getAttributeValue("class").contains(
-				"dr-insldr-tip rich-inslider-tip"));
+				"rich-inslider-tip"));
 
 		HtmlElement handle = renderedView.getHtmlElementById(slider
 				.getClientId(facesContext)
 				+ "Handle");
 		assertTrue(handle.getAttributeValue("class").contains(
-				"dr-insldr-handler-vertical "));
+				"rich-inslider-handler-vertical "));
 	}
 
 	public void testShowArrows() throws Exception {
@@ -412,19 +412,19 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 				.getHtmlElementById(slider.getClientId(facesContext)
 						+ "ArrowInc");
 		assertTrue(htmlSliderArrowInc.getClassAttribute().equals(
-				"dr-insldr-inc-horizontal dr-insldr-arrow "));
+				"rich-inslider-inc-horizontal rich-inslider-arrow "));
 
 		HtmlDivision htmlSliderArrowDec = (HtmlDivision) renderedView
 				.getHtmlElementById(slider.getClientId(facesContext)
 						+ "ArrowDec");
 		assertTrue(htmlSliderArrowDec.getClassAttribute().equals(
-				"dr-insldr-dec-horizontal dr-insldr-arrow "));
+				"rich-inslider-dec-horizontal rich-inslider-arrow "));
 
 		HtmlDivision htmlSliderTipArrowInc = (HtmlDivision) renderedView
 				.getHtmlElementById(slider.getClientId(facesContext)
 						+ "TipArrowInc");
 		assertTrue(htmlSliderTipArrowInc.getClassAttribute().equals(
-				"dr-insldr-tip rich-inslider-tip "));
+				"rich-inslider-tip "));
 		assertTrue(htmlSliderTipArrowInc.getStyleAttribute().equals(
 				"display: none; "));
 
@@ -432,7 +432,7 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 				.getHtmlElementById(slider.getClientId(facesContext)
 						+ "TipArrowDec");
 		assertTrue(htmlSliderTipArrowDec.getClassAttribute().equals(
-				"dr-insldr-tip rich-inslider-tip "));
+				"rich-inslider-tip "));
 		assertTrue(htmlSliderTipArrowDec.getStyleAttribute().equals(
 				"display: none; "));
 	}

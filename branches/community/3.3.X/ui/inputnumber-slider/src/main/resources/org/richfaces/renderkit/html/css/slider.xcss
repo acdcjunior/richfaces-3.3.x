@@ -4,41 +4,41 @@
    xmlns="http://www.w3.org/1999/xhtml" >
 	<f:verbatim><![CDATA[
 
-.dr-insldr {
+.rich-inslider {
 	/*width : 200px;*/
 	height : 20px;
 }
-.dr-insldr-vertical {
+.rich-inslider-vertical {
     width : 20px;
 }
 
-.dr-insldr-tip {
+.rich-inslider-tip {
     position : absolute;
     white-space : nowrap;
     padding : 2px 2px 2px 2px;
     border : 1px solid;
 }
 
-.dr-insldr-size {
+.rich-inslider-size {
 	width: 100%;
 }
-.dr-insldr-size-height {
+.rich-inslider-size-height {
     height: 100%;
     width: 7px;
     padding: 0px 3px;
 }
 
-.dr-insldr-left-num {
+.rich-inslider-left-num {
 	text-align : left;
 	border-left: 1px solid;
 	padding : 0px 3px 0px 3px;
 }
-.dr-insldr-right-num{
+.rich-inslider-right-num{
 	text-align : right;
 	border-right : 1px solid;
 	padding : 0px 3px 0px 3px;
 }
-.dr-insldr-top-num {
+.rich-inslider-top-num {
     text-align : left;
     border-top: 1px solid;
     border-color: #C4C0B9;
@@ -48,7 +48,7 @@
     line-height: 11px;
     vertical-align: top;
 }
-.dr-insldr-bottom-num{
+.rich-inslider-bottom-num{
     text-align : left;
     border-bottom : 1px solid;
     padding : 0px 3px 0px 3px;
@@ -59,11 +59,11 @@
     line-height: 11px;
     vertical-align: bottom;
 }
-.dr-insldr-vert-spacer{
+.rich-inslider-vert-spacer{
 	padding : 3px 0px;
 	vertical-align: bottom;
 }
-.dr-insldr-handler{
+.rich-inslider-handler{
 	background-color : transparent;
 	width : 7px;
 	height : 8px;
@@ -73,7 +73,7 @@
 	z-index : 1;
 }
 
-.dr-insldr-handler-vertical {
+.rich-inslider-handler-vertical {
     background-color : transparent;
     width : 7px;
     height : 8px;
@@ -83,14 +83,14 @@
     z-index : 1;
 }
 
-.dr-insldr-tip {
+.rich-inslider-tip {
     position : absolute;
     white-space : nowrap;
     padding : 2px 2px 2px 2px;
     border : 1px solid;
 }
 
-.dr-insldr-handler-sel{
+.rich-inslider-handler-selected{
 	background-color : transparent;
 	width : 7px;
 	height : 8px;
@@ -99,13 +99,13 @@
 	text-align : center;
 	z-index : 1;
 }
-.dr-insldr-track{
+.rich-inslider-track{
 	background-position: left top;
 	background-repeat: repeat-x;
 	height : 8px;
 	font-size : 1px;
 }
-.dr-insldr-track-vertical{
+.rich-inslider-track-vertical{
     background-position: left top;
     background-repeat: repeat-y;
     height : 100%;
@@ -113,15 +113,15 @@
     width: 7px;
     background-color:#FFFFFF;
 }
-.dr-insldr-track-decor-1 {
+.rich-inslider-track-decor-1 {
 	height : 100%;
 	width : 100%;
 	border : 1px solid;
 }
-.dr-insldr-track-decor-2 {
+.rich-inslider-track-decor-2 {
 	border : 1px solid white;
 }
-.dr-insldr-field {
+.rich-inslider-field {
 	border:1px inset;
 	padding: 0px 0px 0px 3px;
 	margin-top:0px;
@@ -130,48 +130,48 @@
 	background-repeat:repeat-x;
 }
 
-.dr-insldr-field-left {
+.rich-inslider-field-left {
     margin-right: 10px;
 }
-.dr-insldr-field-right {
+.rich-inslider-field-right {
     margin-left: 10px;
 }
-.dr-insldr-field-top {
+.rich-inslider-field-top {
     margin-bottom: 7px;
 }
-.dr-insldr-field-bottom {
+.rich-inslider-field-bottom {
     margin-top: 7px;
 }
-.dr-insldr-arrow {
+.rich-inslider-arrow {
     background-repeat:no-repeat;
     width: 15px;
     height: 15px;
 }
-.dr-insldr-dec-horizontal {
+.rich-inslider-dec-horizontal {
     background-position: 5px 4px;
 }
-.dr-insldr-inc-horizontal {
+.rich-inslider-inc-horizontal {
     background-position: 4px 4px;
 }
-.dr-insldr-inc-vertical {
+.rich-inslider-inc-vertical {
     background-position: 3px 5px;
 }
-.dr-insldr-dec-vertical {
+.rich-inslider-dec-vertical {
     background-position: 3px 3px;
 }
-.dr-insldr-dec-horizontal-sel {
+.rich-inslider-dec-horizontal-selected {
     background-position: 5px 4px;
 }
-.dr-insldr-inc-horizontal-sel {
+.rich-inslider-inc-horizontal-selected {
     background-position: 4px 4px;
 }
-.dr-insldr-inc-vertical-sel {
+.rich-inslider-inc-vertical-selected {
     background-position: 3px 5px;
 }
-.dr-insldr-dec-vertical-sel {
+.rich-inslider-dec-vertical-selected {
     background-position: 3px 3px;
 }
-.dr-insldr-td-arrow {
+.rich-inslider-td-arrow {
     text-align: left;
     vertical-align: bottom;
 }
@@ -179,21 +179,21 @@
        ]]>
 	</f:verbatim>
 
-	<u:selector name=".dr-insldr-tip">
+	<u:selector name=".rich-inslider-tip">
 		<u:style name="background-color" skin="tipBackgroundColor"/>
 		<u:style name="border-color" skin="tipBorderColor"/>
 		<u:style name="font-family" skin="generalFamilyFont"/>
 		<u:style name="font-size" skin="generalSizeFont"/>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-tip-step">
+	<u:selector name=".rich-inslider-tip-step">
         <u:style name="background-color" skin="tipBackgroundColor"/>
         <u:style name="border-color" skin="tipBorderColor"/>
         <u:style name="font-family" skin="generalFamilyFont"/>
         <u:style name="font-size" skin="generalSizeFont"/>
     </u:selector>
 
-	<u:selector name=".dr-insldr-left-num">
+	<u:selector name=".rich-inslider-left-num">
 		<u:style name="font-family" skin="generalFamilyFont"/>
 		<u:style name="font-size" skin="generalSizeFont"/>
 		<u:style name="color" skin="generalTextColor"/>
@@ -201,7 +201,7 @@
 		<u:style name="line-height" skin="generalSizeFont"/>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-right-num">
+	<u:selector name=".rich-inslider-right-num">
 		<u:style name="font-family" skin="generalFamilyFont"/>
 		<u:style name="font-size" skin="generalSizeFont"/>
 		<u:style name="color" skin="generalTextColor"/>
@@ -209,94 +209,94 @@
 		<u:style name="line-height" skin="generalSizeFont"/>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-track">
+	<u:selector name=".rich-inslider-track">
 		<u:style name="background-color" skin="controlBackgroundColor"/>
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.images.SliderTrackGradient" />
 		</u:style>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-track-decor-1">
+	<u:selector name=".rich-inslider-track-decor-1">
 		<u:style name="border-color" skin="panelBorderColor"/>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-handler">
+	<u:selector name=".rich-inslider-handler">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImage" />
 		</u:style>
 	</u:selector>
 	
-	<u:selector name=".dr-insldr-handler-vertical">
+	<u:selector name=".rich-inslider-handler-vertical">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImageRight" />
         </u:style>
     </u:selector>
 	
-    <u:selector name=".dr-insldr-track-vertical">
+    <u:selector name=".rich-inslider-track-vertical">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderTrackGradientVertical" />
         </u:style>
     </u:selector>
     
-    <u:selector name=".dr-insldr-dec-horizontal">
+    <u:selector name=".rich-inslider-dec-horizontal">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImageLeft" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-inc-horizontal">
+    <u:selector name=".rich-inslider-inc-horizontal">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImageRight" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-inc-vertical">
+    <u:selector name=".rich-inslider-inc-vertical">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImageTop" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-dec-vertical">
+    <u:selector name=".rich-inslider-dec-vertical">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowImage" />
         </u:style>
     </u:selector>
     
-    <u:selector name=".dr-insldr-dec-horizontal-sel">
+    <u:selector name=".rich-inslider-dec-horizontal-selected">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImageLeft" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-inc-horizontal-sel">
+    <u:selector name=".rich-inslider-inc-horizontal-selected">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImageRight" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-inc-vertical-sel">
+    <u:selector name=".rich-inslider-inc-vertical-selected">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImageTop" />
         </u:style>
     </u:selector>
-    <u:selector name=".dr-insldr-dec-vertical-sel">
+    <u:selector name=".rich-inslider-dec-vertical-selected">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImage" />
         </u:style>
     </u:selector>
 
-	<u:selector name=".dr-insldr-handler-sel">
+	<u:selector name=".rich-inslider-handler-selected">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImage" />
 		</u:style>
 	</u:selector>
 	
-	<u:selector name=".dr-insldr-handler-sel-vertical">
+	<u:selector name=".rich-inslider-handler-selected-vertical">
         <u:style name="background-image">
             <f:resource f:key="org.richfaces.renderkit.html.images.SliderArrowSelectedImageRight" />
         </u:style>
     </u:selector>
 
-	<u:selector name=".dr-insldr-track-decor-2">
+	<u:selector name=".rich-inslider-track-decor-2">
 		<u:style name="border-color" skin="controlBackgroundColor"/>
 	</u:selector>
 
-	<u:selector name=".dr-insldr-field">
+	<u:selector name=".rich-inslider-field">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.images.SliderFieldGradient" />
 		</u:style>
