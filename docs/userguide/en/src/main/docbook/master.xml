@@ -61,6 +61,122 @@
 	<!ENTITY colorPicker_table SYSTEM "../../../target/generated/colorPicker.xml">
 	<!ENTITY layout_table SYSTEM "../../../target/generated/layout.xml">
 	
+	<!-- NEW ENTITIES -->
+	<!ENTITY a4j_actionparam SYSTEM "../../../target/generated/a4j_actionparam.xml">
+	<!ENTITY a4j_form SYSTEM "../../../target/generated/a4j_form.xml">
+	<!ENTITY a4j_region SYSTEM "../../../target/generated/a4j_region.xml">
+	<!ENTITY a4j_support SYSTEM "../../../target/generated/a4j_support.xml">
+	<!ENTITY a4j_commandButton SYSTEM "../../../target/generated/a4j_commandButton.xml">
+	<!ENTITY a4j_commandLink SYSTEM "../../../target/generated/a4j_commandLink.xml">
+	<!ENTITY a4j_jsFunction SYSTEM "../../../target/generated/a4j_jsFunction.xml">
+	<!ENTITY a4j_poll SYSTEM "../../../target/generated/a4j_poll.xml">
+	<!ENTITY a4j_push SYSTEM "../../../target/generated/a4j_push.xml">
+	<!ENTITY a4j_queue SYSTEM "../../../target/generated/a4j_queue.xml">
+	<!ENTITY a4j_status SYSTEM "../../../target/generated/a4j_status.xml">
+	<!ENTITY a4j_ajaxListener SYSTEM "../../../target/generated/a4j_ajaxListener.xml">
+
+	<!ENTITY a4j_loadBundle SYSTEM "../../../target/generated/a4j_loadBundle.xml">
+	<!ENTITY a4j_loadScript SYSTEM "../../../target/generated/a4j_loadScript.xml">
+	<!ENTITY a4j_loadStyle SYSTEM "../../../target/generated/a4j_loadStyle.xml">
+	<!ENTITY a4j_keepAlive SYSTEM "../../../target/generated/a4j_keepAlive.xml">
+
+	<!ENTITY rich_ajaxValidator SYSTEM "../../../target/generated/rich_ajaxValidator.xml">
+	<!ENTITY rich_beanValidator SYSTEM "../../../target/generated/rich_beanValidator.xml">
+	<!ENTITY rich_graphValidator SYSTEM "../../../target/generated/rich_graphValidator.xml">
+
+	<!ENTITY a4j_mediaOutput SYSTEM "../../../target/generated/a4j_mediaOutput.xml">
+	<!ENTITY a4j_include SYSTEM "../../../target/generated/a4j_include.xml">
+	<!ENTITY a4j_outputPanel SYSTEM "../../../target/generated/a4j_outputPanel.xml">
+	
+	<!ENTITY a4j_page SYSTEM "../../../target/generated/a4j_page.xml">
+	<!ENTITY a4j_portlet SYSTEM "../../../target/generated/a4j_portlet.xml">
+	<!ENTITY a4j_htmlCommandLink SYSTEM "../../../target/generated/a4j_htmlCommandLink.xml">
+	<!ENTITY a4j_log SYSTEM "../../../target/generated/a4j_log.xml">
+
+	<!ENTITY rich_column SYSTEM "../../../target/generated/rich_column.xml">	
+	<!ENTITY rich_columnGroup SYSTEM "../../../target/generated/rich_columnGroup.xml">
+	<!ENTITY rich_columns SYSTEM "../../../target/generated/rich_columns.xml">
+	<!ENTITY rich_dataDefinitionList SYSTEM "../../../target/generated/rich_dataDefinitionList.xml">
+	<!ENTITY rich_dataFilterSlider SYSTEM "../../../target/generated/rich_dataFilterSlider.xml">
+	<!ENTITY rich_dataGrid SYSTEM "../../../target/generated/rich_dataGrid.xml">
+	<!ENTITY rich_dataList SYSTEM "../../../target/generated/rich_dataList.xml">
+	<!ENTITY rich_dataOrderedList SYSTEM "../../../target/generated/rich_dataOrderedList.xml">
+	<!ENTITY rich_datascroller SYSTEM "../../../target/generated/rich_datascroller.xml">
+	<!ENTITY rich_dataTable SYSTEM "../../../target/generated/rich_dataTable.xml">
+	<!ENTITY rich_subTable SYSTEM "../../../target/generated/rich_subTable.xml">
+	<!ENTITY rich_extendedDataTable SYSTEM "../../../target/generated/rich_extendedDataTable.xml">
+	<!ENTITY a4j_repeat SYSTEM "../../../target/generated/a4j_repeat.xml">
+	<!ENTITY rich_scrollableDataTable SYSTEM "../../../target/generated/rich_scrollableDataTable.xml">
+
+	<!ENTITY rich_dragIndicator SYSTEM "../../../target/generated/rich_dragIndicator.xml">
+	<!ENTITY rich_dragSupport SYSTEM "../../../target/generated/rich_dragSupport.xml">
+	<!ENTITY rich_dndParam SYSTEM "../../../target/generated/rich_dndParam.xml">
+	<!ENTITY rich_dropSupport SYSTEM "../../../target/generated/rich_dropSupport.xml">
+	<!ENTITY rich_dropListener SYSTEM "../../../target/generated/rich_dropListener.xml">
+	<!ENTITY rich_dragListener SYSTEM "../../../target/generated/rich_dragListener.xml">
+
+	<!ENTITY rich_contextMenu SYSTEM "../../../target/generated/rich_contextMenu.xml">
+	<!ENTITY rich_dropDownMenu SYSTEM "../../../target/generated/rich_dropDownMenu.xml">
+	<!ENTITY rich_menuGroup SYSTEM "../../../target/generated/rich_menuGroup.xml">
+	<!ENTITY rich_menuItem SYSTEM "../../../target/generated/rich_menuItem.xml">
+	<!ENTITY rich_menuSeparator SYSTEM "../../../target/generated/rich_menuSeparator.xml">
+
+	<!ENTITY rich_recursiveTreeNodesAdaptor SYSTEM "../../../target/generated/rich_recursiveTreeNodesAdaptor.xml">
+	<!ENTITY rich_tree SYSTEM "../../../target/generated/rich_tree.xml">
+	<!ENTITY rich_treeNode SYSTEM "../../../target/generated/rich_treeNode.xml">
+	<!ENTITY rich_treeNodesAdaptor SYSTEM "../../../target/generated/rich_treeNodesAdaptor.xml">
+	<!ENTITY rich_changeExpandListener SYSTEM "../../../target/generated/rich_changeExpandListener.xml">
+	<!ENTITY rich_nodeSelectListener SYSTEM "../../../target/generated/rich_nodeSelectListener.xml">
+	
+	<!ENTITY rich_modalPanel SYSTEM "../../../target/generated/rich_modalPanel.xml">
+	<!ENTITY rich_paint2D SYSTEM "../../../target/generated/rich_paint2D.xml">
+	<!ENTITY rich_panel SYSTEM "../../../target/generated/rich_panel.xml">
+	<!ENTITY rich_panelBar SYSTEM "../../../target/generated/rich_panelBar.xml">
+	<!ENTITY rich_panelBarItem SYSTEM "../../../target/generated/rich_panelBarItem.xml">
+	<!ENTITY rich_panelMenu SYSTEM "../../../target/generated/rich_panelMenu.xml">
+	<!ENTITY rich_panelMenuItem SYSTEM "../../../target/generated/rich_panelMenuItem.xml">
+	<!ENTITY rich_panelMenuGroup SYSTEM "../../../target/generated/rich_panelMenuGroup.xml">
+	<!ENTITY rich_progressBar SYSTEM "../../../target/generated/rich_progressBar.xml">
+	<!ENTITY rich_separator SYSTEM "../../../target/generated/rich_separator.xml">
+	<!ENTITY rich_simpleTogglePanel SYSTEM "../../../target/generated/rich_simpleTogglePanel.xml">
+	<!ENTITY rich_spacer SYSTEM "../../../target/generated/rich_spacer.xml">	
+	<!ENTITY rich_tabPanel SYSTEM "../../../target/generated/rich_tabPanel.xml">	
+	<!ENTITY rich_tab SYSTEM "../../../target/generated/rich_tab.xml">	
+	<!ENTITY rich_togglePanel SYSTEM "../../../target/generated/rich_togglePanel.xml">	
+	<!ENTITY rich_toggleControl SYSTEM "../../../target/generated/rich_toggleControl.xml">	
+	<!ENTITY rich_toolBar SYSTEM "../../../target/generated/rich_toolBar.xml">	
+	<!ENTITY rich_toolBarGroup SYSTEM "../../../target/generated/rich_toolBarGroup.xml">	
+	<!ENTITY rich_toolTip SYSTEM "../../../target/generated/rich_toolTip.xml">	
+
+	<!ENTITY rich_calendar SYSTEM "../../../target/generated/rich_calendar.xml">
+	<!ENTITY rich_colorPicker SYSTEM "../../../target/generated/rich_colorPicker.xml">
+	<!ENTITY rich_comboBox SYSTEM "../../../target/generated/rich_comboBox.xml">
+	<!ENTITY rich_editor SYSTEM "../../../target/generated/rich_editor.xml">
+	<!ENTITY rich_fileUpload SYSTEM "../../../target/generated/rich_fileUpload.xml">
+	<!ENTITY rich_inplaceInput SYSTEM "../../../target/generated/rich_inplaceInput.xml">
+	<!ENTITY rich_inplaceSelect SYSTEM "../../../target/generated/rich_inplaceSelect.xml">
+	<!ENTITY rich_inputNumberSlider SYSTEM "../../../target/generated/rich_inputNumberSlider.xml">
+	<!ENTITY rich_inputNumberSpinner SYSTEM "../../../target/generated/rich_inputNumberSpinner.xml">
+	<!ENTITY rich_suggestionbox SYSTEM "../../../target/generated/rich_suggestionbox.xml">
+
+	<!ENTITY rich_listShuttle SYSTEM "../../../target/generated/rich_listShuttle.xml">
+	<!ENTITY rich_orderingList SYSTEM "../../../target/generated/rich_orderingList.xml">
+	<!ENTITY rich_pickList SYSTEM "../../../target/generated/rich_pickList.xml">
+		
+	<!ENTITY rich_page SYSTEM "../../../target/generated/rich_page.xml">
+	<!ENTITY rich_layout SYSTEM "../../../target/generated/rich_layout.xml">
+	<!ENTITY rich_layoutPanel SYSTEM "../../../target/generated/rich_layoutPanel.xml">
+				
+	
+	<!ENTITY rich_componentControl SYSTEM "../../../target/generated/rich_componentControl.xml">
+	<!ENTITY rich_effect SYSTEM "../../../target/generated/rich_effect.xml">
+	<!ENTITY rich_gmap SYSTEM "../../../target/generated/rich_gmap.xml">
+	<!ENTITY rich_virtualEarth SYSTEM "../../../target/generated/rich_virtualEarth.xml">
+	<!ENTITY rich_hotKey SYSTEM "../../../target/generated/rich_hotKey.xml">
+	<!ENTITY rich_insert SYSTEM "../../../target/generated/rich_insert.xml">
+	<!ENTITY rich_message SYSTEM "../../../target/generated/rich_message.xml">
+	<!ENTITY rich_messages SYSTEM "../../../target/generated/rich_messages.xml">
+	<!ENTITY rich_jQuery SYSTEM "../../../target/generated/rich_jQuery.xml">		
 ]>
 <book>
 	<bookinfo>
@@ -101,18 +217,184 @@
       &rfcarchitectover;
 	
 <chapter role="NotInToc" id="RichFacesComponentsLibrary" xreflabel="RichFacesComponentsLibrary">
-		<?dbhtml filename="RichFacesComponentsLibrary.html"?>
-		
-		<title>The RichFaces Components</title>
-		<para>The library encompasses ready-made components built based on the <emphasis>
-				<property>Rich Faces CDK</property>
-<!--ulink url="http://richfaces.ajax4jsf.org/rich">http://richfaces.ajax4jsf.org/rich</ulink-->
-			</emphasis>.</para>
-		<!-- 
-&richfaces_table;
-		-->
-<?forseChanks?>
-	
+	<?dbhtml filename="RichFacesComponentsLibrary.html"?>	<title>The RichFaces Components</title>
+	<para>
+		The library encompasses ready-made components built based on 
+		the <emphasis><property>Rich Faces CDK</property></emphasis>.
+	</para>
+	<?forseChanks?>
+	<section id="ajaxSupport" xreflabel="ajaxSupport">
+		<?dbhtml filename="ajaxSupport.html"?>
+		<title>Ajax Support</title>
+		<?forseChanks?>
+		&a4j_ajaxListener;
+		&a4j_actionparam;
+		&a4j_form;
+		&a4j_region;
+		&a4j_support;
+		&a4j_commandButton;
+		&a4j_commandLink;
+		&a4j_jsFunction;
+		&a4j_poll;
+		&a4j_push;
+		&a4j_queue;
+		&a4j_status;
+	</section>
+	<section id="resourcesBeansHandling" xreflabel="resourcesBeansHandling">
+		<?dbhtml filename="resourcesBeansHandling.html"?>
+		<title>Resources/Beans Handling</title>
+		<?forseChanks?>
+		&a4j_loadBundle;
+		&a4j_keepAlive;
+		&a4j_loadScript;
+		&a4j_loadStyle;
+	</section>
+	<section id="ajaxValidators" xreflabel="ajaxValidators">
+		<?dbhtml filename="ajaxValidators.html"?>
+		<title>Ajax Validators</title>
+		<?forseChanks?>
+		&rich_ajaxValidator;
+		&rich_beanValidator;
+		&rich_graphValidator;
+	</section>
+	<section id="ajaxOutput" xreflabel="ajaxOutput">
+		<?dbhtml filename="ajaxOutput.html"?>
+		<title>Ajax Output</title>
+		<?forseChanks?>
+		&a4j_include;
+		&a4j_mediaOutput;
+		&a4j_outputPanel;
+	</section>
+	<section id="ajaxMiscellaneous" xreflabel="ajaxMiscellaneous">
+		<?dbhtml filename="ajaxMiscellaneous.html"?>
+		<title>Ajax Miscellaneous</title>
+		<?forseChanks?>
+		&a4j_page;
+		&a4j_portlet;
+		&a4j_htmlCommandLink;
+		&a4j_log;
+	</section>
+	<section id="dataIteration" xreflabel="dataIteration">
+		<?dbhtml filename="dataIteration.html"?>
+		<title>Data Iteration</title>
+		<?forseChanks?>
+		&rich_column;
+		&rich_columnGroup;
+		&rich_columns;
+		&rich_dataDefinitionList;
+		&rich_dataFilterSlider;
+		&rich_dataGrid;
+		&rich_dataList;
+		&rich_dataOrderedList;
+		&rich_datascroller;
+		&rich_dataTable;
+		&rich_subTable;
+		&rich_extendedDataTable;
+		&a4j_repeat;
+		&rich_scrollableDataTable;
+	</section>
+	<section id="dndSupport" xreflabel="dndSupport">
+		<?dbhtml filename="dndSupport.html"?>
+		<title>Drag-Drop Support</title>
+		<?forseChanks?>
+		&rich_dragIndicator;
+		&rich_dragSupport;
+		&rich_dragListener;
+		&rich_dropListener;
+		&rich_dropSupport;
+		&rich_dndParam;
+	</section>
+	<section id="richMenu" xreflabel="richMenu">
+		<?dbhtml filename="richMenu.html"?>
+		<title>Rich Menu</title>
+		<?forseChanks?>
+		&rich_contextMenu;
+		&rich_dropDownMenu;
+		&rich_menuGroup;
+		&rich_menuItem;
+		&rich_menuSeparator;
+	</section>
+		<section id="richTrees" xreflabel="richTrees">
+		<?dbhtml filename="richTrees.html"?>
+		<title>Rich Trees</title>
+		<?forseChanks?>
+		&rich_tree;
+		&rich_treeNode;
+		&rich_treeNodesAdaptor;
+		&rich_recursiveTreeNodesAdaptor;
+		&rich_changeExpandListener;
+		&rich_nodeSelectListener;
+	</section>
+		<section id="richOutput" xreflabel="richOutput">
+		<?dbhtml filename="richOutput.html"?>
+		<title>Rich Output</title>
+		<?forseChanks?>
+		&rich_modalPanel;
+		&rich_paint2D;
+		&rich_panel;
+		&rich_panelBar;
+		&rich_panelBarItem;
+		&rich_panelMenu;
+		&rich_panelMenuGroup;
+		&rich_panelMenuItem;
+		&rich_progressBar;
+		&rich_separator;
+		&rich_simpleTogglePanel;
+		&rich_spacer;
+		&rich_tabPanel;
+		&rich_tab;
+		&rich_togglePanel;
+		&rich_toggleControl;
+		&rich_toolBar;
+		&rich_toolBarGroup;
+		&rich_toolTip;
+	</section>
+	<section id="richInput" xreflabel="richInput">
+		<?dbhtml filename="richInput.html"?>
+		<title>Rich Input</title>
+		<?forseChanks?>
+		&rich_calendar;
+		&rich_colorPicker;
+		&rich_comboBox;
+		&rich_editor;
+		&rich_fileUpload;
+		&rich_inplaceInput;
+		&rich_inplaceSelect;
+		&rich_inputNumberSlider;
+		&rich_inputNumberSpinner;
+		&rich_suggestionbox;
+	</section>
+	<section id="richSelects" xreflabel="richSelects">
+		<?dbhtml filename="richSelects.html"?>
+		<title>Rich Selects</title>
+		<?forseChanks?>
+		&rich_listShuttle;
+		&rich_orderingList;
+		&rich_pickList;
+	</section>
+	<section id="richSemanticLayouts" xreflabel="richSemanticLayouts">
+		<?dbhtml filename="richSemanticLayouts.html"?>
+		<title>Rich Semantic Layouts</title>
+		<?forseChanks?>
+		&rich_page;
+		&rich_layout;
+		&rich_layoutPanel;
+	</section>
+	<section id="richMiscellaneous" xreflabel="richMiscellaneous">
+		<?dbhtml filename="richMiscellaneous.html"?>
+		<title>Rich Miscellaneous</title>
+		<?forseChanks?>
+		&rich_componentControl;
+		&rich_effect;
+		&rich_gmap;
+		&rich_virtualEarth;
+		&rich_hotKey;
+		&rich_insert;
+		&rich_message;
+		&rich_messages;
+		&rich_jQuery;
+	</section>	
+<!--
 &coreComponents_table;
 &beanValidator_table;
 &calendar_table;
@@ -163,7 +445,7 @@
 &tooltip_table;
 &tree_table;
 &treeModel_table;
-
+-->
 </chapter>
 
         &rfcidesupport;

@@ -758,6 +758,10 @@
 										<name>xcssPath</name>
 										<value>..${file.separator}..${file.separator}generated${file.separator}xcss</value>
 									</parameter>
+									<parameter>
+										<name>outputDir</name>
+										<value>${project.build.directory}${file.separator}generated${file.separator}</value>
+									</parameter>
 								</parameters>
 							</transformationSet>
 							<transformationSet>
@@ -805,6 +809,10 @@
 									<parameter>
 										<name>xcssPath</name>
 										<value>..${file.separator}..${file.separator}generated${file.separator}xcss</value>
+									</parameter>
+									<parameter>
+										<name>outputDir</name>
+										<value>${project.build.directory}${file.separator}generated${file.separator}</value>
 									</parameter>
 								</parameters>
 							</transformationSet>
