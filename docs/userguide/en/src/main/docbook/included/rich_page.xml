@@ -111,6 +111,12 @@ HtmlPage myHtmlPage = new HtmlPage();
 </rich:page>
 ...]]></programlisting> 
         
+        <note>
+            <title>Note:</title>
+            <para>Note, the <emphasis role="bold"><property>&lt;rich:page&gt;</property></emphasis> component encodes the full page structure. Therefore, be sure you don&apos;t 
+                use the doctype declaration, root html element, head and body elements  on the same page where you&apos;ve put this component.</para>
+        </note>
+        
         <para>The implementation of the <emphasis role="bold"><property>&lt;rich:page&gt;</property></emphasis> component provides four facets that you can use to arrange the layout of the page: &quot;header&quot;, &quot;subheader&quot;,  &quot;sidebar&quot;  and &quot;footer&quot;. Their behavior is quite self-explanatory. </para>
         <para>The position of the panel rendered by the &quot;sidebar&quot; facet can be set with the <emphasis><property>&quot;sidebarPosition&quot;</property></emphasis> attribute that can take either &quot;right&quot; or &quot;left&quot; as values, you can also specify the width for this facet with  the <emphasis><property>&quot;sidebarWidth&quot;</property></emphasis> attribute. </para>
        <para>
