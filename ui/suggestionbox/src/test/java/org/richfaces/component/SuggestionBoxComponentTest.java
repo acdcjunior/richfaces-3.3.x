@@ -125,7 +125,6 @@ public class SuggestionBoxComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("div", div.getNodeName());
 
         String classAttr = div.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-sb-common-container"));
         assertTrue(classAttr.contains("rich-sb-common-container"));
 
         HtmlElement table = page.getHtmlElementById(sb.getClientId(facesContext) + ":suggest");
