@@ -122,18 +122,18 @@ public class InputNumberSpinnerComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(htmlSpinner);
 
         assertTrue(htmlSpinner.getAttributeValue("class").contains(
-                "dr-spnr-c rich-spinner-c"));
+                "rich-spinner-c"));
 
         HtmlElement htmlSpinnerEdit = (HtmlElement) renderedView
                 .getHtmlElementById(spinner.getClientId(facesContext) + "Edit");
         assertNotNull(htmlSpinnerEdit);
         assertTrue(htmlSpinnerEdit.getAttributeValue("class").contains(
-                "dr-spnr-e  rich-spinner-input-container"));
+                "rich-spinner-input-container"));
 
         HtmlInput htmlSpinnerInput = (HtmlInput) htmlSpinnerEdit.getLastChild();
         assertNotNull(htmlSpinnerInput);
         assertTrue(htmlSpinnerInput.getAttributeValue("class").contains(
-                "dr-spnr-i rich-spinner-input"));
+                "rich-spinner-input"));
 
         HtmlElement buttonsContainer = (HtmlElement) renderedView
                 .getHtmlElementById(spinner.getClientId(facesContext)
@@ -144,7 +144,7 @@ public class InputNumberSpinnerComponentTest extends AbstractAjax4JsfTestCase {
             HtmlInput child = (HtmlInput) iter.next();
             assertTrue(child.getTypeAttribute().equals("image"));
             assertTrue(child.getAttributeValue("class").contains(
-                    "dr-spnr-bn rich-spinner-button"));
+                    "rich-spinner-bn rich-spinner-button"));
         }
     }
 
