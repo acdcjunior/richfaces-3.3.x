@@ -3,20 +3,21 @@
 	xmlns:javaee="http://java.sun.com/xml/ns/javaee"
 	xmlns:u="http:/jsf.exadel.com/template/util"
 	xmlns:f='http:/jsf.exadel.com/template'
-	version="1.0" exclude-result-prefixes="javaee">
-	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"
+	version="2.0" exclude-result-prefixes="javaee u f">
+	<xsl:output name="xmlOutput" method="xml" version="1.0" encoding="UTF-8" indent="yes"
 		omit-xml-declaration="yes" />
 	<xsl:param name="lang" />
 	<xsl:param name="title" />
 	<xsl:param name="separator" />
 	<xsl:param name="prefix" />
 	<xsl:param name="xcssPath" />
+	<xsl:param name="outputDir" />
 	
 	<xsl:variable name="rowsAmount">
 		<xsl:value-of select="count(.)" />
 	</xsl:variable>
 	
-	<xsl:template match="//f:template">
+	<!--xsl:template match="//f:template">
 		<table>
 			<xsl:for-each select="u:selector">
 				<xsl:sort select="@name" />
@@ -41,7 +42,7 @@
 		</table>
 	</xsl:template>
 	
-	<xsl:template match="/f:template/f:verbatim"/>
+	<xsl:template match="/f:template/f:verbatim"/-->
 	
 
 	<xsl:template match="javaee:taglib | taglib">
@@ -53,29 +54,31 @@
 
 			<!--xsl:value-of select="./name/text()" /-->
 
-			<xsl:if
-				test="not(contains($excluded-tag-names, javaee:name))">
+			<xsl:if test="not(contains($excluded-tag-names, javaee:name))">
 				<xsl:call-template name="tag" />
 			</xsl:if>
-			<xsl:if
-				test="not(contains($excluded-tag-names, ./name/text()))">
-				<xsl:call-template name="tag" />
+			<xsl:if	test="not(contains($excluded-tag-names, ./name/text()))">
+					<xsl:call-template name="tag" />
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template name="tag">
+	
+	<xsl:variable name="tag_name">
+		<xsl:choose>
+			<xsl:when test="javaee:name">
+				<xsl:value-of select="javaee:name" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="./name/text()" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	
+	<xsl:result-document href="{concat('file:///', $outputDir, $prefix, '_', $tag_name, '.xml')}" format="xmlOutput">		
 		<section role="NotInToc">
-			<xsl:variable name="tag_name">
-				<xsl:choose>
-					<xsl:when test="javaee:name">
-						<xsl:value-of select="javaee:name" />
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="./name/text()" />
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:variable>
+			
 			<!--
 			<xsl:variable name="prefix">
 				<xsl:choose>
@@ -88,27 +91,18 @@
 				</xsl:choose>
 			</xsl:variable>			
 			-->
-			<xsl:attribute name="id"><xsl:value-of select="concat($prefix, '_', $tag_name)" />
+			<xsl:attribute name="id">
+				<xsl:value-of select="concat($prefix, '_', $tag_name)" />
 			</xsl:attribute>
 			<title>
 				&lt;
 				<xsl:value-of select="concat($prefix,':', $tag_name)" />
 				&gt;
 			</title>
-			
-			<xsl:choose>
-				<xsl:when test="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.desc.xml'))">
-					<xsl:for-each select="document(concat($lang, $separator,'included',$separator, $prefix, '_', $tag_name, '.desc.xml'))/*">
-						<xsl:copy-of select="./*" />
-					</xsl:for-each>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:for-each select="document(concat($lang, $separator,'included',$separator,$tag_name, '.desc.xml'))/*">
-						<xsl:copy-of select="./*" />
-					</xsl:for-each>	
-				</xsl:otherwise>
-			</xsl:choose>
-			
+			<xsl:call-template name="fileMerge">
+				<xsl:with-param name="tag_name" select="$tag_name" />
+				<xsl:with-param name="filePostfix" select="'.desc'"/>
+			</xsl:call-template>
 			<table>
 				<title>
 					<xsl:value-of select="$prefix" />
@@ -169,20 +163,27 @@
 					</tgroup>
 				</table>
 			</xsl:if-->
-			<xsl:choose>
-				<xsl:when test="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.xml'))">
-					<xsl:for-each select="document(concat($lang, $separator,'included',$separator, $prefix, '_', $tag_name, '.xml'))/*">
-						<xsl:copy-of select="./*" />
-					</xsl:for-each>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:for-each select="document(concat($lang, $separator,'included',$separator,$tag_name, '.xml'))/*">
-						<xsl:copy-of select="./*" />
-					</xsl:for-each>
-				</xsl:otherwise>
-			</xsl:choose>
 			
-
+			<xsl:call-template name="fileMerge">
+				<xsl:with-param name="tag_name" select="$tag_name" />
+			</xsl:call-template>
 		</section>
+</xsl:result-document>		
 	</xsl:template>
+	<xsl:template name="fileMerge" xmlns:file="java.io.File">
+		<xsl:param name="filePostfix" select="''"/>
+		<xsl:param name="tag_name" select="''"/>
+		<xsl:choose>
+			<xsl:when test="doc-available(concat($lang, $separator,'included',$separator, $prefix, '_', $tag_name, $filePostfix, '.xml'))">
+				<xsl:for-each select="document(concat($lang, $separator,'included',$separator, $prefix, '_', $tag_name, $filePostfix, '.xml'))/*">
+					<xsl:copy-of select="./*" />
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="document(concat($lang, $separator,'included',$separator,$tag_name,$filePostfix, '.xml'))/*">
+					<xsl:copy-of select="./*" />
+				</xsl:for-each>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template> 
 </xsl:transform>
