@@ -318,7 +318,7 @@ but just allows to avoid unnecessary updates on the client side if the response 
 		<property>
 			<name>onpagechange</name>
 			<classname>java.lang.String</classname>
-			<description>HTML: script expression; a page is changed</description>
+			<description>The client side script method to be called when a page is changed</description>
 		</property>
 		
 		<property>
