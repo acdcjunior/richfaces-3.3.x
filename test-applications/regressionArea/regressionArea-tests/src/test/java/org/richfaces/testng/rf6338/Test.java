@@ -7,20 +7,17 @@ public class Test extends SeleniumTestBase {
 	@org.testng.annotations.Test
 	public void testExecute() throws Exception {
 		renderPage();
-
-		selenium.assignId("iconform:group1", "group1");
-		selenium.assignId("iconform:group2", "group2");
-		clickById("group1");
-		pause(500, null);
+		
+		clickById("iconform:group1");		
 		AssertVisible("iconform:item1_1");
-		clickById("group2");
-		pause(500, null);
+		
+		clickById("iconform:group2");		
 		AssertVisible("iconform:item1_2");
-		clickById("group1");
-		pause(500, null);
+		
+		clickById("iconform:group1");		
 		AssertNotVisible("iconform:item1_1");
-		clickById("group2");
-		pause(500, null);
+		
+		clickById("iconform:group2");		
 		AssertNotVisible("iconform:item1_2");
 	}
 
