@@ -328,6 +328,51 @@ HtmlDatascroller myScroll = new HtmlDatascroller();
           </section>
           
           <section>
+                    <title>JavaScript API</title>
+                    <table>
+                              <title>JavaScript API</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Function</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                   <row>
+                                                            <entry>switchToPage(page)</entry>
+                                                             <entry>Switches to the defined page, "page" is Number or String </entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>next()</entry>
+                                                            <entry>Navigates to the next page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>previous()</entry>
+                                                            <entry>Navigates to the previous page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>first()</entry>
+                                                            <entry>Navigates to the first page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>last()</entry>
+                                                            <entry>Navigates to the last page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastForward()</entry>
+                                                            <entry>Navigates ahead over a certain number of pages. The number of pages to traverse is defined with fastStep attribute</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastRewind()</entry>
+                                                            <entry>Navigates backwards over a certain number of pages. The number of pages to traverse is defined with fastStep attribute</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+          </section>
+          
+          <section>
                     <title>Facets</title>
                     <table>
                               <title>Facets</title>
