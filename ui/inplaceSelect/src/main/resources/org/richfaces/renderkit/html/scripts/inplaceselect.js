@@ -160,9 +160,7 @@ Richfaces.InplaceSelect = Class.create(Richfaces.InplaceInput, {
 				break;
 			case Event.KEY_TAB :
 				//https://jira.jboss.org/jira/browse/RF-4422
-				/*if (this.attributes.showControls) {
-					this.save(event);
-				}*/
+				this.save(event);
 				break;
 		}
 	},
