@@ -549,12 +549,6 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 			throw new NullPointerException();
 		}
 
-		if (submittedValueHolder == null) {
-			return;
-		}
-
-//		http://jira.jboss.com/jira/browse/RF-3852 
-
 		Object previousValue = getValue();
 		Object newValue = null;
 
@@ -594,6 +588,11 @@ public abstract class UIOrderingList extends UIOrderingBaseComponent {
 		}	
 
 		validateValue(context, newValue);
+
+		//RF-3852
+		if (submittedValueHolder == null) {
+			return;
+		}
 		
 		// If our value is valid, store the new value, erase the
 		// "submitted" value, and emit a ValueChangeEvent if appropriate
