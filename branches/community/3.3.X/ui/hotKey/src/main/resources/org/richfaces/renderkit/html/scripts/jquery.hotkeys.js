@@ -28,7 +28,7 @@ USAGE:
 var hack;
 (function (jQuery){
     this.version = '(beta)(0.0.3)';
-	this.all = {};
+
     this.special_keys = {
         27: 'esc', 9: 'tab', 32:'space', 13: 'return', 8:'backspace', 145: 'scroll', 20: 'capslock', 
         144: 'numlock', 19:'pause', 45:'insert', 36:'home', 46:'del',35:'end', 33: 'pageup', 
@@ -39,23 +39,7 @@ var hack;
         "8":"*", "9":"(", "0":")", "-":"_", "=":"+", ";":":", "'":"\"", ",":"<", 
         ".":">",  "/":"?",  "\\":"|" };
     
-    this._uniqueIDIndex = 1;
-    
-    this._uniqueIDExpando = "_jQuery_hotKeys";
-    
-    this._uniqueID = function(node) {
-    	var id = node[this._uniqueIDExpando];
-    	
-    	if (!id) {
-    		id = node[this._uniqueIDExpando] = this._uniqueIDIndex++;
-    	}
-    	
-    	return id;
-    };
-
-    this._checkUniqueID = function(node) {
-    	return node[this._uniqueIDExpando];
-    };
+    this.HOTKEYS_DATA = "jQuery.hotkeys." + (+new Date());
     
     this.buttonInputTypes = /^(submit|button|reset)$/i;
     
@@ -163,16 +147,19 @@ var hack;
             // for example: 'keydown' might be associated with HtmlBodyElement 
             // or the element where you last clicked with your mouse.
             
-            if (that.all[that._checkUniqueID(element)]) {
-            	var cbMap = that.all[that._checkUniqueID(element)].events[type].callbackMap;
+			var elementData = jQuery.data(element, that.HOTKEYS_DATA);
+			
+            if (elementData) {
+            	var cbMap = elementData.events[type].callbackMap;
                	mapPoint = validateMapPoint(element, type, special, character,cbMap);
             }
                 		
            if (jQuery.browser.opera || jQuery.browser.safari || opt.checkParent){
-                while ((element && element.parentNode && !that.all[that._checkUniqueID(element)]) || (!mapPoint && element.parentNode)){
+                while ((element && element.parentNode && !(elementData = jQuery.data(element, that.HOTKEYS_DATA))) || (!mapPoint && element.parentNode)){
                 	element = element.parentNode;
-                	if (that.all[that._checkUniqueID(element)]) {
-                		var cbMap = that.all[that._checkUniqueID(element)].events[type].callbackMap;
+                	elementData = jQuery.data(element, that.HOTKEYS_DATA);
+                	if (elementData) {
+                		var cbMap = elementData.events[type].callbackMap;
                 		mapPoint = validateMapPoint(element, type, special, character,cbMap);
                 	}
                 }
@@ -188,29 +175,38 @@ var hack;
             }
 		};        
 		
-		var targetData = this._uniqueID(opt.target);
+		var target = opt.target;
+		var targetData = jQuery.data(target, this.HOTKEYS_DATA);
 		
         // first hook for this element
-        if (!this.all[targetData]){
-            this.all[targetData] = {events:{}};
+        if (!targetData){
+            targetData = {events:{}};
+            jQuery.data(target, this.HOTKEYS_DATA, targetData);
         }
-        if (!this.all[targetData].events[opt.type]){
-            this.all[targetData].events[opt.type] = {callbackMap: {}}
-            jQuery.event.add(opt.target, opt.type, inspector);
+        if (!targetData.events[opt.type]){
+            targetData.events[opt.type] = {callbackMap: {}, inspector: inspector};
+            jQuery.event.add(target, opt.type, inspector);
         }        
-        this.all[targetData].events[opt.type].callbackMap[combi] =  {cb: callback, propagate:opt.propagate};                
+        targetData.events[opt.type].callbackMap[combi] = {cb: callback, propagate:opt.propagate};                
+
         return jQuery;
 	};    
 	
-	this._deleteEmptyProperty = function(object, property) {
-		var nestedObject = object[property];
-
+	this._isEmpty = function(object, skipList) {
 		var name = "";
-		for (name in nestedObject) {
-			break;
+		for (name in object) {
+			if (!skipList || !(name in skipList)) {
+				break;
+			} else {
+				name = "";
+			}
 		}
 		
-		if (!name) {
+		return !name;
+	};
+	
+	this._deleteEmptyProperty = function(object, property, skipList) {
+		if (this._isEmpty(object[property], skipList)) {
 			delete object[property];
 		}
 	};
@@ -221,23 +217,29 @@ var hack;
         type = opt.type || 'keydown';
 		exp = exp.toLowerCase();        
 		
-		var uniqueId = this._checkUniqueID(target);
-		if (uniqueId) {
-			var element = this.all[uniqueId];
-			if (element) {
-				var events = element['events'];
-				if (events) {
-					var event = events[type];
-					var callbackMap = event['callbackMap'];
-					
-					delete callbackMap[exp];
+		var element = jQuery.data(target, this.HOTKEYS_DATA);
+		if (element) {
+			var events = element['events'];
+			if (events) {
+				var event = events[type];
+				var callbackMap = event['callbackMap'];
 				
-					this._deleteEmptyProperty(event, 'callbackMap');
-					this._deleteEmptyProperty(events, type);
-					this._deleteEmptyProperty(element, 'events');
+				delete callbackMap[exp];
+			
+				this._deleteEmptyProperty(event, 'callbackMap');
+				
+				var inspector = events[type].inspector;
+				this._deleteEmptyProperty(events, type, {inspector: true});
+				
+				if (!events[type] && inspector) {
+		            jQuery.event.remove(target, type, inspector);
 				}
 				
-				this._deleteEmptyProperty(this.all, uniqueId);
+				this._deleteEmptyProperty(element, 'events');
+			}
+			
+			if (this._isEmpty(element)) {
+				jQuery.removeData(target, this.HOTKEYS_DATA);
 			}
 		}
 		
