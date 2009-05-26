@@ -12,7 +12,7 @@
 		component="org.richfaces.component.UIToolTip" >
 		
 	<f:clientid var="clientId"/>
-		<div id="#{clientId}" style="position: absolute; display : none;z-index:#{component.attributes['zorder']}; #{component.attributes['style']}" class="dr-rich-tool-tip rich-tool-tip #{component.attributes['styleClass']}">
+		<div id="#{clientId}" style="position: absolute; display : none;z-index:#{component.attributes['zorder']}; #{component.attributes['style']}" class="rich-tool-tip #{component.attributes['styleClass']}">
 			<f:call name="utils.encodePassThru" />
 			 <jsp:scriptlet>
 				<![CDATA[if("ajax".equals(component.getMode()) && component.getFacet("defaultContent")!=null) {]]>
