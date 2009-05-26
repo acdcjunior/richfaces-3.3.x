@@ -5,7 +5,7 @@
 
 <f:verbatim>
 <![CDATA[
-.dr-spnr-e {
+.rich-spinner-input-container {
 
 	padding: 0px;
 	margin: 0px;
@@ -15,14 +15,14 @@
 	border-width: 1px 0px 1px 1px;
 }
 
-input.dr-spnr-i {
+input.rich-spinner-input {
 	border: 0px;
 	padding: 0px 0px 0px 3px;
 	background: none transparent scroll repeat 0% 0%;
 	margin: 0px;
 }
 
-.dr-spnr-b {
+.rich-spinner-buttons {
 	border-width: 1px;
 	border-style: solid;
 	padding: 0px;
@@ -32,13 +32,13 @@ input.dr-spnr-i {
 	font-size: 0px;
 }
 
-.dr-spnr-bn{
+.rich-spinner-bn{
 	margin: 0px 1px 1px 0px;
 	display: block;
 	border-style: none;
 }
 
-.dr-spnr-bp{
+.rich-spinner-bp{
 	margin: 1px 0px 0px 1px;
 	display: block;
 	border-style: none;
@@ -47,7 +47,7 @@ input.dr-spnr-i {
 
 </f:verbatim>
 	
-	<u:selector name=".dr-spnr-b">
+	<u:selector name=".rich-spinner-buttons">
 		<u:style name="background-color" skin="headerBackgroundColor" />
 		<u:style name="border-color" skin="panelBorderColor" />
 		<u:style name="background-image">
@@ -55,12 +55,12 @@ input.dr-spnr-i {
 		</u:style>
 	</u:selector>
 	
-	<u:selector name=".dr-spnr-i">
+	<u:selector name=".rich-spinner-input">
 		<u:style name="font-size" skin="buttonSizeFont"/>
 		<u:style name="font-family" skin="buttonFamilyFont"/>
 	</u:selector>
 
-	<u:selector name=".dr-spnr-e">
+	<u:selector name=".rich-spinner-input-container">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.images.SpinnerFieldGradient" />
 		</u:style>
