@@ -5,7 +5,7 @@
    	xmlns="http://www.w3.org/1999/xhtml">	
 
 
-	<u:selector name=".dr-rich-tool-tip">
+	<u:selector name=".rich-tool-tip">
 		<u:style name="background-color" skin="tipBackgroundColor"/> 
 		<u:style name="padding" value="7px"/>
 		<u:style name="border" value="1px solid"/>

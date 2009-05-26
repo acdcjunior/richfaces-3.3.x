@@ -13,7 +13,7 @@
 		
 	<f:clientid var="clientId"/>
 	<span id="#{clientId}" style="z-index:#{component.attributes['zorder']}; #{component.attributes['style']}"
-			class="dr-rich-tool-tip rich-tool-tip #{component.attributes['styleClass']}">
+			class="rich-tool-tip #{component.attributes['styleClass']}">
 		<f:call name="utils.encodePassThruWithExclusions">
 				<f:parameter value="id,style,class,disabled" />
 			</f:call>
