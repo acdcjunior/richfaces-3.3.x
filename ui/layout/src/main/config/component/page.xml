@@ -43,6 +43,12 @@
 		</taghandler>
 		&ui_component_attributes;
 		&html_universal_attributes;
+
+        <property>
+            <name>oncontextmenu</name>
+            <classname>java.lang.String</classname>
+            <description>HTML: a script expression</description>
+        </property>
 		<property>
 			<name>pageTitle</name>
 			<classname>java.lang.String</classname>

@@ -23,7 +23,8 @@
 		   <f:call name="pageStyle"/>
 		   <u:insertFacet name="pageHeader"/>
 		</head>
-		<body x:passThruWithExclusions="value,name,type,id">
+		<body x:passThruWithExclusions="value,name,type,id"
+              oncontextmenu='#{component.attributes["oncontextmenu"]}'>
 		  <div id="#{clientId}" class="rich-page #{component.attributes['pageClass']}"
 		   x:style="#{component.attributes['pageStyle']}">
 		   <c:if test="#{this:hasFacet(component,'header')}">
