@@ -1,63 +1,80 @@
 package tabPanel;
 
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 import org.richfaces.component.html.HtmlTab;
 import org.richfaces.component.html.HtmlTabPanel;
 
 import util.componentInfo.ComponentInfo;
 
 public class TabPanel {
-	
+
 	private String width;
 	private String height;
 	private String title;
-	private String switchType; //"client", "server"(default), "ajax"
-	private String headerAlignment; //"left", "center" and "right". 
+	private String direction;
+	private String switchType; // "client", "server"(default), "ajax"
+	private String headerAlignment; // "left", "center" and "right".
 	private String headerSpacing;
 	private String selectedTab;
-	//private String timeout;
+	// private String timeout;
 	private String labelWidth;
 	private String label;
 	private String activeTabStyle;
-	private String	disabledTabStyle;
-	private String	inactiveTabStyle;
-	private String	contentStyle;
-	private String BtnLabel="ON";
+	private String disabledTabStyle;
+	private String inactiveTabStyle;
+	private String contentStyle;
+	private String BtnLabel = "ON";
 	private boolean immediate;
-	private HtmlTabPanel htmlTabPanel = null;
+	private HtmlTabPanel htmlTabPanel;
 	private HtmlTab htmlTab = null;
 	private boolean rendered;
 	private boolean disabledTab;
-	
-	public void addHtmlTabPanel(){
+	private String bindLabel;
+
+	public void checkBinding(ActionEvent e) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		bindLabel = htmlTabPanel.getValue().toString() + "---"
+				+ htmlTabPanel.getClientId(context);
+	}
+
+	public void validate(FacesContext context, UIComponent component,
+			Object value) {
+		System.out.println("***>> validator");
+	}
+
+	public void addHtmlTabPanel() {
 		ComponentInfo info = ComponentInfo.getInstance();
 		info.addField(htmlTabPanel);
 		info.addField(htmlTab);
 	}
-	
+
 	public TabPanel() {
-		width="75%";
-		height="200px";
-		title="title goes here...";
-		switchType="server";
-		headerAlignment="center";
-		headerSpacing="20px";
-		label="Tab Label";
-		labelWidth="150px";
+		width = "75%";
+		height = "200px";
+		title = "title goes here...";
+		switchType = "server";
+		direction = "LTR";
+		headerAlignment = "center";
+		headerSpacing = "20px";
+		label = "Tab Label";
+		labelWidth = "150px";
 		selectedTab = "tabTwo";
-		
-		activeTabStyle=null;
-		disabledTabStyle=null;
-		inactiveTabStyle=null;
-		contentStyle=null;
-		
+		bindLabel = "Click Binding";
+		activeTabStyle = null;
+		disabledTabStyle = null;
+		inactiveTabStyle = null;
+		contentStyle = null;
+
 		immediate = false;
-		rendered=true;
-		disabledTab=false;
-		
+		rendered = true;
+		disabledTab = false;
+
 	}
-	
-	public void doStyles()
-	{
+
+	public void doStyles() {
 		if (getContentStyle() == null) {
 			setBtnLabel("Off");
 			setActiveTabStyle("activeTabStyle");
@@ -72,6 +89,7 @@ public class TabPanel {
 			setInactiveTabStyle(null);
 		}
 	}
+
 	public String getHeaderAlignment() {
 		return headerAlignment;
 	}
@@ -136,6 +154,14 @@ public class TabPanel {
 		this.switchType = switchType;
 	}
 
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -207,7 +233,7 @@ public class TabPanel {
 	public void setImmediate(boolean immediate) {
 		this.immediate = immediate;
 	}
-	
+
 	public void bTest1() {
 		setDisabledTab(false);
 		setHeaderAlignment("left");
@@ -292,6 +318,14 @@ public class TabPanel {
 
 	public void setHtmlTab(HtmlTab htmlTab) {
 		this.htmlTab = htmlTab;
+	}
+
+	public void setBindLabel(String bindLabel) {
+		this.bindLabel = bindLabel;
+	}
+
+	public String getBindLabel() {
+		return bindLabel;
 	}
 
 }
