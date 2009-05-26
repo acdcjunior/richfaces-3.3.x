@@ -6,39 +6,39 @@
 
 <f:verbatim>
 
-.dr-sb-common-container {
+.rich-sb-common-container {
     position: absolute;
     text-align: left;
     background-color: inherit;
 }
 
-.dr-sb-ext-decor-1 {
+.rich-sb-ext-decor-1 {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: 2;
 }
 
-.dr-sb-ext-decor-2 {
+.rich-sb-ext-decor-2 {
     border: 1px solid;
     height: 100%;
     width: 100%;
 }
 
-.dr-sb-ext-decor-3 {
+.rich-sb-ext-decor-3 {
     height: 100%;
     width: 100%;
 }
 
-.dr-sb-overflow {
+.rich-sb-overflow {
 	overflow : auto;
 }
 
-.dr-sb-int-decor-table {
+.rich-sb-int-decor-table {
     width: 100%;
 }
 
-.dr-sb-shadow {
+.rich-sb-shadow {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -46,40 +46,40 @@
     z-index: 1;
 }
 
-.dr-sb-int-sel {
+.rich-sb-int-sel {
     cursor: default;
     background-position: left top;
     background-repeat: repeat-x;
 }
 
-.dr-sb-cell-padding {
+.rich-sb-cell-padding {
     padding: 1px 3px 1px 5px;
 }
 
-.dr-sb-int {
+.rich-sb-int {
 	cursor : pointer;
 }
 
 </f:verbatim>
 
-<u:selector name=".dr-sb-ext-decor-2">
+<u:selector name=".rich-sb-ext-decor-2">
     <u:style name="border-color" skin="panelBorderColor" />
     <u:style name="background-color" skin="additionalBackgroundColor" />
 </u:selector>
 
-<u:selector name=".dr-sb-shadow">
+<u:selector name=".rich-sb-shadow">
     <u:style name="background-color" skin="shadowBackgroundColor" />
     <u:style name="border-color" skin="shadowBackgroundColor" />
     <u:style name="opacity" skin="shadowOpacity" />
 </u:selector>
 
-<u:selector name=".dr-sb-int">
+<u:selector name=".rich-sb-int">
     <u:style name="font-size" skin="generalSizeFont" />
     <u:style name="font-family" skin="generalFamilyFont" />
     <u:style name="color" skin="generalTextColor" />
 </u:selector>
 
-<u:selector name=".dr-sb-int-sel">
+<u:selector name=".rich-sb-int-sel">
     <u:style name="background-color" skin="headerBackgroundColor" />
     <u:style name="font-size" skin="generalSizeFont" />
     <u:style name="font-family" skin="generalFamilyFont" />

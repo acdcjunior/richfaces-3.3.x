@@ -245,7 +245,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
             getUtils().encodeId(context, component);
 
             StringBuffer clazz = new StringBuffer(
-                    "dr-sb-common-container rich-sb-common-container ");
+                    "rich-sb-common-container ");
             clazz.append(suggestionBox.getPopupClass() + " ").
             	append(suggestionBox.getStyleClass());
             writer.writeAttribute("class", clazz, "popupClass");
@@ -875,9 +875,9 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
     	ResponseWriter writer = context.getResponseWriter();
     	UISuggestionBox suggestionBox = (UISuggestionBox)component;
     	final String startHtml = 
-    		"<tr id=\"" + suggestionBox.getClientId(context) + "NothingLabel\" class=\"dr-sb-int rich-sb-int " + suggestionBox.getRowClasses() + 
+    		"<tr id=\"" + suggestionBox.getClientId(context) + "NothingLabel\" class=\"rich-sb-int " + suggestionBox.getRowClasses() + 
     		"\" style=\"display: none;\">" +
-    		"<td nowrap=\"nowrap\" class=\"dr-sb-cell-padding rich-sb-cell-padding\" style=\"" + this.cellPadding(context, component) + "\">";
+    		"<td nowrap=\"nowrap\" class=\"rich-sb-cell-padding\" style=\"" + this.cellPadding(context, component) + "\">";
     	final String endHtml = "</td></tr>";
     	
     	UIComponent nothingLabelFacet = component.getFacet("nothingLabel"); 
@@ -915,6 +915,6 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
     	if (null == rowClass)
     		rowClass = "";
     	
-        return "dr-sb-int rich-sb-int " + entryClass + " " + rowClass;
+        return "rich-sb-int " + entryClass + " " + rowClass;
     }
 }

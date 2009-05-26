@@ -71,7 +71,7 @@ Suggestion.Base.prototype = {
 
         this.options.param = this.options.param || this.element.name;
         this.options.selectedClasses = (this.options.selectedClass
-                || "dr-sb-int-sel rich-sb-int-sel").split(' ');
+                || "rich-sb-int-sel").split(' ');
         this.options.selectValueClass = this.options.selectValueClass
                 || " ";
         this.options.tokens = $A(options.tokens) || [];
@@ -153,9 +153,9 @@ Suggestion.Base.prototype = {
 		this.onScrollListener = this.onScroll.bindAsEventListener(this);
 
 //		if (options.popupClass)
-//			Element.addClassName(this.update.select(".dr-sb-ext-decor-3")[0], options.popupClass);
+//			Element.addClassName(this.update.select(".rich-sb-ext-decor-3")[0], options.popupClass);
 		if (options.popupClass) {
-			var selected = Element.select(this.update,".dr-sb-ext-decor-3");
+			var selected = Element.select(this.update,".rich-sb-ext-decor-3");
 			Element.addClassName(selected[0], options.popupClass);
 		}	
 		
@@ -231,9 +231,9 @@ Suggestion.Base.prototype = {
 			this.wasScroll = false;
 			this.wasBlur = false;
 //			if (!this.overflow)
-//				this.overflow = this.update.select(".dr-sb-overflow")[0];
+//				this.overflow = this.update.select(".rich-sb-overflow")[0];
 			if (!this.overflow) {
-				var selected = Element.select(this.update,".dr-sb-overflow");
+				var selected = Element.select(this.update,".rich-sb-overflow");
 				this.overflow = selected[0];
 			}	
 	       	Event.observe(this.overflow, "scroll", this.onScrollListener);
@@ -515,7 +515,7 @@ Suggestion.Base.prototype = {
         while (item && (item != scroll)) {
         	// Avoid bug in Safari. Details: http://jacob.peargrove.com/blog/2006/technical/table-row-offsettop-bug-in-safari/
 			if (RichFaces.SAFARI == RichFaces.navigatorType() && "TR" == item.tagName.toUpperCase()) {
-				realOffset += item.select(".dr-sb-cell-padding")[0].offsetTop;
+				realOffset += item.select(".rich-sb-cell-padding")[0].offsetTop;
 			}
 			else
             	realOffset += item.offsetTop;
@@ -525,7 +525,7 @@ Suggestion.Base.prototype = {
 
 		var entryOffsetHeight;
 		if (RichFaces.SAFARI == RichFaces.navigatorType()) {
-			var tdElement = item.select(".dr-sb-cell-padding")[0];
+			var tdElement = item.select(".rich-sb-cell-padding")[0];
 			entryOffsetHeight = tdElement.offsetTop + tdElement.offsetHeight;
 		} else
 			entryOffsetHeight = entry.offsetHeight;
@@ -555,7 +555,7 @@ Suggestion.Base.prototype = {
                 for (var i = 0; i < this.options.selectedClasses.length; i++)
 	                Element.addClassName(entry, this.options.selectedClasses[i]);
 
-                var cells = entry.select(".dr-sb-cell-padding");
+                var cells = entry.select(".rich-sb-cell-padding");
                 for (var i = 0; i < cells.length; i++) {
                 	Element.addClassName(cells[i], this.options.selectValueClass);
                 }
@@ -584,7 +584,7 @@ Suggestion.Base.prototype = {
                 if (this.prevIndex >= 0) {
                     var prevEntry = this.getEntry(this.prevIndex);
                     if (prevEntry) {
-                    	var prevCells = prevEntry.select(".dr-sb-cell-padding");
+                    	var prevCells = prevEntry.select(".rich-sb-cell-padding");
 		                for (var i = 0; i < prevCells.length; i++) {
 		                	Element.removeClassName(prevCells[i], this.options.selectValueClass);
                 		}

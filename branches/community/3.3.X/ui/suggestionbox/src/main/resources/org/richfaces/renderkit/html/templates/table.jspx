@@ -11,7 +11,7 @@
             <f:parameter value="styleClass,class,onclick,onselect,width,height,rows,frame,bgcolor,border,rules,cellpadding,cellspacing"/>
         </f:call>
         <f:attribute name="class">
-        	<f:verbatim value="dr-sb-int-decor-table rich-sb-int-decor-table "/>
+        	<f:verbatim value="rich-sb-int-decor-table "/>
         	<f:verbatim property="styleClass"/>
         </f:attribute>
         <colgroup>
@@ -60,7 +60,7 @@
                                 property="fetchValue"/></td>
                     </f:if>
                     <u:insertChildren context="columns">
-                        <td nowrap="nowrap" class="dr-sb-cell-padding rich-sb-cell-padding">
+                        <td nowrap="nowrap" class="rich-sb-cell-padding">
                         <f:attribute name="style"><f:call name="cellPadding"/></f:attribute>
                         <u:insertChild/></td>
                     </u:insertChildren>
