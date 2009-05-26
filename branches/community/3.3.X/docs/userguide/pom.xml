@@ -54,9 +54,6 @@
 							</goals>
 							<configuration>
 								<artifactItems>
-										
-								
-								
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -66,7 +63,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -78,12 +74,6 @@
 											${project.version}
 										</version>
 									</artifactItem>			
-									
-									
-									
-									
-									
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -170,7 +160,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -182,7 +171,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -194,8 +182,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -207,7 +193,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -219,7 +204,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -231,8 +215,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
-
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -244,8 +226,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
-
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -290,7 +270,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -302,7 +281,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -312,7 +290,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -391,7 +368,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -586,8 +562,6 @@
 											${project.version}
 										</version>
 									</artifactItem>
-
-									
 									<artifactItem>
 										<groupId>
 											org.richfaces.ui
@@ -664,15 +638,15 @@
 							<artifactId>saxon</artifactId>
 							<version>8.7</version>
 						</dependency>
-						<dependency>
+						<!--dependency>
 							<groupId>org.apache.xmlgraphics</groupId>
 							<artifactId>fop</artifactId>
 							<version>0.95</version>
-						</dependency>
+						</dependency-->
 					</dependencies>
 					<configuration>
 						<transformationSets>
-							<transformationSet>
+							<!--transformationSet>
 								<dir>
 									${project.build.directory}/library/org/richfaces/renderkit/html/css
 								</dir>
@@ -711,7 +685,7 @@
 										<value>${file.separator}</value>
 									</parameter>
 								</parameters>
-							</transformationSet>
+							</transformationSet-->
 							<transformationSet>
 								<dir>
 									${project.build.directory}/library/META-INF
@@ -723,10 +697,10 @@
 									<exclude>a4j.*</exclude>
 								</excludes>
 								<outputDir>
-									${project.build.directory}/generated/
+									${project.build.directory}${file.separator}generated
 								</outputDir>
 								<stylesheet>
-									${project.build.directory}/common-resources/xslt/f.xsl
+									${project.build.directory}${file.separator}common-resources${file.separator}xslt${file.separator}f.xsl
 								</stylesheet>
 								<fileMappers>
 									<fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
@@ -766,7 +740,7 @@
 							</transformationSet>
 							<transformationSet>
 								<dir>
-									${project.build.directory}/library/META-INF
+									${project.build.directory}${file.separator}library${file.separator}META-INF
 								</dir>
 								<includes>
 									<include>a4j.*</include>
@@ -775,10 +749,10 @@
 									<exclude>*.xml</exclude>
 								</excludes>
 								<outputDir>
-									${project.build.directory}/generated/
+									${project.build.directory}${file.separator}generated${file.separator}
 								</outputDir>
 								<stylesheet>
-									${project.build.directory}/common-resources/xslt/f.xsl
+									${project.build.directory}${file.separator}common-resources${file.separator}xslt${file.separator}f.xsl
 								</stylesheet>
 								<fileMappers>
 									<fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
@@ -812,14 +786,13 @@
 									</parameter>
 									<parameter>
 										<name>outputDir</name>
-										<value>${project.build.directory}${file.separator}generated${file.separator}</value>
+										<value>${project.build.directory}${file.separator}generated${file.separator}</value>						
 									</parameter>
 								</parameters>
 							</transformationSet>
 						</transformationSets>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.jboss.maven.plugins</groupId>
 					<artifactId>maven-jdocbook-plugin</artifactId>
@@ -895,7 +868,6 @@
 							master.xml
 						</sourceDocumentName>
 						<formats>
-
 							<format>
 								<formatName>pdf</formatName>
 								<stylesheetResource>
@@ -921,7 +893,6 @@
 									false
 								</imagePathSettingRequired>
 							</format>
-
 							<format>
 								<formatName>html_single</formatName>
 								<stylesheetResource>
@@ -960,8 +931,8 @@
 							<docbookVersion>1.72.0</docbookVersion>
 						</options>
 					</configuration>
-
 				</plugin>
+
 			</plugins>
 		</pluginManagement>
 	</build>
