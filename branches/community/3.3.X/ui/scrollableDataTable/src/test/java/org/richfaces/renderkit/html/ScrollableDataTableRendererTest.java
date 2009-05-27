@@ -137,7 +137,7 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 		assertEquals("table", div.getNodeName());
 		
 		String classAttr = div.getAttributeValue("class");
-	    assertTrue(classAttr.contains("dr-sdt"));
+	    assertTrue(classAttr.contains("rich-sdt"));
 	    Iterator childIter= div.getChildElementsIterator();
 		
 	    String id = grid.getId();
@@ -170,14 +170,14 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 			
 				String elemClassAttr = elem.getAttributeValue("class");
 				res = false;
-				if(elemClassAttr.contains("dr-sdt-inlinebox")){
+				if(elemClassAttr.contains("rich-sdt-inlinebox")){
 					res = true;
-				}else if(elemClassAttr.contains("dr-sdt-hsplit")){
+				}else if(elemClassAttr.contains("rich-sdt-hsplit")){
 					res = true;
 				}
 				assertTrue(res);
 				
-				if(!elemClassAttr.contains("dr-sdt-hsplit")){
+				if(!elemClassAttr.contains("rich-sdt-hsplit")){
 					
 					boolean templates = elem.getId().equals(grid.getId()+ "_GridBodyTemplate") || elem.getId().equals(grid.getId()+ "_GridFooterTemplate") || elem.getId().equals(grid.getId()+ "_GridHeaderTemplate");
 					assertTrue(templates);
@@ -222,9 +222,9 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 						assertNotNull(elemClassAttr);
 					
 						if(element.getId().contains("FrozenBox")){
-							assertTrue(elemClassAttr.contains("dr-sdt-tmplbox dr-sdt-fb"));
+							assertTrue(elemClassAttr.contains("rich-sdt-fb"));
 						}else if(element.getId().contains("NormalBox")){
-							assertTrue(elemClassAttr.contains("dr-sdt-tmplbox dr-sdt-nb"));
+							assertTrue(elemClassAttr.contains("rich-sdt-nb"));
 						}
 					
 				
@@ -233,13 +233,13 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 							HtmlElement hcell = page.getHtmlElementById(id + ":hc_" + i);
 							assertNotNull(hcell);
 							elemClassAttr = hcell.getAttributeValue("class");
-							assertTrue(elemClassAttr.contains("dr-sdt-hc rich-sdt-header-cell"));
+							assertTrue(elemClassAttr.contains("rich-sdt-header-cell"));
 						
 							for (int j = 0; j < grid.getRows(); j++) {
 								HtmlElement bcell = page.getHtmlElementById(id + ":c_" + j + "_" + i);
 								assertNotNull(bcell);
 								elemClassAttr = bcell.getAttributeValue("class");
-								assertTrue(elemClassAttr.contains("dr-sdt-bc rich-sdt-column-cell"));
+								assertTrue(elemClassAttr.contains("rich-sdt-column-cell"));
 							
 							}
 						}

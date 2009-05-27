@@ -67,7 +67,7 @@
 		]]>
 	</jsp:scriptlet>
 
-	<table id="#{clientId}" cellpadding="0" cellspacing="0" style="width: #{component.attributes['width']};height: #{component.attributes['height']};" class="dr-sdt rich-sdt #{component.attributes['styleClass']}" >
+	<table id="#{clientId}" cellpadding="0" cellspacing="0" style="width: #{component.attributes['width']};height: #{component.attributes['height']};" class="rich-sdt #{component.attributes['styleClass']}" >
 		<tbody>
 			<jsp:scriptlet>
 	     		<![CDATA[				
@@ -88,17 +88,17 @@
 			<tr>
 				<td id="#{normalizedId}" style="height: 100%;">
 					<div id="#{clientId}:c" style="height: 100%; position: relative;">
-						<div id="#{clientId}:cs" class="dr-sdt-hsplit" style="display: none;"/>
-						<div id="#{clientId}_GridHeaderTemplate" class="dr-sdt-inlinebox" style="#{hStyle}; width: #{component.attributes['width']};">
-							<iframe id="#{clientId}:hs" class="dr-sdt-substrate" src="javascript:\'\'" scrolling="no" frameborder="0" > <br/> </iframe>
+						<div id="#{clientId}:cs" class="rich-sdt-hsplit" style="display: none;"/>
+						<div id="#{clientId}_GridHeaderTemplate" class="rich-sdt-inlinebox" style="#{hStyle}; width: #{component.attributes['width']};">
+							<iframe id="#{clientId}:hs" class="rich-sdt-substrate" src="javascript:\'\'" scrolling="no" frameborder="0" > <br/> </iframe>
 							<div style="display: block; left: 0px; top: 0px; width: #{sumWidth}px;">
 									<style>
 										<f:call name="renderStyle" />	
 									</style>
-									<span class="dr-sdt-tmplbox dr-sdt-fb" id="#{clientId}:header:FrozenBox">
+									<span class="rich-sdt-fb" id="#{clientId}:header:FrozenBox">
 										<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 											<thead>
-												<tr class="dr-sdt-hr rich-std-header-row #{component.attributes['headerClass']}">	
+												<tr class="rich-std-header-row #{component.attributes['headerClass']}">	
 													<jsp:scriptlet>
 								                   		<![CDATA[
 															renderHeaders(context, component, true);
@@ -109,17 +109,17 @@
 										</table>					
 									</span>
 							
-									<span class="dr-sdt-tmplbox dr-sdt-nb" id="#{clientId}:header:NormalBox">
+									<span class="rich-sdt-nb" id="#{clientId}:header:NormalBox">
 										<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 											<thead>
-												<tr class="dr-sdt-hr rich-std-header-row #{component.attributes['headerClass']}">	
+												<tr class="rich-std-header-row #{component.attributes['headerClass']}">	
 													<jsp:scriptlet>
 								                   		<![CDATA[
 															renderHeaders(context, component, false);
 														]]>
 													</jsp:scriptlet>
-													<th class="dr-sdt-hc dr-sdt-c-f rich-sdt-header-cell">
-														<div class="dr-sdt-cbody" />
+													<th class="rich-sdt-c-f rich-sdt-header-cell">
+														<div class="rich-sdt-header-cell-body" />
 													</th>
 												</tr>	
 											</thead>
@@ -130,12 +130,12 @@
 						
 						
 						
-						<div id="#{clientId}_GridBodyTemplate" class="dr-sdt-inlinebox" style="overflow: auto; width: #{component.attributes['width']}; height: #{component.attributes['height']};">
+						<div id="#{clientId}_GridBodyTemplate" class="rich-sdt-inlinebox" style="overflow: auto; width: #{component.attributes['width']}; height: #{component.attributes['height']};">
 							<div id="#{clientId}:scb" style="position: absolute; z-index: 0;">
 								<div id="#{clientId}:sb" style="position: absolute;" ><br/> </div>
 							</div>
 							<div id="#{clientId}:bc" style="display: block; width:  #{sumWidth}px;">
-								<span class="dr-sdt-tmplbox dr-sdt-fb" id="#{clientId}:body:FrozenBox">
+								<span class="rich-sdt-fb" id="#{clientId}:body:FrozenBox">
 									<table id="#{clientId}:f" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 										<tbody>
 											<jsp:scriptlet>
@@ -145,9 +145,9 @@
 											</jsp:scriptlet>
 										</tbody>
 									</table>
-									<span class="dr-sdt-ho" id="#{clientId}:fho" ><br/></span>
+									<span class="rich-sdt-ho" id="#{clientId}:fho" ><br/></span>
 								</span>
-								<span class="dr-sdt-tmplbox dr-sdt-nb" id="#{clientId}:body:NormalBox">
+								<span class="rich-sdt-nb" id="#{clientId}:body:NormalBox">
 									<table id="#{clientId}:n" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 										<tbody>
 											<jsp:scriptlet>
@@ -157,18 +157,18 @@
 											</jsp:scriptlet>
 										</tbody>
 									</table>
-									<span class="dr-sdt-ho" id="#{clientId}:nho" ><br/></span>
+									<span class="rich-sdt-ho" id="#{clientId}:nho" ><br/></span>
 								</span>		
 							</div>			
 						</div>
 						
-						<div id="#{clientId}_GridFooterTemplate" class="dr-sdt-inlinebox" style="#{fStyle}; width: #{component.attributes['width']};">
-							<iframe id="#{clientId}:fs" class="dr-sdt-substrate" src="javascript:\'\'" scrolling="no" frameborder="0" >  <br/></iframe>
+						<div id="#{clientId}_GridFooterTemplate" class="rich-sdt-inlinebox" style="#{fStyle}; width: #{component.attributes['width']};">
+							<iframe id="#{clientId}:fs" class="rich-sdt-substrate" src="javascript:\'\'" scrolling="no" frameborder="0" >  <br/></iframe>
 							<div style="display: block; width: width: #{sumWidth}px;">
-								<span class="dr-sdt-tmplbox dr-sdt-fb" id="#{clientId}:footer:FrozenBox">
+								<span class="rich-sdt-fb" id="#{clientId}:footer:FrozenBox">
 									<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 										<tfoot>
-											<tr class="dr-sdt-fr rich-std-footer-row #{component.attributes['footerClass']}">	
+											<tr class="rich-std-footer-row #{component.attributes['footerClass']}">	
 												<jsp:scriptlet>
 								        	        <![CDATA[
 														renderFooters(context, component,true);	
@@ -179,17 +179,17 @@
 									</table>			
 								</span>
 								
-								<span class="dr-sdt-tmplbox dr-sdt-nb" id="#{clientId}:footer:NormalBox">
+								<span class="rich-sdt-nb" id="#{clientId}:footer:NormalBox">
 									<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
 										<tfoot>
-											<tr class="dr-sdt-fr rich-std-footer-row #{component.attributes['footerClass']}">
+											<tr class="rich-std-footer-row #{component.attributes['footerClass']}">
 												<jsp:scriptlet>
 								        	        <![CDATA[
 														renderFooters(context, component,false);	
 													]]>
 												</jsp:scriptlet>
-												<th class="dr-sdt-fc dr-sdt-c-f rich-sdt-footer-cell">
-													<div class="dr-sdt-cbody" />
+												<th class="rich-sdt-c-f rich-sdt-footer-cell">
+													<div class="rich-sdt-footer-cell-body" />
 												</th>
 											</tr>
 										</tfoot>

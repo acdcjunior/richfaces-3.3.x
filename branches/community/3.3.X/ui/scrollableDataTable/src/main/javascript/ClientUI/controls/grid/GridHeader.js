@@ -128,7 +128,7 @@ ClientUI.controls.grid.GridHeader = Class.create(ClientUI.common.box.Box, {
 				fixedWidth: Validators.getBoolean(cell.getAttribute("fixedWidth"), false),
 				sortable: Validators.getBoolean(cell.getAttribute("sortable"), false),
 				sorted: Validators.getBoolean(cell.getAttribute("sorted"), "desc"),
-				style : Utils.getRule("#"+ this.normalizedId + " .dr-sdt-c-" + j).style
+				style : Utils.getRule("#"+ this.normalizedId + " .rich-sdt-c-" + j).style
 			};
 			if(columns[j].sortable)
 				Event.observe(cell, 'click',  eventCellMouseDown);
@@ -168,7 +168,7 @@ ClientUI.controls.grid.GridHeader = Class.create(ClientUI.common.box.Box, {
 				fixedWidth: Validators.getBoolean(cell.getAttribute("fixedWidth"), false),
 				sortable: Validators.getBoolean(cell.getAttribute("sortable"), false),
 				sorted: null,
-				style : Utils.getRule("#"+ this.normalizedId + " .dr-sdt-c-" + (( i < count - 1 ) ? j : "f")).style
+				style : Utils.getRule("#"+ this.normalizedId + " .rich-sdt-c-" + (( i < count - 1 ) ? j : "f")).style
 			};
 			
 			if(columns[j].sortable)
@@ -330,7 +330,7 @@ ClientUI.controls.grid.GridHeader = Class.create(ClientUI.common.box.Box, {
 	},
 	OnCellMouseDown: function(event) {
 		var el = Event.element(event);
-		while(el && !Element.hasClassName(el, "dr-sdt-hc")) {
+		while(el && !Element.hasClassName(el, "rich-sdt-header-cell")) {
 			el = el.parentNode;
 		}
 		
@@ -433,7 +433,7 @@ ClientUI.controls.grid.GridHeader = Class.create(ClientUI.common.box.Box, {
 });
 
 Object.extend(ClientUI.controls.grid.GridHeader.prototype, {
-	sepStyleClass: "dr-sdt-hsep", 
+	sepStyleClass: "rich-sdt-hsep", 
 	// internal variables
 	_columns: []	
 });

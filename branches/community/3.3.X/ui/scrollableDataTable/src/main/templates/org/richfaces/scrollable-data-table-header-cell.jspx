@@ -12,7 +12,7 @@
 	component="javax.faces.component.UIComponent" 
 	>
 
-	<th class="dr-sdt-hc rich-sdt-header-cell #{headerColumnClass} #{headerColumnSortClass}" id="#{client_id}:hc_#{cell_index}" columnid="#{component.attributes['id']}" sortable="#{component.attributes['sortable']}">
+	<th class="rich-sdt-header-cell #{headerColumnClass} #{headerColumnSortClass}" id="#{client_id}:hc_#{cell_index}" columnid="#{component.attributes['id']}" sortable="#{component.attributes['sortable']}">
 		<jsp:scriptlet>
 			
 			if(org.richfaces.component.util.ColumnUtil.isSortable(component)) {
@@ -32,7 +32,7 @@
 			}
 			
 		</jsp:scriptlet>
-		<span column="#{cell_index}" id="#{client_id}:hsep_#{cell_index}" style="left: #{offset}px;" class="dr-sdt-hsep rich-sdt-hsep" />
+		<span column="#{cell_index}" id="#{client_id}:hsep_#{cell_index}" style="left: #{offset}px;" class="rich-sdt-hsep" />
 	</th>
 
 </f:root>	

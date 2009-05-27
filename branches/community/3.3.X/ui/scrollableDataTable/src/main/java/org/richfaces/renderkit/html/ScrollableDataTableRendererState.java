@@ -422,7 +422,7 @@ public class ScrollableDataTableRendererState{
 	}	
 	
 	public String getRowClass() {
-		return getRowClass(getRowIndex()) + (isFake() ? " dr-sdt-fake-r rich-sdt-fake-r " : "");
+		return getRowClass(getRowIndex()) + (isFake() ? " rich-sdt-fake-r " : "");
 	}
 	
 	private String getRowClass(int index) {

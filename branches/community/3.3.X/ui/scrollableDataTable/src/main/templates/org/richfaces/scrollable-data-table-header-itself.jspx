@@ -12,10 +12,10 @@
 	component="javax.faces.component.UIComponent" 
 	>
 
-<div id="#{client_id}:hcb_#{cell_index}" class="dr-sdt-cbody dr-sdt-c-#{cell_index} #{component.attributes['headerClass']}">
+<div id="#{client_id}:hcb_#{cell_index}" class="rich-sdt-header-cell-body rich-sdt-c-#{cell_index} #{component.attributes['headerClass']}">
 	<vcp:body/>
 
-	<div align="right" id="#{client_id}:hs_#{cell_index}" class="dr-sdt-sort-icon">
+	<div align="right" id="#{client_id}:hs_#{cell_index}" class="rich-sdt-sort-icon">
 			<c:if test="#{sortAscending}">
 				<f:call name="renderAscIcon"/>
 			</c:if>
