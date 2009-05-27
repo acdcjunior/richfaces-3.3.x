@@ -59,6 +59,7 @@
 		<property>
 		    <name>inputSize</name>
 		    <classname>java.lang.Integer</classname>
+            <defaultvalue>20</defaultvalue>
 		    <description>
 		        inputSize - way to set the size of the edit box
 		    </description>
