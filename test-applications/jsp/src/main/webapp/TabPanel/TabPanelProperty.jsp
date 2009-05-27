@@ -4,7 +4,7 @@
 <%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
 
 <f:subview id="tabPanelStraightforwardSubviewID">
-<h:commandButton value="add test" action="#{tabPanel.addHtmlTabPanel}"></h:commandButton>
+	<h:commandButton value="add test" action="#{tabPanel.addHtmlTabPanel}"></h:commandButton>
 	<h:panelGrid columns="2" cellspacing="10px">
 		<h:outputText value="Width (px or %):"></h:outputText>
 		<h:inputText value="#{tabPanel.width}" onchange="submit();" />
@@ -20,6 +20,12 @@
 		<h:outputText value="LabelWidth:"></h:outputText>
 		<h:inputText value="#{tabPanel.labelWidth}" onchange="submit();" />
 
+		<h:outputText value="Direction:"></h:outputText>
+		<h:selectOneRadio value="#{tabPanel.direction}">
+			<f:selectItem itemLabel="LTR" itemValue="LTR" />
+			<f:selectItem itemLabel="RTL" itemValue="RTL" />
+			<a4j:support event="onchange" reRender="tabPanelId"></a4j:support>
+		</h:selectOneRadio>
 		<h:outputText value="SwitchType:"></h:outputText>
 		<h:selectOneRadio value="#{tabPanel.switchType}">
 			<f:selectItem itemLabel="client" itemValue="client" />
@@ -62,6 +68,13 @@
 		<h:selectBooleanCheckbox value="#{tabPanel.disabledTab}"
 			onclick="submit()">
 		</h:selectBooleanCheckbox>
+		<h:commandButton actionListener="#{tabPanel.checkBinding}"
+			value="Binding">
+			<a4j:support event="onclick" reRender="bindLabelID"></a4j:support>
+		</h:commandButton>
+		<h:outputText value="#{tabPanel.bindLabel}" id="bindLabelID" />
+		<a4j:commandButton value="rerender" reRender="tabPanelId" />
+		<br />
 		<h:outputText value="Switch Styles:" />
 		<h:commandButton action="#{tabPanel.doStyles}"
 			value="#{tabPanel.btnLabel}" />
