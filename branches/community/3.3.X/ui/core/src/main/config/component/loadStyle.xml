@@ -34,7 +34,7 @@
 			<name>src</name>
 			<classname>java.lang.Object</classname>
 			<description><![CDATA[
-			name of JavaScript resource to load.
+			Defines the context relative path to the style sheet file.
 			]]>
 			</description>
 		</property>

@@ -104,7 +104,7 @@
 			<name>startText</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Text for display on starting request.
+				Text to display on starting request.
 			</description>
 		</property>
 		<property>

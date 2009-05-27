@@ -55,7 +55,7 @@
 		<property>
 			<name>usemap</name>
 			<classname>java.lang.String</classname>
-			<description>use client-side image map</description>
+			<description>Specifies an image as a client-side image-map</description>
 		</property>
 		<property>
 			<name>ismap</name>
@@ -84,12 +84,12 @@
 		<property>
 			<name>codetype</name>
 			<classname>java.lang.String</classname>
-			<description>content type for code</description>
+			<description>Defines content type for code</description>
 		</property>
 		<property>
 			<name>archive</name>
 			<classname>java.lang.String</classname>
-			<description>space-separated list of URIs</description>
+			<description> Specifies a space-separated list of URIs</description>
 		</property>
 		<property>
 			<name>standby</name>
@@ -135,8 +135,7 @@
 			<classname>javax.el.MethodExpression</classname>
 			<description>
 				<![CDATA[
-        Method call expression to send generated resource to OutputStream. It must have two parameter with a type of java.io.OutputStream 
-        and java.lang.Object ( deserialized value of data attribute )
+        Attribute references to the method that will be used for content creating. The method accepts two parameters. The first parameter has an OutputStream type. It is a reference to the steam that should be used for output. The second parameter is a reference to a 'value' attribute of the component. 
           ]]>
 			</description>
 			<methodargs>
@@ -167,7 +166,7 @@
 		<property>
 			<name>cacheable</name>
 			<classname>boolean</classname>
-			<description>If "true", the resource is cached (on the server and the client sides).</description>
+			<description>Attribute is a flag that defines the caching strategy. If 'cacheable' is set to false, the response will not be cached. If it is set to true, it will be cached and the serialized value of 'value' attribute plays the role of a cache key.</description>
 		</property>
 		<property>
 			<name>expires</name>

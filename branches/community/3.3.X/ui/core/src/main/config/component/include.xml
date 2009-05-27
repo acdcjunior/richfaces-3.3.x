@@ -44,7 +44,7 @@
 		<property>
 			<name>viewId</name>
 			<classname>java.lang.String</classname>
-			<description>viewId for included page.</description>
+			<description>Specifies the view id of a page that is included.</description>
 		</property>
 		<property>
 			<name>layout</name>
