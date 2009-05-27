@@ -13,10 +13,6 @@
 	<version>3.3.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Richfaces Manual (${translation})</name>
-
-	<properties>
-		<translation>en</translation>
-	</properties>
 	<build>
 		<finalName>
 			${project.parent.artifactId}_${translation}-${version}
@@ -37,19 +33,6 @@
 				<artifactId>maven-jdocbook-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
-			<!--plugin>
-				<groupId>org.jboss.maven.plugins</groupId>
-				<artifactId>maven-spellChecker-plugin</artifactId>
-			</plugin-->
-
-			<!--
-				<plugin>
-				<groupId>org.jboss.maven.plugins</groupId>
-				<artifactId>maven-jdocbook-style-plugin</artifactId>
-				<version>1.0.0</version>
-				<extensions>true</extensions>
-				</plugin>
-			-->
 		</plugins>
 	</build>
 </project>

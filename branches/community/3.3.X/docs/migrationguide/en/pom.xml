@@ -13,10 +13,6 @@
 	<version>3.3.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>RichFaces Migration Guide (${translation})</name>
-
-	<properties>
-		<translation>en</translation>
-	</properties>
 	<build>
 		<finalName>
 			${project.parent.artifactId}_${translation}-${version}

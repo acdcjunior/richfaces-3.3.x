@@ -119,7 +119,7 @@
 											org.richfaces.docs.common-resources
 										</groupId>
 										<artifactId>
-											${project.translation}
+											${translation}
 										</artifactId>
 										<version>
 											${project.version}
@@ -263,16 +263,6 @@
 							<xmlTransformerType>
 								saxon
 							</xmlTransformerType>
-							<!--
-								<transformerParameters>
-								<property>
-								<name>custom.titlepage.img</name>
-								<value>
-								${basedir}/src/main/resources/shared/images/hibernate_logo_a.png
-								</value>
-								</property>
-								</transformerParameters>
-							-->
 							<docbookVersion>1.72.0</docbookVersion>
 						</options>
 					</configuration>
@@ -281,21 +271,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<!-- report plugin is currently hosed
-		<reporting>
-		<plugins>
-		<plugin>
-		<groupId>org.jboss.maven.plugin</groupId>
-		<artifactId>jboss-docbook-plugin</artifactId>
-		</plugin>
-		</plugins>
-		</reporting>
-	-->
-	<properties>
-		<masterTranslation>en</masterTranslation>
-	</properties>
-
 	<modules>
 		<module>en</module>
 	</modules>

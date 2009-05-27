@@ -46,7 +46,7 @@
 											org.richfaces.docs.common-resources
 										</groupId>
 										<artifactId>
-											${project.translation}
+											${translation}
 										</artifactId>
 										<version>
 											${project.version}
@@ -176,12 +176,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<properties>
-		<masterTranslation>en</masterTranslation>
-	</properties>
-
 	<modules>
 		<module>en</module>
 	</modules>
-
 </project>
