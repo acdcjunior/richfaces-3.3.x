@@ -202,7 +202,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 			widthPx = getFormattedWidth(widthPx);
 			int width = Integer.parseInt(widthPx);
 			
-			writer.writeText("#" + getNormalizedId(context, state.getGrid())+ " .dr-sdt-c-" + cell_index + " {", "width");
+			writer.writeText("#" + getNormalizedId(context, state.getGrid())+ " .rich-sdt-c-" + cell_index + " {", "width");
 			writer.writeText("width: " + width + "px;", "width");
 			writer.writeText("}", "width");			
 			return 0;
@@ -345,7 +345,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 				writer.startElement(HTML.TR_ELEMENT, grid);
 				state.setFrozenColumnCount(ScrollableDataTableUtils.getFrozenColumnsCount(grid));
 				getUtils().writeAttribute(writer, "id",row_id);
-				getUtils().writeAttribute(writer, "class","dr-sdt-rb rich-sdt-row " + state.getRowClass());
+				getUtils().writeAttribute(writer, "class","rich-sdt-row " + state.getRowClass());
 				addRowJavascriptEvents(writer, grid);
 				if (log.isDebugEnabled()) {
 					log.debug("rowIndex : " + index);
@@ -354,9 +354,9 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 				ColumnWalker.iterateOverColumns(context, grid, cellRenderer, writer, state);
 				if(!state.isFrozenPart()){
 					writer.startElement("td", grid);
-					getUtils().writeAttribute(writer, "class","dr-sdt-bc dr-sdt-c-f rich-sdt-column-cell " + state.getColumnClass(state.getCellIndex()));
+					getUtils().writeAttribute(writer, "class","rich-sdt-c-f rich-sdt-column-cell " + state.getColumnClass(state.getCellIndex()));
 					writer.startElement(HTML.DIV_ELEM, grid);
-					getUtils().writeAttribute(writer, "class","dr-sdt-cbody");
+					getUtils().writeAttribute(writer, "class","rich-sdt-column-cell-body");
 					writer.endElement(HTML.DIV_ELEM);
 					writer.endElement("td");
 				}
@@ -407,7 +407,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 							
 							row_id = baseClientId + ":f:" +  state.getRowIndex();
 							writer.startElement("tr", grid);
-							getUtils().writeAttribute(writer, "class","dr-sdt-rb rich-sdt-row " + state.getRowClass());
+							getUtils().writeAttribute(writer, "class","rich-sdt-row " + state.getRowClass());
 							getUtils().writeAttribute(writer,"id",row_id);
 							addRowJavascriptEvents(writer, grid);
 							collection.add(row_id);
@@ -438,9 +438,9 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 						writer, baseClientId);				
 			}
 			writer.startElement("td", grid);
-			getUtils().writeAttribute(writer, "class","dr-sdt-bc dr-sdt-c-f rich-sdt-column-cell " + state.getColumnClass(state.getCellIndex()));
+			getUtils().writeAttribute(writer, "class","rich-sdt-c-f rich-sdt-column-cell " + state.getColumnClass(state.getCellIndex()));
 			writer.startElement(HTML.DIV_ELEM, grid);
-			getUtils().writeAttribute(writer, "class","dr-sdt-cbody");
+			getUtils().writeAttribute(writer, "class","rich-sdt-column-cell-body");
 			writer.endElement(HTML.DIV_ELEM);
 			writer.endElement("td");
 			writer.endElement("tr");
@@ -462,7 +462,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 			
 			writer.startElement("tr", grid);
 			getUtils().writeAttribute(writer,"id",row_id);
-			getUtils().writeAttribute(writer, "class","dr-sdt-rb rich-sdt-row " + state.getRowClass());
+			getUtils().writeAttribute(writer, "class","rich-sdt-row " + state.getRowClass());
 			addRowJavascriptEvents(writer, grid);
 			collection.add(row_id);
 		}
@@ -588,7 +588,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 		ScrollableDataTableRendererState state = ScrollableDataTableRendererState.getRendererState(context);
 		ColumnWalker.iterateOverColumns(context, grid, styleRenderer, context.getResponseWriter(), state);
 		ResponseWriter writer = context.getResponseWriter();
-		writer.writeText("#" + getNormalizedId(context, state.getGrid()) + " .dr-sdt-c-f {", "width");
+		writer.writeText("#" + getNormalizedId(context, state.getGrid()) + " .rich-sdt-c-f {", "width");
 		writer.writeText("width: 0px;", "width");
 		writer.writeText("}", "width");			
 	}

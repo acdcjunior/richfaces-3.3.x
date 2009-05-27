@@ -11,8 +11,8 @@
 	component="javax.faces.component.UIComponent" 
 	>
 	
-	<th class="dr-sdt-fc rich-sdt-footer-cell #{footerColumnClass} #{footerColumnSortClass} #{component.attributes['footerClass']}">
-		<div id="#{client_id}:fc_#{cell_index}" class="dr-sdt-cbody dr-sdt-c-#{cell_index}">
+	<th class="rich-sdt-footer-cell #{footerColumnClass} #{footerColumnSortClass} #{component.attributes['footerClass']}">
+		<div id="#{client_id}:fc_#{cell_index}" class="rich-sdt-footer-cell-body rich-sdt-c-#{cell_index}">
 			<vcp:body/>
 		</div>
 	</th>

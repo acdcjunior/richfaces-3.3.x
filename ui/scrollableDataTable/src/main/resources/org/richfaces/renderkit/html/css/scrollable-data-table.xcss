@@ -6,19 +6,19 @@
 
 	<f:verbatim>
 	
-		.dr-sdt-sort-asc, .dr-sdt-sort-desc {
+		.rich-sdt-sort-asc, .rich-sdt-sort-desc {
 			width: 16px;
 			height: 6px;
 			background-position: 50% 50%;
 			background-repeat: no-repeat;
 		}
 		
-		.dr-sdt-sort-icon {
+		.rich-sdt-sort-icon {
 			position:absolute;
 			visibility: hidden;
 		}
 		
-		.dr-sdt {
+		.rich-sdt {
 			padding: 0px 0px;
 			margin: 0px;
 			z-index:0;
@@ -32,15 +32,9 @@
 		 */
 		
 		/**
-		 * Header row
-		 */
-		.dr-sdt-hr {
-		}
-			
-		/**
 		 * Header cell
 		 */
-		.dr-sdt-hc {
+		.rich-sdt-header-cell {
 			-o-text-overflow: ellipsis;
 			text-overflow: ellipsis;
 			font-weight: normal;
@@ -51,7 +45,7 @@
 			border-right-style: solid;
 		}
 		
-		.dr-sdt-hc .sort-asc, .dr-sdt-hc .sort-desc {
+		.rich-sdt-header-cell .sort-asc, .rich-sdt-header-cell .sort-desc {
 			background-position: right;
 			background-repeat: no-repeat;
 			width: 16px !important;;
@@ -62,7 +56,7 @@
 		/**
 		 * Header cells separator
 		 */
-		.dr-sdt-hsep {
+		.rich-sdt-hsep {
 		/*	background-image: url(grid-split.gif);*/
 			background-position: center;
 			background-repeat: repeat-y;
@@ -75,17 +69,17 @@
 			display: block;
 			z-index: 60;
 		}
-		.dr-sdt-hsplit {
+		.rich-sdt-hsplit {
 			width:1px;
 			border-right: 1px dashed;
 			cursor: col-resize;
 			z-index: 100;
 		}
 		
-		.dr-sdt-fb{
+		.rich-sdt-fb{
 			z-index: 50;
 		}
-		.dr-sdt-nb {
+		.rich-sdt-nb {
 			z-index: 20;
 		}
 		
@@ -98,14 +92,14 @@
 		/**
 		 * Footer row
 		 */
-		.dr-sdt-fr {
+		.rich-std-footer-row {
 			border-top: 1px solid #cbc7b8; /* //TODO Which skin parameter must be here? */
 		}
 		
 		/**
 		 * Footer cell
 		 */
-		.dr-sdt-fc {
+		.rich-sdt-footer-cell {
 			-o-text-overflow: ellipsis;
 			text-overflow: ellipsis;	
 			font-weight: normal;
@@ -122,12 +116,7 @@
 		 * ---------------------------------------------
 		 */
 		 
-		/**
-		 * Body cell declaration
-		 * dr-sdt-bc - reqired
-		 * dr-sdt-bcDef - default, used if no custom styles defined in body template
-		 */
-		.dr-sdt-bc {
+		.rich-sdt-column-cell {
 			box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			-moz-outline: none;
@@ -139,24 +128,19 @@
 		/**
 		 * Body row style
 		 */
-		.dr-sdt-ho {
+		.rich-sdt-ho {
 			position: absolute;
 			height: 10px;
 			width: 10px;
 		}
 		
-		.dr-sdt-rb {
+		.rich-sdt-row {
 			font-weight: normal;
 			white-space: nowrap;
 			box-sizing: border-box;
 			-moz-box-sizing: border-box;
 		}
-		/*
-		.dr-sdt-row-active {
-			font-weight:bold; //TODO Which skin parameter must be here? 
-		}
-		*/
-		.dr-sdt-cbody {
+		.rich-sdt-header-cell-body, .rich-sdt-column-cell-body, .rich-sdt-footer-cell-body {
 			white-space: nowrap;	
 			overflow: hidden;
 			-o-text-overflow: ellipsis;
@@ -169,7 +153,7 @@
 		/** 
 		 * Helper classes for grid template
 		*/
-		.dr-sdt-substrate {
+		.rich-sdt-substrate {
 			z-index: 48;
 		 	filter:Alpha(opacity=0);
 		 	position:absolute;
@@ -178,13 +162,13 @@
 		 	display:block;
 		}
 		
-		.dr-sdt-tmplbox {
+		.rich-sdt-fb,  .rich-sdt-nb{
 		 	display: block;
 		    float:left;
 		    position: absolute;
 		}
 		
-		.dr-sdt-inlinebox {
+		.rich-sdt-inlinebox {
 		 	position: relative;
 			display: block;
 			overflow: hidden;	
@@ -193,15 +177,15 @@
 		
 	</f:verbatim>
 	
-	<u:selector name=".dr-sdt">
+	<u:selector name=".rich-sdt">
 	    <u:style name="background-color" skin="tableBackgroundColor" />
 	    <u:style name="border-color" skin="tableBorderColor" />
 	    <u:style name="border-width" skin="tableBorderWidth" />
 	</u:selector>
-	<u:selector name=".dr-sdt-hr">
+	<u:selector name=".rich-std-header-row">
 	    <u:style name="background-color" skin="headerBackgroundColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-hc">
+	<u:selector name=".rich-sdt-header-cell">
 	    <u:style name="color" skin="headerTextColor" />
 	    <u:style name="font-family" skin="generalFamilyFont" />
 	    <u:style name="font-size" skin="generalSizeFont" />
@@ -210,40 +194,40 @@
 	    <u:style name="border-right-width" skin="tableBorderWidth" />
 	    <u:style name="border-right-color" skin="tableBorderColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-hsplit">
+	<u:selector name=".rich-sdt-hsplit">
 	    <u:style name="border-right-color" skin="tipBorderColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-fr">
+	<u:selector name=".rich-std-footer-row">
 	    <u:style name="background-color" skin="tableSubfooterBackgroundColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-fc">
+	<u:selector name=".rich-sdt-footer-cell">
 	    <u:style name="border-right-color" skin="tableBorderColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-bc">
+	<u:selector name=".rich-sdt-column-cell">
 	    <u:style name="border-right-color" skin="tableBorderColor" />
 	    <u:style name="border-bottom-color" skin="tableBorderColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-row-selected">
+	<u:selector name=".rich-sdt-row-selected">
 	    <u:style name="background-color" skin="additionalBackgroundColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-row-active">
+	<u:selector name=".rich-sdt-row-active">
 	    <u:style name="color" skin="tabDisabledTextColor" />
 	</u:selector>
-	<u:selector name=".dr-sdt-cbody">
+	<u:selector name=".rich-sdt-header-cell-body, .rich-sdt-column-cell-body, .rich-sdt-footer-cell-body">
 	    <u:style name="font-family" skin="generalFamilyFont" />
 	    <u:style name="font-size" skin="generalSizeFont" />
 	</u:selector>
-	<u:selector name=".dr-sdt-sort-asc">
+	<u:selector name=".rich-sdt-sort-asc">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.iconimages.DataTableIconSortAsc"/>
 		</u:style>
 	</u:selector>
-	<u:selector name=".dr-sdt-sort-desc">
+	<u:selector name=".rich-sdt-sort-desc">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.iconimages.DataTableIconSortDesc"/>
 		</u:style>
 	</u:selector>
-	<u:selector name=".dr-sdt-hsep">
+	<u:selector name=".rich-sdt-hsep">
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.html.iconimages.ScrollableDataTableIconSplit"/>
 		</u:style>

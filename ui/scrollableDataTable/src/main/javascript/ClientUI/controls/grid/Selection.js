@@ -263,8 +263,6 @@ ClientUI.controls.grid.SelectionManager = Class.create({
 			while(j <= this.selection.ranges[i].indexes[1]) {
 				var fElement = $(this.prefix + ":f:" + j);
 				var nElement = $(this.prefix + ":n:" + j);
-				Element.addClassName(fElement, "dr-sdt-row-selected");
-				Element.addClassName(nElement, "dr-sdt-row-selected");
 				Element.addClassName(fElement, "rich-sdt-row-selected");
 				Element.addClassName(nElement, "rich-sdt-row-selected");
 				Element.addClassName(fElement, this.selectedClass);
@@ -485,8 +483,6 @@ ClientUI.controls.grid.SelectionManager = Class.create({
 		this.selection.addId(rowIndex);
 		var fElement = $(this.prefix + ":f:" + rowIndex);
 		var nElement = $(this.prefix + ":n:" + rowIndex);
-		Element.addClassName(fElement, "dr-sdt-row-selected");
-		Element.addClassName(nElement, "dr-sdt-row-selected");
 		Element.addClassName(fElement, "rich-sdt-row-selected");
 		Element.addClassName(nElement, "rich-sdt-row-selected");
 		Element.addClassName(fElement, this.selectedClass);
@@ -497,8 +493,6 @@ ClientUI.controls.grid.SelectionManager = Class.create({
 		this.selection.removeId(rowIndex);
 		var fElement = $(this.prefix + ":f:" + rowIndex);
 		var nElement = $(this.prefix + ":n:" + rowIndex);
-		Element.removeClassName(fElement, "dr-sdt-row-selected");
-		Element.removeClassName(nElement, "dr-sdt-row-selected");
 		Element.removeClassName(fElement, "rich-sdt-row-selected");
 		Element.removeClassName(nElement, "rich-sdt-row-selected");
 		Element.removeClassName(fElement, this.selectedClass);
@@ -510,8 +504,6 @@ ClientUI.controls.grid.SelectionManager = Class.create({
 		if(this.activeRow != null) {
 			fElement = $(this.prefix + ":f:" + this.activeRow);
 			nElement = $(this.prefix + ":n:" + this.activeRow);
-		Element.removeClassName(fElement, "dr-sdt-row-active");
-		Element.removeClassName(nElement, "dr-sdt-row-active");
 		Element.removeClassName(fElement, "rich-sdt-row-active");
 		Element.removeClassName(nElement, "rich-sdt-row-active");
 		Element.removeClassName(fElement, this.activeClass);
@@ -519,8 +511,6 @@ ClientUI.controls.grid.SelectionManager = Class.create({
 		}
 		fElement = $(this.prefix + ":f:" + rowIndex);
 		nElement = $(this.prefix + ":n:" + rowIndex);
-		Element.addClassName(fElement, "dr-sdt-row-active");
-		Element.addClassName(nElement, "dr-sdt-row-active");
 		Element.addClassName(fElement, "rich-sdt-row-active");
 		Element.addClassName(nElement, "rich-sdt-row-active");
 		Element.addClassName(fElement, this.activeClass);

@@ -37,11 +37,11 @@ public abstract class SortIconRenderer extends RendererBase {
 	
 	
 	public void renderAscIcon(FacesContext context, UIComponent component) throws IOException{
-		renderFacetOrIcon(context, component, "ascIcon", "dr-sdt-sort-asc");
+		renderFacetOrIcon(context, component, "ascIcon", "rich-sdt-sort-asc");
 	}
 
 	public void renderDescIcon(FacesContext context, UIComponent component) throws IOException{
-		renderFacetOrIcon(context, component, "descIcon", "dr-sdt-sort-desc");
+		renderFacetOrIcon(context, component, "descIcon", "rich-sdt-sort-desc");
 	}
 	
 	private void renderFacetOrIcon(FacesContext context, UIComponent component, String facetName, String clazz) throws IOException{

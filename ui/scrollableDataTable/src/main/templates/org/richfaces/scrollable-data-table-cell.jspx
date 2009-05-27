@@ -11,8 +11,8 @@
 	component="javax.faces.component.UIComponent" 
 	>
 	
-	<td class="dr-sdt-bc rich-sdt-column-cell #{columnClass} #{columnSortClass} #{component.attributes['styleClass']}" id="#{client_id}:c_#{cell_id}">
-		<div id="#{client_id}:bc_#{cell_id}" class="dr-sdt-cbody dr-sdt-c-#{cell_index} #{component.attributes['cellClass']}" style="#{component.attributes['cellStyle']}">
+	<td class="rich-sdt-column-cell #{columnClass} #{columnSortClass} #{component.attributes['styleClass']}" id="#{client_id}:c_#{cell_id}">
+		<div id="#{client_id}:bc_#{cell_id}" class="rich-sdt-column-cell-body rich-sdt-c-#{cell_index} #{component.attributes['cellClass']}" style="#{component.attributes['cellStyle']}">
 			<vcp:body/>
 		</div>
 	</td>

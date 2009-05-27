@@ -107,7 +107,7 @@ public class SortIconRendererTest extends AbstractAjax4JsfTestCase {
 			
 			assertNotNull(className);
 			
-			assertEquals("dr-sdt-sort-asc", className);
+			assertEquals("rich-sdt-sort-asc", className);
 			
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -177,7 +177,7 @@ public class SortIconRendererTest extends AbstractAjax4JsfTestCase {
 			
 			assertNotNull(className);
 			
-			assertEquals("dr-sdt-sort-desc", className);
+			assertEquals("rich-sdt-sort-desc", className);
 			
 		} catch (Exception e) {
 			fail(e.getMessage());
