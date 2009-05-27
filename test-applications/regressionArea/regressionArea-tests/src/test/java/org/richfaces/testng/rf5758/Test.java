@@ -1,16 +1,14 @@
 package org.richfaces.testng.rf5758;
 
 import org.richfaces.SeleniumTestBase;
+import org.testng.Assert;
 
 public class Test extends SeleniumTestBase {
 
 	@org.testng.annotations.Test
 	public void testExecute() throws Exception{
-		renderPage();
-		String str;
-		if((str = selenium.getValue("//form/span/input")).compareTo("Item 45") != 0){
-			throw new AssertionError("Expected: <Item 45>; Actual: <" + str + ">");
-		}								
+		renderPage();		
+		Assert.assertEquals(selenium.getValue("//form/span/input"),"Item 45");										
 	}
 	
 	@Override

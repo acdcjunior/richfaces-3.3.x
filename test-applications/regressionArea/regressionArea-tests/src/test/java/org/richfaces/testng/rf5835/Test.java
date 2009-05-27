@@ -1,6 +1,7 @@
 package org.richfaces.testng.rf5835;
 
 import org.richfaces.SeleniumTestBase;
+import org.testng.Assert;
 
 public class Test extends SeleniumTestBase {
 
@@ -11,17 +12,16 @@ public class Test extends SeleniumTestBase {
 		clickAjaxCommandAndWait("form:tree:10::_defaultNodeFace:handle");
 		
 		//check if line is present in expanded childs
-		Number childs = getHeightById("form:tree:10::_defaultNodeFace:childs");
-		Number child = selenium.getElementHeight("//div[@id='form:tree:10::_defaultNodeFace:childs']/table[1]");
-		int dif = 0;
+		Number actual = getHeightById("form:tree:10::_defaultNodeFace:childs");
+		Number expected = selenium.getElementHeight("//div[@id='form:tree:10::_defaultNodeFace:childs']/table[1]");		
 		
-		if(!((dif=(10*child.intValue() - childs.intValue())) == 0)){
-			throw new AssertionError("white line is after the last child:" + dif);
-		}
+		Assert.assertEquals(actual.intValue(), 10*expected.intValue());
+		
 		//check if line is present after expanded childs
-		if((dif = getHeightById("form:tree").intValue() - getHeightById("form:tree:childs").intValue()) != 0){
-			throw new AssertionError("white line is after all childs:" + dif);
-		}		
+		actual = getHeightById("form:tree");
+		expected = getHeightById("form:tree:childs");
+		
+		Assert.assertEquals(actual.intValue(), expected.intValue());			
 		
 	}
 
