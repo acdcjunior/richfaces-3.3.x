@@ -5,8 +5,9 @@
 
 <f:subview id="tabPanelSubviewID">
 	<rich:tabPanel id="tabPanelId" binding="#{tabPanel.htmlTabPanel}"
-		headerAlignment="#{tabPanel.headerAlignment}"
-		width="#{tabPanel.width}" contentStyle="#{style.contentStyle}"
+		headerAlignment="#{tabPanel.headerAlignment}" label="TabPanel label"
+		width="#{tabPanel.width}" dir="#{tabPanel.direction}"
+		contentStyle="#{style.contentStyle}"
 		headerClass="#{style.headerClass}" style="#{style.style}"
 		styleClass="#{style.styleClass}" tabClass="#{style.tabClass}"
 		height="#{tabPanel.height}" rendered="#{tabPanel.rendered}"
@@ -17,25 +18,35 @@
 		disabledTabClass="#{tabPanel.disabledTabStyle}"
 		inactiveTabClass="#{tabPanel.inactiveTabStyle}"
 		contentClass="#{tabPanel.contentStyle}" onclick="#{event.onclick}"
-		ondblclick="#{event.ondblclick}" onkeydown="#{event.onkeydown}"
-		onkeypress="#{event.onkeypress}" onkeyup="#{event.onkeyup}"
-		onmousedown="#{event.onmousedown}" onmousemove="#{event.onmousemove}"
-		onmouseout="#{event.onmouseout}" onmouseover="#{event.onmouseover}"
-		onmouseup="#{event.onmouseup}">
+		ondblclick="#{event.ondblclick}" onmousedown="#{event.onmousedown}"
+		onmousemove="#{event.onmousemove}" onmouseout="#{event.onmouseout}"
+		onmouseover="#{event.onmouseover}" onmouseup="#{event.onmouseup}">
 
-		<rich:tab id="tabOne" binding="#{tabPanel.htmlTab}" labelWidth="#{tabPanel.labelWidth}"
-			label="#{tabPanel.label}" onclick="#{event.onclick}"
+		<rich:tab id="tabOne" binding="#{tabPanel.htmlTab}"
+			labelWidth="#{tabPanel.labelWidth}" onclick="#{event.onclick}"
 			oncomplete="#{event.oncomplete}" ondblclick="#{event.ondblclick}"
 			onkeydown="#{event.onkeydown}" onkeypress="#{event.onkeypress}"
 			onkeyup="#{event.onkeyup}" onmousemove="#{event.onmousemove}"
 			onmouseout="#{event.onmouseout}" onmouseover="#{event.onmouseover}"
 			onmouseup="#{event.onmouseup}" ontabenter="#{event.ontabenter}"
-			ontableave="#{event.ontableave}">
+			ontableave="#{event.ontableave}" onlabelclick="#{event.onlabelclick}"
+			onlabeldblclick="#{event.onlabeldblclick}"
+			onlabelmousedown="#{event.onlabelmousedown}"
+			onlabelmousemove="#{event.onlabelmousemove}"
+			onlabelmouseup="#{event.onlabelmouseup}"
+			onbeforedomupdate="#{event.onbeforedomupdate}"
+			onlabelkeydown="#{event.onlabelkeydown}"
+			onlabelkeypress="#{event.onlabelkeypress}"
+			onlabelkeyup="#{event.onlabelkeyup}">
+			<f:facet name="label">
+				<h:inputText value="" />
+			</f:facet>
 			<h:outputText value="This is tab panel test example"
 				styleClass="text1"></h:outputText>
 			<h:outputLink value="http://www.jboss.com/">
 				<f:verbatim>Link</f:verbatim>
 			</h:outputLink>
+			<h:inputText value="" />
 		</rich:tab>
 		<rich:tab id="tabTwo" label="Tab with image"
 			disabled="#{tabPanel.disabledTab}" onclick="#{event.onclick}"
@@ -68,7 +79,7 @@
 				     Some text... Some text... Some text... Some text... Some text... Some text... Some text... Some text..." />
 		</rich:tab>
 	</rich:tabPanel>
-
+	<rich:colorPicker></rich:colorPicker>
 	<rich:spacer height="20px"></rich:spacer>
 	<rich:tabPanel switchType="ajax" id="test">
 
