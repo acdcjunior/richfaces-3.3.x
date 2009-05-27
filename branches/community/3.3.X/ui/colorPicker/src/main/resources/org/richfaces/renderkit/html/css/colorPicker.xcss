@@ -144,7 +144,6 @@
 }
 .rich-color-picker-span input{
 	border: 1px solid;
-	width:130px;
 	vertical-align:middle;
 }
 .rich-color-picker-icon {
