@@ -52,6 +52,7 @@ public class Event {
     private String onhide;
     private String onshow;
     private String onlistcall;
+    private String onlistclose;
     private String onitemselected;
     private String oninputblur;
     private String oninputchange;
@@ -139,13 +140,30 @@ public class Event {
     private String oncopyallclick;
     private String onremoveclick;
     private String onremoveallclick;
-
+    private String ontabchange;
+    private String onlabelclick;
+    private String onlabeldblclick;
+    private String onlabelmousedown;
+    private String onlabelmousemove;
+    private String onlabelmouseup;
+    private String onlabelkeydown;
+    private String onlabelkeypress;
+    private String onlabelkeyup;
+    
 	public String getOnlistchanged() {
 		return onlistchanged;
 	}
 
 	public void setOnlistchanged(String onlistchanged) {
 		this.onlistchanged = onlistchanged;
+	}
+	
+	public String getOntabchange() {
+		return ontabchange;
+	}
+
+	public void setOntabchange(String ontabchange) {
+		this.ontabchange = ontabchange;
 	}
 	
 	public String getOnlistchange() {
@@ -226,6 +244,15 @@ public class Event {
     public Event() {
     	/* Events for toolBar */
     	onlistchanged = "showEvent('infoFormID:infoSubview:onlistchangedInputID', 'onlistchanged work!')";
+    	onlabelclick = "showEvent('infoFormID:infoSubview:onlabelclickInputID', 'onlabelclick work!')";
+    	onlabeldblclick = "showEvent('infoFormID:infoSubview:onlabeldblclickInputID', 'onlabeldblclick work!')";
+    	onlabelmousedown = "showEvent('infoFormID:infoSubview:onlabelmousedownInputID', 'onlabelmousedown work!')";
+    	onlabelmousemove = "showEvent('infoFormID:infoSubview:onlabelmousemoveInputID', 'onlabelmousemove work!')";
+    	onlabelmouseup = "showEvent('infoFormID:infoSubview:onlabelmouseupInputID', 'onlabelmouseup work!')";
+    	ontabchange = "showEvent('infoFormID:infoSubview:ontabchangeInputID', 'ontabchange work!')";
+    	onlabelkeydown = "showEvent('infoFormID:infoSubview:onlabelkeydownInputID', 'onlabelkeydown work!')";
+    	onlabelkeypress = "showEvent('infoFormID:infoSubview:onlabelkeypressInputID', 'onlabelkeypress work!')";
+    	onlabelkeyup = "showEvent('infoFormID:infoSubview:onlabelkeyupInputID', 'onlabelkeyup work!')";
     	onlistchange = "showEvent('infoFormID:infoSubview:onlistchangeInputID', 'onlistchange work!')";
     	oncopyclick = "showEvent('infoFormID:infoSubview:oncopyclickInputID', 'oncopyclick work!')";
     	oncopyallclick = "showEvent('infoFormID:infoSubview:oncopyallclickInputID', 'oncopyallclick work!')";
@@ -304,6 +331,7 @@ public class Event {
     	onkeypress = "showEvent('infoFormID:infoSubview:onkeypressInputID', 'onkeypress work!')";
     	onkeyup = "showEvent('infoFormID:infoSubview:onkeyupInputID', 'onkeyup work!')";
     	onlistcall = "showEvent('infoFormID:infoSubview:onlistcallInputID', 'onlistcall work!')";
+    	onlistclose = "showEvent('infoFormID:infoSubview:onlistcloseInputID', 'onlistclose work!')";
     	onmaskclick = "showEvent('infoFormID:infoSubview:onmaskclickInputID', 'onmaskclick work!')";
     	onmaskcontextmenu = "showEvent('infoFormID:infoSubview:onmaskcontextmenuInputID', 'onmaskcontextmenu work!')";
     	onmaskdblclick = "showEvent('infoFormID:infoSubview:onmaskdblclickInputID', 'onmaskdblclick work!')";
@@ -648,6 +676,10 @@ public class Event {
         return getEvent("onlistcall");
     }
 
+    public ArrayList<SelectItem> getOnlistcloseSI() {
+    	return getEvent("onlistclose");
+    }
+    
     public ArrayList<SelectItem> getOnitemselectedSI() {
         return getEvent("onitemselected");
     }
@@ -1008,6 +1040,14 @@ public class Event {
 		this.onlistcall = onlistcall;
 	}
 
+	public String getOnlistclose() {
+		return onlistclose;
+	}
+
+	public void setOnlistclose(String onlistclose) {
+		this.onlistclose = onlistclose;
+	}
+	
 	public String getOnitemselected() {
 		return onitemselected;
 	}
@@ -1542,5 +1582,71 @@ public class Event {
 	public void setOnunload(String onunload) {
 		this.onunload = onunload;
 	}
+
+	public String getOnlabelclick() {
+		return onlabelclick;
+	}
+	
+	public void setOnlabelclick(String onlabelclick) {
+		this.onlabelclick = onlabelclick;
+	}
+
+	public void setOnlabeldblclick(String onlabeldblclick) {
+		this.onlabeldblclick = onlabeldblclick;
+	}
+
+	public String getOnlabeldblclick() {
+		return onlabeldblclick;
+	}
+
+	public void setOnlabelmousedown(String onlabelmousedown) {
+		this.onlabelmousedown = onlabelmousedown;
+	}
+
+	public String getOnlabelmousedown() {
+		return onlabelmousedown;
+	}
+
+	public void setOnlabelmousemove(String onlabelmousemove) {
+		this.onlabelmousemove = onlabelmousemove;
+	}
+
+	public String getOnlabelmousemove() {
+		return onlabelmousemove;
+	}
+
+	public void setOnlabelmouseup(String onlabelmouseup) {
+		this.onlabelmouseup = onlabelmouseup;
+	}
+
+	public String getOnlabelmouseup() {
+		return onlabelmouseup;
+	}
+
+	public void setOnlabelkeydown(String onlabelkeydown) {
+		this.onlabelkeydown = onlabelkeydown;
+	}
+
+	public String getOnlabelkeydown() {
+		return onlabelkeydown;
+	}
+
+	public void setOnlabelkeypress(String onlabelkeypress) {
+		this.onlabelkeypress = onlabelkeypress;
+	}
+
+	public String getOnlabelkeypress() {
+		return onlabelkeypress;
+	}
+
+	public void setOnlabelkeyup(String onlabelkeyup) {
+		this.onlabelkeyup = onlabelkeyup;
+	}
+
+	public String getOnlabelkeyup() {
+		return onlabelkeyup;
+	}
+
+	
 
 }
