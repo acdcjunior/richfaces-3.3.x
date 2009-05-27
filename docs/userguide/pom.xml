@@ -594,7 +594,7 @@
 											org.richfaces.docs.common-resources
 										</groupId>
 										<artifactId>
-											${masterTranslation}
+											${translation}
 										</artifactId>
 										<version>
 											${project.version}
@@ -838,17 +838,11 @@
 							<version>${project.version}</version>
 							<type>jar</type>
 						</dependency>
-						<!--dependency>
-							<groupId>org.richfaces.docs.xslt</groupId>
-							<artifactId>${translation}</artifactId>
-							<version>${project.version}</version>
-							<type>jar</type>
-						</dependency-->
-        <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>fop</artifactId>
-            <version>0.95</version>
-        </dependency>
+						<dependency>
+						    <groupId>org.apache.xmlgraphics</groupId>
+						    <artifactId>fop</artifactId>
+						    <version>0.95</version>
+						</dependency>
 					</dependencies>
 					<configuration>
 						<sourceDirectory>

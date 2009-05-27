@@ -37,14 +37,6 @@
 				<artifactId>maven-jdocbook-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
-			<!--
-				<plugin>
-				<groupId>org.jboss.maven.plugins</groupId>
-				<artifactId>maven-jdocbook-style-plugin</artifactId>
-				<version>1.0.0</version>
-				<extensions>true</extensions>
-				</plugin>
-			-->
 		</plugins>
 	</build>
 </project>
