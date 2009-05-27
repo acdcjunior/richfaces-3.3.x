@@ -1,6 +1,7 @@
 package org.richfaces.testng.rf5772;
 
 import org.richfaces.SeleniumTestBase;
+import org.testng.Assert;
 
 public class Test extends SeleniumTestBase {
 
@@ -14,10 +15,7 @@ public class Test extends SeleniumTestBase {
 		selenium.doubleClick("form:listShuttleID:0");
 		Number l2 = selenium.getElementPositionLeft("form:listShuttleID:0");		
 		
-		if(l1.intValue()==l2.intValue()){
-			throw new AssertionError("item didn't move to target");
-		}
-		
+		Assert.assertNotSame(l2, l1);		
 	}
 	
 	@Override
