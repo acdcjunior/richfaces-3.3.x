@@ -99,7 +99,7 @@
 				<label for="#{clientId}-colorPicker-hsb-b">B:</label>
 				<input id="#{clientId}-colorPicker-hsb-b" class="rich-color-picker-colors-input" type="text" maxlength="3" size="2" />
 		</div>
-		<button type="button" class="rich-color-picker-submit" name="submit">Apply</button>
+		<button type="button" class="rich-color-picker-submit" name="apply">Apply</button>
 		<button type="button" class="rich-color-picker-cancel" name="cancel">Cancel</button>
 	</div>
 </div>
