@@ -167,9 +167,13 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 			int numberOfColumns) throws IOException {
 		
 		UIComponent header = table.getHeader();
-		boolean columnFacetPresent = isColumnFacetPresent(table, "header");
-		boolean isFilterByPresent = isHeaderFactoryColumnAttributePresent(table, "filterBy");
-		if (header != null || columnFacetPresent || isFilterByPresent) {
+
+		boolean isEncodeHeaders = isColumnFacetPresent(table, "header") || 
+			isHeaderFactoryColumnAttributePresent(table, "sortBy") ||
+			isHeaderFactoryColumnAttributePresent(table, "comparator") ||
+			isHeaderFactoryColumnAttributePresent(table, "filterBy");
+		
+		if (header != null || isEncodeHeaders) {
 		    
 		    ResponseWriter writer = context.getResponseWriter();
 			writer.startElement("thead", table);
@@ -183,7 +187,7 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 						headerClass, "th");
 			}
 
-			if (columnFacetPresent || isFilterByPresent) {
+			if (isEncodeHeaders) {
 				writer.startElement("tr", table);
 				encodeStyleClass(writer, null,
 						"rich-table-subheader", null,
