@@ -56,14 +56,14 @@
 			<name>begin</name>
 			<classname>java.lang.Object</classname>
 			<description>
-				The first iteration item 
+				Contains the first iteration item 
 			</description>
 		</property>
 		<property>
 			<name>end</name>
 			<classname>java.lang.Object</classname>
 			<description>
-				The last iteration item 
+				Contains the last iteration item 
 			</description>
 		</property>
 		<property hidden="true">

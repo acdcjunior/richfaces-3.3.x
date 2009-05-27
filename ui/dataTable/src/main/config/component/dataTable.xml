@@ -57,7 +57,7 @@
 		<property>
 			<name>columns</name>
 			<classname>int</classname>
-			<description>Number of columns
+			<description>Specifies the number of columns
 			</description>
 		</property>
 		<property>
