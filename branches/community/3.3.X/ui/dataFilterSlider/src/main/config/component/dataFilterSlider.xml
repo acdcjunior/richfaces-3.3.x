@@ -174,7 +174,7 @@
             <name>onslide</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a handler is moved on sliding
+                The client side script method to be called when a slider handle is moved
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -183,7 +183,7 @@
         	<name>onerror</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		HTML: a script expression; event fires whenever an
+        	    The client side script method to be called whenever an
         		JavaScript error occurs
         	</description>
         	<defaultvalue><![CDATA[""]]></defaultvalue>
@@ -193,7 +193,7 @@
         	<name>oninputkeydown</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		HTML: a script expression; a key is pressed down
+        	    The client side script method to be called when a key is pressed down in the component input field
         	</description>
         </property>
 
@@ -201,7 +201,7 @@
         	<name>oninputkeypress</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		HTML: a script expression; a key is pressed and released
+        	    The client side script method to be called when a key is pressed and released in the component input field
         	</description>
         </property>
 
@@ -209,7 +209,7 @@
         	<name>oninputkeyup</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		HTML: a script expression; a key is released
+        	    The client side script method to be called when a key is released in the component input field
         	</description>
         </property>
 
@@ -225,7 +225,7 @@
             <name>onchange</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a handler&apos;s position is changed on sliding
+                The client side script method to be called when the component input field value is changed
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -233,14 +233,14 @@
         <property>
         	<name>onSlideSubmit</name>
         	<classname>boolean</classname>
-        	<description>DEPRECATED (use submitOnSlide). If the slider value changes must submit a form. Default value is &quot;true&quot;.</description>
+            <description>DEPRECATED (use submitOnSlide). If the slider value is changed, the form is submitted. Default value is &quot;true&quot;.</description>
         	<defaultvalue>true</defaultvalue>	
         </property>
         
         <property>
         	<name>submitOnSlide</name>
         	<classname>boolean</classname>
-            <description>If the slider value changes must submit a form. Default value is &quot;true&quot;.</description>
+            <description>If the slider value is changed, the form is submitted. Default value is &quot;true&quot;.</description>
         	<defaultvalue>true</defaultvalue>	
         </property>
         	
