@@ -103,7 +103,7 @@ HtmlDataFilterSlider mySlider = new HtmlDataFilterSlider();
     </itemizedlist>
     <para><emphasis>
         <property>&quot;handleValue&quot;</property>
-      </emphasis> is an attribute for keeping the current handler position on the
+      </emphasis> is an attribute for keeping the current handle position on the
         <property>dataFilterSlider</property> component. Based on the current value, appropriate
       values obtained from a getter method defined in <emphasis>
         <property>&quot;filterBy&quot;</property>
@@ -112,12 +112,10 @@ HtmlDataFilterSlider mySlider = new HtmlDataFilterSlider();
         <property>&quot;storeResults&quot;</property>
       </emphasis> one that allows the <property>dataFilterSlider</property> component to keep UIData
       target object in session.</para>
-    <para>If it&apos;s necessary the component submits a form on event of a handler state
+    <para>If it&apos;s necessary the component submits a form on event of a handle state
       changing, use the <emphasis>
-        <property>&quot;onSlide&quot;</property>
-      </emphasis> attribute (<emphasis>
-        <property>&quot;onChange&quot;</property>
-      </emphasis> is its alias). When the attribute <code>definition = &quot;true&quot;</code>, submission on this event is
+        <property>&quot;submitOnSlide&quot;</property>
+      </emphasis> attribute. When the attribute definition is <code>&quot;true&quot;</code>, submission on this event is
       defined.</para>
     <para>
       Information about the <emphasis><property>&quot;process&quot;</property></emphasis> attribute usage you can find in the<link linkend="process"> &quot;Decide what to process &quot; </link> guide section.
