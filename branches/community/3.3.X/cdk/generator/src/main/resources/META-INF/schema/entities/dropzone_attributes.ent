@@ -19,22 +19,22 @@
     <property >
         <name>ondragenter</name>
         <classname>java.lang.String</classname>
-        <description>A JavaScript event handler called on enter draggable object to zone</description>
+        <description>The client side script method to be called when a draggable object enters the zone</description>
     </property>
     <property>
         <name>ondragexit</name>
         <classname>java.lang.String</classname>
-        <description>A JavaScript event handler called after a drag object leaves zone</description>
+        <description>The client side script method to be called after a draggable object leaves the zone</description>
     </property>
     <property>
         <name>ondrop</name>
         <classname>java.lang.String</classname>
-        <description>A JavaScript event handler called after a drag object is dropped to zone</description>
+        <description>The client side script method to be called when a draggable object is dropped into the available zone</description>
     </property>    
     <property>
         <name>ondropend</name>
         <classname>java.lang.String</classname>
-        <description>A JavaScript handler for event fired on a drop even the drop for a given type is not available</description>
+        <description>The client side script method to be called when a draggable object is dropped into any zone</description>
     </property>    
 		<property>
 			<name>dropListener</name>
