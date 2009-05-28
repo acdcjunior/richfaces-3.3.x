@@ -32,7 +32,7 @@ input.rich-spinner-input {
 	font-size: 0px;
 }
 
-.rich-spinner-bn{
+.rich-spinner-btn{
 	margin: 0px 1px 1px 0px;
 	display: block;
 	border-style: none;
