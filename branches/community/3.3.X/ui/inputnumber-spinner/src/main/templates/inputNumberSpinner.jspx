@@ -79,12 +79,12 @@
                 					<input 
                 						type="image" 
                 						src="#{up_arrow}" 
-                						class="rich-spinner-bn rich-spinner-button" 
+                						class="rich-spinner-btn" 
                 						style="border:0" 
                 						onclick="return false"
-										onmousedown="this.className='rich-spinner-bp rich-spinner-button'" 
-										onmouseup="this.className='rich-spinner-bn rich-spinner-button'" 
-										onmouseout="this.className='rich-spinner-bn rich-spinner-button'" 
+										onmousedown="this.className='rich-spinner-btn-press'" 
+										onmouseup="this.className='rich-spinner-btn'" 
+										onmouseout="this.className='rich-spinner-btn'" 
 										tabindex="#{component.attributes['tabindex']}" />
 								<jsp:scriptlet><![CDATA[
 				                	} else {
@@ -92,7 +92,7 @@
                 					<input 
                 						type="image" 
                 						src="#{up_arrow}" 
-                						class="rich-spinner-bn rich-spinner-button" 
+                						class="rich-spinner-btn" 
                 						style="border:0" 
                 						onclick="return false" 
                 						tabindex="#{component.attributes['tabindex']}" /> 
@@ -106,12 +106,12 @@
 								<jsp:scriptlet><![CDATA[				                	
 				                	if (! disabled) {
                 				]]></jsp:scriptlet>
-                					<input type="image" src="#{down_arrow}" class="rich-spinner-bn rich-spinner-button" style="border:0"  onclick="return false"
-									onmousedown="this.className='rich-spinner-bp rich-spinner-button'" onmouseup="this.className='rich-spinner-bn rich-spinner-button'" onmouseout="this.className='rich-spinner-bn rich-spinner-button'" />
+                					<input type="image" src="#{down_arrow}" class="rich-spinner-btn" style="border:0"  onclick="return false"
+									onmousedown="this.className='rich-spinner-btn-press'" onmouseup="this.className='rich-spinner-btn'" onmouseout="this.className='rich-spinner-btn'" />
 								<jsp:scriptlet><![CDATA[
 				                	} else {
                 				]]></jsp:scriptlet>
-                					<input type="image" src="#{down_arrow}" class="rich-spinner-bn rich-spinner-button" style="border:0"  onclick="return false" />
+                					<input type="image" src="#{down_arrow}" class="rich-spinner-btn" style="border:0"  onclick="return false" />
                 				<jsp:scriptlet><![CDATA[
 				                	}
                 				]]></jsp:scriptlet>
