@@ -22,7 +22,7 @@
 		onmousemove="#{event.onmousemove}" onmouseout="#{event.onmouseout}"
 		onmouseover="#{event.onmouseover}" onmouseup="#{event.onmouseup}">
 
-		<rich:tab id="tabOne" binding="#{tabPanel.htmlTab}"
+		<rich:tab id="tabOne" binding="#{tabPanel.htmlTab}" label="Tab with link"
 			labelWidth="#{tabPanel.labelWidth}" onclick="#{event.onclick}"
 			oncomplete="#{event.oncomplete}" ondblclick="#{event.ondblclick}"
 			onkeydown="#{event.onkeydown}" onkeypress="#{event.onkeypress}"
@@ -37,10 +37,7 @@
 			onbeforedomupdate="#{event.onbeforedomupdate}"
 			onlabelkeydown="#{event.onlabelkeydown}"
 			onlabelkeypress="#{event.onlabelkeypress}"
-			onlabelkeyup="#{event.onlabelkeyup}">
-			<f:facet name="label">
-				<h:inputText value="" />
-			</f:facet>
+			onlabelkeyup="#{event.onlabelkeyup}">			
 			<h:outputText value="This is tab panel test example"
 				styleClass="text1"></h:outputText>
 			<h:outputLink value="http://www.jboss.com/">
