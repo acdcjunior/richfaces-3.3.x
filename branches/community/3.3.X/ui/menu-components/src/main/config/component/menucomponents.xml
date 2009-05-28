@@ -95,31 +95,28 @@
         <property>
             <name>onmousemove</name>
             <classname>java.lang.String</classname>
-            <description>HTML: a script expression; a pointer is moved
-                within</description>
+            <description>The client side script method to be called when a pointer is moved within the menu group</description>
         </property>
         <property>
             <name>onmouseout</name>
             <classname>java.lang.String</classname>
-            <description>HTML: a script expression; a pointer is moved
-                away</description>
+            <description>The client side script method to be called when a pointer is moved away from the menu group</description>
         </property>
         <property>
             <name>onmouseover</name>
             <classname>java.lang.String</classname>
-            <description>HTML: a script expression; a pointer is moved
-                onto</description>
+            <description>The client side script method to be called when a pointer is moved onto the menu group</description>
         </property>
         <property>
             <name>onopen</name>
             <classname>java.lang.String</classname>
-            <description>HTML: script expression; group was
+            <description>The client side script method to be called when a group is
                 opened</description>
         </property>
         <property>
             <name>onclose</name>
             <classname>java.lang.String</classname>
-            <description>HTML: script expression; group was
+            <description>The client side script method to be called when a group is
                 closed</description>
         </property>
 
@@ -246,8 +243,8 @@
         <property>
             <name>onselect</name>
             <classname>java.lang.String</classname>
-            <description>HTML: script expression; The onselect event occurs when
-                you select some menu item</description>
+            <description>The client side script method to be called when
+                a menu item is selected</description>
         </property>
         <property hidden="true">
             <name>ondblclick</name>
