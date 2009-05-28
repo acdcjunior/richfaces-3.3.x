@@ -80,7 +80,6 @@ public class HtmlRichMessagesRenderer extends RichMessageBaseRenderer {
 		}
 		
 //		messagesIter = getMessageIterator(context, forIds, component);
-		
 		if(!messagesIter.hasNext()){
 			renderBody(uiMessages, context, writer, null,isWroteTable);
 		}else{

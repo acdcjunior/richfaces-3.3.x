@@ -25,7 +25,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,6 +38,7 @@ import javax.faces.component.UIMessages;
 import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.component.AjaxOutput;
+import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.renderkit.RendererUtils;
 
 /**
@@ -51,7 +51,7 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 
 	private String forVal = null;
 	private boolean updated = false;
-
+	private boolean ajaxRendered = true;
 	private List<FacesMessageWithId> renderedMessages;
 
 	/**
@@ -99,7 +99,11 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	}
 
 	public boolean isAjaxRendered() {
-		return true;
+		return ajaxRendered;
+	}
+	
+	public void setAjaxRendered(boolean ajaxRendered) {
+		this.ajaxRendered = ajaxRendered;
 	}
 
 	public Iterator<FacesMessage> getMessages(FacesContext context) {
@@ -189,6 +193,10 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		if (severenities.size() == 0 || severenities.contains("ALL")) {
 			return true;
 		}
+		AjaxContext ac = AjaxContext.getCurrentInstance(FacesContext.getCurrentInstance());
+		if(ac.isAjaxRequest() && !this.isAjaxRendered()){
+			return false;
+		}
 		Severity severity = message.getSeverity();
 		for (Object key : FacesMessage.VALUES_MAP.keySet()) {
 			Severity sev = (Severity) FacesMessage.VALUES_MAP.get(key);
@@ -197,12 +205,6 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 			}
 		}
 		return false;
-	}
-
-	public void setAjaxRendered(boolean ajaxRendered) {
-		if (!ajaxRendered) {
-			new IllegalArgumentException();
-		}
 	}
 
 	@Override
@@ -216,21 +218,13 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	public abstract String getLevel();
 
 	public abstract void setLevel(String level);
+	
+	public abstract String getMinLevel();
+
+	public abstract void setMinLevel(String level);
 
 	public List<String> getSeverenities() {
-		String level = getLevel();
-		List<String> severenities;
-		if (null != level) {
-			String[] levels = level.split(",");
-			severenities = new ArrayList<String>(levels.length);
-			for (int i = 0; i < levels.length; i++) {
-				String levelName = levels[i].toUpperCase().trim();
-				severenities.add(levelName);
-			}
-		} else {
-			severenities = Collections.emptyList();
-		}
-		return severenities;
+		return RichMessageLevelHelper.getSeverenities(this);
 	}
 
 	private Object[] values;
@@ -238,12 +232,13 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	public Object saveState(FacesContext context) {
 
 		if (values == null) {
-			values = new Object[3];
+			values = new Object[4];
 		}
 
 		values[0] = super.saveState(context);
 		values[1] = this.forVal;
-		values[2] = saveAttachedState(context, getRenderedMessages());
+		values[2] = this.ajaxRendered;
+		values[3] = saveAttachedState(context, getRenderedMessages());
 		return (values);
 
 	}
@@ -254,8 +249,9 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		values = (Object[]) state;
 		super.restoreState(context, values[0]);
 		forVal = (String) values[1];
+		ajaxRendered = (Boolean) values[2];
 		setRenderedMessages((List<FacesMessageWithId>) restoreAttachedState(
-				context, values[2]));
+				context, values[3]));
 	}
 
 	/**

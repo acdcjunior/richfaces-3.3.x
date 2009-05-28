@@ -59,10 +59,16 @@
 			<description>
 				A comma-separated list of messages categories which should be displayed. Default value is &quot;ALL&quot;.
 			</description>
-			<defaultvalue>"ALL"</defaultvalue>
 			
 		</property>
+		<property>
+			<name>minLevel</name>
+			<classname>java.lang.String</classname>
+			<description>
+				A minimum level of messages categories which should be displayed.
+			</description>
 		
+		</property>
 		<property attachedstate="true" hidden="true">
 			<name>passedLabel</name>
 			<classname>java.lang.String</classname>
@@ -344,7 +350,14 @@
 			<description>
 				A comma-separated list of messages categories which should be displayed.  Default value is &quot;ALL&quot;.
 			</description>
-			<defaultvalue>"ALL"</defaultvalue>
+		
+		</property>
+		<property>
+			<name>minLevel</name>
+			<classname>java.lang.String</classname>
+			<description>
+				A minimum level of messages categories which should be displayed.
+			</description>
 		
 		</property>
 		<property>
