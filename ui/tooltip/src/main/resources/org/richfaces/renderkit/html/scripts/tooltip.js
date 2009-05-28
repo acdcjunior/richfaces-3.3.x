@@ -250,10 +250,7 @@ ToolTip.prototype = {
 				this.toolTip.style.visibility = "hidden";
 				this.toolTip.style.display = 'block';
 				this.setToolTipPosition(e);
-			} else {
-				this.toolTipContent.innerHTML = "";
-			}
-			var event = A4J.AJAX.CloneObject(e, false);
+				var event = A4J.AJAX.CloneObject(e, false);
 			var ajaxOptions = this.ajaxOptions;
 			if(this.clientAjaxParams){
 				if(e.clientX){
@@ -266,6 +263,7 @@ ToolTip.prototype = {
 				}
 				
 				Object.extend(ajaxOptions['parameters'], this.clientAjaxParams);
+			}
 			}
 			if (this.delay>0)
 			{
