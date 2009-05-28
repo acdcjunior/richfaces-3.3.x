@@ -38,7 +38,7 @@ input.rich-spinner-input {
 	border-style: none;
 }
 
-.rich-spinner-bp{
+.rich-spinner-btn-press{
 	margin: 1px 0px 0px 1px;
 	display: block;
 	border-style: none;
