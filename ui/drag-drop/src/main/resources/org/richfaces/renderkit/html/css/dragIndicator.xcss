@@ -6,8 +6,8 @@
 <f:verbatim><![CDATA[
 .drgind_fly{
 	z-index : 1000;
-	top:40; 
-	left : 40;
+	top : 40px; 
+	left : 40px;
 	position : absolute;
 }
 .drgind_internal{
