@@ -21,6 +21,7 @@
 package org.richfaces.model.impl.expressive;
 
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,10 @@ public class WrappedBeanFilterTest extends TestCase {
 	
 	private List<FilterField> filterFields;
 	private  WrappedBeanFilter filter;
+	
+	private MockValueExpression keyTrue = new MockValueExpression("keyTrue");
+	private MockValueExpression keyFalse = new MockValueExpression("keyFalse");
+	
 	/**
 	 * @param name
 	 */
@@ -51,7 +56,7 @@ public class WrappedBeanFilterTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		filterFields = new LinkedList<FilterField>();
-		filterFields.add(new FilterField(new MockValueExpression("keyTrue")));
+		filterFields.add(new FilterField(keyTrue));
 		filter = new WrappedBeanFilter(filterFields);
 	}
 
@@ -62,6 +67,8 @@ public class WrappedBeanFilterTest extends TestCase {
 		super.tearDown();
 		filter = null;
 		filterFields = null;
+		keyTrue = null;
+		keyFalse = null;
 	}
 
 	/**
@@ -77,12 +84,12 @@ public class WrappedBeanFilterTest extends TestCase {
 	 */
 	public final void testAccept() {
 		TestObj obj = new TestObj("TestObj");
-		Map<String, Object> props = new HashMap<String, Object>();
-		props.put("keyTrue", Boolean.TRUE);
-		props.put("keyFalse", Boolean.FALSE);
+		Map<Object, Object> props = new IdentityHashMap<Object, Object>();
+		props.put(keyTrue, Boolean.TRUE);
+		props.put(keyFalse, Boolean.FALSE);
 		JavaBeanWrapper wrapper = new JavaBeanWrapper(obj, props);
 		assertTrue(filter.accept(wrapper));
-		filterFields.add(new FilterField(new MockValueExpression("keyFalse")));
+		filterFields.add(new FilterField(keyFalse));
 		assertFalse(filter.accept(wrapper));
 	}
 

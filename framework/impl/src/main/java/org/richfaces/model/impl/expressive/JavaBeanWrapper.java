@@ -29,18 +29,18 @@ import java.util.Map;
  */
 public class JavaBeanWrapper {
 	private Object wrappedObject;
-	private Map<String, Object> properties;
+	private Map<Object, Object> properties;
 	
-	public JavaBeanWrapper(Object o, Map<String, Object> props) {
+	public JavaBeanWrapper(Object o, Map<Object, Object> props) {
 		wrappedObject = o;
 		properties = props;
 	}
 	
-	public Object getProperty(String expression) {
+	public Object getProperty(Object expression) {
 		return properties.get(expression);
 	}
 	
-	public Map<String, Object> getProperties() {
+	public Map<Object, Object> getProperties() {
 		return properties;
 	}
 

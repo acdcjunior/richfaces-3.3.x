@@ -22,6 +22,7 @@
 package org.richfaces.model.impl.expressive;
 
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +52,10 @@ public class ObjectWrapperFactory {
 		public Object convert(Object o);
 	}
 	
+	private Object[] expressionKeys;
 	private Expression [] expressions;
+	private boolean isIdentityKeys = false;
+	
 	private FacesContext context;
 	private String var;
 	private Object varValue;
@@ -68,7 +72,8 @@ public class ObjectWrapperFactory {
 		SortField[] sortFields = sortOrder.getFields();
 		
 		expressions = new Expression[sortFields.length];
-		                             
+		expressionKeys = new Object[expressions.length];
+		
 		for (int i = 0; i < sortFields.length; i++) {
 			final SortField field = sortFields[i];
 			final String name = field.getName();
@@ -85,6 +90,8 @@ public class ObjectWrapperFactory {
 				
 				expressions[i] = new SimplePropertyExpression(name, elContext, resolver);
 			}
+			
+			expressionKeys[i] = name;
 		}
 		
 		
@@ -92,6 +99,7 @@ public class ObjectWrapperFactory {
 	}
 	public ObjectWrapperFactory(FacesContext context, final String var, List<? extends Field> sortOrder) {
 		
+		this.isIdentityKeys = true;
 		this.context = context;
 		
 		Application application = context.getApplication();
@@ -100,6 +108,7 @@ public class ObjectWrapperFactory {
 		this.var = var;
 		
 		expressions = new Expression[sortOrder.size()];
+		expressionKeys = new Object[expressions.length];
 		
 		int i = 0;
 		for (Field field : sortOrder) {
@@ -125,7 +134,11 @@ public class ObjectWrapperFactory {
 			} else {
 				throw new IllegalArgumentException();
 			}
-			expressions[i++] = expression;
+			
+			expressions[i] = expression;
+			expressionKeys[i] = elExpression;
+			
+			i++;
 		}
 		
 	}
@@ -182,11 +195,18 @@ public class ObjectWrapperFactory {
 	}
 	
 	public JavaBeanWrapper wrapObject(Object o) {
-		Map<String, Object> props = new HashMap<String, Object>();
+		Map<Object, Object> props;
+		
+		if (isIdentityKeys) {
+			props = new IdentityHashMap<Object, Object>();
+		} else {
+			props = new HashMap<Object, Object>();
+		}
+
 		for (int i = 0; i < expressions.length; i++) {
 			Expression expression = expressions[i];
 			
-			props.put(expression.getExpressionString(), expression.evaluate(o));
+			props.put(expressionKeys[i], expression.evaluate(o));
 		}
 		
 		return new JavaBeanWrapper(o, props);
