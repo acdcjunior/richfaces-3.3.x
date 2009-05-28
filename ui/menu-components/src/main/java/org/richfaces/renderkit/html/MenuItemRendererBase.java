@@ -40,6 +40,7 @@ import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.ComponentVariables;
 import org.ajax4jsf.renderkit.ComponentsVariableResolver;
+import org.ajax4jsf.renderkit.RendererUtils.HTML;
 import org.richfaces.component.MenuComponent;
 import org.richfaces.component.UIMenuItem;
 import org.richfaces.component.util.ViewUtil;
@@ -185,7 +186,7 @@ public class MenuItemRendererBase extends CompositeRenderer {
         String attrStr = "";
         if (!(menuItem.getParent() instanceof MenuComponent))
         {
-        	String styleClass = (String) menuItem.getAttributes().get("styleClass");
+        	String styleClass = (String) menuItem.getAttributes().get(HTML.STYLE_CLASS_ATTR);
         	String str = "";
         	attr.append(",{");
         	if (null!=styleClass && styleClass.length()>0) {
@@ -193,7 +194,7 @@ public class MenuItemRendererBase extends CompositeRenderer {
         	    attr.append(ScriptUtils.toScript(styleClass));
         	    str = ",";
         	}
-        	String onselect = (String) menuItem.getAttributes().get("onselect");
+        	String onselect = (String) menuItem.getAttributes().get(HTML.onselect_ATTRIBUTE);
         	if (null!=onselect && onselect.length()>0) {
         		attr.append(str);
         		attr.append("onselect:function(event){");
@@ -222,8 +223,19 @@ public class MenuItemRendererBase extends CompositeRenderer {
             	scriptValue.append("RichFaces.Menu.updateItem(event,this");
             	scriptValue.append(attrStr);
             	scriptValue.append(");");
-                scriptValue.append(AjaxRendererUtils.buildOnClick(
-                        menuItem, context).toString());
+            	String event = null;
+            	Object onclick = menuItem.getAttributes().get(HTML.onclick_ATTRIBUTE);
+            	if(onclick != null && onclick.toString().length()>0){
+            		event = HTML.onclick_ATTRIBUTE;
+            	}else{
+            		Object onselect = menuItem.getAttributes().get(HTML.onselect_ATTRIBUTE);
+            		if(onselect != null && onselect.toString().length()>0){
+            			event = HTML.onselect_ATTRIBUTE;
+            		}
+            	}
+            	scriptValue.append(AjaxRendererUtils.buildOnEvent(
+                        menuItem, context, event).toString());
+            	menuItem.getAttributes().put(HTML.onselect_ATTRIBUTE, null);
             } else if (MenuComponent.MODE_SERVER.equalsIgnoreCase(mode)) {
             	
             /*
@@ -257,6 +269,11 @@ public class MenuItemRendererBase extends CompositeRenderer {
 	        scriptValue.append(",");
 	        scriptValue.append("params);return false;");
 	        */
+            	Object onclick = menuItem.getAttributes().get(HTML.onclick_ATTRIBUTE);
+            	if(onclick != null && onclick.toString().length()>0){
+            		scriptValue.append(onclick.toString());
+            		scriptValue.append(";");
+            	}
             	scriptValue.append("RichFaces.Menu.submitForm(event,this");
             	String params = encodeParamsAsObject(context, menuItem);
             	if (null!=params) {
@@ -276,10 +293,10 @@ public class MenuItemRendererBase extends CompositeRenderer {
             	scriptValue.append("RichFaces.Menu.updateItem(event,this");
             	scriptValue.append(attrStr);
             	scriptValue.append(");");
-                scriptValue.append(getStringAttributeOrEmptyString(menuItem, "onclick"));
+                scriptValue.append(getStringAttributeOrEmptyString(menuItem, HTML.onclick_ATTRIBUTE));
             }
             if (resource.length() > 0) {
-                variables.setVariable("onclick", scriptValue.toString());
+                variables.setVariable(HTML.onclick_ATTRIBUTE, scriptValue.toString());
             }
             //-------------------------------
           }
