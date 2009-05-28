@@ -8,7 +8,6 @@
 	<f:verbatim>
 
 		.rich-progress-bar-height{height : 13px;}
-		.rich-progress-bar-height-dig{height:}
 		.rich-progress-bar-width{width : 200px}	
 		.rich-progress-bar-block{white-space : nowrap;}		
 		.rich-progress-bar-uploaded{background-repeat : repeat-x;}

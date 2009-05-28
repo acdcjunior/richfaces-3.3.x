@@ -181,7 +181,7 @@
 		<u:style name="background-color" skin="controlBackgroundColor"/>
 	</u:selector>
 	<u:selector name=".rich-color-picker-ext label">
-		<u:style name="color" skin="generalSizeFont"/>
+		<u:style name="color" skin="generalTextColor"/>
 		<u:style name="font-size" skin="generalSizeFont"/>
 		<u:style name="font-family" skin="generalFamilyFont"/>
 	</u:selector>
