@@ -47,7 +47,7 @@ public class WrappedBeanFilter implements org.richfaces.model.filter.Filter<Java
 	public boolean accept(JavaBeanWrapper wrapper) {
 		for (FilterField filterField : filterFields) {
 			if (filterField instanceof ExtendedFilterField) {
-				Object property = wrapper.getProperty(filterField.getExpression().getExpressionString());
+				Object property = wrapper.getProperty(filterField.getExpression());
 				String filterValue = ((ExtendedFilterField)filterField).getFilterValue();
 				if(filterValue != null) {
 					filterValue = filterValue.trim().toUpperCase(currentLocale);
@@ -58,7 +58,7 @@ public class WrappedBeanFilter implements org.richfaces.model.filter.Filter<Java
 					}				
 				}				
 			} else {
-				Object property = wrapper.getProperty(filterField.getExpression().getExpressionString());
+				Object property = wrapper.getProperty(filterField.getExpression());
 				if(!((Boolean)property).booleanValue()) {
 					return false;
 				}

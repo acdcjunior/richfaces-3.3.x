@@ -54,7 +54,7 @@ public class ModifiableModel extends ExtendedDataModel implements Modifiable, Lo
 			
 			private Object key;
 
-			public ExtendedJavaBeanWrapper(Object key, Object o, Map<String, Object> props) {
+			public ExtendedJavaBeanWrapper(Object key, Object o, Map<Object, Object> props) {
 				super(o, props);
 				this.key = key;
 			}

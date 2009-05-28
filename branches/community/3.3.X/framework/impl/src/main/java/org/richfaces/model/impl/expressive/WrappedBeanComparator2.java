@@ -87,11 +87,10 @@ public final class WrappedBeanComparator2 implements Comparator<Object> {
 		for (Iterator<SortField2> iterator = sortFields.iterator(); iterator.hasNext() && result == 0;) {
 			SortField2 field = iterator.next();
 			Expression expression = field.getExpression();
-			String prop = expression.getExpressionString();
 			Ordering ordering = field.getOrdering();
 			if (ordering != null) {
-				Object p1 = w1.getProperty(prop);
-				Object p2 = w2.getProperty(prop);
+				Object p1 = w1.getProperty(expression);
+				Object p2 = w2.getProperty(expression);
 				if (p1 == p2 && p1 instanceof Comparator) {
 					result = ((Comparator<Object>)p1).compare(w1.getWrappedObject(), w2.getWrappedObject());
 				} else if (p1 instanceof String && p2 instanceof String) {
