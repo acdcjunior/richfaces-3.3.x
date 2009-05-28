@@ -237,7 +237,7 @@
             <name>oncollapse</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a menu is collapsed.
+                The client side script method to be called when a menu is collapsed
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -246,7 +246,7 @@
             <name>onexpand</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a menu is expanded.
+                The client side script method to be called when a menu is expanded
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -256,7 +256,7 @@
             <name>onmouseout</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a pointer was moved away.
+                The client side script method to be called when a pointer is moved away from the menu
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -265,7 +265,7 @@
             <name>onmousemove</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a pointer was moved within.
+                The client side script method to be called when a pointer is moved within the menu
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -274,7 +274,7 @@
             <name>onmouseover</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; a pointer was moved onto.
+                The client side script method to be called when a pointer is moved onto the menu 
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -283,7 +283,7 @@
             <name>onitemselect</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; some item was selected.
+                The client side script method to be called when a menu item is selected
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -292,7 +292,7 @@
             <name>ongroupactivate</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; some group was activated.
+                The client side script method to be called when some menu group is activated
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
