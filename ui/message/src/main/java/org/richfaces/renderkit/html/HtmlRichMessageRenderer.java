@@ -31,6 +31,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
+import org.richfaces.component.RichMessageLevelHelper;
 import org.richfaces.component.UIRichMessage;
 import org.richfaces.renderkit.RichMessageBaseRenderer;
 
@@ -60,16 +61,13 @@ public class HtmlRichMessageRenderer extends RichMessageBaseRenderer{
 			msgIter = getMessageIterator(context, forClientId, msgComponent);
 			writer.startElement(HTML.SPAN_ELEM, msgComponent);
 			getUtils().writeAttribute(writer, HTML.id_ATTRIBUTE, msgComponent.getClientId(context));
-			
 			if(!msgIter.hasNext() && msgComponent.isPassed()){
 				
 				encodingUIContent(msgComponent, context, null);
 				
 			}else if(msgIter.hasNext() ){
-				
-				FacesMessage message = (FacesMessage)msgIter.next();
-				encodingUIContent(msgComponent, context, message);	
-			
+					FacesMessage message = (FacesMessage)msgIter.next();
+					encodingUIContent(msgComponent, context, message);	
 			}
 			
 			writer.endElement(HTML.SPAN_ELEM);
@@ -79,8 +77,10 @@ public class HtmlRichMessageRenderer extends RichMessageBaseRenderer{
 	protected void encodingUIContent(UIRichMessage uiMsg, FacesContext context, FacesMessage facesMsg) throws IOException{
 					
 		ResponseWriter writer = context.getResponseWriter();
-		
-		List<String> acceptLevels = creatAcceptLevels(uiMsg.getLevel().split(","));
+
+		List<String> severenities = RichMessageLevelHelper.getSeverenities(uiMsg);
+		String[] levels = new String[severenities .size()];
+		List<String> acceptLevels = creatAcceptLevels(severenities.toArray(levels));
 		if(isAcceptableMessage(facesMsg, acceptLevels)){
 			outerStyles(uiMsg, context, writer, facesMsg);
 			renderMarkerFacet(uiMsg,context, writer,facesMsg);

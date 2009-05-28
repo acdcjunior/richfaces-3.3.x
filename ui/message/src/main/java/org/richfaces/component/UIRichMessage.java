@@ -35,6 +35,7 @@ import org.ajax4jsf.component.AjaxOutput;
 public abstract class UIRichMessage extends UIMessage implements AjaxOutput{
 	
 	private boolean isPassed = false;
+	private boolean ajaxRendered = true;
 		
 	public boolean isPassed() {
 		return isPassed;
@@ -45,13 +46,11 @@ public abstract class UIRichMessage extends UIMessage implements AjaxOutput{
 	public abstract void setPassedLabel(String passedLabel);
 	
 	public boolean isAjaxRendered() {
-		return true;
+		return ajaxRendered;
 	}
 	
 	public void setAjaxRendered(boolean ajaxRendered) {
-		if(!ajaxRendered){
-			new IllegalArgumentException();
-		}	
+		this.ajaxRendered = ajaxRendered;
 	}
 	
 	public void decode(FacesContext context) {
@@ -72,6 +71,30 @@ public abstract class UIRichMessage extends UIMessage implements AjaxOutput{
 	public abstract String getLevel();
 
 	public abstract void setLevel(String level);
-
 	
+	public abstract String getMinLevel();
+
+	public abstract void setMinLevel(String minLevel);
+
+	private Object[] values;
+
+	public Object saveState(FacesContext context) {
+
+		if (values == null) {
+			values = new Object[3];
+		}
+
+		values[0] = super.saveState(context);
+		values[1] = this.ajaxRendered;
+		return (values);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void restoreState(FacesContext context, Object state) {
+
+		values = (Object[]) state;
+		super.restoreState(context, values[0]);
+		ajaxRendered = (Boolean) values[1];
+	}
 }
