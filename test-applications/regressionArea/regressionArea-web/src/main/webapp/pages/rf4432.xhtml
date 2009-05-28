@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/layout/layout.xhtml">
+	<ui:define name="template">
+		<a4j:form id="form">
+			<rich:panel id="pnlMain">
+				<f:facet name="header">
+					<h:outputText value="Panel Name" />
+				</f:facet>
+				<a4j:region id="rgn1" rendered="#{rf4432.drawView1}">
+					<rich:scrollableDataTable id="sdtItems" value="#{rf4432.items}"
+						var="item">
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText styleClass="headerText" value="Name" />
+							</f:facet>
+							<h:outputText value="#{item.name}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText styleClass="headerText" value="Description" />
+							</f:facet>
+							<h:outputText value="#{item.description}" />
+						</rich:column>
+					</rich:scrollableDataTable>
+					<br />
+					<a4j:commandButton action="#{rf4432.goView2}" value="Go"
+						reRender="pnlMain" />
+				</a4j:region>
+
+				<a4j:region id="rgn2" rendered="#{rf4432.drawView2}">
+					<h:outputText value="HELLO TEST" id="hello" />
+					<a4j:commandButton action="#{rf4432.goView1}" value="Back to table"
+						reRender="pnlMain" />
+				</a4j:region>
+			</rich:panel>
+		</a4j:form>
+
+	</ui:define>
+</ui:composition>
+</html>
