@@ -28,6 +28,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -540,24 +541,24 @@ public class AjaxRendererUtils {
 		if (null != valueToSet) {
 			// Simplest case - set.
 			if (valueToSet instanceof Set) {
-				return (Set<String>) valueToSet;
+				return new LinkedHashSet<String>((Set<String>)valueToSet);
 			}
 			// Other collections.
 			else if (valueToSet instanceof Collection) {
-				return new HashSet<String>((Collection<String>) valueToSet);
+				return new LinkedHashSet<String>((Collection<String>) valueToSet);
 			}
 			// Array
 			else if (OBJECT_ARRAY_CLASS.isAssignableFrom(valueToSet.getClass())) {
-				return new HashSet<String>(Arrays.asList((String[]) valueToSet));
+				return new LinkedHashSet<String>(Arrays.asList((String[]) valueToSet));
 			}
 			// Tokenize string.
 			else if (valueToSet instanceof String) {
 				String areasString = (String) valueToSet;
 				if (areasString.indexOf(",") > 0) {
-					return new HashSet<String>(Arrays.asList(areasString.trim().split(
+					return new LinkedHashSet<String>(Arrays.asList(areasString.trim().split(
 							"(\\s)*,(\\s)*")));
 				} else {
-					Set<String> areasSet = new HashSet<String>(5);
+					Set<String> areasSet = new LinkedHashSet<String>(5);
 					areasSet.add(areasString.trim());
 					return areasSet;
 				}

@@ -71,7 +71,7 @@ public class AjaxContextImpl extends AjaxContext {
 
 	private static final Log log = LogFactory.getLog(AjaxContext.class);
 
-	Set<String> ajaxAreasToRender = new HashSet<String>();
+	Set<String> ajaxAreasToRender = new LinkedHashSet<String>();
 
 	Set<String> ajaxAreasToProcess = null;
 
@@ -100,7 +100,7 @@ public class AjaxContextImpl extends AjaxContext {
 	
 	public void release() {
 
-		ajaxAreasToRender = new HashSet<String>();
+		ajaxAreasToRender = new LinkedHashSet<String>();
 		
 		ajaxAreasToProcess = null;
 
