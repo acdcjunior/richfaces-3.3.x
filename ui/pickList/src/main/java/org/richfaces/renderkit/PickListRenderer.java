@@ -34,6 +34,7 @@ import java.util.Set;
 
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -114,7 +115,7 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     	
     	List <Object> valuesList = new ArrayList<Object>();
     	
-    	Object value = pickList.getValue();
+    	Object value = getCurrentValue(FacesContext.getCurrentInstance(), pickList);
 
     	if(null == value || "".equals(value)) {
     		return valuesList;
@@ -148,6 +149,27 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     	
     }
 
+    /**
+     * @param context the FacesContext for the current request
+     * @param component the UIComponent whose value we're interested in
+     *
+     * @return the value to be rendered and formats it if required. Sets to
+     *  empty string if value is null.
+     */
+    protected Object getCurrentValue(FacesContext context,
+                                     UIComponent component) {
+
+        if (component instanceof UIInput) {
+            Object submittedValue = ((UIInput) component).getSubmittedValue();
+            if (submittedValue != null) {
+                return submittedValue;
+            }
+        }
+        Object currentValue = ((UIPickList)component).getValue();
+        return currentValue;
+
+    }
+    
     protected List <SelectItem> selectItemsForAvailableList(FacesContext facesContext, UIComponent uiComponent, List<SelectItem> selectItemList,
 	    List<SelectItem> selectItemsForSelectedList) {
     	    	
