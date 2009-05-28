@@ -64,9 +64,9 @@ public final class WrappedBeanComparator implements Comparator<Object> {
 			if (p1 instanceof Comparable && p2 instanceof Comparable) {
 				result = ((Comparable<Object>) p1).compareTo(p2);
 			} else if (p1 == null && p2 != null) {
-				result = 1;
-			} else if (p2 == null && p1 != null) {
 				result = -1;
+			} else if (p2 == null && p1 != null) {
+				result = 1;
 			}
 			
 			if (asc != null && !asc.booleanValue()) {
