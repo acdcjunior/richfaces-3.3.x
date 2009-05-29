@@ -193,26 +193,26 @@ Richfaces.Spinner.Controls.prototype = {
 
 	upClick: function(e){
 	   	if (e.preventDefault) {
-         e.preventDefault();	;
+	   		e.preventDefault();
 	    }
 		var isError = this.spinner.switchItems('up');
 		this.spinner.upClick();
 		if(!isError){
-			window.document.onmouseup		= this.mouseUp.bindAsEventListener(this);
+			window.document.onmouseup = this.mouseUp.bindAsEventListener(this);
 			this.mousedown=true;
 			this.timer = setTimeout(this.continueUpClick.bind(this), 750);
 		}	
 	},
-
+	
 	downClick: function(e){
 	   	if (e.preventDefault) {
-         e.preventDefault();	;
+	   		e.preventDefault();
 	    }
 		var isError = this.spinner.switchItems('down');
 		this.spinner.downClick();
 		if(!isError){
-			window.document.onmouseup		= this.mouseUp.bindAsEventListener(this);
-			this.mousedown=true;
+			window.document.onmouseup = this.mouseUp.bindAsEventListener(this);
+			this.mousedown = true;
 			this.timer = setTimeout(this.continueDownClick.bind(this), 750);
 		}	
 	},
@@ -308,6 +308,16 @@ Richfaces.Spinner.Controls.prototype = {
 		if ((this.edit.value < this.spinner.max) && (this.edit.value > this.spinner.min) && !isNaN(Number(this.edit.value)) && this.edit.value != ""){	
 			this.prevEditValue = this.edit.value;		
 		}
+		
+        switch (e.keyCode) {
+	        case Event.KEY_UP:
+	        	this.spinner.switchItems('up');
+	            return;
+	        case Event.KEY_DOWN:
+	        	this.spinner.switchItems('down');
+	            return;
+        }
+        
 		if (e.keyCode == 13){
 			if (this.spinner.required || "" != this.edit.value)
 				this.edit.value = this.getValidValue(this.edit.value);
@@ -332,10 +342,10 @@ Richfaces.Spinner.Controls.prototype = {
 	},
 	
 	_attachBehaviors: function(){
-		this.up.onmousedown		= this.upClick.bindAsEventListener(this);
-		this.down.onmousedown	= this.downClick.bindAsEventListener(this);
-		this.up.onmouseup		= this.mouseUp.bindAsEventListener(this);
-		this.down.onmouseup		= this.mouseUp.bindAsEventListener(this);
+		this.up.onmousedown	= this.upClick.bindAsEventListener(this);
+		this.down.onmousedown = this.downClick.bindAsEventListener(this);
+		this.up.onmouseup = this.mouseUp.bindAsEventListener(this);
+		this.down.onmouseup = this.mouseUp.bindAsEventListener(this);
 		this.edit.onkeydown	= this.editChange.bindAsEventListener(this);
 		this.eventInputChange= this.inputChange.bindAsEventListener(this);
 		if (this.edit.onchange){
