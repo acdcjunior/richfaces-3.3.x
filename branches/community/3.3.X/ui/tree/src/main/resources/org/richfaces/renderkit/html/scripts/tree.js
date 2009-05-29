@@ -58,9 +58,9 @@ Tree.ID_HANDLE_IMG_COLLAPSED = "img:collapsed";
 Tree.ID_ICON = "icon";
 Tree.ID_TEXT = "text";
 Tree.ID_MAIN_ROW = "mainRow";
-Tree.CLASS_ITEM_SELECTED = "dr-tree-i-sel";
-Tree.CLASS_ITEM_EXPANDED = "dr-tree-h-ic-line-exp";
-Tree.CLASS_ITEM_COLLAPSED = "dr-tree-h-ic-line-clp";
+Tree.CLASS_ITEM_SELECTED = "rich-tree-node-selected";
+Tree.CLASS_ITEM_EXPANDED = "rich-tree-h-ic-line-exp";
+Tree.CLASS_ITEM_COLLAPSED = "rich-tree-h-ic-line-clp";
 Tree.CLASS_AJAX_SELECTED_LISTENER_FLAG = "ajax_selected_listener_flag";
 
 Tree.addMethods({

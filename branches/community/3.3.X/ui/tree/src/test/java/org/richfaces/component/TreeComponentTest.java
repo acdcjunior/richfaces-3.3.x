@@ -254,10 +254,10 @@ extends AbstractAjax4JsfTestCase
 	private static Set styleClasses = new HashSet();
 
 	static {
-		styleClasses.add("dr-tree-h-ic dr-tree-h-ic-line-last");
-		styleClasses.add("dr-tree-h-ic dr-tree-h-ic-line-clp");
-		styleClasses.add("dr-tree-h-text rich-tree-node");
-		styleClasses.add("dr-tree-pointer-cursor");
+		styleClasses.add("rich-tree-node-icon-leaf rich-tree-h-ic-line-last");
+		styleClasses.add("rich-tree-h-ic rich-tree-h-ic-line-clp");
+		styleClasses.add("rich-tree-node");
+		styleClasses.add("rich-tree-node-handleicon-collapsed");
 		styleClasses.add("");
 	}
 
@@ -267,7 +267,7 @@ extends AbstractAjax4JsfTestCase
 
 		HtmlElement htmlTree = renderedView.getHtmlElementById(tree
 				.getClientId(facesContext));
-		htmlTree.getAttributeValue("class").equals("dr-tree rich-tree ");
+		htmlTree.getAttributeValue("class").equals("rich-tree ");
 
 		// System.out.println(htmlTree.getHtmlElementsByAttribute("class",
 		// "highlightedclass", "selectedclass"));

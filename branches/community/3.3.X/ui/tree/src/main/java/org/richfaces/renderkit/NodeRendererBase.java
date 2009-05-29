@@ -148,16 +148,16 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 
 		if (tree.isShowConnectingLines()) {
 			if (Boolean.TRUE.equals(treeNode.getAttributes().get("isLastElement"))) {
-				variables.setVariable("line", "dr-tree-h-ic-line-last");
+				variables.setVariable("line", "rich-tree-h-ic-line-last");
 			} else {
-				variables.setVariable("line", "dr-tree-h-ic-line-node");
+				variables.setVariable("line", "rich-tree-h-ic-line-node");
 			}
 			if (tree.isExpanded() && !tree.isLeaf()) {
 				variables
-				.setVariable("lineFirst", "dr-tree-h-ic-line-exp");
+				.setVariable("lineFirst", "rich-tree-h-ic-line-exp");
 			} else {
 				variables.setVariable("lineFirst",
-				"dr-tree-h-ic-line-clp");
+				"rich-tree-h-ic-line-clp");
 			}
 		}
 	}
@@ -171,7 +171,6 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 		String resource;
 		String cssClass;
 		resource = UITree.DEFAULT_HIGHLIGHTED_CSS_CLASS;
-		resource += " rich-tree-node-highlighted";
 		cssClass = tree.getHighlightedClass();
 		if (cssClass != null) {
 			resource += " " + cssClass;
@@ -183,7 +182,6 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 		variables.setVariable("highlightedClass", resource);
 
 		resource = UITree.DEFAULT_SELECTED_CSS_CLASS;
-		resource += " rich-tree-node-selected";
 		cssClass = tree.getSelectedClass();
 		if (cssClass != null) {
 			resource += " " + cssClass;

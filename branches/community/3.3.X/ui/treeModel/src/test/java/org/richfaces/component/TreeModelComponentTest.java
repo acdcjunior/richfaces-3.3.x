@@ -196,9 +196,9 @@ public class TreeModelComponentTest
 			//System.out.println(element);
 
 			if (nextSibling == null) {
-				assertTrue(handleCell.getAttributeValue("class").contains("dr-tree-h-ic-line-last"));
+				assertTrue(handleCell.getAttributeValue("class").contains("rich-tree-h-ic-line-last"));
 			} else {
-				assertTrue(handleCell.getAttributeValue("class").contains("dr-tree-h-ic-line-node"));
+				assertTrue(handleCell.getAttributeValue("class").contains("rich-tree-h-ic-line-node"));
 			}
 			
 			HtmlElement handleElement = (HtmlElement) handleCell.getFirstChild().getFirstChild();

@@ -33,13 +33,13 @@
 
 	<c:object var="leaf" type="boolean" value="#{component.UITree.leaf}" />
 
-	<table border="0" cellpadding="0" cellspacing="0" id="#{clientId}" class="dr-tree-full-width rich-tree-node">
+	<table border="0" cellpadding="0" cellspacing="0" id="#{clientId}" class="rich-tree-node">
 	<tbody>
 
 	<tr id="#{clientId}:mainRow" onclick="#{component.attributes['onclick']} #{!leaf ? this:getToggleScript(context, component, 'mainRow') : ''}" x:passThruWithExclusions="id,onclick">
 		<f:call name="encodeAttributeParameters" />
 		
-		<td class="dr-tree-h-ic rich-tree-node-handleicon #{line}" id="#{clientId}:handles">
+		<td class="rich-tree-node-handleicon #{line}" id="#{clientId}:handles">
 			<jsp:scriptlet>
 				<![CDATA[
 					if (Boolean.TRUE.equals(component.getAttributes().get("isAjaxUpdateRoot")) && component.getUITree().isShowConnectingLines()) {
@@ -58,7 +58,7 @@
 						if (leaf) {
 					]]>
 				</jsp:scriptlet>
-							<img id="#{clientId}:handle:img" src="#{spacer}" alt="" class="dr-tree-h-ic-img-md dr-tree-h-ic-img" />
+							<img id="#{clientId}:handle:img" src="#{spacer}" alt="" class="rich-tree-h-ic-img" />
 				<jsp:scriptlet>
 					<![CDATA[
 						} else {
@@ -74,7 +74,7 @@
 						 ]]>
 				</jsp:scriptlet>
 									<span id="#{clientId}:handle:img:collapsed"
-										 class="dr-tree-pointer-cursor dr-tree-h-ic-img-md dr-tree-h-ic-img dr-tree-h-ic-facets rich-tree-node-handleicon-collapsed"
+										 class="rich-tree-node-handleicon-collapsed"
 										 style="#{this:getHandleCollapsedDisplayStyle(context, component)}">
 
 				<jsp:scriptlet>
@@ -90,7 +90,7 @@
 				</jsp:scriptlet>
 
 									<img id="#{clientId}:handle:img:collapsed"
-										 src="#{collapsed}" class="dr-tree-pointer-cursor dr-tree-h-ic-img-md dr-tree-h-ic-img rich-tree-node-handleicon-collapsed"
+										 src="#{collapsed}" class="rich-tree-node-handleicon-collapsed"
 										 style="#{this:getHandleCollapsedDisplayStyle(context, component)};border:0" alt="" />
 
 				<jsp:scriptlet>
@@ -108,7 +108,7 @@
 				</jsp:scriptlet>
 									<span id="#{clientId}:handle:img:expanded"
 										 style="#{this:getHandleExpandedDisplayStyle(context, component)}"
-										 class="dr-tree-pointer-cursor dr-tree-h-ic-img-md dr-tree-h-ic-img dr-tree-h-ic-facets rich-tree-node-handleicon-expanded">
+										 class="rich-tree-node-handleicon-expanded">
 
 				<jsp:scriptlet>
 					<![CDATA[
@@ -123,7 +123,7 @@
 				</jsp:scriptlet>
 									<img id="#{clientId}:handle:img:expanded" src="#{expanded}"
 										 style="#{this:getHandleExpandedDisplayStyle(context, component)};border:0"
-										 class="dr-tree-pointer-cursor dr-tree-h-ic-img-md dr-tree-h-ic-img rich-tree-node-handleicon-expanded" alt="" />
+										 class="rich-tree-node-handleicon-expanded" alt="" />
 				<jsp:scriptlet>
 						<![CDATA[
 								}
@@ -141,7 +141,7 @@
 						if (org.richfaces.component.UITree.SWITCH_CLIENT.equals(component.getUITree().getSwitchType())) {
 					]]>
 				</jsp:scriptlet>
-							<input class="dr-tree-h-input" type="hidden" id="#{clientId}NodeExpanded" name="#{clientId}NodeExpanded" value="#{this:getExpandedValue(context,component)}" />
+							<input class="rich-tree-h" type="hidden" id="#{clientId}NodeExpanded" name="#{clientId}NodeExpanded" value="#{this:getExpandedValue(context,component)}" />
 				<jsp:scriptlet>
 					<![CDATA[
 						}
@@ -173,7 +173,7 @@
 			rich:onselected="#{component.attributes['onselected']}"
 			rich:onexpand="#{component.attributes['onexpand']}"
 			rich:oncollapse="#{component.attributes['oncollapse']}"
-			class="dr-tree-h-ic #{iconClass} #{lineFirst}" id="#{clientId}:icon">
+			class="#{iconClass} #{lineFirst}" id="#{clientId}:icon">
 			<jsp:scriptlet>
 				<![CDATA[
 				if (leaf) {
@@ -182,7 +182,7 @@
 
 				]]>
 			</jsp:scriptlet>
-					<span class="dr-tree-h-ic-img-md dr-tree-h-ic-img dr-tree-h-ic-facets">
+					<span class="rich-tree-h-ic-img">
 						<jsp:scriptlet>
 							<![CDATA[
 								renderChild(context, leafFacet);
@@ -194,7 +194,7 @@
 					} else {
 				]]>
 			</jsp:scriptlet>
-						<img src="#{leafIcon}" alt="" class="dr-tree-h-ic-img-md dr-tree-h-ic-img" />
+						<img src="#{leafIcon}" alt="" class="rich-tree-h-ic-img" />
 			<jsp:scriptlet>
 				<![CDATA[
 					}
@@ -207,7 +207,7 @@
 					if (iconFacet != null && iconFacet.isRendered()) {
 				]]>
 			</jsp:scriptlet>
-						<span class="dr-tree-h-ic-img-md dr-tree-h-ic-img dr-tree-h-ic-facets">
+						<span class="rich-tree-h-ic-img">
 							<jsp:scriptlet>
 								<![CDATA[
 									renderChild(context, iconFacet);
@@ -219,7 +219,7 @@
 					} else {
 				]]>
 			</jsp:scriptlet>
-						<img src="#{folderIcon}" alt="" class="dr-tree-h-ic-img-md dr-tree-h-ic-img" />
+						<img src="#{folderIcon}" alt="" class="rich-tree-h-ic-img" />
 			<jsp:scriptlet>
 				<![CDATA[
 					}
@@ -227,7 +227,7 @@
 				]]>
 			</jsp:scriptlet>
 		</td>
-		<td class="dr-tree-h-text rich-tree-node-text #{component.attributes['nodeClass']}"
+		<td class="rich-tree-node-text #{component.attributes['nodeClass']}"
             rich:selectedclass="#{selectedClass}" rich:highlightedclass="#{highlightedClass}"
             id="#{clientId}:text">
             <vcp:body />
