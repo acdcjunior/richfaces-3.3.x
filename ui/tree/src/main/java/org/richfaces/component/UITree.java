@@ -122,9 +122,9 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 
 	public static final String SELECTION_INPUT_ATTRIBUTE = "_selectionInput";
 
-	public final static String DEFAULT_SELECTED_CSS_CLASS = "dr-tree-i-sel";
+	public final static String DEFAULT_SELECTED_CSS_CLASS = "rich-tree-node-selected";
 
-	public final static String DEFAULT_HIGHLIGHTED_CSS_CLASS = "dr-tree-i-hl";
+	public final static String DEFAULT_HIGHLIGHTED_CSS_CLASS = "rich-tree-node-highlighted";
 
 	private UITreeNode defaultFacet;
 	

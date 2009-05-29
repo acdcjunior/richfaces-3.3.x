@@ -35,7 +35,7 @@
     </jsp:scriptlet>
 
 	<div id="#{clientId}"
-		style="#{component.attributes['style']}" class="dr-tree rich-tree #{component.attributes['styleClass']}" x:passThruWithExclusions="id,style,class,styleClass,rows">
+		style="#{component.attributes['style']}" class="rich-tree #{component.attributes['styleClass']}" x:passThruWithExclusions="id,style,class,styleClass,rows">
 		
 	<f:call name="encodeAttributeParameters" />
 

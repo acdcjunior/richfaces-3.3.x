@@ -190,8 +190,8 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 
 			String styleClasses = "";
 			if (context.getRowKey() != null) {
-				styleClasses = "dr-tree-layout-on dr-tree-h-ic-div rich-tree-node-children rich-tree-node-cildren";
-				if (!context.isLast() && showLines) styleClasses += " dr-tree-h-ic-line";
+				styleClasses = "rich-tree-node-children";
+				if (!context.isLast() && showLines) styleClasses += " rich-tree-h-ic-line";
 			}
 			if (styleClasses!="") getUtils().writeAttribute(writer, "class", styleClasses);
 		}
@@ -248,7 +248,7 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 				ResponseWriter writer = context.getResponseWriter();
 				if (isLastElement && this.navigator.showLines) {
 					writer.startElement("p", tree);
-					writer.writeAttribute("class", "dr-tree-last-node-marker", null);
+					writer.writeAttribute("class", "rich-tree-last-node-marker", null);
 					writer.endElement("p");
 				}
 
@@ -573,7 +573,7 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 
 	public String writeScriptElement(FacesContext context, UITree tree, String code) throws IOException {
 		/*
-		<div id="#{clientId}:script" class="dr-tree-h-script">
+		<div id="#{clientId}:script" class="rich-tree-h">
 			<script type="text/javascript">
 			</script>
 		</div>
@@ -583,7 +583,7 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 		ResponseWriter responseWriter = context.getResponseWriter();
 		responseWriter.startElement(HTML.DIV_ELEM, tree);
 		responseWriter.writeAttribute(HTML.id_ATTRIBUTE, scriptId, null);
-		responseWriter.writeAttribute(HTML.class_ATTRIBUTE, "dr-tree-h-script", null);
+		responseWriter.writeAttribute(HTML.class_ATTRIBUTE, "rich-tree-h", null);
 
 		responseWriter.startElement(HTML.SCRIPT_ELEM, tree);
 		responseWriter.writeAttribute(HTML.TYPE_ATTR, "text/javascript", null);
