@@ -27,7 +27,9 @@
                 </u:insertFacet>
                 <f:if context="hasColumnHead">
                     <u:insertChildren context="columns">
-                        <th nowrap="nowrap"><u:insertFacet name="header"/></th>
+                        <th nowrap="nowrap">
+                            <u:insertFacet name="header"/>
+                        </th>
                     </u:insertChildren>
                 </f:if>
             </thead>
@@ -54,15 +56,19 @@
 			            <f:call name="getEntryClass"/>
 			        </f:attribute>
                     <f:if property="fetchValue">
-                        <td style="display: none;"><f:attribute name="class"
-                                                                property="selectValueClass"
-                                                                mantadory="false"/> <f:verbatim
-                                property="fetchValue"/></td>
+                        <td style="display: none;">
+                            <f:attribute name="class" property="selectValueClass" mantadory="false"/> 
+                            <f:verbatim property="fetchValue" escape="true"/>
+                        </td>
                     </f:if>
+                    
                     <u:insertChildren context="columns">
                         <td nowrap="nowrap" class="rich-sb-cell-padding">
-                        <f:attribute name="style"><f:call name="cellPadding"/></f:attribute>
-                        <u:insertChild/></td>
+                            <f:attribute name="style">
+                                <f:call name="cellPadding"/>
+                            </f:attribute>
+                            <u:insertChild/>
+                        </td>
                     </u:insertChildren>
                 </tr>
             </u:insertChildren>

@@ -127,26 +127,27 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 
     private Pattern getTokensPattern(UIComponent component) {
         //TODO nick - cache ?
-	String tokens = (String) component.getAttributes().get("tokens");
+        String tokens = (String) component.getAttributes().get("tokens");
         if (tokens != null && tokens.length() != 0) {
             Pattern pattern;
+            
             synchronized (tokensCache) {
-		pattern = tokensCache.get(tokens);
-		if (pattern == null) {
-	            StringBuilder patternSource = new StringBuilder();
-	            char[] array = tokens.toCharArray();
-	            int l = array.length;
-	            for (int i = 0; i < l; i++) {
-	        	if (i != 0) {
-	        	    patternSource.append('|');
-	        	}
-	        	patternSource.append(Pattern.quote(String.valueOf(array[i])));
-	            }
-	        
-	            pattern = Pattern.compile(patternSource.toString());
-	            tokensCache.put(tokens, pattern);
-		}
-	    }
+        		pattern = tokensCache.get(tokens);
+        		if (pattern == null) {
+    	            StringBuilder patternSource = new StringBuilder();
+    	            char[] array = tokens.toCharArray();
+    	            int l = array.length;
+    	            for (int i = 0; i < l; i++) {
+        	        	if (i != 0) {
+        	        	    patternSource.append('|');
+        	        	}
+        	        	patternSource.append(Pattern.quote(String.valueOf(array[i])));
+    	            }
+    	        
+    	            pattern = Pattern.compile(patternSource.toString());
+    	            tokensCache.put(tokens, pattern);
+        		}
+    	    }
             
             return pattern;
         } else {
@@ -241,13 +242,13 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
         UISuggestionBox suggestionBox = (UISuggestionBox) component;
         if (!suggestionBox.isSubmitted()) {
             suggestionBox.setRowIndex(-1);
+            
             writer.startElement(HTML.DIV_ELEM, component);
             getUtils().encodeId(context, component);
 
-            StringBuffer clazz = new StringBuffer(
-                    "rich-sb-common-container ");
-            clazz.append(suggestionBox.getPopupClass() + " ").
-            	append(suggestionBox.getStyleClass());
+            StringBuffer clazz = new StringBuffer("rich-sb-common-container ");
+            clazz.append(suggestionBox.getPopupClass() + " ")
+                 .append(suggestionBox.getStyleClass());
             writer.writeAttribute("class", clazz, "popupClass");
 
             int zIndex = suggestionBox.getZindex();
@@ -256,9 +257,9 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 
             style.append(getSizeForStyle(component, "width", null, false));
             style.append(getSizeForStyle(component, "height", null, false));
-
-            style.append(suggestionBox.getPopupStyle() + ";").
-            	append(suggestionBox.getStyle() + ";");
+            style.append(suggestionBox.getPopupStyle() + ";")
+                 .append(suggestionBox.getStyle() + ";");
+            
             writer.writeAttribute("style", style, "popupStyle");
 
             UIComponent popupFacet = component.getFacet("popup");
@@ -281,21 +282,15 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
             writer.endElement(HTML.DIV_ELEM);
             
             writer.startElement("iframe", component);
-            writer.writeAttribute("src",
-                getResource("/org/richfaces/renderkit/html/images/spacer.gif")
-                    .getUri(context, null), null);
-            writer.writeAttribute("id", component.getClientId(context)
-                    + "_iframe", null);
-            writer.writeAttribute(
-                    "style", "position:absolute;display:none;z-index:" + zIndex + ";", null);
+            writer.writeAttribute("src", getResource("/org/richfaces/renderkit/html/images/spacer.gif").getUri(context, null), null);
+            writer.writeAttribute("id", component.getClientId(context) + "_iframe", null);
+            writer.writeAttribute("style", "position:absolute;display:none;z-index:" + zIndex + ";", null);
             writer.endElement("iframe");
 
             writer.startElement("input", component);
     		writer.writeAttribute("type", "hidden", null);
-    		writer.writeAttribute("id", component.getClientId(context)
-                    + "_selection", null);
-    		writer.writeAttribute("name", component.getClientId(context)
-                    + "_selection", null);
+    		writer.writeAttribute("id", component.getClientId(context) + "_selection", null);
+    		writer.writeAttribute("name", component.getClientId(context) + "_selection", null);
     		writer.endElement("input");
             
         } else {
@@ -387,7 +382,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
         UIComponent targetComponent = getTarget(component);
         String targetId = targetComponent.getClientId(context);
 
-        Map attributes = component.getAttributes();
+        Map<String, Object> attributes = component.getAttributes();
         StringBuffer script = new StringBuffer(" new ");
         // Build ajax function call
         JSFunction submitSuggest = AjaxRendererUtils.buildAjaxFunction(
@@ -395,7 +390,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 	submitSuggest.addParameter(targetId);
         submitSuggest.addParameter(component.getClientId(context));
         submitSuggest.addParameter(component.getAttributes().get("onsubmit"));
-        Map options = AjaxRendererUtils.buildEventOptions(context, component);
+        Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component);
         options.put("popup", component.getClientId(context));
         for (int i = 0; i < OPTIONS.length; i++) {
             String option = OPTIONS[i];
@@ -423,8 +418,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
         }
         String onselect = (String) attributes.get("onselect");
         if (null != onselect) {
-            JSFunctionDefinition function = new JSFunctionDefinition(
-                    "suggestion");
+            JSFunctionDefinition function = new JSFunctionDefinition("suggestion");
             function.addParameter("event");
             function.addToBody(onselect);
 
@@ -433,8 +427,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
         }
         String onobjectchange = (String) attributes.get("onobjectchange");
         if (null != onobjectchange) {
-            JSFunctionDefinition function = new JSFunctionDefinition(
-                    "suggestion","event");
+            JSFunctionDefinition function = new JSFunctionDefinition("suggestion","event");
             function.addToBody(onobjectchange);
 
             options.put("onobjectchange", function);
@@ -482,7 +475,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
      */
     private static class DataTemplateContext extends TemplateContext {
 
-        private List columns;
+        private List<UIComponent> columns;
 
         private int first;
 
@@ -516,8 +509,8 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
                 this.putParameter("hasHead", Boolean.TRUE);
             }
              // Fill child columns components
-            columns = new ArrayList(component.getChildCount());
-            for (Iterator iter = component.getChildren().iterator(); iter
+            columns = new ArrayList<UIComponent>(component.getChildCount());
+            for (Iterator<UIComponent> iter = component.getChildren().iterator(); iter
                     .hasNext();) {
                 UIComponent column = (UIComponent) iter.next();
                 if (column instanceof UIColumn) {
@@ -881,15 +874,13 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
     	final String endHtml = "</td></tr>";
     	
     	UIComponent nothingLabelFacet = component.getFacet("nothingLabel"); 
-    	if(null != nothingLabelFacet && nothingLabelFacet.isRendered()) {
+    	if (nothingLabelFacet != null && nothingLabelFacet.isRendered()) {
     		writer.write(startHtml);
     		renderChild(context, nothingLabelFacet);
     		writer.write(endHtml);
-    	} 
-    	else {
+    	} else {
     		String nothingLabel = suggestionBox.getNothingLabel();
-			if (null != nothingLabel && 
-    				!"".equals(nothingLabel)) {
+			if (nothingLabel != null && !"".equals(nothingLabel)) {
     			writer.write(startHtml);
     			writer.write(nothingLabel);
     			writer.write(endHtml);
