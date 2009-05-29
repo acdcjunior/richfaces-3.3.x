@@ -621,18 +621,30 @@ Suggestion.Base.prototype = {
     markPreviousPage: function() {
     	var pos = this.countVisibleEntries();
         if (this.index > 0) {
-        	if (pos.current>0) this.index = this.index - Math.min(pos.current,pos.all);
-        		else this.index = this.index - pos.all;
-        	if (this.index < 0) this.index = 0;
+        	if (pos.current>0) { 
+        		this.index = this.index - Math.min(pos.current,pos.all);
+        	} else { 
+        		this.index = this.index - pos.all;
+        	}
+        	
+        	if (this.index < 0) { 
+        		this.index = 0;
+        	}
         }
     },
 
     markNextPage: function() {
     	var pos = this.countVisibleEntries();
         if (this.index < this.entryCount - 1) {
-        	if ((pos.current < pos.all - 1) && pos.current>=0) this.index = this.index + (pos.all - pos.current - 1);
-        		else this.index = this.index + pos.all;
-        	if (this.index > this.entryCount - 1) this.index = this.entryCount - 1;
+        	if ((pos.current < pos.all - 1) && pos.current>=0) { 
+        		this.index = this.index + (pos.all - pos.current - 1);
+        	} else { 
+        		this.index = this.index + pos.all;
+        	}
+        	
+        	if (this.index > this.entryCount - 1) { 
+        		this.index = this.entryCount - 1;
+        	}
         }
     },
 
@@ -644,7 +656,9 @@ Suggestion.Base.prototype = {
         }*/
         // optimization
         var element = $(this.contentTable).firstChild;
-        while (!element.tagName || element.tagName.toLowerCase()!="tbody") element = element.nextSibling;
+        while (!element.tagName || element.tagName.toLowerCase()!="tbody") {
+        	element = element.nextSibling;
+        }
         return $(element.childNodes[index]);
     },
 
