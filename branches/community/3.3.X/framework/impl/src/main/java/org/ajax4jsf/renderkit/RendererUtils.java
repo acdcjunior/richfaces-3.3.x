@@ -915,7 +915,7 @@ public class RendererUtils {
 				}
 			}
 			if (target == null) {
-				if (child.getChildCount() > 0) {
+				if (child.getChildCount() > 0 || child.getFacetCount() > 0) {
 					target = findUIComponentBelow(child, id);
 				}
 			}
