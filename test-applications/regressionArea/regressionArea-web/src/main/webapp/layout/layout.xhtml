@@ -83,7 +83,17 @@
 				}
 			}
 		}
+		
+		function getTop(id){
+		var el = document.getElementById(id);					
+			return el.cumulativeOffset().top;
+		}
 			
+		function getLeft(id){
+		var el = document.getElementById(id);					
+			return el.cumulativeOffset().left;
+		}
+		
 	</script>
 	<style type="text/css">
 		<ui:insert name="style"/>
