@@ -27,6 +27,7 @@ public class UIMessagesTest extends AbstractAjax4JsfTestCase {
 
 	private static final class MockRichMessages extends UIRichMessages {
 		private String level = "ALL";
+		private String minLevel = "info";
 
 		@Override
 		public String getLevel() {
@@ -44,6 +45,16 @@ public class UIMessagesTest extends AbstractAjax4JsfTestCase {
 		}
 
 		public void setKeepTransient(boolean ajaxRendered) {
+		}
+
+		@Override
+		public String getMinLevel() {
+			return minLevel;
+		}
+
+		@Override
+		public void setMinLevel(String level) {
+			this.minLevel = level;
 		}
 	}
 
