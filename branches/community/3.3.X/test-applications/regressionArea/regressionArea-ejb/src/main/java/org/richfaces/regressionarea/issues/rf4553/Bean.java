@@ -12,6 +12,16 @@ public class Bean {
 	private String company;
 	private String notes;
 	private int counter;
+	private boolean ajaxRendered;
+	private boolean useAjaxRendered;
+
+	public boolean isAjaxRendered() {
+		return ajaxRendered;
+	}
+
+	public void setAjaxRendered(boolean ajaxRendered) {
+		this.ajaxRendered = ajaxRendered;
+	}
 
 	public int getCounter() {
 		return counter++;
@@ -26,6 +36,8 @@ public class Bean {
 		lastName = "";
 		company = "";
 		notes = "";
+		ajaxRendered = false;
+		useAjaxRendered = false;
 	}
 
 	public String getFirstName() {
@@ -62,6 +74,18 @@ public class Bean {
 	public void setNotes(String notes) {
 		System.out.println("setNotes(String notes)");
 		this.notes = notes;
+	}
+
+	public boolean isUseAjaxRendered() {
+		return useAjaxRendered;
+	}
+
+	public void setUseAjaxRendered(boolean useAjaxRendered) {
+		this.useAjaxRendered = useAjaxRendered;
+	}
+	
+	public void reset(){
+		counter = 0;
 	}
 
 }
