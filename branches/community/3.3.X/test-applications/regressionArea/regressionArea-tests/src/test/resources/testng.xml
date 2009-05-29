@@ -32,6 +32,7 @@
 			<package name="org.richfaces.testng.rf6267" />
 			<package name="org.richfaces.testng.rf6547" />
 			<package name="org.richfaces.testng.rf5773" />
+			<package name="org.richfaces.testng.rf7273" />
 		</packages>
 	</test>
 </suite>
