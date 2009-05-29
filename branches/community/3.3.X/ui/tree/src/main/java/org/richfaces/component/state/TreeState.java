@@ -98,8 +98,10 @@ public class TreeState implements DataComponentState, TreeStateCommandsListener,
 			return true;
 		}
 
-		return expandedNodes.contains(rowKey) || 
-			NodeState.EXPANDED.equals(queuedNodeStates.get(rowKey));
+		NodeState queuedNodeState = queuedNodeStates.get(rowKey);
+		
+		return expandedNodes.contains(rowKey) && !NodeState.COLLAPSED.equals(queuedNodeState) || 
+			NodeState.EXPANDED.equals(queuedNodeState);
 	}
 
 	public boolean isSelected(TreeRowKey rowKey) {
