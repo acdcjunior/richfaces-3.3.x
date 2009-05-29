@@ -7,18 +7,49 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="/layout/layout.xhtml">
-	<ui:define name="template">		
-			<h:panelGrid width="100%" columns="2">
+	<ui:define name="template">
+		<h:form id="form">
+			<h:panelGrid width="100%" columns="2"
+				rendered="#{!rf4553.useAjaxRendered}" id="default">
 				<a4j:keepAlive beanName="rf4553" />
 				<rich:panel styleClass="wizard">
 					<f:facet name="header">
 						<h:outputText value="Using a4j:include for Wizard-like behaviour" />
 					</f:facet>
-					<h:form id="form">
-						<a4j:include viewId="/pages/examples/wstep1.xhtml" id="includeID"/>
-					</h:form>
+					<a4j:include viewId="/pages/examples/wstep1.xhtml"
+						id="defaultIncludeID" />
 				</rich:panel>
-			</h:panelGrid>		
+			</h:panelGrid>
+
+			<h:panelGrid width="100%" columns="2"
+				rendered="#{rf4553.useAjaxRendered}" id="ajaxRenderedIsUsed">
+				<a4j:keepAlive beanName="rf4553" />
+				<rich:panel styleClass="wizard">
+					<f:facet name="header">
+						<h:outputText
+							value="Using a4j:include for Wizard-like behaviour(with ajaxRendered)" />
+					</f:facet>
+					<a4j:include viewId="/pages/examples/wstep1.xhtml"
+						id="ajaxRenderedIncludeID" ajaxRendered="#{rf4553.ajaxRendered}" />
+				</rich:panel>
+			</h:panelGrid>
+
+			<br />
+
+			<h:panelGrid columns="2" id="controls_panel" border="1">
+
+				<h:outputText value="useAjaxRendered" />
+				<h:selectBooleanCheckbox value="#{rf4553.useAjaxRendered}"
+					onclick="submit()" id="useAjaxRendered">
+				</h:selectBooleanCheckbox>
+
+				<h:outputText value="ajaxRendered" />
+				<h:selectBooleanCheckbox value="#{rf4553.ajaxRendered}" id="ajaxRendered">
+					<a4j:support event="onchange" reRender="ajaxRenderedIsUsed"></a4j:support>
+				</h:selectBooleanCheckbox>				
+			</h:panelGrid>
+			<h:commandButton action="#{rf4553.reset}" value="Reset counter" id="reset"/>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
