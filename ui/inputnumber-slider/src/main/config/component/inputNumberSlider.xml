@@ -155,7 +155,7 @@
 		<property>
 	    	<name> onerror </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>HTML: script expression; a non-number value or a number value that is out of the range is input
+		<description>The client side script method to be called when a non-number value or a number value that is out of the range is input
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
@@ -167,7 +167,7 @@
 	    <property>
 	    	<name>onslide</name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Event occur on slide</description>
+	    	<description>The client side script method to be called when a slider handle is moved</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    	
@@ -282,52 +282,52 @@
 		<property>
         		<name>oninputclick</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a pointer button is clicked</description>
+		<description>The client side script method to be called when the component input field is clicked</description>
         	</property>
     		<property>
         		<name>oninputdblclick</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a pointer button is double-clicked</description>
+    		<description>The client side script method to be called when the component input field is double-clicked</description>
     		</property>
     		<property>
         		<name>oninputkeydown</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a key is pressed down</description>
+    		<description>The client side script method to be called when a key is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeypress</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a key is pressed and released</description>
+    		<description>The client side script method to be called when a key is pressed and released in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeyup</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a key is released</description>
+    		<description>The client side script method to be called when a key is released in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousedown</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: script expression; a pointer button is pressed down</description>
+    		<description>The client side script method to be called when a mouse button is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousemove</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a pointer is moved within</description>
+    		<description>The client side script method to be called when a pointer is moved within the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseout</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a pointer is moved away</description>
+    		<description>The client side script method to be called when a pointer is moved away from the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseover</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: a script expression; a pointer is moved onto</description>
+    		<description>The client side script method to be called when a pointer is moved onto the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseup</name>
         		<classname>java.lang.String</classname>
-        		<description>HTML: script expression; a pointer button is released</description>
+    		<description>The client side script method to be called when a mouse button is released in the input field</description>
     		</property>
     		
     		<property elonly="true" hidden="true" existintag="false" exist="false" >
