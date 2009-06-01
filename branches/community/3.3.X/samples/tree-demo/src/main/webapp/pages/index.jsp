@@ -160,7 +160,13 @@
 					<dnd:dndParam name="treeParam" value="Tree Parameter" />
 					<dnd:dndParam name="accept" value="accept" />
 
-					<rich:treeNode ondrop="blinkElement(this.getElement())" type="input" dropListener="#{bean.processDrop}" oncollapse="Element.removeClassName(event['treeItem'].getElement(), 'colored')" onexpand="Element.addClassName(event['treeItem'].getElement(), 'colored')">
+					<rich:treeNode ondrop="blinkElement(this.getElement())" 
+                                   type="input" 
+                                   dropListener="#{bean.processDrop}" 
+                                   oncollapse="Element.removeClassName(event['treeItem'].getElement(), 'colored')" 
+                                   onexpand="Element.addClassName(event['treeItem'].getElement(), 'colored')"
+                                   oncomplete="alert('-1-');">
+                                   
 						<h:outputText value="#{data} : " />
 						<h:outputText value="#{bean.counter1} : " />
 						<h:selectBooleanCheckbox value="#{bean.reRenderValue}" />
