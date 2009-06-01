@@ -183,7 +183,7 @@
         	<name>onerror</name>
         	<classname>java.lang.String</classname>
         	<description>
-        	    The client side script method to be called whenever an
+        	    The client side script method to be called whenever a
         		JavaScript error occurs
         	</description>
         	<defaultvalue><![CDATA[""]]></defaultvalue>
