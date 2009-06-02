@@ -207,22 +207,22 @@
 	    <property>
 	        <name>onlistchanged</name>
 	        <classname>java.lang.String</classname>
-	        <description>HTML: script expression; a list is changed</description>
+	    	<description>The client side script method to be called when the list is changed</description>
 	    </property>
 		<property>
 			<name>onorderchanged</name>
 			<classname>java.lang.String</classname>
-		    <description>HTML: script expression; called after ordering action</description>
+			<description>The client side script method to be called when the list order is changed</description>
 		</property>
 		<property>
 	        <name>onlistchange</name>
 	        <classname>java.lang.String</classname>
-	        <description>HTML: script expression; before a list is changed</description>
+	        <description>The client side script method to be called before the list is changed</description>
 	    </property>
 		<property>
 			<name>onorderchange</name>
 			<classname>java.lang.String</classname>
-		    <description>HTML: script expression; called before ordering action</description>
+			<description>The client side script method to be called before the list order is changed</description>
 		</property>
 
          <property>
@@ -452,7 +452,7 @@
             <name>ontopclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Top&quot; is clicked
+            	The client side script method to be called when the &apos;Top&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -460,7 +460,7 @@
             <name>onupclick</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: a script expression; a button &quot;Up&quot; is clicked
+            	The client side script method to be called when the &apos;Up&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -468,7 +468,7 @@
             <name>ondownclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Down&quot; is clicked
+            	The client side script method to be called when the &apos;Down&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -476,7 +476,7 @@
             <name>onbottomclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Bottom&quot; is clicked
+            	The client side script method to be called when the &apos;Bottom&apos; button  is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -485,7 +485,7 @@
             <name>oncopyallclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Copy All&quot; is clicked
+            	The client side script method to be called when the &apos;Copy All&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -493,7 +493,7 @@
             <name>oncopyclick</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: a script expression; a button &quot;Copy&quot; is clicked
+            	The client side script method to be called when the &apos;Copy&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -501,7 +501,7 @@
             <name>onremoveclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Remove&quot; is clicked
+            	The client side script method to be called when the &apos;Remove&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -509,7 +509,7 @@
             <name>onremoveallclick</name>
             <classname>java.lang.String</classname>
             <description>
-                A JavaScript event handler; a button &quot;Remove All&quot; is clicked
+            	The client side script method to be called when the &apos;Remove All&apos; button is clicked
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -517,31 +517,31 @@
 	    <property>
 	    	<name>onclick</name>
 	    	<classname>java.lang.String</classname>
-	        <description>HTML: a script expression; a pointer button is clicked</description>
+	    	<description>The client side script method to be called when the component is clicked</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property> 
 	    <property>
 	    	<name>ondblclick</name>
 	    	<classname>java.lang.String</classname>
-	        <description>HTML: a script expression; a pointer button is double-clicked</description>
+	    	<description>The client side script method to be called when the component is double-clicked</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property> 
 	    <property>
 	    	<name>onmouseout</name>
 	    	<classname>java.lang.String</classname>
-	        <description>HTML: a script expression; a pointer is moved away</description>
+	    	<description>The client side script method to be called when a pointer is moved away from the component</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property> 
 	    <property>
 	    	<name>onmousemove</name>
 	    	<classname>java.lang.String</classname>
-	        <description>HTML: a script expression; a pointer is moved within</description>
+	    	<description>The client side script method to be called when a pointer is moved within the component</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property> 
 	    <property>
 	    	<name>onmouseover</name>
 	    	<classname>java.lang.String</classname>
-	        <description>HTML: a script expression; a pointer is moved onto</description>
+	    	<description>The client side script method to be called when a pointer is moved onto the component</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property hidden="true">
@@ -551,12 +551,12 @@
 		    <property>
 		    	<name>onfocus</name>
 		    	<classname>java.lang.String</classname>
-				<description>HTML: script expression; the element got the focus</description>
+		    	<description>The client side script method to be called when the component gets the focus</description>
 		    </property>
 		    <property>
 		    	<name>onblur</name>
 		    	<classname>java.lang.String</classname>
-				<description>HTML: script expression; the element lost the focus</description>
+		    	<description>The client side script method to be called when the component loses the focus</description>
 		    </property>
 	    
 	    <property>
