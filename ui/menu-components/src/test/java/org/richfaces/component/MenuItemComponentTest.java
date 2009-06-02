@@ -184,9 +184,7 @@ public class MenuItemComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(span);
         assertEquals(HTML.SPAN_ELEM, span.getNodeName());
         classAttr = span.getAttributeValue(HTML.class_ATTRIBUTE);
-        assertTrue(classAttr.contains("dr-menu-icon"));
         assertTrue(classAttr.contains("rich-menu-item-icon"));
-        assertTrue(classAttr.contains("dr-menu-icon-disabled"));
         assertTrue(classAttr.contains("rich-menu-item-icon-disabled"));
 
         HtmlElement div = page.getHtmlElementById(menuItem
@@ -229,7 +227,6 @@ public class MenuItemComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(span);
         assertEquals(HTML.SPAN_ELEM, span.getNodeName());
         classAttr = span.getAttributeValue(HTML.class_ATTRIBUTE);
-        assertTrue(classAttr.contains("dr-menu-icon"));
         assertTrue(classAttr.contains("rich-menu-item-icon"));
         
         assertTrue(classAttr.contains((String) menuItem.getAttributes().get("iconClass")));

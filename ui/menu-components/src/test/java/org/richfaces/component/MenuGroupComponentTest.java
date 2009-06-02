@@ -212,9 +212,7 @@ public class MenuGroupComponentTest extends AbstractAjax4JsfTestCase {
         HtmlElement span = page.getHtmlElementById(menuGroup.getClientId(facesContext) + ":icon");
         assertNotNull(span);
         assertEquals(HTML.SPAN_ELEM, span.getNodeName());
-        classAttr = span.getAttributeValue(HTML.class_ATTRIBUTE);
-        assertTrue(classAttr.contains("dr-menu-icon"));
-        assertTrue(classAttr.contains("rich-menu-item-icon"));
+        classAttr = span.getAttributeValue(HTML.class_ATTRIBUTE);        assertTrue(classAttr.contains("rich-menu-item-icon"));
         assertTrue(classAttr.contains((String) menuGroup.getAttributes().get(
                 "iconClass")));
 
@@ -229,8 +227,8 @@ public class MenuGroupComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(div);
         assertEquals(HTML.DIV_ELEM, div.getNodeName());
         classAttr = div.getAttributeValue(HTML.class_ATTRIBUTE);
-        assertTrue(classAttr.contains("dr-menu-node"));
-        assertTrue(classAttr.contains("dr-menu-node-icon"));
+        assertTrue(classAttr.contains("rich-menu-node"));
+        assertTrue(classAttr.contains("rich-menu-node-icon"));
         assertTrue(classAttr.contains("rich-menu-item-folder"));
 
     }

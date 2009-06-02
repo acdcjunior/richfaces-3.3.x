@@ -207,7 +207,7 @@ public class MenuItemRendererBase extends CompositeRenderer {
         
         if (menuItem.isDisabled()) {
             variables.setVariable("iconDisabledClasses",
-                    "dr-menu-icon-disabled rich-menu-item-icon-disabled");
+                    "rich-menu-item-icon-disabled");
         } else {
 
             variables.setVariable("onmouseoutInlineStyles",

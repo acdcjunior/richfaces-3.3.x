@@ -422,7 +422,7 @@ RichFaces.Menu.DelayedDropDown = function(layer, elementId, e) {
 	var node = (e.target || e.srcElement);
 	var isLabel = false;
 	while (node && node.id != elementId.id) {
-		if (node.className == 'dr-label-text-decor rich-label-text-decor') {//TODO: replace magic 
+		if (node.className == 'rich-label-text-decor') {//TODO: replace magic 
 			isLabel = true;
 		}
 		node = node.parentNode;
@@ -866,8 +866,8 @@ RichFaces.Menu.Layer.prototype = {
 	highlightLabel: function() {
 		var label1 = $(this.getLabel());
 		RichFaces.Menu.Items.replaceClasses(label1, 
-			['dr-menu-label-unselect', 'rich-ddmenu-label-unselect'], 
-			['dr-menu-label-select','rich-ddmenu-label-select']);
+			['rich-ddmenu-label-unselect'], 
+			['rich-ddmenu-label-select']);
 		if (this.selectedClass) {
 			Element.addClassName(label1, this.selectedClass);
 		}
@@ -876,8 +876,8 @@ RichFaces.Menu.Layer.prototype = {
 	unHighlightLabel: function() {
 		var label1 = $(this.getLabel());
 		RichFaces.Menu.Items.replaceClasses(label1, 
-			['dr-menu-label-select','rich-ddmenu-label-select'],
-			['dr-menu-label-unselect', 'rich-ddmenu-label-unselect']);
+			['rich-ddmenu-label-select'],
+			['rich-ddmenu-label-unselect']);
 		if (this.selectedClass) {
 			Element.removeClassName(label1, this.selectedClass);
 		}
@@ -1236,7 +1236,7 @@ RichFaces.Menu.Items = {
 	itemHoverClassNames: ['rich-menu-item-hover'],
 	groupHoverClassNames: ['rich-menu-group-hover'],
 	iconClassNames : [],
-	hoverIconClassNames: ['dr-menu-icon-selected', 'rich-menu-item-icon-selected'],
+	hoverIconClassNames: ['rich-menu-item-icon-selected'],
 	labelClassNames: [],
 	hoverLabelClassNames: ['rich-menu-item-label-selected'],
 	
@@ -1526,7 +1526,7 @@ RichFaces.Menu.itemMouseOut = function(event, element, menuItemClass, menuItemSt
 	
 	element.className = 'rich-menu-item rich-menu-item-enabled ' + (menuItemClass ? menuItemClass : '');
 	element.style.cssText = menuItemStyle;
-	$(element.id + ':icon').className='dr-menu-icon rich-menu-item-icon ' + (iconClass ? iconClass : '');
+	$(element.id + ':icon').className='rich-menu-item-icon ' + (iconClass ? iconClass : '');
 	Element.removeClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
 	
 }
@@ -1548,6 +1548,6 @@ RichFaces.Menu.itemMouseOver = function(event, element, menuItemHoverClass, menu
 	element.className = 'rich-menu-item rich-menu-item-hover ' + (menuItemHoverClass ? menuItemHoverClass : '');
 	element.style.cssText = menuItemStyle;
 	
-	$(element.id + ':icon').className='dr-menu-icon dr-menu-icon-selected rich-menu-item-icon rich-menu-item-icon-selected ' + (iconClass ? iconClass : '');
+	$(element.id + ':icon').className='rich-menu-item-icon rich-menu-item-icon-selected ' + (iconClass ? iconClass : '');
 	Element.addClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
 }

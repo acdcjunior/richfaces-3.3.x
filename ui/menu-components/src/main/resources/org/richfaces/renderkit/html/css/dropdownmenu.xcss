@@ -22,7 +22,7 @@
 
 	background : repeat-y left;
 }
-.dr-menu-label {
+.rich-ddmenu-label, .rich-ddmenu-label-disabled {
 	left: 0px;
 	top: 0px;
 	padding : 2px 5px 2px 5px; 
@@ -30,11 +30,11 @@
 	width : auto; 
 	height : auto;
 }
-.dr-menu-label-unselect {
+.rich-ddmenu-label-unselect {
 	border : 0px solid transparent;
 	padding : 3px 6px; 
 }
-.dr-menu-label-select {
+.rich-ddmenu-label-select {
 	border : 1px solid;
 	cursor : pointer; 
 }
@@ -60,7 +60,7 @@
 
 </f:verbatim>
 
-<u:selector name=".dr-label-text-decor">
+<u:selector name=".rich-label-text-decor">
 	<u:style name="font-weight" skin="headerWeightFont" />
 </u:selector>
 
@@ -78,18 +78,18 @@
 	<u:style name="border-right-color" skin="additionalBackgroundColor" />
 </u:selector>
 
-<u:selector name=".dr-menu-label">
+<u:selector name=".rich-ddmenu-label, .rich-ddmenu-label-disabled">
 	<u:style name="font-family" skin="generalFamilyFont" />
 	<u:style name="font-size" skin="generalSizeFont" />
 </u:selector>
 
-<u:selector name=".dr-menu-label-select">
+<u:selector name=".rich-ddmenu-label-select">
 	<u:style name="border-color" skin="panelBorderColor" />
 	<u:style name="background-color" skin="controlBackgroundColor" />
 	<u:style name="color" skin="generalTextColor" />
 </u:selector>
 
-<u:selector name=".dr-ddmenu-label-disabled" >
+<u:selector name=".rich-ddmenu-label-disabled" >
 	<u:style name="color" skin="tabDisabledTextColor"/>
 </u:selector>
 

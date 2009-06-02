@@ -31,7 +31,7 @@
 		onmouseover="RichFaces.Menu.groupMouseOver(event, this, '#{menuGroupHoverClass}', '#{onmouseoverInlineStyles}');">
 		
 		<span id="#{clientId}:icon" 
-			class="dr-menu-icon #{menuGroupItemIconClass} #{component.attributes['iconClass']}">
+			class="#{menuGroupItemIconClass} #{component.attributes['iconClass']}">
 		<jsp:scriptlet>
 			<![CDATA[
 					boolean disabled = ((Boolean) component.getAttributes().get("disabled")).booleanValue();
@@ -64,7 +64,7 @@
 			        if (iconFolderFacet != null && iconFolderFacet.isRendered()) {
 			]]>
 		</jsp:scriptlet>
-			<div id="#{clientId}:folder" class="dr-menu-node #{menuGroupItemFolderClass}">
+			<div id="#{clientId}:folder" class="rich-menu-node #{menuGroupItemFolderClass}">
 		<jsp:scriptlet>
 			<![CDATA[
 						renderChild(context, iconFolderFacet);
@@ -75,7 +75,7 @@
 		<jsp:scriptlet>	
 		<![CDATA[} else if (component.getAttributes().get(iconFolder)!=null) {]]>
 		</jsp:scriptlet>
-			<div id="#{clientId}:folder" class="dr-menu-node #{menuGroupItemFolderClass} #{component.attributes['iconClass']}">
+			<div id="#{clientId}:folder" class="rich-menu-node #{menuGroupItemFolderClass} #{component.attributes['iconClass']}">
 				<img width="16" height="16" alt=""
 					style="#{component.attributes['iconStyle']}"
 					src="#{actualIconFolder}"/>
@@ -83,7 +83,7 @@
 		<jsp:scriptlet>	
 		<![CDATA[} else {]]>
 		</jsp:scriptlet>
-			<div id="#{clientId}:folder" class="dr-menu-node dr-menu-node-icon #{menuGroupItemFolderClass}">
+			<div id="#{clientId}:folder" class="rich-menu-node rich-menu-node-icon #{menuGroupItemFolderClass}">
 			<jsp:scriptlet><![CDATA[
 			writer.write("&#160;");
 			]]></jsp:scriptlet>
