@@ -539,7 +539,7 @@ ModalPanel.prototype = {
 	                        this.iframe = this.id.id + "IFrame";
 				new Insertion.Top(eCdiv,
                          	"<iframe src=\"javascript:''\" frameborder=\"0\" scrolling=\"no\" id=\"" + this.iframe + "\" " +								
-				"class=\"dr-mpnl-iframe\" style=\"width: 1px; height: 1px;\">" +
+				"class=\"rich-mpnl-iframe\" style=\"width: 1px; height: 1px;\">" +
 				"</iframe>");
 				
 				eIframe = $(this.iframe); 

@@ -5,16 +5,16 @@
    	xmlns="http://www.w3.org/1999/xhtml">	
 
 	<f:verbatim>
-		.dr-mpnl-ovf-hd {
+		.rich-mpnl-ovf-hd {
 			overflow: hidden;
 		}
 		
-		.dr-mpnl-trim {
+		.rich-mpnl-trim {
 			position: relative; 
 			z-index: 0;
 		}
 		
-		.dr-mpnl-iframe {
+		.rich-mpnl-iframe {
 			position: absolute; 
 			left: 0px; 
 			top: 0px; 
@@ -23,7 +23,7 @@
 			z-index: -1;
 		}
 		
-		.dr-mpnl-mask-div {
+		.rich-mpnl-mask-div {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -36,20 +36,16 @@
 			background-color: #d0d0d0;
 		}
 	
-		.dr-mpnl-mask-div-opaque {
+		.rich-mpnl-mask-div-opaque {
 			filter: alpha(opacity=50);
 			opacity: 0.5;
 		}
 	
-		.dr-mpnl-mask-div-transparent {
+		.rich-mpnl-mask-div-transparent {
 			background-color: transparent;
 		}
-	
-		.dr-mpnl-mask {
-			
-		}
 		
-		.dr-mpnl-panel {
+		.rich-mpnl-panel {
 			position: fixed;
 			margin: 0px;
 			padding: 0px;
@@ -59,7 +55,7 @@
 			top: 0px; 
 		}
 		
-		.dr-mpnl-resizer {
+		.rich-mpnl-resizer {
 			line-height: 1px;
 			font-size: 1px;
 			position: absolute;
@@ -68,14 +64,14 @@
 			opacity: 0.5;*/
 		}
 
-		.dr-mpnl-header {
+		.rich-mpnl-header-cell {
 			height: 20px;
 			width: 100%;
 			vertical-align: middle;
 			z-index: 5;
 		}
 		
-		.dr-mpnl-pnl-button {
+		.rich-mpnl-button {
 			outline-style: none;
 			position: absolute;
 			border: 10px solid red; 
@@ -101,7 +97,7 @@
 		}
 	</f:verbatim>
 
-	<u:selector name=".dr-mpnl-spacer, .dr-mpnl-resizer">
+	<u:selector name=".rich-mpnl-spacer, .rich-mpnl-resizer">
 		<u:style name="background-image">
 			<f:resource f:key="/org/richfaces/renderkit/html/images/spacer.gif"/>
 		</u:style>
@@ -109,14 +105,14 @@
 	
 <f:verbatim>
 <![CDATA[
-.dr-mpnl-pnl {
+.rich-mpnl-content {
    border-width: 1px;
    border-style: solid;
    padding : 1px;
    background-color: inherit;
 }
    
-.dr-mpnl-pnl-h{
+.rich-mpnl-header{
    padding : 2px;
    border-width: 1px;
    border-style: solid;
@@ -124,11 +120,11 @@
    background-repeat : repeat-x;
 }
 
-.dr-mpnl-pnl-b{
+.rich-mpnl-body{
    padding : 10px;
 } 
 
-.dr-mpnl-shadow {
+.rich-mpnl-shadow {
 	position: absolute;
     height: 100%;
     width: 100%;
@@ -141,11 +137,11 @@
 
 ]]>
 </f:verbatim>
-<u:selector name=".dr-mpnl-pnl">
+<u:selector name=".rich-mpnl-content">
 	<u:style name="background-color" skin="generalBackgroundColor" />
 	<u:style name="border-color" skin="panelBorderColor" />
 </u:selector>
-<u:selector name=".dr-mpnl-pnl-h">
+<u:selector name=".rich-mpnl-header">
 	<u:style name="background-color" skin="headerBackgroundColor" />
 	<u:style name="border-color" skin="headerBackgroundColor" />
 	<u:style name="background-image" >
@@ -155,20 +151,20 @@
 </u:selector>
 
 
-<u:selector name=".dr-mpnl-pnl-text">
+<u:selector name=".rich-mpnl-text">
 	<u:style name="font-size" skin="headerSizeFont" />
 	<u:style name="color" skin="headerTextColor" />
 	<u:style name="font-weight" skin="headerWeightFont" />
    	<u:style name="font-family" skin="headerFamilyFont" />
 </u:selector>
 
-<u:selector name=".dr-mpnl-pnl-b">
+<u:selector name=".rich-mpnl-body">
 	<u:style name="font-size" skin="generalSizeFont" />
 	<u:style name="color" skin="generalTextColor" />
     <u:style name="font-family" skin="generalFamilyFont" />
 </u:selector>
 	
-<u:selector name=".dr-mpnl-shadow">
+<u:selector name=".rich-mpnl-shadow">
     <u:style name="background-color" skin="shadowBackgroundColor" />
 </u:selector>
 

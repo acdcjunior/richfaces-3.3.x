@@ -117,12 +117,11 @@ public class ModalPanelComponentTest extends AbstractAjax4JsfTestCase {
     	
     	HtmlElement htmlContentDiv = renderedView.getHtmlElementById(modalPanel.getClientId(facesContext) + "ContentDiv");
     	assertNotNull(htmlContentDiv);
-    	assertTrue(htmlContentDiv.getAttributeValue("class").contains("rich-mp-content"));
+    	assertTrue(htmlContentDiv.getAttributeValue("class").contains("rich-mpnl-content"));
     	
     	HtmlElement header = renderedView.getHtmlElementById(modalPanel.getClientId(facesContext) + "Header");
     	assertNotNull(header);
     	
-    	assertTrue(header.getAttributeValue("class").contains("dr-mpnl-pnl-text dr-mpnl-pnl-h"));
     	assertTrue(header.getAttributeValue("class").contains("rich-mpnl-text"));
     	assertTrue(header.getAttributeValue("class").contains("rich-mpnl-header"));
     	
@@ -131,7 +130,7 @@ public class ModalPanelComponentTest extends AbstractAjax4JsfTestCase {
     	for (int i = 0; i < resizers.length; i++) {
     		HtmlElement resizer = renderedView.getHtmlElementById(modalPanel.getClientId(facesContext) + "Resizer" + resizers[i]);
     		assertNotNull(resizer);
-    		assertTrue(resizer.getAttributeValue("class").contains("dr-mpnl-resizer rich-mpnl-resizer"));
+    		assertTrue(resizer.getAttributeValue("class").contains("rich-mpnl-resizer"));
     	}
     	
     }
