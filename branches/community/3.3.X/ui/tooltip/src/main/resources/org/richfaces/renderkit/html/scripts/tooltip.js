@@ -313,53 +313,60 @@ ToolTip.prototype = {
 		}
 		this.hintParentElement = null;
 		this.isMouseOvered = false;
-		if(this.onhide!=null) 
-		{
-		 this.onhide(e);
+		if(this.onhide != null) {
+			this.onhide(e);
 		}
 		
 	},
 	
 	doHide: function(e){
-		if (this.hidingTimerHandle) return;
+		if (this.hidingTimerHandle) { 
+			return;
+		}
 		
 		this.eventCopy = null;
 
-		if (!e) var e = window.event;
+		if (!e) { 
+			var e = window.event;
+		}
 		
-		var relTarg = e.relatedTarget || e.toElement;
+		var relTarg = null;
+		if (e.type == 'mouseout' || e.type == 'mouseover') {
+			relTarg = e.relatedTarget || e.toElement;
+		}
 		
-		if (this.ffcheck(relTarg)) return;
+		if (this.ffcheck(relTarg)) { 
+			return;
+		}
 		
 		var className;
-		if (relTarg)
-		{
+		if (relTarg) {
 			try {
 				className = relTarg.className;
 				if (className!="anonymous-div");
-					if (this.detectAncestorNode(relTarg,this.toolTip)) return;
+					if (this.detectAncestorNode(relTarg,this.toolTip)) { 
+						return;
+					}
 			} catch (e) {;}
 		}
 
-		if (this.activationTimerHandle)
-		{
+		if (this.activationTimerHandle) {
 			window.clearTimeout(this.activationTimerHandle);
 			this.activationTimerHandle = undefined;
 		}
-		if (this.hideDelay>0)
-		{
+		
+		if (this.hideDelay > 0) {
 			var event = A4J.AJAX.CloneObject(e, false);
-			this.hidingTimerHandle = window.setTimeout(function()
-				{
-					this.hideDiv(event);
-					if (this.hidingTimerHandle)
-					{
-						window.clearTimeout(this.hidingTimerHandle);
-						this.hidingTimerHandle = undefined;				
-					}					
-				}.bindAsEventListener(this), this.hideDelay);
+			this.hidingTimerHandle = window.setTimeout(function() {
+				this.hideDiv(event);
+				if (this.hidingTimerHandle) {
+					window.clearTimeout(this.hidingTimerHandle);
+					this.hidingTimerHandle = undefined;				
+				}					
+			}.bindAsEventListener(this), this.hideDelay);
+		} else { 
+			this.hideDiv();
 		}
-		else this.hideDiv();
 	},
 	
 	doEnable: function(){
