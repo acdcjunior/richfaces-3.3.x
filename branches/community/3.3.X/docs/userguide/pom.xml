@@ -38,7 +38,62 @@
 			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
-
+		<profiles>
+	<profile>
+			<id>html</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.jboss.maven.plugins</groupId>
+							<artifactId>maven-jdocbook-plugin
+							</artifactId>
+							<version>2.1.0-200803311251UTC-MPJDOCBOOK-8
+							</version>
+							<configuration>
+								<formats>
+									<format>
+										<formatName>html</formatName>
+										<stylesheetResource> ${xsl_html}</stylesheetResource>
+										<finalName> index.html</finalName>
+										<imageCopyingRequired> true</imageCopyingRequired>
+										<imagePathSettingRequired> false</imagePathSettingRequired>
+									</format>
+								</formats>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>html_single</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.jboss.maven.plugins</groupId>
+							<artifactId>maven-jdocbook-plugin
+							</artifactId>
+							<version>2.1.0-200803311251UTC-MPJDOCBOOK-8
+							</version>
+							<configuration>
+								<formats>
+									<format>
+										<formatName>html_single</formatName>
+										<stylesheetResource> ${xsl_html_single}</stylesheetResource>
+										<imageCopyingRequired> true</imageCopyingRequired>
+										<imagePathSettingRequired> false</imagePathSettingRequired>
+										<finalName> index.html</finalName>
+									</format>
+								</formats>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<pluginManagement>
 			<plugins>
