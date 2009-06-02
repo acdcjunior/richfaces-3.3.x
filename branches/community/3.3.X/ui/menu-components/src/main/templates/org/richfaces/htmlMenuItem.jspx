@@ -79,7 +79,7 @@
 		
 		
 		<span id="#{clientId}:icon" 
-			class="dr-menu-icon rich-menu-item-icon #{iconDisabledClasses} #{component.attributes['iconClass']}"
+			class="rich-menu-item-icon #{iconDisabledClasses} #{component.attributes['iconClass']}"
 			style="#{component.attributes['iconStyle']}" 
             onContextMenu="Event.stop(event); return false;">
 			
