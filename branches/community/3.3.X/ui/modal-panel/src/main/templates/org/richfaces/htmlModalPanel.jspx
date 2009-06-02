@@ -39,7 +39,7 @@
 		class="rich-modalpanel #{component.attributes['styleClass']}"
 		x:passThruWithExclusions="id,style,class,styleClass"
 		>
-			<div class="dr-mpnl-mask-div dr-mpnl-mask-div-opaque rich-mpnl-mask-div" id="#{clientId}Div"
+			<div class="rich-mpnl-mask-div rich-mpnl-mask-div-opaque" id="#{clientId}Div"
 				style="z-index: 1;"
 				onclick="#{component.attributes['onmaskclick']}"
 				ondblclick="#{component.attributes['onmaskdblclick']}"
@@ -50,13 +50,13 @@
 				onmouseover="#{component.attributes['onmaskmouseover']}"
 				onmouseout="#{component.attributes['onmaskmouseout']}">
 			
-				<button class="dr-mpnl-pnl-button" id="#{clientId}FirstHref"></button>
+				<button class="rich-mpnl-button" id="#{clientId}FirstHref"></button>
 			</div>	
 
-			<div class="dr-mpnl-panel rich-mpnl_panel" >
+			<div class="rich-mpnl_panel" >
 			<div id="#{clientId}CDiv" style="position: absolute; left: 0px; top: 0px; z-index: 9;" class="rich-mp-container">
 
-				<div id="#{clientId}ShadowDiv" class="dr-mpnl-shadow rich-mpnl-shadow"
+				<div id="#{clientId}ShadowDiv" class="rich-mpnl-shadow"
 					style="#{component.shadowStyle}" >
 			   	</div>
 				
@@ -90,23 +90,23 @@
 							/*
 							overflow: hidden;
 							*/
-							divClass = "dr-mpnl-ovf-hd";
+							divClass = "rich-mpnl-ovf-hd";
 							if (component.isTrimOverlayedElements()) {
 								/*
 								position: relative; 
 								z-index: 0;
 								*/
-								divClass += " dr-mpnl-trim";
+								divClass += " rich-mpnl-trim";
 							}
 						}
 					]]>
 				</jsp:scriptlet>
 				
-				<div id="#{clientId}ContentDiv" style="#{component.attributes['style']}" class="#{divClass} dr-mpnl-pnl rich-mp-content">
+				<div id="#{clientId}ContentDiv" style="#{component.attributes['style']}" class="#{divClass} rich-mpnl-content">
 					<jsp:scriptlet>
 						<![CDATA[if(component.getFacet("controls")!=null && component.getFacet("controls").isRendered()) {]]>
 					</jsp:scriptlet>
-						<div class="dr-mpnl-pnl-text rich-mpnl-text rich-mpnl-controls #{component.attributes['controlsClass']}">
+						<div class="rich-mpnl-text rich-mpnl-controls #{component.attributes['controlsClass']}">
 					           <u:insertFacet name="controls" />
 						</div>
 					<jsp:scriptlet>
@@ -118,8 +118,8 @@
 							<![CDATA[if(component.getFacet("header")!=null && component.getFacet("header").isRendered()) {]]>
 						</jsp:scriptlet>
 				        	<tr style="height: 1%;">
-								<td class="dr-mpnl-header rich-mpnl-header-cell" >
-									<div id="#{clientId}Header" style="white-space: nowrap;" class="dr-mpnl-pnl-text dr-mpnl-pnl-h rich-mpnl-text rich-mpnl-header #{component.attributes['headerClass']}">
+								<td class="rich-mpnl-header-cell" >
+									<div id="#{clientId}Header" style="white-space: nowrap;" class="rich-mpnl-text rich-mpnl-header #{component.attributes['headerClass']}">
 		 					           <u:insertFacet name="header" />
 									</div>
 								</td>
@@ -128,7 +128,7 @@
 							<![CDATA[}]]>
 						</jsp:scriptlet>
 				        	<tr style="height: 99%">
-				        		<td class="dr-mpnl-pnl-b rich-mpnl-body" valign="top">
+				        		<td class="rich-mpnl-body" valign="top">
 									<vcp:body>
 										<f:call name="renderChildren" />
 									</vcp:body>
@@ -152,7 +152,7 @@
 								variables.setVariable("resizerStyle", style);
 					]]>
 				</jsp:scriptlet>
-					<div id="#{clientId}Resizer#{resizer}" class="dr-mpnl-resizer rich-mpnl-resizer" style="#{resizerStyle}">
+					<div id="#{clientId}Resizer#{resizer}" class="rich-mpnl-resizer" style="#{resizerStyle}">
 					</div>
 				<jsp:scriptlet>
 					<![CDATA[
@@ -163,10 +163,10 @@
 
 			</div>
 			</div>
-			<div class="dr-mpnl-mask-div dr-mpnl-mask-div-transparent rich-mpnl-mask-div" id="#{clientId}CursorDiv"
+			<div class="rich-mpnl-mask-div rich-mpnl-mask-div-transparent" id="#{clientId}CursorDiv"
 				style="z-index: -200;">
 				
-		        <button class="dr-mpnl-pnl-button" id="#{clientId}LastHref"></button>
+		        <button class="rich-mpnl-button" id="#{clientId}LastHref"></button>
 			</div>
 
 			<script type="text/javascript">
