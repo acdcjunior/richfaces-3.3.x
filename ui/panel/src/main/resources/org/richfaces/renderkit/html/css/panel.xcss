@@ -4,13 +4,13 @@
    xmlns="http://www.w3.org/1999/xhtml" >
    <f:verbatim>
 <![CDATA[
-.dr-pnl{
+.rich-panel{
    border-width: 1px;
    border-style: solid;
    padding : 1px;
 }
    
-.dr-pnl-h{
+.rich-panel-header{
    padding : 2px;
    border-width: 1px;
    border-style: solid;
@@ -18,16 +18,16 @@
    background-repeat : repeat-x;
 }
 
-.dr-pnl-b{
+.rich-panel-body{
    padding : 10px;
 } 
 ]]>
 </f:verbatim>
-<u:selector name=".dr-pnl">
+<u:selector name=".rich-panel">
 	<u:style name="background-color" skin="generalBackgroundColor" />
 	<u:style name="border-color" skin="panelBorderColor" />
 </u:selector>
-<u:selector name=".dr-pnl-h">
+<u:selector name=".rich-panel-header">
 	<u:style name="background-color" skin="headerBackgroundColor" />
 	<u:style name="border-color" skin="headerBackgroundColor" />
 	<u:style name="font-size" skin="headerSizeFont" />
@@ -38,7 +38,7 @@
     	   <f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
         </u:style>
 </u:selector>
-<u:selector name=".dr-pnl-b">
+<u:selector name=".rich-panel-body">
 	<u:style name="font-size" skin="generalSizeFont" />
 	<u:style name="color" skin="generalTextColor" />
     <u:style name="font-family" skin="generalFamilyFont" />

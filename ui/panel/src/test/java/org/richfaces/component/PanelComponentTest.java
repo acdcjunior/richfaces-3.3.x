@@ -120,7 +120,7 @@ public class PanelComponentTest
      */
     public void testRenderAttributes() throws Exception
     {
-    	Object[][] attributes ={{"style","xxx","style","xxx"},{"onclick","alert()","onclick","alert()"},{"styleClass","yyy","class","dr-pnl rich-panel yyy"}};
+    	Object[][] attributes ={{"style","xxx","style","xxx"},{"onclick","alert()","onclick","alert()"},{"styleClass","yyy","class","rich-panel yyy"}};
     	UIComponent text = createComponent(HtmlOutputText.COMPONENT_TYPE, HtmlOutputText.class.getName(), null, null , null);
     	htmlPanel.getFacets().put("header", text);
     	for (int i = 0; i < attributes.length; i++) {
