@@ -151,8 +151,6 @@ public class DropDownMenuComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(div);
         assertEquals("div", div.getNodeName());
         String classAttr = div.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-menu-label"));
-        assertTrue(classAttr.contains("dr-menu-label-unselect"));
         assertTrue(classAttr.contains("rich-ddmenu-label"));
         assertTrue(classAttr.contains("rich-ddmenu-label-unselect"));
         assertTrue(classAttr.contains("myclass"));
