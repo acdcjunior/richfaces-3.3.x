@@ -225,7 +225,6 @@ public class DatascrollerComponentTest extends AbstractAjax4JsfTestCase {
 		assertNotNull(f6_d);
 
 		String classAttr = div.getAttributeValue("class");
-		assertTrue(classAttr.contains("dr-dscr"));
 		assertTrue(classAttr.contains("rich-datascr"));
 
 
