@@ -211,10 +211,10 @@ public class DataScrollerRenderer extends HeaderResourcesRendererBase {
             out.startElement("td", component);
             
             if (isCurrentPage) {
-                out.writeAttribute("class", "dr-dscr-act rich-datascr-act "+
+                out.writeAttribute("class", "rich-datascr-act "+
                 		styleClass, null);
             } else {
-                out.writeAttribute("class", "dr-dscr-inact rich-datascr-inact "+
+                out.writeAttribute("class", "rich-datascr-inact "+
                 		styleClass, null);
                 out.writeAttribute("onclick", getOnClick(Integer.toString(i + 1)), null);
             }
