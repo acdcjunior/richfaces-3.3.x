@@ -18,7 +18,7 @@
     			if (!menu.isDisabled()) {]]>
     </jsp:scriptlet>
 	<div id="#{clientId}" style="#{component.attributes['style']}"
-		class="dr-menu-label dr-menu-label-unselect rich-ddmenu-label rich-ddmenu-label-unselect #{component.attributes['styleClass']} #{component.attributes['labelClass']}"
+		class="rich-ddmenu-label rich-ddmenu-label-unselect #{component.attributes['styleClass']} #{component.attributes['labelClass']}"
 		onmouseover="#{component.attributes['onmouseover']}"
 		onmouseout="#{component.attributes['onmouseout']}"
 		onmousemove="#{component.attributes['onmousemove']}">
@@ -26,20 +26,20 @@
 		<![CDATA[ } else { ]]> 
 	</jsp:scriptlet>
 	<div id="#{clientId}" style="#{component.attributes['style']}"
-		class="dr-menu-label dr-menu-label-unselect dr-ddmenu-label-disabled rich-ddmenu-label-disabled rich-ddmenu-label-unselect #{component.attributes['styleClass']} #{component.attributes['disabledLabelClass']}"
+		class="rich-ddmenu-label-disabled rich-ddmenu-label-unselect #{component.attributes['styleClass']} #{component.attributes['disabledLabelClass']}"
 		onmouseover="#{component.attributes['onmouseover']}"
 		onmouseout="#{component.attributes['onmouseout']}"
 		onmousemove="#{component.attributes['onmousemove']}">
 	<jsp:scriptlet>
 		<![CDATA[ } if (menu.isDisabled() &&
 			(component.getFacet("labelDisabled")!=null && component.getFacet("labelDisabled").isRendered())) {]]>
-	</jsp:scriptlet> <div class="dr-label-text-decor rich-label-text-decor"> <u:insertFacet
+	</jsp:scriptlet> <div class="rich-label-text-decor"> <u:insertFacet
 		name="labelDisabled" /> </div> <jsp:scriptlet>			
 			<![CDATA[} else if(component.getFacet("label")!=null && component.getFacet("label").isRendered()) {]]>
-		 </jsp:scriptlet> <div class="dr-label-text-decor rich-label-text-decor"> <u:insertFacet
+		 </jsp:scriptlet> <div class="rich-label-text-decor"> <u:insertFacet
 		name="label" /> </div> <jsp:scriptlet>	
 					<![CDATA[} else {]]> 
-		</jsp:scriptlet> <div id="#{clientId}_span" class="dr-label-text-decor rich-label-text-decor">#{component.attributes['value']}</div>
+		</jsp:scriptlet> <div id="#{clientId}_span" class="rich-label-text-decor">#{component.attributes['value']}</div>
 	<jsp:scriptlet>	
 					<![CDATA[}]]> 
 		</jsp:scriptlet>
