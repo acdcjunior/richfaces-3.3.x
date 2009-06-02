@@ -112,14 +112,14 @@
 		<property>
 			<name>onexpand</name>
 			<classname>java.lang.String</classname>
-			<description> HTML: script expression; before a panel is expanded</description>
+		               <description>The client side script method to be called before a panel is expanded</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
 		<property>
 			<name>oncollapse</name>
 			<classname>java.lang.String</classname>
-			<description> HTML: script expression; before a panel is collapsed</description>
+		               <description>The client side script method to be called before a panel is collapsed</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
