@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:s="http://jboss.com/products/seam/taglib"
+      xmlns:rich="http://richfaces.org/rich">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>RichFaces Documentation Application</title>
+    <link href="stylesheet/theme.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <ui:include src="layout/menu.xhtml">
+        <ui:param name="projectName" value="RichFaces Docs"/>
+    </ui:include>
+    <div class="richcomponentsmenu">
+      
+  <ui:include src="layout/mainMenu.xhtml" />
+       
+</div>
+
+	<div class="body" >
+	<rich:panel>
+    <f:facet name="header">RichFaces Documentation Application </f:facet>
+   
+    <p>
+    RichFaces documentation team from now on (3.3.1 version of RichFaces)
+     will be using RDA while documenting RichFaces components. 
+     The main idea of the application is to make sure that all code snippets we provide in the Guide are working in  a real application. Besides, it will help us keep the examples in one place so that any doc team member can continue what the other has started.  
+    </p>
+
+	</rich:panel>
+	
+	</div>
+
+	<div class="footer" style="display: block; float: none; clear:both;">
+
+		<p>Developed and maintained by Michael Sorokin. Feel free to email me: msorokin@exadel.com</p>
+	</div>
+
+</body>
+</html>
+
