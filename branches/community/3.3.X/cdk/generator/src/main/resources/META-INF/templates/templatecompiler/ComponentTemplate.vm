@@ -83,7 +83,6 @@ public class $component.className extends $baseclassname {
 	//
 #end
 
-
 	private String convertToString(Object obj ) {
 		return ( obj == null ? "" : obj.toString() );
 	}
@@ -95,25 +94,6 @@ public class $component.className extends $baseclassname {
 	}
 	private String convertToString(long b ) {
 		return b!=Long.MIN_VALUE?String.valueOf(b):"";
-	}
-	
-	private boolean isEmpty(Object o) {
-		if (null == o) {
-			return true;
-		}
-		if (o instanceof String ) {
-			return (0 == ((String)o).length());
-		}
-		if (o instanceof Collection) {
-			return (0 == ((Collection)o).size());
-		}
-		if (o instanceof Map) {
-			return (0 == ((Map)o).size());
-		}
-		if (o.getClass().isArray()) {
-			return (0 == ((Object [])o).length);
-		}
-		return false;
 	}
 	
 	/**

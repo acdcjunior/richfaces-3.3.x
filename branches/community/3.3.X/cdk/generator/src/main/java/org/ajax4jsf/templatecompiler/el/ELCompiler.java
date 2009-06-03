@@ -240,7 +240,7 @@ public class ELCompiler implements IELCompiler {
 		}
 		
 		if (returnValue) {
-			sbMain.append(" isEmpty( ");
+			sbMain.append(" getUtils().isEmpty( ");
 			sbMain.append(sb1);
 			sbMain.append(" ) ");
 		}
