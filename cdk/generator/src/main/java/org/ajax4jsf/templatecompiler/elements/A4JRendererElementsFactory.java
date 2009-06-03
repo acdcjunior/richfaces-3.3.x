@@ -30,7 +30,14 @@ import org.ajax4jsf.templatecompiler.elements.html.CDATAElement;
 import org.ajax4jsf.templatecompiler.elements.html.CommentElement;
 import org.ajax4jsf.templatecompiler.elements.html.PIElement;
 import org.ajax4jsf.templatecompiler.elements.html.TextElement;
+import org.ajax4jsf.templatecompiler.elements.std.ForEachTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.std.IFTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.std.ObjectTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.std.ScriptObjectTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.std.ScriptOptionTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.std.SetTemplateElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.AjaxRenderedAreaElement;
+import org.ajax4jsf.templatecompiler.elements.vcp.FClientIDTemplateElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.HeaderScriptsElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.HeaderStylesElement;
 import org.apache.commons.logging.Log;
@@ -61,23 +68,14 @@ public class A4JRendererElementsFactory implements ElementsFactory {
 	private final static HashMap<String, String> mapClasses = new HashMap<String, String>();
 
 	static {
-		mapClasses
-				.put("c:set",
-						"org.ajax4jsf.templatecompiler.elements.std.SetTemplateElement");
-		mapClasses
-				.put("c:object",
-						"org.ajax4jsf.templatecompiler.elements.std.ObjectTemplateElement");
-		mapClasses.put("c:if",
-				"org.ajax4jsf.templatecompiler.elements.std.IFTemplateElement");
-		mapClasses
-				.put("c:forEach",
-						"org.ajax4jsf.templatecompiler.elements.std.ForEachTemplateElement");
-		mapClasses
-				.put("f:clientid",
-						"org.ajax4jsf.templatecompiler.elements.vcp.FClientIDTemplateElement");
-		mapClasses
-				.put("f:clientId",
-						"org.ajax4jsf.templatecompiler.elements.vcp.FClientIDTemplateElement");
+		mapClasses.put("c:scriptObject", ScriptObjectTemplateElement.class.getName());
+		mapClasses.put("c:scriptOption", ScriptOptionTemplateElement.class.getName());
+		mapClasses.put("c:set", SetTemplateElement.class.getName());
+		mapClasses.put("c:object", ObjectTemplateElement.class.getName());
+		mapClasses.put("c:if", IFTemplateElement.class.getName());
+		mapClasses.put("c:forEach", ForEachTemplateElement.class.getName());
+		mapClasses.put("f:clientid", FClientIDTemplateElement.class.getName());
+		mapClasses.put("f:clientId", FClientIDTemplateElement.class.getName());
 		mapClasses.put("f:insertComponent",
 				"org.ajax4jsf.templatecompiler.elements.vcp.InsertComponent");
 

@@ -1,0 +1,3 @@
+#foreach ($nvp in $valuesList)
+	getUtils().addToScriptHash(${mapName}, "${nvp.name}", ${nvp.value}, #if ($defaultValue) "${defaultValue}" #else null #end, ScriptHashVariableWrapper.${wrapperName});
+#end
