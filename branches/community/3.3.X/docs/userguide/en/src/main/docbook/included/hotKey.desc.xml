@@ -10,7 +10,7 @@
      <title>Description</title>
      <para>The <emphasis role="bold">
          <property>&lt;rich:hotKey&gt;</property>
-     </emphasis> component allows to register hot keys for the page or particular elements and to define client side processing functions for these keys.
+     </emphasis> component allows to register hot keys for the page or particular elements and to define client-side processing functions for these keys.
      </para>     
  </section>
 <section>

@@ -65,7 +65,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
         <para>The <emphasis role="bold">
             <property>&lt;rich:comboBox&gt;</property>
         </emphasis> 
-            is a simplified suggestion box component, that provides input with client side suggestions.
+            is a simplified suggestion box component, that provides input with client-side suggestions.
             <!--
             component consists of an <property>input field</property>, the <property>button</property> and the <property>popup list</property> of suggestions 
             attached to input. If you want to see the popup list you can press the <property>button</property> or type the first letter of suggested word in the <property>input field</property>.

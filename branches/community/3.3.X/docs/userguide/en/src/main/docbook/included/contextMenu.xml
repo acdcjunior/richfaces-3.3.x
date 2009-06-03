@@ -65,7 +65,7 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
             <emphasis role="bold">
                 <property>&lt;rich:contextMenu&gt;</property>
             </emphasis> is a support-like component. Context menu itself is an invisible panel that
-            appears after a particular client side event (<emphasis><property>&quot;onmouseover&quot;</property></emphasis>, <emphasis><property>&quot;onclick&quot;</property></emphasis>, etc.) occurred on a
+            appears after a particular client-side event (<emphasis><property>&quot;onmouseover&quot;</property></emphasis>, <emphasis><property>&quot;onclick&quot;</property></emphasis>, etc.) occurred on a
             parent component. The event is defined with an <emphasis>
                 <property>&quot;event&quot;</property>
             </emphasis> attribute. The component uses <emphasis>

@@ -106,7 +106,7 @@ HtmlajaxFunction myFunction = new HtmlajaxFunction();
       </emphasis> is similar to <emphasis role="bold">
         <property>&lt;a4j:commandButton&gt;</property>
       </emphasis>, but it could be activated from the JavaScript code. It allows to invoke some
-      server side functionality and use the returned data in the JavaScript function invoked from
+      server-side functionality and use the returned data in the JavaScript function invoked from
       <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute. Hence it&apos;s possible to use <emphasis
         role="bold">
         <property>&lt;a4j:jsFunction&gt;</property>
