@@ -155,8 +155,7 @@ public class TogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         HtmlElement div_control = page.getHtmlElementById(toggleControl
                 .getClientId(facesContext));
         String classAttr = div_control.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-tglctrl"));
-        assertTrue(classAttr.contains("rich-tglctrl"));
+        assertTrue(classAttr.contains("rich-toggle-ctrl"));
     }
 
     /**
