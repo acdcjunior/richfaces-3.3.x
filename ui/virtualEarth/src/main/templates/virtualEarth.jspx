@@ -22,7 +22,7 @@
     <h:styles>css/virtualEarth.xcss</h:styles>
 	<h:scripts>new org.ajax4jsf.javascript.PrototypeScript(),script/virtualEarth.js</h:scripts>
 
-<div	id="#{clientId}" style="position:relative; width:400px; height:400px;#{style}" class="dr-ve rich-virtualEarth #{component.attributes['styleClass']}"
+<div	id="#{clientId}" style="position:relative; width:400px; height:400px;#{style}" class="rich-virtualEarth #{component.attributes['styleClass']}"
 			x:passThruWithExclusions="id, styleClass,style,class"
 >
 <script type="text/javascript"  src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=#{component.attributes['version']}" />
