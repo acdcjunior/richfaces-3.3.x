@@ -123,7 +123,7 @@
             <name>ontabchange</name>
             <classname>java.lang.String</classname>
             <description>
-            	HTML: a script expression; a tab has been changed 
+            	The client-side script method to be called before a tab is changed 
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -221,7 +221,7 @@
             <name>ontableave</name>
             <classname>java.lang.String</classname>
             <description>
-                Event must occur on the tab which has been left 
+            	The client-side script method to be called when the tab is left 
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -229,7 +229,7 @@
             <name>ontabenter</name>
             <classname>java.lang.String</classname>
             <description>
-                Event must occur on the tab which has been entered 
+            	The client-side script method to be called when the tab is switched
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -238,7 +238,7 @@
         	<name>onlabelkeypress</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a key within label is pressed and released
+        		The client-side script method to be called when a key is pressed  and released together with the pointer hovered over a tab label
         	</description>
         </property>
         
@@ -246,7 +246,7 @@
         	<name>onlabeldblclick</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a pointer within label is double-clicked
+        		The client-side script method to be called when a tab label is double-clicked
         	</description>
         </property>
         
@@ -254,7 +254,7 @@
         	<name>onlabelkeyup</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a key within label is released
+        		The client-side script method to be called when a key is released together with the pointer hovered over a tab label 
         	</description>
         </property>
         
@@ -262,7 +262,7 @@
         	<name>onlabelclick</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a label of the tab is clicked
+        		The client-side script method to be called when a tab label is clicked
         	</description>
         </property>
         
@@ -270,7 +270,7 @@
         	<name>onlabelkeydown</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a key within label is pressed down
+        		The client-side script method to be called when a key is pressed  down together with the pointer hovered over a tab label
         	</description>
         </property>
         
@@ -278,7 +278,7 @@
         	<name>onlabelmouseup</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a pointer within label is released
+        		The client-side script method to be called when a mouse button is released over a tab label
         	</description>
         </property>
         
@@ -286,7 +286,7 @@
         	<name>onlabelmousedown</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a pointer within label is pressed down
+        		The client-side script method to be called when a mouse button is pressed down over a tab label
         	</description>
         </property>
         
@@ -294,7 +294,7 @@
         	<name>onlabelmousemove</name>
         	<classname>java.lang.String</classname>
         	<description>
-        		A JavaScript event handler; a pointer is moved within label
+        		The client-side script method to be called when a pointer is moved within a tab label
         	</description>
         </property>
            
