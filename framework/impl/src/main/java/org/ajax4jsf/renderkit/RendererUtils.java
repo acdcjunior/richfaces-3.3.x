@@ -23,7 +23,9 @@ package org.ajax4jsf.renderkit;
 
 import java.awt.Dimension;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -538,6 +540,93 @@ public class RendererUtils {
 		return true;
 	}
 
+	/**
+	 * Checks if the argument passed in is empty or not.
+	 * Object is empty if it is: <br />
+	 * 	- <code>null<code><br />
+	 * 	- zero-length string<br />
+	 * 	- empty collection<br />
+	 * 	- empty map<br />
+	 * 	- zero-length array<br />
+	 * 
+	 * @param o object to check for emptiness
+	 * @since 3.3.2
+	 * @return <code>true</code> if the argument is empty, <code>false</code> otherwise
+	 */
+	public boolean isEmpty(Object o) {
+		if (null == o) {
+			return true;
+		}
+		if (o instanceof String ) {
+			return (0 == ((String)o).length());
+		}
+		if (o instanceof Collection) {
+			return ((Collection<?>)o).isEmpty();
+		}
+		if (o instanceof Map) {
+			return ((Map<?, ?>)o).isEmpty();
+		}
+		if (o.getClass().isArray()) {
+			return Array.getLength(o) == 0;
+		}
+		return false;
+	}
+	
+	public static enum ScriptHashVariableWrapper {
+		DEFAULT {
+
+			@Override
+			Object wrap(Object o) {
+				return o;
+			}
+			
+		}, 
+		
+		EVENT_HANDLER {
+
+			@Override
+			Object wrap(Object o) {
+				return new JSFunctionDefinition("event").addToBody(o);
+			}
+			
+		};
+		
+		abstract Object wrap(Object o);
+	}
+	
+	/**
+	 * Puts value into map under specified key if the value is not empty and not default. 
+	 * Performs optional value wrapping.
+	 * 
+	 * @param hash
+	 * @param name
+	 * @param value
+	 * @param defaultValue
+	 * @param wrapper
+	 * 
+	 * @since 3.3.2
+	 */
+	public void addToScriptHash(Map<String, Object> hash, 
+			String name, 
+			Object value, 
+			String defaultValue,
+			ScriptHashVariableWrapper wrapper) {
+		
+		ScriptHashVariableWrapper wrapperOrDefault = wrapper != null ? wrapper : ScriptHashVariableWrapper.DEFAULT;
+		
+		if (isValidProperty(value) && !isEmpty(value)) {
+			if (!isEmpty(defaultValue)) {
+				if (!defaultValue.equals(value.toString())) {
+					hash.put(name, wrapperOrDefault.wrap(value));
+				}
+			} else {
+				if (!(value instanceof Boolean) || ((Boolean) value).booleanValue()) {
+					hash.put(name, wrapperOrDefault.wrap(value));
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Convert HTML attribute name to component property name.
 	 * 
