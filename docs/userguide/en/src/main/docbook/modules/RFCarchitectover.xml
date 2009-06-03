@@ -340,7 +340,7 @@
 				events are produced simultaneously, they will come to the server simultaneously. JSF
 				implementations (especially, the very first ones) does not guaranty that the request
 				that comes first will be served or passed into the JSF lifecycle first. The order
-				how the server side data will be modified in case of simultaneous request might be
+				how the server-side data will be modified in case of simultaneous request might be
 				unpredictable. Usage of eventsQueue attribute allows to avoid possible mess. Define
 				the queue name explicitly, if you expect intensive Ajax traffic in your application. </para>
 			<para> The next request posted in the same queue will wait until the previos one is not
@@ -820,7 +820,7 @@
 						update will be performed. </para>
 				</listitem>
 				<listitem>
-					<para> If you want to involve the server side validators and navigate to the
+					<para> If you want to involve the server-side validators and navigate to the
 						next page only if the Validation phase is passed successfully, you can
 						replace <emphasis role="bold">
 							<property>&lt;h:commandButton&gt;</property>

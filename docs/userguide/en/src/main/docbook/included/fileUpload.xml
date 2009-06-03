@@ -626,7 +626,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
 
 
         <table id="objectProperties">
-            <title>Client side object properties</title>
+            <title>Client side-object properties</title>
             <tgroup cols="2">
                 <thead>
                     <row>
@@ -739,7 +739,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
 
 
         <table id="objectPropertiesWithAttributes">
-            <title>Client side object properties available with specific <link
+            <title>Client-side object properties available with specific <link
                     linkend="fileUploadEventAttributes"> event attributes</link></title>
             <tgroup cols="2">
                 <thead>
