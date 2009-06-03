@@ -96,7 +96,6 @@ public class GmapComponentTest extends AbstractAjax4JsfTestCase {
     	assertTrue("div".equals(htmlGmap.getTagName()));
     	assertEquals(htmlGmap.getAttributeValue("style"), TEST_STYLE);
 
-    	assertTrue(htmlGmap.getAttributeValue("class").contains("dr-gmap"));
     	assertTrue(htmlGmap.getAttributeValue("class").contains("rich-gmap"));
 
     }
