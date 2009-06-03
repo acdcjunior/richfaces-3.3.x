@@ -92,7 +92,6 @@ public class VirtualEarthComponentTest extends AbstractAjax4JsfTestCase {
     	assertNotNull(htmlVirtualEarth);
     	assertTrue("div".equals(htmlVirtualEarth.getTagName()));
 
-    	assertTrue(htmlVirtualEarth.getAttributeValue("class").contains("dr-ve"));
     	assertTrue(htmlVirtualEarth.getAttributeValue("class").contains("rich-virtualEarth"));
 
     }
