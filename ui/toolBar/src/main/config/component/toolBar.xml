@@ -97,52 +97,52 @@
     <property>
     	<name>onitemkeydown</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is pressed down on an item</description>
+    	<description>The client-side script method to be called when a key is pressed down over an item</description>
     </property>
     <property>
     	<name>onitemkeypress</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is pressed and released on an item</description>
+    	<description>The client-side script method to be called when a key is pressed and released over an item</description>
     </property>
     <property>
     	<name>onitemkeyup</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is released on an item</description>
+    	<description>The client-side script method to be called when a key is released over an item</description>
     </property>
     <property>
     	<name>onitemclick</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer button is clicked on an item</description>
+    	<description>The client-side script method to be called when an item is clicked</description>
     </property>
     <property>
     	<name>onitemdblclick</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer button is double-clicked on an item</description>
+    	<description>The client-side script method to be called when an item is double-clicked</description>
     </property>
     <property>
     	<name>onitemmousedown</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: script expression; a pointer button is pressed down on an item</description>
+    	<description>The client-side script method to be called when a mouse button is pressed down over an item</description>
     </property>
     <property>
     	<name>onitemmousemove</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved on an item</description>
+    	<description>The client-side script method to be called when a pointer is moved within an item</description>
     </property>
     <property>
     	<name>onitemmouseover</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved onto an item</description>
+    	<description>The client-side script method to be called when a pointer is moved onto an item</description>
     </property>
     <property>
     	<name>onitemmouseout</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved away from an item</description>
+    	<description>The client-side script method to be called when a pointer is moved away from an item</description>
     </property>
     <property>
     	<name>onitemmouseup</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: script expression; a pointer button is released on an item</description>
+    	<description>The client-side script method to be called when a mouse button is released over an item</description>
     </property>
     &html_events; 
   </component>
@@ -212,52 +212,52 @@
     <property>
     	<name>onitemkeydown</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is pressed down on an item</description>
+    	<description>The client-side script method to be called when a key is pressed down over an item</description>
     </property>
     <property>
     	<name>onitemkeypress</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is pressed and released on an item</description>
+    	<description>The client-side script method to be called when a key is pressed and released over an item</description>
     </property>
     <property>
     	<name>onitemkeyup</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a key is released on an item</description>
+    	<description>The client-side script method to be called when a key is released over an item</description>
     </property>
     <property>
     	<name>onitemclick</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer button is clicked on an item</description>
+    	<description>The client-side script method to be called when an item is clicked</description>
     </property>
     <property>
     	<name>onitemdblclick</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer button is double-clicked on an item</description>
+    	<description>The client-side script method to be called when an item is double-clicked</description>
     </property>
     <property>
     	<name>onitemmousedown</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: script expression; a pointer button is pressed down on an item</description>
+    	<description>The client-side script method to be called when a mouse button is pressed down over an item</description>
     </property>
     <property>
     	<name>onitemmousemove</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved on an item</description>
+    	<description>The client-side script method to be called when a pointer is moved within an item</description>
     </property>
     <property>
     	<name>onitemmouseover</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved onto an item</description>
+    	<description>The client-side script method to be called when a pointer is moved onto an item</description>
     </property>
     <property>
     	<name>onitemmouseout</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: a script expression; a pointer is moved away from an item</description>
+    	<description>The client-side script method to be called when a pointer is moved away from an item</description>
     </property>
     <property>
     	<name>onitemmouseup</name>
     	<classname>java.lang.String</classname>
-    	<description>HTML: script expression; a pointer button is released on an item</description>
+    	<description>The client-side script method to be called when a mouse button is released over an item</description>
     </property>
   </component>  
 </components>
