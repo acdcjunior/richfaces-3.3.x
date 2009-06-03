@@ -95,22 +95,22 @@
 		  	<property>
 		  		<name>oneditactivation</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called before the component edit state is activated</description>
+		  		<description>The client-side script method to be called before the component edit state is activated</description>
 		  	</property>
 		  	<property>
 		  		<name>onviewactivation</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called before the component view state is activated</description>
+		  		<description>The client-side script method to be called before the component view state is activated</description>
 		  	</property>
 		  	<property>
 		  		<name>oneditactivated</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when the component edit state is activated</description>
+		  		<description>The client-side script method to be called when the component edit state is activated</description>
 		  	</property>
 		  	<property>
 		  		<name>onviewactivated</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when the component view state is activated</description>
+		  		<description>The client-side script method to be called when the component view state is activated</description>
 		  	</property>
 		  	<property>
 		  		<name>selectOnEdit</name>
@@ -182,73 +182,73 @@
 		  	<property>
 		  		<name>onchange</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when the component value is changed</description>
+		  		<description>The client-side script method to be called when the component value is changed</description>
 		  	</property>
 		  	
 		  	<property>
 		  		<name>onselect</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when some text is selected in the input field</description>
+		  		<description>The client-side script method to be called when some text is selected in the input field</description>
 		  	</property>
 		  	<property>
 		  		<name>onfocus</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when the component gets the focus</description>
+		  		<description>The client-side script method to be called when the component gets the focus</description>
 		  	</property>
 		  	<property>
 		  		<name>onblur</name>
 		  		<classname>java.lang.String</classname>
-		  		<description>The client side script method to be called when the component loses the focus</description>
+		  		<description>The client-side script method to be called when the component loses the focus</description>
 		  	</property>
 		  	<property>
         		<name>oninputclick</name>
         		<classname>java.lang.String</classname>
-		  <description>The client side script method to be called when the input field is clicked</description>
+		  <description>The client-side script method to be called when the input field is clicked</description>
         	</property>
     		<property>
         		<name>oninputdblclick</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when the input field is double-clicked</description>
+    		<description>The client-side script method to be called when the input field is double-clicked</description>
     		</property>
     		<property>
         		<name>oninputkeydown</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is pressed down in the input field</description>
+    		<description>The client-side script method to be called when a key is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeypress</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is pressed and released in the input field</description>
+    		<description>The client-side script method to be called when a key is pressed and released in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeyup</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is released in the input field</description>
+    		<description>The client-side script method to be called when a key is released in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousedown</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a mouse button is pressed down in the input field</description>
+    		<description>The client-side script method to be called when a mouse button is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousemove</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved within the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved within the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseout</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved away from the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved away from the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseover</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved onto the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved onto the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseup</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a mouse button is released in the input field</description>
+    		<description>The client-side script method to be called when a mouse button is released in the input field</description>
     		</property>
 			<property>
 				<name>label</name>

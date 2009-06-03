@@ -328,108 +328,108 @@
 		<property>
 			<name>oninputmouseover</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved onto the input field</description>
+			<description>The client-side script method to be called when a pointer is moved onto the input field</description>
 		</property>
 		<property>
 			<name>oninputmouseout</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved away from the input field</description>
+			<description>The client-side script method to be called when a pointer is moved away from the input field</description>
 		</property>
 		<property>
 			<name>ondateselect</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when some date cell is selected</description>
+			<description>The client-side script method to be called when some date cell is selected</description>
 		</property>
 		<property>
 			<name>ondateselected</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called after some date cell is selected</description>
+			<description>The client-side script method to be called after some date cell is selected</description>
 		</property>
 		<property>
 			<name>ontimeselect</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before new time is selected</description>
+			<description>The client-side script method to be called before new time is selected</description>
 		</property>
 		<property>
 			<name>ontimeselected</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called after time is selected</description>
+			<description>The client-side script method to be called after time is selected</description>
 		</property>
 		<property>
 			<name>onchanged</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the date or time is changed and applied to input</description>
+			<description>The client-side script method to be called when the date or time is changed and applied to input</description>
 		</property>
 		<property>
 			<name>oncurrentdateselect</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the current month or year is changed</description>
+			<description>The client-side script method to be called when the current month or year is changed</description>
 		</property>
 		<property>
 			<name>oncurrentdateselected</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called after the current month or year is changed</description>
+			<description>The client-side script method to be called after the current month or year is changed</description>
 		</property>
 		<property>
 			<name>onexpand</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the calendar popup is opened</description>
+			<description>The client-side script method to be called before the calendar popup is opened</description>
 		</property>
 		<property>
 			<name>oncollapse</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the calendar popup is closed</description>
+			<description>The client-side script method to be called before the calendar popup is closed</description>
 		</property>
 		<property>
 			<name>ondatemouseover</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved onto the date cell</description>
+			<description>The client-side script method to be called when a pointer is moved onto the date cell</description>
 		</property>
 		<property>
 			<name>ondatemouseout</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved away from the date cell</description>
+			<description>The client-side script method to be called when a pointer is moved away from the date cell</description>
 		</property>
 
 		<property>
 			<name>oninputchange</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the input field value is changed manually</description>
+			<description>The client-side script method to be called when the input field value is changed manually</description>
 		</property>
 		<property>
 			<name>oninputselect</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the input field value is selected</description>
+			<description>The client-side script method to be called when the input field value is selected</description>
 		</property>
 		<property>
 			<name>oninputfocus</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the input field gets the focus</description>
+			<description>The client-side script method to be called when the input field gets the focus</description>
 		</property>
 		<property>
 			<name>oninputblur</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the input field loses the focus</description>
+			<description>The client-side script method to be called when the input field loses the focus</description>
 		</property>
 		<property>
 			<name>oninputclick</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the input field is clicked</description>
+			<description>The client-side script method to be called when the input field is clicked</description>
 		</property>
 		<property>
 			<name>oninputkeypress</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a key is pressed and released in the input field</description>
+			<description>The client-side script method to be called when a key is pressed and released in the input field</description>
 		</property>
 		<property>
 			<name>oninputkeydown</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a key is pressed down in the input field</description>
+			<description>The client-side script method to be called when a key is pressed down in the input field</description>
 		</property>
 		<property>
 			<name>oninputkeyup</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a key is released in the input field</description>
+			<description>The client-side script method to be called when a key is released in the input field</description>
 		</property>
 
 		<property hidden="true">

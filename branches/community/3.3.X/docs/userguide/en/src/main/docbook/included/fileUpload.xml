@@ -626,7 +626,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
 
 
         <table id="objectProperties">
-            <title>Client side-object properties</title>
+            <title>Client-side object properties</title>
             <tgroup cols="2">
                 <thead>
                     <row>

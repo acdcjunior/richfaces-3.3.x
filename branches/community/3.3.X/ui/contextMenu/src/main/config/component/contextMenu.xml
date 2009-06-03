@@ -214,7 +214,7 @@
             <name>oncollapse</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called before the menu is collapsed
+                The client-side script method to be called before the menu is collapsed
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -223,7 +223,7 @@
             <name>onexpand</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called before the menu is expanded
+                The client-side script method to be called before the menu is expanded
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -233,7 +233,7 @@
             <name>onmouseout</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when a pointer is moved away from the element
+                The client-side script method to be called when a pointer is moved away from the element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -242,7 +242,7 @@
             <name>onmousemove</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when a pointer is moved within the element
+                The client-side script method to be called when a pointer is moved within the element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -251,7 +251,7 @@
             <name>onmouseover</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when a pointer is moved onto the element
+                The client-side script method to be called when a pointer is moved onto the element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -260,7 +260,7 @@
             <name>onitemselect</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when some item is selected
+                The client-side script method to be called when some item is selected
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -269,7 +269,7 @@
             <name>ongroupactivate</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when some context menu group is activated
+                The client-side script method to be called when some context menu group is activated
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
   		</property>

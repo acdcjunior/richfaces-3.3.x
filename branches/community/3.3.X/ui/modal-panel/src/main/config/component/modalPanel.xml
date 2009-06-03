@@ -124,41 +124,41 @@
 		<property>
 			<name>onshow</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the modal panel is displayed</description>
+			<description>The client-side script method to be called when the modal panel is displayed</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onhide</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called after the modal panel is hidden</description>
+			<description>The client-side script method to be called after the modal panel is hidden</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
 		<property>
 			<name>onmove</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the modal panel is moved</description>
+			<description>The client-side script method to be called before the modal panel is moved</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
 		<property>
 			<name>onbeforeshow</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the modal panel is opened</description>
+			<description>The client-side script method to be called before the modal panel is opened</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
 		<property>
 			<name>onbeforehide</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the modal panel is hidden</description>
+			<description>The client-side script method to be called before the modal panel is hidden</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 			
 		<property>
 			<name>onresize</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the modal panel is resized</description>
+			<description>The client-side script method to be called when the modal panel is resized</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		
@@ -238,49 +238,49 @@
 		<property>
 			<name>onmaskclick</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a left mouse button is clicked outside the modal panel</description>
+			<description>The client-side script method to be called when a left mouse button is clicked outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskdblclick</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a left mouse button is double-clicked outside the modal panel</description>
+			<description>The client-side script method to be called when a left mouse button is double-clicked outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskcontextmenu</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a right mouse button is clicked outside the modal panel</description>
+			<description>The client-side script method to be called when a right mouse button is clicked outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskmouseup</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a mouse button is released outside the modal panel</description>
+			<description>The client-side script method to be called when a mouse button is released outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskmousedown</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a mouse button is pressed down outside the modal panel</description>
+			<description>The client-side script method to be called when a mouse button is pressed down outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskmousemove</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved outside the modal panel</description>
+			<description>The client-side script method to be called when a pointer is moved outside the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskmouseover</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved onto the modal panel</description>
+			<description>The client-side script method to be called when a pointer is moved onto the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onmaskmouseout</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is moved away from the modal panel</description>
+			<description>The client-side script method to be called when a pointer is moved away from the modal panel</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>

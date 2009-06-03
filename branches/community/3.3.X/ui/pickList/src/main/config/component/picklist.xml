@@ -273,12 +273,12 @@
 		    <property>
 	        	<name>onlistchanged</name>
 	        	<classname>java.lang.String</classname>
-		    	<description>The client side script method to be called before the list is changed</description>
+		    	<description>The client-side script method to be called before the list is changed</description>
 		    </property>
 		    <property>
 	        	<name>onlistchange</name>
 	        	<classname>java.lang.String</classname>
-		    	<description>The client side script method to be called when the list is changed</description>
+		    	<description>The client-side script method to be called when the list is changed</description>
 		    </property>
        		<property>
        			<name>disabled</name>
@@ -324,12 +324,12 @@
 		    <property>
 		    	<name>onfocus</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>The client side script method to be called when the component gets the focus</description>
+		    	<description>The client-side script method to be called when the component gets the focus</description>
 		    </property>
 		    <property>
 		    	<name>onblur</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>The client side script method to be called when the component loses the focus</description>
+		    	<description>The client-side script method to be called when the component loses the focus</description>
 		    </property>
 	          	       		
 			<property>

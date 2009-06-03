@@ -302,7 +302,7 @@
 		&ui_output_attributes;<property>
 			<name>onclick</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the component is clicked</description>
+			<description>The client-side script method to be called when the component is clicked</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
@@ -315,7 +315,7 @@
 			<name>onmouseout</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved away from the component
+				The client-side script method to be called when a pointer is moved away from the component
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
@@ -323,7 +323,7 @@
 			<name>onmousemove</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved within the component
+				The client-side script method to be called when a pointer is moved within the component
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
@@ -331,26 +331,26 @@
 			<name>onmouseover</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved onto the component
+				The client-side script method to be called when a pointer is moved onto the component
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onitemhover</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a panel menu item is hovered</description>
+			<description>The client-side script method to be called when a panel menu item is hovered</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>ongroupcollapse</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when some group is closed</description>
+			<description>The client-side script method to be called when some group is closed</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>ongroupexpand</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when some group is activated</description>
+			<description>The client-side script method to be called when some group is activated</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
@@ -472,13 +472,13 @@
 		<property>
 			<name>oncollapse</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pane menu group is closed</description>
+			<description>The client-side script method to be called when a pane menu group is closed</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>onexpand</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pane menu group is opened</description>
+			<description>The client-side script method to be called when a pane menu group is opened</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>

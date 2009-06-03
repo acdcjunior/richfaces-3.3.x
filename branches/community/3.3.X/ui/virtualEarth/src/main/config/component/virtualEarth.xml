@@ -32,7 +32,7 @@
 			<name>onLoadMap</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the Virtual Earth object is initiated
+				The client-side script method to be called when the Virtual Earth object is initiated
 			</description>
 			<defaultvalue>""</defaultvalue>
 		</property>

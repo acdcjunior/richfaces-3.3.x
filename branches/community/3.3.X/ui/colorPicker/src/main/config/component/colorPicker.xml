@@ -85,27 +85,27 @@
 		<property>
 			<name>onselect</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the color is selected</description>
+			<description>The client-side script method to be called when the color is selected</description>
 		</property>
 		<property>
 			<name>onchange</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the element value was changed</description>
+			<description>The client-side script method to be called when the element value was changed</description>
 		</property>
 		<property>
 			<name>onbeforeshow</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the component widget is opened</description>
+			<description>The client-side script method to be called before the component widget is opened</description>
 		</property>
 		<property>
 			<name>onshow</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when the component widget is displayed</description>
+			<description>The client-side script method to be called when the component widget is displayed</description>
 		</property>
 		<property>
 			<name>onhide</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called before the component widget is hidden</description>
+			<description>The client-side script method to be called before the component widget is hidden</description>
 		</property>
 		
 	</component>
