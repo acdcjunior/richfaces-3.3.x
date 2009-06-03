@@ -3,7 +3,7 @@
    xmlns:u='http:/jsf.exadel.com/template/util' 
    xmlns="http://www.w3.org/1999/xhtml" >
    
-<u:selector name=".dr-toolbar-ext">
+<u:selector name=".rich-toolbar">
 	<u:style name="border" value="1px solid" />
 	<u:style name="border-color" skin="panelBorderColor" />
 	<u:style name="padding" value="0px" />
@@ -15,7 +15,7 @@
     </u:style>		
 </u:selector>
 
-<u:selector name=".dr-toolbar-int">
+<u:selector name=".rich-toolbar-item">
 	<u:style name="font-size" skin="headerSizeFont" />
 	<u:style name="color" skin="headerTextColor" />
 	<u:style name="font-weight" skin="headerWeightFont" />

@@ -136,7 +136,6 @@ public class ToolBarComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("table", table.getNodeName());
 
         String classAttr = table.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-toolbar-ext"));
         assertTrue(classAttr.contains("rich-toolbar"));
     }
 
