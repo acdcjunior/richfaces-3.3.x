@@ -156,7 +156,7 @@
         <property>
             <name>onsubmit</name>
             <classname>java.lang.String</classname>
-            <description>HTML: script expression; before ajax event is submited</description>
+            <description>The client-side script method to be called before an ajax event is submitted</description>
         </property>
         
         <property hidden="true">
@@ -204,15 +204,15 @@
             <name>onselect</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML: script expression; after
-                value of target element is updated
+                The client-side script method to be called after the
+                value of the target element is updated
             </description>
         </property>
         <property>
             <name>onobjectchange</name>
             <classname>java.lang.String</classname>
             <description>
-                 HTML: script expression; selected objects are changed
+                The client-side script method to be called before the list of suggested objects is changed
             </description>
         </property>
         
