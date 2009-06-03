@@ -29,13 +29,13 @@
 			<tbody>
 				<tr id="row_#{clientId}"
 						class="#{this:getSelectedClass( context, component )}" >
-					<td class="dr-pmenu-nowrap #{this:getIconClass( context, component,'left')}">
+					<td class="rich-pmenu-nowrap #{this:getIconClass( context, component,'left')}">
 						<f:call name="insertSpacerImages" />
 						<f:call name="insertImage">
 							<f:parameter value="left" />
 						</f:call>
 					</td>
-					<td style="width:100%" id="icon#{clientId}" class="dr-pmenu-group-self-label #{this:getLabelClass( context, component )}" >
+					<td style="width:100%" id="icon#{clientId}" class="rich-pmenu-group-self-label #{this:getLabelClass( context, component )}" >
 						<input type="hidden" name="panelMenuState#{clientId}" 
 									value="#{isNodeOpened}" />
 							

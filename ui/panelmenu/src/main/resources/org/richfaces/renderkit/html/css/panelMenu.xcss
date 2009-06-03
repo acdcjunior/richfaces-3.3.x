@@ -10,7 +10,7 @@
 			padding-right: 4px;
 		}
 		
-		.dr-pmenu-top-group {
+		.rich-pmenu-top-group {
 			height: 20px;
 			
 			background-repeat: repeat-x;
@@ -19,14 +19,14 @@
 			cursor: pointer;
 		}
 		
-		.dr-pmenu-group {
+		.rich-pmenu-group {
 			padding: 2px 1px 1px;
 			margin-top:1px;
 			cursor:pointer;
 			border-top: 1px solid;
 		}
 		
-		.dr-pmenu-item {
+		.rich-pmenu-item {
 			border-top: 1px solid;
 			cursor: pointer;
 			padding: 2px 1px 1px;
@@ -34,7 +34,7 @@
 			
 		}
 		
-		.dr-pmenu-top-group-div {
+		.rich-pmenu-top-group-div {
 			border: 1px solid;
 			margin-bottom: 3px;
 			padding: 1px;
@@ -42,18 +42,18 @@
 			width: 100%;
 		}
 		
-		.dr-pmenu-group-self-label {
+		.rich-pmenu-group-self-label {
 			padding-left: 5px;
 			width: 100%;			
 		}
 		
-		.dr-pmenu-nowrap {
+		.rich-pmenu-nowrap {
 			white-space: nowrap;
 		}
 		
 	</f:verbatim>
 	
-	<u:selector name=".dr-pmenu-top-group">
+	<u:selector name=".rich-pmenu-top-group">
 		<u:style name="font-weight" skin="headerWeightFont"/>
 		<u:style name="font-family" skin="generalFamilyFont"/>
 		<u:style name="font-size" skin="headerSizeFont"/>
@@ -64,7 +64,7 @@
 		</u:style>
 	</u:selector>
 	
-	<u:selector name=".dr-pmenu-group">
+	<u:selector name=".rich-pmenu-group">
 		<u:style name="font-weight" skin="headerWeightFont"/>
 		<u:style name="font-family" skin="headerFamilyFont"/>
 		<u:style name="font-size" skin="headerSizeFont"/>
@@ -72,7 +72,7 @@
 		<u:style name="border-top-color" skin="tableBorderColor"/>
 	</u:selector>
 	
-	<u:selector name=".dr-pmenu-item">
+	<u:selector name=".rich-pmenu-item">
 		<u:style name="font-family" skin="generalFamilyFont"/>
 		<u:style name="font-weight" skin="generalWeightFont"/>
 		<u:style name="font-size" skin="generalSizeFont"/>
@@ -80,23 +80,23 @@
 		<u:style name="border-top-color" skin="tableBorderColor"/>
 	</u:selector>
 
-	<u:selector name=".dr-pmenu-top-group-div" >
+	<u:selector name=".rich-pmenu-top-group-div" >
 		<u:style name="border-color" skin="panelBorderColor"/>
 	</u:selector>
 	
-	<u:selector name=".dr-pmenu-disabled-element" >
+	<u:selector name=".rich-pmenu-disabled-element" >
 		<u:style name="color" skin="tabDisabledTextColor"/>
 	</u:selector>
 	
-	<u:selector name=".dr-pmenu-hovered-element" >
+	<u:selector name=".rich-pmenu-hovered-element" >
 		<u:style name="background-color" skin="additionalBackgroundColor"/>
 	</u:selector>
 	
 	<f:verbatim>
-		.dr-pmenu-disabled-element {
+		.rich-pmenu-disabled-element {
 			cursor: default;
 		}
-		.dr-pmenu-selected-item {
+		.rich-pmenu-selected-element {
 			font-style : italic;
 		}
 	</f:verbatim>

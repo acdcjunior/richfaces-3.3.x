@@ -26,8 +26,7 @@ public abstract class UIPanelMenu extends UIInput{
 	
 	public static final String COMPONENT_TYPE = "org.richfaces.panelMenu";
 
-	public static final String DEFAULT_SELECTED_CLASS = "dr-pmenu-selected-item";
-	public static final String USER_DEFINED_SELECTED_CLASS = "rich-pmenu-selected-element";
+	public static final String SELECTED_CLASS = "rich-pmenu-selected-element";
 
 	public abstract String getEvent();
 	public abstract void setEvent(String event);
