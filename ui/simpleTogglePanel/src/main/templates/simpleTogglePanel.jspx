@@ -21,7 +21,7 @@ scripts/simpleTogglePanel.js
 </h:scripts>
 
     <div id="#{clientId}" x:passThruWithExclusions="id,value,style,styleClass,class"
-         class="dr-stglpnl rich-stglpanel #{component.attributes['styleClass']}"
+         class="rich-stglpanel #{component.attributes['styleClass']}"
          style="width: #{component.attributes['width']}; #{component.attributes['style']};">
 
         <script type="text/javascript">
@@ -36,11 +36,11 @@ scripts/simpleTogglePanel.js
 
         <f:call name="utils.encodeBeginFormIfNessesary"/>
         <div id="#{clientId}_header"
-             class="dr-stglpnl-h rich-stglpanel-header #{component.attributes['headerClass']}"
+             class="rich-stglpanel-header #{component.attributes['headerClass']}"
              onclick="#{this:getOnClick(context,component)}">
 					
-			<div class="dr-stglpanel-marker rich-stglpanel-marker">
-            	<div id="#{clientId}_switch_on" style="display: #{this:getSwitchOnStatus(context, component)};" class="dr-stglpnl-m rich-stglpnl-marker">
+			<div class="rich-stglpanel-marker">
+            	<div id="#{clientId}_switch_on" style="display: #{this:getSwitchOnStatus(context, component)};" class="rich-stglpanel-marker-close">
 	                <jsp:scriptlet><![CDATA[
 	                	if(component.getFacet("closeMarker")!=null && component.getFacet("closeMarker").isRendered()) {
 	               	 ]]></jsp:scriptlet>
@@ -52,7 +52,7 @@ scripts/simpleTogglePanel.js
 	                ]]></jsp:scriptlet>
 	            	</div>
 	            	<div id="#{clientId}_switch_off"
-	                 style="display: #{this:getSwitchOffStatus(context, component)};" class="dr-stglpnl-m rich-stglpnl-marker">
+	                 style="display: #{this:getSwitchOffStatus(context, component)};" class="rich-stglpanel-marker-open">
 	                <jsp:scriptlet><![CDATA[
 	                    if(component.getFacet("openMarker")!=null && component.getFacet("openMarker").isRendered()) {
 	                ]]></jsp:scriptlet>
@@ -93,7 +93,7 @@ scripts/simpleTogglePanel.js
         <f:call name="utils.encodeEndFormIfNessesary"/>
 
         <div id="#{clientId}_body"
-       		 class="dr-stglpnl-b rich-stglpanel-body #{component.attributes['bodyClass']}"
+       		 class="rich-stglpanel-body #{component.attributes['bodyClass']}"
              style="display : #{this:getdivdisplay(context, component)};
              height: #{component.attributes['height']};">
 
