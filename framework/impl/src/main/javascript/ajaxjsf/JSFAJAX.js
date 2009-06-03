@@ -1779,12 +1779,11 @@ A4J.AJAX._scriptTested = true;
 A4J.AJAX.TestReplacedGetElementByIdVisibility = function() {
 	if (!A4J.AJAX._replacedGetElementByIdVisibilityTested) {
 		A4J.AJAX._replacedGetElementByIdVisibilityTested = true;
+		A4J.AJAX._testReplacedGetElementByIdVisibility = true;
 
 		A4J.AJAX.TestScriptEvaluation();
 		if (A4J.AJAX._scriptEvaluated) {
 			try {
-				A4J.AJAX._testReplacedGetElementByIdVisibility = true;
-				
 				var _span = document.createElement("span");
 				document.body.appendChild(_span);
 
