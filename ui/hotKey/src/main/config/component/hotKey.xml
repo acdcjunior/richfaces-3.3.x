@@ -11,7 +11,7 @@
 		<test />
 		
 		<description>
-			The &lt;rich:hotKey&gt; component allows to register hot keys for the page or particular elements and to define client side processing functions for these keys.
+			The &lt;rich:hotKey&gt; component allows to register hot keys for the page or particular elements and to define client-side processing functions for these keys.
 		</description>
 		<renderer generate="true" override="true">
 			<name>org.richfaces.HotKeyRenderer</name>

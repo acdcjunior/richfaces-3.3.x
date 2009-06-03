@@ -80,7 +80,7 @@
 		<property>
 			<name>onerror</name>
 	        <classname>java.lang.String</classname>
-			<description>HTML: a script expression; event fires whenever an JavaScript server side error occurs</description>
+			<description>HTML: a script expression; event fires whenever an JavaScript server-side error occurs</description>
 		</property>
 		<property>
 			<name>sizeExceededBehavior</name>

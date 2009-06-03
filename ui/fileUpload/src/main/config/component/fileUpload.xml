@@ -242,47 +242,47 @@ Here's an example:
 		<property>
 			<name>onadd</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called before a file is added</description>
+			<description>The client-side script method to be called before a file is added</description>
 		</property>
 		<property>
 			<name>onupload</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file uploading is started</description>
+			<description>The client-side script method to be called when a file uploading is started</description>
 		</property>
 		<property>
 			<name>onuploadcomplete</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when uploading of all files from the list is completed</description>
+			<description>The client-side script method to be called when uploading of all files from the list is completed</description>
 		</property>
 		<property>
 			<name>onuploadcanceled</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file uploading is cancelled</description>
+			<description>The client-side script method to be called when a file uploading is cancelled</description>
 		</property>
 		<property>
 			<name>onerror</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file uploading is interrupted according to any errors</description>
+			<description>The client-side script method to be called when a file uploading is interrupted according to any errors</description>
 		</property>
 		<property>
 			<name>ontyperejected</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file type is rejected according to the file types allowed</description>
+			<description>The client-side script method to be called when a file type is rejected according to the file types allowed</description>
 		</property>
 		<property>
 			<name>onsizerejected</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file uploading is rejected by the file size overflow</description>
+			<description>The client-side script method to be called when a file uploading is rejected by the file size overflow</description>
 		</property>
 		<property>
 			<name>onclear</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file entry is cleared</description>
+			<description>The client-side script method to be called when a file entry is cleared</description>
 		</property>
 		<property>
 			<name>onfileuploadcomplete</name>
 		  	<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a file is uploaded to the server</description>
+			<description>The client-side script method to be called when a file is uploaded to the server</description>
 		</property>		
 		<property>
 			<name>addControlLabel</name>

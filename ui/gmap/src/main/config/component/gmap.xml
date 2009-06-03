@@ -42,7 +42,7 @@
 			<name>oninit</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the Google Map object is initiated
+				The client-side script method to be called when the Google Map object is initiated
 			</description>
 			<defaultvalue>""</defaultvalue>
 		</property>

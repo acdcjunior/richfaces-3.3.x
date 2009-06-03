@@ -82,7 +82,7 @@
         <property>
             <name>onclick</name>
             <classname>java.lang.String</classname>
-        	<description>The client side script method to be called when a panel bar is clicked</description>
+        	<description>The client-side script method to be called when a panel bar is clicked</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
 		<property>
@@ -94,7 +94,7 @@
             <name>onitemchange</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a panel bar item is changed
+            	The client-side script method to be called when a panel bar item is changed
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -102,7 +102,7 @@
             <name>onmouseover</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a pointer is moved onto the component
+            	The client-side script method to be called when a pointer is moved onto the component
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -110,7 +110,7 @@
             <name>onmouseout</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a pointer is moved away from the component
+            	The client-side script method to be called when a pointer is moved away from the component
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -118,7 +118,7 @@
             <name>onmousemove</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a pointer is moved within the component
+            	The client-side script method to be called when a pointer is moved within the component
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -225,7 +225,7 @@
             <name>onenter</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a panel bar item is opened
+            	The client-side script method to be called when a panel bar item is opened
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -234,7 +234,7 @@
             <name>onleave</name>
             <classname>java.lang.String</classname>
             <description>
-            	The client side script method to be called when a panel bar item is leaved
+            	The client-side script method to be called when a panel bar item is leaved
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>

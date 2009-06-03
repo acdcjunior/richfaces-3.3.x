@@ -76,25 +76,25 @@
     	<property>
 	    	<name>onupclick</name>
 	    	<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when the &apos;Up&apos; button is clicked</description>
+    		<description>The client-side script method to be called when the &apos;Up&apos; button is clicked</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
     	<property>
 	    	<name>ondownclick</name>
 	    	<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when the &apos;Down&apos; button is clicked</description>
+    		<description>The client-side script method to be called when the &apos;Down&apos; button is clicked</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
     	<property>
 	    	<name>onerror</name>
 	    	<classname>java.lang.String</classname>
-    		<description>The client side script method to be called whenever a JavaScript error occurs</description>
+    		<description>The client-side script method to be called whenever a JavaScript error occurs</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>clientErrorMessage</name>
 	    	<classname>java.lang.String</classname>
-    		<description>An error message to use in client side validation events</description>
+    		<description>An error message to use in client-side validation events</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 		<property>
@@ -169,52 +169,52 @@
 		<property>
         		<name>oninputclick</name>
         		<classname>java.lang.String</classname>
-		<description>The client side script method to be called when the component input field is clicked</description>
+		<description>The client-side script method to be called when the component input field is clicked</description>
         	</property>
     		<property>
         		<name>oninputdblclick</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when the component input field is double-clicked</description>
+    		<description>The client-side script method to be called when the component input field is double-clicked</description>
     		</property>
     		<property>
         		<name>oninputkeydown</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is pressed down in the input field</description>
+    		<description>The client-side script method to be called when a key is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeypress</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is pressed and released in the input field</description>
+    		<description>The client-side script method to be called when a key is pressed and released in the input field</description>
     		</property>
     		<property>
         		<name>oninputkeyup</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a key is released in the input field</description>
+    		<description>The client-side script method to be called when a key is released in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousedown</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a mouse button is pressed down in the input field</description>
+    		<description>The client-side script method to be called when a mouse button is pressed down in the input field</description>
     		</property>
     		<property>
         		<name>oninputmousemove</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved within the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved within the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseout</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved away from the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved away from the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseover</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a pointer is moved onto the input field</description>
+    		<description>The client-side script method to be called when a pointer is moved onto the input field</description>
     		</property>
     		<property>
         		<name>oninputmouseup</name>
         		<classname>java.lang.String</classname>
-    		<description>The client side script method to be called when a mouse button is released in the input field</description>
+    		<description>The client-side script method to be called when a mouse button is released in the input field</description>
     		</property>
     		
     		<property elonly="true" hidden="true" existintag="false" exist="false" >

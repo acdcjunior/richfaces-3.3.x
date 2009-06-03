@@ -174,7 +174,7 @@
             <name>onslide</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when a slider handle is moved
+                The client-side script method to be called when a slider handle is moved
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -183,7 +183,7 @@
         	<name>onerror</name>
         	<classname>java.lang.String</classname>
         	<description>
-        	    The client side script method to be called whenever a
+        	    The client-side script method to be called whenever a
         		JavaScript error occurs
         	</description>
         	<defaultvalue><![CDATA[""]]></defaultvalue>
@@ -193,7 +193,7 @@
         	<name>oninputkeydown</name>
         	<classname>java.lang.String</classname>
         	<description>
-        	    The client side script method to be called when a key is pressed down in the component input field
+        	    The client-side script method to be called when a key is pressed down in the component input field
         	</description>
         </property>
 
@@ -201,7 +201,7 @@
         	<name>oninputkeypress</name>
         	<classname>java.lang.String</classname>
         	<description>
-        	    The client side script method to be called when a key is pressed and released in the component input field
+        	    The client-side script method to be called when a key is pressed and released in the component input field
         	</description>
         </property>
 
@@ -209,7 +209,7 @@
         	<name>oninputkeyup</name>
         	<classname>java.lang.String</classname>
         	<description>
-        	    The client side script method to be called when a key is released in the component input field
+        	    The client-side script method to be called when a key is released in the component input field
         	</description>
         </property>
 
@@ -217,7 +217,7 @@
             <name>clientErrorMessage</name>
             <classname>java.lang.String</classname>
             <description>
-                An error message to use in client side validation events
+                An error message to use in client-side validation events
             </description>
         </property> 
         
@@ -225,7 +225,7 @@
             <name>onchange</name>
             <classname>java.lang.String</classname>
             <description>
-                The client side script method to be called when the component input field value is changed
+                The client-side script method to be called when the component input field value is changed
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>

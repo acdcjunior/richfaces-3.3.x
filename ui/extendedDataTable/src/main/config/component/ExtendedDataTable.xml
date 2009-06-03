@@ -65,7 +65,7 @@
                     <property>
                               <name>onselectionchange</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a selected row is changed
+                              <description>The client-side script method to be called when a selected row is changed
                               </description>
                     </property>
                     <property>
@@ -180,39 +180,39 @@
                     <property>
                               <name>onRowClick</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when the row is clicked</description>
+                              <description>The client-side script method to be called when the row is clicked</description>
                     </property>
                     <property>
                               <name>onRowDblClick</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when the row is double-clicked</description>
+                              <description>The client-side script method to be called when the row is double-clicked</description>
                     </property>
                     <property>
                               <name>onRowMouseUp</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a pointer is released over the row</description>
+                              <description>The client-side script method to be called when a pointer is released over the row</description>
                     </property>
                     <property>
                               <name>onRowMouseDown</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a mouse button is pressed down over the row</description>
+                              <description>The client-side script method to be called when a mouse button is pressed down over the row</description>
                     </property>
                     <property>
                               <name>onRowMouseOver</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a pointer is moved onto the rows
+                              <description>The client-side script method to be called when a pointer is moved onto the rows
                               </description>
                     </property>
                     <property>
                               <name>onRowMouseOut</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a pointer is moved away from the row
+                              <description>The client-side script method to be called when a pointer is moved away from the row
                               </description>
                     </property>
                     <property>
                               <name>onRowMouseMove</name>
                               <classname>java.lang.String</classname>
-                              <description>The client side script method to be called when a pointer is moved within the row</description>
+                              <description>The client-side script method to be called when a pointer is moved within the row</description>
                     </property>
                     <property>
                               <name>sortPriority</name>

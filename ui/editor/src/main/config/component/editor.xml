@@ -121,28 +121,28 @@
 			<name>oninit</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the initialization of the editor instances is finished
+				The client-side script method to be called when the initialization of the editor instances is finished
 			</description>
 		</property>
 		<property>
 			<name>onchange</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the editor content is modified by TinyMCE
+				The client-side script method to be called when the editor content is modified by TinyMCE
 			</description>
 		</property>
 		<property>
 			<name>onsave</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the editor content is extracted/saved
+				The client-side script method to be called when the editor content is extracted/saved
 			</description>
 		</property>
 		<property>
 			<name>onsetup</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called before the editor instances get rendered
+				The client-side script method to be called before the editor instances get rendered
 			</description>
 		</property>
 		<property>

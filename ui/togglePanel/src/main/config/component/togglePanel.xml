@@ -244,28 +244,28 @@
 			<name>onblur</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the element loses the focus
+				The client-side script method to be called when the element loses the focus
 			</description>
 		</property>
 		<property>
 			<name>onclick</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the element is clicked
+				The client-side script method to be called when the element is clicked
 			</description>
 		</property>
 		<property>
 			<name>ondblclick</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the element is double-clicked
+				The client-side script method to be called when the element is double-clicked
 			</description>
 		</property>
 		<property>
 			<name>onfocus</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when the element gets the
+				The client-side script method to be called when the element gets the
 				focus
 			</description>
 		</property>
@@ -273,56 +273,56 @@
 			<name>onmousedown</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a mouse button is pressed down over the element
+				The client-side script method to be called when a mouse button is pressed down over the element
 			</description>
 		</property>
 		<property>
 			<name>onmouseup</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a mouse button is released over the element
+				The client-side script method to be called when a mouse button is released over the element
 			</description>
 		</property>
 		<property>
 			<name>onmouseover</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved onto the element
+				The client-side script method to be called when a pointer is moved onto the element
 			</description>
 		</property>
 		<property>
 			<name>onmousemove</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved within the element
+				The client-side script method to be called when a pointer is moved within the element
 			</description>
 		</property>
 		<property>
 			<name>onmouseout</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a pointer is moved away from the element
+				The client-side script method to be called when a pointer is moved away from the element
 			</description>
 		</property>
 		<property>
 			<name>onkeypress</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a key is pressed and released over the element 
+				The client-side script method to be called when a key is pressed and released over the element 
 			</description>
 		</property>
 		<property>
 			<name>onkeydown</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a key is pressed down over the element
+				The client-side script method to be called when a key is pressed down over the element
 			</description>
 		</property>
 		<property>
 			<name>onkeyup</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called when a key is released over
+				The client-side script method to be called when a key is released over
 				the element
 			</description>
 		</property>
@@ -428,7 +428,7 @@ When the delay time is over, the request will be sent to the server or removed i
 			<name>oncomplete</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The client side script method to be called after the request is completed
+				The client-side script method to be called after the request is completed
 			</description>
 		</property>
 

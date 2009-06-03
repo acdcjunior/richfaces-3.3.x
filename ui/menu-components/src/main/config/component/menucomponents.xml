@@ -95,28 +95,28 @@
         <property>
             <name>onmousemove</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when a pointer is moved within the menu group</description>
+            <description>The client-side script method to be called when a pointer is moved within the menu group</description>
         </property>
         <property>
             <name>onmouseout</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when a pointer is moved away from the menu group</description>
+            <description>The client-side script method to be called when a pointer is moved away from the menu group</description>
         </property>
         <property>
             <name>onmouseover</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when a pointer is moved onto the menu group</description>
+            <description>The client-side script method to be called when a pointer is moved onto the menu group</description>
         </property>
         <property>
             <name>onopen</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when a group is
+            <description>The client-side script method to be called when a group is
                 opened</description>
         </property>
         <property>
             <name>onclose</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when a group is
+            <description>The client-side script method to be called when a group is
                 closed</description>
         </property>
 
@@ -243,7 +243,7 @@
         <property>
             <name>onselect</name>
             <classname>java.lang.String</classname>
-            <description>The client side script method to be called when
+            <description>The client-side script method to be called when
                 a menu item is selected</description>
         </property>
         <property hidden="true">
