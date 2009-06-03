@@ -173,7 +173,7 @@
 		<property>
 			<name>onRowMouseUp</name>
 			<classname>java.lang.String</classname>
-			<description>The client side script method to be called when a pointer is released over the row
+			<description>The client side script method to be called when a mouse button is released over the row
 			</description>
 		</property>
 		<property>
