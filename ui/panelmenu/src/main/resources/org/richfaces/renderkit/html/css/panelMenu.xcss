@@ -10,20 +10,21 @@
 			padding-right: 4px;
 		}
 		
-		.rich-pmenu-top-group {
-			height: 20px;
-			
-			background-repeat: repeat-x;
-			background-position: left top;
-			padding: 2px 1px 2px 2px;
-			cursor: pointer;
-		}
-		
 		.rich-pmenu-group {
 			padding: 2px 1px 1px;
 			margin-top:1px;
 			cursor:pointer;
 			border-top: 1px solid;
+		}
+		
+		.rich-pmenu-top-group {
+			height: 20px;
+			border-top: none;
+			margin-top: 0;
+			background-repeat: repeat-x;
+			background-position: left top;
+			padding: 2px 1px 2px 2px;
+			cursor: pointer;
 		}
 		
 		.rich-pmenu-item {
@@ -53,6 +54,14 @@
 		
 	</f:verbatim>
 	
+	<u:selector name=".rich-pmenu-group">
+		<u:style name="font-weight" skin="headerWeightFont"/>
+		<u:style name="font-family" skin="headerFamilyFont"/>
+		<u:style name="font-size" skin="headerSizeFont"/>
+		<u:style name="color" skin="generalTextColor"/>
+		<u:style name="border-top-color" skin="tableBorderColor"/>
+	</u:selector>
+	
 	<u:selector name=".rich-pmenu-top-group">
 		<u:style name="font-weight" skin="headerWeightFont"/>
 		<u:style name="font-family" skin="generalFamilyFont"/>
@@ -62,14 +71,6 @@
 		<u:style name="background-image" >
 			<f:resource f:key="org.richfaces.renderkit.html.gradientimages.PanelMenuGroupGradient" />
 		</u:style>
-	</u:selector>
-	
-	<u:selector name=".rich-pmenu-group">
-		<u:style name="font-weight" skin="headerWeightFont"/>
-		<u:style name="font-family" skin="headerFamilyFont"/>
-		<u:style name="font-size" skin="headerSizeFont"/>
-		<u:style name="color" skin="generalTextColor"/>
-		<u:style name="border-top-color" skin="tableBorderColor"/>
 	</u:selector>
 	
 	<u:selector name=".rich-pmenu-item">
