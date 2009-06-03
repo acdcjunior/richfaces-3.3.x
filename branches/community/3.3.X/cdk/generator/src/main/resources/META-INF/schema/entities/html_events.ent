@@ -3,7 +3,7 @@
     <property>
         <name>onclick</name>
         <classname>java.lang.String</classname>
-        <description>The clientside script method to be called when the element is clicked</description>
+        <description>The client side script method to be called when the element is clicked</description>
     </property>
     <property>
         <name>ondblclick</name>
