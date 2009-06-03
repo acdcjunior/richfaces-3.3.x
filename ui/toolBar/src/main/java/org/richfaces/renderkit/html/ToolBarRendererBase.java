@@ -96,7 +96,7 @@ public class ToolBarRendererBase extends HeaderResourcesRendererBase {
 				
 				if (! (child instanceof UIToolBarGroup)) {
 					writer.startElement(HTML.td_ELEM, component);					
-					writer.writeAttribute(HTML.class_ATTRIBUTE, "dr-toolbar-int rich-toolbar-item " + contentClass, null);
+					writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-toolbar-item " + contentClass, null);
 					getUtils().writeAttribute(writer, HTML.style_ATTRIBUTE, contentStyle);
 					encodeEventsAttributes(facesContext, toolBar, writer);
 				}

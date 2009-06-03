@@ -88,7 +88,7 @@ public class ToolBarGroupRenderer extends ToolBarRendererBase {
         String styleClass = getStringAttribute(toolBarGroup, HTML.STYLE_CLASS_ATTR);
         String contentClass = getStringAttribute(getParentToolBar(toolBarGroup), "contentClass");
 
-        String value = "dr-toolbar-int rich-toolbar-item " + contentClass + " " + styleClass;
+        String value = "rich-toolbar-item " + contentClass + " " + styleClass;
         writer.writeAttribute(HTML.class_ATTRIBUTE, value, null);
     }
 
