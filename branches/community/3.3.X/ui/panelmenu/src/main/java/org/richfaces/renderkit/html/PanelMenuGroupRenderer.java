@@ -250,12 +250,7 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 	
 	public String getSelectedClass(FacesContext context, UIComponent component) {
 		if (isSelected(context, component)) {
-			StringBuffer selectedClass = null;
-			selectedClass= new StringBuffer();
-			selectedClass.append(UIPanelMenu.DEFAULT_SELECTED_CLASS).
-				append(" ").
-				append(UIPanelMenu.USER_DEFINED_SELECTED_CLASS);
-			return selectedClass.toString();
+			return UIPanelMenu.SELECTED_CLASS;
 		}
 		return  ""; 
 	}
@@ -299,16 +294,14 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 	public String getDivClass(FacesContext context, UIComponent component) {
 		String result = "";
 		if (isTopLevel(component))
-			result = "dr-pmenu-top-group-div rich-pmenu-top-group-div";
+			result = "rich-pmenu-top-group-div";
 		return result;
 	}
 	
 	public String getTableClass(FacesContext context, UIComponent component) {
-		String result;
+		String result = "";
 		if (isTopLevel(component))
-			result = "dr-pmenu-top-group rich-pmenu-top-group ";
-		else
-			result = "dr-pmenu-group";
+			result = "rich-pmenu-top-group ";
 		return result;
 	}
 	

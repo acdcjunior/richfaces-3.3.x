@@ -207,12 +207,7 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 	
 	public String getSelectedClass(FacesContext context, UIComponent component) {
 		if (isSelected(context, component)) {
-			StringBuffer selectedClass = null;
-			selectedClass= new StringBuffer();
-			selectedClass.append(UIPanelMenu.DEFAULT_SELECTED_CLASS).
-				append(" ").
-				append(UIPanelMenu.USER_DEFINED_SELECTED_CLASS);
-			return selectedClass.toString();
+			return UIPanelMenu.SELECTED_CLASS;
 		}
 		return  ""; 
 	}

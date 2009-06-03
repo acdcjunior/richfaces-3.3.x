@@ -18,8 +18,7 @@ PanelMenu.prototype = {
 		this.expandSingle = so;
 		this.lastExpanded = null;
 		this.selectedChild = selectedChild;
-		this.defaultSelectedClass = 'dr-pmenu-selected-item';
-		this.userDefinedSelectedClass = 'rich-pmenu-selected-element';
+		this.selectedClass = 'rich-pmenu-selected-element';
 		this.is = 'panelMenu';
 		this.selectedNameInput = $(myId + 'selectedItemName');		
 		PanelMenuStorage[myId] = this;
@@ -133,7 +132,7 @@ PanelMenuItem.prototype = {
 		this.leftIcon = Richfaces.lastDescendant(mainCells[0]);
 		this.labelArea = mainCells[1];
 		this.rightIcon = Richfaces.firstDescendant(mainCells[2]); 
-		this.content = this.tdhider.select(".dr-pmenu-group-self-label")[0];
+		this.content = this.tdhider.select(".rich-pmenu-group-self-label")[0];
 		this.iconAlign = iconAlign;
 		
 		/*
@@ -400,12 +399,10 @@ PanelMenuItem.prototype = {
 	
 	
 	setSelectedClass: function(e){
-		this.mainRow.addClassName(this.rootMenu.defaultSelectedClass);
-		this.mainRow.addClassName(this.rootMenu.userDefinedSelectedClass);
+		this.mainRow.addClassName(this.rootMenu.selectedClass);
 	},
 	removeSelectedClass: function(e){
-		this.mainRow.removeClassName(this.rootMenu.defaultSelectedClass);
-		this.mainRow.removeClassName(this.rootMenu.userDefinedSelectedClass);
+		this.mainRow.removeClassName(this.rootMenu.selectedClass);
 	},
 
 	

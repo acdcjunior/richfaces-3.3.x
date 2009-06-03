@@ -199,17 +199,16 @@ public class PanelMenuComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("div", firstGroupDiv.getNodeName());
         
         String styleClass = firstGroupDiv.getAttributeValue("class");
-        assertTrue(styleClass.contains("dr-pmenu-top-group-div"));
+        assertTrue(styleClass.contains("rich-pmenu-top-group-div"));
         
         HtmlElement firstGroupHide = page.getHtmlElementById("tablehide" + group1.getClientId(facesContext));
         assertNotNull(firstGroupHide);
         assertEquals("table", firstGroupHide.getNodeName());
         
         styleClass = firstGroupHide.getAttributeValue("class");
-        assertTrue(styleClass.contains("dr-pmenu-top-group"));
+        assertTrue(styleClass.contains("rich-pmenu-top-group"));
         assertTrue(styleClass.contains("rich-pmenu-group"));
         assertTrue(styleClass.contains("rich-pmenu-disabled-element"));
-        assertTrue(styleClass.contains("dr-pmenu-disabled-element"));
         
         HtmlElement subGroupDiv = page.getHtmlElementById(group3.getClientId(facesContext));
         assertNotNull(subGroupDiv);
@@ -220,7 +219,6 @@ public class PanelMenuComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("table", subGroupHide.getNodeName());
         
         styleClass = subGroupHide.getAttributeValue("class");
-        assertTrue(styleClass.contains("dr-pmenu-group"));
         assertTrue(styleClass.contains("rich-pmenu-group"));
         
         HtmlElement leftIcon = page.getHtmlElementById("leftIcon" + group1.getClientId(facesContext));
@@ -236,7 +234,6 @@ public class PanelMenuComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("table", firstItemHide.getNodeName());
         
         styleClass = firstItemHide.getAttributeValue("class");
-        assertTrue(styleClass.contains("dr-pmenu-item"));
         assertTrue(styleClass.contains("rich-pmenu-item"));
         
         leftIcon = page.getHtmlElementById("leftIcon" + item1.getClientId(facesContext));

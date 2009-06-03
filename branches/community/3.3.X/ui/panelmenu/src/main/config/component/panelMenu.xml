@@ -246,7 +246,7 @@
 			<description>
 				Space-separated list of CSS style class(es) that are be applied to disabled item of this component
 			</description>
-			<defaultvalue><![CDATA["dr-pmenu-disabled-element rich-pmenu-disabled-element"]]></defaultvalue>
+			<defaultvalue><![CDATA["rich-pmenu-disabled-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledItemStyle</name>
@@ -260,7 +260,7 @@
 			<name>disabledGroupClass</name>
 			<classname>java.lang.String</classname>
 			<description>Space-separated list of CSS style class(es) that are be applied to disabled group of this component</description>
-			<defaultvalue><![CDATA["dr-pmenu-disabled-element rich-pmenu-disabled-element"]]></defaultvalue>
+			<defaultvalue><![CDATA["rich-pmenu-disabled-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledGroupStyle</name>
@@ -272,7 +272,7 @@
 			<name>hoveredItemClass</name>
 			<classname>java.lang.String</classname>
 			<description> Space-separated list of CSS style class(es) that are be applied to hovered item of this component</description>
-			<defaultvalue><![CDATA["dr-pmenu-hovered-element rich-pmenu-hovered-element"]]></defaultvalue>
+			<defaultvalue><![CDATA["rich-pmenu-hovered-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoveredItemStyle</name>
@@ -290,7 +290,7 @@
 			<name>hoveredGroupClass</name>
 			<classname>java.lang.String</classname>
 			<description> Space-separated list of CSS style class(es) that are be applied to hovered group of this component</description>
-			<defaultvalue><![CDATA["dr-pmenu-hovered-element rich-pmenu-hovered-element"]]></defaultvalue>
+			<defaultvalue><![CDATA["rich-pmenu-hovered-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>selectedChild</name>
