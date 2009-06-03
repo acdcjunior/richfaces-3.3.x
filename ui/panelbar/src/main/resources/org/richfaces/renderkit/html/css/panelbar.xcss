@@ -4,33 +4,33 @@
    xmlns="http://www.w3.org/1999/xhtml" >
    
 <f:verbatim><![CDATA[
-.dr-pnlbar{
+.rich-panelbar{
 	border : 1px solid;
 	padding : 1px;
 }
-.dr-pnlbar-int{
+.rich-panelbar-interior {
 	border-bottom : 0px !important;
 }
-.dr-pnlbar-h{
+.rich-panelbar-header{
 	border : 0px solid red;
 	padding : 0px 1px 1px 5px;
 	cursor : pointer;
 }
 
-.dr-pnlbar-h-act{
+.rich-panelbar-header-act{
 	border : 0px solid red;
 	padding : 0px 1px 1px 5px;
 	cursor : pointer;
 }
 
 
-.dr-pnlbar-c{
+.rich-panelbar-content{
 	padding : 10px;
 	text-align : left;
 	vertical-align : top;
 }
 
-.dr-pnlbar-b{
+.rich-panelbar-b{
 	border-top-width: 0px !important;
 	border-left-width: 0px !important;
 	border-right-width: 0px !important;
@@ -39,11 +39,11 @@
 
 ]]></f:verbatim>
 
-<u:selector name=".dr-pnlbar">
+<u:selector name=".rich-panelbar">
    	<u:style name="border-color" skin="headerBackgroundColor" />
 </u:selector>
 
-<u:selector name=".dr-pnlbar-h">
+<u:selector name=".rich-panelbar-header">
 	<u:style name="background-image" >
     	<f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
     </u:style>
@@ -57,7 +57,7 @@
     <u:style name="font-family" skin="headerFamilyFont" />
 </u:selector>
 
-<u:selector name=".dr-pnlbar-h-act">
+<u:selector name=".rich-panelbar-header-act">
 	<u:style name="background-image" >
     	<f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
     </u:style>
@@ -72,14 +72,14 @@
 </u:selector>
 
 
-<u:selector name=".dr-pnlbar-c">
+<u:selector name=".rich-panelbar-content">
 	<u:style name="color" skin="generalTextColor" />
 	<u:style name="font-size" skin="preferableDataSizeFont" />
     <u:style name="font-family" skin="preferableDataFamilyFont" />
 </u:selector>
 
    
-<u:selector name=".dr-pnlbar-int">
+<u:selector name=".rich-panelbar-interior">
 	<u:style name="background-color" skin="generalBackgroundColor" />
 </u:selector>
 

@@ -14,7 +14,7 @@
 
 	<f:clientid var="clientId" />
 	
-	<div id="#{clientId}" class="dr-pnlbar rich-panelbar dr-pnlbar-b #{component.attributes['styleClass']}" style="padding: 0px; #{this:height(context, component)} #{this:width(context, component)} #{component.attributes['style']}">
+	<div id="#{clientId}" class="rich-panelbar rich-panelbar-b #{component.attributes['styleClass']}" style="padding: 0px; #{this:height(context, component)} #{this:width(context, component)} #{component.attributes['style']}">
 		<vcp:body>
 			<f:call name="renderChildren"/>
 		</vcp:body>

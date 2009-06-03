@@ -168,7 +168,7 @@ public class PanelBarComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(div);
         assertEquals("div", div.getNodeName());
         String classAttr = div.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-pnlbar rich-panelbar dr-pnlbar-b"));
+        assertTrue(classAttr.contains("rich-panelbar"));
         assertTrue(classAttr.contains("panelBarStyleClass"));
         classAttr = div.getAttributeValue("style");
         assertTrue(classAttr.contains("width: 500px;"));
@@ -186,7 +186,7 @@ public class PanelBarComponentTest extends AbstractAjax4JsfTestCase {
         assertNotNull(div);
         assertEquals("div", div.getNodeName());
         classAttr = div.getAttributeValue("class");
-        assertTrue(classAttr.contains("dr-pnlbar rich-panelbar dr-pnlbar-int rich-panelbar-interior"));
+        assertTrue(classAttr.contains("rich-panelbar rich-panelbar-interior"));
         assertTrue(classAttr.contains("panelBarStyleClass"));
         classAttr = div.getAttributeValue("style");
         assertTrue(classAttr.contains("panelBarHeaderStyle"));
