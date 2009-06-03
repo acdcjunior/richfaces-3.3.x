@@ -139,7 +139,7 @@
 			<name>onselectionchange</name>
 			<classname>java.lang.String</classname>
 			<description>
-			HTML: script expression to invoke on changing of rows selection 
+				The client side script method to be called when a selected row is changed
 			</description>
 		</property>		
 
@@ -170,7 +170,7 @@
 		<property>
 			<name>onRowClick</name>
 			<classname>java.lang.String</classname>
-			<description>HTML: a script expression; a pointer button is clicked on row
+			<description>The client-side script method to be called when the row is clicked
 			</description>
 		</property>	
 
@@ -224,19 +224,19 @@
 		<property>
 			<name>onRowMouseDown</name>
 			<classname>java.lang.String</classname>
-			<description>HTML: script expression; a pointer button is pressed down on row</description>
+			<description>The client-side script method to be called when a mouse button is pressed down over the row</description>
 		</property>	
 			
 		<property>
 			<name>onRowMouseUp</name>
 			<classname>java.lang.String</classname>
-			<description>HTML: script expression; a pointer button is released on row</description>
+			<description>The client-side script method to be called when a mouse button is released over the row</description>
 		</property>	
 			
 		<property>
 			<name>onRowDblClick</name>
 			<classname>java.lang.String</classname>
-			<description>HTML: a script expression; a pointer button is double-clicked on row
+			<description>The client-side script method to be called when the row is double-clicked
 			</description>
 		</property>	
 
