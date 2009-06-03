@@ -4,7 +4,7 @@
    xmlns="http://www.w3.org/1999/xhtml" >
 
 <f:verbatim><![CDATA[
-.dr-stglpnl{
+.rich-stglpanel{
    border-width : 1px;
    border-style: solid;
    padding : 1px;
@@ -12,11 +12,11 @@
    background-repeat : no-repeat;
 }
 
-.dr-stglpnl-m{
+.rich-stglpanel-marker-open, .rich-stglpanel-marker-close {
 	padding-right: 3px; 
 }
 
-.dr-stglpnl-h{
+.rich-stglpanel-header{
    border-width: 1px;
    border-style: solid;
    cursor: pointer;
@@ -26,24 +26,24 @@
 }
 
 
-.dr-stglpnl-b{
+.rich-stglpanel-body{
    padding : 10px;
    text-align : left;
    vertical-align : top;
    overflow: auto;
 }
-.dr-stglpanel-marker{
+.rich-stglpanel-marker{
 	float: right;
 }
 ]]>
 
 </f:verbatim>
 
-<u:selector name=".dr-stglpnl">
+<u:selector name=".rich-stglpanel">
     <u:style name="background-color" skin="generalBackgroundColor" />
     <u:style name="border-color" skin="panelBorderColor" />
 </u:selector>
-<u:selector name=".dr-stglpnl-h">
+<u:selector name=".rich-stglpanel-header">
     <u:style name="background-color" skin="headerBackgroundColor" />
     <u:style name="border-color" skin="headerBackgroundColor" />
     <u:style name="font-size" skin="headerSizeFont" />
@@ -51,13 +51,13 @@
     <u:style name="font-weight" skin="headerWeightFont" />
     <u:style name="font-family" skin="headerFamilyFont" />
 </u:selector>
-<u:selector name=".dr-stglpnl-b">
+<u:selector name=".rich-stglpanel-body">
     <u:style name="background-color" skin="generalBackgroundColor" />
     <u:style name="font-size" skin="generalSizeFont" />
     <u:style name="color" skin="panelTextColor" />
     <u:style name="font-family" skin="generalFamilyFont" />
 </u:selector>
-<u:selector name=".dr-stglpnl-h">
+<u:selector name=".rich-stglpanel-header">
     <u:style name="background-image" >
     <f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
     </u:style>

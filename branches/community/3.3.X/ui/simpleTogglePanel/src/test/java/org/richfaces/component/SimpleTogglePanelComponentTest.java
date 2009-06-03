@@ -165,7 +165,6 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("div", div1.getNodeName());
 
         String classAttr1 = div1.getAttributeValue("class");
-        assertTrue(classAttr1.contains("dr-stglpnl"));
         assertTrue(classAttr1.contains("rich-stglpanel"));
 
         HtmlDivision div2 = (HtmlDivision)page.getHtmlElementById(stp1.getClientId(facesContext) + "_header");
@@ -173,7 +172,6 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("div", div2.getNodeName());
 
         String classAttr2 = div2.getAttributeValue("class");
-        assertTrue(classAttr2.contains("dr-stglpnl-h"));
         assertTrue(classAttr2.contains("rich-stglpanel-header"));
 
         HtmlElement div3 = page.getHtmlElementById(stp1.getClientId(facesContext) + "_switch_on");
