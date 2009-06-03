@@ -2501,7 +2501,7 @@ public class TableBackingRendered implements Serializable {
                     <para>The following order, in which filters are defined and mapped in web.xml, is important for <emphasis role="bold">
                                         <property>&lt;rich:fileUpload&gt;</property>
                               </emphasis> component proper work with MyFaces. 
-                              Note that the extension filter should be mapped on faces servlet not to *.jsf (!) to provide this sequence work correctly.
+                              Note that the extension filter should be mapped on faces servlet not to &lt;url-pattern&gt; element to provide this sequence work correctly.
 					</para>
                     <para>
                               <emphasis role="bold">Example:</emphasis>
