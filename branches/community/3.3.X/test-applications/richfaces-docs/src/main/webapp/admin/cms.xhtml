@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="../layout/template.xhtml"
+                xmlns:a4j="http://richfaces.org/a4j">
+
+<ui:define name="body">
+
+
+    <h:messages globalOnly="true" styleClass="message"/>
+    
+
+    
+    <rich:panel>
+    <f:facet name="header">Content Management System</f:facet>
+    
+<h:form rendered="#{rich:isUserInRole('admin')}" >
+<rich:editor value="#{editor.pageText}" rendered="#{rich:isUserInRole('admin')}"/>
+<h:commandButton value="Save" />
+</h:form>
+
+<div>
+<h:outputText value="#{editor.pageText}" rendered="#{rich:isUserInRole('user')}" />
+</div>
+
+<h:commandButton
+onclick="alert(#{rich:isUserInRole('admin')});"
+value="is User In Role Admin" />
+
+<h:commandButton
+onclick="alert(#{rich:isUserInRole('user')});"
+value="is User In Role User" />
+
+
+<a href="http://www.jboss.org/community/wiki/UsingrichisUserInRoleobject">More details about this page</a>
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>
