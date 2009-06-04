@@ -36,10 +36,10 @@
 						</f:call>
 					</td>
 					<td style="width:100%" id="icon#{clientId}" class="rich-pmenu-group-self-label #{this:getLabelClass( context, component )}" >
-						<input type="hidden" name="panelMenuState#{clientId}" 
+						<input type="hidden" autocomplete="off" name="panelMenuState#{clientId}" 
 									value="#{isNodeOpened}" />
 							
-						<input type="hidden" name="panelMenuAction#{clientId}"
+						<input autocomplete="off" type="hidden" name="panelMenuAction#{clientId}"
 									value="" />
 						<f:call name="insertLabel"/>
 					</td>

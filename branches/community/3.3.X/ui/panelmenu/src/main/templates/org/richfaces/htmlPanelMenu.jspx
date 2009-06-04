@@ -41,7 +41,7 @@
 	<div style="width:#{component.width}; #{style}"  class="rich-pmenu #{component.styleClass}"
 			id="#{clientId}"  
 			x:passThruWithExclusions="style,width,class,styleClass,id">
-		<input type="hidden" id="#{clientId}selectedItemName" name="#{clientId}selectedItemName" value="" />
+		<input autocomplete="off" type="hidden" id="#{clientId}selectedItemName" name="#{clientId}selectedItemName" value="" />
 		<vcp:body>
 			<f:call name="renderChildren" />
 		</vcp:body>		
