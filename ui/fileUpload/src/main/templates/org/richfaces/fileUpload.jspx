@@ -96,6 +96,7 @@
 							   	   class="rich-fileupload-hidden"
 							   	   id="#{clientId}:file"
 							       name="#{clientId}:file"
+							       autocomplete="off"
 							       onchange="return $('#{clientId}').component.add(this);"/>
 						</div>
 						<div id="#{clientId}:flashContainer" style="display:none"></div>
