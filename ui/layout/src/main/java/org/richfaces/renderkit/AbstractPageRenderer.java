@@ -219,4 +219,7 @@ public abstract class AbstractPageRenderer extends HeaderResourcesRendererBase {
 		return null != component.getFacet(facet);
 	}
 
+	public boolean hasTitle(FacesContext context, UIComponent component) {
+		return component.getAttributes().get("pageTitle") != null &&  !component.getAttributes().get("pageTitle").toString().trim().equals("");
+	}
 }

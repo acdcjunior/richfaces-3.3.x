@@ -17,7 +17,9 @@
 	<html x:xmlns="#{namespace}" x:lang="#{context.viewRoot.locale}"
 		>
 		<head>
+		<c:if test="#{this:hasTitle(context,component)}">
 		   <title>#{component.attributes['pageTitle']}</title>
+		</c:if>
 		   <f:call name="themeStyle"/>
 		   <f:call name="themeScript"/>
 		   <f:call name="pageStyle"/>
