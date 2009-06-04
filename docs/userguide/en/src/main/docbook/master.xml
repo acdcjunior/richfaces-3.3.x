@@ -166,7 +166,8 @@
       &rfcarchitectover;
 	
 <chapter role="NotInToc" id="RichFacesComponentsLibrary" xreflabel="RichFacesComponentsLibrary">
-	<?dbhtml filename="RichFacesComponentsLibrary.html"?>	<title>The RichFaces Components</title>
+	<?dbhtml filename="RichFacesComponentsLibrary.html"?>
+	<title>The RichFaces Components</title>
 	<para>
 		The library encompasses ready-made components built based on 
 		the <emphasis><property>Rich Faces CDK</property></emphasis>.
@@ -175,6 +176,7 @@
 	<section id="ajaxSupport" xreflabel="ajaxSupport">
 		<?dbhtml filename="ajaxSupport.html"?>
 		<title>Ajax Support</title>
+		<para>The component in this section lets you easily add  Ajax capabilities to other components as well as manage Ajax requests. </para>
 		<?forseChanks?>
 		&a4j_ajaxListener;
 		&a4j_actionparam;
@@ -192,6 +194,8 @@
 	<section id="resourcesBeansHandling" xreflabel="resourcesBeansHandling">
 		<?dbhtml filename="resourcesBeansHandling.html"?>
 		<title>Resources/Beans Handling</title>
+		<para>The main purpose of the components covered in this section is to load resources (style sheets, JavaScript files and resource bundle) and to keep a state of a bean between requests. </para>
+		
 		<?forseChanks?>
 		&a4j_loadBundle;
 		&a4j_keepAlive;
@@ -201,6 +205,8 @@
 	<section id="ajaxValidators" xreflabel="ajaxValidators">
 		<?dbhtml filename="ajaxValidators.html"?>
 		<title>Ajax Validators</title>
+		<para>RichFaces components library provides 3 components to validate user input data. 
+			These components enhance JSF validation capabilities with Ajax support and possibility to use Hibernate validators.   </para>
 		<?forseChanks?>
 		&rich_ajaxValidator;
 		&rich_beanValidator;
@@ -209,6 +215,7 @@
 	<section id="ajaxOutput" xreflabel="ajaxOutput">
 		<?dbhtml filename="ajaxOutput.html"?>
 		<title>Ajax Output</title>
+		<para>The components described in this section render some content dynamically using Ajax capabilities.</para>
 		<?forseChanks?>
 		&a4j_include;
 		&a4j_mediaOutput;
@@ -226,6 +233,8 @@
 	<section id="dataIteration" xreflabel="dataIteration">
 		<?dbhtml filename="dataIteration.html"?>
 		<title>Data Iteration</title>
+		
+		<para>	The following components iterate over a collection of data and represent it on the page.</para>
 		<?forseChanks?>
 		&rich_column;
 		&rich_columnGroup;
@@ -245,6 +254,9 @@
 	<section id="dndSupport" xreflabel="dndSupport">
 		<?dbhtml filename="dndSupport.html"?>
 		<title>Drag-Drop Support</title>
+		<para>
+			In this section you will find components that helps you build drag-and-drop controls, manage their behaviour and define the area on the page to be used as a drop zone. 
+		</para>
 		<?forseChanks?>
 		&rich_dragIndicator;
 		&rich_dragSupport;
@@ -256,6 +268,11 @@
 	<section id="richMenu" xreflabel="richMenu">
 		<?dbhtml filename="richMenu.html"?>
 		<title>Rich Menu</title>
+		
+		<para>
+			This section tells how you  can create menus on your page: either navigation ones or context. 
+		</para>
+		
 		<?forseChanks?>
 		&rich_contextMenu;
 		&rich_dropDownMenu;
@@ -266,6 +283,10 @@
 		<section id="richTrees" xreflabel="richTrees">
 		<?dbhtml filename="richTrees.html"?>
 		<title>Rich Trees</title>
+			
+			<para>
+				In this section you will learn how to build  hierarchical data presentation using the <emphasis role="bold"><property>&lt;rich:tree&gt;</property></emphasis> component.
+			</para>
 		<?forseChanks?>
 		&rich_tree;
 		&rich_treeNode;
@@ -277,6 +298,9 @@
 		<section id="richOutput" xreflabel="richOutput">
 		<?dbhtml filename="richOutput.html"?>
 		<title>Rich Output</title>
+			<para>
+				This section covers the components that are designed to be used output and UI elements.
+			</para>
 		<?forseChanks?>
 		&rich_modalPanel;
 		&rich_paint2D;
@@ -301,6 +325,9 @@
 	<section id="richInput" xreflabel="richInput">
 		<?dbhtml filename="richInput.html"?>
 		<title>Rich Input</title>
+		<para>
+			In this section you will find about the components that helps you deal various kinds of user inputs from picking a date, WYSIWYG text editing to uploading a file.
+		</para>
 		<?forseChanks?>
 		&rich_calendar;
 		&rich_colorPicker;
@@ -316,6 +343,9 @@
 	<section id="richSelects" xreflabel="richSelects">
 		<?dbhtml filename="richSelects.html"?>
 		<title>Rich Selects</title>
+		<para>
+			RichFaces library provides desktop like complex controls to implement user select functionality. 
+		</para>
 		<?forseChanks?>
 		&rich_listShuttle;
 		&rich_orderingList;
@@ -324,6 +354,10 @@
 	<section id="richSemanticLayouts" xreflabel="richSemanticLayouts">
 		<?dbhtml filename="richSemanticLayouts.html"?>
 		<title>Rich Semantic Layouts</title>
+		<para>
+			Layout components enrich RichFaces with functionality that enables you to create the whole page layout and define the parameters of the page. 
+			You can also create your custom theme and use alongside with these components. 
+		</para>
 		<?forseChanks?>
 		&rich_page;
 		&rich_layout;
