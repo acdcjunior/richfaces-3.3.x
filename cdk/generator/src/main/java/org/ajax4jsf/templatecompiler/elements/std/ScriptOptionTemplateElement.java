@@ -48,8 +48,6 @@ public class ScriptOptionTemplateElement extends TemplateElementBase {
 	
 	private String defaultValue;
 	
-	private String mapName;
-	
 	private String variables = null;
 	private String attributes = null;
 
@@ -152,10 +150,6 @@ public class ScriptOptionTemplateElement extends TemplateElementBase {
 		}
 	}
 
-	public void setMapName(String mapName) {
-		this.mapName = mapName;
-	}
-	
 	protected String getTemplateName() {
 		return TEMPLATE;
 	}
@@ -163,7 +157,7 @@ public class ScriptOptionTemplateElement extends TemplateElementBase {
 	public String getBeginElement() throws CompilationException {
 		VelocityContext context = new VelocityContext();
 		
-		context.put("mapName", mapName);
+		context.put("mapName", ScriptObjectTemplateElement.getVariableName());
 		context.put("valuesList", values);
 		
 		if (!isEmpty(defaultValue)) {
