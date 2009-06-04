@@ -134,17 +134,17 @@ RichFaces.findNestingTable = function(tablabel) {
 
 RichFaces.overTab = function(tab) {
 	if (RichFaces._shouldHoverTab(tab)) {
-		Element.addClassName(tab, 'dr-tbpnl-tb-sel');
+		Element.addClassName(tab, 'rich-tbpnl-tb-sel');
 	}
 }
 RichFaces.outTab = function(tab) {
 	if (RichFaces._shouldHoverTab(tab)) {
-		Element.removeClassName(tab, 'dr-tbpnl-tb-sel');
+		Element.removeClassName(tab, 'rich-tbpnl-tb-sel');
 	}
 }
 
 RichFaces._shouldHoverTab = function(tab) {
-	return (tab.className.indexOf('dr-tbpnl-tb-act') < 0);
+	return (tab.className.indexOf('rich-tab-active') < 0);
 }
 
 RichFaces.onTabChange = function(event, pane,tab) {

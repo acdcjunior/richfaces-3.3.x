@@ -55,9 +55,9 @@ import org.richfaces.event.SwitchablePanelSwitchEvent;
  */
 public class TabPanelRendererBase extends org.ajax4jsf.renderkit.HeaderResourcesRendererBase {
 
-    public final static String ACTIVE_CELL_CLASSES = "dr-tbpnl-tbcell-act rich-tabhdr-cell-active";
-    public final static String INACTIVE_CELL_CLASSES = "dr-tbpnl-tbcell-inact rich-tabhdr-cell-inactive";
-    public final static String DISABLED_CELL_CLASSES = "dr-tbpnl-tbcell-dsbld rich-tabhdr-cell-disabled";
+    public final static String ACTIVE_CELL_CLASSES = "rich-tabhdr-cell-active";
+    public final static String INACTIVE_CELL_CLASSES = "rich-tabhdr-cell-inactive";
+    public final static String DISABLED_CELL_CLASSES = "rich-tabhdr-cell-disabled";
     private final String TABS_WITH_SAME_NAMES_ERROR = "tabs with the same name not allowed";  
 
     protected Class getComponentClass() {
