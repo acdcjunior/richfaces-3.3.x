@@ -32,7 +32,7 @@
 		<f:call name="checkOptions" />
 		<f:call name="initializeResources" />
 
-		<input type="hidden" id="#{clientId}OpenedState" name="#{clientId}OpenedState" />
+		<input autocomplete="off" type="hidden" id="#{clientId}OpenedState" name="#{clientId}OpenedState" />
 		
 		<div id="#{clientId}Container"
 		style="position: absolute; display: none; z-index: #{component.zindex}; background-color: inherit;"
