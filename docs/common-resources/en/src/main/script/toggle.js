@@ -1,18 +1,13 @@
 var inputCorrect = false;
 var textCorrect = false;
 
-function getPlace(){
-	if(navigator.appName=="Microsoft Internet Explorer" && parseFloat(navigator.appVersion) < 7){
-		document.getElementById('place').style.display = "block";
-	}
-}
-	
+
 function showPopup(_popupId) {
 	document.getElementById(_popupId).style.display = "block";
 	document.getElementById('timeOutDiv').style.display = "block";
 	document.getElementById("feedback-maincontainer").style.display = "block";
 		document.getElementById("guide_words").style.display = "block";
-	getPlace();
+
 }
 
 function hidePopup(_popupId, form, iFrame, but,  container) {
@@ -24,8 +19,7 @@ function hidePopup(_popupId, form, iFrame, but,  container) {
 	document.getElementById(container).style.left="30%";
 	document.getElementById(container).style.top="20%";
 	document.getElementById(container).style.width="500px";
-	document.getElementById(container).style.height="440px";
-	getPlace();
+	document.getElementById(container).style.height="440px";
 }
 
 function showIFrame(form, iFrame, but,  container){
