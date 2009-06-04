@@ -198,10 +198,10 @@
 							</div>
 						</div>			
 					
-						<input type="hidden" name="#{clientId}_hc" id="#{clientId}_hc"/>
-						<input type="hidden" name="#{clientId}_state_input" id="#{clientId}_state_input"/>
-						<input type="hidden" name="#{clientId}_options_input" id="#{clientId}_options_input"/>
-						<input type="hidden" name="#{clienId}_rows_input" id="#{clientId}_rows_input" value="#{rows_count}"/>
+						<input autocomplete="off" type="hidden" name="#{clientId}_hc" id="#{clientId}_hc"/>
+						<input autocomplete="off" type="hidden" name="#{clientId}_state_input" id="#{clientId}_state_input"/>
+						<input autocomplete="off" type="hidden" name="#{clientId}_options_input" id="#{clientId}_options_input"/>
+						<input autocomplete="off" type="hidden" name="#{clienId}_rows_input" id="#{clientId}_rows_input" value="#{rows_count}"/>
 						<input type="button" name="#{clientId}_submit_input" id="#{clientId}_submit_input" onclick="#{this:getRowsAjaxUpdate(context,component)}" style="display:none"/>
 						<jsp:scriptlet>
 						   <![CDATA[
