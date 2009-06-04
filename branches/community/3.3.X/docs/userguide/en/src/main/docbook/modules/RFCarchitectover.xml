@@ -3101,6 +3101,12 @@ onsubmit="if (mynosendfunct()==false){return false}"
    </header-content>
 </portlet>
 ...]]></programlisting>
+				      <para>
+				            <emphasis role="bold">Attention</emphasis>. 
+				            The <emphasis role="bold"><property>&lt;a4j:portlet&gt;</property></emphasis> component is DEPRECATED as far as <ulink url="http://jcp.org/en/jsr/detail?id=301">JSR-301</ulink> was defined the same functionality for a <code>UIViewRoot</code> component. 
+				            Thus, it is implicitly defined by mandatory <emphasis role="bold"><property>&lt;f:view&gt;</property></emphasis> component. 
+				      </para>
+				      
 				</note>
 			</section>
 		</section>
