@@ -56,7 +56,7 @@
 							
 					<div style="display: none;">
 						<c:if test="#{clientSide}">
-							<input type="hidden"
+							<input autocomplete="off" type="hidden"
 							id="#{clientId}_input" 
 							name="#{clientId}"
 							value="#{this:getValueAsString(context, component)}" /> 
