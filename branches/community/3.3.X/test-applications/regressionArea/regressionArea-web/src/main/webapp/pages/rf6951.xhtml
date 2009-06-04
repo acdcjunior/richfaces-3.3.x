@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/layout/layout.xhtml">
+	<ui:define name="template">
+		<h:form id="form">
+			<rich:listShuttle id="LineConfigs"
+				sourceValue="#{rf6951.availableLine}"
+				targetValue="#{rf6951.selectedLine}" var="variable"
+				sourceListWidth="280" listsHeight="250" targetListWidth="280">
+
+				<rich:column>
+					<h:outputText value="#{variable}" />
+				</rich:column>
+
+			</rich:listShuttle>
+
+			<a4j:commandButton value="Submit" reRender="panel"/>
+			<h:panelGrid columns="2" id="panel">
+				<h:outputText value="Available:" />
+				<h:outputText value="#{rf6951.available}" />
+				<h:outputText value="Selected:" />
+				<h:outputText value="#{rf6951.selected}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
