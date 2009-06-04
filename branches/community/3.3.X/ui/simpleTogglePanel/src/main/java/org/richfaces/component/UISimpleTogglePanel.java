@@ -286,8 +286,8 @@ public abstract class UISimpleTogglePanel extends AjaxActionComponent implements
     	Object value = getLocalValue();
     	if (value != null) {
         	ValueExpression ve = getValueExpression("value");
-        	if (ve != null) {
-        		FacesContext context = getFacesContext();
+        	FacesContext context = getFacesContext();
+        	if (ve != null && !ve.isReadOnly(context.getELContext())) {
 				try {
             		ve.setValue(context.getELContext(), value);
             		setValue(null);
