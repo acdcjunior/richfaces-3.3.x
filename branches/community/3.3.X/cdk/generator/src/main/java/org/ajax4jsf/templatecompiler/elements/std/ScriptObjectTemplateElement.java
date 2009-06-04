@@ -26,7 +26,6 @@ import java.util.HashMap;
 import org.ajax4jsf.templatecompiler.builder.CompilationContext;
 import org.ajax4jsf.templatecompiler.builder.CompilationException;
 import org.ajax4jsf.templatecompiler.elements.A4JRendererElementsFactory;
-import org.ajax4jsf.templatecompiler.elements.TemplateElement;
 import org.ajax4jsf.templatecompiler.elements.TemplateElementBase;
 import org.apache.velocity.VelocityContext;
 import org.w3c.dom.NamedNodeMap;
@@ -60,16 +59,14 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 		this.getComponentBean().addVariable(variableName, VARIABLE_TYPE);
 	}
 
-	@Override
-	public void addSubElement(TemplateElement e) {
-		super.addSubElement(e);
-		
-		if (e instanceof ScriptOptionTemplateElement) {
-			((ScriptOptionTemplateElement) e).setMapName(variableName);
-		}
-	}
+	private static ThreadLocal<String> variableNamesStorage = new ThreadLocal<String>(); 
 	
 	public String getBeginElement() throws CompilationException {
+		if (variableNamesStorage.get() != null) {
+			throw new CompilationException("Nested c:scriptObject tags aren't allowed!");
+		}
+		variableNamesStorage.set(variableName);
+		
 		VelocityContext context = new VelocityContext();
 		context.put("variable", this.variableName);
 		context.put("type", VARIABLE_TYPE.getName().replace('$', '.'));
@@ -85,6 +82,11 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 	}
 
 	public String getEndElement() {
+		variableNamesStorage.set(null);
 		return null;
+	}
+
+	static String getVariableName() {
+		return variableNamesStorage.get();
 	}
 }
