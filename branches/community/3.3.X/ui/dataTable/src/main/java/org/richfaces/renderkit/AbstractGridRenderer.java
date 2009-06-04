@@ -115,7 +115,7 @@ public abstract class AbstractGridRenderer extends AbstractRowsRenderer {
 				writer.startElement(HTML.td_ELEM, table);
 				String columnClass = tableHolder.getColumnClass(i);
 				encodeStyleClass(writer, null, "rich-table-cell", null, columnClass);
-				writer.writeText("\u00A0", null);// &nbsp;
+				writer.write("&#160;");// &nbsp;
 				writer.endElement(HTML.td_ELEM);				
 			}
 		}	
