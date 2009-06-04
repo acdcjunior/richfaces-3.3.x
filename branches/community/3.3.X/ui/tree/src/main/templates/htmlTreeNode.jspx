@@ -141,7 +141,7 @@
 						if (org.richfaces.component.UITree.SWITCH_CLIENT.equals(component.getUITree().getSwitchType())) {
 					]]>
 				</jsp:scriptlet>
-							<input class="rich-tree-h" type="hidden" id="#{clientId}NodeExpanded" name="#{clientId}NodeExpanded" value="#{this:getExpandedValue(context,component)}" />
+							<input autocomplete="off" class="rich-tree-h" type="hidden" id="#{clientId}NodeExpanded" name="#{clientId}NodeExpanded" value="#{this:getExpandedValue(context,component)}" />
 				<jsp:scriptlet>
 					<![CDATA[
 						}
