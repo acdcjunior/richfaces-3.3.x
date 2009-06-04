@@ -38,6 +38,7 @@ import org.ajax4jsf.templatecompiler.elements.std.ScriptOptionTemplateElement;
 import org.ajax4jsf.templatecompiler.elements.std.SetTemplateElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.AjaxRenderedAreaElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.FClientIDTemplateElement;
+import org.ajax4jsf.templatecompiler.elements.vcp.FWriteAsScript;
 import org.ajax4jsf.templatecompiler.elements.vcp.HeaderScriptsElement;
 import org.ajax4jsf.templatecompiler.elements.vcp.HeaderStylesElement;
 import org.apache.commons.logging.Log;
@@ -76,6 +77,7 @@ public class A4JRendererElementsFactory implements ElementsFactory {
 		mapClasses.put("c:forEach", ForEachTemplateElement.class.getName());
 		mapClasses.put("f:clientid", FClientIDTemplateElement.class.getName());
 		mapClasses.put("f:clientId", FClientIDTemplateElement.class.getName());
+		mapClasses.put("f:writeAsScript", FWriteAsScript.class.getName());
 		mapClasses.put("f:insertComponent",
 				"org.ajax4jsf.templatecompiler.elements.vcp.InsertComponent");
 
