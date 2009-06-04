@@ -807,6 +807,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 		String id = client_id+"_rows_input";
 		writer.startElement(HTML.INPUT_ELEM, grid);
 		writer.writeAttribute(HTML.TYPE_ATTR, "hidden", null);
+		writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 		writer.writeAttribute(HTML.id_ATTRIBUTE, id, null);
 		writer.writeAttribute(HTML.NAME_ATTRIBUTE, id, null);
 		writer.writeAttribute(HTML.value_ATTRIBUTE, grid.getRowCount(), null);
