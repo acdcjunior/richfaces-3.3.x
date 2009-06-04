@@ -74,45 +74,45 @@
         <property>
            <name>ondrop</name>
         	<classname>java.lang.String</classname>
-        	<description>It's an event that is called when something is dropped on a drop zone. Default value is &quot;getDefaultOndrop()&quot;.</description>
+        	<description>The client-side script method to be called when something is dropped into the drop zone. The default attribute value is &quot;getDefaultOndrop()&quot;.</description>
 		   <defaultvalue>getDefaultOndrop()</defaultvalue>
         </property>
         <property>
            <name>ondropend</name>
            <classname>java.lang.String</classname>
-        	<description>A JavaScript handler for event fired on a drop even the drop for a given type is not available. Default value is &quot;getDefaultOndropend()&quot;.</description>
+        	<description>The client-side script method to be called when a draggable object is dropped into any zone. The default attribute value is &quot;getDefaultOndropend()&quot;.</description>
 		   <defaultvalue>getDefaultOndropend()</defaultvalue>
         </property>
         <property>
            <name>ondragstart</name>
            <classname>java.lang.String</classname>
-        	<description>A JavaScript event handler called before drag object. Default value is &quot;getDefaultOndragstart()&quot;.</description>
+        	<description>The client-side script method to be called when the dragging operation is started. The default attribute value is &quot;getDefaultOndragstart()&quot;.</description>
 		   <defaultvalue>getDefaultOndragstart()</defaultvalue>
         </property>
         <property>
            <name>ondragend</name>
            <classname>java.lang.String</classname>
-        	<description>A JavaScript event handler called after a drag operation. Default value is &quot;getDefaultOndragend()&quot;.</description>
+        	<description>The client-side script method to be called when the dragging operation is finished. The default attribute value is &quot;getDefaultOndragend()&quot;.</description>
 		   <defaultvalue>getDefaultOndragend()</defaultvalue>
         </property>
         <property>
            <name>ondragenter</name>
            <classname>java.lang.String</classname>
-        	<description>A JavaScript event handler called on enter draggable object to zone. Default value is &quot;getDefaultOndragenter()&quot;.</description>
+        	<description>The client-side script method to be called when a draggable object enters the zone. The default attribute value is &quot;getDefaultOndragenter()&quot;.</description>
 		   <defaultvalue>getDefaultOndragenter()</defaultvalue>
         </property>
         <property>
            <name>ondragexit</name>
            <classname>java.lang.String</classname>
-        	<description>A JavaScript event handler called after a drag object leaves zone. Default value is &quot;getDefaultOndragexit()&quot;.</description>
+        	<description>The client-side script method to be called after a draggable object leaves the zone. The default attribute value is &quot;getDefaultOndragexit()&quot;.</description>
 		   <defaultvalue>getDefaultOndragexit()</defaultvalue>
         </property>
 
 		<property>
            <name>oncontextmenu</name>
            <classname>java.lang.String</classname>
-           <description>JavaScript handler to be called on right click.
-		   Returning false prevents default browser context menu from being displayed</description>
+	<description>The client-side script method to be called when the right mouse button is clicked over the component.
+		   Returning false prevents a default browser context menu from being displayed.</description>
 		</property>
 		
 		<property>
