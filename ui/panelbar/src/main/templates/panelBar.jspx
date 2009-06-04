@@ -20,7 +20,7 @@
 		</vcp:body>
 		
 		<f:clientid var="clientId" />
-		<input type="hidden" name="#{clientId}" id="#{clientId}_panelBarInput"
+		<input autocomplete="off" type="hidden" name="#{clientId}" id="#{clientId}_panelBarInput"
 			value="#{this:expanded(context, component)}"/>
 		<f:call name="encodeScript"/>	
 	</div>
