@@ -149,7 +149,7 @@
 
         <artifactId>richfaces-api</artifactId>
 
-        <version>3.3.1-SNAPSHOT</version>
+        <version>3.3.2-SNAPSHOT</version>
 
     </dependency>
 
@@ -159,7 +159,7 @@
 
         <artifactId>richfaces-impl</artifactId>
 
-        <version>3.3.1-SNAPSHOT</version>
+        <version>3.3.2-SNAPSHOT</version>
 
     </dependency>
 
@@ -169,9 +169,20 @@
 
         <artifactId>richfaces-ui</artifactId>
 
-        <version>3.3.1-SNAPSHOT</version>
+        <version>3.3.2-SNAPSHOT</version>
 
     </dependency>
 
 </dependencies>
 </project>
+
+
+  <form action="handler.php">
+    <p><select multiple size="1">
+    <option>Чебурашка</option>
+    <option>Крокодил Гена</option>
+    <option>Шапокляк</option>
+    <option>Крыса Лариса</option>
+    </select></p>
+  </form>
+
