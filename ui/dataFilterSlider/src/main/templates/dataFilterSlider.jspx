@@ -79,7 +79,7 @@
                 ]]>
               </jsp:scriptlet>
 
-              <input type="hidden" name="#{clientId}slider_val" id="#{clientId}slider_val" value="#{component.handleValue}"/>
+              <input autocomplete="off" type="hidden" name="#{clientId}slider_val" id="#{clientId}slider_val" value="#{component.handleValue}"/>
 
                 <jsp:scriptlet>
                <![CDATA[
