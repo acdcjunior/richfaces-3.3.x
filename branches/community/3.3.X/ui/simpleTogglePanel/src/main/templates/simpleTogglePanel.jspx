@@ -84,7 +84,7 @@ scripts/simpleTogglePanel.js
         </jsp:scriptlet>
 
         <div style="display: none;">
-            <input type="hidden" id="#{clientId}_input" name="#{clientId}"
+            <input autocomplete="off" type="hidden" id="#{clientId}_input" name="#{clientId}"
                    value="#{component.attributes['opened']}"/>
         </div>
         <jsp:scriptlet>
