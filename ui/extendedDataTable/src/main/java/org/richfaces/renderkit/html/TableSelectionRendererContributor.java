@@ -322,6 +322,7 @@ public class TableSelectionRendererContributor implements RendererContributor,
         ResponseWriter writer = context.getResponseWriter();
         writer.startElement(HTML.INPUT_ELEM, table);
         writer.writeAttribute(HTML.TYPE_ATTR, "hidden", null);
+        writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
         writer.writeAttribute(HTML.id_ATTRIBUTE, id, null);
         writer.writeAttribute(HTML.NAME_ATTRIBUTE, id, null);
         writer.writeAttribute(HTML.value_ATTRIBUTE, string, null);
