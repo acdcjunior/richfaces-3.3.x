@@ -36,6 +36,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import org.ajax4jsf.renderkit.RendererBase;
+import org.ajax4jsf.renderkit.RendererUtils.HTML;
 import org.richfaces.component.UITogglePanel;
 import org.richfaces.event.SwitchablePanelSwitchEvent;
 
@@ -124,6 +125,7 @@ public class TogglePanelRenderer extends RendererBase {
 			out.writeAttribute("style", "display: none;", null);
 			out.startElement("input", component);
 			out.writeAttribute("type", "hidden", null);
+			out.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 			out.writeAttribute("id", idInput, null);
 			out.writeAttribute("name", panel.getClientId(context), null);
 			out.writeAttribute("value", state, null);
