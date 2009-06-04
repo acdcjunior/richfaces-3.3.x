@@ -177,14 +177,14 @@
         <property>
            <name>ondrop</name>
            <classname>java.lang.String</classname>
-		   <description>It's an event that is called when something is dropped on a drop zone</description>
+        	<description>The client-side script method to be called when something is dropped into the drop zone</description>
         </property>
         
 		<property>
            <name>oncontextmenu</name>
            <classname>java.lang.String</classname>
-           <description>JavaScript handler to be called on right click.
-		   Returning false prevents default browser context menu from being displayed</description>
+           <description>The client-side script method to be called when the right mouse button is clicked over the component.
+		   Returning false prevents a default browser context menu from being displayed.</description>
 		</property>
 		<property>
            <name>rightClickSelection</name>
