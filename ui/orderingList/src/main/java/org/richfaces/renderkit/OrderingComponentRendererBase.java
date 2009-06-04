@@ -506,7 +506,7 @@ public abstract class OrderingComponentRendererBase extends
 			if (facet != null && facet.isRendered()) {
 				renderChild(context, facet);
 			} else {
-				writer.write("&nbsp;");
+				writer.write("&#160;");
 			}
 
 			writer.endElement("div");
