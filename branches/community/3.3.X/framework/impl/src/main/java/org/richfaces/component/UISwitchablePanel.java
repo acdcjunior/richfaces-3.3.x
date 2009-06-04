@@ -135,10 +135,9 @@ public abstract class UISwitchablePanel extends UIInput {
 				}
 				
 				if (AjaxRendererUtils.isAjaxRequest(facesContext) 
-				        && this.getSwitchType().equals(AJAX_METHOD)) {
+				        /* && this.getSwitchType().equals(AJAX_METHOD)*/) { // RF-7292 
 					
 				    AjaxRendererUtils.addRegionByName(facesContext, this, this.getId());
-					
 				}
 			}
 		} else /* component should throw IllegalArgumentException for unknown events - RF-30 */ {
