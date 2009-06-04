@@ -289,6 +289,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 
             writer.startElement("input", component);
     		writer.writeAttribute("type", "hidden", null);
+    		writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
     		writer.writeAttribute("id", component.getClientId(context) + "_selection", null);
     		writer.writeAttribute("name", component.getClientId(context) + "_selection", null);
     		writer.endElement("input");
