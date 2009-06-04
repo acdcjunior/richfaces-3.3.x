@@ -96,7 +96,7 @@
                             <jsp:scriptlet><![CDATA[
                             } else {
                                 ]]></jsp:scriptlet>
-                                <input  id="#{clientId}Input"
+                                <input autocomplete="off" id="#{clientId}Input"
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="hidden"
@@ -253,7 +253,7 @@
                             <jsp:scriptlet><![CDATA[
                             } else {
                                 ]]></jsp:scriptlet>
-                                <input  id="#{clientId}Input"
+                                <input autocomplete="off" id="#{clientId}Input"
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="hidden"
@@ -350,7 +350,7 @@
                             <jsp:scriptlet><![CDATA[
                             } else {
                                 ]]></jsp:scriptlet>
-                                <input	id="#{clientId}Input"
+                                <input autocomplete="off"	id="#{clientId}Input"
                                         name="#{clientId}"
                                         value="#{this:getInputValue(context,component)}"
                                         type="hidden"
@@ -458,7 +458,7 @@
 							<jsp:scriptlet><![CDATA[
 							} else {
 								]]></jsp:scriptlet>
-								<input	id="#{clientId}Input"
+								<input autocomplete="off" id="#{clientId}Input"
 										name="#{clientId}"
 										value="#{this:getInputValue(context,component)}"
 										type="hidden"
