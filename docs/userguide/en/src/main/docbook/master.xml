@@ -255,7 +255,7 @@
 		<?dbhtml filename="dndSupport.html"?>
 		<title>Drag-Drop Support</title>
 		<para>
-			In this section you will find components that helps you build drag-and-drop controls, manage their behaviour and define the area on the page to be used as a drop zone. 
+			In this section you will find components that help you build drag-and-drop controls, manage their behaviour and define the area on the page to be used as a drop zone. 
 		</para>
 		<?forseChanks?>
 		&rich_dragIndicator;
@@ -270,7 +270,7 @@
 		<title>Rich Menu</title>
 		
 		<para>
-			This section tells how you  can create menus on your page: either navigation ones or context. 
+			This section tells how you  can create menus on your page: either navigational ones or context. 
 		</para>
 		
 		<?forseChanks?>
@@ -299,7 +299,7 @@
 		<?dbhtml filename="richOutput.html"?>
 		<title>Rich Output</title>
 			<para>
-				This section covers the components that are designed to be used output and UI elements.
+				This section covers the components that are designed to be used as output and UI elements.
 			</para>
 		<?forseChanks?>
 		&rich_modalPanel;
@@ -326,7 +326,7 @@
 		<?dbhtml filename="richInput.html"?>
 		<title>Rich Input</title>
 		<para>
-			In this section you will find about the components that helps you deal various kinds of user inputs from picking a date, WYSIWYG text editing to uploading a file.
+			In this section you will find the components that help you deal with various kinds of user inputs from picking a date, WYSIWYG text editing to uploading a file.
 		</para>
 		<?forseChanks?>
 		&rich_calendar;
@@ -356,7 +356,7 @@
 		<title>Rich Semantic Layouts</title>
 		<para>
 			Layout components enrich RichFaces with functionality that enables you to create the whole page layout and define the parameters of the page. 
-			You can also create your custom theme and use alongside with these components. 
+			You can also create your custom theme and use it alongside with these components. 
 		</para>
 		<?forseChanks?>
 		&rich_page;
