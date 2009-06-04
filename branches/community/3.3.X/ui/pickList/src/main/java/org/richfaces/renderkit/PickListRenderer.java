@@ -385,6 +385,7 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
 
 		writer.startElement(HTML.INPUT_ELEM, component);
 		writer.writeAttribute(HTML.TYPE_ATTR, HTML.INPUT_TYPE_HIDDEN, null);
+		writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 		writer.writeAttribute(HTML.NAME_ATTRIBUTE, id, null);
 
 		StringBuffer value = new StringBuffer();
@@ -433,6 +434,7 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
 
     	writer.startElement(HTML.INPUT_ELEM, component);
     	writer.writeAttribute(HTML.TYPE_ATTR, "hidden", "type");
+    	writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
     	writer.writeAttribute(HTML.id_ATTRIBUTE, hiddenFieldCliendId, "id");
     	writer.writeAttribute("name", hiddenFieldCliendId, null);
     	
