@@ -128,7 +128,7 @@
 					</td>
 					<td>
 						<div class="rich-shuttle-target-items #{component.listClass}" >
-							<input type="hidden" value=":" style="display: none;" name="#{baseClientId}" />
+							<input autocomplete="off" type="hidden" value=":" style="display: none;" name="#{baseClientId}" />
 	
 					    	<input id="#{clientId}tlFocusKeeper" type="button" value="" style="width: 1px; position: absolute; left: -32767px;"/>
 							
