@@ -202,6 +202,7 @@ public abstract class ListShuttleRendererBase extends OrderingComponentRendererB
 						if (!columnRendered) {
 							writer.startElement(HTML.INPUT_ELEM, table);
 							writer.writeAttribute(HTML.TYPE_ATTR, HTML.INPUT_TYPE_HIDDEN, null);
+							writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 							writer.writeAttribute(HTML.NAME_ATTRIBUTE, table.getBaseClientId(context), null);
 
 							StringBuffer value = new StringBuffer();
