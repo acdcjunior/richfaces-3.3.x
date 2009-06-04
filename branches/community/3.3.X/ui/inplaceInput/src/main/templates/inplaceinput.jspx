@@ -123,7 +123,7 @@
 			   onmouseup='#{component.attributes["oninputmouseup"]}'
 			   maxlength='#{component.attributes["maxlength"]}'
 			   />
-		<input id='#{clientId}value' name='#{clientId}' type='hidden' value='#{fieldValue}'/>
+		<input id='#{clientId}value' name='#{clientId}' autocomplete="off" type='hidden' value='#{fieldValue}'/>
 		<div id="#{clientId}bar" class="rich-inplace-input-controls-set" style="display:none;">
 			<jsp:scriptlet>
 				<![CDATA[
