@@ -159,7 +159,7 @@
 			   
 			   />
 		<input id="#{clientId}inselArrow" readonly="readonly" type="text" value="" class="rich-inplace-select-arrow" style='display:none;'/>
-		<input id='#{clientId}inplaceValue' name='#{clientId}' type='hidden' value='#{fieldValue}'
+		<input autocomplete="off" id='#{clientId}inplaceValue' name='#{clientId}' type='hidden' value='#{fieldValue}'
 			   onchange='#{component.attributes["onchange"]}'>
 		</input>
 	<div id="#{clientId}bar" class="rich-inplace-select-control-set" style="display:none;">
