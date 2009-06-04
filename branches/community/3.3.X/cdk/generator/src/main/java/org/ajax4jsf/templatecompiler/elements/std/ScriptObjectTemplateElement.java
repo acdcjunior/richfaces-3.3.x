@@ -51,12 +51,18 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 		super(element, componentBean);
 
 		NamedNodeMap nnm = element.getAttributes();
-		variableName = nnm.getNamedItem("var").getNodeValue();
-		if (variableName == null || variableName.length() == 0) {
+		Node varNode = nnm.getNamedItem("var");
+		if (varNode == null) {
 			throw new RuntimeException("'var' attribute required for c:scriptObject tag!");
 		}
 		
-		this.getComponentBean().addVariable(variableName, VARIABLE_TYPE);
+		variableName = varNode.getNodeValue();
+		
+		try {
+			this.getComponentBean().addVariable(variableName, VARIABLE_TYPE.getName());
+		} catch (CompilationException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 
 	private static ThreadLocal<String> variableNamesStorage = new ThreadLocal<String>(); 
