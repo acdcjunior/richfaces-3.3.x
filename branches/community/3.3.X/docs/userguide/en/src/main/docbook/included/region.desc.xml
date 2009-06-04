@@ -1,18 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<root>
 <section>
-  <sectioninfo>
-    <keywordset>
-      <keyword>a4j:region</keyword>
-      <keyword>component</keyword>
-    </keywordset>
-  </sectioninfo>
-  
-<title>Description</title>
-  <para>
-The <emphasis role="bold">
-<property>&lt;a4j:region&gt;</property>
-</emphasis> component defines an area that is decoded on the server after Ajax submission.
-</para>
+      <sectioninfo>
+            <keywordset>
+                  <keyword>a4j:region</keyword>
+                  <keyword>component</keyword>
+            </keywordset>
+      </sectioninfo>
+      
+      <section>
+      <title>Description</title>
+            <para>
+                  The <emphasis role="bold"><property>&lt;a4j:region&gt;</property></emphasis> component specifies the part of the component tree to be processed on server. 
+                  If no <emphasis role="bold"><property>&lt;a4j:region&gt;</property></emphasis> is defined the whole View functions as a region. 
+            </para>
+      </section>
+           
 </section>
-</root>
+
