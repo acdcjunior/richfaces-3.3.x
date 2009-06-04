@@ -22,13 +22,16 @@
 package org.ajax4jsf.javascript;
 
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
 import javax.faces.FacesException;
+import javax.faces.context.ResponseWriter;
 
 import org.apache.commons.beanutils.PropertyUtils;
 
@@ -46,79 +49,71 @@ public class ScriptUtils {
 
 	}
 
-	/**
-	 * Convert any Java Object to JavaScript representation ( as possible ).
-	 * @param obj
-	 * @return
-	 */
-	public static String toScript(Object obj) {
+	private static void writeScriptToStream(Writer writer, Object obj) throws IOException {
 		if (null == obj) {
-			return "null";
+			writer.write("null");
 		} else if (obj instanceof ScriptString) {
-			return ((ScriptString) obj).toScript();
+			writer.write(((ScriptString) obj).toScript());
 		} else if (obj.getClass().isArray()) {
-			StringBuilder ret = new StringBuilder("[");
+			writer.write("[");
 			boolean first = true;
 			for (int i = 0; i < Array.getLength(obj); i++) {
 				Object element = Array.get(obj, i);
 				if (!first) {
-					ret.append(',');
+					writer.write(',');
 				}
-				ret.append(toScript(element));
+				writeScriptToStream(writer, element);
 				first = false;
 			}
-			return ret.append("] ").toString();
+			
+			writer.write("] ");
 		} else if (obj instanceof Collection) {
 			// Collections put as JavaScript array.
 			
 			@SuppressWarnings("unchecked")
 			Collection<Object> collection = (Collection<Object>) obj;
 			
-			StringBuilder ret = new StringBuilder("[");
+			writer.write("[");
 			boolean first = true;
 			for (Iterator<Object> iter = collection.iterator(); iter.hasNext();) {
 				Object element = iter.next();
 				if (!first) {
-					ret.append(',');
+					writer.write(',');
 				}
-				ret.append(toScript(element));
+				writeScriptToStream(writer, element);
 				first = false;
 			}
-			return ret.append("] ").toString();
+			writer.write("] ");
 		} else if (obj instanceof Map) {
 			
 			// Maps put as JavaScript hash.
 			@SuppressWarnings("unchecked")
 			Map<Object, Object> map = (Map<Object, Object>) obj;
 
-			StringBuilder ret = new StringBuilder("{");
+			writer.write("{");
 			boolean first = true;
 			for (Map.Entry<Object, Object> entry : map.entrySet()) {
 				if (!first) {
-					ret.append(',');
+					writer.write(',');
 				}
 				
-				addEncodedString(ret, entry.getKey());
-				ret.append(":");
-				ret.append(toScript(entry.getValue()));
+				writeEncodedString(writer, entry.getKey());
+				writer.write(":");
+				writeScriptToStream(writer, entry.getValue());
 				first = false;
 			}
-			return ret.append("} ").toString();
+			writer.write("} ");
 		} else if (obj instanceof Number || obj instanceof Boolean) {
 			// numbers and boolean put as-is, without conversion
-			return obj.toString();
+			writer.write(obj.toString());
 		} else if (obj instanceof String) {
 			// all other put as encoded strings.
-			StringBuilder ret = new StringBuilder();
-			addEncodedString(ret, obj);
-			return ret.toString();
+			writeEncodedString(writer, obj);
         } else if (obj instanceof Enum) {
             // all other put as encoded strings.
-            StringBuilder ret = new StringBuilder();
-            addEncodedString(ret, obj);
-            return ret.toString();
+            writeEncodedString(writer, obj);
         } else if (obj.getClass().getName().startsWith("java.sql.")) {
-            StringBuilder ret = new StringBuilder("{");
+            writer.write("{");
             boolean first = true;
             for (PropertyDescriptor propertyDescriptor : 
                                 PropertyUtils.getPropertyDescriptors(obj)) {
@@ -134,23 +129,28 @@ public class ScriptUtils {
                 }
 
                 if (!first) {
-                    ret.append(',');
+                    writer.write(',');
                 }
                 
-                addEncodedString(ret, key);
-                ret.append(":");
-                ret.append(toScript(value));
+                writeEncodedString(writer, key);
+                writer.write(":");
+                writeScriptToStream(writer, value);
                 
                 first = false;
             }
-            return ret.append("} ").toString();
-        }
+            writer.write("} ");
+        } else {
+    		// All other objects threaded as Java Beans.
+            writer.write("{");
 
-		// All other objects threaded as Java Beans.
-        try {
-            StringBuilder ret = new StringBuilder("{");
-            PropertyDescriptor[] propertyDescriptors = PropertyUtils
-                    .getPropertyDescriptors(obj);
+            PropertyDescriptor[] propertyDescriptors;
+            try {
+                propertyDescriptors = PropertyUtils.getPropertyDescriptors(obj);
+            } catch (Exception e) {
+                throw new FacesException(
+                        "Error in conversion Java Object to JavaScript", e);
+            }
+
             boolean first = true;
             for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
                 String key = propertyDescriptor.getName();
@@ -158,37 +158,78 @@ public class ScriptUtils {
                     continue;
                 }
                 if (!first) {
-                    ret.append(',');
+                    writer.write(',');
                 }
-                addEncodedString(ret, key);
-                ret.append(":");
-                ret.append(toScript(PropertyUtils.getProperty(obj, key)));
+                writeEncodedString(writer, key);
+                writer.write(":");
+                
+                Object propertyValue;
+                try{
+                	propertyValue = PropertyUtils.getProperty(obj, key);
+                } catch (Exception e) {
+                	throw new FacesException(
+                        "Error in conversion Java Object to JavaScript", e);
+                }
+                
+				writeScriptToStream(writer, propertyValue);
                 first = false;
             }
-            return ret.append("} ").toString();
-        } catch (Exception e) {
-            throw new FacesException(
-                    "Error in conversion Java Object to JavaScript", e);
+
+            writer.write("} ");
         }
 	}
-
-	public static void addEncodedString(StringBuilder buff, Object obj) {
-		buff.append("'");
-		addEncoded(buff, obj);
-		buff.append("'");
-
+	
+	public static void writeToStream(final ResponseWriter responseWriter, Object obj) throws IOException {
+		writeScriptToStream(new ResponseWriterWrapper(responseWriter), obj);
+	}
+	
+	/**
+	 * Convert any Java Object to JavaScript representation ( as possible ).
+	 * @param obj
+	 * @return
+	 */
+	public static String toScript(Object obj) {
+		StringBuilder sb = new StringBuilder();
+		try {
+			writeScriptToStream(new StringBuilderWriter(sb), obj);
+		} catch (IOException e) {
+			//ignore
+		}
+		return sb.toString();
 	}
 
-	public static void addEncoded(StringBuilder buff, Object obj) {
+	public static void writeEncodedString(Writer w, Object obj) throws IOException {
+		w.write("'");
+		writeEncoded(w, obj);
+		w.write("'");
+	}
+	
+	public static void addEncodedString(StringBuilder buff, Object obj) {
+		try {
+			writeEncodedString(new StringBuilderWriter(buff), obj);
+		} catch (IOException e) {
+			//ignore
+		}
+	}
+
+	public static void writeEncoded(Writer w, Object obj) throws IOException {
 		JSEncoder encoder = new JSEncoder();
 		char chars[] = obj.toString().toCharArray();
 		for (int i = 0; i < chars.length; i++) {
 			char c = chars[i];
 			if (!encoder.compile(c)) {
-				buff.append(encoder.encode(c));
+				w.write(encoder.encode(c));
 			} else {
-				buff.append(c);
+				w.write(c);
 			}
+		}
+	}
+	
+	public static void addEncoded(StringBuilder buff, Object obj) {
+		try {
+			writeEncoded(new StringBuilderWriter(buff), obj);
+		} catch (IOException e) {
+			//ignore
 		}
 	}
 
