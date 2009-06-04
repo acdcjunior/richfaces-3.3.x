@@ -26,6 +26,7 @@
 		]]>
 		</jsp:scriptlet> 
 				<input id="#{clientId}InputDate"
+				autocomplete="off"
 					style="display:none"	
 					name="#{clientId}InputDate"
 					value="#{this:getInputValue(context,component)}" type="hidden" />
@@ -144,6 +145,7 @@
 
 		<input id="#{clientId}InputCurrentDate"
 			style="display:none"	
+			autocomplete="off"
 			name="#{clientId}InputCurrentDate"
 			value="#{this:getCurrentDateAsString(context,component,currentDate)}" type="hidden" />
 		<f:call name="dayCellClass" />
