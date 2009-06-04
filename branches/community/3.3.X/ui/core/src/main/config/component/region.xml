@@ -72,12 +72,8 @@
 			<name>renderRegionOnly</name>
 			<classname>boolean</classname>
 			<description>
-				Flag to disable rendering in AJAX responses content
-				outside of active region. If this attribute set to
-				"true" , no one of the components outside of region will
-				be included to AJAX response. If set to "false", search
-				for components to include in response will be performed
-				on all tree. Default value is  &quot;false&quot;.
+			      Excludes all the components from the outside of the region from updating on the page on Renderer Response phase.
+			      Default value is &quot;false&quot;.
 			</description>
 			<defaultvalue>false</defaultvalue>
 		</property>
