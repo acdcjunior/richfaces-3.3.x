@@ -212,6 +212,7 @@ public abstract class OrderingListRendererBase extends OrderingComponentRenderer
 				if (!columnRendered) {
 					writer.startElement(HTML.INPUT_ELEM, table);
 					writer.writeAttribute(HTML.id_ATTRIBUTE, clientId + "StateInput", null);
+					writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 					writer.writeAttribute(HTML.TYPE_ATTR, HTML.INPUT_TYPE_HIDDEN, null);
 					writer.writeAttribute(HTML.NAME_ATTRIBUTE, table.getBaseClientId(context), null);
 					
