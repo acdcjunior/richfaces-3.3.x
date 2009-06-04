@@ -238,6 +238,7 @@ public class AjaxFormRenderer extends AjaxComponentRendererBase {
 			Object value) throws IOException {
 		writer.startElement(HTML.INPUT_ELEM, null);
 		writer.writeAttribute(HTML.TYPE_ATTR, HTML.INPUT_TYPE_HIDDEN, null);
+		writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 		writer.writeAttribute(HTML.NAME_ATTRIBUTE, name, null);
 		writer.writeAttribute(HTML.value_ATTRIBUTE, value != null?value:"", null);
 		writer.endElement(HTML.INPUT_ELEM);
