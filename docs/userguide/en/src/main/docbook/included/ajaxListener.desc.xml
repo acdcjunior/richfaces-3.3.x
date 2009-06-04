@@ -1,14 +1,24 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<chapter>
+<?xml version="1.0" encoding="UTF-8"?>
 <section>
-    <sectioninfo>
-    <keywordset>
-      <keyword>a4j:ajaxListener</keyword>
-    </keywordset>
-  </sectioninfo>
-  <title>Description</title>
-  <para>The <emphasis role="bold"><property>&lt;a4j:ajaxListener&gt;</property></emphasis>
-    component is the same one as <emphasis role="bold"><property>&lt;f:actionListener&gt;</property></emphasis> 
-    or <emphasis role="bold"><property>&lt;f:valueChangeListener&gt;</property></emphasis>, but for an Ajax container.</para>
+	<sectioninfo>
+		<keywordset>
+			<keyword>a4j:ajaxListener</keyword>
+		</keywordset>
+	</sectioninfo>
+	
+	<section>
+		<title>Description</title>
+            <para>The component adds an action listener to a parent component to provide possibility of Ajax update. 
+                  It works like the <emphasis role="bold"><property>&lt;f:actionListener&gt;</property></emphasis> or <emphasis role="bold"><property>&lt;f:valueChangeListener&gt;</property></emphasis> JSF components 
+                  but for the whole Ajax container.
+            </para>
+	</section>
+    
+	<section>
+		<title>Key Features</title>    
+			<itemizedlist>
+                <listitem><para>The listener is invoked for Ajax requests only</para></listitem>
+                <listitem><para>The listener is always guaranteed to be invoked</para></listitem> 
+            </itemizedlist>
+    </section>
 </section>
-</chapter>
