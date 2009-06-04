@@ -89,14 +89,14 @@
 			<name>onload</name>
 			<classname>java.lang.String</classname>
 			<description>
-				JavaScript code to execute on a page load.
+				The client-side script method to be called before a page is loaded
 			</description>
 		</property>
 		<property>
 			<name>onunload</name>
 			<classname>java.lang.String</classname>
 			<description>
-				JavaScript code to execute on a page unload.
+				The client-side script method to be called when a page is unloaded
 			</description>
 		</property>
 		<property>

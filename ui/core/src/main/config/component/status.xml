@@ -159,16 +159,15 @@
 			<name>onstart</name>
 			<classname>java.lang.String</classname>
 			<description>
-				JavaScript code, called on the start
-				of a request.
+				The client-side script method to be called at the start
+				of the request
 			</description>
 		</property>
 		<property>
 			<name>onstop</name>
 			<classname>java.lang.String</classname>
 			<description>
-				JavaScript code, called on the stop
-				of a request.
+				The client-side script method to be called when the request is finished
 			</description>
 		</property>
 	</component>     
