@@ -273,7 +273,7 @@
 	    variables.setVariable("hiddenValue", value);
 	 ]]>
 	</jsp:scriptlet>
-	<input id="#{clientId}comboboxValue" name="#{clientId}" type="hidden"/>
+	<input autocomplete="off" id="#{clientId}comboboxValue" name="#{clientId}" type="hidden"/>
 	
 	
 </div>
