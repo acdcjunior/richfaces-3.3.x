@@ -114,6 +114,7 @@ public class RendererUtils {
 		// public static final String title_ATTRIBUTE = "title";
 		public static final String accesskey_ATTRIBUTE = "accesskey";
 		public static final String alt_ATTRIBUTE = "alt";
+		public static final String autocomplete_ATTRIBUTE = "autocomplete";
 		public static final String cols_ATTRIBUTE = "cols";
 
 		public static final String height_ATTRIBUTE = "height";
