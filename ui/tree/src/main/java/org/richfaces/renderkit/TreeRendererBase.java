@@ -547,6 +547,7 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 		writer.writeAttribute("type", "hidden", null);
 		String selectionHolderInputId = tree.getSelectionStateInputName(context);
 		writer.writeAttribute("id", selectionHolderInputId, null);
+		writer.writeAttribute(HTML.autocomplete_ATTRIBUTE, "off", null);
 		writer.writeAttribute("name", selectionHolderInputId, null);
 
 		writer.writeAttribute("value", getSelectionValue(context, tree), null);
