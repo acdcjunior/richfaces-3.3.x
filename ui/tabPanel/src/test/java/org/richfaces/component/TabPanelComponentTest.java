@@ -128,7 +128,6 @@ public class TabPanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("td", cell1.getNodeName());
 
         String classAttr1 = cell1.getAttributeValue("class");
-        assertTrue(classAttr1.contains("dr-tbpnl-tbcell-act"));
         assertTrue(classAttr1.contains("rich-tabhdr-cell-active"));
 
         HtmlElement label1 = page.getHtmlElementById(tab1.getClientId(facesContext) + "_lbl");
@@ -139,9 +138,7 @@ public class TabPanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("RichFaces.outTab(this);", label1.getAttributeValue("onmouseout"));
 
         String classAttrL1 = label1.getAttributeValue("class");
-        assertTrue(classAttrL1.contains("dr-tbpnl-tb"));
         assertTrue(classAttrL1.contains("rich-tab-header"));
-        assertTrue(classAttrL1.contains("dr-tbpnl-tb-act"));
         assertTrue(classAttrL1.contains("rich-tab-active"));
 
         HtmlElement cell2 = page.getHtmlElementById(tab2.getClientId(facesContext) + "_cell");
@@ -149,7 +146,6 @@ public class TabPanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("td", cell2.getNodeName());
 
         String classAttr2 = cell2.getAttributeValue("class");
-        assertTrue(classAttr2.contains("dr-tbpnl-tbcell-inact"));
         assertTrue(classAttr2.contains("rich-tabhdr-cell-inactive"));
 
         HtmlElement label2 = page.getHtmlElementById(tab2.getClientId(facesContext) + "_lbl");
@@ -160,9 +156,7 @@ public class TabPanelComponentTest extends AbstractAjax4JsfTestCase {
         assertEquals("RichFaces.outTab(this);", label1.getAttributeValue("onmouseout"));
 
         String classAttrL2 = label2.getAttributeValue("class");
-        assertTrue(classAttrL2.contains("dr-tbpnl-tb"));
         assertTrue(classAttrL2.contains("rich-tab-header"));
-        assertTrue(classAttrL2.contains("dr-tbpnl-tb-inact"));
         assertTrue(classAttrL2.contains("rich-tab-inactive"));
 
         HtmlElement tab = page.getHtmlElementById(tab1.getClientId(facesContext));

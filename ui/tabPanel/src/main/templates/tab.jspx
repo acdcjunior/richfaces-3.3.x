@@ -16,9 +16,9 @@
 	<td id="#{clientId}" style="#{this:getTabDisplay(context, component)};height:100%" 
 		>
 
-		<table border="0" cellpadding="10" cellspacing="0" width="100%" class="dr-tbpnl-cntnt-pstn rich-tabpanel-content-position" style="">
+		<table border="0" cellpadding="10" cellspacing="0" width="100%" class="rich-tabpanel-content-position" style="">
 			<tr>
-				<td class="dr-tbpnl-cntnt rich-tabpanel-content #{component.pane.attributes['contentClass']} #{component.attributes['styleClass']}" 
+				<td class="rich-tabpanel-content #{component.pane.attributes['contentClass']} #{component.attributes['styleClass']}" 
 					style="#{component.pane.attributes['contentStyle']}; #{component.attributes['style']}"
 					x:passThruWithExclusions="class,style,styleClass,id"
 					>

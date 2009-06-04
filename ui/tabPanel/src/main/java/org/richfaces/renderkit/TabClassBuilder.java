@@ -38,8 +38,7 @@ public class TabClassBuilder {
     public static final TabClassBuilder activeTabClassBuilder = new TabClassBuilder() {
 
         protected String getSpecificClassForAllTabs() {
-            //dr-tb-act
-            return "dr-tbpnl-tb-act rich-tab-active";
+            return "rich-tab-active";
         }
 
         protected String getSpecificTabClassFromPane(UITab tab,
@@ -53,8 +52,7 @@ public class TabClassBuilder {
     public static final TabClassBuilder disabledTabClassBuilder = new TabClassBuilder() {
 
         protected String getSpecificClassForAllTabs() {
-            //dr-tb-dsbld
-            return "dr-tbpnl-tb-dsbl rich-tab-disabled";
+            return "rich-tab-disabled";
         }
 
         protected String getSpecificTabClassFromPane(UITab tab,
@@ -68,8 +66,7 @@ public class TabClassBuilder {
     public static final TabClassBuilder inactiveTabClassBuilder = new TabClassBuilder() {
 
         protected String getSpecificClassForAllTabs() {
-            //dr-tb-inact
-            return "dr-tbpnl-tb-inact rich-tab-inactive";
+            return "rich-tab-inactive";
         }
 
         protected String getSpecificTabClassFromPane(UITab tab,
@@ -123,8 +120,7 @@ public class TabClassBuilder {
      * @return
      */
     protected String getCommonClassForAllTabs() {
-        //dr-tb-cntrl
-        return "dr-tbpnl-tb rich-tab-header";
+        return "rich-tab-header";
     }
 
     /**
