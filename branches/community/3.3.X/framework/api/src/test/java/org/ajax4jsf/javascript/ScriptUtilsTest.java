@@ -19,19 +19,29 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
 
-package org.ajax4jsf.framework.util.javascript;
+package org.ajax4jsf.javascript;
+
+import static org.easymock.EasyMock.capture;
+import static org.easymock.EasyMock.isNull;
+import static org.easymock.classextension.EasyMock.createNiceMock;
+import static org.easymock.classextension.EasyMock.replay;
+import static org.easymock.classextension.EasyMock.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.ajax4jsf.javascript.ScriptUtils;
+import javax.faces.context.ResponseWriter;
 
 import junit.framework.TestCase;
+
+import org.easymock.Capture;
+import org.easymock.CaptureType;
 
 /**
  * @author shura
@@ -219,5 +229,79 @@ public class ScriptUtilsTest extends TestCase {
 		assertEquals("foo\\\"\\\'", buff.toString());
 	}
 
+	/**
+	 * Test method for {@link ScriptUtils#toScript(Object)}
+	 */
+	public void testNull() throws Exception {
+		assertEquals("null", ScriptUtils.toScript(null));
+	}
 	
+	/**
+	 * Test method for {@link ScriptUtils#toScript(Object)}
+	 */
+	public void testScriptString() throws Exception {
+		assertEquals("alert(x<y);", ScriptUtils.toScript(new JSLiteral("alert(x<y);")));
+	}
+	
+	private static enum TestEnum {
+		A, B, C;
+		
+		@Override
+		public String toString() {
+			return "TestEnum: " + super.toString();
+		}
+	}
+	
+	/**
+	 * Test method for {@link ScriptUtils#toScript(Object)}
+	 */
+	public void testEnum() throws Exception {
+		assertEquals("'TestEnum: B'", ScriptUtils.toScript(TestEnum.B));
+	}
+	
+	private void assertCaptureEquals(Capture<? extends Object> capture, String expected) {
+		StringBuilder sb = new StringBuilder();
+		List<? extends Object> list = capture.getValues();
+		for (Object o : list) {
+			assertNotNull(o);
+			sb.append(o);
+		}
+		
+		assertEquals(expected, sb.toString().trim());
+	}
+	
+	/**
+	 * Test method for {@link ScriptUtils#writeToStream(javax.faces.context.ResponseWriter, Object)}
+	 */
+	public void testWriteToStream() throws Exception {
+		ResponseWriter mockWriter = createNiceMock(ResponseWriter.class);
+		Capture<? extends Object> capture = new Capture<Object>(CaptureType.ALL) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -4915440411892856583L;
+
+			@Override
+			public void setValue(Object value) {
+				if (value instanceof char[]) {
+					char[] cs = (char[]) value;
+					super.setValue(new String(cs, 0, 1));
+				} else {
+					super.setValue(value);
+				}
+			}
+		};
+		
+		
+		mockWriter.writeText(capture(capture), (String) isNull());
+		expectLastCall().anyTimes();
+		mockWriter.writeText((char[])capture(capture), eq(0), eq(1));
+		expectLastCall().anyTimes();
+		
+		replay(mockWriter);
+		ScriptUtils.writeToStream(mockWriter, Collections.singletonMap("delay", Integer.valueOf(1500)));
+		verify(mockWriter);
+		
+		assertCaptureEquals(capture, "{'delay':1500}");
+	}
 }
