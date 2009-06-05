@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/layout/layout.xhtml">
+	<ui:define name="template">
+		<h:form id="form">
+			<rich:tabPanel switchType="ajax" selectedTab="Second" id="tabPanel">
+				<rich:tab label="First">
+					<h:inputText value="#{rf3341.job}">
+						<a4j:support event="onkeyup" reRender="out" />
+					</h:inputText>
+					<h:outputText id="out" value="#{rf3341.job}" />
+					<rich:dataTable value="#{rf3341.capitals}" var="cap">
+						<rich:column>
+							<h:outputText value="#{cap.name}" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:tab>
+				<rich:tab label="Second" name="Second" >
+					<a4j:region renderRegionOnly="true" rendered="#{rf3341.rendered}">
+						<h:inputText value="#{rf3341.name}">
+							<a4j:support event="onblur" reRender="out1,counter1" />
+						</h:inputText>
+						<h:outputText id="out1" value="#{rf3341.name}" />
+						<br />
+						<h:outputText value="#{rf3341.counter}" id="counter1" />
+					</a4j:region>
+					<a4j:region renderRegionOnly="false" rendered="#{!rf3341.rendered}">
+						<h:inputText value="#{rf3341.name}">
+							<a4j:support event="onblur" reRender="out2,counter2" />
+						</h:inputText>
+						<h:outputText id="out2" value="#{rf3341.name}" />
+						<br />
+						<h:outputText value="#{rf3341.counter}" id="counter2" />
+					</a4j:region>
+				</rich:tab>
+				<rich:tab label="Third">
+Here is tab #3
+</rich:tab>
+			</rich:tabPanel>
+			<h:panelGrid columns="2">
+				<h:outputText value="a4j:region rendered:" />
+				<h:selectBooleanCheckbox value="#{rf3341.rendered}"
+					onclick="submit()">
+				</h:selectBooleanCheckbox>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

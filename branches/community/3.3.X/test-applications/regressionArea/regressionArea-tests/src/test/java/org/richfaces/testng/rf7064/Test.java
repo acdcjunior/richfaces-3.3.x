@@ -8,7 +8,8 @@ public class Test extends SeleniumTestBase {
 	public void testExecute() throws Exception {
 		renderPage();
 		
-		selenium.assignId("form:toogleModes:1", "textArea");		
+		selenium.assignId("form:toogleModes:1", "textArea");
+		
 		clickAjaxCommandAndWait("textArea");		
 		
 		clickAjaxCommandAndWait("form:useSeamText");		

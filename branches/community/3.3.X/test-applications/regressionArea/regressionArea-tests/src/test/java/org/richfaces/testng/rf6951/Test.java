@@ -27,17 +27,20 @@ import org.richfaces.SeleniumTestBase;
  * @since 3.3.2
  */
 public class Test extends SeleniumTestBase {
+	private static final String FORM = "form";
+	private static final String PANEL = FORM + ":panel";
+	private static final String LIST_SHUTTLE = FORM + ":LineConfigs";
 
 	@org.testng.annotations.Test
 	public void testExecute() throws Exception {
 		renderPage();
 		
-		selenium.doubleClick("//*[@id='form:LineConfigs:0']");
-		selenium.click("//form[@id='form']/input[@type='button' and @value='Submit']");
+		selenium.doubleClick("//*[@id='"+ LIST_SHUTTLE +":0']");
+		selenium.click("//form[@id='"+ FORM +"']/input[@type='button' and @value='Submit']");
 		waitForAjaxCompletion();
 		
-		AssertTextEquals("//table[@id='form:panel']/tbody/tr[1]/td[2]", "[Line 2, Line 3]");
-		AssertTextEquals("//table[@id='form:panel']/tbody/tr[2]/td[2]", "[Line 1]");
+		AssertTextEquals("//table[@id='"+ PANEL +"']/tbody/tr[1]/td[2]", "[Line 2, Line 3]");
+		AssertTextEquals("//table[@id='"+ PANEL +"']/tbody/tr[2]/td[2]", "[Line 1]");
 	}	
 	
 	@Override
