@@ -42,6 +42,7 @@ import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxComponentRendererBase;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
+import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIToolTip;
 import org.richfaces.skin.Skin;
@@ -150,7 +151,7 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
     }
     
     public Map<String, Object> buildEventOptions(FacesContext context,
-            UIComponent component, String targetId) {
+            UIComponent component) {
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
                 context, component);
         String jsVarName = "_toolTip";
@@ -254,62 +255,61 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
         UIToolTip toolTip = (UIToolTip) component;
         String targetClientId = getTargetId(context, component);
         
-        
-        Map<JSReference, Object> eventsMap = new HashMap<JSReference, Object>();
+        Map<String, Object> options = new HashMap<String, Object>();
+        //Map<JSReference, Object> eventsMap = new HashMap<JSReference, Object>();
         
         String eventShow = (toolTip.isAttached()) ? toolTip.getShowEvent() : "";
         if (eventShow.startsWith("on")) {
             eventShow = eventShow.substring(2);
         }
-        eventsMap.put(new JSReference("showEvent"), eventShow);
-
+        getUtils().addToScriptHash(options, "showEvent", eventShow, "mouseover", ScriptHashVariableWrapper.DEFAULT); 
         String eventHide = (toolTip.isAttached()) ? toolTip.getHideEvent() : "";
         if (eventHide.startsWith("on")) {
             eventHide = eventHide.substring(2);
         }
-        eventsMap.put(new JSReference("hideEvent"), eventHide);
+        getUtils().addToScriptHash(options, "hideEvent", eventHide, null, ScriptHashVariableWrapper.DEFAULT); 
 
-        eventsMap.put(new JSReference("delay"), new Integer(toolTip.getShowDelay()));
-        eventsMap.put(new JSReference("hideDelay"), new Integer(toolTip.getHideDelay()));
+        getUtils().addToScriptHash(options, "delay", toolTip.getShowDelay(), "0", ScriptHashVariableWrapper.DEFAULT); 
+        getUtils().addToScriptHash(options, "hideDelay", toolTip.getHideDelay(), "0", ScriptHashVariableWrapper.DEFAULT); 
         
-        JSFunctionDefinition ajaxFunc = null;
         if (AJAX_MODE.equalsIgnoreCase(toolTip.getMode())) {
-            ajaxFunc = new JSFunctionDefinition("event", "ajaxOptions");
+        	JSFunctionDefinition ajaxFunc = new JSFunctionDefinition("event", "ajaxOptions");
             JSFunction function = AjaxRendererUtils.buildAjaxFunction(component, context);
             JSReference ref = new JSReference("ajaxOptions");
             function.addParameter(ref);
             ajaxFunc.addToBody(function);
-        } 
+            getUtils().addToScriptHash(options, "ajaxFunction", ajaxFunc, null, ScriptHashVariableWrapper.DEFAULT); 
+            Map<String, Object> ajaxOptions = buildEventOptions(context, toolTip);
+            ajaxOptions.putAll(getParamsMap(context, toolTip));
+            getUtils().addToScriptHash(options, "ajaxOptions", ajaxOptions, null, ScriptHashVariableWrapper.DEFAULT); 
+       } 
         
-        Map<String, Object> ajaxOptions = buildEventOptions(context, toolTip, targetClientId);
-        ajaxOptions.putAll(getParamsMap(context, toolTip));
         
-        Map<JSReference, Object> funcMap = new HashMap<JSReference, Object>();
         JSFunctionDefinition completeFunc = getUtils().getAsEventHandler(
                 context, component, "oncomplete", "; return true;");
-        funcMap.put(new JSReference("oncomplete"), completeFunc);
+        getUtils().addToScriptHash(options, "oncomplete", completeFunc, null, ScriptHashVariableWrapper.DEFAULT); 
 
         JSFunctionDefinition hideFunc = getUtils().getAsEventHandler(
                 context, component, "onhide", "; return true;");
-        funcMap.put(new JSReference("onhide"), hideFunc);
+        getUtils().addToScriptHash(options, "onhide", hideFunc, null, ScriptHashVariableWrapper.DEFAULT); 
 
         JSFunctionDefinition showFunc = getUtils().getAsEventHandler(
                 context, component, "onshow", "; return true;");
-        funcMap.put(new JSReference("onshow"), showFunc);
+        getUtils().addToScriptHash(options, "onshow", showFunc, null, ScriptHashVariableWrapper.DEFAULT); 
         
+        getUtils().addToScriptHash(options, "disabled", toolTip.isDisabled(), "false", ScriptHashVariableWrapper.DEFAULT); 
+        getUtils().addToScriptHash(options, "direction", toolTip.getDirection(), "bottom-right", ScriptHashVariableWrapper.DEFAULT); 
+        getUtils().addToScriptHash(options, "followMouse", toolTip.isFollowMouse(), "false", ScriptHashVariableWrapper.DEFAULT); 
+        getUtils().addToScriptHash(options, "horizontalOffset", toolTip.getHorizontalOffset(), "10", ScriptHashVariableWrapper.DEFAULT); 
+        getUtils().addToScriptHash(options, "verticalOffset", toolTip.getVerticalOffset(), "10", ScriptHashVariableWrapper.DEFAULT); 
+
         StringBuffer ret = new StringBuffer();
-        ret.append("new ToolTip(").append(ScriptUtils.toScript(eventsMap)).append(COMMA)
-           .append(ScriptUtils.toScript(funcMap)).append(COMMA)
-           .append(QUOT).append(toolTip.getClientId(context)).append(QUOT_COMMA)
-           .append(QUOT).append(targetClientId).append(QUOT_COMMA)
-           .append(QUOT).append(toolTip.getMode()).append(QUOT_COMMA)
-           .append(toolTip.isDisabled()).append(COMMA)
-           .append(QUOT).append(toolTip.getDirection()).append(QUOT_COMMA)
-           .append(toolTip.isFollowMouse()).append(COMMA)
-           .append(toolTip.getHorizontalOffset()).append(COMMA)
-           .append(toolTip.getVerticalOffset()).append(COMMA)
-           .append(ajaxFunc == null ? "null" : ajaxFunc.toScript()).append(COMMA)
-           .append(ScriptUtils.toScript(ajaxOptions)).append(");");
+        ret.append("new ToolTip(").append(QUOT).append(toolTip.getClientId(context)).append(QUOT_COMMA)
+           .append(QUOT).append(targetClientId).append(QUOT);
+        if (!options.isEmpty()) {
+        	ret.append(COMMA).append(ScriptUtils.toScript(options));
+		}
+        ret.append(");");
         
         return ret.toString();
     }
