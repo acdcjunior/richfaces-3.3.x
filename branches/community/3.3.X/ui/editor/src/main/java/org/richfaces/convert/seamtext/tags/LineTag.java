@@ -47,26 +47,41 @@ class LineTag extends HtmlTag {
         return super.printPlain();
     }
     
-    private boolean isFirstChars = true;
+//    private boolean isFirstChars = true;
     
     @Override
     public void appendBody(String str) {
-        if (isFirstChars) {
-            char text[] = str.toCharArray();
-            int i = 0;
-            while (i < text.length && (text[i] == '\r' || text[i] == '\n')) {
-                i++;
+//        if (isFirstChars) {
+//            char text[] = str.toCharArray();
+//            int firstNotNewLineChar = 0;
+//            while (firstNotNewLineChar < text.length && (text[firstNotNewLineChar] == '\r' || text[firstNotNewLineChar] == '\n')) {
+//                firstNotNewLineChar++;
+//            }
+//              
+//            if (firstNotNewLineChar < text.length) {
+//                super.appendBody(str.substring(firstNotNewLineChar));
+//                isFirstChars = false;
+//            } else {
+//                return;
+//            }
+//        } else {
+            super.appendBody(removeNewLineChars(str));
+//        }
+    }
+    
+    private String removeNewLineChars(String str) {
+        char text[] = str.toCharArray();
+        char result[] = new char[text.length];
+        int resultSize = 0;
+        
+        for (int textIndex = 0; textIndex < text.length; textIndex++) {
+            if (text[textIndex] != '\r' && text[textIndex] != '\n') {
+                result[resultSize] = text[textIndex];
+                resultSize++;
             }
-              
-            if (i < text.length) {
-                super.appendBody(str.substring(i));
-                isFirstChars = false;
-            } else {
-                return;
-            }
-        } else {
-            super.appendBody(str);
         }
+            
+        return new String(result, 0, resultSize);
     }
 
     @Override
