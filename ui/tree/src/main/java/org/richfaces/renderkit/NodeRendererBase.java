@@ -28,6 +28,7 @@ import java.util.Map.Entry;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.javascript.JSFunction;
 import org.ajax4jsf.javascript.JSFunctionDefinition;
 import org.ajax4jsf.javascript.ScriptUtils;
@@ -97,7 +98,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 					context);
 			Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(context,
 					nodeFacet);
-			Map<Object, Object> parameters = (Map<Object, Object>) eventOptions.get("parameters");
+			Map<String, Object> parameters = (Map<String, Object>) eventOptions.get("parameters");
 			parameters.remove(id);
 
 			parameters.put(id + NODE_EXPANDED_INPUT_SUFFIX, String.valueOf(!expanded));
@@ -261,7 +262,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 		String nodeExpandedId = id + NODE_EXPANDED_INPUT_SUFFIX;
 		Object nodeExpandedValue = requestMap.get(nodeExpandedId);
 		if (nodeExpandedValue != null) {
-			boolean nodeExpanded = Boolean.valueOf(nodeExpandedValue.toString()).booleanValue();
+			boolean nodeExpanded = Boolean.valueOf(nodeExpandedValue.toString());
 			if (tree.isExpanded() ^ nodeExpanded) {
 				if (nodeExpanded) {
 					new ExpandNodeCommandEvent(tree, key).queue();
@@ -269,7 +270,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 					new CollapseNodeCommandEvent(tree, key).queue();
 				}
 
-				if (Boolean.valueOf((String) requestMap.get(id + AJAX_EXPANDED_SUFFIX)).booleanValue()) {
+				if (Boolean.valueOf((String) requestMap.get(id + AJAX_EXPANDED_SUFFIX))) {
 					new AjaxExpandedEvent(node).queue();
 					new AjaxExpandedEvent(tree).queue();
 				} else {
@@ -279,8 +280,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 			}
 		}
 
-		if (id.equals(tree.getAttributes()
-				.get(UITree.SELECTION_INPUT_ATTRIBUTE))) {
+		if (id.equals(tree.getAttributes().get(UITree.SELECTION_INPUT_ATTRIBUTE))) {
 			if (!componentState.isSelected(key)) {
 
 				if (tree.getAttributes().get(
@@ -296,6 +296,11 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 
 			tree.getAttributes().remove(UITree.SELECTION_INPUT_ATTRIBUTE);
 		}
+		
+        if (AjaxRendererUtils.isAjaxRequest(context)) {
+            AjaxContext.getCurrentInstance(context)
+                .addAreasToProcessFromComponent(context, node);
+        }
 		
 		super.doDecode(context, component);
 	}
