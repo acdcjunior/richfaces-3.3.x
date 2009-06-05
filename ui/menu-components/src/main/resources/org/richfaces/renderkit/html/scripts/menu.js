@@ -1500,13 +1500,19 @@ RichFaces.Menu.updateItem = function (event, element, attr) {
 	}
 }
 
-RichFaces.Menu.submitForm = function (event, element, params, target, attr) {
-	RichFaces.Menu.updateItem(event, element, attr);
-	var form=A4J.findForm(element);
-	if (!params) params={};
-	if (!target) target='';
-	params[element.id+':hidden']=element.id;
-	Richfaces.jsFormSubmit(element.id,form.id,target,params);
+RichFaces.Menu.submitForm = function (event, element, options) {
+	if (!options) {
+		options = {};
+	}
+	
+	RichFaces.Menu.updateItem(event, element, options.a);
+	
+	var form = A4J.findForm(element);
+	var params = options.p || {};
+	var target = options.t || '';
+
+	params[element.id+':hidden'] = element.id;
+	Richfaces.jsFormSubmit(element.id, form.id, target, params);
 	return false;	
 }
 
