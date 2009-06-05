@@ -573,7 +573,17 @@ public class RendererUtils {
 		return false;
 	}
 	
+	/**
+	 * Wrapper class around object value used to transform values into particular JS objects
+	 * 
+	 * @author Nick Belaevski
+	 * @since 3.3.2
+	 */
 	public static enum ScriptHashVariableWrapper {
+
+		/**
+		 * No-op default wrapper
+		 */
 		DEFAULT {
 
 			@Override
@@ -583,6 +593,12 @@ public class RendererUtils {
 			
 		}, 
 		
+		/**
+		 * Event handler functions wrapper. Wraps <pre>functionCode</pre> object into:
+		 * <pre>function(event) {
+		 *   functionCode
+		 * }</pre>
+		 */
 		EVENT_HANDLER {
 
 			@Override
@@ -592,6 +608,12 @@ public class RendererUtils {
 			
 		};
 		
+		/**
+		 * Method that does the wrapping
+		 * 
+		 * @param o object to wrap
+		 * @return wrapped object
+		 */
 		abstract Object wrap(Object o);
 	}
 	
