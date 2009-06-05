@@ -22,7 +22,7 @@
 package org.ajax4jsf.renderkit;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -62,7 +62,7 @@ public abstract class AjaxCommandRendererBase extends AjaxComponentRendererBase 
 				Set<String> toProcess = AjaxRendererUtils.asSet(ajaxComponent
 						.getProcess());
 				if (null != toProcess) {
-					HashSet<String> componentIdsToProcess = new HashSet<String>();
+					Set<String> componentIdsToProcess = new LinkedHashSet<String>();
 					for (String componentId : toProcess) {
 						UIComponent component = getUtils().findComponentFor(uiComponent, componentId);
 						if(null != component){
