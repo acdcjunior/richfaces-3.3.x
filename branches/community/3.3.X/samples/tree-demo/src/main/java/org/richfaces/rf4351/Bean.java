@@ -21,6 +21,7 @@
 
 package org.richfaces.rf4351;
 
+import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -162,6 +163,32 @@ public class Bean {
 		System.out.println("Bean.main()");
 		checkChars(skipChars);
 	}
+	
+	private Date date = new Date();
+	private String value = "";
+	private int counter = 0;
+
+	public void dateAction() {
+	    date = new Date();
+	}
+
+    public String getDate() {
+        return value + " -" + (counter++) + "- Date: " + date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+    
+    
 	
 //	4]   	NameStartChar	   ::=   	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | 
 //	[#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | 
