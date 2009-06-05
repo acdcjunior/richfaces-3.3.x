@@ -179,6 +179,14 @@ public class ScriptUtils {
         }
 	}
 	
+	/**
+	 * Convert any Java Object to JavaScript representation ( as possible ) and write it to 
+	 * writer immediately
+	 * 
+	 * @param responseWriter
+	 * @param obj
+	 * @throws IOException
+	 */
 	public static void writeToStream(final ResponseWriter responseWriter, Object obj) throws IOException {
 		writeScriptToStream(new ResponseWriterWrapper(responseWriter), obj);
 	}
