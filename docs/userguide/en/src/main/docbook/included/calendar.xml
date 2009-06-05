@@ -86,7 +86,11 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                               </emphasis> attribute defines calendar representation mode on a page.
                               If it&apos;s &quot;true&quot; the calendar is represented
                               on a page as an input field and a button. Clicking on the button calls
-                              the calendar popup as it&apos;s shown on the picture below. </para>
+                              the calendar popup as it&apos;s shown on the picture below. 
+                              For popup rendering a &quot;lazy&quot; loading is implemented: after the request is completed a client side script method builds the popup. 
+                              Such improvement speeds up page loading time. 
+                    
+                    </para>
                     <figure>
                               <title>Using the <emphasis>
                                                   <property>&quot;popup&quot;</property>
