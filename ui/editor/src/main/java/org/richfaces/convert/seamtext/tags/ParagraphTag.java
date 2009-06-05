@@ -34,6 +34,33 @@ public class ParagraphTag extends LineTag {
         super(P);
     }
     
+    private boolean isFirstChars = true;
+    
+    @Override
+    public void appendBody(String str) {
+        if (isFirstChars) {
+            String substr = cutLeadBreaklines(str);  
+            if (substr != null) {
+                body.add(substr);
+                isFirstChars = false;
+            } else {
+                return;
+            }
+        } else {
+            body.add(str);
+        }
+    }
+    
+    private String cutLeadBreaklines(String str) {
+        char text[] = str.toCharArray();
+        int firstNotNewLineChar = 0;
+        while (firstNotNewLineChar < text.length && (text[firstNotNewLineChar] == '\r' || text[firstNotNewLineChar] == '\n')) {
+            firstNotNewLineChar++;
+        }
+        
+        return firstNotNewLineChar < text.length ? str.substring(firstNotNewLineChar) : null;
+    }
+    
     @Override
     public String printStart() {
         return "";
