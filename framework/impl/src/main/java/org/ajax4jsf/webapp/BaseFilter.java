@@ -301,6 +301,26 @@ public abstract class BaseFilter implements Filter {
 	
 	}
 	
+	private static final String MYFACES_FILTER_CHECKED = BaseFilter.class.getName() + ":MyFacesFilterChecked";
+    
+	private static final String MYFACES_DOFILTER_CALLED = "org.apache.myfaces.component.html.util.ExtensionFilter.doFilterCalled"; 
+    
+	private boolean myfacesMessagePrinted = false;
+	
+	private void checkMyFacesExtensionsFilter(HttpServletRequest request) {
+		if (request.getAttribute(MYFACES_FILTER_CHECKED) == null) {
+			if (request.getAttribute(MYFACES_DOFILTER_CALLED) != null) {
+				if (!this.myfacesMessagePrinted) {
+					log.warn("MyFaces Extensions Filter should be configured to execute *AFTER* RichFaces filter. Refer to SRV.6.2.4 section of Servlets specification on how to achieve that.");
+					
+					this.myfacesMessagePrinted = true;
+				}
+			}
+			
+			request.setAttribute(MYFACES_FILTER_CHECKED, Boolean.TRUE);
+		}
+	}
+	
 	/**
 	 * Method catches upload files request. Request parameter
 	 * <b>org.ajax4jsf.Filter.UPLOAD_FILES_ID</b> indicates if request
@@ -491,7 +511,7 @@ public abstract class BaseFilter implements Filter {
 					// first stage - detect/set encoding of request. Same as in
 					// Myfaces External Context.
 					setupRequestEncoding(httpServletRequest);
-					
+					checkMyFacesExtensionsFilter(httpServletRequest);
 					processUploadsAndHandleRequest(httpServletRequest, httpServletResponse, chain);
 				}
 			} finally {
