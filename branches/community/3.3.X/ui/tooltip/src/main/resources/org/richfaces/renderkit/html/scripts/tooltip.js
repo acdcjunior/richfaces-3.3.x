@@ -7,30 +7,32 @@ Richfaces.ToolTip = {};
 ToolTip = Class.create();
 
 ToolTip.prototype = {
-	initialize:function(events,functions, id, parentId, mode, disabled, direction, followMouse, horizontalOffset, verticalOffset, ajaxFunction, ajaxOptions){
+		
+	//default values of options
+	showEvent: "mouseover",
+	hideEvent: null,
+	delay: 0,
+	hideDelay: 0,
+	ajaxFunction: null,
+	ajaxOptions: null,
+	oncomplete: null,
+	onhide: null,
+	onshow: null,
+	disabled: false,
+	direction: "bottom-right",
+	followMouse: false,
+	horizontalOffset: 10,
+	verticalOffset: 10,
+		
+	initialize:function(id, parentId, options){
 		this["rich:destructor"] = "destroy";
-		
-		this.showEvent = events.showEvent;		
-		this.hideEvent = events.hideEvent!=""?events.hideEvent:null;
-		this.onshow = functions.onshow; 
-		this.oncomplete = functions.oncomplete;
-		this.onhide = functions.onhide;
-		
-		this.delay = events.delay;
-		this.hideDelay = events.hideDelay;
 		
 		this.id = id;
 		this.parentId = parentId;
 		this.parent = $(this.parentId);
-		this.mode = mode;
-		this.direction = direction;
-		this.disabled = disabled;
-		this.followMouse = followMouse;
-		this.horizontalOffset = horizontalOffset;
-		this.verticalOffset = verticalOffset;
 		
-		if (ajaxFunction) this.ajaxExecuteFunction = (ajaxFunction) ? ajaxFunction : function() {};
-		this.ajaxOptions = ajaxOptions;
+		Object.extend(this, options);
+		
 		this.clientAjaxParams = {};
 		
 		this.toolTip = $(id);
@@ -243,7 +245,7 @@ ToolTip.prototype = {
 			window.clearTimeout(this.hidingTimerHandle);
 			this.hidingTimerHandle = undefined;				
 		}
-		if(this.mode == 'ajax'){
+		if(this.ajaxFunction){
 			if(this.toolTipDefaultContent){
 				this.toolTipContent.innerHTML = this.toolTipDefaultContent.innerHTML;
 				
@@ -274,13 +276,13 @@ ToolTip.prototype = {
 					{
 						this.setToolTipVisible(false);
 					}
-					this.ajaxExecuteFunction(event, ajaxOptions);
+					this.ajaxFunction(event, ajaxOptions);
 				}.bind(this), this.delay);
 			}
 			else
 			{
 				this.setToolTipVisible(false);			
-				this.ajaxExecuteFunction(event, ajaxOptions);
+				this.ajaxFunction(event, ajaxOptions);
 			}
 		} else {
 			this.setToolTipPosition(e);
@@ -572,7 +574,7 @@ ToolTip.prototype = {
 		//this.toolTip.style.display = 'block';
 		if(this.isMouseOvered){
 			
-			if(this.mode == 'ajax'){
+			if(this.ajaxFunction){
 				this.toolTip.style.display = 'none';
 				if(this.clientAjaxParams){
 					/*

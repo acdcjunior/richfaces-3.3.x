@@ -110,8 +110,7 @@ public class ToolTipRendererTest extends AbstractAjax4JsfTestCase{
 	
 	
 	public void testBuildEventOptions(){
-		Map eventOptions = renderer.buildEventOptions(facesContext, toolTip, 
-				toolTip.getParent().getClientId(facesContext));
+		Map eventOptions = renderer.buildEventOptions(facesContext, toolTip);
 		assertNotNull(eventOptions);
 		assertNotNull(eventOptions.get("oncomplete"));
 	}
