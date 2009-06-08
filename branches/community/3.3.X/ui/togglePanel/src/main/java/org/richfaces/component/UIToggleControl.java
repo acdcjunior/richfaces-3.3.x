@@ -45,9 +45,6 @@ public abstract class UIToggleControl extends AjaxActionComponent implements
     
     public static final String COMPONENT_FAMILY = "javax.faces.Command";
     
-    public abstract void setPanelId(String panelId);
-    public abstract String getPanelId();
-    
     public abstract void setSwitchToState(String switchToState);
     public abstract String getSwitchToState();
     

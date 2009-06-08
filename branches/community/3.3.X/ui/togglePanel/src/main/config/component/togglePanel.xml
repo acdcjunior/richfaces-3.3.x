@@ -182,14 +182,6 @@
 			</description>
 		</property>
 
-
-		<property required="false" el="true" elonly="true">
-			<name>panelId</name>
-			<classname>java.lang.String</classname>
-			<description>Attribute defines Id for corresponding panel
-			</description>
-		</property>
-
 		<property hidden="true">
 			<name>actionExpression</name>
 		</property>	
