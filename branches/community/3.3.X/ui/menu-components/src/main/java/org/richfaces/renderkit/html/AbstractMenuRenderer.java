@@ -67,8 +67,7 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
             throws IOException {
         StringBuffer buffer = new StringBuffer();
         
-        buffer.append("alert('Hello Cfif!!!');").append(
-                getLayerScript(context, component));
+        buffer.append(getLayerScript(context, component));
         
         List children = component.getChildren();
         for (Iterator it = children.iterator(); it.hasNext();) {
