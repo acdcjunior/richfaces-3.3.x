@@ -65,22 +65,22 @@
 		<property>
 			<name>onsubmit</name>
 	        <classname>java.lang.String</classname>
-			<description>JavaScript code for call before submission of an ajax request</description>
+			<description>The client-side script method to be called before an ajax request is submitted</description>
 		</property>
 		<property>
 			<name>onbeforedomupdate</name>
 	        <classname>java.lang.String</classname>
-			<description>JavaScript code for call before DOM has been updated on client side</description>
+			<description>The client-side script method to be called before DOM is updated</description>
 		</property>
 		<property>
 			<name>oncomplete</name>
 	        <classname>java.lang.String</classname>
-			<description>JavaScript code for call after request completed on client side</description>
+			<description>The client-side script method to be called after the request is completed</description>
 		</property>
 		<property>
 			<name>onerror</name>
 	        <classname>java.lang.String</classname>
-			<description>HTML: a script expression; event fires whenever an JavaScript server-side error occurs</description>
+			<description>The client-side script method to be called whenever a JavaScript error occurs</description>
 		</property>
 		<property>
 			<name>sizeExceededBehavior</name>
@@ -91,17 +91,17 @@
 		<property>
 			<name>onsizeexceeded</name>
 	        <classname>java.lang.String</classname>
-			<description>A script expression; a size is exceed</description>
+			<description>The client-side script method to be called when a size is exceeded</description>
 		</property>
 		<property>
 			<name>onrequestqueue</name>
 			<classname>java.lang.String</classname>
-			<description>JavaScript code for call after the request has got into the queue</description>
+			<description>The client-side script method to be called when the request is added to the queue</description>
 		</property>
 		<property>
 			<name>onrequestdequeue</name>
 			<classname>java.lang.String</classname>
-			<description>JavaScript code for call after the request has removed from the queue</description>
+			<description>The client-side script method to be called after the request is removed from the queue</description>
 		</property>
 		
 		<property>
