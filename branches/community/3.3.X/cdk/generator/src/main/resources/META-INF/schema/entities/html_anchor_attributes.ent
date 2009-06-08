@@ -59,12 +59,12 @@
     <property>
         <name>onblur</name>
         <classname>java.lang.String</classname>
-        <description>JavaScript code. The onblur event occurs when an element loses focus either by the pointing device or by tabbing navigation. It may be used with the same elements as onfocus</description>
+        <description>The client-side script method to be called when the element loses the focus either when pointing a device or tabbing navigation. The attribute may be used with the same elements as onfocus</description>
     </property>
     <property>
         <name>onfocus</name>
         <classname>java.lang.String</classname>
-        <description>JavaScript code. The onfocus event occurs when an element gets focus</description>
+        <description>The client-side script method to be called when the element gets the focus</description>
     </property>
     
     <property>

@@ -20,12 +20,12 @@
     <property>
         <name>onreset</name>
         <classname>java.lang.String</classname>
-        <description>HTML: script expression; a form is reseted. It only applies to the FORM element</description>
+        <description>The client-side script method to be called when a form is reset. It is only applied to the FORM element</description>
     </property>
     <property>
         <name>onsubmit</name>
         <classname>java.lang.String</classname>
-        <description>HTML: script expression; a form is submitted. It only applies to the FORM element</description>
+        <description>The client-side script method to be called when a form is submitted. It is only applied to the FORM element</description>
     </property>
     <property>
         <name>target</name>
