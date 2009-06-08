@@ -39,8 +39,8 @@
 		class="rich-modalpanel #{component.attributes['styleClass']}"
 		x:passThruWithExclusions="id,style,class,styleClass"
 		>
-			<div class="rich-mpnl-mask-div rich-mpnl-mask-div-opaque" id="#{clientId}Div"
-				style="z-index: 1;"
+			<div class="rich-mpnl-mask-div-opaque rich-mpnl-mask-div" id="#{clientId}Div"
+				style="z-index: -1;"
 				onclick="#{component.attributes['onmaskclick']}"
 				ondblclick="#{component.attributes['onmaskdblclick']}"
 				oncontextmenu="#{component.attributes['onmaskcontextmenu']}"
