@@ -651,6 +651,40 @@ public class RendererUtils {
 	}
 	
 	/**
+	 * Puts value into map under specified key if the value is not empty and not default. 
+	 * Performs optional value wrapping.
+	 * 
+	 * @param hash
+	 * @param name
+	 * @param value
+	 * @param defaultValue
+	 * 
+	 * @since 3.3.2
+	 */
+	public void addToScriptHash(Map<String, Object> hash, 
+			String name, 
+			Object value, 
+			String defaultValue) {
+		addToScriptHash(hash, name, value, defaultValue, null);
+	}
+
+	/**
+	 * Puts value into map under specified key if the value is not empty and not default. 
+	 * Performs optional value wrapping.
+	 * 
+	 * @param hash
+	 * @param name
+	 * @param value
+	 * 
+	 * @since 3.3.2
+	 */
+	public void addToScriptHash(Map<String, Object> hash, 
+			String name, 
+			Object value) {
+		addToScriptHash(hash, name, value, null, null);
+	}
+
+	/**
 	 * Convert HTML attribute name to component property name.
 	 * 
 	 * @param key

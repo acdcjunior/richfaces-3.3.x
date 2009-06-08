@@ -9,13 +9,11 @@ ToolTip = Class.create();
 ToolTip.prototype = {
 		
 	//default values of options
-	showEvent: "mouseover",
+	showEvent: null,
 	hideEvent: null,
 	delay: 0,
 	hideDelay: 0,
 	ajaxFunction: null,
-	ajaxOptions: null,
-	oncomplete: null,
 	onhide: null,
 	onshow: null,
 	disabled: false,
@@ -254,19 +252,15 @@ ToolTip.prototype = {
 				this.setToolTipPosition(e);
 			}
 			var event = A4J.AJAX.CloneObject(e, false);
-			var ajaxOptions = this.ajaxOptions;
-			if(this.clientAjaxParams){
-				if(e.clientX){
-					this.clientAjaxParams['clientX'] = e.clientX;
-					this.clientAjaxParams['clientY'] = e.clientY;	
-				} else {
-					this.clientAjaxParams['event.pageX'] = e.pageX;
-					this.clientAjaxParams['event.pageY'] = e.pageY;	
-					
-				}
+			if(e.clientX){
+				this.clientAjaxParams['clientX'] = e.clientX;
+				this.clientAjaxParams['clientY'] = e.clientY;	
+			} else {
+				this.clientAjaxParams['event.pageX'] = e.pageX;
+				this.clientAjaxParams['event.pageY'] = e.pageY;	
 				
-				Object.extend(ajaxOptions['parameters'], this.clientAjaxParams);
 			}
+			
 			if (this.delay>0)
 			{
 				this.setToolTipPosition(e);
@@ -274,15 +268,15 @@ ToolTip.prototype = {
 				{
 					if (this.toolTipDefaultContent)
 					{
-						this.setToolTipVisible(false);
+						this.setToolTipVisible();
 					}
-					this.ajaxFunction(event, ajaxOptions);
+					this.ajaxFunction(event);
 				}.bind(this), this.delay);
 			}
 			else
 			{
-				this.setToolTipVisible(false);			
-				this.ajaxFunction(event, ajaxOptions);
+				this.setToolTipVisible();			
+				this.ajaxFunction(event);
 			}
 		} else {
 			this.setToolTipPosition(e);
@@ -613,37 +607,17 @@ ToolTip.prototype = {
 				this.onshow(this.eventCopy); 
 			}
 
-			this.setToolTipVisible(true);
-
-//			if(this.delay > 0) {
-//				this.queuedToolTip = setTimeout('Richfaces.tooltips[\'' + this.parentId + '\'].setToolTipVisible(true)', this.delay);	
-//			} else {
-//				this.setToolTipVisible(true);
-//			}
-
-			
-//			if(this.mode != 'ajax'){
-//				this.oncomplete(window.event);
-//			}
+			this.setToolTipVisible();			
 		}
 	},
 	
-	setToolTipVisible: function(runOnComplete){
+	setToolTipVisible: function(){
 		this.activationTimerHandle = undefined;
 		this.toolTip.style.display = "block";
 		this.toolTip.style.visibility = "visible";
 		if(this.iframe)
 		{
 			this.iframe.style.display = "block";
-		} 
-		
-		if(runOnComplete){
-			if(this.oncomplete!=null)
-			{
-			 this.oncomplete(window.event); 
-			}
-			 	
-		}
-		
+		} 		
 	}
 } 
