@@ -247,7 +247,7 @@ public class TogglePanelComponentTest extends AbstractAjax4JsfTestCase {
                 "ABYBC");
         assertEquals("ABYBC", (String) switchValue);
 
-        toggleControl.setPanelId(togglePanel.getClientId(facesContext));
+        toggleControl.setFor(togglePanel.getClientId(facesContext));
         toggleControl.setReRender(togglePanel.getClientId(facesContext));
         assertEquals(togglePanel.getClientId(facesContext), toggleControl
                 .getReRender());
