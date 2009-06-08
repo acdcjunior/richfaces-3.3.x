@@ -42,6 +42,7 @@ import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxComponentRendererBase;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
+import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIToolTip;
@@ -154,22 +155,13 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
             UIComponent component) {
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
                 context, component);
-        String jsVarName = "_toolTip";
-        
-        // after element is subsituted in DOM tree, we have to re-create
-        // it's JS-reference, cause old one is already invalid
         
         String clientId = component.getClientId(context);
-        String oncompleteTooltip = ";" + "{" + "var " + jsVarName + " = $('"
-                + clientId + "').component;" + jsVarName
-                + ".toolTipContent = $('" + clientId + "content');" + jsVarName
-                + ".displayDiv();" + "}";
+        String oncompleteTooltip = "; request.options.control.displayDiv();";
         
         // before element will be substituted in DOM tree, we need to hide
         // toolTipe to avoid blinking
-        String fireBeforeUpdateDOM = ";" + "{ var " + jsVarName + " = $('"
-                + clientId + "').component;" + jsVarName
-                + ".toolTip.style.display = 'none'; }";
+        String fireBeforeUpdateDOM = "; request.options.control.toolTip.style.display = 'none';";
         
         // enable ajaxSingle mode, i.e. we do not need to submit all form
         // controls to get tooltip content
@@ -197,7 +189,7 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
         } else {
             JSFunctionDefinition beforeUpdate = new JSFunctionDefinition();
             beforeUpdate.addParameter("request");
-            beforeUpdate.addParameter("showEvent");
+            beforeUpdate.addParameter("event");
             beforeUpdate.addParameter("data");
             beforeUpdate.addToBody(fireBeforeUpdateDOM);
             eventOptions.put(AjaxRendererUtils.ONBEFOREDOMUPDATE_ATTR_NAME, beforeUpdate);
@@ -213,7 +205,7 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
         ret.append("<script ");
         ret.append("type=\"text/javascript\" ");
         ret.append("id =\"script").append(component.getClientId(context)).append("\">\n");
-        ret.append(constructJSVariable(context, component)).append(";\n\n");
+        ret.append(constructJSVariable(context, component)).append("\n");
         ret.append("</script>");
 
         context.getResponseWriter().write(ret.toString());
@@ -256,52 +248,45 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
         String targetClientId = getTargetId(context, component);
         
         Map<String, Object> options = new HashMap<String, Object>();
-        //Map<JSReference, Object> eventsMap = new HashMap<JSReference, Object>();
         
         String eventShow = (toolTip.isAttached()) ? toolTip.getShowEvent() : "";
         if (eventShow.startsWith("on")) {
             eventShow = eventShow.substring(2);
         }
-        getUtils().addToScriptHash(options, "showEvent", eventShow, "mouseover", ScriptHashVariableWrapper.DEFAULT); 
+        RendererUtils utils = getUtils();
+		utils.addToScriptHash(options, "showEvent", eventShow); 
         String eventHide = (toolTip.isAttached()) ? toolTip.getHideEvent() : "";
         if (eventHide.startsWith("on")) {
             eventHide = eventHide.substring(2);
         }
-        getUtils().addToScriptHash(options, "hideEvent", eventHide, null, ScriptHashVariableWrapper.DEFAULT); 
+        utils.addToScriptHash(options, "hideEvent", eventHide); 
 
-        getUtils().addToScriptHash(options, "delay", toolTip.getShowDelay(), "0", ScriptHashVariableWrapper.DEFAULT); 
-        getUtils().addToScriptHash(options, "hideDelay", toolTip.getHideDelay(), "0", ScriptHashVariableWrapper.DEFAULT); 
+        utils.addToScriptHash(options, "delay", toolTip.getShowDelay(), "0"); 
+        utils.addToScriptHash(options, "hideDelay", toolTip.getHideDelay(), "0"); 
         
         if (AJAX_MODE.equalsIgnoreCase(toolTip.getMode())) {
-        	JSFunctionDefinition ajaxFunc = new JSFunctionDefinition("event", "ajaxOptions");
+        	JSFunctionDefinition ajaxFunc = new JSFunctionDefinition("event");
             JSFunction function = AjaxRendererUtils.buildAjaxFunction(component, context);
-            JSReference ref = new JSReference("ajaxOptions");
-            function.addParameter(ref);
-            ajaxFunc.addToBody(function);
-            getUtils().addToScriptHash(options, "ajaxFunction", ajaxFunc, null, ScriptHashVariableWrapper.DEFAULT); 
             Map<String, Object> ajaxOptions = buildEventOptions(context, toolTip);
             ajaxOptions.putAll(getParamsMap(context, toolTip));
-            getUtils().addToScriptHash(options, "ajaxOptions", ajaxOptions, null, ScriptHashVariableWrapper.DEFAULT); 
+            function.addParameter(ajaxOptions);
+            ajaxFunc.addToBody(function);
+            utils.addToScriptHash(options, "ajaxFunction", ajaxFunc); 
        } 
         
-        
-        JSFunctionDefinition completeFunc = getUtils().getAsEventHandler(
-                context, component, "oncomplete", "; return true;");
-        getUtils().addToScriptHash(options, "oncomplete", completeFunc, null, ScriptHashVariableWrapper.DEFAULT); 
-
-        JSFunctionDefinition hideFunc = getUtils().getAsEventHandler(
+        JSFunctionDefinition hideFunc = utils.getAsEventHandler(
                 context, component, "onhide", "; return true;");
-        getUtils().addToScriptHash(options, "onhide", hideFunc, null, ScriptHashVariableWrapper.DEFAULT); 
+        utils.addToScriptHash(options, "onhide", hideFunc); 
 
-        JSFunctionDefinition showFunc = getUtils().getAsEventHandler(
+        JSFunctionDefinition showFunc = utils.getAsEventHandler(
                 context, component, "onshow", "; return true;");
-        getUtils().addToScriptHash(options, "onshow", showFunc, null, ScriptHashVariableWrapper.DEFAULT); 
+        utils.addToScriptHash(options, "onshow", showFunc); 
         
-        getUtils().addToScriptHash(options, "disabled", toolTip.isDisabled(), "false", ScriptHashVariableWrapper.DEFAULT); 
-        getUtils().addToScriptHash(options, "direction", toolTip.getDirection(), "bottom-right", ScriptHashVariableWrapper.DEFAULT); 
-        getUtils().addToScriptHash(options, "followMouse", toolTip.isFollowMouse(), "false", ScriptHashVariableWrapper.DEFAULT); 
-        getUtils().addToScriptHash(options, "horizontalOffset", toolTip.getHorizontalOffset(), "10", ScriptHashVariableWrapper.DEFAULT); 
-        getUtils().addToScriptHash(options, "verticalOffset", toolTip.getVerticalOffset(), "10", ScriptHashVariableWrapper.DEFAULT); 
+        utils.addToScriptHash(options, "disabled", toolTip.isDisabled(), "false");
+        utils.addToScriptHash(options, "direction", toolTip.getDirection(), "bottom-right");
+        utils.addToScriptHash(options, "followMouse", toolTip.isFollowMouse(), "false");
+        utils.addToScriptHash(options, "horizontalOffset", toolTip.getHorizontalOffset(), "10");
+        utils.addToScriptHash(options, "verticalOffset", toolTip.getVerticalOffset(), "10");
 
         StringBuffer ret = new StringBuffer();
         ret.append("new ToolTip(").append(QUOT).append(toolTip.getClientId(context)).append(QUOT_COMMA)
