@@ -55,8 +55,7 @@
 			<name>onsubmit</name>
 			<classname>java.lang.String</classname>
 			<description>
-				JavaScript code for call before submission of ajax
-				event
+				The client-side script method to be called before an ajax request is submitted
 			</description>
 		</property>
 		<property>
