@@ -43,7 +43,7 @@
 		class="#{menuItemClass}"
 		style="#{menuItemStyle}"
 		onclick="Event.stop(event);"
-        onContextMenu="false;" >
+        onContextMenu="return false;" >
 		
 	<jsp:scriptlet><![CDATA[
 		} else {
