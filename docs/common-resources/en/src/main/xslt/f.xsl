@@ -103,6 +103,20 @@
 				<xsl:with-param name="tag_name" select="$tag_name" />
 				<xsl:with-param name="filePostfix" select="'.desc'"/>
 			</xsl:call-template>
+			
+			
+			<xsl:variable name="html-attributes">
+				,accesskey,accept,accept-charset,alt,border,charset,coords,dir,disabled,hreflang,lang,maxlength,readonly,rel,rev,rows,shape,size,style,tabindex,target,title,type,width, </xsl:variable>
+			
+			<xsl:variable name="dhtml-attributes">
+				,onblur,onchange,onclick,ondblclick,onfocus,onkeydown,onkeypress,onkeyup,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onreset,onsubmit, </xsl:variable>
+			
+			<xsl:variable name="jsf-attributes">
+			,id,binding,rendered,styleClass,value,valueChangeListener,converter,validator,required, </xsl:variable>
+			
+			<xsl:variable name="onselect-custom-attribute">
+				,menuItem,colorPicker,suggestionbox, </xsl:variable>
+			
 			<table>
 				<title>
 					<xsl:value-of select="$prefix" />
@@ -127,15 +141,48 @@
 									<xsl:value-of select="name"/>
 								</entry>
 								<entry>
-									<xsl:value-of select="javaee:description" disable-output-escaping="yes"/>
-									<xsl:value-of select="description" disable-output-escaping="yes"/>
+									<xsl:choose>
+										<xsl:when
+											test="contains($html-attributes, concat(',',javaee:name|name,','))"
+											>HTML: <xsl:value-of select="javaee:description"
+												disable-output-escaping="yes"/>
+											<xsl:value-of select="description"
+												disable-output-escaping="yes"/>
+										</xsl:when>
+										<xsl:when test="contains($dhtml-attributes, concat(',',javaee:name|name,','))">
+											DHTML: 
+											<xsl:value-of select="javaee:description"
+												disable-output-escaping="yes"/>
+											<xsl:value-of select="description"
+												disable-output-escaping="yes"/>
+										</xsl:when>
+										<xsl:when test="contains('onselect', javaee:name|name) and not(contains($onselect-custom-attribute, concat(',',$tag_name,',')))">
+											DHTML: 
+											<xsl:value-of select="javaee:description"
+												disable-output-escaping="yes"/>
+											<xsl:value-of select="description"
+												disable-output-escaping="yes"/>
+										</xsl:when>
+										<xsl:when 
+											test="contains($jsf-attributes, concat(',',javaee:name|name,','))"
+											> JSF: <xsl:value-of select="javaee:description"
+												disable-output-escaping="yes"/>
+											<xsl:value-of select="description"
+												disable-output-escaping="yes"/>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:value-of select="javaee:description"
+												disable-output-escaping="yes"/>
+											<xsl:value-of select="description"
+												disable-output-escaping="yes"/>
+										</xsl:otherwise>
+									</xsl:choose>
 								</entry>
 							</row>
 						</xsl:for-each>
 					</tbody>
 				</tgroup>
 			</table>
-
 
 			<!--xsl:if test="$prefix != 'a4j'">
 				<table>
