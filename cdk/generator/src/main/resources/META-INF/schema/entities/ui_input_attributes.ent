@@ -37,10 +37,7 @@
 		<name>requiredMessage</name>
 		<classname>java.lang.String</classname>
 		<description>
-			A ValueExpression enabled attribute that, if present,
-			will be used as the text of the validation message for
-			the &quot;required&quot; facility, if the &quot;required&quot; facility is
-			used
+		A ValueExpression enabled attribute which defines  text of validation message to show, if a required field is missing
 		</description>
 	</property>
 	<property>
