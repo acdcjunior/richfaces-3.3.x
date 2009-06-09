@@ -15,7 +15,7 @@
     <property>
         <name>ismap</name>
         <classname>boolean</classname>
-        <description>Flag indicating that this image is to be used as a server side image map. Such an image must be enclosed within a hyperlink ("a")</description>
+        <description>Flag indicating that this image is to be used as a server-side image map. Such an image must be enclosed within a hyperlink ("a")</description>
     </property>
     <property>
         <name>longdesc</name>
@@ -27,7 +27,7 @@
     <property>
         <name>usemap</name>
         <classname>java.lang.String</classname>
-        <description> The name of a client side image map (an HTML "map" element) for which this element provides the image</description>
+        <description> The name of a client-side image map (an HTML "map" element) for which this element provides the image</description>
     </property>
     <property>
         <name>width</name>
