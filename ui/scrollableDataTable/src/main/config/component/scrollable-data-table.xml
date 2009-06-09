@@ -204,7 +204,7 @@
 		<property>
 			<name>selectionMode</name>
 			<classname>org.richfaces.model.SelectionMode</classname>
-			<description>SelectionMode is an enumeration of the possible selection modes. Default value is &quot;multi&quot;</description>
+			<description>Defines selection behaviour, provides an enumeration of the possible selection modes. Default value is &quot;multi&quot;</description>
 			<defaultvalue>SelectionMode.multi</defaultvalue>
 		</property>		
 
