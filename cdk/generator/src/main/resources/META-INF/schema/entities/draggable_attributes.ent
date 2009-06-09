@@ -17,22 +17,22 @@
     <property >
         <name>ondragstart</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called when the dragging operation is started</description>
+        <description>The client-side script method to be called when the dragging operation is started</description>
     </property>
     <property>
         <name>ondragend</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called when the dragging operation is finished</description>
+        <description>The client-side script method to be called when the dragging operation is finished</description>
     </property>
     <property>
         <name>ondropover</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called when the draggable object is over the drop zone</description>
+        <description>The client-side script method to be called when the draggable object is over the drop zone</description>
     </property>
     <property>
         <name>ondropout</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called when the draggable object is moved away from the drop zone</description>
+        <description>The client-side script method to be called when the draggable object is moved away from the drop zone</description>
     </property>
 
 

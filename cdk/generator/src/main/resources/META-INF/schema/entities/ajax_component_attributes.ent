@@ -70,12 +70,12 @@ When the delay time is over, the request will be sent to the server or removed i
     <property >
         <name>oncomplete</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called after the request is completed</description>
+        <description>The client-side script method to be called after the request is completed</description>
     </property>
     <property>
         <name>onbeforedomupdate</name>
         <classname>java.lang.String</classname>
-        <description>The client side script method to be called before DOM is updated</description>
+        <description>The client-side script method to be called before DOM is updated</description>
     </property>
     <property >
         <name>focus</name>
