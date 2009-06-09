@@ -275,6 +275,8 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                                                   </para>
                                         </listitem>
                               </itemizedlist>
+                    
+                    <para>From version 3.3.1 it becomes possible to switch selection mode with selectionMode attribute</para>
                    
                     <para>Information about sorting and filtering you can find in RichFaces Developer guide section about<link linkend="sort"
                                         >sorting</link>.</para>
