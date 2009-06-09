@@ -12,6 +12,8 @@ A4J.AJAX = {};
 
 A4J.AJAX.Stub = function() {};
 
+A4J.AJAX.isWebKit = navigator.userAgent.search(/( AppleWebKit\/)([^ ]+)/) != -1;
+
 /**
  * XMLHttp transport class - incapsulate most of client-specifiv functions for call server requests.
  */
@@ -391,6 +393,14 @@ A4J.AJAX.XMLHttpRequest.prototype = {
 			} else {
     // need to check for firstChild due to opera 8 bug with hasChildNodes
 				Sarissa.clearChildNodes(oldnode);
+    
+    			if (A4J.AJAX.isWebKit) {
+        			try {
+        				newnode.normalize();
+        			} catch (e) {
+        				LOG.error("Node normalization failed " + e.message);
+        			}
+    			}
     
     			var importednode = window.document.importNode(newnode, true);
 	    		//importednode.innerHTML = importednode.innerHTML; 
