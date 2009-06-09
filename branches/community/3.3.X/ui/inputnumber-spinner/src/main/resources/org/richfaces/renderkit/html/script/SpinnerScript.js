@@ -4,36 +4,45 @@ if (!window.Richfaces) window.Richfaces = {};
 Richfaces.Spinner = Class.create();
 Richfaces.Spinner.prototype = {
 
-	initialize: function( containers, options, data ,events, images) {
-		this.content	= $ (containers.edit);
-		this.controls	= $ (containers.buttons);
-		this.fie		= $ (containers.forIE);
-		this.ch			= options.chameleon;
+		//default values of options
+		cycled: true,
+		enableManualInput: true,
+		disabled: false,
+		required: false,
+		clientErrorMessage: null,
+		min:0,
+		max:100,
+		delta:1,
+		onup: null,
+		ondown: null,
+		onerr: null,
+
+		initialize: function(id, options) {
+		this.content	= $(id +"Edit");
+		var buttonsId = id +"Buttons";
+		this.controls	= $(buttonsId);
+		this.fie		= $(id +"For");
 		this.items		= new Array();
-		this.table		= $ (containers.buttons.substr(containers.buttons.indexOf("buttons")+7));
+		this.table		= $(buttonsId.substr(buttonsId.indexOf("buttons")+7));
 		if (RichFaces.navigatorType() == RichFaces.FF ||
 				RichFaces.navigatorType() == RichFaces.NETSCAPE) {
 			if (!this.fie)
 			this.table.style.display = "-moz-inline-box";
 		}
-		this.options	= options;
-		if (!options.disabled){
+		Object.extend(this, options);
+		if (!this.disabled){
 				this.buttonUp = null;
 				this.buttonDown = null;
 		}
 		
-		this.cycled		= options.cycled;
-		this.edited		= options.edited;
+		this.cycled		= this.cycled;
+		this.enableManualInput		= this.enableManualInput;
 		var edit = this._getDirectChildrenByTag(this.content,'INPUT')[0];
-		this.upClick	= new Function(events.onup + ";return true;").bindAsEventListener(edit);
-		this.downClick	= new Function(events.ondown + ";return true;").bindAsEventListener(edit);
-		this.error		= new Function("event","clientErrorMessage",events.onerr + ";return true;").bind(edit);
+		this.upClick	= new Function(this.onup + ";return true;").bindAsEventListener(edit);
+		this.downClick	= new Function(this.ondown + ";return true;").bindAsEventListener(edit);
+		this.error		= new Function("event","clientErrorMessage",this.onerr + ";return true;").bind(edit);
 
-		this.data		= data;
-		this.max		= null;
-		this.min		= null;
-		this.delta		= null;
-		this.required = options.required;
+		this.required = this.required;
 		this._attachBehaviors();
 		this._load();
 		
@@ -57,7 +66,7 @@ Richfaces.Spinner.prototype = {
 							this.controls.edit.value = this.max;
 						}
 					} else {
-						this.error(e,this.options.clientErrorMsg);
+						this.error(e,this.clientErrorMessage);
 						this.controls.fireEditEvent("error");
 						this.controls.edit.value = this.max;
 						return true;
@@ -80,7 +89,7 @@ Richfaces.Spinner.prototype = {
 							this.controls.edit.value = this.max;
 						}
 					} else {
-						this.error(e,this.options.clientErrorMsg);
+						this.error(e,this.clientErrorMessage);
 						this.controls.fireEditEvent("error");
 						this.controls.edit.value = this.min;
 						return true;
@@ -109,8 +118,8 @@ Richfaces.Spinner.prototype = {
 	},
 
 	_load: function(){
-		this.controls.edit.readOnly = this.edited ? "" : "readOnly";
-		if (this.options.disabled) {
+		this.controls.edit.readOnly = this.enableManualInput ? "" : "readOnly";
+		if (this.disabled) {
 			this.controls.edit.readOnly = "readOnly";
 			Element.setStyle(this.controls.edit, {color: "gray"});
 		} else {
@@ -118,26 +127,16 @@ Richfaces.Spinner.prototype = {
 		}
 	},
 
-	_attachBehaviors: function(){
-		this.max	= this.data.max;
-		this.min	= this.data.min;
-		this.delta	= this.data.delta;
-		
+	_attachBehaviors: function(){		
 		var tbody		= this._getDirectChildrenByTag(this.controls,'TBODY')[0];
 		var controls	= this._getDirectChildrenByTag(tbody,'TR');
 		var buttonUp	= this._getDirectChildrenByTag(controls[0],'TD')[0];
 		var buttonDown	= this._getDirectChildrenByTag(controls[1],'TD')[0];
 		var edit		= this._getDirectChildrenByTag(this.content,'INPUT')[0];
-		if (this.ch=="false"){
-			this.buttonUp = this._getDirectChildrenByTag(buttonUp,'INPUT')[0];
-			this.buttonDown = this._getDirectChildrenByTag(buttonDown,'INPUT')[0];
-			var upImg		= null;
-			var downImg		= null;
-		} else {
-			var upImg		= this._getDirectChildrenByTag(buttonUp,'INPUT')[0];
-			var downImg		= this._getDirectChildrenByTag(buttonDown,'INPUT')[0];
-
-		}
+		this.buttonUp = this._getDirectChildrenByTag(buttonUp,'INPUT')[0];
+		this.buttonDown = this._getDirectChildrenByTag(buttonDown,'INPUT')[0];
+		var upImg		= null;
+		var downImg		= null;
 		this.controls 	= new Richfaces.Spinner.Controls( this, {button:buttonUp,img:upImg}, {button:buttonDown,img:downImg}, edit );
 	}, 
 
@@ -181,7 +180,7 @@ Richfaces.Spinner.Controls.prototype = {
 		this.edit.value = this.prevEditValue;
 		this.previousMU = window.document.onmouseup;
 		this.previousMM = window.document.onmousemove;
-		if (!spinner.options.disabled){
+		if (!spinner.disabled){
 			this._attachBehaviors();
 			this.edit.style.color = this.originalColor;
 		} else {
