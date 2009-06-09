@@ -2,7 +2,7 @@
 <section id="imageView">
 	<title>Image View</title>
 	<para>
-		Image View in the Photo Album application is a page where only one image is displayed. In this view you can also browse the current album with the image scroller and well as to switch to <property>slide show</property> mode. 
+		Image View in the Photo Album application is a page where only one image is displayed. In this view you can also browse the current album with the image scroller as well as to switch to slideshow mode. 
 	</para>
 	
 	<figure>
