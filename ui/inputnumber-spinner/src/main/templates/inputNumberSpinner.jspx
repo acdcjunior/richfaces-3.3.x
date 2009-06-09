@@ -119,39 +119,22 @@
 						</tr>
 					</tbody>
 				</table>
+				<c:scriptObject var="options">
+					<c:scriptOption attributes="cycled, enableManualInput" defaultValue="true"/>
+					<c:scriptOption attributes="disabled, required, clientErrorMessage" />
+					<c:scriptOption name="min" value="#{component.attributes['minValue']}" defaultValue="0" />
+					<c:scriptOption name="max" value="#{component.attributes['maxValue']}" defaultValue="100" />
+					<c:scriptOption name="delta" value="#{component.attributes['step']}" defaultValue="1" />
+					<c:scriptOption name="onup"  value="#{component.attributes['onupclick']}" />
+					<c:scriptOption name="ondown"  value="#{component.attributes['ondownclick']}" />
+					<c:scriptOption name="onerr"  value="#{component.attributes['onerror']}" />
+				</c:scriptObject>
 				<script type="text/javascript">
 					new Richfaces.Spinner(
-					{
-						edit:"#{clientId}Edit",
-						buttons:"#{clientId}Buttons",
-						forIE:"#{clientId}For"
-					},
-					{
-						cycled:#{component.attributes['cycled']},
-						edited:#{component.attributes['enableManualInput']},
-						disabled:#{component.attributes['disabled']},
-						chameleon:false,
-						required:	#{component.attributes['required']},
-						clientErrorMsg: "#{component.attributes['clientErrorMessage']}"
-					},				
-					{
-						min:#{component.attributes['minValue']},
-						max:#{component.attributes['maxValue']},
-						delta:#{component.attributes['step']}
-					},
-					{
-						onup:"#{component.attributes['onupclick']}",
-						ondown:"#{component.attributes['ondownclick']}",
-						onerr:"#{component.attributes['onerror']}"
-					},
-					{
-						up:"#{upButton}",
-						down:"#{downButton}",
-						upP:"#{upButtonPressed}",
-						downP:"#{downButtonPressed}",
-						upH:"#{upButtonHovered}",
-						downH:"#{downButtonHovered}"
-					}
+					"#{clientId}"
+					<c:if test="#{not empty options}">
+					, <f:writeAsScript value="#{options}" />
+					</c:if> 
 					);
 				</script>
 			</td>
