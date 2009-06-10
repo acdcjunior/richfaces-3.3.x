@@ -50,14 +50,14 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:panelBar>
-        <rich:panelBarItem label="Canon">
-            ...
-        </rich:panelBarItem>
+<rich:panelBar>
+		<rich:panelBarItem label="Canon">
+    			...
+		</rich:panelBarItem>
         <rich:panelBarItem label="Nikon">
-            ...
+        		...
         </rich:panelBarItem>
-    </rich:panelBar>
+</rich:panelBar>
 ...
 ]]></programlisting>
   </section>
@@ -84,14 +84,14 @@ HtmlPanelBarItem myBarItem = new HtmlPanelBarItem();
     <emphasis role="bold">Example:</emphasis>
       </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:panelBarItem...>
-        <f:facet name="label">  
-            <h:graphicImage value="/images/img1.png"/>
-        </f:facet>
-        ...
-        <!--Any Content inside-->
-        ...
-    </rich:panelBarItem>
+<rich:panelBarItem...>
+		<f:facet name="label">  
+       			<h:graphicImage value="/images/img1.png"/>
+       	</f:facet>
+       	...
+       <!--Any Content inside-->
+      	...
+</rich:panelBarItem>
 ...
 ]]></programlisting>
     <para>As it was mentioned <link linkend="panelBarItem">above</link>,

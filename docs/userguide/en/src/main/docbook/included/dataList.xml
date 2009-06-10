@@ -52,9 +52,9 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataList var="car" value="#{dataTableScrollerBean.allCars}" >
-        <h:outputText value="#{car.model}"/>
-    </rich:dataList>
+<rich:dataList var="car" value="#{dataTableScrollerBean.allCars}" >
+		<h:outputText value="#{car.model}"/>
+</rich:dataList>
 ...
 ]]></programlisting>
   </section>
@@ -89,14 +89,14 @@ HtmlDataList myList = new HtmlDataList();
     <para>Here is an example:</para>
 
     <programlisting role="XML"><![CDATA[...
-    <h:form>
-        <rich:dataList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" type="disc" title="Car Store">
-            <h:outputText value="#{car.make} #{car.model}"/><br/>
-            <h:outputText value="Price:" styleClass="label"></h:outputText>
-            <h:outputText value="#{car.price} "/><br/>
-            <h:outputText value="Mileage:" styleClass="label"></h:outputText>
-            <h:outputText value="#{car.mileage} "/><br/>
-        </rich:dataList>
+<h:form>
+		<rich:dataList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" type="disc" title="Car Store">
+       			<h:outputText value="#{car.make} #{car.model}"/><br/>
+            	<h:outputText value="Price:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.price} "/><br/>
+            	<h:outputText value="Mileage:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.mileage} "/><br/>
+		</rich:dataList>
 </h:form>
 ...
 ]]></programlisting>
@@ -150,12 +150,12 @@ HtmlDataList myList = new HtmlDataList();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+<rich:dataList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
                         binding="#{listBean.dataList}" id="list" rows="5" type="disc">
-        ...
-    </rich:dataList>
+		...
+</rich:dataList>
 ...
-    <a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/>
+<a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/>
 ...
 ]]></programlisting>
 

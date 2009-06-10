@@ -51,15 +51,15 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...	
-    <rich:dragIndicator  id="indicator">
-        <f:facet name="single">
-            <f:verbatim>
-                <b>Single item</b> {DragInfo}
-            </f:verbatim>
-        </f:facet>
-    </rich:dragIndicator>
-    ...
-    <rich:dragSupport dragType="text" dragIndicator="indicator">
+<rich:dragIndicator  id="indicator">
+		<f:facet name="single">
+       			<f:verbatim>
+               		<b>Single item</b> {DragInfo}
+            	</f:verbatim>
+       	</f:facet>
+</rich:dragIndicator>
+...
+<rich:dragSupport dragType="text" dragIndicator="indicator"/>
 ...
 ]]></programlisting>
   </section>
@@ -131,18 +131,18 @@ HtmlDragIndicator myDragIndicator = new HtmlDragIndicator();
       </itemizedlist>
       <para> For instance, this:</para>
       <programlisting role="XML"><![CDATA[...	
-    <rich:dropSupport...>
-        <rich:dndParam name="testDrop">
-            <h:graphicImage value="/images/file-manager.png" />
-        </rich:dndParam>
-    </rich:dropSupport>
+<rich:dropSupport...>
+		<rich:dndParam name="testDrop">
+       			<h:graphicImage value="/images/file-manager.png" />
+       	</rich:dndParam>
+</rich:dropSupport>
 ...
 ]]></programlisting>
       <para>Is placed into indicator as follows:</para>
       <programlisting role="XML"><![CDATA[...	
-    <f:facet name="single">
-        {testDrop}
-    </f:facet>
+<f:facet name="single">
+		{testDrop}
+</f:facet>
 ...
 ]]></programlisting>
     </section>

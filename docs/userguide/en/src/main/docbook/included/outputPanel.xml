@@ -47,10 +47,10 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[<a4j:outputPanel>
-	<h:form>
-    	<h:outputText value="Some text"/>
-        	<h:inputText id="text1" label="text1" value="#{rsBean.text1}"/>
-    </h:form>
+	 <h:form>
+		  <h:outputText value="Some text"/>
+       	  <h:inputText id="text1" label="text1" value="#{rsBean.text1}"/>
+     </h:form>
 </a4j:outputPanel>]]></programlisting>
 	</section>
 	<section>

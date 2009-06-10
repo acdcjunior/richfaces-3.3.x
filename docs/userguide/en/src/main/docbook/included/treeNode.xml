@@ -50,11 +50,11 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:tree ... faceNode="simpleNode">
-        <rich:treeNode type="simpleNode">
-            <!--Tree node data displaying template-->
-        </rich:treeNode>
-    </rich:tree>
+<rich:tree ... faceNode="simpleNode">
+		<rich:treeNode type="simpleNode">
+       			<!--Tree node data displaying template-->
+       	</rich:treeNode>
+</rich:tree>
 ...
 ]]></programlisting>
   </section>
@@ -85,24 +85,24 @@ HtmlTreeNode myPanel = new HtmlTreeNode();
       facets contents are used as icons. The width of a rendered facet area is 16px. </para>
 	  
     <programlisting role="XML"><![CDATA[...
-    <rich:tree ...>
-        ...
-        <rich:treeNode ...>
-            <f:facet name="icon">
-                <outputText value="A"/>
-            </f:facet>
-            <f:facet name="iconCollapsed">
-                <outputText value="B"/>
-            </f:facet>		
-            <f:facet name="iconExpanded">
-                <outputText value="C"/>
-            </f:facet>
-            <f:facet name="iconLeaf">
-                <outputText value="D"/>
-            </f:facet>
-        </rich:treeNode>
-        ...
-    </rich:tree>
+<rich:tree ...>
+		...
+       	<rich:treeNode ...>
+       			<f:facet name="icon">
+               		<outputText value="A"/>
+            	</f:facet>
+            	<f:facet name="iconCollapsed">
+               		<outputText value="B"/>
+            	</f:facet>		
+            	<f:facet name="iconExpanded">
+               		<outputText value="C"/>
+            	</f:facet>
+            	<f:facet name="iconLeaf">
+               		<outputText value="D"/>
+            	</f:facet>
+		</rich:treeNode>
+       	...
+</rich:tree>
 ...
 ]]></programlisting>
     <para>As it has been mentioned <link linkend="treeNode">above</link>, <emphasis role="bold"><property>&lt;rich:treeNode&gt;</property></emphasis>  defines a template for nodes
@@ -112,12 +112,12 @@ HtmlTreeNode myPanel = new HtmlTreeNode();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:tree ... faceNode="simpleNode" ... value="#{bean.data}" var="data">
-        <rich:treeNode type="simpleNode">
-            <h:outputText value="context-param:"/>
-            <h:inputText value="#{data.name}"/>
-        </rich:treeNode>
-    </rich:tree >
+<rich:tree ... faceNode="simpleNode" ... value="#{bean.data}" var="data">
+		<rich:treeNode type="simpleNode">
+       			<h:outputText value="context-param:"/>
+      			<h:inputText value="#{data.name}"/>
+     	</rich:treeNode>
+</rich:tree>
 ...
 ]]></programlisting>
     <figure>

@@ -43,7 +43,7 @@
  </para>
 
 	<programlisting role="XML"><![CDATA[...
-	<rich:changeExpandListener type="demo.Bean"/>
+<rich:changeExpandListener type="demo.Bean"/>
 ...
 ]]></programlisting> 
   </section>
@@ -99,11 +99,11 @@ Attribute <emphasis><property>&quot;type&quot;</property></emphasis> defines the
     <programlisting role="JAVA"><![CDATA[package demo;
 import org.richfaces.event.NodeExpandedEvent;
 public class ListenerBean implements org.richfaces.event.NodeExpandedListener{
-...	
+    ...	
 	public void processExpansion(NodeExpandedEvent arg0){
 		//Custom Developer Code 
 	}
-...
+    ...
 }
 ...]]></programlisting> 
   </section>  

@@ -54,7 +54,7 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:inputNumberSpinner minValue="0" maxValue="100" step="1"/>	
+<rich:inputNumberSpinner minValue="0" maxValue="100" step="1"/>	
 ...
 ]]></programlisting>
           </section>
@@ -91,7 +91,7 @@ HtmlInputNumberSpinner mySpinner = new HtmlInputNumberSpinner ();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:inputNumberSpinner minValue="1" maxValue="100"/>
+<rich:inputNumberSpinner minValue="1" maxValue="100"/>
 ...
 ]]></programlisting>
                     <para>It generates on a page:</para>

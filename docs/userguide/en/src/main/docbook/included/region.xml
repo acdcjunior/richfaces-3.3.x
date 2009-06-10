@@ -103,9 +103,9 @@ HtmlAjaxRegion newRegion = new HtmlAjaxRegion();
        ...
       <a4j:region>
             <a4j:commandLink value="Link 1" id="link1"/>
-                  <a4j:region>
-                        <a4j:commandLink value="Link 2" id="link2"/>
-                  </a4j:region >
+            <a4j:region>
+                 <a4j:commandLink value="Link 2" id="link2"/>
+            </a4j:region >
       </a4j:region>
       ...
 <h:form>]]></programlisting>
@@ -150,7 +150,7 @@ HtmlAjaxRegion newRegion = new HtmlAjaxRegion();
     </para>
     <programlisting role="XML"><![CDATA[<a4j:region selfRendered ="true">
       <a4j:commandLink value="Link" id="link"/>
-            <!--Some HTML content-->
+      <!--Some HTML content-->
 </a4j:region>]]></programlisting>
     <para>In this case the processing is quicker and going on without referring to the page code. 
           The HTML code is not saved in a component tree and could be lost. 

@@ -50,9 +50,9 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:toolBar>
-        <!--//...Set of action or other JSF components-->
-    </rich:toolBar>
+<rich:toolBar>
+		<!--Set of action or other JSF components-->
+</rich:toolBar>
 ...
 ]]></programlisting>
   </section>

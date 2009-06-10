@@ -50,7 +50,7 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:spacer/>
+<rich:spacer/>
 ...]]></programlisting>
   </section>
   <section>

@@ -48,13 +48,13 @@
             <emphasis role="bold">Example:</emphasis>
         </para>
         <programlisting role="XML"><![CDATA[...
-    <rich:dropDownMenu value="Active">
+<rich:dropDownMenu value="Active">
+		...
+		<rich:menuGroup value="Active">
+       			<!--Nested menu components-->
+       	</rich:menuGroup>
         ...
-        <rich:menuGroup value="Active">
-            <!--Nested menu components-->
-        </rich:menuGroup>
-        ...
-    </rich:dropDownMenu >
+</rich:dropDownMenu >
 ...
 ]]></programlisting>
     </section>
@@ -94,9 +94,9 @@ HtmlMenuGroup myMenuGroup = new HtmlMenuGroup();
             This could be used for an item check box implementation. </para>
         <para> Here is an example: </para>
         <programlisting role="XML"><![CDATA[...
-    <f:facet name="icon">
-        <h:selectBooleanCheckbox value="#{bean.property}"/>
-    </f:facet>
+<f:facet name="icon">
+		<h:selectBooleanCheckbox value="#{bean.property}"/>
+</f:facet>
 ...
 ]]></programlisting>
         <para> The <emphasis>
@@ -140,10 +140,10 @@ HtmlMenuGroup myMenuGroup = new HtmlMenuGroup();
             </emphasis> attribute is set to &quot;auto&quot;. </para>
         <para> Here is an example: </para>
         <programlisting role="XML"><![CDATA[...
-        <rich:menuGroup value="Save As..." direction="left-down">
-                <rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/>
-                <rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/>
-        </rich:menuGroup>
+<rich:menuGroup value="Save As..." direction="left-down">
+		<rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/>
+      	<rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/>
+</rich:menuGroup>
 ...
 ]]></programlisting>
         <para> This would be the result: </para>

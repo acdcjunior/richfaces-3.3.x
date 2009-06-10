@@ -415,7 +415,7 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                     <programlisting role="XML"><![CDATA[...
 <h:form>
     <rich:tree style="width:300px" value="#{library.data}" var="item" nodeFace="#{item.type}">
-    ...
+    	 ...
         <rich:treeNode type="album" iconLeaf="/images/tree/album.gif" icon="/images/tree/album.gif"
                       rendered="#{item.exist}">
             <h:outputText value="#{item.name}" />
@@ -424,7 +424,7 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                       rendered="#{not item.exist}">
             <h:outputText value="#{item.name}" />
         </rich:treeNode>
-    ...
+    	 ...
     </rich:tree>
 </h:form>
 ...]]></programlisting>

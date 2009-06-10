@@ -70,10 +70,10 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <h:panelGrid id="drag1">
-        <rich:dragSupport dragType="item"/>
-            <!--Some content to be dragged-->
-    </h:panelGrid>
+<h:panelGrid id="drag1">
+		<rich:dragSupport dragType="item"/>
+       	<!--Some content to be dragged-->
+</h:panelGrid>
 ...
 ]]></programlisting>
 	</section>
@@ -115,12 +115,12 @@ HtmlDragSupport myDragZone = new HtmlDragSupport();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <h:column>
-        <rich:dragSupport dragIndicator=":form:iii" dragType="text">
-            <a4j:actionparam value="#{caps.name}" name="name"/>
-        </rich:dragSupport>
-        <h:outputText value="#{caps.name}"/> 
-    </h:column>
+<h:column>
+		<rich:dragSupport dragIndicator=":form:iii" dragType="text">
+       			<a4j:actionparam value="#{caps.name}" name="name"/>
+       	</rich:dragSupport>
+       	<h:outputText value="#{caps.name}"/> 
+</h:column>
 ...
 ]]></programlisting>
 
@@ -137,14 +137,14 @@ HtmlDragSupport myDragZone = new HtmlDragSupport();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <h:column>
-        <a4j:outputPanel>
-            <rich:dragSupport dragIndicator=":form:iii" dragType="text">
-                <a4j:actionparam value="#{caps.name}" name="name"/>
-            </rich:dragSupport>
-            <h:outputText value="#{caps.name}"/> 
-        </a4j:outputPanel>
-    </h:column>
+<h:column>
+		<a4j:outputPanel>
+		       	<rich:dragSupport dragIndicator=":form:iii" dragType="text">
+		       			<a4j:actionparam value="#{caps.name}" name="name"/>
+		       	</rich:dragSupport>
+		       	<h:outputText value="#{caps.name}"/> 
+      	</a4j:outputPanel>
+</h:column>
 ...
 ]]></programlisting>
 
@@ -168,20 +168,20 @@ HtmlDragSupport myDragZone = new HtmlDragSupport();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <h:panelGrid id="drag1">
-        <rich:dragSupport dragType="singleItems" .../>
-        <!--Some content to be dragged-->
-    </h:panelGrid>		
+<h:panelGrid id="drag1">
+		<rich:dragSupport dragType="singleItems" .../>
+       	<!--Some content to be dragged-->
+</h:panelGrid>		
 ...
-    <h:panelGrid id="drag2">
-        <rich:dragSupport dragType="groups" .../>
-        <!--Some content to be dragged-->
-    </h:panelGrid>		
+<h:panelGrid id="drag2">
+		<rich:dragSupport dragType="groups" .../>
+       	<!--Some content to be dragged-->
+</h:panelGrid>		
 ...
-    <h:panelGrid id="drop1">
-        <rich:dropSupport acceptedTypes="singleItems" .../>
-        <!--Drop zone content-->
-    </h:panelGrid>
+<h:panelGrid id="drop1">
+		<rich:dropSupport acceptedTypes="singleItems" .../>
+       	<!--Drop zone content-->
+</h:panelGrid>
 ...
 ]]></programlisting>
 

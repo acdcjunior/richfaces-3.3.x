@@ -221,14 +221,14 @@ theme_advanced_toolbar_align="left"
                               <para>Your Java file should look like this.</para>
                               
                               <programlisting role="JAVA"><![CDATA[...
-	String configuration;
-	if(some condition){//defines some condition
-                              configuration = "configurationAdvanced"; //the name on the file with advanced properties	
-	}
-	else{
-	     configuration= "configurationSimple"; //the name on the file with simplified properties	
-		
-	}
+String configuration;
+
+if(some condition){//defines some condition
+		configuration = "configurationAdvanced"; //the name on the file with advanced properties	
+}
+else{
+	   	configuration= "configurationSimple"; //the name on the file with simplified properties	
+}
 ...]]></programlisting>            
                               
                     

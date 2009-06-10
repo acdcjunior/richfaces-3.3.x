@@ -112,11 +112,11 @@ ImplBean myListener = new ImplBean();
 import org.ajax4jsf.event.AjaxEvent;
 
 public class Bean implements org.ajax4jsf.event.AjaxListener{
-...	
-	public void processAjax(AjaxEvent arg){
-		//Custom Developer Code 
-	}
-...
+     ...	
+     public void processAjax(AjaxEvent arg){
+          //Custom Developer Code 
+     }
+     ...
 }]]></programlisting> 
   </section>  
 

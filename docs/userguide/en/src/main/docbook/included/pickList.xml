@@ -112,8 +112,8 @@ HtmlPickList myPickList = new HtmlPickList();
               <emphasis role="bold">Example:</emphasis>
         </para>
         <programlisting role="XML"><![CDATA[...
-<rich:pickList copyAllControlLabel = "#{pickBean.copyAllLabel}" copyControlLabel = "#{pickBean.copyLabel}" removeControlLabel = "#{pickBean.removeLabel}" 
-removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues}">
+<rich:pickList copyAllControlLabel = "#{pickBean.copyAllLabel}" copyControlLabel = "#{pickBean.copyLabel}" 
+					removeControlLabel = "#{pickBean.removeLabel}" removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues}">
         <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
         <f:selectItem itemValue="Audi" itemLabel="Audi"/>
         <f:selectItems value="#{pickBean.sourceList}"/>
@@ -159,9 +159,9 @@ removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues
     <f:facet name="removeAllControl">
         <h:commandButton value="#{pickBean.removeAllLabel}" />
     </f:facet>
-        <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
-        <f:selectItem itemValue="Audi" itemLabel="Audi"/>
-        <f:selectItems value="#{pickBean.sourceList}"/>
+    <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
+    <f:selectItem itemValue="Audi" itemLabel="Audi"/>
+    <f:selectItems value="#{pickBean.sourceList}"/>
 </rich:pickList>
 ...]]></programlisting>
         <para>

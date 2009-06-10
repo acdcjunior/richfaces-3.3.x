@@ -398,7 +398,6 @@ HtmltoolTip mytoolTip = new  HtmltoolTip();
 .rich-tool-tip{
     background-color: #eef2f8;
     border-color: #7196c8;
-    
 }
 ...]]></programlisting>  
    

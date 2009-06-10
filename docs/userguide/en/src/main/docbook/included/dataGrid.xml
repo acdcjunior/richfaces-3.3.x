@@ -51,9 +51,9 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car">
-        <h:outputText value="#{car.model}"/>
-    </rich:dataGrid>
+<rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car">
+		<h:outputText value="#{car.model}"/>
+</rich:dataGrid>
 ...
 ]]></programlisting>
   </section>
@@ -100,29 +100,29 @@ HtmlDataGrid myList = new HtmlDataGrid();
     </para>
 
     <programlisting role="XML"><![CDATA[...
-    <rich:panel style="width:150px;height:200px;">
-        <h:form>
-              <rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" columns="2" elements="4" first="1">
-                  <f:facet name="header">
-                      <h:outputText value="Car Store"></h:outputText>
-                  </f:facet>
-                  <rich:panel>
-                      <f:facet name="header">
-                          <h:outputText value="#{car.make} #{car.model}"></h:outputText>
-                      </f:facet>
-                      <h:panelGrid columns="2">
-                           <h:outputText value="Price:" styleClass="label"></h:outputText>
-                           <h:outputText value="#{car.price}"/>
-                           <h:outputText value="Mileage:" styleClass="label"></h:outputText>
-                           <h:outputText value="#{car.mileage}"/>
-                      </h:panelGrid>
-                  </rich:panel>
-                  <f:facet name="footer">
-                      <rich:datascroller></rich:datascroller>
-                  </f:facet>
-              </rich:dataGrid>
-        </h:form>
-    </rich:panel>		
+<rich:panel style="width:150px;height:200px;">
+		<h:form>
+       			<rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" columns="2" elements="4" first="1">
+               		<f:facet name="header">
+                      		<h:outputText value="Car Store"></h:outputText>
+             			</f:facet>
+                  		<rich:panel>
+                      		<f:facet name="header">
+                          			<h:outputText value="#{car.make} #{car.model}"></h:outputText>
+                      		</f:facet>
+                      		<h:panelGrid columns="2">
+                           			<h:outputText value="Price:" styleClass="label"></h:outputText>
+                           			<h:outputText value="#{car.price}"/>
+                           			<h:outputText value="Mileage:" styleClass="label"></h:outputText>
+                           			<h:outputText value="#{car.mileage}"/>
+                      		</h:panelGrid>
+                  		</rich:panel>
+                  		<f:facet name="footer">
+                      		<rich:datascroller></rich:datascroller>
+                  		</f:facet>
+              	</rich:dataGrid>
+		</h:form>
+</rich:panel>		
 ...
 ]]></programlisting>
     <para>This is a result:</para>
@@ -147,14 +147,13 @@ HtmlDataGrid myList = new HtmlDataGrid();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+<rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
                         binding="#{listBean.dataGrid}" id="grid" elements="4" columns="2">
-        ...
-    </rich:dataGrid>
+		...
+</rich:dataGrid>
 ...
-    <a4j:commandButton action="#{listBean.action}" reRender="grid" value="Submit"/>
-...
-]]></programlisting>
+<a4j:commandButton action="#{listBean.action}" reRender="grid" value="Submit"/>
+...]]></programlisting>
 
     <para> In the example <emphasis>
         <property>&quot;reRender&quot;</property>

@@ -50,15 +50,15 @@
             <emphasis role="bold">Example:</emphasis>
         </para>
         <programlisting role="XML"><![CDATA[...
-    <rich:panelBar>
-        <!--//... -->
-        <rich:panelBarItem label="Canon">
-            ...
-        </rich:panelBarItem>
-        <rich:panelBarItem label="Nikon">
-            ...
-        </rich:panelBarItem>
-    </rich:panelBar>
+<rich:panelBar>
+		...
+		<rich:panelBarItem label="Canon">
+       			...
+       	</rich:panelBarItem>
+       	<rich:panelBarItem label="Nikon">
+       			...
+      	</rich:panelBarItem>
+</rich:panelBar>
 ...
 ]]></programlisting>
     </section>

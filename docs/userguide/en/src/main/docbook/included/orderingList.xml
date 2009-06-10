@@ -50,12 +50,12 @@
         </para>
         <programlisting role="XML"><![CDATA[...
 <rich:orderingList value="#{bean.list}" var="list">
-        <rich:column>
-            <f:facet name="header">
-	    <h:outputText value="Name" />
-            </f:facet>
-            <h:inputText value="#{list.name}" />
-        </rich:column>
+		<rich:column>
+       			<f:facet name="header">
+	    				<h:outputText value="Name" />
+            	</f:facet>
+            	<h:inputText value="#{list.name}" />
+       	</rich:column>
 <rich:orderingList>
 ...]]></programlisting>
     </section>
@@ -123,7 +123,7 @@ HtmlOrderingList myOrderingList = new HtmlOrderingList();
                     <f:facet name="header">
                             <h:outputText value="Cars" />
                     </f:facet>
-                            <h:outputText value="#{item}" />
+                    <h:outputText value="#{item}" />
                 </rich:column>
         </rich:orderingList>
         <rich:dataTable id="infoPanelID" value="#{bean.info}" var="info" rendered="true">

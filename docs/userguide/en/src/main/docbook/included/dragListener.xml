@@ -47,7 +47,7 @@
 		</para>
 
 		<programlisting role="XML"><![CDATA[...
-	<rich:dragListener type="demo.Bean"/>
+<rich:dragListener type="demo.Bean"/>
 ...
 ]]></programlisting>
 	</section>

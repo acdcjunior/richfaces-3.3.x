@@ -868,9 +868,8 @@ private String value = "";
     </para>
     <programlisting role="CSS"><![CDATA[...
 .rich-inplace-select-list-decoration{
-    background-color: #ecf4fe;
+    	background-color: #ecf4fe;
 }						
-	
 ...]]></programlisting>  
     
     <para>This is the result:</para>
@@ -897,7 +896,8 @@ private String value = "";
     <programlisting role="CSS"><![CDATA[...
 .myClass {
     background-color:#bed6f8;
-    font-style:italic;}
+    font-style:italic;
+}
 ...]]></programlisting>  
     <para>The <emphasis><property>&quot;viewClass&quot;</property></emphasis> attribute for <emphasis role="bold"
       ><property>&lt;rich:inplaceSelect&gt; </property></emphasis> is defined as it&apos;s shown in the example below:</para>

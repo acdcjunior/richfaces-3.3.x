@@ -47,14 +47,14 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-        <rich:columnGroup>
-                <rich:column>
-                        <h:outputText value="Column1"/>
-                </rich:column>
-                <rich:column>
-                        <h:outputText value="Column2"/>
-                </rich:column>
-        </rich:columnGroup>
+<rich:columnGroup>
+		<rich:column>
+       			<h:outputText value="Column1"/>
+		</rich:column>
+		<rich:column>
+				<h:outputText value="Column2"/>
+		</rich:column>
+</rich:columnGroup>
 ...
 ]]></programlisting>
   </section>
@@ -81,23 +81,23 @@ HtmlColumnGroup myRow = new HtmlColumnGroup();
       <emphasis role="bold">Example:</emphasis>
     </para>
      <programlisting role="XML"><![CDATA[...
-    <rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
-        <rich:column colspan="3">
-            <f:facet name="header">State Flag</f:facet>
-            <h:graphicImage value="#{cap.stateFlag}"/>
-        </rich:column>
-        <rich:columnGroup>
-            <rich:column> 
-                <h:outputText value="#{cap.state}"/>
-            </rich:column>
-            <rich:column >
-                <h:outputText value="#{cap.name}"/>
-            </rich:column>
-            <rich:column >
-                <h:outputText value="#{cap.timeZone}"/>
-            </rich:column>
-        </rich:columnGroup>	
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
+		<rich:column colspan="3">
+				<f:facet name="header">State Flag</f:facet>
+				<h:graphicImage value="#{cap.stateFlag}"/>
+		</rich:column>
+       <rich:columnGroup>
+       			<rich:column> 
+               		<h:outputText value="#{cap.state}"/>
+				</rich:column>
+               <rich:column >
+               		<h:outputText value="#{cap.name}"/>
+               </rich:column>
+               <rich:column >
+               		<h:outputText value="#{cap.timeZone}"/>
+               </rich:column>
+		</rich:columnGroup>	
+</rich:dataTable>
 ...
 ]]></programlisting>
 <para>And representation without a grouping:</para>
@@ -106,21 +106,21 @@ HtmlColumnGroup myRow = new HtmlColumnGroup();
       <emphasis role="bold">Example:</emphasis>
     </para>
 <programlisting role="XML"><![CDATA[...
-    <rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
-        <rich:column colspan="3">
-            <f:facet name="header">State Flag</f:facet>
-            <h:graphicImage value="#{cap.stateFlag}"/>
-        </rich:column>
-        <rich:column breakBefore="true">
-                <h:outputText value="#{cap.state}"/>
-        </rich:column>
-        <rich:column breakBefore="true">
-                <h:outputText value="#{cap.name}"/>
-        </rich:column>
-        <rich:column >
-                <h:outputText value="#{cap.timeZone}"/>
-        </rich:column>
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
+		<rich:column colspan="3">
+       			<f:facet name="header">State Flag</f:facet>
+            	<h:graphicImage value="#{cap.stateFlag}"/>
+		</rich:column>
+		<rich:column breakBefore="true">
+				<h:outputText value="#{cap.state}"/>
+		</rich:column>
+		<rich:column breakBefore="true">
+       			<h:outputText value="#{cap.name}"/>
+		</rich:column>
+		<rich:column >
+				<h:outputText value="#{cap.timeZone}"/>
+		</rich:column>
+</rich:dataTable>
 ....
 ]]></programlisting>
 <para>The result is:</para>
@@ -140,25 +140,25 @@ HtmlColumnGroup myRow = new HtmlColumnGroup();
       <emphasis role="bold">Example:</emphasis>
     </para>
      <programlisting role="XML"><![CDATA[...
-    <f:facet name="header">
-        <rich:columnGroup>
-            <rich:column rowspan="2">
-                <h:outputText value="State Flag"/>
-            </rich:column>
-            <rich:column colspan="3">
-                <h:outputText value="State Info"/>
-            </rich:column>
-            <rich:column breakBefore="true">
-                <h:outputText value="State Name"/>
-            </rich:column>
-            <rich:column>
-                <h:outputText value="State Capital"/>
-            </rich:column>
-            <rich:column>
-                <h:outputText value="Time Zone"/>
-            </rich:column>
-        </rich:columnGroup>
-    </f:facet>
+<f:facet name="header">
+		<rich:columnGroup>
+				<rich:column rowspan="2">
+               		<h:outputText value="State Flag"/>
+				</rich:column>
+				<rich:column colspan="3">
+		       			<h:outputText value="State Info"/>
+				</rich:column>
+		       	<rich:column breakBefore="true">
+						<h:outputText value="State Name"/>
+		       	</rich:column>
+		       	<rich:column>
+		       			<h:outputText value="State Capital"/>
+		       	</rich:column>
+		       	<rich:column>
+		       			<h:outputText value="Time Zone"/>
+		        </rich:column>
+		</rich:columnGroup>
+</f:facet>
 ...
 ]]></programlisting>
 <para>Generated on a page as:</para>

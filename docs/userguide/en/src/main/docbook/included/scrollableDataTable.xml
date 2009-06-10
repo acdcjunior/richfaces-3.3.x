@@ -49,9 +49,9 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:scrollableDataTable value="#{dataTableScrollerBean.allCars}" var="category">
-        <!--...//Set of columns and header/footer facets-->
-    </rich:scrollableDataTable>
+<rich:scrollableDataTable value="#{dataTableScrollerBean.allCars}" var="category">
+		<!--Set of columns and header/footer facets-->
+</rich:scrollableDataTable>
 ...
 ]]></programlisting>
           </section>
@@ -139,7 +139,7 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
 			<h:outputText value="State"/>
 		</f:facet>
 	</rich:column>		
-	<!--...//Set of columns and header/footer facets-->
+	<!--Set of columns and header/footer facets-->
 </rich:scrollableDataTable>
 ...
 ]]></programlisting>
@@ -164,52 +164,52 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-		<h:form>
-			<rich:spacer height="30" />
-			<rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="200px" 
-				width="300px" id="carList" rows="40" columnClasses="col"
-				value="#{dataTableScrollerBean.allCars}" var="category" sortMode="single"
-				selection="#{dataTableScrollerBean.selection}">
-				<rich:column id="make">
-					<f:facet name="header"><h:outputText styleClass="headerText" value="Make" /></f:facet>
-					<h:outputText value="#{category.make}" />
-				</rich:column>
-				<rich:column id="model">
-					<f:facet name="header"><h:outputText styleClass="headerText" value="Model" /></f:facet>
-					<h:outputText value="#{category.model}" />
-				</rich:column>
-				<rich:column id="price">
-					<f:facet name="header"><h:outputText styleClass="headerText" value="Price" /></f:facet>
-					<h:outputText value="#{category.price}" />
-				</rich:column>
+<h:form>
+		<rich:spacer height="30" />
+				<rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="200px" 
+						width="300px" id="carList" rows="40" columnClasses="col"
+						value="#{dataTableScrollerBean.allCars}" var="category" sortMode="single"
+						selection="#{dataTableScrollerBean.selection}">
+						<rich:column id="make">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Make" /></f:facet>
+								<h:outputText value="#{category.make}" />
+						</rich:column>
+						<rich:column id="model">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Model" /></f:facet>
+								<h:outputText value="#{category.model}" />
+						</rich:column>
+						<rich:column id="price">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Price" /></f:facet>
+								<h:outputText value="#{category.price}" />
+						</rich:column>
 				</rich:scrollableDataTable>
-			<rich:spacer height="20px"/>
-			<a4j:commandButton value="Show Current Selection" reRender="table" 
-				action="#{dataTableScrollerBean.takeSelection}" 
-				oncomplete="javascript:Richfaces.showModalPanel('panel');"/>
-		</h:form>
-		<rich:modalPanel id="panel" autosized="true">
-				<f:facet name="header">
-					<h:outputText value="Selected Rows"/>
-				</f:facet>
-				<f:facet name="controls">
-					<span style="cursor:pointer" onclick="javascript:Richfaces.hideModalPanel('panel')">X</span>
-				</f:facet>
-			<rich:dataTable value="#{dataTableScrollerBean.selectedCars}" var="sel" id="table">
+				<rich:spacer height="20px"/>
+				<a4j:commandButton value="Show Current Selection" reRender="table" 
+						action="#{dataTableScrollerBean.takeSelection}" 
+						oncomplete="javascript:Richfaces.showModalPanel('panel');"/>
+</h:form>
+<rich:modalPanel id="panel" autosized="true">
+		<f:facet name="header">
+				<h:outputText value="Selected Rows"/>
+		</f:facet>
+		<f:facet name="controls">
+				<span style="cursor:pointer" onclick="javascript:Richfaces.hideModalPanel('panel')">X</span>
+		</f:facet>
+		<rich:dataTable value="#{dataTableScrollerBean.selectedCars}" var="sel" id="table">
 				<rich:column>
-					<f:facet name="header"><h:outputText value="Make" /></f:facet>
-					<h:outputText value="#{sel.make}" />
+						<f:facet name="header"><h:outputText value="Make" /></f:facet>
+						<h:outputText value="#{sel.make}" />
 				</rich:column>
 				<rich:column id="model">
-					<f:facet name="header"><h:outputText value="Model" /></f:facet>
-					<h:outputText value="#{sel.model}" />
+						<f:facet name="header"><h:outputText value="Model" /></f:facet>
+				<h:outputText value="#{sel.model}" />
 				</rich:column>
 				<rich:column id="price">
-					<f:facet name="header"><h:outputText value="Price" /></f:facet>
-					<h:outputText value="#{sel.price}" />
+						<f:facet name="header"><h:outputText value="Price" /></f:facet>
+						<h:outputText value="#{sel.price}" />
 				</rich:column>
-				</rich:dataTable>
-		</rich:modalPanel>
+		</rich:dataTable>
+</rich:modalPanel>
 ...]]></programlisting>
                     <para>This is a result:</para>
                     <figure>

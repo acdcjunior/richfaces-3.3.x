@@ -102,16 +102,16 @@ HtmlgraphValidator mygraphValidator= new HtmlgraphValidator();
                     </emphasis> can be used:</para>
           <programlisting role="XML"><![CDATA[...
 <rich:graphValidator>
-       <h:panelGrid columns="3">
-              <h:outputText value="Name:" />
-              <h:inputText value="#{validationBean.name}" id="name">
-                     <f:validateLength minimum="2" />
-              </h:inputText>
-              <rich:message for="name" />
-              <h:outputText value="Email:" />
-              <h:inputText value="#{validationBean.email}" id="email" />
-              <rich:message for="email" />
-       </h:panelGrid>
+     <h:panelGrid columns="3">
+          <h:outputText value="Name:" />
+          <h:inputText value="#{validationBean.name}" id="name">
+               <f:validateLength minimum="2" />
+          </h:inputText>
+          <rich:message for="name" />
+          <h:outputText value="Email:" />
+          <h:inputText value="#{validationBean.email}" id="email" />
+          <rich:message for="email" />
+     </h:panelGrid>
 </rich:graphValidator>
 ...
 ]]></programlisting>
@@ -133,11 +133,11 @@ HtmlgraphValidator mygraphValidator= new HtmlgraphValidator();
 
           <programlisting role="XML"><![CDATA[...
 <rich:graphValidator summary="Invalid values: " value="#{dayStatistics}">
-          <a4j:repeat value="#{dayStatistics.dayPasstimes}" var="pt" id="table">
-                    <h:outputText value="#{pt.title}" />
-                    <rich:inputNumberSpinner minValue="0" maxValue="24" value="#{pt.time}" id="time" />
-                    <rich:message for="time" />
-          </a4j:repeat>
+     <a4j:repeat value="#{dayStatistics.dayPasstimes}" var="pt" id="table">
+          <h:outputText value="#{pt.title}" />
+          <rich:inputNumberSpinner minValue="0" maxValue="24" value="#{pt.time}" id="time" />
+          <rich:message for="time" />
+     </a4j:repeat>
 </rich:graphValidator>
 ...]]></programlisting>
 
