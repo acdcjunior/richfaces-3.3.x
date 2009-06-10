@@ -144,7 +144,7 @@ public class InputNumberSpinnerComponentTest extends AbstractAjax4JsfTestCase {
             HtmlInput child = (HtmlInput) iter.next();
             assertTrue(child.getTypeAttribute().equals("image"));
             assertTrue(child.getAttributeValue("class").contains(
-                    "rich-spinner-btn"));
+                    "rich-spinner-btn rich-spinner-button"));
         }
     }
 
