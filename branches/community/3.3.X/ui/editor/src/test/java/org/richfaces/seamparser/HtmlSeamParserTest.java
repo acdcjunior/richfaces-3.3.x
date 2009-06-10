@@ -7,6 +7,8 @@ import org.jboss.seam.text.SeamTextLexer;
 import org.jboss.seam.text.SeamTextParser;
 import org.richfaces.convert.seamtext.HtmlToSeamSAXParser;
 
+import com.gargoylesoftware.htmlunit.Assert;
+
 import java.io.StringReader;
 
 /**
@@ -245,7 +247,7 @@ public class HtmlSeamParserTest extends TestCase {
     }
     
     public void testSkipComment() throws Exception {
-        assertHtml2SeamConverting("<!-- Hello Cfif -->");
+        assertHtml2SeamConverting("<!-- Hello Alex -->");
     }
     
     public void testEmptyList() throws Exception {
@@ -348,6 +350,20 @@ public class HtmlSeamParserTest extends TestCase {
             "</ul>" ;
         
         assertHtml2SeamConverting(content);
+    }
+    
+    public void testRF7347() throws Exception {
+        final String content = "case '*': case '|': case '^' : case '+': " +
+                      		   "case '=': case '#': case '\\': case '~': " +
+                        	   "case '[': case ']': case '`' : case '_': ";        
+        final String result = assertHtml2SeamConverting(content);
+        assertTrue(result.contains(content));
+    }
+    
+    public void testRF7347_2() throws Exception {
+        final String content = "_*Hello ^World^*_ ";        
+        final String result = assertHtml2SeamConverting(content);
+        assertTrue(result.contains(content));
     }
     
     public void testUglyTextFromWord() throws Exception {
