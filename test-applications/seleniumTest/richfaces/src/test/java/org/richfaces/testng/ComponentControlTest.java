@@ -114,7 +114,6 @@ public class ComponentControlTest extends SeleniumTestBase {
 		renderPage(template);
         initIds(getParentId());
         
-        
         //check operations show and hide for modal panel working
         asserPanel(false);
         clickById(panelShowLinkId);
@@ -129,10 +128,8 @@ public class ComponentControlTest extends SeleniumTestBase {
         }
 	}
 	
-	@Test(groups=FAILURES_GROUP)
+	@Test
     public void testDisableDefaultAttribute(Template template) {
-        //Not working: https://jira.jboss.org/jira/browse/RF-5607 - waiting for fix
-		
 		renderPage(TEST_COMPONENT_CONTROL_WITH_DISABLE_DEFAULT, template, null);
         initIds(getParentId());        
         
@@ -140,13 +137,13 @@ public class ComponentControlTest extends SeleniumTestBase {
         
         //attach to in same naming container
         asserPanel(false);
-        clickCommandAndWait(panelShowLinkId);
+        clickById(panelShowLinkId);
         asserPanel(true);
         clickById(panelHideLinkId);
       
         //attach to in another naming container
         asserPanel(false);
-        clickCommandAndWait(panelSecondShowLinkId);
+        clickById(panelSecondShowLinkId);
         asserPanel(true);
         clickById(panelHideLinkId);
 	}
