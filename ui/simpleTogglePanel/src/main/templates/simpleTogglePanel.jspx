@@ -40,7 +40,7 @@ scripts/simpleTogglePanel.js
              onclick="#{this:getOnClick(context,component)}">
 					
 			<div class="rich-stglpanel-marker">
-            	<div id="#{clientId}_switch_on" style="display: #{this:getSwitchOnStatus(context, component)};" class="rich-stglpanel-marker-close">
+            	<div id="#{clientId}_switch_on" style="display: #{this:getSwitchOnStatus(context, component)};" class="rich-stglpnl-marker">
 	                <jsp:scriptlet><![CDATA[
 	                	if(component.getFacet("closeMarker")!=null && component.getFacet("closeMarker").isRendered()) {
 	               	 ]]></jsp:scriptlet>
@@ -52,7 +52,7 @@ scripts/simpleTogglePanel.js
 	                ]]></jsp:scriptlet>
 	            	</div>
 	            	<div id="#{clientId}_switch_off"
-	                 style="display: #{this:getSwitchOffStatus(context, component)};" class="rich-stglpanel-marker-open">
+	                 style="display: #{this:getSwitchOffStatus(context, component)};" class="rich-stglpnl-marker">
 	                <jsp:scriptlet><![CDATA[
 	                    if(component.getFacet("openMarker")!=null && component.getFacet("openMarker").isRendered()) {
 	                ]]></jsp:scriptlet>
