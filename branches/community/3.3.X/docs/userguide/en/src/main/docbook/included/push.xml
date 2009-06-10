@@ -90,11 +90,11 @@ class MyPushEventListener implements PushEventListener {
                     </para>
                     <programlisting role="JAVA"><![CDATA[...
 public void addListener(EventListener listener) {
-synchronized (listener) {
-                  if (this.listener != listener) {
-                            this.listener = (PushEventListener) listener;
-                  }
-          }
+		synchronized (listener) {
+        		if (this.listener != listener) {
+               		this.listener = (PushEventListener) listener;
+               }
+		}
 }
 ...]]></programlisting>
 
@@ -105,16 +105,16 @@ synchronized (listener) {
                     </para>
                     <programlisting role="XML"><![CDATA[...
 <a4j:status startText="in progress" stopText="done"/>
-     <a4j:form>
-          <a4j:region>
-                <a4j:push reRender="msg" eventProducer="#{pushBean.addListener}" interval="2000"/>
-          </a4j:region>
-          <a4j:outputPanel id="msg" >
-                    <h:outputText value="#{pushBean.date}">
-                         <f:convertDateTime type="time"/>
-                    </h:outputText>
-         </a4j:outputPanel>
-         <a4j:commandButton value="Push!!" action="#{pushBean.push}" ajaxSingle="true"/>
+<a4j:form>
+     <a4j:region>
+           <a4j:push reRender="msg" eventProducer="#{pushBean.addListener}" interval="2000"/>
+     </a4j:region>
+     <a4j:outputPanel id="msg">
+          <h:outputText value="#{pushBean.date}">
+               <f:convertDateTime type="time"/>
+          </h:outputText>
+     </a4j:outputPanel>
+     <a4j:commandButton value="Push!!" action="#{pushBean.push}" ajaxSingle="true"/>
 </a4j:form>
 ...]]></programlisting>
 

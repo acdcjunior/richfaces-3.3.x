@@ -182,19 +182,19 @@ HtmlListShuttle myListShuttle = new HtmlListShuttle();
         </para>
         <programlisting role="XML"><![CDATA[...
 <rich:listShuttle var="item" sourceValue="#{bean.source}" targetValue="#{bean.target}" converter="listShuttleconverter">
-...			         
-        <f:facet name="topControl">
-                <h:outputText value="Move to top" />
-        </f:facet>
-        <f:facet name="upControl">
-                <h:outputText value="Move up" />
-        </f:facet>
-        <f:facet name="downControl">
-                <h:outputText value="Move down" />
-        </f:facet>
-        <f:facet name="bottomControl">
-                <h:outputText value="Move to bottom" />
-        </f:facet>
+		...			         
+       	<f:facet name="topControl">
+       			<h:outputText value="Move to top" />
+       	</f:facet>
+       	<f:facet name="upControl">
+       			<h:outputText value="Move up" />
+       	</f:facet>
+       	<f:facet name="downControl">
+       			<h:outputText value="Move down" />
+       	</f:facet>
+       	<f:facet name="bottomControl">
+       			<h:outputText value="Move to bottom" />
+   		</f:facet>
 </rich:listShuttle>
 ...
 ]]></programlisting>

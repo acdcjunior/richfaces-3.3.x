@@ -58,10 +58,10 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dragSupport dragType="file">
-        <rich:dndParam name="testDrag" value="testDragValue" 
+<rich:dragSupport dragType="file">
+		<rich:dndParam name="testDrag" value="testDragValue" 
                         type="drag"/>
-    </rich:dragSupport>
+</rich:dragSupport>
 ...
 ]]></programlisting>
   </section>
@@ -106,12 +106,12 @@ HtmlDndParam myDparam = new HtmlDndParam();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dragSupport ...> 
-        <rich:dndParam type="drag" name="dragging"> 
-            <h:graphicImage value="/img/product1_small.png"/> 
-        </rich:dndParam> 
-        <h:graphicImage value="product1.png"/> 
-    </rich:dragSupport>
+<rich:dragSupport ... > 
+		<rich:dndParam type="drag" name="dragging"> 
+       			<h:graphicImage value="/img/product1_small.png"/> 
+       	</rich:dndParam> 
+       	<h:graphicImage value="product1.png"/> 
+</rich:dragSupport>
 ...
 ]]></programlisting>
 
@@ -132,10 +132,10 @@ HtmlDndParam myDparam = new HtmlDndParam();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dragSupport ...> 
-        <rich:dndParam type="drag" name="label" value="#{msg.subj}"/>
-        ...
-    </rich:dragSupport>
+<rich:dragSupport ... > 
+		<rich:dndParam type="drag" name="label" value="#{msg.subj}"/>
+       	...
+</rich:dragSupport>
 ...
 ]]></programlisting>
 
@@ -156,12 +156,12 @@ HtmlDndParam myDparam = new HtmlDndParam();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dropSupport ...> 
-        <rich:dndParam type="drop" name="comp" > 
-            <h:graphicImage height="16" width="16" value="/images/comp.png"/> 
-        </rich:dndParam>
+<rich:dropSupport ... > 
+		<rich:dndParam type="drop" name="comp" > 
+       			<h:graphicImage height="16" width="16" value="/images/comp.png"/> 
+       	</rich:dndParam>
         ...
-    </rich:dropSupport >
+</rich:dropSupport >
 ...
 ]]></programlisting>
 

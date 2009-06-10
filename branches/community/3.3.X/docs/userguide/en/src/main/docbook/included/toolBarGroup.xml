@@ -50,16 +50,16 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:toolBar>
-        ...
-        <rich:toolBarGroup>
-            <!--...Set of action or other JSF components-->
-        </rich:toolBarGroup>
-        <rich:toolBarGroup>
-            <!--...Set of action or other JSF components-->
-        </rich:toolBarGroup>
-        ...
-    </rich:toolBar>
+<rich:toolBar>
+		...
+       <rich:toolBarGroup>
+       			<!--Set of action or other JSF components-->
+       </rich:toolBarGroup>
+       <rich:toolBarGroup>
+       			<!--Set of action or other JSF components-->
+      	</rich:toolBarGroup>
+       	...
+</rich:toolBar>
 ...
 ]]></programlisting>
   </section>
@@ -95,16 +95,16 @@ HtmlToolBarGroup myToolBarGroup = new HtmlToolBarGroup();
 ><property>&quot;location&quot;</property></emphasis> attribute with &quot;left&quot; (DEFAULT) and &quot;right&quot; values.</para>
 	  <para><emphasis role="bold">Example:</emphasis></para>
     <programlisting role="XML"><![CDATA[...
-    <rich:toolBar itemSeparator="disc" width="500">
-        <rich:toolBarGroup itemSeparator="line">
-            <h:commandLink value="Command 1.1"/>
-            <h:commandLink value="Command 2.1"/>
-        </rich:toolBarGroup>
-        <rich:toolBarGroup itemSeparator="line" location="right">
-            <h:commandLink value="Command 1.2"/>
-            <h:commandLink value="Command 2.2"/>
-        </rich:toolBarGroup>
-    </rich:toolBar>
+<rich:toolBar itemSeparator="disc" width="500">
+		<rich:toolBarGroup itemSeparator="line">
+       			<h:commandLink value="Command 1.1"/>
+            	<h:commandLink value="Command 2.1"/>
+      	</rich:toolBarGroup>
+       	<rich:toolBarGroup itemSeparator="line" location="right">
+       			<h:commandLink value="Command 1.2"/>
+            	<h:commandLink value="Command 2.2"/>
+      	</rich:toolBarGroup>
+</rich:toolBar>
 ...
 ]]></programlisting>
 <para>The code result is the following:</para>

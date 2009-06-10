@@ -51,7 +51,7 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
- 	<rich:message for="id"/>
+<rich:message for="id"/>
 ...
 ]]></programlisting>
   </section>

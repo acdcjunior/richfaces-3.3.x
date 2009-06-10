@@ -49,10 +49,10 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataDefinitionList value="#{bean.capitals}" var="caps">
-        <f:facet name="term">Cars</f:facet>
-        <h:outputText value="#{car.model}"/>
-    </rich:dataDefinitionList>
+<rich:dataDefinitionList value="#{bean.capitals}" var="caps">
+		<f:facet name="term">Cars</f:facet>
+       	<h:outputText value="#{car.model}"/>
+</rich:dataDefinitionList>
 ...
 ]]></programlisting>
     </section>
@@ -84,17 +84,17 @@ HtmlDataDefinitionList myList = new HtmlDataDefinitionList();
   <para>Here is an example:</para>
   
   <programlisting role="XML"><![CDATA[...
-    <h:form>
-        <rich:dataDefinitionList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" first="4" title="Cars">
-            <f:facet name="term">
-                <h:outputText value="#{car.make} #{car.model}"></h:outputText>
-            </f:facet>
-            <h:outputText value="Price:" styleClass="label"></h:outputText>
-            <h:outputText value="#{car.price}" /><br/>
-            <h:outputText value="Mileage:" styleClass="label"></h:outputText>
-            <h:outputText value="#{car.mileage}" /><br/>
-        </rich:dataDefinitionList>
-    </h:form>
+<h:form>
+		<rich:dataDefinitionList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" first="4" title="Cars">
+       			<f:facet name="term">
+               		<h:outputText value="#{car.make} #{car.model}"></h:outputText>
+            	</f:facet>
+            	<h:outputText value="Price:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.price}" /><br/>
+            	<h:outputText value="Mileage:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.mileage}" /><br/>
+		</rich:dataDefinitionList>
+</h:form>
 ...
 ]]></programlisting>
   
@@ -134,12 +134,12 @@ HtmlDataDefinitionList myList = new HtmlDataDefinitionList();
     <emphasis role="bold">Example:</emphasis>
   </para>
   <programlisting role="XML"><![CDATA[...
-    <rich:dataDefinitionList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+<rich:dataDefinitionList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
                         binding="#{listBean.dataList}" id="list">
-        ...
-    </rich:dataDefinitionList>
+		...
+</rich:dataDefinitionList>
 ...
-    <a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/>
+<a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/>
 ...
 ]]></programlisting>
   

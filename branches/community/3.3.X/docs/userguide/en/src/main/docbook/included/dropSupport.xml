@@ -71,9 +71,9 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:panel>
-        <rich:dropSupport acceptedTypes="text"/>
-    </rich:panel>
+<rich:panel>
+		<rich:dropSupport acceptedTypes="text"/>
+</rich:panel>
 ...
 ]]></programlisting>
 	</section>
@@ -176,17 +176,17 @@ HtmlDropSupport myDragZone = new HtmlDropSupport();
 		</para>
 
 		<programlisting role="XML"><![CDATA[...
-    <rich:dataTable value="#{capitalsBean.capitals}" var="caps">
-        <f:facet name="caption">Capitals List</f:facet>
-        <h:column>
-        <a4j:outputPanel>
-            <rich:dragSupport dragIndicator=":form:ind" dragType="text">
-                <a4j:actionparam value="#{caps.name}" name="name"/>
-            </rich:dragSupport>
-            <h:outputText value="#{caps.name}"/> 
-        </a4j:outputPanel>
-        </h:column>
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals}" var="caps">
+		<f:facet name="caption">Capitals List</f:facet>
+       	<h:column>
+       			<a4j:outputPanel>
+            			<rich:dragSupport dragIndicator=":form:ind" dragType="text">
+                				<a4j:actionparam value="#{caps.name}" name="name"/>
+            			</rich:dragSupport>
+            			<h:outputText value="#{caps.name}"/> 
+        		</a4j:outputPanel>
+      	</h:column>
+</rich:dataTable>
 ...
 ]]></programlisting>
 
@@ -205,11 +205,11 @@ HtmlDropSupport myDragZone = new HtmlDropSupport();
 		</para>
 
 		<programlisting role="XML"><![CDATA[...
-    <rich:panel style="width:100px;height:100px;">
-        <f:facet name="header">Drop Zone</f:facet>
-        <rich:dropSupport acceptedTypes="text" reRender="box" 
+<rich:panel style="width:100px;height:100px;">
+		<f:facet name="header">Drop Zone</f:facet>
+       	<rich:dropSupport acceptedTypes="text" reRender="box" 
                         dropListener="#{capitalsBean.addCapital2}"/>
-    </rich:panel>
+</rich:panel>
 ...
 ]]></programlisting>
 
@@ -225,12 +225,12 @@ HtmlDropSupport myDragZone = new HtmlDropSupport();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:dataTable value="#{capitalsBean.capitals2}" var="cap2" id="box">
-        <f:facet name="caption">Capitals chosen</f:facet>
-        <h:column>
-            <h:outputText value="#{cap2.name}"/>
-        </h:column>
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals2}" var="cap2" id="box">
+		<f:facet name="caption">Capitals chosen</f:facet>
+       	<h:column>
+       			<h:outputText value="#{cap2.name}"/>
+       	</h:column>
+</rich:dataTable>
 ...]]></programlisting>
 
 		<para>
@@ -243,12 +243,12 @@ HtmlDropSupport myDragZone = new HtmlDropSupport();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="JAVA"><![CDATA[...
-    public void addCapital2(DropEvent event) {
+public void addCapital2(DropEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         Capital cap = new Capital();
         cap.setName(context.getExternalContext().getRequestParameterMap().get("name").toString());
         capitals2.add(cap);
-    }
+}
 ...
 ]]></programlisting>
 

@@ -67,11 +67,11 @@
                     <programlisting role="JAVA"><![CDATA[HtmlInputText inputText = new HtmlInputText();
 ...
 HtmlAjaxSupport ajaxSupport = new HtmlAjaxSupport();
-      ajaxSupport.setActionExpression(FacesContext.getCurrentInstance().getApplication().getExpressionFactory().createMethodExpression(
+ajaxSupport.setActionExpression(FacesContext.getCurrentInstance().getApplication().getExpressionFactory().createMethodExpression(
           FacesContext.getCurrentInstance().getELContext(), "#{bean.action}", String.class, new Class[] {}));
-      ajaxSupport.setEvent("onkeyup");
-      ajaxSupport.setReRender("output");
-      inputText.getFacets().put("a4jsupport", ajaxSupport);
+ajaxSupport.setEvent("onkeyup");
+ajaxSupport.setReRender("output");
+inputText.getFacets().put("a4jsupport", ajaxSupport);
 ]]></programlisting>
           </section>
           <section>
@@ -130,7 +130,7 @@ HtmlAjaxSupport ajaxSupport = new HtmlAjaxSupport();
 	<f:selectItem itemValue="First Item" itemLabel="First Item"/>
 	<f:selectItem itemValue=" Second Item" itemLabel="Second Item"/>
 	<f:selectItem itemValue=" Third Item" itemLabel="Third Item"/>
-		<a4j:support event="onblur" reRender="panel" onsubmit="if(!confirm('Are you sure to change the option ?')) {form.reset(); return false;}" oncomplete="alert('Value succesfully stored')"/>
+    <a4j:support event="onblur" reRender="panel" onsubmit="if(!confirm('Are you sure to change the option ?')) {form.reset(); return false;}" oncomplete="alert('Value succesfully stored')"/>
 </h:selectOneMenu>]]></programlisting>
                     <para>In example there is the condition checking (confirm) is used before
                               request sending and message printing after the request processing is

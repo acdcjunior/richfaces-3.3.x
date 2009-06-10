@@ -48,11 +48,11 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:dropDownMenu>
-        ...
-        <rich:menuItem value="Active"/>
-        ...
-    <rich:dropDownMenu>
+<rich:dropDownMenu>
+		...
+       <rich:menuItem value="Active"/>
+       	...
+<rich:dropDownMenu>
 ...
 ]]></programlisting>
           </section>
@@ -93,9 +93,9 @@ HtmlMenuItem myMenuItem = new HtmlMenuItem();
                               an icon. It could be used for an item check box implementation. </para>
                     <para> Here is an example: </para>
                     <programlisting role="XML"><![CDATA[...
-    <f:facet name="icon">
-        <h:selectBooleanCheckbox value="#{bean.property}"/>
-    </f:facet>
+<f:facet name="icon">
+		<h:selectBooleanCheckbox value="#{bean.property}"/>
+</f:facet>
 ...
 ]]></programlisting>
 
@@ -147,13 +147,13 @@ HtmlMenuItem myMenuItem = new HtmlMenuItem();
                               </emphasis>.</para>
                     <para> Here is an example: </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:dropDownMenu>
-        ...
-        <rich:menuItem submitMode="none">
-            <h:outputLink value="www.jboss.org"/>
-        </rich:menuItem>
-        ...
-    <rich:dropDownMenu>
+<rich:dropDownMenu>
+		...
+       <rich:menuItem submitMode="none">
+       			<h:outputLink value="www.jboss.org"/>
+       	</rich:menuItem>
+       	...
+<rich:dropDownMenu>
 ...
 ]]></programlisting>
                     <para> You can use the <emphasis>
@@ -161,9 +161,9 @@ HtmlMenuItem myMenuItem = new HtmlMenuItem();
                               </emphasis> attribute to set the item state. </para>
                     <para> Here is an example: </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:dropDownMenu>
-        <rich:menuItem value="Disable" disabled="true"/>
-    <rich:dropDownMenu>
+<rich:dropDownMenu>
+		<rich:menuItem value="Disable" disabled="true"/>
+<rich:dropDownMenu>
 ...
 ]]></programlisting>
                     <note>

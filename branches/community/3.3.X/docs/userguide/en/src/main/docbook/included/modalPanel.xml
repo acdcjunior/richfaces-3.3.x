@@ -73,7 +73,7 @@
     ...
     <!--Any Content inside-->
     ...
-<a onclick="Richfaces.hideModalPanel('modalPanelID');" href="#">Hide</a>
+	<a onclick="Richfaces.hideModalPanel('modalPanelID');" href="#">Hide</a>
 </rich:modalPanel>
 <a onclick="Richfaces.showModalPanel('modalPanelID');" href="#">Show</a>
 ...
@@ -366,17 +366,17 @@ HtmlModalPanel myPanel = new HtmlModalPanel();
                     </para>
 
                     <programlisting role="XML"><![CDATA[<a4j:form>
-	<rich:modalPanel>
+<rich:modalPanel>
 		<f:facet name="header">
-			<h:outputText value="Test" />
+				<h:outputText value="Test" />
 		</f:facet>
 		<f:facet name="controls">
-			<h:commandLink value="Close" style="cursor:pointer" onclick="Richfaces.hideModalPanel('mp')" />
+				<h:commandLink value="Close" style="cursor:pointer" onclick="Richfaces.hideModalPanel('mp')" />
 		</f:facet>
 		<h:form>
-			<h:commandButton value="Test" action="#{TESTCONTROLLER.test}" />
+				<h:commandButton value="Test" action="#{TESTCONTROLLER.test}" />
 		</h:form>
-	</rich:modalPanel>]]></programlisting>
+</rich:modalPanel>]]></programlisting>
 
 
 

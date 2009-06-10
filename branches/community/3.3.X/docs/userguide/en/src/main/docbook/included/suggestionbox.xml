@@ -50,12 +50,12 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <h:inputText value="#{bean.property}" id="suggest"/>
-    <rich:suggestionbox for="suggest" suggestionAction="#{bean.autocomplete}"  var="suggest">
-        <h:column>
-            <h:outputText value="#{suggest.text}"/>	
-        </h:column>
-    </rich:suggestionbox>
+<h:inputText value="#{bean.property}" id="suggest"/>
+<rich:suggestionbox for="suggest" suggestionAction="#{bean.autocomplete}"  var="suggest">
+		<h:column>
+				<h:outputText value="#{suggest.text}"/>	
+		</h:column>
+</rich:suggestionbox>
 ...
 ]]></programlisting>
                     <para>Here is the <code>bean.autocomplete</code> method that returns the
@@ -66,10 +66,10 @@
                     </para>
                     <programlisting role="JAVA"><![CDATA[public List autocomplete(Object event) {
     String pref = event.toString();
-    //collecting some data that begins with "pref" letters.
-        ...
-        return result;
-    }
+    //Collecting some data that begins with "pref" letters
+    ...
+    return result;
+}
 ]]></programlisting>
           </section>
           <section>
@@ -128,14 +128,14 @@ HtmlSuggestionBox myList = new HtmlSuggestionBox();
                               screenshot, could get any collection for an output and outputs it in a
                               ToolTip window the same as a custom dataTable (in several columns)</para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:suggestionbox for="test" suggestionAction="#{bean.autocomplete}" var="cit" fetchValue="#{cit.text}">
-        <h:column>
-            <h:outputText value="#{cit.label}"/>
-        </h:column>
-        <h:column>
-            <h:outputText value="#{cit.text}"/>
-        </h:column>
-    </rich:suggestionbox>
+<rich:suggestionbox for="test" suggestionAction="#{bean.autocomplete}" var="cit" fetchValue="#{cit.text}">
+		<h:column>
+       			<h:outputText value="#{cit.label}"/>
+       	</h:column>
+       	<h:column>
+       			<h:outputText value="#{cit.text}"/>
+       	</h:column>
+</rich:suggestionbox>
 ...
 ]]></programlisting>
                     <para>It looks on a page in the following way:</para>
@@ -160,11 +160,11 @@ HtmlSuggestionBox myList = new HtmlSuggestionBox();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:suggestionbox for="test" suggestionAction="#{bean.autocomplete}" var="cit" selfRendered="true" tokens=","> 
-        <h:column>
-            <h:outputText value="#{cit.text}"/>
-        </h:column>
-    </rich:suggestionbox>
+<rich:suggestionbox for="test" suggestionAction="#{bean.autocomplete}" var="cit" selfRendered="true" tokens=","> 
+		<h:column>
+       			<h:outputText value="#{cit.text}"/>
+       	</h:column>
+</rich:suggestionbox>
 ...
 ]]></programlisting>
                     <para>This example shows that when a city is chosen and a comma and first letter
@@ -209,11 +209,11 @@ HtmlSuggestionBox myList = new HtmlSuggestionBox();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:suggestionbox nothingLabel="Empty" for="test" suggestionAction="#{bean.autocomplete}" var="cit"> 
-        <h:column>
-            <h:outputText value="#{cit.text}"/>
-        </h:column>
-    </rich:suggestionbox>
+<rich:suggestionbox nothingLabel="Empty" for="test" suggestionAction="#{bean.autocomplete}" var="cit"> 
+		<h:column>
+       			<h:outputText value="#{cit.text}"/>
+       	</h:column>
+</rich:suggestionbox>
 ...
 ]]></programlisting>
                     <para>

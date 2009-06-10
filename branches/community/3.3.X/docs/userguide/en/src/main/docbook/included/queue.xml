@@ -176,7 +176,7 @@ HtmlQueue myQueue = new HtmlQueue();
             <emphasis role="bold"> Example: </emphasis>
         </para>
         <programlisting role="XML"><![CDATA[...
-<h:form  >
+<h:form>
 	<a4j:queue oncomplete="alert(request.queue.getSize())" requestDelay="1000" />
 	<h:inputText value="#{bean.a}">
 		<a4j:support event="onkeyup" />
@@ -186,7 +186,7 @@ HtmlQueue myQueue = new HtmlQueue();
 	</h:selectBooleanCheckbox>
 </h:form>
 ...]]></programlisting>
-        
+				        
         <para>In this example you can see how the number of requests waiting  in the queue change. You will get a message with the number of the requests in the queue.</para>
         
         <para>The <emphasis><property>&quot;onbeforedomupdate&quot;</property></emphasis> event handler called before

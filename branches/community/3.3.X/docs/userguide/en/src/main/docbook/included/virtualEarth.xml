@@ -54,7 +54,7 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:virtualEarth lat="..." lng="..."/>
+<rich:virtualEarth lat="..." lng="..."/>
 ...
 ]]></programlisting>
 	</section>
@@ -144,7 +144,7 @@ HtmlVirtualEarth myMap = new HtmlVirtualEarth();
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:virtualEarth  style="width:800px;" id="vm" lat="48.833" lng="2.40" 
+<rich:virtualEarth  style="width:800px;" id="vm" lat="48.833" lng="2.40" 
                                      dashboardSize="Normal"  zoom="11" mapStyle="Hybrid" var="map" />
 ...
 ]]></programlisting>
@@ -273,14 +273,11 @@ HtmlVirtualEarth myMap = new HtmlVirtualEarth();
 				Here
 			</ulink>
 			you can found additional information about Microsoft
-			<property>Virtual Earth map</property>
-			.
+			<property>Virtual Earth map</property>.
 		</para>
                   <para>
 	  Some additional information about usage of component can be found 
 	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/virtualEarth.jsf?c=virtualEarth">on its LiveDemo page</ulink>.</para>
-
-
 	</section>
 
 </section>

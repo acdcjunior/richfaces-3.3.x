@@ -48,7 +48,7 @@
         </para>
         <programlisting role="XML"><![CDATA[...
 <rich:page> 
-  <!-- page body -->
+		<!-- page body -->
 </rich:page>
 ...]]></programlisting>
     </section>
@@ -138,7 +138,6 @@ HtmlPage myHtmlPage = new HtmlPage();
 		<!-- footer  content -->
 	</f:facet>
 </rich:page>
-
 ...]]></programlisting> 
         
         

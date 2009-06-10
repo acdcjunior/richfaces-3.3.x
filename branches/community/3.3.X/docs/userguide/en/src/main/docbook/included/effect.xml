@@ -87,13 +87,13 @@ HtmlRichEffect myEffect = new HtmlRichEffect();
 <!-- attaching by event  -->
 <rich:panel>
 	<rich:effect event="onmouseout" type="Opacity" params="duration:0.8,from:1.0,to:0.3" />
-    .... panel content ....
+    <!--panel content-->
 </rich:panel>
 ...
 
 <!--  invoking from JavaScript -->
 <div id="contentDiv">
-  ..... div content ......
+	<!--div content-->
 </div>
 
 <input type="button" onclick="hideDiv({duration:0.7})" value="Hide" />

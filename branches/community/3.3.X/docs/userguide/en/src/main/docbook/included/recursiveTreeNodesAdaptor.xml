@@ -109,9 +109,9 @@ HtmlRecursiveTreeNodesAdaptor myRecursiveTreeNodesAdaptor = new HtmlRecursiveTre
 				</rich:treeNode>
 			</rich:treeNodesAdaptor>
 			<rich:recursiveTreeNodesAdaptor id="archiveEntry" var="archiveEntry"
-				roots="#{dir.files}" nodes="#{archiveEntry.archiveEntries}" 
-				includedRoot="#{archiveEntry.class.simpleName == 'ArchiveFile'}"
-				includedNode="#{archiveEntry.class.simpleName == 'ArchiveEntry'}">		
+							roots="#{dir.files}" nodes="#{archiveEntry.archiveEntries}" 
+							includedRoot="#{archiveEntry.class.simpleName == 'ArchiveFile'}"
+							includedNode="#{archiveEntry.class.simpleName == 'ArchiveEntry'}">		
 				<rich:treeNode id="archiveEntryNode">
 					<h:commandLink action="#{archiveEntry.click}" value="Archive entry: #{archiveEntry.name}" />
 				</rich:treeNode>

@@ -51,12 +51,12 @@
           <listitem><para>
             With <emphasis><property>&quot;Start&quot;</property></emphasis>/<emphasis><property>&quot;Stop&quot;</property></emphasis > facets definition:</para>
 			<programlisting role="XML"><![CDATA[<a4j:status for="stat2">
-      <f:facet name="start">
-		        <h:graphicImage value="ajax_process.png" />
-	    </f:facet>
-	    <f:facet name="stop">
-		      <h:graphicImage value="ajax_stoped.png" />
-	    </f:facet>
+     <f:facet name="start">
+          <h:graphicImage value="ajax_process.png" />
+     </f:facet>
+     <f:facet name="stop">
+          <h:graphicImage value="ajax_stoped.png" />
+     </f:facet>
 </a4j:status>]]></programlisting>
             <para>In this case, the elements are generated for each  status and correspond the facets content.</para>
           </listitem>
@@ -131,17 +131,17 @@ attribute obtained by any RichFaces library action component. The attribute shou
       </para>
 	  <programlisting role="XML"><![CDATA[<a4j:status startText="Started" stopText="stopped" />]]></programlisting>
       <para>The code shown in the example above is decoded on a page as:</para><programlisting role="XML"><![CDATA[<span id="j_id20:status.start" style="display: none">
-      Started
+     Started
 </span>
 <span id="j_id20:status.stop">
-        Stopped
+     Stopped
 </span>]]></programlisting>
       <para>and after the generation of an Ajax response is changed to:</para>
 	  <programlisting role="XML"><![CDATA[<span id="j_id20:status.start">
-        Started
+     Started
 </span>
 <span id="j_id20:status.stop" style="display: none">
-        Stopped
+     Stopped
 </span>]]></programlisting>
       <para>There is a possibility to group a <emphasis role="bold"><property>&lt;a4j:status&gt;</property></emphasis> elements content into <emphasis role="bold"><property>&lt;div&gt;</property></emphasis> elements, instead of <emphasis role="bold"><property>&lt;span&gt;</property></emphasis>. To use it, just redefine the <emphasis >
         <property>&quot;layout&quot;</property>

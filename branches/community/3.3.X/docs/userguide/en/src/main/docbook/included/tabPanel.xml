@@ -50,12 +50,12 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tabPanel>
-        <!--//Set of Tabs inside-->
-        <rich:tab>
-            ...
-        </rich:tab>
-    </rich:tabPanel>
+<rich:tabPanel>
+		<!--Set of Tabs inside-->
+       	<rich:tab>
+       			...
+       	</rich:tab>
+</rich:tabPanel>
 ...
 ]]></programlisting>
           </section>
@@ -141,17 +141,17 @@ HtmltabPanel mytabPanel = new HtmltabPanel();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tabPanel width="40%" headerAlignment="right">
-        <rich:tab label="Canon">
-            ...
-        </rich:tab>
-        <rich:tab label="Nikon">
-            ...
-        </rich:tab>
-        <rich:tab label="Olympus">
-            ...
-        </rich:tab>
-    </rich:tabPanel>
+<rich:tabPanel width="40%" headerAlignment="right">
+		<rich:tab label="Canon">
+       			...
+       	</rich:tab>
+      	<rich:tab label="Nikon">
+       			...
+      	</rich:tab>
+       	<rich:tab label="Olympus">
+       			...
+      	</rich:tab>
+</rich:tabPanel>
 ...
 ]]></programlisting>
 

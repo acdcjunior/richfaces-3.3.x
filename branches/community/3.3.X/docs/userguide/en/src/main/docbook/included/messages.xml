@@ -51,8 +51,8 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
- 	<rich:messages/>
-...component is considered as JSF HTML
+<rich:messages/>
+...
 ]]></programlisting>
           </section>
 

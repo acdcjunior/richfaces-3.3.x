@@ -49,16 +49,16 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-     <rich:dataTable value="#{capitalsBean.capitals}" var="capitals">
-        <rich:column>
-            ...
-        </rich:column>
-        <rich:subTable value=#{capitals.details} var="detail">
-            <rich:column>
-                ...
-            </rich:column>
-        </rich:subTable>
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals}" var="capitals">
+		<rich:column>
+       			...
+       	</rich:column>
+       	<rich:subTable value=#{capitals.details} var="detail">
+       			<rich:column>
+               		...
+            	</rich:column>
+       	</rich:subTable>
+</rich:dataTable>
 ...
 ]]></programlisting>
   </section>
@@ -100,18 +100,18 @@ HtmlSubTable mySubTable = new HtmlSubTable();
     </para>
     
     <programlisting role="XML"><![CDATA[...
-    <rich:dataTable value="#{capitalsBean.capitals}" var="capitals">
-        <rich:column>
-            ...
-        </rich:column>
-        <rich:subTable value="#{capitals.details}" var="detail" ajaxKeys="#{bean.ajaxSet}" binding="#{bean.subtable}" id="subtable">
-            <rich:column>
-                ...
-            </rich:column>
-        </rich:subTable>
-    </rich:dataTable>
+<rich:dataTable value="#{capitalsBean.capitals}" var="capitals">
+		<rich:column>
+       			...
+       	</rich:column>
+       	<rich:subTable value="#{capitals.details}" var="detail" ajaxKeys="#{bean.ajaxSet}" binding="#{bean.subtable}" id="subtable">
+       			<rich:column>
+               		...
+            	</rich:column>
+      	</rich:subTable>
+</rich:dataTable>
 ...
-    <a4j:commandButton action="#{tableBean.action}" reRender="subtable"/>
+<a4j:commandButton action="#{tableBean.action}" reRender="subtable"/>
 ...
 ]]></programlisting>
     <para> In the example <emphasis>

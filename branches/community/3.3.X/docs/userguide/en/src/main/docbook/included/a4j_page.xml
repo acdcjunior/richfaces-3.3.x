@@ -43,9 +43,9 @@
     <programlisting role="XML"><![CDATA[<f:view>
      <a4j:page>
           <f:facet name="head">
-              <!--...Head Content here-->
+              <!--Head Content here-->
           </f:facet>
-          <!--...Page Content here-->
+          <!--Page Content here-->
       </a4j:page>
 </f:view>]]></programlisting>
       </section>

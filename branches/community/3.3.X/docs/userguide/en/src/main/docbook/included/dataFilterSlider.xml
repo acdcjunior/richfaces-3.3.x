@@ -48,7 +48,7 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataFilterSlider sliderListener="#{mybean.doSlide}" startRange="0"
+<rich:dataFilterSlider sliderListener="#{mybean.doSlide}" startRange="0"
                                             endRange="50000" increment="10000" handleValue="1" />
 ...]]></programlisting>
   </section>
@@ -74,7 +74,7 @@ HtmlDataFilterSlider mySlider = new HtmlDataFilterSlider();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:dataFilterSlider sliderListener="#{mybean.doSlide}"
+<rich:dataFilterSlider sliderListener="#{mybean.doSlide}"
                         startRange="0"
                         endRange="50000"
                         increment="10000"
@@ -83,9 +83,9 @@ HtmlDataFilterSlider mySlider = new HtmlDataFilterSlider();
                         forValRef="inventoryList.carInventory" 
                         filterBy="getMileage" />
 ...
-    <h:dataTable id="carIndex"> 
-          ... 
-    </h:dataTable>
+<h:dataTable id="carIndex"> 
+		... 
+</h:dataTable>
 ...]]></programlisting>
     <para>In this example other two attributes are used for filtering:</para>
     <itemizedlist>

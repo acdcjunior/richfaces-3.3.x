@@ -53,7 +53,7 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:gmap gmapKey="..."/>
+<rich:gmap gmapKey="..."/>
 ...
 ]]></programlisting>
 	</section>

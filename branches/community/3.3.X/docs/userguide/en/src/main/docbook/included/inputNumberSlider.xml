@@ -66,7 +66,7 @@
 			<emphasis role="bold">Example:</emphasis>
 		</para>
 		<programlisting role="XML"><![CDATA[...
-    <rich:inputNumberSlider minValue="0" maxValue="100" step="1"/>	
+<rich:inputNumberSlider minValue="0" maxValue="100" step="1"/>	
 ...
 ]]></programlisting>
 	</section>

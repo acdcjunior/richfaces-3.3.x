@@ -62,7 +62,7 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-      <rich:calendar popup="false"/>
+<rich:calendar popup="false"/>
 ...]]></programlisting>
           </section>
 
@@ -449,13 +449,13 @@ HtmlCalendar myCalendar = new HtmlCalendar();
         text-align:center;
     }
 </style>
- ...]]></programlisting>
+...]]></programlisting>
 
                     <programlisting role="XML"><![CDATA[...
 <rich:calendar id="myCalendar" popup="true" locale="#{calendarBean.locale}" value="#{bean.date}"
                             preloadRangeBegin="#{bean.date}" preloadRangeEnd="#{bean.date}" cellWidth="40px" cellHeight="40px">
 
-<!-- Customization with usage of facets and accessible elements -->
+	<!-- Customization with usage of facets and accessible elements -->
     <f:facet name="header">
         <h:panelGrid columns="2" width="100%" columnClasses="width100, fake">
             <h:outputText value="{selectedDateControl}" />
@@ -547,12 +547,12 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-         <rich:calendar value="#{calendarBean.selectedDate}" id="calendarID"
+<rich:calendar value="#{calendarBean.selectedDate}" id="calendarID"
 						locale="#{calendarBean.locale}"
 						popup="#{calendarBean.popup}"
 						datePattern="#{calendarBean.pattern}"
 					 	showApplyButton="#{calendarBean.showApply}" style="width:200px"/>
-	 <a4j:commandLink onclick="$('formID:calendarID').component.doExpand(event)" value="Expand"/>
+<a4j:commandLink onclick="$('formID:calendarID').component.doExpand(event)" value="Expand"/>
 ...]]></programlisting>
 
                     <para>Also the discussion about this problem can be found on the <ulink

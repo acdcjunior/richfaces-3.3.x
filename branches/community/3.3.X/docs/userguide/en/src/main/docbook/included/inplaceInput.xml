@@ -759,9 +759,8 @@ private String value = null;
     </para>
     <programlisting role="CSS"><![CDATA[...
 .rich-inplace-field {
-    font-style: italic;
+    	font-style: italic;
 }						
-	
 ...]]></programlisting>  
     
     <para>This is the result:</para>
@@ -797,7 +796,7 @@ private String value = null;
     <para>
       <emphasis role="bold">Example:</emphasis>
     </para>
-    <programlisting role="XML"><![CDATA[...<rich:inplaceInput value="click to edit" styleClass="myClass"/>
+    <programlisting role="XML"><![CDATA[<rich:inplaceInput value="click to edit" styleClass="myClass"/>
 ]]></programlisting>    
     
     <para>This is a result:</para>

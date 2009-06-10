@@ -49,12 +49,12 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tabPanel>
-        <!--Set of Tabs inside-->
-            <rich:tab>
-                ...
-            </rich:tab>
-    </rich:tabPanel>
+<rich:tabPanel>
+		<!--Set of Tabs inside-->
+       	<rich:tab>
+      			...
+      	</rich:tab>
+</rich:tabPanel>
 ...
 ]]></programlisting>
           </section>
@@ -89,14 +89,14 @@ HtmlTab myTab = new HtmlTab();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tab>
-        <f:facet name="label">  
-            <h:graphicImage value="/images/img1.png"/>
-        </f:facet>
-        ...
-        <!--Any Content inside-->
-        ...
-    </rich:tab>
+<rich:tab>
+		<f:facet name="label">  
+       			<h:graphicImage value="/images/img1.png"/>
+       	</f:facet>
+       	...
+       	<!--Any Content inside-->
+       	...
+</rich:tab>
 ...
 ]]></programlisting>
 
@@ -112,21 +112,21 @@ HtmlTab myTab = new HtmlTab();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tabPanel width="20%"> 
-        <tabs:tab  label="Canon">
-	    <h:outputText value="Canon EOS Digital Rebel XT" />
-              ...
-	  </tabs:tab>
-	  <tabs:tab  label="Nikon">
-	      <h:outputText value="Nikon D70s" />
-		     ...
+<rich:tabPanel width="20%"> 
+		<tabs:tab  label="Canon">
+	    		<h:outputText value="Canon EOS Digital Rebel XT" />
+              	...
+	  	</tabs:tab>
+	  	<tabs:tab  label="Nikon">
+	    		<h:outputText value="Nikon D70s" />
+		     	...
 		</tabs:tab>
 		<tabs:tab label="Olympus">
-		    <h:outputText value="Olympus EVOLT E-500" />
-		        ...
-		    </tabs:tab>
-		    <tabs:tab disabled="true" name="disabled" label="Disabled"/>
-    </rich:tabPanel>
+				<h:outputText value="Olympus EVOLT E-500" />
+		       	...
+		</tabs:tab>
+		<tabs:tab disabled="true" name="disabled" label="Disabled"/>
+</rich:tabPanel>
 ...]]></programlisting>
                     <para>With this example it&apos;s possible to generate the <property>tab
                                         panel</property> with the last disabled and three active
@@ -188,12 +188,12 @@ HtmlTab myTab = new HtmlTab();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-    <rich:tabPanel>
-        <rich:tab label="Tab1" ontabenter="alert()">
-            ...
-        </rich:tab>
-        ...
-    </rich:tabPanel>
+<rich:tabPanel>
+		<rich:tab label="Tab1" ontabenter="alert()">
+       			...
+      	</rich:tab>
+       ...
+</rich:tabPanel>
 ...]]></programlisting>
                     <para> The following example shows how on the client side to get the names of
                                         <code>entered</code>/<code>left</code> tabs. </para>

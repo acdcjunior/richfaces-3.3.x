@@ -50,11 +50,11 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:panel header="Panel Header">
-        ...
-        <!--Any Content inside-->
-        ...
-    </rich:panel>
+<rich:panel header="Panel Header">
+		...
+		<!--Any Content inside-->
+		...
+</rich:panel>
 ...
 ]]></programlisting>
   </section>
@@ -78,14 +78,14 @@ HtmlPanel myPanel = new HtmlPanel();
     <emphasis role="bold">Example:</emphasis>
     </para>
       <programlisting role="XML"><![CDATA[...
-    <rich:panel>
-        <f:facet name="header">  
-            <h:graphicImage value="/images/img1.png"/>
-        </f:facet>
-        ...
-        <!--Any Content inside-->
-        ...
-    </rich:panel>
+<rich:panel>
+		<f:facet name="header">  
+       			<h:graphicImage value="/images/img1.png"/>
+       	</f:facet>
+       	...
+       	<!--Any Content inside-->
+      	...
+</rich:panel>
 ...
 ]]></programlisting>
     
@@ -97,9 +97,9 @@ HtmlPanel myPanel = new HtmlPanel();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:panel>
-        ...
-    </rich:panel>
+<rich:panel>
+		...
+</rich:panel>
 ...
 ]]></programlisting>
     <para>It&apos;s generating on a page in the following way:</para>
@@ -123,12 +123,12 @@ HtmlPanel myPanel = new HtmlPanel();
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-    <rich:panel>
-        <f:facet name="header">
-            <h:outputText value="Olympus EVOLT E-500 "/>
-        </f:facet>
-        ...
-    </rich:panel>
+<rich:panel>
+		<f:facet name="header">
+       			<h:outputText value="Olympus EVOLT E-500 "/>
+      	</f:facet>
+      	...
+</rich:panel>
 ...
 ]]></programlisting>
     <para>It&apos;s displayed on a page in the following way:</para>

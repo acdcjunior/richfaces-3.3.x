@@ -61,7 +61,7 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     <programlisting role="XML"><![CDATA[...
-      <rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" />
+<rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" />
 ...]]></programlisting>
   </section>
 
@@ -126,11 +126,11 @@ HtmlJQuery myJQuery = new HtmlJQuery();
 ...]]></programlisting>
     
     <programlisting role="XML"><![CDATA[...
-    <rich:table id="customList" ...>
-        ...
-    </rich:table>
-    ...
-    <rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" />
+<rich:table id="customList" ...>
+		...
+</rich:table>
+...
+<rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" />
 ...]]></programlisting>
     <para>The <emphasis>
         <property>&quot;selector&quot;</property>
@@ -244,14 +244,14 @@ HtmlJQuery myJQuery = new HtmlJQuery();
     <para>For example, you have the following code:</para>
 
     <programlisting role="XML"><![CDATA[...
-    <h:form id="form">
-        ...
-        <h:panelGrid id="menu">
-            <h:graphicImage ... />
-            <h:graphicImage ... />
-            ...
-        </h:panelGrid>
-    </h:form>
+<h:form id="form">
+		...
+       <h:panelGrid id="menu">
+       			<h:graphicImage ... />
+            	<h:graphicImage ... />
+       			...
+       	</h:panelGrid>
+</h:form>
 ...]]></programlisting>
 
     <para>The actual id of the <emphasis role="bold">
@@ -260,14 +260,14 @@ HtmlJQuery myJQuery = new HtmlJQuery();
       reference to images inside this table using the following selector: </para>
 
     <programlisting role="XML"><![CDATA[...
-    <rich:jQuery selector="#menu img" query="..." />
+<rich:jQuery selector="#menu img" query="..." />
 ...]]></programlisting>
 
     <para>You can define the exact id in the selector if you want. The following code reference to
       the same set of a DOM object:</para>
 
     <programlisting role="XML"><![CDATA[...
-    <rich:jQuery selector="#form\\:menu img" query="..." />
+<rich:jQuery selector="#form\\:menu img" query="..." />
 ...]]></programlisting>
 
     <para>Pay attention to double slashes that escape a colon in the id.</para>
@@ -283,13 +283,13 @@ HtmlJQuery myJQuery = new HtmlJQuery();
       back to the normal size on mouse out:</para>
 
     <programlisting role="XML"><![CDATA[...
-    <h:graphicImage width="50" value="/images/price.png"
+<h:graphicImage width="50" value="/images/price.png"
                 onmouseover="enlargePic(this, {pwidth:'60px'})" onmouseout="releasePic(this)"  />
-    <h:graphicImage width="50" value="/images/discount.png"
+<h:graphicImage width="50" value="/images/discount.png"
                 onmouseover="enlargePic(this, {pwidth:'100px'})" onmouseout="releasePic(this)"  />
-    ...
-    <rich:jQuery name="enlargePic" timing="onJScall" query="animate({width:param.pwidth})" />
-    <rich:jQuery name="releasePic" timing="onJScall" query="animate({width:'50px'})"/> 
+...
+<rich:jQuery name="enlargePic" timing="onJScall" query="animate({width:param.pwidth})" />
+<rich:jQuery name="releasePic" timing="onJScall" query="animate({width:'50px'})"/> 
 ...]]></programlisting>
 
     <para>The JavaScript could use two parameters. The first parameter is a replacement for the
@@ -327,7 +327,7 @@ HtmlJQuery myJQuery = new HtmlJQuery();
       on the page, include the library into a page with the following code:</para>
 
     <programlisting role="XML"><![CDATA[...
-    <a4j:loadScript src="resource://jquery.js"/>
+<a4j:loadScript src="resource://jquery.js"/>
 ...]]></programlisting>
 
     <para>Refer to the <ulink url="http://docs.jquery.com/">jQuery documentation</ulink> for the

@@ -62,11 +62,11 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-      <rich:panelMenu>
-             ...
-            <rich:panelMenuItem value="Item1"/>
-            ...	
-      </rich:panelMenu>
+<rich:panelMenu>
+		...
+       	<rich:panelMenuItem value="Item1"/>
+       	...	
+</rich:panelMenu>
 ...]]></programlisting>
           </section>
 
@@ -135,15 +135,15 @@ HtmlPanelMenuItem myPanelMenuItem = new HtmlPanelMenuItem();
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-      <rich:panelMenu>
-            ...
-            <rich:panelMenuItem mode="none" onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/">
-                  <h:outputLink value="http://labs.jboss.com/jbossrichfaces/">
-                        <h:outputText value="RichFaces Home Page"></h:outputText>
-                  </h:outputLink>
-            </rich:panelMenuItem>
-            ...
-      </rich:panelMenu>
+<rich:panelMenu>
+		...
+       <rich:panelMenuItem mode="none" onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/">
+       			<h:outputLink value="http://labs.jboss.com/jbossrichfaces/">
+               		<h:outputText value="RichFaces Home Page"></h:outputText>
+            	</h:outputLink>
+      	</rich:panelMenuItem>
+      	...
+</rich:panelMenu>
 ...]]></programlisting>
 
                     <para>There are two icon-related attributes. The <emphasis>
@@ -194,11 +194,11 @@ HtmlPanelMenuItem myPanelMenuItem = new HtmlPanelMenuItem();
                               placed below.</para>
 
                     <programlisting role="XML"><![CDATA[...
-      <rich:panelMenu>
-            ...
-            <rich:panelMenuItem value="Item 1.1" icon="\images\img1.png" />
-            ...	
-      </rich:panelMenu>
+<rich:panelMenu>
+		...
+		<rich:panelMenuItem value="Item 1.1" icon="\images\img1.png" />
+      	...	
+</rich:panelMenu>
 ...]]></programlisting>
                     <para> Information about the <emphasis>
                                         <property>&quot;process&quot;</property>
@@ -493,7 +493,7 @@ HtmlPanelMenuItem myPanelMenuItem = new HtmlPanelMenuItem();
                     </para>
                     <programlisting role="CSS"><![CDATA[...
 .rich-pmenu-hovered-element {
-	background-color: #ff7800;
+		background-color: #ff7800;
 }
 ...]]></programlisting>
 
