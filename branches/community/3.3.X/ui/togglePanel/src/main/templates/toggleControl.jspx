@@ -20,7 +20,7 @@
 	                    x:passThruWithExclusions="id,href,name,onclick,class"
 				    onclick="#{this:getOnClick(context,component)}; return false;"
                                     
-				    class="rich-toggle-ctrl #{component.attributes['styleClass']}"
+				    class="rich-tglctrl #{component.attributes['styleClass']}"
                          >#{component.attributes['value']}            
                          <vcp:body>
  		                    <f:call name="renderChildren" />
