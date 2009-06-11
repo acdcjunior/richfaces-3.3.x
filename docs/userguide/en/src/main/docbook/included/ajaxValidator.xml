@@ -94,7 +94,7 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
 
                     <para>The following example demonstrates how the <emphasis role="bold">
                                         <property>&lt;rich:ajaxValidator&gt;</property>
-                              </emphasis> adds AJAX functionality to standard JSF validators. The
+                              </emphasis> adds Ajax functionality to standard JSF validators. The
                               request is sent when the input field loses focus, the action is
                               determined by the <emphasis>
                                         <property>&quot;event&quot;</property>
@@ -138,7 +138,7 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
                               The <emphasis role="bold">
                                         <property>&lt;rich:ajaxValidator&gt;</property>
                               </emphasis> component also works perfectly with custom validators
-                              enhancing their usage with AJAX. </para>
+                              enhancing their usage with Ajax. </para>
 
                     <para> Custom validation can be performed in two ways: </para>
 

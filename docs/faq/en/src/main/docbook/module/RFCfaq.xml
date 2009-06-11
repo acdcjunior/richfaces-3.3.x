@@ -984,7 +984,7 @@ background-color: transparent;
           <section id="AFormIsNotSubmittedOrASetterIsNotCalledAfterAJAXrequest">
                     <?dbhtml filename="AFormIsNotSubmittedOrASetterIsNotCalledAfterAJAXrequest.html"?>
                     <title>Why form isn&apos;t submitted or setter isn&apos;t called after
-                              AJAX request?</title>
+                              Ajax request?</title>
                     <para>This situation could happen because of conversion/validation errors on
                               form submission. In order to verify this, it&apos;s necessary to
                               place this updating via an Ajax error message inside a form:</para>
@@ -1191,7 +1191,7 @@ background-color: transparent;
 ]]></programlisting>
 
                     <para>In this case the wrapper component always presents in the DOM tree and its
-                              inner content could be updated dynamically on AJAX.</para>
+                              inner content could be updated dynamically on Ajax.</para>
           </section>
 
           <section id="PreventDupRerenderingPoll">
@@ -2683,9 +2683,9 @@ A4J.AJAX.onExpired = function(loc,expiredMsg){
           </section>
 	  <section id="ajaxCookie">
                     <?dbhtml filename="ajaxCookie.html"?>
-                    <title>How to add cookie in an AJAX Respond?</title>
+                    <title>How to add cookie in an Ajax Respond?</title>
 		<para> 
-			In order to add cookie in an AJAX Respond you could use bean described below.
+			In order to add cookie in an Ajax Respond you could use bean described below.
 		</para>
 		<para>
 			<emphasis role="bold">Example:</emphasis>
@@ -2719,7 +2719,7 @@ public class CookieBean {
 }
 ...]]></programlisting>
 	<para>
-		Then you could try to set cookie with AJAX Respond as it is shown in the following example. 
+		Then you could try to set cookie with Ajax Respond as it is shown in the following example. 
 		After the cookie &quot;test&quot; is set the value of this cookie appears on a page.
 	</para>
 	<para>
@@ -2729,7 +2729,7 @@ public class CookieBean {
 <h:form>
 	<h:outputText id="text" value="Cookie value: #{cookieBean.testCookie}"/>
     	<br />
- 	<a4j:commandButton action="#{cookieBean.setTestCookie}" value="Set Cookie by AJAX">
+ 	<a4j:commandButton action="#{cookieBean.setTestCookie}" value="Set Cookie by Ajax">
        		<a4j:support event="oncomplete" reRender="text" />
        	</a4j:commandButton>
 </h:form>

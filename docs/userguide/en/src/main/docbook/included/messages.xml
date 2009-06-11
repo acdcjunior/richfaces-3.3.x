@@ -129,7 +129,7 @@ HtmlRichMessages myMessages = new HtmlRichMessages();
       </f:facet>
  </rich:messages>]]></programlisting>
                 
-                <para>The <emphasis role="bold"><property>&lt;rich:messages&gt;</property></emphasis> component keeps all messages for all components even after only one ajax-validated component  was updated.</para>                
+                <para>The <emphasis role="bold"><property>&lt;rich:messages&gt;</property></emphasis> component keeps all messages for all components even after only one Ajax-validated component  was updated.</para>                
 
           </section>
           

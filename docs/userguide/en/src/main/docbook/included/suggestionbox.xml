@@ -187,7 +187,7 @@ HtmlSuggestionBox myList = new HtmlSuggestionBox();
                                         <property>&quot;style&quot;</property>
                               </emphasis> attributes corresponding to dataTable ones for a table
                               appearing in popup (for additional information, read JSF Reference)
-                              and custom attribute managing AJAX requests sending (for additional
+                              and custom attribute managing Ajax requests sending (for additional
                               information, see <ulink
                                         url="http://www.jboss.org/projects/jbossajax4jsf">Ajax4JSF
                                         Project</ulink>).</para>

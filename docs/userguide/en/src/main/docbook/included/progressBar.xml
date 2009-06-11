@@ -356,12 +356,12 @@ HtmlProgressBar myProgressBar = new progressBar();
                     <!--Sorting API -->
                     <row>
                         <entry>enable()</entry>
-                        <entry>Begins polling for ajax mode </entry>
+                        <entry>Begins polling for Ajax mode </entry>
              
                     </row>
                     <row>
                         <entry>disable()</entry>
-                        <entry>Stops polling for ajax mode</entry>
+                        <entry>Stops polling for Ajax mode</entry>
           
                     </row>
                     

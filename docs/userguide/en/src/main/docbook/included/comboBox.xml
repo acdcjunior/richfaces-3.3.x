@@ -241,7 +241,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
                 <emphasis><property> &quot;onlistcall&quot;</property></emphasis>which is fired before the list opening and gives you a possibility to cancel list popup/update 
             </para></listitem>
             <listitem><para>
-                <emphasis><property> &quot;onselect&quot;</property></emphasis>which gives you a possibility to send AJAX request when item is selected 
+                <emphasis><property> &quot;onselect&quot;</property></emphasis>which gives you a possibility to send Ajax request when item is selected 
             </para></listitem>
             </itemizedlist>   
          </para>

@@ -299,7 +299,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
             </listitem>
         </itemizedlist>
 
-        <para>Apart from uploading files to the sever without using AJAX, the Flash module provides
+        <para>Apart from uploading files to the sever without using Ajax, the Flash module provides
             a number of useful API functions that can be used to obtain information about the
             uploaded file. </para>
 
@@ -348,7 +348,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
 
 
         <para> Moreover, embedded Flash module provides a smoother representation of progress bar
-            during the uploading process: the polling is performed is not by AJAX, but my means of
+            during the uploading process: the polling is performed is not by Ajax, but my means of
             the flash module. </para>
         <figure>
             <title> Uploading using Flash module <emphasis role="bold">
