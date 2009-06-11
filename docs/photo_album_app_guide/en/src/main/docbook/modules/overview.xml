@@ -17,8 +17,17 @@
       <section id="dataModel">
       	<title>Data Model</title>
         <para>
-             Work in progress...
+             The data model of the application has the following structure:
         </para>
+        
+        <figure>
+          <title>Photo Album Data Model</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/erd.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
       </section>
       <section id="setUp">
       	<title>Project Set Up</title>
