@@ -3,6 +3,7 @@
 	<title>Image View</title>
 	<para>
 		Image View in the Photo Album application is a page where only one image is displayed. In this view you can also browse the current album with the image scroller as well as to switch to slideshow mode. 
+		If you are a registered user you can leave comments under the current image.
 	</para>
 	
 	<figure>
