@@ -314,7 +314,7 @@
 				</emphasis>
 				<emphasis>
 					<property>&quot;ajaxRendered&quot;</property>
-				</emphasis> attribute. <code>limitToList = &quot;false&quot;</code> means to update
+				</emphasis> attribute. <code>limitToList = &quot;true&quot;</code> means to update
 				only the area(s) that mentioned in the <emphasis>
 					<property>&quot;reRender&quot;</property>
 				</emphasis> attribute explicitly. All output panels with
