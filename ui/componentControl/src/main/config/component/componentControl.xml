@@ -35,7 +35,7 @@
 			<name>disableDefault</name>
 			<classname>boolean</classname>
 			<description>
-				Disable default action for target event ( append &quot;return false;&quot; to JavaScript )
+				Disable default action for target event. If the attribute is not set, it's made &quot;true&quot; by default if the event oncontextmenu is used and false in all other cases. if the attribute set, its value is used.
 			</description>
 			<!-- Has a special dynamic default value -->
 		</property>
