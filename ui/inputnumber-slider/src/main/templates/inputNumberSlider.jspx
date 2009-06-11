@@ -20,7 +20,6 @@
 
 	<f:resource name="/org/richfaces/renderkit/html/images/spacer.gif" var="spacer" />
 	<f:resource name="org.richfaces.renderkit.html.images.SliderArrowImage" var="arrow" />
-	<f:resource name="org.richfaces.renderkit.html.images.SliderArrowSelectedImage" var="arrowSelected" />
 
 	<jsp:scriptlet>
 		<![CDATA[
@@ -267,39 +266,26 @@
                 ]]></jsp:scriptlet>
             </tr>
             <tr><td>
-            <script type="text/javascript">
-                                        new Richfaces.Slider(
-                                                            "#{clientId}Handle",
-                                                            "#{clientId}Track",
-                                                            "#{clientId}Tip",
-                                                            "#{clientId}",
-                                                            "#{component.attributes['handleSelectedClass']}",
-                                                            "#{component.attributes['decreaseSelectedClass']}",
-                                                            "#{component.attributes['increaseSelectedClass']}",
-                                                            {
-                                                                range           : $R(#{component.attributes['minValue']},#{component.attributes['maxValue']}),
-                                                                step            : "#{component.attributes['step']}",
-                                                                sliderValue     : "#{this:getInputValue(context,component)}",
-                                                                disabled        : #{component.attributes['disabled']},
-                                                                currValue       : #{component.attributes['showToolTip']},
-                                                                inputId         : "#{clientId}Input",
-                                                                arrowInc         : "#{clientId}ArrowInc",
-                                                                arrowDec         : "#{clientId}ArrowDec",
-                                                                tipArrowInc      : "#{clientId}TipArrowInc",
-                                                                tipArrowDec      : "#{clientId}TipArrowDec",
-                                                                arrowSelected   : "#{arrowSelected}",
-                                                                onerr           : "#{component.attributes['onerror']}",
-                                                                clientErrorMsg : "#{component.attributes['clientErrorMessage']}",
-                                                                <f:call name="writeEventHandlerFunction"><f:parameter value="onslide" /></f:call>,
-                                                                onchange        : "#{component.attributes['onchange']}",
-                                                                required        : #{component.attributes['required']},
-                                                                height          : "#{height}",
-                                                                width           : "#{width}",
-                                                                orientation     : "vertical",
-                                                                showArrows		: #{component.attributes['showArrows']},
-                                                                delay           : "#{component.attributes['delay']}"
-                                                            })
-                                    </script>
+				<c:scriptObject var="options">
+					<c:scriptOption attributes="handleSelectedClass, disabled, required, onerror, onchange, clientErrorMessage, showArrows" />
+					<c:scriptOption attributes="showToolTip" defaultValue="true"/>
+					<c:scriptOption attributes="step" defaultValue="1"/>
+					<c:scriptOption attributes="minValue" defaultValue="0" />
+					<c:scriptOption attributes="maxValue" defaultValue="100" />
+					<c:scriptOption attributes="delay" defaultValue="200" />
+					<c:scriptOption attributes="onslide" wrapper="eventHandler" />
+					<c:scriptOption name="sliderValue"  value="#{this:getInputValue(context,component)}" />
+					<c:scriptOption variables="width" defaultValue="200px" />
+					<c:scriptOption variables="height" defaultValue="20px" />										
+					<c:scriptOption name="orientation" value="vertical" />
+				</c:scriptObject>
+				<script type="text/javascript">
+					new Richfaces.Slider("#{clientId}"
+							<c:if test="#{not empty options}">
+							, <f:writeAsScript value="#{options}" />
+							</c:if> 
+							)
+				</script>
             </td></tr>
         </tbody>
     </table>
@@ -500,38 +486,24 @@
 											</tbody>
 										</table>
 									</div>
+									<c:scriptObject var="options">
+										<c:scriptOption attributes="handleSelectedClass, disabled, required, onerror, onchange, clientErrorMessage, showArrows" />
+										<c:scriptOption attributes="showToolTip" defaultValue="true"/>
+										<c:scriptOption attributes="step" defaultValue="1"/>
+										<c:scriptOption attributes="minValue" defaultValue="0" />
+										<c:scriptOption attributes="maxValue" defaultValue="100" />
+										<c:scriptOption attributes="delay" defaultValue="200" />
+										<c:scriptOption attributes="onslide" wrapper="eventHandler" />
+										<c:scriptOption name="sliderValue"  value="#{this:getInputValue(context,component)}" />
+										<c:scriptOption variables="width" defaultValue="200px" />
+										<c:scriptOption variables="height" defaultValue="20px" />										
+									</c:scriptObject>
 									<script type="text/javascript">
-										new Richfaces.Slider(
-															"#{clientId}Handle",
-															"#{clientId}Track",
-															"#{clientId}Tip",
-															"#{clientId}",
-															"#{component.attributes['handleSelectedClass']}",
-                                                            "#{component.attributes['increaseSelectedClass']}",
-                                                            "#{component.attributes['decreaseSelectedClass']}",
-															{
-																range			: $R(#{component.attributes['minValue']},#{component.attributes['maxValue']}),
-																step			: "#{component.attributes['step']}",
-																sliderValue		: "#{this:getInputValue(context,component)}",
-																disabled		: #{component.attributes['disabled']},
-																currValue		: #{component.attributes['showToolTip']},
-																inputId			: "#{clientId}Input",
-																arrowInc         : "#{clientId}ArrowInc",
-                                                                arrowDec         : "#{clientId}ArrowDec",
-                                                                tipArrowInc      : "#{clientId}TipArrowInc",
-                                                                tipArrowDec      : "#{clientId}TipArrowDec",
-                                                                arrowSelected   : "#{arrowSelected}",
-																onerr			: "#{component.attributes['onerror']}",
-																clientErrorMsg : "#{component.attributes['clientErrorMessage']}",
-																<f:call name="writeEventHandlerFunction"><f:parameter value="onslide" /></f:call>,
-																onchange		: "#{component.attributes['onchange']}",
-																required		: #{component.attributes['required']},
-																width           : "#{width}",
-                                                                height          : "#{height}",
-                                                                orientation     : "horizontal",
-                                                                showArrows		: #{component.attributes['showArrows']},
-                                                                delay           : "#{component.attributes['delay']}"
-															})
+										new Richfaces.Slider("#{clientId}"
+												<c:if test="#{not empty options}">
+												, <f:writeAsScript value="#{options}" />
+												</c:if> 
+												)
 									</script>
 								</td>
 							</tr>

@@ -89,13 +89,13 @@
             <name>width</name>
             <classname>java.lang.String</classname>
             <description>The width of a slider control. Default value is &quot;200px&quot;, for orientation=&quot;vertical&quot; value is &quot;200px&quot;</description>
-            <defaultvalue><![CDATA["200px"]]></defaultvalue>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property >
             <name>height</name>
             <classname>java.lang.String</classname>
             <description>The height of a slider control. Default value is &quot;20px&quot;, for orientation=&quot;vertical&quot; value is &quot;20px&quot;</description>
-            <defaultvalue><![CDATA["20px"]]></defaultvalue>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
     	<property>
 	    	<name> enableManualInput </name>
