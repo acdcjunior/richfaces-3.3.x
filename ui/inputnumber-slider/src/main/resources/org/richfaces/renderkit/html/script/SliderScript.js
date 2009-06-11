@@ -62,14 +62,11 @@ Richfaces.Slider.prototype = {
 		this.input.value = this.options.sliderValue;
 		this.prevInputValue = this.input.value;
 		this.graggedImageOn = false;
-		this.range	 = $R(Number(defaultOptions.minValue), Number(defaultOptions.maxValue));
 		this.value	 = 0;
-		this.minimum = this.options.minimum || this.range.start;
-		this.maximum = this.options.maximum || this.range.end;
 		this.digCount = 0;
 		this.delay = this.options.delay;
 		if("" == this.input.value){
-			  this.input.value = this.options.minimum;
+			  this.input.value = this.options.minValue;
 		}
 
 		this.step = this.options.step;
@@ -79,7 +76,7 @@ Richfaces.Slider.prototype = {
 		}
 		this.availableValues = this.calculateAvailableValues();
 
-		this.tip.maxlength = (this.maximum + "").length + (this.digCount != 0 ? this.digCount + 1 : 0);
+		this.tip.maxlength = (this.options.maxValue + "").length + (this.digCount != 0 ? this.digCount + 1 : 0);
 		if(this.options.showArrows){
 			this.tipArrowInc.maxlength = this.tip.maxlength;
 	        this.tipArrowDec.maxlength = this.tip.maxlength;
@@ -185,7 +182,7 @@ Richfaces.Slider.prototype = {
 	},
 
 	setInitialValue: function(){
-		this.setValue(parseFloat(this.options.sliderValue || this.range.start));
+		this.setValue(parseFloat(this.options.sliderValue || this.options.minValue));
         this.handle.style.visibility="visible";
 		this.prevValue = this.value;
 		this.valueChanged = false;
@@ -203,14 +200,14 @@ Richfaces.Slider.prototype = {
 
    calculateAvailableValues : function(){
         var values = new Array();
-        var value = this.roundFloat(this.minimum);
+        var value = this.roundFloat(this.options.minValue);
         var i = 0;
-        while (value < this.maximum){
+        while (value < this.options.maxValue){
             values[i] = value;
             value = this.roundFloat(value + parseFloat(this.step));
             i++;
         }
-        values[i] = this.roundFloat(this.maximum);
+        values[i] = this.roundFloat(this.options.maxValue);
 
         return values;
     },
@@ -324,21 +321,21 @@ Richfaces.Slider.prototype = {
 	translateToPx: function(value) {
 		if(this.options.orientation == "vertical"){
 		    return Math.round(
-	            ((this.maximumOffset() - this.handleLength)/(this.range.end-this.range.start)) *
-	            (this.range.end - value) - this.maximumOffset()) + "px";
+	            ((this.maximumOffset() - this.handleLength)/(this.options.maxValue-this.options.minValue)) *
+	            (this.options.maxValue - value) - this.maximumOffset()) + "px";
 	    }
 		return Math.round(
-			((this.maximumOffset() - this.handleLength)/(this.range.end-this.range.start)) *
-			(value - this.range.start)) + "px";
+			((this.maximumOffset() - this.handleLength)/(this.options.maxValue-this.options.minValue)) *
+			(value - this.options.minValue)) + "px";
 	},
 
 	translateToValue: function(offset) {
 		if(this.options.orientation == "vertical"){
-		    return (this.range.end -((offset/(this.maximumOffset() - this.handleLength) *
-	            (this.range.end-this.range.start))));
+		    return (this.options.maxValue -((offset/(this.maximumOffset() - this.handleLength) *
+	            (this.options.maxValue-this.options.minValue))));
 		}
 		return ((offset/(this.maximumOffset() - this.handleLength) *
-			(this.range.end-this.range.start)) + this.range.start);
+			(this.options.maxValue-this.options.minValue)) + this.options.minValue);
 	},
 
 	maximumOffset: function(){
@@ -474,7 +471,7 @@ Richfaces.Slider.prototype = {
 
 	increase : function(event){
 	    var v = parseFloat(this.value) + parseFloat(this.step);
-        this.setValue(Number( v < this.maximum ? v : this.maximum));
+        this.setValue(Number( v < this.options.maxValue ? v : this.options.maxValue));
         this.input.value = this.value;
         if (this.eventChanged && this.isValueChanged()){
             this.eventChanged(event);
@@ -483,7 +480,7 @@ Richfaces.Slider.prototype = {
 	
 	decrease : function(event){
 	    var v = parseFloat(this.value) - parseFloat(this.step);
-	    this.setValue(Number(v > this.minimum ? v : this.minimum));
+	    this.setValue(Number(v > this.options.minValue ? v : this.options.minValue));
         this.input.value = this.value;
         if (this.eventChanged && this.isValueChanged()){
             this.eventChanged(event);
