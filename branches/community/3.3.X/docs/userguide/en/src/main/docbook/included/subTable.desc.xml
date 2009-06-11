@@ -29,7 +29,7 @@
         <listitem><para>Completely skinned table rows and child elements</para></listitem>
         <listitem><para>Possibility to insert complex columnGroup subcomponents</para></listitem>
         <listitem><para>Possibility to combine rows and columns inside</para></listitem>
-        <listitem><para>Possibility to update a limited set of rows with AJAX</para></listitem>
+        <listitem><para>Possibility to update a limited set of rows with Ajax</para></listitem>
      </itemizedlist>
 </section>
 </section>

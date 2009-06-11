@@ -25,7 +25,7 @@
             <listitem><para>Possibility to insert the complex subcomponents
                     <property>&quot;colGroup&quot;</property> and
                     <property>&quot;subTable&quot;</property></para></listitem>
-            <listitem><para>Possibility to update a limited set of strings with AJAX</para></listitem>
+            <listitem><para>Possibility to update a limited set of strings with Ajax</para></listitem>
             <listitem><para>Possibility to sort and to filter of columns</para></listitem>
             <listitem><para><link linkend="sort">Sorting column values</link></para></listitem>
             <listitem><para><link linkend="filter">Filtering column values</link></para></listitem>

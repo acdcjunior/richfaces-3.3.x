@@ -22,7 +22,7 @@
     <title>Key Features</title> 
     <itemizedlist>
     <listitem><para>A completely skinned list and child elements</para></listitem>
-    <listitem><para>Possibility to update a limited set of rows with AJAX</para></listitem>
+    <listitem><para>Possibility to update a limited set of rows with Ajax</para></listitem>
     <listitem><para>Possibility to receive values dynamically from a model</para></listitem>
     </itemizedlist>  
 </section>

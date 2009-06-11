@@ -478,7 +478,7 @@
 						<listitem><para>If ever more are detected a warning will appears in server console during rendering. 
 						All the same named queues after the first instance are ignored.</para></listitem>	
 						<listitem><para>View scoped default queue is also created
-						for components which have the following ajax attributes: (in this case queue has a component scope)</para>
+						for components which have the following Ajax attributes: (in this case queue has a component scope)</para>
 						<itemizedlist>
 							<listitem><para><emphasis><property>&quot;requestDelay&quot; </property></emphasis></para></listitem>
 							<listitem><para><emphasis><property>&quot;ignoreDupResponce&quot; </property></emphasis></para></listitem>
@@ -842,7 +842,7 @@
 			<title>JavaScript Interactions</title>
 			<para> RichFaces allows writing Ajax-enabled JSF application without writing any
 				Javascript code. However, you can still invoke the JavaScript code if you need.
-				There are several ajax attributes that helps to do it. </para>
+				There are several Ajax attributes that helps to do it. </para>
 			<para>
 				<emphasis>
 					<property>&quot;onsubmit&quot;</property>
@@ -874,9 +874,9 @@ onsubmit="if (mynosendfunct()==false){return false}"
 			<para>
 				<emphasis> The <property>&quot;oncomplete&quot;</property>
 				</emphasis> attribute is used for passing JavaScript that would be invoked right
-				after the AJAX response returns back and DOM is updated. It is not recommended to
+				after the Ajax response returns back and DOM is updated. It is not recommended to
 				use use keyword <code>this</code> inside the EL-expression, because it will not
-				always point to the component where AJAX request was initiated. </para>
+				always point to the component where Ajax request was initiated. </para>
 			<para>
 				<emphasis>
 					<property>&quot;onbeforedomupdate&quot;</property>
@@ -1201,7 +1201,7 @@ onsubmit="if (mynosendfunct()==false){return false}"
 </h:inputText>
 ...]]></programlisting>
 			<para> In the example above when the input field with the
-					<code>id=&quot;name&quot;</code> looses focus, an AJAX request is sent. So only
+					<code>id=&quot;name&quot;</code> looses focus, an Ajax request is sent. So only
 				two input fields (with <code>id=&quot;name&quot;</code> and additionally with
 					<code>id=&quot;email&quot;</code>) are processed: decoding,
 				conversion/validation, value applying phases are executed. The input field with the

@@ -788,7 +788,7 @@ background-color: transparent;
 
         <section id="AFormIsNotSubmittedOrASetterIsNotCalledAfterAJAXrequest">
                 <?dbhtml filename="AFormIsNotSubmittedOrASetterIsNotCalledAfterAJAXrequest.html"?>
-                <title>Why form isn&apos;t submitted or setter isn&apos;t called after AJAX
+                <title>Why form isn&apos;t submitted or setter isn&apos;t called after Ajax
                         request?</title>
                 <para>This situation could happen because of conversion/validation errors on form
                         submission. In order to verify this, it&apos;s necessary to place this
@@ -972,7 +972,7 @@ background-color: transparent;
 ]]></programlisting>
 
                 <para>In this case the wrapper component always presents in the DOM tree and its
-                        inner content could be updated dynamically on AJAX.</para>
+                        inner content could be updated dynamically on Ajax.</para>
         </section>
 
         <section id="PreventDupRerenderingPoll">
