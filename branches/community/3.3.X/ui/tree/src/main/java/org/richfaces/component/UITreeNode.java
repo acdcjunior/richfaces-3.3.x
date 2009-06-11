@@ -347,7 +347,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	}
 
 	public Object saveState(FacesContext context) {
-		Object[] state = new Object[17];
+		Object[] state = new Object[18];
 		state[0] = super.saveState(context);
 		state[1] = this.dragType;
 		state[2] = this.acceptedTypes;
@@ -355,7 +355,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		state[4] = this.reRender;
 		state[5] = this.oncomplete;
 		state[6] = new Boolean(this.ajaxSingle);
-		state[7] = new Boolean(this.bypassUpdates);
+		state[7] = new Boolean(this.ajaxSingleSet);
 		state[8] = new Boolean(this.limitToList);
 		state[9] = this.status;
 		state[10] = this.eventsQueue;
@@ -365,6 +365,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		state[14] = new Boolean(this.ignoreDupResponses);
 		state[15] = new Integer(this.timeout);
 		state[16] = this.similarityGroupingId;
+        state[17] = new Boolean(this.bypassUpdates);
 		
 		return state;
 	}
@@ -378,7 +379,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		this.reRender = (Object) _state[4];
 		this.oncomplete = (String) _state[5];
 		this.ajaxSingle = ((Boolean)_state[6]).booleanValue();
-		this.bypassUpdates = ((Boolean)_state[7]).booleanValue();
+		this.ajaxSingleSet = ((Boolean)_state[7]).booleanValue();
 		this.limitToList = ((Boolean)_state[8]).booleanValue();
 		this.status = (String) _state[9];
 		this.eventsQueue = (String) _state[10];
@@ -388,6 +389,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		this.ignoreDupResponses = ((Boolean)_state[14]).booleanValue();
 		this.timeout = ((Integer)_state[15]).intValue();
 		this.similarityGroupingId = (String) _state[16];
+		this.bypassUpdates = ((Boolean)_state[17]).booleanValue();
 	}
 	
 	public void setDragIndicator(String dragIndicator) {
@@ -520,8 +522,8 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	 * Getter for ajaxSingle
 	 * @return ajaxSingle value from local variable or value bindings
 	 */
-	 public boolean isAjaxSingle(  ){
-		 if(this.ajaxSingleSet){
+	 public boolean isAjaxSingle(  ) {
+		 if (this.ajaxSingleSet) {
 			return this.ajaxSingle;
 		 }
     	ValueBinding vb = getValueBinding("ajaxSingle");
