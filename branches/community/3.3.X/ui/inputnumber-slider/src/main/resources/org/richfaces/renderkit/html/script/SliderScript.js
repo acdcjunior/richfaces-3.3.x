@@ -1,25 +1,45 @@
 if(!window.Richfaces) window.Richfaces = {};
 Richfaces.Slider = Class.create();
 Richfaces.Slider.prototype = {
-	initialize: function(handle, track, tip, table, handleSelectedClass, increaseSelectedClass, decreaseSelectedClass, options) {
-		var slider = this;
-		this.handle = $( handle );
-		this.tip	= $( tip );
-		this.track	= $( track );
-		this.mainTable	= $( table );
-		
-		//this.optionsInputId = options.optionsInputId;
-		
-		//this.optionInput = $(this.optionsInputId) || document.getElementById(this.optionsInputId);
-				
-		this.input	= $( options.inputId ) || document.getElementsByName(options.inputId)[0];
-		if(options.showArrows){
-			this.arrowInc = $( options.arrowInc ) || document.getElementsByName(options.arrowInc)[0];
-	        this.arrowDec = $( options.arrowDec ) || document.getElementsByName(options.arrowDec)[0];
-	        this.tipArrowInc = $( options.tipArrowInc ) || document.getElementsByName(options.tipArrowInc)[0];
-	        this.tipArrowDec = $( options.tipArrowDec ) || document.getElementsByName(options.tipArrowDec)[0];
+	initialize: function(id, options) {
+	//default values of options
+	var defaultOptions = {
+			handleSelectedClass: null,
+			disabled: false,
+			required: false,
+			showArrows: false,
+			disabled: false,
+			onchange: null,
+			clientErrorMessage: null,
+			showToolTip: true,
+			step: 1,
+			minValue: 0,
+			maxValue: 100,
+			delay: 200,
+			onslide: null,
+			sliderValue: null,
+			width: "200px",
+			height: "20px",
+			orientation: "horizontal"
+	};
+	Object.extend(defaultOptions, options);
+		this.handle = $( id + "Handle" );
+		this.tip	= $( id + "Tip" );
+		this.track	= $( id + "Track" );
+		this.mainTable	= $( id );
+		var inputId = id + "Input";
+		this.input	= $(inputId) || document.getElementsByName(inputId)[0];
+		if(defaultOptions.showArrows){
+			var arrowIncId = id + "ArrowInc";
+			this.arrowInc = $(arrowIncId) || document.getElementsByName(arrowIncId)[0];
+			var arrowDecId = id + "ArrowDec";
+	        this.arrowDec = $(arrowDecId) || document.getElementsByName(arrowDecId)[0];
+			var tipArrowIncId = id + "TipArrowInc";
+	        this.tipArrowInc = $(tipArrowIncId) || document.getElementsByName(tipArrowIncId)[0];
+			var tipArrowDecId = id + "TipArrowDec";
+	        this.tipArrowDec = $(tipArrowDecId) || document.getElementsByName(tipArrowDecId)[0];
 		}
-		this.options= options || {};
+		this.options = defaultOptions;
 		
 		this.orientation = this.options.orientation;
 		
@@ -35,14 +55,14 @@ Richfaces.Slider.prototype = {
 			  this.classes.base = " " + this.trim(this.classes.temp.replace("rich-inslider-handler-vertical",""));
 			}
 		
-		this.classes.handleSelected = " " + handleSelectedClass;
+		this.classes.handleSelected = " " + defaultOptions.handleSelectedClass;
 
 		this.table = this.findTableForTrack(this.track);
 		
 		this.input.value = this.options.sliderValue;
 		this.prevInputValue = this.input.value;
 		this.graggedImageOn = false;
-		this.range	 = this.options.range || $R(0,1);
+		this.range	 = $R(Number(defaultOptions.minValue), Number(defaultOptions.maxValue));
 		this.value	 = 0;
 		this.minimum = this.options.minimum || this.range.start;
 		this.maximum = this.options.maximum || this.range.end;
@@ -104,8 +124,8 @@ Richfaces.Slider.prototype = {
 			this.eventIncreaseUp    = this.increaseUp.bindAsEventListener(this);
             this.eventDecreaseUp    = this.decreaseUp.bindAsEventListener(this);
 
-			if (this.options.onerr) {
-				this.eventError = new Function("event","clientErrorMessage",this.options.onerr);
+			if (this.options.onerror) {
+				this.eventError = new Function("event","clientErrorMessage",this.options.onerror);
 			}
 			
 			if (this.options.onchange != ""){
@@ -136,7 +156,7 @@ Richfaces.Slider.prototype = {
         //Event.observe(window, "load", this.setInitialValue.bindAsEventListener(this)); //FIX RFA-190
 		//Event.observe($(input), "propertychange", this.setInitialValue.bindAsEventListener(this));
 			
-		this.required = options.required;
+		this.required = defaultOptions.required;
 		
 		this.mainTable.component = this;
 		this["rich:destructor"] = "destroy";
@@ -347,7 +367,7 @@ Richfaces.Slider.prototype = {
 		if(Event.isLeftClick(event)) {
 			if(!this.disabled){
 				this.handle.className = this.classes.arrowSelected + this.classes.base + this.classes.handleSelected;
-				if (this.options.currValue){
+				if (this.options.showToolTip){
 					Element.show(this.tip);
 					Element.setStyle(this.tip, {top: '-' + (this.tip.offsetHeight+2) + 'px'});
 				}
@@ -419,7 +439,7 @@ Richfaces.Slider.prototype = {
 		window.document.onmouseup = this.prevMouseUp;
 		window.document.onmousemove = this.prevMouseMove;
 		Event.stopObserving(document, "mouseout", this.eventWindowMouseOut, false);
-		if (this.options.currValue){
+		if (this.options.showToolTip){
 			Element.hide(this.tip);
 		}
 		if (this.eventChanged && this.isValueChanged()){
@@ -475,7 +495,7 @@ Richfaces.Slider.prototype = {
         this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-selected");
         window.document.onmouseup = this.eventIncreaseUp.bindAsEventListener(this);
         if(!this.disabled){
-            if (this.options.currValue){
+            if (this.options.showToolTip){
                 Element.show(this.tipArrowInc);
             }
         }
@@ -488,7 +508,7 @@ Richfaces.Slider.prototype = {
         this.arrowButton.className = this.arrowButton.className.replace("Class","SelectedClass").replace("al","al-selected");
         window.document.onmouseup = this.eventDecreaseUp.bindAsEventListener(this);
         if(!this.disabled){
-            if (this.options.currValue){
+            if (this.options.showToolTip){
                 Element.show(this.tipArrowDec);
             }
         }
@@ -498,7 +518,7 @@ Richfaces.Slider.prototype = {
     
     increaseUp : function(event){
         this._periodicalExecuter.stop();
-        if (this.options.currValue){
+        if (this.options.showToolTip){
             Element.hide(this.tipArrowInc);
         }
         this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-selected","al");
@@ -507,7 +527,7 @@ Richfaces.Slider.prototype = {
     
     decreaseUp : function(event){
 	    this._periodicalExecuter.stop();
-        if (this.options.currValue){
+        if (this.options.showToolTip){
             Element.hide(this.tipArrowDec);
         }
         this.arrowButton.className = this.arrowButton.className.replace("SelectedClass","Class").replace("al-selected","al");
@@ -550,7 +570,7 @@ Richfaces.Slider.prototype = {
 			this.input.value = this.value;
 			
 			if (this.eventError){
-				this.eventError(e,this.options.clientErrorMsg);
+				this.eventError(e,this.options.clientErrorMessage);
 			}
 		} else {
 			if (!( e.keyCode >= 37 && e.keyCode <= 40 )){
