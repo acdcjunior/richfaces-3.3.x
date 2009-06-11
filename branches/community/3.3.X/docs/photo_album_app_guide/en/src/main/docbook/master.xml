@@ -7,6 +7,7 @@
     <!ENTITY getting_started SYSTEM "modules/getting_started.xml">
 	
 	
+	<!ENTITY skinnability SYSTEM "includes/skinnability.xml">
     <!ENTITY usedComponents SYSTEM "includes/usedComponents.xml">
 	<!ENTITY navigationPanel SYSTEM "includes/navigationPanel.xml">
 	<!ENTITY uploadImages SYSTEM "includes/uploadImages.xml">
@@ -53,6 +54,11 @@
                   <surname>Galkin</surname>
                   <email>ggalkin@exadel.com</email>
             </author>     
+			 <author>
+                  <firstname>Michael</firstname>
+                  <surname>Sorokin</surname>
+                  <email>msorokin@exadel.com</email>
+            </author>   
             <copyright>
                   <year>2009</year>
                   <holder>Red Hat</holder>
@@ -83,7 +89,9 @@
 		      	In this chapter we explain how the Photo Album works.
 		      </para>
       		  <?forseChanks?>
+			  
 				  &usedComponents;
+				  &skinnability;
 				  &navigationPanel;
 				  <!-- &shelfView; -->
 				  &albumView;
