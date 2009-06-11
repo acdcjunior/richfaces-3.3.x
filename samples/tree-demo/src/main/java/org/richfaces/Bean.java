@@ -215,14 +215,6 @@ public class Bean extends TreeContainer {
 	public void onSelect(NodeSelectedEvent event) {
 		System.out.println("Node selected: " + getTree(event).getRowKey());
 		UITree tree = getTree(event);
-//		Set keys = tree.getAjaxKeys();
-//		if (keys == null) {
-//			keys = new HashSet();
-//			tree.setAjaxKeys(keys);
-//		}
-
-		//keys.add(tree.getRowKey());
-		//keys.add(new ListRowKey());
 		
 		if (getTree(event).getTreeNode()!=null) {
 			selectedNode = getTree(event).getTreeNode();
