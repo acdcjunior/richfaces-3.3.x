@@ -9,8 +9,8 @@
     </sectioninfo>
     
 <title>Description</title>
-  <para>The <emphasis role="bold">
-          <property>&lt;a4j:support&gt;</property>
-        </emphasis> component adds an Ajax support to any existing JSF component. It allows a component to generate asynchronous requests on the necessary event demand and with partial update of page content after a response incoming from the server.</para>
+        <para>The <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component enriches any existing JSF or RichFaces component with an Ajax capability by generating an asynchronous Ajax requests for them. 
+              The requests are invoked by definite user activity and used for updating and re-rendering page contents partially after a response from server.
+        </para>
 </section>
 </root>
