@@ -9,16 +9,19 @@
         <classname>java.lang.String</classname>
         <description> The character encoding of a resource designated by this hyperlink</description>
     </property>
+    
     <property>
         <name>coords</name>
         <classname>java.lang.String</classname>
-        <description> This attribute specifies the position and shape on the screen. The number and order of values depends on the shape being defined. Possible combinations:
-            
-            * rect: left-x, top-y, right-x, bottom-y.
-            * circle: center-x, center-y, radius. Note. When the radius value is percentage value, user agents should calculate the final radius value based on the associated object's width and height. The radius should be the smaller value of the two.
-            * poly: x1, y1, x2, y2, ..., xN, yN. The first x and y coordinate pair and the last should be the same to close the polygon. When these coordinate values are not the same, user agents should infer an additional coordinate pair to close the polygon.
-            
-            Coordinates are relative to the top, left corner of the object. All values are lengths. All values are separated by commas
+        <description>
+        The attribute specifies shape and it position on the screen. 
+        Possible values: "rect: left-x, top-y, right-x, bottom-y", "circle: center-x, center-y, radius", "poly: x1, y1, x2, y2, ..., xN, yN". 
+        Notes: 
+        a) when giving the radius value is percents, user agents should calculate the final radius value in pixels based on the associated object's width and height; 
+        b) the radius value should be smaller than center-x and center-y values; 
+        c) for a polygon, the first and last coordinate pairs should have same x and y to close the shape (x1=xN; y1=yN) 
+        (when these coordinates are different, user agents should infer an additional pair to close a polygon). 
+        Coordinates are relative to the top left corner of an object. All values are lengths. All values are comma separated. 
         </description>
     </property>
     
