@@ -26,12 +26,12 @@ public class DataScroller {
     private String action;
     private String actionListener;
     private boolean ajaxSingle = false;
-    private String boundaryControls = "auto"; 
+    private String boundaryControls = "show"; 
     private HtmlDatascroller htmlDatascroller= null;
     private String fastStep = "2";
-    private int page = 2;
+    private int page = 1;
     private Object value = null;
-    private String stepControls = "auto";
+    private String stepControls = "show";
     private String sortMode;
 	private boolean selfSorted;
 	private Ordering sortOrder;
@@ -129,7 +129,7 @@ public class DataScroller {
 	public DataScroller() {
 		action = "---";
 		actionListener = "---";
-		fastControls = "auto";
+		fastControls = "show";
 		render = true;
 		renderIfSinglePage = true;
 		align = "left";
