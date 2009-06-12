@@ -163,7 +163,7 @@ inputText.getFacets().put("a4jsupport", ajaxSupport);
             <itemizedlist>
                   <listitem>
                         <para>
-                              <emphasis role="bold">imitation of requests frequency and updates quantity after the responses</emphasis>
+                              <emphasis role="bold">limitation of requests frequency and updates quantity after the responses</emphasis>
                         </para>
                         
                         <para>
