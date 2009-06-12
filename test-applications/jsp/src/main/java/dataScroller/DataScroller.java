@@ -28,7 +28,7 @@ public class DataScroller {
     private boolean ajaxSingle = false;
     private String boundaryControls = "auto"; 
     private HtmlDatascroller htmlDatascroller= null;
-    private String fastStep = "0";
+    private String fastStep = "2";
     private int page = 2;
     private Object value = null;
     private String stepControls = "auto";
