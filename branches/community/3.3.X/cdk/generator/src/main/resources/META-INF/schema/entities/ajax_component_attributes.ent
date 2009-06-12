@@ -80,7 +80,7 @@ When the delay time is over, the request will be sent to the server or removed i
     <property >
         <name>focus</name>
         <classname>java.lang.String</classname>
-        <description>id of element to set focus after request completed on client side</description>
+        <description>ID of an element to set focus after request is completed on client side</description>
     </property>
     <property >
        <name>data</name>

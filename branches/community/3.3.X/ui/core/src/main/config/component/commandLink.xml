@@ -89,9 +89,9 @@ but just allows to avoid unnecessary updates on the client side if the response 
 			<description>Timeout ( in ms ) for request.</description>
 		</property>
 		<property>
-			<name>disabled</name>
-			<classname>boolean</classname>
-			<description>If true, disable this component on page.</description>
+		      <name>disabled</name>
+		      <classname>boolean</classname>
+		      <description>Disables the component on page. Boolean.</description>
 		</property>
 	</component>     
 </components>
