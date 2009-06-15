@@ -82,43 +82,43 @@
             <name>styleClass</name>
             <classname>java.lang.String</classname>
             <description>
-               The styleClass for the container div surrounding the component
+            	Assigns one or more CSS class names to the container surrounding the component. Corresponds to the HTML &quot;class&quot; attribute.
             </description>
         </property>
         <property>
             <name>fieldStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                The styleClass for input that displays the value : manualInput must
-                be "true"
+            	Assigns one or more CSS class names to the component input field. The value of the &quot;manualInput&quot; attribute must
+            	be &quot;true&quot;.
             </description>
         </property>
         <property>
             <name>handleStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                The handleStyleClass for a handle
+            	Assigns one or more CSS class names to the component handle
             </description>
         </property>
         <property>
             <name>trailerStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                The trailerStyleClass for a div following a handle
+            	Assigns one or more CSS class names to the trailer following the component handle
             </description>
         </property>
         <property>
             <name>trackStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                The trackStyleClass for a background div
+            	Assigns one or more CSS class names to the component track
             </description>
         </property>
         <property>
             <name>rangeStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                The rangeStyleClass for the background div showing a full range
+            	Assigns one or more CSS class names to the background div element wrapping a full range
             </description>
         </property>
         <property>
