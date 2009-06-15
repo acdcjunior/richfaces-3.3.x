@@ -119,15 +119,14 @@
 			<name>startStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class for the element displayed on the start
-				of a request.
+				Holds a fragment of a style sheet that applies to the element displayed when a request is in progress
 			</description>
 		</property>
 		<property>
 			<name>stopStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style for element displayed on request completion.
+				Holds a fragment of a style sheet that applies to the element displayed on a request completion
 			</description>
 		</property>
 
@@ -144,15 +143,14 @@
 			<name>startStyleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class for the element displayed on the start
-				of a request.
+				Assigns one or more CSS class names to the element displayed when a request is in progress
 			</description>
 		</property>
 		<property>
 			<name>stopStyleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class for element displayed on request
+				Assigns one or more CSS class names to the element displayed on a request completion
 			</description>
 		</property>
 		<property>
