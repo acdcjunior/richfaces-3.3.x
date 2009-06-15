@@ -112,7 +112,7 @@
 				,onblur,onchange,onclick,ondblclick,onfocus,onkeydown,onkeypress,onkeyup,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onreset,onsubmit, </xsl:variable>
 			
 			<xsl:variable name="jsf-attributes">
-			,id,binding,rendered,styleClass,value,valueChangeListener,converter,validator,required, </xsl:variable>
+				,id,binding,rendered,styleClass,value,valueChangeListener,converter,validator,required,columnClasses,rowClasses,</xsl:variable>
 			
 			<xsl:variable name="onselect-custom-attribute">
 				,menuItem,colorPicker,suggestionbox, </xsl:variable>
