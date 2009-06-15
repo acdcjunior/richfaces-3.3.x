@@ -92,25 +92,25 @@
 		<property>
 			<name>captionClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to caption for this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component caption</description>
 			<defaultvalue>""</defaultvalue>
 		</property>
 		<property>
 			<name>captionStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to caption when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component caption</description>
 		</property>
 		<property>
 			<name>headerClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to header for this component
+			<description>Assigns one or more space-separated CSS class names to the component header 
 			</description>
 			<defaultvalue>""</defaultvalue>
 		</property>
 		<property>
 			<name>footerClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to footer for this component
+			<description>Assigns one or more space-separated CSS class names to the component footer
 			</description>
 			<defaultvalue>""</defaultvalue>
 		</property>

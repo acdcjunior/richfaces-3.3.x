@@ -42,16 +42,20 @@
 			<name>columnClasses</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Comma-delimited list of CSS style classes that are be applied to the columns of this table.
-				A space separated list of classes may also be specified for any individual column.
-				If the number of elements in this list is less than the number of columns specified in the "columns" attribute, no "class" attribute is output for each column greater than the number of elements in the list. If the number of elements in the list is greater than the number of columns specified in the "columns" attribute, the elements at the position in the list after the value of the "columns" attribute are ignored
+				Assigns one or more space-separated CSS class names to the columns of the table. If the CSS class names are comma-separated, 
+				each class will be assigned to a particular column in the order they follow in the attribute. If you have less class names than columns, 
+				the class will be applied to every n-fold column where n is the order in which the class is listed in the attribute. 
+				If there are more class names than columns, the overflow ones are ignored.
 			</description>
 		</property>
 		<property>
 			<name>rowClasses</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A comma-delimited list of CSS style classes that is applied to popup table rows. A space separated list of classes may also be specified for any individual row. The styles are applied, in turn, to each row in the table. For example, if the list has two elements, the first style class in the list is applied to the first row, the second to the second row, the first to the third row, the second to the fourth row, etc. In other words, we keep iterating through the list until we reach the end, and then we start at the beginning again
+				Assigns one or more space-separated CSS class names to the rows of the table. If the CSS class names are comma-separated, 
+				each class will be assigned to a particular row in the order they follow in the attribute. If you have less class names than rows, 
+				the class will be applied to every n-fold row where n is the order in which the class is listed in the attribute. If there are more class names than rows, 
+				the overflow ones are ignored.
 			</description>
 		</property>
 		<property disabled="false" hidden="true">
