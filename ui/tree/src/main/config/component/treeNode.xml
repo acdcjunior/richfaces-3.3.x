@@ -162,7 +162,7 @@
 		<property>
             <name>nodeClass</name>
             <classname>java.lang.String</classname>
-            <description>Name of node CSS class</description>
+			<description> Assigns one or more CSS class names to the component node</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
 
