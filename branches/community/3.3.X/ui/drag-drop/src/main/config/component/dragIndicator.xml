@@ -38,17 +38,17 @@
 				<property>
                         <name>styleClass</name>
                         <classname>java.lang.String</classname>
-                        <description>Corresponds to the HTML class attribute</description>
+						  <description>Assigns one or more CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
                 </property>
                 <property>
                         <name>acceptClass</name>
                         <classname>java.lang.String</classname>
-                        <description>Corresponds to the HTML class attribute and added to an indicator when a drop is accepted</description>
+                	      <description>Assigns one or more CSS class names to the indicator which are applied when a drop is accepted</description>
                 </property>
                 <property>
                         <name>rejectClass</name>
                         <classname>java.lang.String</classname>
-                        <description>Corresponds to the HTML class attribute and added to an indicator when a drop is rejected</description>
+                		  <description>Assigns one or more CSS class names to the indicator which are applied when a drop is rejected</description>
                 </property>
 	</component>
 </components>
