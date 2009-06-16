@@ -2,13 +2,13 @@
     <property>
         <name>headerStyle</name>
         <classname>java.lang.String</classname>
-        <description>The component header style</description>
+        <description>Holds a fragment of a style sheet that applies to the component header</description>
         <defaultvalue><![CDATA[""]]></defaultvalue>
     </property>
     <property>
         <name>headerClass</name>
         <classname>java.lang.String</classname>
-        <description>The component header style class</description>
+        <description>Assigns one or more CSS class names to the component header</description>
     </property>
     
 </properties>
