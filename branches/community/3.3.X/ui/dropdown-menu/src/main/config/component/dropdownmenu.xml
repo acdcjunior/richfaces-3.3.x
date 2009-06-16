@@ -158,7 +158,7 @@
             <name>selectItemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-			CSS style(s) is/are to be applied to selected item when this component is rendered.	
+            	Holds a fragment of a style sheet that applies to the component selected item
             </description>
         </property>
 
@@ -166,7 +166,7 @@
             <name>selectItemClass</name>
             <classname>java.lang.String</classname>
             <description>
-			Space-separated list of CSS style class(es) that are be applied to selected item of this component.
+            	Assigns one or more space-separated CSS class names to the component selected item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -175,7 +175,7 @@
             <name>disabledItemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-			CSS style(s) is/are to be applied to disabled item when this component is rendered.	
+            	Holds a fragment of a style sheet that applies to the component disabled item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -184,7 +184,7 @@
             <name>disabledItemClass</name>
             <classname>java.lang.String</classname>
             <description>
-			Space-separated list of CSS style class(es) that are be applied to disabled item of this component
+            	Assigns one or more space-separated CSS class names to the component disabled item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -193,7 +193,7 @@
             <name>disabledLabelClass</name>
             <classname>java.lang.String</classname>
             <description>
-                  Space-separated list of CSS style class(es) applied to dropdown menu label when it is disabled. 
+            	Assigns one or more space-separated CSS class names to the component label when it is disabled 
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -201,7 +201,7 @@
             <name>selectedLabelClass</name>
             <classname>java.lang.String</classname>
             <description>
-                  Space-separated list of CSS style class(es) applied to dropdown menu label when it is selected.
+            	Assigns one or more space-separated CSS class names to the component label when it is selected
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -210,7 +210,7 @@
                 <name>labelClass</name>
                 <classname>java.lang.String</classname>
                 <description>
-                      Space-separated list of CSS style class(es) applied to dropdown menu label in it normal (neither selected nor disabled) sate.
+                	Assigns one or more space-separated CSS class names to the component label
                 </description>
                 <defaultvalue><![CDATA[""]]></defaultvalue>
           </property>
@@ -219,7 +219,7 @@
             <name>itemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-			CSS style(s) is/are to be applied to item when this component is rendered.	
+            	Holds a fragment of a style sheet that applies to the component item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -228,7 +228,7 @@
             <name>itemClass</name>
             <classname>java.lang.String</classname>
             <description>
-			Space-separated list of CSS style class(es) that are be applied to item of this component
+            	Assigns one or more space-separated CSS class names to the component item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
