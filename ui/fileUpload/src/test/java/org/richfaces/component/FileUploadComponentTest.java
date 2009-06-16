@@ -109,7 +109,6 @@ public class FileUploadComponentTest extends AbstractAjax4JsfTestCase {
                         assertTrue(scriptBodyString.contains("image/jpeg"));
                         assertTrue(scriptBodyString.contains("video/mpeg"));
                         assertFalse(scriptBodyString.contains("image/png"));
-                        assertTrue(scriptBodyString.contains("FileUpload.CLASSES"));
                     }
             }
         }

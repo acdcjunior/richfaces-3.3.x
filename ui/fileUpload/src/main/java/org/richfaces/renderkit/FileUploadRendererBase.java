@@ -486,12 +486,9 @@ public abstract class FileUploadRendererBase extends
 				for (String type : types) {
 					accepted.put(type.toLowerCase(), true);
 				}
-				return ScriptUtils.toScript(accepted);
 			}
-		}else {
-			accepted.put("*", true);
 		}
-		return ScriptUtils.toScript(accepted);
+		return accepted;
 	}
 
 	/**
@@ -575,7 +572,7 @@ public abstract class FileUploadRendererBase extends
 		}
 
 		return (result != null) ? new JSLiteral(result.toString())
-				: JSReference.NULL;
+				: null;
 	}
 
 	/**
@@ -715,7 +712,7 @@ public abstract class FileUploadRendererBase extends
 			parameters.putAll(commonAjaxParameters);
 		}
 		
-		return ((parameters.size() > 0) ? ScriptUtils.toScript(parameters) : JSReference.NULL);
+		return parameters;
 	}
 	
 	public String getSessionId(FacesContext context, UIComponent component) {
