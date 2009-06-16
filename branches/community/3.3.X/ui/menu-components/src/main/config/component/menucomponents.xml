@@ -123,27 +123,27 @@
         <property>
             <name>selectStyle</name>
             <classname>java.lang.String</classname>
-            <description>CSS style rules to be applied to selected items</description>
+        	  <description>Holds a fragment of a style sheet that applies to the component selected items</description>
         </property>
         <property>
             <name>selectClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to selected items</description>
+        	 <description>Assigns one or more space-separated CSS class names to the component selected items</description>
         </property>
         <property>
             <name>iconStyle</name>
             <classname>java.lang.String</classname>
-            <description>CSS style rules to be applied to icon element</description>
+        	 <description>Holds a fragment of a style sheet that applies to the component icon element</description>
         </property>
         <property>
             <name>iconClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to icon element</description>
+        	<description>Assigns one or more space-separated CSS class names to the component icon element</description>
         </property>
         <property>
             <name>labelClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to label element</description>
+        	<description>Assigns one or more space-separated CSS class names to the component label element</description>
         </property>
 		<property>
 			<name>converter</name>
@@ -268,27 +268,27 @@
         <property>
             <name>selectClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to selected items</description>
+        	<description>Assigns one or more CSS class names to the selected item</description>
         </property>
         <property>
             <name>selectStyle</name>
             <classname>java.lang.String</classname>
-            <description>CSS style rules to be applied to selected items</description>
+        	<description>Holds a fragment of a style sheet that applies to the selected item</description>
         </property>
         <property>
             <name>iconClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to icon element</description>
+        	<description>Assigns one or more space-separated CSS class names to the component icon element</description>
         </property>
         <property>
             <name>iconStyle</name>
             <classname>java.lang.String</classname>
-            <description>CSS style rules to be applied to icon element</description>
+        	<description>Holds a fragment of a style sheet that applies to the component icon element</description>
         </property>
         <property>
             <name>labelClass</name>
             <classname>java.lang.String</classname>
-            <description>Class to be applied to label element</description>
+        	<description>Assigns one or more space-separated CSS class names to the component label element</description>
         </property>
 
         &ajax_component_attributes;
