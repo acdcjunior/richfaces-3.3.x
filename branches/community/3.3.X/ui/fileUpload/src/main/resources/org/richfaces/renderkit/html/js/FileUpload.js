@@ -418,56 +418,102 @@ Object.extend(FileUpload.prototype, {
 	options: null,
 	
 	runUpload: false,
-
-	classes: null,
-
-	events: null,
 	
-	maxFileBatchSize: null,
+	maxFileBatchSize: 1,
 	
 	uploadedCount: 0,
-
-	initialize: function(id, formId, actionUrl, stopScript, getFileSizeScript, progressBarId, classes, label, maxFiles, events, disabled, acceptedTypes, options, labels, parameters, sessionId) {
+	
+	acceptedTypes: {"*" : true},
+	
+	initialize: function(id, actionUrl, stopScript, getFileSizeScript, progressBarId, sessionId, options) {
+		//default values of classes
+		this.classes = {
+			ADD : {	
+				ENABLED  : 'rich-fileupload-button rich-fileupload-font ',
+				DISABLED : 'rich-fileupload-button-dis rich-file-upload-font '
+			},
+			ADD_CONTENT	: {
+				ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-add ',
+				DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-add-dis '
+			},
+			UPDATE : {
+				ENABLED  : 'rich-fileupload-button rich-fileupload-font ',
+				DISABLED : 'rich-fileupload-button-dis rich-fileupload-font '
+			},
+			UPDATE_CONTENT : {
+				ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-start ',
+				DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-start-dis '
+			},
+			STOP : {
+				ENABLED  : 'rich-fileupload-button rich-fileupload-font ',
+				DISABLED : 'rich-fileupload-button-dis rich-fileupload-font '
+			},
+			STOP_CONTENT : {
+				ENABLED  : 'rich-fileupload-button-content rich-file-upload-font rich-fileupload-ico rich-fileupload-ico-stop ',
+				DISABLED : 'rich-fileupload-button-content rich-file-upload-font rich-fileupload-ico rich-fileupload-ico-stop-dis '
+			},
+			CLEAN : {
+				ENABLED  : 'rich-fileupload-button rich-fileupload-font ',
+				DISABLED : 'rich-fileupload-button-dis rich-fileupload-font '
+			},
+			CLEAN_CONTENT : {
+				ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-clear ',
+				DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-clear-dis '
+			},
+			FILE_ENTRY : {
+				ENABLED : '',
+				DISABLED : ''
+			},
+			FILE_ENTRY_CONTROL : {
+				ENABLED : '',
+				DISABLED : ''
+			},
+			UPLOAD_LIST : {
+				ENABLED : '',
+				DISABLED : ''
+			}
+		};		
+		this.events = {};
+		this.options = {};
+		
+		var classes = options.classes;
+		for (var obj in classes) {
+			var value = classes[obj];
+			for (var property in value) {
+				this.classes[obj][property] += value[property];
+				if (this.classes[obj + "_CONTENT"]) {
+					this.classes[obj + "_CONTENT"][property] += value[property];
+				}
+			}
+		}
+		Object.extend(this, options.fields);
+		
 		this.id = id;
 		this.element = $(this.id);
-		if (formId != '') {
-			this.formId = formId;
-			this.form = $(formId);
-		}else {
-			var f = this._getForm();
-			this.formId = (f) ? f.id : null;
-			this.form = f;
-		}
+		var f = this.element.up("form");
+		this.formId = (f) ? f.id : null;
+		this.form = f;
 		this._progressBar = $(progressBarId);
 		this.progressBar = this._progressBar.component;
 		this.entries = new Array(); 
 		
-		this.labelMarkup = label;
-		this.disabled = disabled;
-		
 		this.element.component = this;
-		this.acceptedTypes = acceptedTypes;
-		
 		this.stopScript = stopScript;
 		this.getFileSizeScript = getFileSizeScript;
 		
 		this.items = $(this.id + ":fileItems");
-		this.classes = classes;
-		this.events = events;
-		this.parameters = parameters;
 		this.sessionId = sessionId;
 
-		this.maxFileBatchSize = maxFiles;
 		this.currentInput = $(this.id + ":file");
 
 		this.actionUrl = actionUrl;
-		this.options = options || {};
+		this.options = {allowFlash : "false"};
 		this.initFlashModule();
 		this.initEvents();
 		this.setupAutoUpload();
 		this.checkFrame();
 		//this.initFileEntryWidth();
-		this.initLabels(labels);
+		this.initLabels(options.labels);
 		this.processButtons();
 		this.initFileInput();
 	},
@@ -645,7 +691,7 @@ Object.extend(FileUpload.prototype, {
 	},
 	
 	setupAutoUpload: function() {
-		this.runUpload = this.options.autoUpload;
+		this.runUpload = this.options.immediateUpload;
 	},
 	
 	checkFileType: function (fileName) {

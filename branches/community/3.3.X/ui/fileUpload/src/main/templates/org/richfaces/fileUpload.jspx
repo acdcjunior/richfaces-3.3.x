@@ -139,67 +139,67 @@
 	</jsp:scriptlet>
 
 	<span>
+		<c:scriptObject var="ADD">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['addButtonClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['addButtonClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="UPDATE">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['uploadButtonClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['uploadButtonClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="STOP">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['stopButtonClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['stopButtonClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="CLEAN">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['cleanButtonClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['cleanButtonClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="FILE_ENTRY">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['fileEntryClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['fileEntryClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="FILE_ENTRY_CONTROL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['fileEntryControlClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['fileEntryControlClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="UPLOAD_LIST">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['uploadListClass']}" />
+			<c:scriptOption name="DISABLED"  value="#{component.attributes['uploadListClassDisabled']}" />
+		</c:scriptObject>
+		<c:scriptObject var="classes">
+			<c:scriptOption variables="ADD, UPDATE, STOP, CLEAN, FILE_ENTRY, FILE_ENTRY_CONTROL, UPLOAD_LIST" />
+		</c:scriptObject>
+		<c:scriptObject var="events">
+			<c:scriptOption attributes="onupload, onuploadcomplete, onuploadcanceled, onerror, ontyperejected, onsizerejected, onclear, onadd, onfileuploadcomplete" wrapper="eventHandler"/>
+		</c:scriptObject>
+		<c:scriptObject var="internalOptions">
+			<c:scriptOption attributes="autoclear, noDuplicate, immediateUpload" />
+			<c:scriptOption name="allowFlash"  value="#{allowFlash}" defaultValue="false" />
+			<c:scriptOption name="flashComponentUrl"  value="#{flashComponent}" />
+		</c:scriptObject>
+		<c:scriptObject var="fields">
+			<c:scriptOption name="labelMarkup"  value="#{this:getLabelMarkup(context, component)}" />
+			<c:scriptOption name="maxFileBatchSize"  value="#{maxCount}" defaultValue="1" />
+			<c:scriptOption attributes="disabled" />
+			<c:scriptOption name="maxFileBatchSize"  value="#{maxCount}" defaultValue="1" />
+			<c:scriptOption name="acceptedTypes"  value="#{this:getAcceptedTypes(context, component)}" />
+			<c:scriptOption variables="events" />
+			<c:scriptOption name="options"  value="#{internalOptions}" />
+			<c:scriptOption name="parameters"  value="#{this:getChildrenParams(context, component)}" />
+		</c:scriptObject>
+		<c:scriptObject var="options">
+			<c:scriptOption variables="classes, fields" />
+			<c:scriptOption name="labels"  value="#{labels}" />
+		</c:scriptObject>
 		<script type="text/javascript">
-				FileUpload.CLASSES = {
-				ADD : {	
-					ENABLED  : 'rich-fileupload-button rich-fileupload-font #{component.attributes["addButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-dis rich-file-upload-font #{component.attributes["addButtonClassDisabled"]}'
-				},
-				ADD_CONTENT	: {
-					ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-add #{component.attributes["addButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-add-dis #{component.attributes["addButtonClassDisabled"]}'
-				},
-				UPDATE : {
-					ENABLED  : 'rich-fileupload-button rich-fileupload-font #{component.attributes["uploadButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-dis rich-fileupload-font #{component.attributes["uploadButtonClassDisabled"]}'
-				},
-				UPDATE_CONTENT : {
-					ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-start #{component.attributes["uploadButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-start-dis #{component.attributes["uploadButtonClassDisabled"]}'
-				},
-				STOP : {
-					ENABLED  : 'rich-fileupload-button rich-fileupload-font #{component.attributes["stopButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-dis rich-fileupload-font #{component.attributes["stopButtonClassDisabled"]}'
-				},
-				STOP_CONTENT : {
-					ENABLED  : 'rich-fileupload-button-content rich-file-upload-font rich-fileupload-ico rich-fileupload-ico-stop #{component.attributes["stopButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-content rich-file-upload-font rich-fileupload-ico rich-fileupload-ico-stop-dis #{component.attributes["stopButtonClassDisabled"]}'
-				},
-				CLEAN : {
-					ENABLED  : 'rich-fileupload-button rich-fileupload-font #{component.attributes["cleanButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-dis rich-fileupload-font #{component.attributes["cleanButtonClassDisabled"]}'
-				},
-				CLEAN_CONTENT : {
-					ENABLED  : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-clear #{component.attributes["cleanButtonClass"]}',
-					DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-clear-dis #{component.attributes["cleanButtonClassDisabled"]}'
-				},
-				FILE_ENTRY : {
-					ENABLED : '#{component.attributes["fileEntryClass"]}',
-					DISABLED : '#{component.attributes["fileEntryClassDisabled"]}'
-				},
-				FILE_ENTRY_CONTROL : {
-					ENABLED : '#{component.attributes["fileEntryControlClass"]}',
-					DISABLED : '#{component.attributes["fileEntryControlClassDisabled"]}'
-				},
-				UPLOAD_LIST : {
-					ENABLED : '#{component.attributes["uploadListClass"]}',
-					DISABLED : '#{component.attributes["uploadListClassDisabled"]}'
-				}
-			};
-
-				var events = {
-						onupload : #{this:getAsEventHandler(context, component, "onupload")},
-						onuploadcomplete : #{this:getAsEventHandler(context, component, "onuploadcomplete")},
-						onuploadcanceled : #{this:getAsEventHandler(context, component, "onuploadcanceled")},
-						onerror : #{this:getAsEventHandler(context, component, "onerror")},
-						ontyperejected : #{this:getAsEventHandler(context, component, "ontyperejected")},
-						onsizerejected : #{this:getAsEventHandler(context, component, "onsizerejected")},
-						onclear : #{this:getAsEventHandler(context, component, "onclear")},
-						onadd : #{this:getAsEventHandler(context, component, "onadd")},
-						onfileuploadcomplete : #{this:getAsEventHandler(context, component, "onfileuploadcomplete")}
-						};
-
-			new FileUpload('#{clientId}','#{formId}','#{actionUrl}',#{this:getStopScript(context, component)}, #{this:getFileSizeScript(context, component)} ,'#{this:getProgressBarId(context, component)}', FileUpload.CLASSES, #{this:getLabelMarkup(context, component)}, #{maxCount}, events, #{component.attributes["disabled"]}, #{this:getAcceptedTypes(context, component)}, {'autoclear':#{component.attributes["autoclear"]},'autoUpload':#{component.attributes["immediateUpload"]},'noDuplicate':#{component.attributes["noDuplicate"]}, 'allowFlash':'#{allowFlash}', 'flashComponentUrl':'#{flashComponent}'},#{this:_getLabels(labels)},#{this:getChildrenParams(context, component)},'#{this:getSessionId(context, component)}');
+			new FileUpload('#{clientId}','#{actionUrl}',#{this:getStopScript(context, component)},
+					#{this:getFileSizeScript(context, component)} ,'#{this:getProgressBarId(context, component)}',
+					'#{this:getSessionId(context, component)}'
+						<c:if test="#{not empty options}">
+						, <f:writeAsScript value="#{options}" />
+						</c:if> 
+						);
 		</script>
 	</span>
 <f:call name="utils.encodeEndFormIfNessesary" />
