@@ -18,12 +18,12 @@
 	<property>
 		<name>selectedClass</name>
 		<classname>java.lang.String</classname>
-		<description>Corresponds to the HTML class attribute. Applied to selected node</description>
+		<description>Assigns one or more CSS class names to the component selected node</description>
 	</property>
 	<property>
 		<name>highlightedClass</name>
 		<classname>java.lang.String</classname>
-		<description>Corresponds to the HTML class attribute. Applied to highlighted node</description>
+		<description> Assigns one or more CSS class names to the component highlighted node</description>
 	</property>
 	<property>
 		<name>reRender</name>
