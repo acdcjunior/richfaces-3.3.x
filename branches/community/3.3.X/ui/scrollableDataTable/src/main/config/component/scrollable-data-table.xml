@@ -91,7 +91,7 @@
 		<property>
 			<name>selectedClass</name>
 			<classname>java.lang.String</classname>
-			<description>Assigns one or more CSS class names to the component rows selected</description>
+			<description>Assigns one or more space-separated CSS class names to the component rows selected</description>
 		</property>	
 
     <property>
@@ -106,7 +106,7 @@
 			<name>activeClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Assigns one or more CSS class names to the component active row
+				Assigns one or more space-separated CSS class names to the component active row
 			</description>
 		</property>		
 		
