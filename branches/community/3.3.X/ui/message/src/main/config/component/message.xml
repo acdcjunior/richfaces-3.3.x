@@ -57,7 +57,7 @@
 			<name>level</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A comma-separated list of messages categories which should be displayed. Default value is &quot;ALL&quot;.
+				Defines a comma-separated list of messages categories to display. Default value is &quot;ALL&quot;.
 			</description>
 			
 		</property>
@@ -65,7 +65,7 @@
 			<name>minLevel</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A minimum level of messages categories which should be displayed.
+				Defines a minimum level of messages categories to display.
 			</description>
 		
 		</property>
@@ -348,7 +348,7 @@
 			<name>level</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A comma-separated list of messages categories which should be displayed.  Default value is &quot;ALL&quot;.
+				Defines a comma-separated list of messages categories to display.  Default value is &quot;ALL&quot;.
 			</description>
 		
 		</property>
@@ -356,7 +356,7 @@
 			<name>minLevel</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A minimum level of messages categories which should be displayed.
+				Defines a minimum level of messages categories to display.
 			</description>
 		
 		</property>
