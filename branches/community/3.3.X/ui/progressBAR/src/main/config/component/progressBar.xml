@@ -89,27 +89,27 @@
 		<property>	
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS class that defines style for progress bar</description>
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 		</property>
 		<property>
 			<name>completeClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS class that defines style for progress line rendering</description>
+			<description>Assigns one or more space-separated CSS class names to the component progress line rendering</description>
 		</property>
 		<property>
 			<name>remainClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS class that defines style for remained part of progress bar</description>
+			<description>Assigns one or more space-separated CSS class names to the remained part of the progress bar</description>
 		</property>
 		<property>
 			<name>initialClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS class that defines style for initial state of the component</description>
+			<description>Assigns one or more space-separated CSS class names to the progress bar initial state</description>
 		</property>
 		<property>
 			<name>finishClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS class that defines style for complete state of the component</description>
+			<description>Assigns one or more space-separated CSS class names to the progress bar complete state</description>
 		</property>
 		<property>
 			<name>reRenderAfterComplete</name>
