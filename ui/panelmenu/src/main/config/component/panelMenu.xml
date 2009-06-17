@@ -179,44 +179,44 @@
 		<property>
 			<name>style</name>
 			<classname>java.lang.String</classname>
-			<description>The CSS style for the panel menu.</description>
+			<description>Holds a fragment of a style sheet that applies to the component</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
-			<description>The CSS class for the panel menu.</description>
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>groupStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to group when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to any component group except top groups</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>groupClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to group of this component</description>
+			<description>Assigns one or more space-separated CSS class names to any component group except top groups</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>topGroupStyle</name>
 			<classname>java.lang.String</classname>
-			<description> CSS style(s) is/are to be applied to top group when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component top groups</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>topGroupClass</name>
 			<classname>java.lang.String</classname>
-			<description> Space-separated list of CSS style class(es) that are be applied to top group of this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component top groups</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>itemStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style(s) is/are to be applied to item when this component is rendered.	
+				Holds a fragment of a style sheet that applies to the component item except top items
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
@@ -224,27 +224,27 @@
 			<name>itemClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Space-separated list of CSS style class(es) that are be applied to item of this component
+				Assigns one or more space-separated CSS class names to any component item except top items
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>topItemStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to top item when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component top items</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>topItemClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to top item of this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component top items</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledItemClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Space-separated list of CSS style class(es) that are be applied to disabled item of this component
+				Assigns one or more space-separated CSS class names to the component disabled items
 			</description>
 			<defaultvalue><![CDATA["rich-pmenu-disabled-element"]]></defaultvalue>
 		</property>
@@ -252,44 +252,44 @@
 			<name>disabledItemStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style(s) is/are to be applied to disabled item when this component is rendered.	
+				Holds a fragment of a style sheet that applies to the component disabled items
 			</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledGroupClass</name>
 			<classname>java.lang.String</classname>
-			<description>Space-separated list of CSS style class(es) that are be applied to disabled group of this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component disabled groups</description>
 			<defaultvalue><![CDATA["rich-pmenu-disabled-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledGroupStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to disabled group when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component disabled groups</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoveredItemClass</name>
 			<classname>java.lang.String</classname>
-			<description> Space-separated list of CSS style class(es) that are be applied to hovered item of this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component hovered item</description>
 			<defaultvalue><![CDATA["rich-pmenu-hovered-element"]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoveredItemStyle</name>
 			<classname>java.lang.String</classname>
-			<description> CSS style(s) is/are to be applied to hovered item when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component hovered item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoveredGroupStyle</name>
 			<classname>java.lang.String</classname>
-			<description> CSS style(s) is/are to be applied to hovered group when this component is rendered</description>
+			<description>Holds a fragment of a style sheet that applies to the component hovered group</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoveredGroupClass</name>
 			<classname>java.lang.String</classname>
-			<description> Space-separated list of CSS style class(es) that are be applied to hovered group of this component</description>
+			<description>Assigns one or more space-separated CSS class names to the component hovered group</description>
 			<defaultvalue><![CDATA["rich-pmenu-hovered-element"]]></defaultvalue>
 		</property>
 		<property>
@@ -484,49 +484,49 @@
 		<property>
 			<name>hoverClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to hovered items.</description>
+			<description>Assigns one or more space-separated CSS class names to the group hovered item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoverStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied to hovered items.</description>
+			<description>Holds a fragment of a style sheet that applies to the group hovered item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to disabled items.</description>
+			<description>Assigns one or more space-separated CSS class names to the group disabled items</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied to disabled items.</description>
+			<description>Holds a fragment of a style sheet that applies to the group disabled items</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Corresponds to the HTML class attribute.</description>
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>style</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) to be applied when this component is rendered.</description>
+			<description>Holds a fragment of a style sheet that applies to the component</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to icon element.</description>
+			<description>Assigns one or more space-separated CSS class names to the group icon element</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied</description>
+			<description>Holds a fragment of a style sheet that applies to the group icon element</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
@@ -617,49 +617,49 @@
 		<property>
 			<name>hoverClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to hovered items.</description>
+			<description>Assigns one or more space-separated CSS class names to the hovered item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>hoverStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied to hovered items.</description>
+			<description>Holds a fragment of a style sheet that applies to the hovered item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to disabled items.</description>
+			<description>Assigns one or more space-separated CSS class names to the disabled item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>disabledStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied to disabled items.</description>
+			<description>Holds a fragment of a style sheet that applies to the disabled item</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Corresponds to the HTML class attribute.</description>
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>style</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) to be applied when this component is rendered.</description>
+			<description>Holds a fragment of a style sheet that applies to the component</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconClass</name>
 			<classname>java.lang.String</classname>
-			<description>Class to be applied to icon element.</description>
+			<description>Assigns one or more space-separated CSS class names to the item icon element</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconStyle</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style rules to be applied</description>
+			<description>Holds a fragment of a style sheet that applies to the item icon element</description>
 			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		&ui_component_attributes;
