@@ -46,24 +46,24 @@
     	<property>
 	    	<name>style</name>
 	    	<classname>java.lang.String</classname>
-    		<description>CSS style(s) is/are to be applied when this component is rendered</description>
+    		<description>Holds a fragment of a style sheet that applies to the component</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
     	<property>
 	    	<name>styleClass</name>
 	    	<classname>java.lang.String</classname>
-    		<description>Corresponds to the HTML class attribute.</description>
+    		<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 	    </property>
         <property>
            <name>headerStyleActive</name>
            <classname>java.lang.String</classname>
-           <description>The component header style active</description>
+        	<description>Holds a fragment of a style sheet that applies to the header of the active component item</description>
            <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
            <name>headerClassActive</name>
            <classname>java.lang.String</classname>
-           <description>The component header style class active</description>
+        	<description>Assigns one or more space-separated CSS class names to the header of the active component item</description>
         </property>
         <property>
            <name>value</name>
@@ -194,13 +194,13 @@
         <property>
            <name>headerStyleActive</name>
            <classname>java.lang.String</classname>
-           <description>The component header style active</description>
+        	<description>Holds a fragment of a style sheet that applies to the header of the active item</description>
            <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
            <name>headerClassActive</name>
            <classname>java.lang.String</classname>
-           <description>The component header style class active</description>
+        	<description>Assigns one or more space-separated CSS class names to the header of the active item</description>
         </property>
 	    <property>
 	    	<name>name</name>
