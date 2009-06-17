@@ -30,6 +30,7 @@ package org.richfaces.renderkit;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -53,6 +54,7 @@ import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.ComponentVariables;
 import org.ajax4jsf.renderkit.ComponentsVariableResolver;
+import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
 import org.ajax4jsf.resource.CountingOutputWriter;
 import org.apache.commons.logging.Log;
@@ -259,50 +261,29 @@ public class AbstractProgressBarRenderer extends TemplateEncoderRendererBase {
 		ComponentVariables variables = ComponentsVariableResolver.getVariables(
 				this, component);
 		StringBuffer script = new StringBuffer();
+        Map<String, Object> options = new HashMap<String, Object>();
+        RendererUtils utils = getUtils();
+
 		String clientId = component.getClientId(context);
 		String containerId = ((UIComponent) AjaxRendererUtils
 				.findAjaxContainer(context, component)).getClientId(context);
-		String mode = (String) component.getAttributes().get("mode");
-		UIComponent form = AjaxRendererUtils.getNestingForm(component);
-		String formId = "";
-		if (form != null) {
-			formId = form.getClientId(context);
-		} else if ("ajax".equals(mode)) {
-			// Ignore form absent. It can be rendered by forcing from any
-			// component
-			// throw new FaceletException("Progress bar component in ajax mode
-			// should be placed inside the form");
-		}
-		Number minValue = getNumber(component.getAttributes().get("minValue"));
-		Number maxValue = getNumber(component.getAttributes().get("maxValue"));
-		Number value = (Number) variables.getVariable("value");
+		
+        utils.addToScriptHash(options, "mode", component.getAttributes().get("mode"), "ajax"); 
+        utils.addToScriptHash(options, "minValue", component.getAttributes().get("minValue"), "0"); 
+        utils.addToScriptHash(options, "maxValue", component.getAttributes().get("maxValue"), "100"); 
+        utils.addToScriptHash(options, "context", getContext(component)); 
 		StringBuffer markup = getMarkup(context, component);
+        utils.addToScriptHash(options, "markup", markup != null ? new JSLiteral(markup.toString()) : null); 
+        utils.addToScriptHash(options, "options", buildAjaxOptions(clientId, progressBar, context)); 
+        utils.addToScriptHash(options, "progressVar", component.getAttributes().get("progressVar")); 
+        utils.addToScriptHash(options, "state", state, "initialState"); 
+        utils.addToScriptHash(options, "value", variables.getVariable("value")); 
 
 		script.append("new ProgressBar('").append(clientId).append("','") // id
-				.append(containerId).append("','") // containerId
-				.append(formId).append("','") // formId
-				.append(mode).append("',") // mode
-				.append(minValue).append(",") // min value
-				.append(maxValue).append(","); // max value
-		script.append(getContext(component)); // context
-		script.append(",");
-		script.append(markup != null ? new JSLiteral(markup.toString())
-				: JSReference.NULL); // markup
-		script.append(",");
-		script.append(ScriptUtils.toScript(buildAjaxOptions(clientId, // options
-				progressBar, context)));
-		String progressVar = (String) component.getAttributes().get(
-				"progressVar");
-		if (progressVar != null) {
-			script.append(",'");
-			script.append(progressVar); // progress var
-			script.append("','");
-		} else {
-			script.append(",null,'");
-		}
-		script.append(state);
-		script.append("',");
-		script.append(value.toString());
+				.append(containerId).append("'"); // containerId
+        if (!options.isEmpty()) {
+        	script.append(",").append(ScriptUtils.toScript(options));
+		}				
 		script.append(")\n;");
 		writer.write(script.toString());
 	}
@@ -602,8 +583,6 @@ public class AbstractProgressBarRenderer extends TemplateEncoderRendererBase {
 		if (parameters != null) {
 			buffer.append("{").append(parameters).append("}");
 			literal = new JSLiteral(buffer.toString());
-		} else {
-			literal = new JSLiteral("null");
 		}
 		return literal;
 	}
