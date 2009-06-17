@@ -43,15 +43,13 @@
 		<property>
 			<name>headerClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to component header when this component
-				is rendered </description>
+			<description>Assigns one or more space-separated CSS class names to the component header</description>
 			<defaultvalue>""</defaultvalue>
 		</property>
 		<property>
 			<name>controlsClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style(s) is/are to be applied to component controls when this component
-				is rendered </description>
+			<description>Assigns one or more space-separated CSS class names to the component controls</description>
 			<defaultvalue>""</defaultvalue>
 		</property>
 		<property>
