@@ -34,77 +34,105 @@
           </tbody>
         </tgroup>
       </table></para>
-        <section>
-      <title>Creating on a page</title>
-          <para>The simplest tag usage example:</para>
-          <para>
-            <emphasis role="bold">Example:</emphasis>
-          </para>
-          <programlisting role="XML"><![CDATA[...
-<a4j:commandButton reRender="someData" action="#{bean.action1}" value="Link"/>
-...]]></programlisting>
-            
-    </section>
-	  <section>
-      <title>Creating the Component Dynamically Using Java</title>
-
-  <para>
-      <emphasis role="bold">Example:</emphasis>
- </para>
-	    <programlisting role="JAVA"><![CDATA[import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
+        
+      <section>
+            <title>Creating the Component with a Page Tag</title>
+            <para>
+                  To create the simplest variant of the component on a page use the following syntax:
+            </para>
+            <para id="CB_example">
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML"><![CDATA[<a4j:commandButton reRender="someData" action="#{bean.action}" value="Button"/>]]></programlisting>
+            <para>
+                  The example above creates a button on a page clicking on which causes an Ajax form submit on the server, <code>&quot;action&quot;</code> method performance, 
+                  and rendering the component with <code>&quot;someData&quot;</code> ID after response comes back.
+            </para>
+      </section>
+      
+      <section>
+            <title>Creating the Component Dynamically Using Java</title>
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="JAVA"><![CDATA[import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 ...
 HtmlAjaxCommandButton myButton = new HtmlAjaxCommandButton();
 ...]]></programlisting>
+      </section>
+      
+      <section>
+            <title>Details of Usage</title>
+            <para>
+                  The <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> component is used in the same way as JSF <emphasis role="bold"><property>&lt;h:commandButton&gt;</property></emphasis>. 
+                  The difference is that in case of <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> the components to be updated should be specified.
+            </para>
+            
+            <para>
+                  The example <link linkend="CB_example">above</link> generates the following HTML code:
+            </para>
+            
+            <programlisting role="XML"><![CDATA[<input type="submit" onclick="A4J.AJAX.Submit(request parameters);return false;" value="Button"/>]]></programlisting>
+            
+            <para>      
+                  Сlicking the generated anchor fires the utility method <code>A4J.AJAX.Submit()</code> that perfroms Ajax request.                  
+            </para>
+                       
+            <note>
+                  <title>Note:</title>
+                  <para>
+                        The <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> already has Ajax support built-in and there is no need to add <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis>.                        
+                  </para>
+            </note>
+            
+      <para>
+            The usage of the keyword <code>&apos;this&apos;</code> in JavaScript code in the value for <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute depends on the location of <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis>. 
+            If the <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> is situated outside the re-rendered region it is possible to use keyword <property>&apos;this&apos;</property> as in the following example:  
+      </para>
+            <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:commandButton action="director.rollCamera" onclick="this.disabled=true" oncomplete="this.disabled=false" /> 
+</h:form>]]></programlisting>
+            
+            <para>
+                  Otherwise, if the <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> is contained in a re-rendered region 
+                  than the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute has a problem with obtaining a reference of the 
+                  <property>commandButton</property> object when using the keyword  <code>&apos;this&apos;</code>. 
+                  In this case use  the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute as in the following example:
+            </para>
+            
+            <programlisting role="XML"><![CDATA[<h:form id="form">
+      <a4j:commandButton id="cbutton" action="director.rollCamera" onclick="this.disabled=true" oncomplete="document.getElementById('form:cbutton').disabled=false" /> 
+</h:form>]]></programlisting>
+            
+            <para>
+                  Common JSF navigation could be performed after an Ajax submit and partial rendering, but Navigation Case must be defined as <emphasis role="bold"><property>&lt;redirect/&gt;</property></emphasis> in order to avoid problems with some browsers.
+            </para>
+            
+            <para>
+                  As any Core Ajax component that sends Ajax requests and processes server responses the <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> has all attributes that provide the required behavior of requests (delay, limitation of submit area and rendering, etc.)
+            </para>
+            
+            <para>
+                  Information about the <emphasis><property>&quot;process&quot;</property></emphasis> attribute usage you can find in the &quot;<link linkend="process">Decide what to process</link>&quot; guide section.
+      </para>
     </section>
-    <section>
-      <title>Key attributes and ways of usage</title>
-      <para><emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> is used in the same way as <emphasis role="bold"><property>&lt;h:commandButton&gt;</property></emphasis>, but with definition of the area that is updated after the response comes back from the server.</para>
-      <para>This definition of the component provides a link, a click on the link causes an Ajax form submit on the server, <code>action1</code> method performance, and rendering of the component with <code>someData</code> id after the response comes back from the server.</para>
-      <para>The component <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> placed on a page generates the following HTML code:</para>
-	  <programlisting role="XML"><![CDATA[...
-<input type="submit" onclick="A4J.AJAX.Submit(...request parameters);return false;" value="sort"/>
-...]]></programlisting>
-      <para>Hence, the utility method <code>A4J.AJAX.Submit</code> is called on a click, the method performs Ajax request as the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component</para>
-	 <note>
-      <title>Note:</title>
-      <para>AJAX support is built in and it&apos;s not necessary to add nested <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> to the component.</para>
-	 </note>
-      <para>
-        The usage of the keyword <code>&apos;this&apos;</code> in JavaScript code in the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute 
-        depends on the location of <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis>. If the <property>commandButton</property> is situated outside the re-rendered region
-        you can use keyword <property>&apos;this&apos;</property> as in the following example:  
-      </para>
-       <programlisting role="XML"><![CDATA[...
-<h:form id="form"> 
-  <a4j:commandButton id="cbutton" action="director.rollCamera" onclick="this.disabled=true" oncomplete="this.disabled=false" /> 
-</h:form>
-...]]></programlisting>
-      <para>
-        Otherwise if the <property>commandButton</property> contained in re-rendered region
-        the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute has a problem obtaining a reference of the <property>commandButton</property> object 
-        when using the keyword  <code>&apos;this&apos;</code>. In this case you can use  the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute as in the following example:
-      </para>
-      <programlisting role="XML"><![CDATA[...
-<h:form id="form"> 
-     <a4j:commandButton id="cbutton" action="director.rollCamera" 
-         onclick="this.disabled=true" 
-         oncomplete="document.getElementById('form:cbutton').disabled=false" /> 
-</h:form>
-...]]></programlisting>
-	  <para>Common JSF navigation could be performed after an Ajax submit and partial rendering, but Navigation Case must be defined as <emphasis role="bold"><property>&lt;redirect/&gt;</property></emphasis> in order to avoid problems with some browsers.</para>
-      <para>As any Core Ajax component sending Ajax requests and processing server responses 
-        <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> has all attributes described above 
-        (see <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> <link linkend="support">chapter</link>)
-        that provide the required behavior of requests sending (delay, limitation of submit area and rendering, and etc.)</para>
-      <para>
-        Information about the <emphasis><property>&quot;process&quot;</property></emphasis> attribute usage you can find <link linkend="process">&quot; Decide what to process &quot; </link> guide section.
-      </para>
-    </section>
-  <section>
-    <title>Relevant resources links</title>
-	<para>
-	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/commandButton.jsf?c=commandButton">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold"
-	    ><property>&lt;a4j:commandButton&gt;</property></emphasis> usage and sources for the given example.
-	</para>
-  </section> 	
+  
+      <section>
+            <title>Relevant resources links</title>
+            <para>Vizit
+                  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/commandButton.jsf?c=commandButton">CommandButton demo</ulink> page at RichFaces 
+                  live demo for examples of component usage and their sources.
+            </para>
+            <!--  
+            <para>Useful articles:</para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                             
+                        </para>
+                  </listitem>
+            </itemizedlist>
+            -->
+      </section>
+	
 </chapter>
