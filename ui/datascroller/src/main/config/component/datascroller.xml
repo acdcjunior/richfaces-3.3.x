@@ -144,19 +144,19 @@
 		<property>
 			<name>selectedStyleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Assigns one or more CSS class names to the scroller selected cell
+			<description>Assigns one or more space-separated CSS class names to the scroller selected cell
 			</description>			
 		</property>
 		<property>
 			<name>inactiveStyleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Assigns one or more CSS class names to the scroller inactive cells
+			<description>Assigns one or more space-separated CSS class names to the scroller inactive cells
 			</description>			
 		</property>
 		<property>
 			<name>tableStyleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Assigns one or more CSS class names to the wrapper table element of the component
+			<description>Assigns one or more space-separated CSS class names to the wrapper table element of the component
 			</description>
 		</property>
 		<property>
@@ -169,7 +169,7 @@
 		<property>
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
-			<description>Assigns one or more CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.
 			</description>
 		</property>
 
