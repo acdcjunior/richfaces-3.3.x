@@ -7,10 +7,20 @@
     </keywordset>
   </sectioninfo>
 <title>Description</title>
-    <para>The <emphasis role="bold">
-        <property>&lt;a4j:commandButton&gt;</property>
-      </emphasis>component is very similar to the<emphasis role="bold">
-        <property>&lt;h:commandButton&gt;</property>
-      </emphasis>component, the only difference is that an Ajax form submit is generated on a click and it allows dynamic rerendering after a response comes back. It&apos;s not necessary to plug any support into the component, as Ajax support is already built in.</para>
+    <para>
+          The <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis>component is very similar to JSF <emphasis role="bold"><property>&lt;h:commandButton&gt;</property></emphasis>, the only difference is that an Ajax form submit is generated on a click and it allows dynamic rerendering after a response comes back.
+    </para>
+      
+      <figure>
+            <title>
+                  The <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> component rendered in Blue Sky skin
+            </title>
+            
+            <mediaobject>
+                  <imageobject>
+                        <imagedata fileref="images/commandButton_init.png" />
+                  </imageobject>
+            </mediaobject>
+      </figure>
 </section>
 </chapter>
