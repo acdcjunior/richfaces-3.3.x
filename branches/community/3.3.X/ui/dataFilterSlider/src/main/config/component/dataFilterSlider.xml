@@ -82,14 +82,14 @@
             <name>styleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the container surrounding the component. Corresponds to the HTML &quot;class&quot; attribute.
+            	Assigns one or more space-separated CSS class names to the container surrounding the component. Corresponds to the HTML &quot;class&quot; attribute.
             </description>
         </property>
         <property>
             <name>fieldStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the component input field. The value of the &quot;manualInput&quot; attribute must
+            	Assigns one or more space-separated CSS class names to the component input field. The value of the &quot;manualInput&quot; attribute must
             	be &quot;true&quot;.
             </description>
         </property>
@@ -97,28 +97,28 @@
             <name>handleStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the component handle
+            	Assigns one or more space-separated CSS class names to the component handle
             </description>
         </property>
         <property>
             <name>trailerStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the trailer following the component handle
+            	Assigns one or more space-separated CSS class names to the trailer following the component handle
             </description>
         </property>
         <property>
             <name>trackStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the component track
+            	Assigns one or more space-separated CSS class names to the component track
             </description>
         </property>
         <property>
             <name>rangeStyleClass</name>
             <classname>java.lang.String</classname>
             <description>
-            	Assigns one or more CSS class names to the background div element wrapping a full range
+            	Assigns one or more space-separated CSS class names to the background div element wrapping a full range
             </description>
         </property>
         <property>
