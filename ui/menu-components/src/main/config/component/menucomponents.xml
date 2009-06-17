@@ -268,7 +268,7 @@
         <property>
             <name>selectClass</name>
             <classname>java.lang.String</classname>
-        	<description>Assigns one or more CSS class names to the selected item</description>
+        	<description>Assigns one or more space-separated CSS class names to the selected item</description>
         </property>
         <property>
             <name>selectStyle</name>
