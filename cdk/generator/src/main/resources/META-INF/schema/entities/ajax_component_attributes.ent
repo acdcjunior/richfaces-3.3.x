@@ -15,8 +15,7 @@
     <property >
         <name>ajaxSingle</name>
         <classname>boolean</classname>
-        <description>boolean attribute which provides possibility to limit JSF tree processing(decoding, conversion/validation, value applying) 
-to the component which send the request only</description>
+        <description>Limits JSF tree processing (decoding, conversion, validation and model updating) only to a component that sends the request. Boolean</description>
     </property>
     
     <property >
