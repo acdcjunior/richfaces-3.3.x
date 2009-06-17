@@ -73,7 +73,7 @@
             <name>headerClass</name>
             <classname>java.lang.String</classname>
             <description>
-                Class that defines the style for panel header
+            	Assigns one or more space-separated CSS class names to the panel header
             </description>
         </property>
 
@@ -81,7 +81,7 @@
             <name>bodyClass</name>
             <classname>java.lang.String</classname>
             <description>
-                A class that defines a style for a panel content
+            	Assigns one or more space-separated CSS class names to the panel content
             </description>
         </property>
 
