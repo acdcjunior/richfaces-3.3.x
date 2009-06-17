@@ -1,26 +1,20 @@
 ProgressBar = {};
 ProgressBar = Class.create();
 Object.extend(ProgressBar.prototype, {
-    initialize: function(id, containerId, formId, mode, minValue, maxValue, context, markup, options, progressVar, state, value) {
-		this.id = id;
-				
-		this.containerId = containerId;
-		if (formId != '') {
-			this.formId = formId;
-		}else {
-			var f = this.getForm();
-			this.formId = (f) ? f.id : null;
-		}
-		this.mode = mode;
-		this.state = state;
-		this.minValue = minValue;
-		this.maxValue = maxValue;
-		this.value = value;
-		this.disabled = false;
 	
-		this.context = context;
-		this.markup = markup;
-		this.options = options || {};
+	//default values of options
+	mode: "ajax",
+	minValue: 0,
+	maxValue: 100,
+	options : {},
+	state : "initialState",
+	
+    initialize: function(id, containerId, options) {
+		this.id = id;
+		Object.extend(this, options);		
+		var f = this.getForm();
+		this.formId = (f) ? f.id : null;
+		this.disabled = false;
 		
 		this.onbeforedomupdate = this.options.onbeforedomupdate;
 		
@@ -29,7 +23,6 @@ Object.extend(ProgressBar.prototype, {
 			this.onComplete(data);
 		}.bind(this);
 		
-		this.progressVar = progressVar;
 		$(this.id).component = this;
     },
     
