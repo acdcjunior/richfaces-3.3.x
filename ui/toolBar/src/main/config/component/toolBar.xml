@@ -72,22 +72,21 @@
     	<name>separatorClass</name>
     	<classname>java.lang.String</classname>
     	<description>
-    		<![CDATA[A CSS class to be applied to tool bar separators.]]>
+    		<![CDATA[Assigns one or more space-separated CSS class names to the tool bar separators]]>
     	</description>
     </property>
     <property>
     	<name>contentClass</name>
     	<classname>java.lang.String</classname>
     	<description>
-    		<![CDATA[A CSS style is to be applied to each element of tool bar content. 
-    		Use this style, for example, to setup parameters of the font.]]>
+    		<![CDATA[Assigns one or more space-separated CSS class names to the tool bar content]]>
     	</description>
     </property>
     <property>
     	<name>contentStyle</name>
     	<classname>java.lang.String</classname>
     	<description>
-    		<![CDATA[A CSS style is to be applied to each element of tool bar content.]]>
+    		<![CDATA[Holds a fragment of a style sheet that applies to the tool bar content]]>
     	</description>
     </property>
     
@@ -192,7 +191,7 @@
     	<name>separatorClass</name>
     	<classname>java.lang.String</classname>
     	<description>
-    		<![CDATA[A CSS class to be applied to tool bar group separators.]]>
+    		<![CDATA[Assigns one or more space-separated CSS class names to the tool bar group separators]]>
     	</description>    	
     </property>
     <property>
