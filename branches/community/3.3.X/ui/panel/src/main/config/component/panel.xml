@@ -44,14 +44,14 @@
 			<name>headerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A class that defines a style for a panel header
+				Assigns one or more space-separated CSS class names to the component header
 			</description>
 		</property>
 		<property>
 			<name>bodyClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				A class that defines a style for a panel content
+				Assigns one or more space-separated CSS class names to the component content
 			</description>
 		</property>
 		<property>
