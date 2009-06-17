@@ -509,6 +509,9 @@ jsf-app
       <section id="RelevantResourcesLinks">
             <title>Relevant Resources Links</title>            
                 <para><ulink url="http://livedemo.exadel.com/photoalbum">The Photo Album Application</ulink> is designed and developed with RichFaces.</para>                
+                
+                <para><ulink url="http://www.jboss.org/community/wiki/MavenResourceDependencyPluginReference">Maven Resource Dependency Plugin Reference</ulink> article discusses plugin configuration and usage.</para>      
+                
             <para><ulink url="https://www.redhat.com/apps/store/developers/jboss_developer_studio.html">JBoss Developer Studio</ulink> comes with a tight integration with RichFaces component framework. 
             Following links might be useful for those who already use this IDE and RichFaces for developing applications and those who wish to improve their development process:</para>
             <itemizedlist>
