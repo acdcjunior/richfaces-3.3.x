@@ -143,14 +143,14 @@
 			<name>startStyleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Assigns one or more CSS class names to the element displayed when a request is in progress
+				Assigns one or more space-separated CSS class names to the element displayed when a request is in progress
 			</description>
 		</property>
 		<property>
 			<name>stopStyleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Assigns one or more CSS class names to the element displayed on a request completion
+				Assigns one or more space-separated CSS class names to the element displayed on a request completion
 			</description>
 		</property>
 		<property>
