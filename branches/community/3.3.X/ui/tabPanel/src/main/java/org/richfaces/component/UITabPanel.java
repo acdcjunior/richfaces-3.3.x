@@ -52,7 +52,7 @@ public abstract class UITabPanel extends UISwitchablePanel {
 
     protected Iterator getSwitchedFacetsAndChildren() {
     	
-    	final Object renderedValue = this.restoredRenderedValue;
+        final Object renderedValue = getRenderedValue();
 
     	return new IteratorChain(new FilterIterator(getRenderedTabs(), new Predicate() {
 
