@@ -60,7 +60,7 @@
 	    <property>
 	    	<name>tabClass</name>
 	    	<classname>java.lang.String</classname>
-	      	<description>A CSS class to be applied to all tabs</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component tabs</description>
 	    </property>
 		<property exist="true" existintag="true">
 			<name>selectedTab</name>
@@ -70,27 +70,27 @@
 	    <property>
 	    	<name>activeTabClass</name>
 	    	<classname>java.lang.String</classname>
-	      	<description>A CSS class to be applied to an active tab</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component active tab</description>
 	    </property>
 	    <property>
 	    	<name>inactiveTabClass</name>
 	    	<classname>java.lang.String</classname>
-	      	<description>CSS class to be applied to an inactive (but not disabled) tab</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component inactive (but not disabled) tabs</description>
 	    </property>
 	    <property>
 	    	<name>disabledTabClass</name>
 	    	<classname>java.lang.String</classname>
-	      	<description>A CSS class to be applied to a disabled tab</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component disabled tab</description>
 	    </property>
 	    <property>
 	    	<name>contentStyle</name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A CSS style is for the content of a tab panel</description>
+	    	<description>Assigns one or more space-separated CSS class names to the panel content</description>
 	    </property>
 	    <property>
 	    	<name>contentClass</name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A CSS class for content of a tab panel</description>
+	    	<description>Holds a fragment of a style sheet that applies to the panel content</description>
 	    </property>
 	    <property>
 	    	<name>headerAlignment</name>
@@ -110,7 +110,7 @@
 		<property>
 	    	<name>headerClass</name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A CSS style is for the header of a tab panel.
+			<description>Assigns one or more space-separated CSS class names to the panel header
 	    	</description>
 	    </property>
 	    <property hidden="true">
