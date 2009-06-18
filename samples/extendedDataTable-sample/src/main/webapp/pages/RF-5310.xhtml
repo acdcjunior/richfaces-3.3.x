@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:extdt="http://labs.jboss.com/jbossrichfaces/ui/extendedDataTable"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+<head>
+<title></title>
+</head>
+<body>
+<f:view>
+    <h:form id="productionsForm">
+
+        <rich:extendedDataTable id="productionsTable"
+            value="#{extendedDataTableBean.dataModel}"
+            var="patient"
+            rows="10"
+
+            width="#{extendedDataTableControlBean.width}"
+            height="#{extendedDataTableControlBean.height}"
+            selection="#{extendedDataTableBean.selection}" 
+
+            onRowMouseOver="this.style.backgroundColor='#{a4jSkin.additionalBackgroundColor}'"
+            onRowMouseOut="this.style.backgroundColor=''"
+            selectionMode="single"
+            
+            selectedClass="rich-sdt-row-selected"
+            rowClasses="rvgRowOne,rvgRowTwo">
+            
+            <rich:column width="150px" id="col1">
+                <f:facet name="header">First</f:facet>
+
+                <h:outputText value="#{patient.lastName}" />
+            </rich:column>
+
+            <rich:column width="150px" id="col2">
+                <f:facet name="header">Second</f:facet>
+
+                <h:outputText id="text" value="#{patient.firstName}" />
+            </rich:column>
+        </rich:extendedDataTable>
+    </h:form>
+</f:view>
+</body>
+</html>
