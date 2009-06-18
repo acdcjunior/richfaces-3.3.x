@@ -45,9 +45,11 @@ import com.gargoylesoftware.htmlunit.html.HtmlScript;
  */
 public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 
-	UIScrollableDataTable grid;
+	private static final String STYLE = "color:green;";
+    private static final String MY_CLASS = "myClass";
+    UIScrollableDataTable grid;
 	int columns = 7;
-	private static Set javaScripts = new HashSet();
+	private static Set<String> javaScripts = new HashSet<String>();
 	private static final boolean IS_PAGE_AVAILABILITY_CHECK = true;
 	
 	static {
@@ -70,6 +72,8 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 		grid = (UIScrollableDataTable)application.createComponent("org.richfaces.component.ScrollableDataTable");
 		grid.setId("grid");
 		grid.getAttributes().put("frozenColCount", new Integer(3));
+		grid.getAttributes().put("style", STYLE);
+		grid.getAttributes().put("styleClass", MY_CLASS);
 	
 		// add columns
 		for (int i = 0; i < columns; i++) {
@@ -120,46 +124,36 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 		assertEquals(getCountValidScripts(page, javaScripts, IS_PAGE_AVAILABILITY_CHECK).intValue(), javaScripts.size());
 	}
 
-	static final Set tagNames = new HashSet();
+	static final Set<String> tagNames = new HashSet<String>();
 	static final String [] names = {"input","div","script", "table", "tbody", "tr", "td", "thead", "tfoot", "th"};
 	static {
 		Collections.addAll(tagNames, names);
 	}
 	
 	public void testRenderingFrozenNormalColumns()throws Exception{
-		
 		HtmlPage page = renderView();
 		assertNotNull(page);
 		
+		HtmlElement table = page.getHtmlElementById(grid.getClientId(facesContext));
+		assertNotNull(table);
+		assertEquals("table", table.getNodeName());
 		
-		HtmlElement div = page.getHtmlElementById(grid.getClientId(facesContext));
-		assertNotNull(div);
-		assertEquals("table", div.getNodeName());
-		
-		String classAttr = div.getAttributeValue("class");
+        String id = grid.getId();
+        assertNotNull(page.getHtmlElementById(id + "_hc"));
+        assertNotNull(page.getHtmlElementById(id + "_state_input"));
+        assertNotNull(page.getHtmlElementById(id + "_options_input"));
+        assertNotNull(page.getHtmlElementById(id + "_rows_input"));
+        assertNotNull(page.getHtmlElementById(id + "_submit_input"));
+        
+		String classAttr = table.getAttributeValue("class");
 	    assertTrue(classAttr.contains("rich-sdt"));
-	    Iterator childIter= div.getChildElementsIterator();
-		
-	    String id = grid.getId();
-		
-	    HtmlElement input = page.getHtmlElementById(id+"_hc");
-	    assertNotNull(input);
-	    input = null;
-	    input = page.getHtmlElementById(id + "_state_input");
-	    assertNotNull(input);
-	    input = null;
-	    input = page.getHtmlElementById(id + "_options_input");
-	    assertNotNull(input);
-	    input = null;
-	    input = page.getHtmlElementById(id + "_rows_input");
-	    assertNotNull(input);
-	    input = null;
-	    input = page.getHtmlElementById(id + "_submit_input");
-	    assertNotNull(input);
-	    input = null;
+	    assertTrue(classAttr.contains(MY_CLASS));
+
+	    String style = table.getAttributeValue("style");
+	    assertTrue(style.contains(STYLE));
 	    
-		for (; childIter.hasNext();) {
-			
+	    Iterator<?> childIter= table.getChildElementsIterator();
+		while (childIter.hasNext()) {
 			HtmlElement elem = (HtmlElement) childIter.next();
 			assertNotNull(elem);
 			
@@ -182,7 +176,7 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 					boolean templates = elem.getId().equals(grid.getId()+ "_GridBodyTemplate") || elem.getId().equals(grid.getId()+ "_GridFooterTemplate") || elem.getId().equals(grid.getId()+ "_GridHeaderTemplate");
 					assertTrue(templates);
 								
-					Iterator divIter = elem.getChildElementsIterator();
+					Iterator<?> divIter = elem.getChildElementsIterator();
 					HtmlElement inDiv = (HtmlElement) divIter.next();
 					assertNotNull(inDiv);
 					boolean test = false;
@@ -194,7 +188,7 @@ public class ScrollableDataTableRendererTest extends AbstractAjax4JsfTestCase{
 					
 					assertTrue(test);
 				
-					Iterator spanIter  = inDiv.getChildElementsIterator();
+					Iterator<?> spanIter  = inDiv.getChildElementsIterator();
 
 					for (;spanIter.hasNext();) {
 				
