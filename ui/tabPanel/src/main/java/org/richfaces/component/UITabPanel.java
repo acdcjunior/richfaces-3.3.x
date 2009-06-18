@@ -52,7 +52,7 @@ public abstract class UITabPanel extends UISwitchablePanel {
 
     protected Iterator getSwitchedFacetsAndChildren() {
     	
-        final Object renderedValue = getRenderedValue();
+        final Object renderedValue = this.restoredRenderedValue;
 
     	return new IteratorChain(new FilterIterator(getRenderedTabs(), new Predicate() {
 
@@ -138,21 +138,21 @@ public abstract class UITabPanel extends UISwitchablePanel {
     private transient Object restoredRenderedValue;
     
     public void processDecodes(FacesContext context) {
-	if (context == null) {
-	    throw new NullPointerException("FacesContext is null!");
-	}
-
-	if (!isRendered()) {
-	    return ;
-	}
-
-	//RF-1047 - retry to obtain restoredRenderedValue. Seam conversations are absent on 1st phase thus 
-	//value is absent also
-	if (restoredRenderedValue == null) {
-	    this.restoredRenderedValue = getRenderedValue();
-	}
-
-	super.processDecodes(context);
+    	if (context == null) {
+    	    throw new NullPointerException("FacesContext is null!");
+    	}
+    
+    	if (!isRendered()) {
+    	    return ;
+    	}
+    
+    	//RF-1047 - retry to obtain restoredRenderedValue. Seam conversations are absent on 1st phase thus 
+    	//value is absent also
+    	if (restoredRenderedValue == null) {
+    	    this.restoredRenderedValue = getRenderedValue();
+    	}
+    
+    	super.processDecodes(context);
     }
     
     public Object saveState(FacesContext context) {
