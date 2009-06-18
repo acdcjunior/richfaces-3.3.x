@@ -64,19 +64,19 @@
 	   	
 	   	String styleClass = (String)component.getAttributes().get("styleClass");
 	   	styleClass = styleClass != null ? styleClass.trim() : "";
-	   	variables.setVariable("styleClass", styleClass);
+	   	variables.setVariable("styleClass", styleClass.trim());
 	   	
 	   	String changedClass = (String)component.getAttributes().get("changedClass");
 	   	changedClass = (changedClass != null ? changedClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("changedClass", changedClass);
+	   	variables.setVariable("changedClass", changedClass.trim());
 	   	
 	   	String viewClass = (String)component.getAttributes().get("viewClass");
 	   	viewClass = (viewClass != null ? viewClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("viewClass", viewClass);
+	   	variables.setVariable("viewClass", viewClass.trim());
 	   	
 	   	String editClass = (String)component.getAttributes().get("editClass");
 	   	editClass = (editClass != null ? editClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("editClass", editClass);
+	   	variables.setVariable("editClass", editClass.trim());
 		
 	   	String layout = (String)component.getAttributes().get("layout");
 	   	if (layout != null && layout.length() != 0) {
@@ -176,29 +176,43 @@
 				 }
 				 ]]>
 			</jsp:scriptlet>
+			<c:scriptObject var="attributes">
+				<c:scriptOption name="defaultLabel" value="#{this:getDefaultLabel(context, component)}" />
+				<c:scriptOption attributes="showControls, selectOnEdit, inputWidth" />
+				<c:scriptOption attributes="editEvent" defaultValue="onclick"/>
+				<c:scriptOption name="verticalPosition" value="#{component.attributes['controlsVerticalPosition']}" defaultValue="center" />
+				<c:scriptOption name="horizontalPosition" value="#{component.attributes['controlsHorizontalPosition']}" defaultValue="right" />
+				<c:scriptOption attributes="minInputWidth" defaultValue="40px"/>
+				<c:scriptOption attributes="maxInputWidth" defaultValue="500px"/>
+			</c:scriptObject>
+			<c:scriptObject var="events">
+				<c:scriptOption attributes="oneditactivation, onviewactivation, oneditactivated, onviewactivated, onchange" wrapper="eventHandler" /> 
+			</c:scriptObject>
+			<c:scriptObject var="view">
+				<c:scriptOption name="normal" value="#{viewClass}" />
+				<c:scriptOption name="hovered" value="#{component.attributes['viewHoverClass']}" />
+			</c:scriptObject>
+			<c:scriptObject var="changed">
+				<c:scriptOption name="normal" value="#{changedClass}" />
+				<c:scriptOption name="hovered" value="#{component.attributes['changedHoverClass']}" />
+			</c:scriptObject>
+			<c:scriptObject var="componentStyles">
+				<c:scriptOption variables="view, changed" />
+				<c:scriptOption name="editable" value="#{editClass}" />
+			</c:scriptObject>
+			<c:scriptObject var="userStyles">
+				<c:scriptOption name="component" value="#{componentStyles}" />
+			</c:scriptObject>
+			<c:scriptObject var="options">
+				<c:scriptOption variables="attributes, events, userStyles" />
+			</c:scriptObject>
 			<script type="text/javascript">
 		
-			#{this:encodeScriptAttributes(context, component)};
-			#{this:encodeScriptEvents(context, component)};
-						
-			var inplaceInputUserStyles = {
-					component:{
-						view :{
-							normal:'#{viewClass}', 
-							hovered:'#{component.attributes["viewHoverClass"]}' 
-						},
-						changed:{
-							normal:'#{changedClass}',
-							hovered:'#{component.attributes["changedHoverClass"]}'
-						},
-						editable:'#{editClass}'
-						 
-					}
-			};
-		
-			var inplaceInput = new Richfaces.InplaceInput('#{clientId}', '#{clientId}tempValue', '#{clientId}value', '#{clientId}tabber', 
-													  attributes, events, inplaceInputUserStyles, new Richfaces.InplaceInputStyles(), ['#{clientId}bar', 
-													  '#{clientId}ok', '#{clientId}cancel', '#{clientId}buttons','#{clientId}btns_shadow']);
+			var inplaceInput = new Richfaces.InplaceInput('#{clientId}'
+				<c:if test="#{not empty options}">
+				, <f:writeAsScript value="#{options}" />
+				</c:if> 					
+			);
 		</script>			
 		</div>
 				
