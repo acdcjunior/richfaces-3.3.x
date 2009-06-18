@@ -492,7 +492,8 @@ ExtendedDataTable.SelectionManager = Class.create({
 					}
 					break;
 				case 65: case 97:								// Ctrl-A
-					if (this.inFocus && event.ctrlKey && !event.altKey) {
+					if (this.inFocus && event.ctrlKey && !event.altKey 
+							&& this.options.selectionMode == "multi") {
 						this.selectionFlag = "a";
 						for (var i = 0; i <  this.rowCount; i++) {
 							this.addRowToSelection(i);
