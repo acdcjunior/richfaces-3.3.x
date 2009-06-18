@@ -108,47 +108,14 @@ public class InplaceInputBaseRenderer extends HeaderResourcesRendererBase {
 	return false;
     }
 
-    public String encodeScriptAttributes(FacesContext context, UIComponent component) {
-    	StringBuilder attributes = new StringBuilder();
-    	attributes.append("var attributes = ");
-    	
-    	ScriptOptions options = new ScriptOptions(component);
-    	
+    public String getDefaultLabel(FacesContext context, UIComponent component) {
     	String defaultLabel = (String)component.getAttributes().get("defaultLabel");
-
     	if (defaultLabel == null || defaultLabel.trim().equals("")) {
-	    defaultLabel = EMPTY_DEFAULT_LABEL;
+    		defaultLabel = EMPTY_DEFAULT_LABEL;
     	}
-    	
-    	options.addOption("defaultLabel", defaultLabel);
-    	options.addOption("showControls");
-    	options.addOption("editEvent");
-    	options.addOption("selectOnEdit");
-    	options.addOption("verticalPosition", component.getAttributes().get("controlsVerticalPosition"));
-    	options.addOption("horizontalPosition", component.getAttributes().get("controlsHorizontalPosition"));
-    	options.addOption("inputWidth");
-    	options.addOption("minInputWidth");
-    	options.addOption("maxInputWidth");
-    	attributes.append(options.toScript());
-    	  	
-    	return attributes.toString();
+    	return defaultLabel;
     }
-      
-    public String encodeScriptEvents(FacesContext context, UIComponent component) {
-    	StringBuilder events = new StringBuilder();
-    	
-    	events.append("var events = ");
-    	ScriptOptions options = new ScriptOptions(component);
-    	options.addEventHandler("oneditactivation");
-    	options.addEventHandler("onviewactivation");
-    	options.addEventHandler("oneditactivated");
-    	options.addEventHandler("onviewactivated");
-    	options.addEventHandler("onchange");
-    	events.append(options.toScript());
-    	
-    	return events.toString();
-    }
-        
+    
     public String getAsEventHandler(FacesContext context, UIComponent component, String attributeName) {
 	JSFunctionDefinition script = getUtils().getAsEventHandler(context, component, attributeName, null);  
 	return ScriptUtils.toScript(script);

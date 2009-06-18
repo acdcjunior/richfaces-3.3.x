@@ -8,15 +8,21 @@ Richfaces.InplaceInput = Class.create();
 
 Richfaces.InplaceInput.prototype = {
 	//TODO: remove $$$$$
-	initialize: function(clientId, temValueKeepId, valueKeepId, tabberId, attributes, events, userStyles, commonStyles, barParams) {
-		//TODO: delete tabberId from parameters
+	initialize: function(clientId, options) {
 		this.inplaceInput = $(clientId);
 		this.inplaceInput.component = this;
 		
-		this.tempValueKeeper = $(temValueKeepId);
-		this.valueKeeper = $(valueKeepId);
-		this.attributes = attributes;
-		this.events = events;
+		this.tempValueKeeper = $(clientId + "tempValue");
+		this.valueKeeper = $(clientId + "value");
+		this.attributes = {
+				editEvent : "onclick",
+				verticalPosition : "center",
+				horizontalPosition : "right",
+				minInputWidth : "40px",
+				maxInputWidth : "500px"				
+		};
+		Object.extend(this.attributes, options.attributes);
+		this.events = options.events || {};
 		 
 		//TODO: static methods are preferred to be called within constructor
 		this.currentText = this.getCurrentText();
@@ -26,9 +32,7 @@ Richfaces.InplaceInput.prototype = {
 		this.prevState = Richfaces.InplaceInput.STATES[0];
 		
 		if (this.attributes.showControls) {
-			//TODO: Consider passing attributes by name instead of by index
-			this.bar = new Richfaces.InplaceInputBar(barParams[0], barParams[1], barParams[2], barParams[3], barParams[4],  
-													 this.attributes.verticalPosition, this.attributes.horizontalPosition);
+			this.bar = new Richfaces.InplaceInputBar(clientId, this.attributes.verticalPosition, this.attributes.horizontalPosition);
 		}
 		//TODO: move converting 'on'-event to prototype style to utils
 		
@@ -38,7 +42,7 @@ Richfaces.InplaceInput.prototype = {
 		
 		this.initHandlers();	
 		this.initEvents();
-		this.classes = Richfaces.mergeStyles(userStyles,commonStyles.getCommonStyles());
+		this.classes = Richfaces.mergeStyles(options.userStyles,new Richfaces.InplaceInputStyles().getCommonStyles());
 		this["rich:destructor"] = "destroy";
 		
 		this.skipSwitching = false;
@@ -391,12 +395,12 @@ Richfaces.InplaceInput.prototype = {
 
 Richfaces.InplaceInputBar = Class.create();
 Richfaces.InplaceInputBar.prototype = {
-	initialize : function(barId, okId, cancelId, buttonsPanelId, buttonsShadowId, verticalPosition, horizontalPosition) {
-		this.bar = $(barId);
-		this.ok = $(okId);
-		this.cancel = $(cancelId);
-		this.bsPanel = $(buttonsPanelId);
-		this.buttonsShadow = $(buttonsShadowId);
+	initialize : function(id, verticalPosition, horizontalPosition) {
+		this.bar = $(id + "bar");
+		this.ok = $(id + "ok");
+		this.cancel = $(id + "cancel");
+		this.bsPanel = $(id + "buttons");
+		this.buttonsShadow = $(id + "btns_shadow");
 		
 		this.verticalPosition = verticalPosition;
 		this.horizontalPosition = horizontalPosition;
