@@ -76,13 +76,14 @@
     version="${taglib.jspversion}">
  <tlib-version>${taglib.tlibversion}</tlib-version>
 ## <jsp-version>${taglib.jspversion}</jsp-version>
+#if(${taglib.description})
+ <description>${taglib.description}</description>
+#end
+
 #if(${taglib.shortname})
  <short-name>${taglib.shortname}</short-name>
 #end
  <uri>${taglib.uri}</uri>
-#if(${taglib.description})
- <description>${taglib.description}</description>
-#end
 
 ${taglib.includeContent}
 

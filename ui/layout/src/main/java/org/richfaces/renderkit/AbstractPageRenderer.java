@@ -174,7 +174,8 @@ public abstract class AbstractPageRenderer extends HeaderResourcesRendererBase {
 			StringBuilder format = new StringBuilder(
 					".rich-page{margin:auto;text-align:left;");
 			format.append("width:").append(nonIeWidth).append("em;");
-			format.append("*width:").append(ieWidth).append("em;}\n");
+			format.append("*width:").append(ieWidth).append("em;\n");
+			format.append("}\n");
 			writer.write(format.toString());
 		} else {
 			writer.write(".rich-page{margin:auto 10px;width:auto;}\n");

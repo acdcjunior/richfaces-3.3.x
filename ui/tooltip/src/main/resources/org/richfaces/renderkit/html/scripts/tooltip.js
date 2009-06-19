@@ -480,14 +480,21 @@ ToolTip.prototype = {
 		var horizontalDirection = match[2];
 		var verticalDirection = match[1];
 
-		var coords = this.fitToolTip(e.clientX, e.clientY, elementDim, horizontalDirection, verticalDirection, 
+		var clientX = isNaN(e.clientX) ? Element.cumulativeOffset(this.parent).left + this.toolTip.horizontalOffset : e.clientX;
+		var clientY = isNaN(e.clientY) ?  Element.cumulativeOffset(this.parent).top + this.toolTip.verticalOffset : e.clientY;
+		var coords = this.fitToolTip(clientX, clientY, elementDim, horizontalDirection, verticalDirection, 
 				{'x':this.horizontalOffset, 'y':this.verticalOffset});
 		
 	    var offsets = jQuery(this.toolTip).offset();
-
-		var x = coords.x - offsets.left + (event.pageX - event.clientX) + oldLeft;
-		var y = coords.y - offsets.top + (event.pageY - event.clientY) + oldTop;
-		
+	    var x;
+	    var y;
+		if(isNaN(event.clientX)){
+			x = coords.x - offsets.left + oldLeft + this.toolTip.horizontalOffset;
+			y = coords.y - offsets.top + oldTop + this.toolTip.verticalOffset;
+		}else{
+			x = coords.x - offsets.left + (event.pageX - event.clientX) + oldLeft;
+			y = coords.y - offsets.top + (event.pageY - event.clientY) + oldTop;
+		}
 	    Element.setStyle(this.toolTip, {"left": x + "px", "top": y + "px"});
 		if(this.iframe)
 		{
