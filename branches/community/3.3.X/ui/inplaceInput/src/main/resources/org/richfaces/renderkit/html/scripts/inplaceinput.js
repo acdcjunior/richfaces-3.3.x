@@ -15,6 +15,7 @@ Richfaces.InplaceInput.prototype = {
 		this.tempValueKeeper = $(clientId + "tempValue");
 		this.valueKeeper = $(clientId + "value");
 		this.attributes = {
+				defaultLabel : "\u00a0\u00a0\u00a0",
 				editEvent : "onclick",
 				verticalPosition : "center",
 				horizontalPosition : "right",

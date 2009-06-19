@@ -177,7 +177,7 @@
 				 ]]>
 			</jsp:scriptlet>
 			<c:scriptObject var="attributes">
-				<c:scriptOption name="defaultLabel" value="#{this:getDefaultLabel(context, component)}" />
+				<c:scriptOption name="defaultLabel" value="#{this:getDefaultLabel(context, component)}" defaultValue="\u00a0\u00a0\u00a0" />
 				<c:scriptOption attributes="showControls, selectOnEdit, inputWidth" />
 				<c:scriptOption attributes="editEvent" defaultValue="onclick"/>
 				<c:scriptOption name="verticalPosition" value="#{component.attributes['controlsVerticalPosition']}" defaultValue="center" />
