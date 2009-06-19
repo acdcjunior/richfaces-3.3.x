@@ -9,6 +9,9 @@ Richfaces.InplaceInput = Class.create();
 Richfaces.InplaceInput.prototype = {
 	//TODO: remove $$$$$
 	initialize: function(clientId, options) {
+		if(!options) {
+			options = {};
+		}
 		this.inplaceInput = $(clientId);
 		this.inplaceInput.component = this;
 		

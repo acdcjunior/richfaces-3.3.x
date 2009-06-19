@@ -426,6 +426,9 @@ Object.extend(FileUpload.prototype, {
 	acceptedTypes: {"*" : true},
 	
 	initialize: function(id, actionUrl, stopScript, getFileSizeScript, progressBarId, sessionId, options) {
+		if(!options) {
+			options = {};
+		}
 		//default values of classes
 		this.classes = {
 			ADD : {	
