@@ -103,7 +103,10 @@
 	        <name>columnClasses</name>
 	        <classname>java.lang.String</classname>
 	        <description>
-	               Comma-separated list of CSS classes for columns
+	        	Assigns one or more space-separated CSS class names to the columns. If the CSS class names are comma-separated, 
+	        	each class will be assigned to a particular column in the order they follow in the attribute. If you have less class names than columns, 
+	        	the class will be applied to every n-fold column where n is the order in which the class is listed in the attribute. 
+	        	If there are more class names than columns, the overflow ones are ignored.
 	        </description>
 	    </property>
         <property hidden="true" exist="true">
@@ -384,7 +387,10 @@
 	        <name>rowClasses</name>
 	        <classname>java.lang.String</classname>
 	        <description>
-	            CSS class for a row
+	        	Assigns one or more space-separated CSS class names to the rows. If the CSS class names are comma-separated, 
+	        	each class will be assigned to a particular row in the order they follow in the attribute. If you have less class names than rows, 
+	        	the class will be applied to every n-fold row where n is the order in which the class is listed in the attribute. 
+	        	If there are more class names than rows, the overflow ones are ignored.
 	        </description>
 	        <defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
@@ -568,61 +574,61 @@
 	     <property>
 	    	<name>listClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a list</description>
+	     	<description>Assigns one or more space-separated CSS class names to the component lists</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>disabledControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a disabled control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component disabled controls</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	     <property>
 	    	<name>topControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a &quot;Top&quot; control</description>
+	     	<description>Assigns one or more space-separated CSS class names to the &apos;Top&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>bottomControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a &quot;Bottom&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Bottom&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>upControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for an &quot;Up&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Up&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>downControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a &quot;Down&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Down&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>copyAllControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a &quot;Copy all&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Copy all&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>removeAllControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for &quot;Remove all&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Remove all&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>copyControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for &quot;Copy&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Copy&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name>removeControlClass</name>
 	    	<classname>java.lang.String</classname>
-	        <description>CSS class for a &quot;Remove&quot; control</description>
+	    	<description>Assigns one or more space-separated CSS class names to the &apos;Remove&apos; button</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 		<property>
