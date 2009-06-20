@@ -276,45 +276,42 @@
                               <property>
                                         <name>styleClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>Corresponds to the HTML class attribute</description>
+                              	       <description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
                               </property>
                               <property>
                                         <name>viewClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>Style class for view state</description>
+                              	<description>Assigns one or more space-separated CSS class names to the component in the view state</description>
                               </property>
                               <property>
                                         <name>editClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for edit state</description>
+                              	<description>Assigns one or more space-separated CSS class names to the component in the edit state</description>
                               </property>
                               <property>
                                         <name>changedClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for changed state</description>
+                              	       <description>Assigns one or more space-separated CSS class names to the component in the changed state</description>
                               </property>
                               <property>
                                         <name>controlClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for controls</description>
+                              	<description>Assigns one or more space-separated CSS class names to the component controls</description>
                               </property>
                               <property>
                                         <name>viewHoverClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for hovered text in view
-                                        state</description>
+                              	<description>Assigns one or more space-separated CSS class names to the component hovered in the view state</description>
                               </property>
                               <property>
                                         <name>controlPressClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for controls
-                                        pressed</description>
+                              	       <description>Assigns one or more space-separated CSS class names to the component control pressed</description>
                               </property>
                               <property>
                                         <name>controlHoverClass</name>
                                         <classname>java.lang.String</classname>
-                                        <description>CSS style class for hovered
-                                        control</description>
+                              	<description>Assigns one or more space-separated CSS class names to the component control hovered</description>
                               </property>
 							  &html_events; 
 							  &ui_component_attributes;
