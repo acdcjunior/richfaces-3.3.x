@@ -111,13 +111,13 @@
 		<property>
 	    	<name> inputClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description> Class attribute for text field</description>
+			<description>Assigns one or more space-separated CSS class names to the component input field</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> inputStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description> Style attribute for text field</description>
+	    	<description>Holds a fragment of a style sheet that applies to the component input field</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 <!-- 
