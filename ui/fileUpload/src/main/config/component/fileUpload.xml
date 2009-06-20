@@ -105,72 +105,72 @@ Here's an example:
 		<property>
 			<name>addButtonClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for add button</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Add&apos; button</description>
 		</property>
 		<property>
 			<name>addButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for add button disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Add&apos; button disabled</description>
 		</property>
 		<property>
 			<name>uploadButtonClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload button</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Upload&apos; button</description>
 		</property>
 		<property>
 			<name>uploadButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload button disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Upload&apos; button disabled</description>
 		</property>
 		<property>
 			<name>stopButtonClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for cancel button</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Cancel&apos; button</description>
 		</property>
 		<property>
 			<name>stopButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for cancel button disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Cancel&apos; button disabled</description>
 		</property>
 		<property>
 			<name>cleanButtonClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for clean button</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Clean&apos; button</description>
 		</property>
 		<property>
 			<name>cleanButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for clean button disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Clean&apos; button disabled</description>
 		</property>
 		<property>
 			<name>uploadListClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload list</description>
+			<description>Assigns one or more space-separated CSS class names to the upload list</description>
 		</property>
 		<property>
 			<name>uploadListClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload list disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the upload list disabled</description>
 		</property>
 		<property>
 			<name>fileEntryClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style upload file entry</description>
+			<description>Assigns one or more space-separated CSS class names to the file entries</description>
 		</property>
 		<property>
 			<name>fileEntryClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style upload file entry disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the file entries disabled</description>
 		</property>
 		<property>
 			<name>fileEntryControlClass</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload enrty control</description>
+			<description>Assigns one or more space-separated CSS class names to the controls of the file entries</description>
 		</property>
 		<property>
 			<name>fileEntryControlClassDisabled</name>
 			<classname>java.lang.String</classname>
-			<description>CSS style for upload enrty control disabled</description>
+			<description>Assigns one or more space-separated CSS class names to the disabled controls of the file entries</description>
 		</property>
 		<property>
 			<name>fileUploadListener</name>
