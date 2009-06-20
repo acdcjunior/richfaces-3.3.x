@@ -8,7 +8,7 @@
     <property>
         <name>contentClass</name>
         <classname>java.lang.String</classname>
-        <description>Assigns one or more CSS class names to the component content</description>
+        <description>Assigns one or more space-separated CSS class names to the component content</description>
     </property>
     
 </properties>
