@@ -155,100 +155,100 @@
 		    <property>
 		    	<name>listStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to popup list</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component popup list</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>listClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the popup list</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component popup list</description>
 		    </property>
 		    <property>
 		    	<name>inputStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to input field</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component input field</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>inputClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the input field</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component input field</description>
 		    </property>
 		    <property>
 		    	<name>inputDisabledStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to disabled input</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component input field disabled</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>inputDisabledClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the disabled input</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component input field disabled</description>
 		    </property>
 		    <property>
 		    	<name>inputInactiveStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to inactive input</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component inactive input field</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>inputInactiveClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the inactive input</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component inactive input field</description>
 		    </property>
 		    <property>
 		    	<name>itemClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the items</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component items</description>
 		    </property>
 		    <property>
 		    	<name>itemSelectedClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the selected item</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component selected item</description>
 		    </property>
 		    <property>
 		    	<name>buttonStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to button</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component button</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>buttonClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the button</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component button</description>
 		    </property>
 		    <property>
 		    	<name>buttonDisabledStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to disabled button</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component button disabled</description>
 		    </property>
 		    <property>
 		    	<name>buttonDisabledClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the disabled button</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component button disabled</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>buttonInactiveStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style rules to be applied to inactive button</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component inactive button</description>
 		    </property>
 		    <property>
 		    	<name>buttonInactiveClass</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Style Class attribute for the inactive button</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component inactive button</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
 		    	<name>style</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>CSS style(s) is/are to be applied when this component is rendered</description>
+		    	<description>Holds a fragment of a style sheet that applies to the component</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		   <property>
 		    	<name>styleClass</name>
 		    	<classname>java.lang.String</classname>
-		     	<description>Corresponds to the HTML class attribute</description>
+		   	    <description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		     </property>
        		<property>
