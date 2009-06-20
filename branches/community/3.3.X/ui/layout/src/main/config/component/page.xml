@@ -123,28 +123,28 @@
 			<name>headerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-			A name of CSS class for the header
+				Assigns one or more space-separated CSS class names to the component header
 			</description>
 		</property>
 		<property>
 			<name>footerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-			A name of CSS class for the footer
+				Assigns one or more space-separated CSS class names to the component footer
 			</description>
 		</property>
 		<property>
 			<name>bodyClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-			A name of CSS class for the body part of the page
+				Assigns one or more space-separated CSS class names to the body part of the page
 			</description>
 		</property>
 		<property>
 			<name>sidebarClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-			A name of CSS class for the side panel
+				Assigns one or more space-separated CSS class names to the component side panel
 			</description>
 		</property>
 		<!--
