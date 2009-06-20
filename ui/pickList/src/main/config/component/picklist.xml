@@ -222,26 +222,26 @@
        		<property>
        			<name>disabledStyle</name>
        			<classname>java.lang.String</classname>
-       			<description>CSS style rules to be applied to disabled controls</description>
+       			<description>Holds a fragment of a style sheet that applies to the component disabled controls</description>
        		</property>
        		
        		<property>
        			<name>disabledStyleClass</name>
        			<classname>java.lang.String</classname>
-       			<description>The disabledStyleClass for disabled controls</description>
+       			<description>Assigns one or more space-separated CSS class names to the component disabled controls</description>
        		</property>
        		
        		<property>
        			<name>enabledStyle</name>
        			<classname>java.lang.String</classname>
-       			<description>CSS style rules to be applied to enabled controls</description>
+       			<description>Holds a fragment of a style sheet that applies to the component enabled controls</description>
        			
        		</property>
        		
        		<property>
        			<name>enabledStyleClass</name>
        			<classname>java.lang.String</classname>
-       			<description>The enabledStyleClass for enabled controls</description>
+       			<description>Assigns one or more space-separated CSS class names to the component enabled controls</description>
        		</property>
        		      		
        		<property>
@@ -259,14 +259,14 @@
        		<property>
 		    	<name>listClass</name>
 		    	<classname>java.lang.String</classname>
-		        <description>CSS class for a list</description>
+       			<description>Assigns one or more space-separated CSS class names to the component lists</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    
 		    <property>
 		    	<name>controlClass</name>
 		    	<classname>java.lang.String</classname>
-		        <description>CSS class for a list</description>
+		    	<description>Assigns one or more space-separated CSS class names to the component controls</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    
