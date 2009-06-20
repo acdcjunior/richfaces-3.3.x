@@ -130,8 +130,7 @@
             <name>entryClass</name>
             <classname>java.lang.String</classname>
             <description>
-                Name of the CSS class for a suggestion entry element. 
-                (table row)
+            	Assigns one or more space-separated CSS class names to the suggestion entry elements (table rows)
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -139,7 +138,10 @@
             <name>rowClasses</name>
             <classname>java.lang.String</classname>
             <description>
-                A comma-delimited list of CSS style classes that is applied to popup table rows. A space separated list of classes may also be specified for any individual row. The styles are applied, in turn, to each row in the table. For example, if the list has two elements, the first style class in the list is applied to the first row, the second to the second row, the first to the third row, the second to the fourth row, etc. In other words, we keep iterating through the list until we reach the end, and then we start at the beginning again
+            	Assigns one or more space-separated CSS class names to the rows. If the CSS class names are comma-separated, 
+            	each class will be assigned to a particular row in the order they follow in the attribute. If you have less class names than rows, 
+            	the class will be applied to every n-fold row where n is the order in which the class is listed in the attribute. 
+            	If there are more class names than rows, the overflow ones are ignored.
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -176,16 +178,14 @@
             <name>selectedClass</name>
             <classname>java.lang.String</classname>
             <description>
-                Name of the CSS class for a selected suggestion entry
-                element (table row)
+            	Assigns one or more space-separated CSS class names to the selected suggestion entry (table rows)
             </description>
         </property>
         <property>
             <name>selectValueClass</name>
             <classname>java.lang.String</classname>
             <description>
-                Name of the CSS class for a selected suggestion entry
-                element (table cell)
+            	Assigns one or more space-separated CSS class names to the cells of the selected suggestion entry (table cells)
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -228,8 +228,7 @@
             <name>popupClass</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML CSS class attribute of element for pop-up
-                suggestion content
+            	Assigns one or more space-separated CSS class names to the content of the pop-up suggestion element
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -237,8 +236,7 @@
             <name>popupStyle</name>
             <classname>java.lang.String</classname>
             <description>
-                HTML CSS style attribute of element for pop-up
-                suggestion content
+            	Holds a fragment of a style sheet that applies to the content of the pop-up suggestion element
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -246,7 +244,7 @@
             <name>style</name>
             <classname>java.lang.String</classname>
             <description>
-                CSS style(s) is/are to be applied when this component is rendered
+            	Holds a fragment of a style sheet that applies to the component
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -254,7 +252,7 @@
             <name>styleClass</name>
             <classname>java.lang.String</classname>
             <description>
-                Corresponds to the HTML class attribute
+            	Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
