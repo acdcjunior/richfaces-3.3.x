@@ -125,7 +125,7 @@
 			<name>errorClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the message with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>		
 		
@@ -133,7 +133,7 @@
 			<name>fatalClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the message with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>	
 			
@@ -141,7 +141,7 @@
 			<name>infoClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the message with a severity class of &quot;INFO&quot;
 			</description>
 		</property>		
 		
@@ -149,7 +149,7 @@
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Space-separated list of CSS style class(es) to be applied when this element is rendered.  This value must be passed through as the "class" attribute on generated markup
+				Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.
 			</description>
 		</property>	
 		
@@ -157,14 +157,14 @@
 			<name>style</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The CSS style for message
+				Holds a fragment of a style sheet that applies to the component
 			</description>
 		</property>	
 		<property>
 			<name>warnClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the message with a severity class of &quot;WARN&quot;
 			</description>
 		</property>		
 		
@@ -172,7 +172,7 @@
 			<name>errorMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the message marker with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>
 		
@@ -180,7 +180,7 @@
 			<name>warnClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the message with a severity class of &quot;WARN&quot;
 			</description>
 		</property>		
 		
@@ -193,7 +193,7 @@
 			<name>fatalMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the message marker with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>			
 		
@@ -201,7 +201,7 @@
 			<name>infoMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the message marker with a severity class of &quot;INFO&quot;
 			</description>
 		</property>			
 		
@@ -209,7 +209,7 @@
 			<name>warnMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply any message marker with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the message marker with a severity class ofS &quot;WARN&quot;
 			</description>
 		</property>			
 		
@@ -217,7 +217,7 @@
 			<name>markerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to marker
+				Assigns one or more space-separated CSS class names to the message marker
 			</description>
 		</property>		
 		
@@ -225,7 +225,7 @@
 			<name>markerStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style(s) is/are to be applied to marker when this component is rendered
+				Holds a fragment of a style sheet that applies to the message marker
 			</description>
 		</property>	
 		
@@ -233,7 +233,7 @@
 			<name>errorLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the message label with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>
 		
@@ -241,7 +241,7 @@
 			<name>fatalLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the message label with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>
 		
@@ -249,7 +249,7 @@
 			<name>infoLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the message label with a severity class of &quot;INFO&quot;
 			</description>
 		</property>
 		
@@ -257,7 +257,7 @@
 			<name>warnLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the message label with a severity class of &quot;WARN&quot;
 			</description>
 		</property>
 		
@@ -265,7 +265,7 @@
 			<name>labelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to label
+				Assigns one or more space-separated CSS class names to the message label
 			</description>
 		</property>
 		
@@ -423,7 +423,7 @@
 			<name>errorClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the messages with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>		
 		
@@ -431,7 +431,7 @@
 			<name>fatalClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the messages with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>	
 			
@@ -439,7 +439,7 @@
 			<name>infoClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the messages with a severity class of &quot;INFO&quot;
 			</description>
 		</property>		
 		
@@ -447,7 +447,7 @@
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Space-separated list of CSS style class(es) to be applied when this element is rendered.  This value must be passed through as the "class" attribute on generated markup
+				Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &apos;class&apos; attribute.
 			</description>
 		</property>	
 		
@@ -455,14 +455,14 @@
 			<name>style</name>
 			<classname>java.lang.String</classname>
 			<description>
-				The CSS style for message
+				Holds a fragment of a style sheet that applies to the component
 			</description>
 		</property>	
 		<property>
 			<name>warnClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the messages with a severity class of &quot;WARN&quot;
 			</description>
 		</property>		
 		
@@ -470,7 +470,7 @@
 			<name>errorMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the messages marker with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>
 		
@@ -478,7 +478,7 @@
 			<name>warnClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the messages with a severity class of &quot;WARN&quot;
 			</description>
 		</property>		
 		
@@ -494,7 +494,7 @@
 			<name>fatalMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the messages markers with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>			
 		
@@ -502,7 +502,7 @@
 			<name>infoMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message marker with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the messages markers with a severity class of &quot;INFO&quot;
 			</description>
 		</property>			
 		
@@ -510,7 +510,7 @@
 			<name>warnMarkerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply any message marker with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the messages markers with a severity class of &quot;WARN&quot;
 			</description>
 		</property>			
 		
@@ -518,7 +518,7 @@
 			<name>markerClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to marker
+				Assigns one or more space-separated CSS class names to the messages markers
 			</description>
 		</property>			
 		
@@ -526,7 +526,7 @@
 			<name>markerStyle</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style(s) is/are to be applied to marker when this component is rendered
+				Holds a fragment of a style sheet that applies to the messages markers
 			</description>
 		</property>
 		
@@ -534,7 +534,7 @@
 			<name>errorLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "ERROR"
+				Assigns one or more space-separated CSS class names to the messages labels with a severity class of &quot;ERROR&quot;
 			</description>
 		</property>
 		
@@ -542,7 +542,7 @@
 			<name>fatalLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "FATAL"
+				Assigns one or more space-separated CSS class names to the messages labels with a severity class of &quot;FATAL&quot;
 			</description>
 		</property>
 		
@@ -550,7 +550,7 @@
 			<name>infoLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "INFO"
+				Assigns one or more space-separated CSS class names to the messages labels with a severity class of &quot;INFO&quot;
 			</description>
 		</property>
 		
@@ -558,7 +558,7 @@
 			<name>warnLabelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to any message label with a severity class of "WARN"
+				Assigns one or more space-separated CSS class names to the messages labels with a severity class of &quot;WARN&quot;
 			</description>
 		</property>
 		
@@ -566,7 +566,7 @@
 			<name>labelClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style class to apply to label
+				Assigns one or more space-separated CSS class names to the messages labels
 			</description>
 		</property>
 		
