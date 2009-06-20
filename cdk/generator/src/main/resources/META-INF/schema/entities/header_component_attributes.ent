@@ -8,7 +8,7 @@
     <property>
         <name>headerClass</name>
         <classname>java.lang.String</classname>
-        <description>Assigns one or more CSS class names to the component header</description>
+        <description>Assigns one or more space-separated CSS class names to the component header</description>
     </property>
     
 </properties>
