@@ -285,34 +285,33 @@
 			<name>style</name>
 			<classname>java.lang.String</classname>
 			<description>
-				CSS style(s) is/are to be applied when this component is
-				rendered
+				Holds a fragment of a style sheet that applies to the component
 			</description>
 		</property>
 		<property>
 			<name>styleClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Corresponds to the HTML class attribute
+				Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.
 			</description>
 		</property>
 		<property>
 			<name>inputStyle</name>
 			<classname>java.lang.String</classname>
-			<description>Style attribute for text field</description>
+			<description>Holds a fragment of a style sheet that applies to the component input field</description>
 		</property>
 		<property>
 			<name>inputClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Style Class attribute for the text field
+				Assigns one or more space-separated CSS class names to the component input field
 			</description>
 		</property>
 		<property>
 			<name>buttonClass</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Style Class attribute for the popup button
+				Assigns one or more space-separated CSS class names to the component popup button
 			</description>
 		</property>
 		<property>
@@ -537,7 +536,7 @@
 			<classname>java.lang.String</classname>
 			<description>
 				Should be binded to some JS function that will provide style classes
-				for special sets of days highlighting.
+				for special sets of days highlighting
 			</description>
 		</property>
 		
@@ -545,7 +544,7 @@
 			<name>isDayEnabled</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Should be binded to some JS function that returns day state.
+				Should be binded to some JS function that returns day state
 			</description>
 		</property>
 		<property>
