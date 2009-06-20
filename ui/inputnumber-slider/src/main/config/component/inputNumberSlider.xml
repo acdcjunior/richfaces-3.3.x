@@ -130,13 +130,13 @@
 	    <property>
 	    	<name> inputStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Style attribute for text field</description>
+	    	<description>Holds a fragment of a style sheet that applies to the component input field</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> inputClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description> Style Class attribute for a text field</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component input field</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 		<property>
@@ -181,90 +181,90 @@
 		<property>
 	    	<name> style </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Styles for main div element of the slider control
+			<description>Holds a fragment of a style sheet that applies to the component
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 		<property>
 	    	<name> styleClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Name of a CSS class </description>
+			<description>Assigns one or more space-separated CSS class names to the component. Corresponds to the HTML &quot;class&quot; attribute.</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 		<property>
 	    	<name> barStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Style for a slider control line
+			<description>Holds a fragment of a style sheet that applies to the component bar element
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> barClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A name of CSS class  for the bar element</description>
+	    	<description>Assigns one or more space-separated CSS class names to the component bar element</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> handleClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A name of CSS class for a control handle element</description>
+	    	<description>Assigns one or more space-separated CSS class names to the handle element</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> handleSelectedClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A name of CSS class for a selected control handle element</description>
+	    	<description>Assigns one or more space-separated CSS class names to the handle element selected</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> tipStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A style for the tool tip element
+	    	<description> Holds a fragment of a style sheet that applies to the tool tip element of the handle
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
 	    	<name> tipClass </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>A name of CSS class for the tool tip element</description>
+	    	<description>Assigns one or more space-separated CSS class names to the tool tip element of the handle</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
             <name>increaseStyle</name>
             <classname>java.lang.String</classname>
-            <description>A style for the increase arrow element
+	    	<description>Holds a fragment of a style sheet that applies to the increase arrow element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
             <name>increaseClass</name>
             <classname>java.lang.String</classname>
-            <description>A name of CSS class for increase arrow element</description>
+        	<description>Assigns one or more space-separated CSS class names to the increase arrow element</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
             <name>increaseSelectedClass</name>
             <classname>java.lang.String</classname>
-            <description>A name of CSS class for a selected control increase arrow element</description>
+        	<description>Assigns one or more space-separated CSS class names to the increase arrow element selected</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
             <name>decreaseStyle</name>
             <classname>java.lang.String</classname>
-            <description>A style for the decrease arrow element
+        	<description>Holds a fragment of a style sheet that applies to the decrease arrow element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
             <name>decreaseClass</name>
             <classname>java.lang.String</classname>
-            <description>A name of CSS class for the decrease arrow element</description>
+        	<description>Assigns one or more space-separated CSS class names to the decrease arrow element</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
             <name>decreaseSelectedClass</name>
             <classname>java.lang.String</classname>
-            <description>A name of CSS class for a selected control decrease arrow element</description>
+        	<description>Assigns one or more space-separated CSS class names to the decrease arrow element selected</description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
         <property>
