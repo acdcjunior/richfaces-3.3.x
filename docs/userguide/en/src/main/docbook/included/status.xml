@@ -36,7 +36,7 @@
       </table></para>
     
     <section>
-      <title>Creating on a page</title>
+          <title>Creating the Component with a Page Tag</title>
       <para>There are two ways to define elements indicating a request status :</para>
 	  <itemizedlist>
           <listitem><para>
@@ -99,7 +99,9 @@ HtmlAjaxStatus  myStatus = new HtmlAjaxStatus();
     </table>
   </section>
     <section>
-      <title>Key attributes and ways of usage</title>
+          
+          
+      <title>Details of usage</title>
       <para>There are  two ways for the components or containers definition, which Ajax requests status is tracked by a component.<itemizedlist>
           <listitem><para>
            Definition with the <emphasis >
@@ -151,25 +153,18 @@ attribute obtained by any RichFaces library action component. The attribute shou
   <section>
     <title>Relevant resources links</title>
     <para>
-    	<ulink
-    		url="http://wiki.jboss.org/wiki/RichFacesPleaseWaitBox">
-    		Here
-    	</ulink>
-    	you can find information on how to show a &quot;Please Wait&quot; box and
-    	block the input while the Ajax request is processed using combination of
-    	<emphasis role="bold">
-    		<property>&lt;a4j:status&gt;</property>
-    	</emphasis>
-    	and
-    	<emphasis role="bold">
-    		<property>&lt;rich:modalPanel&gt;</property>
-    	</emphasis>
-		components
-    	.
+          Vizit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/status.jsf?c=status">Status page</ulink> at RichFaces Livedemo for examples of component usage and their sources.
     </para>
-    <para>
-      <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/status.jsf?c=status">On the component Live Demo page</ulink>  you can see the example of <emphasis role="bold"
-	    ><property>&lt;a4j:status&gt;</property></emphasis> usage and sources for the given example. 
-	</para>
+        <para>
+              Useful articles at JBoss portal:
+        </para>
+              <itemizedlist>
+                    <listitem>
+                          <para>
+                                <ulink url="http://wiki.jboss.org/wiki/RichFacesPleaseWaitBox">RichFacesPleaseWaitBox</ulink> describes how to show a &quot;Please Wait&quot; box and block the input while the Ajax request is processed using combination of <emphasis role="bold"><property>&lt;a4j:status&gt;</property></emphasis> and <emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis>.
+                          </para>
+                    </listitem>
+              </itemizedlist>
+              
   </section>	
 </chapter>
