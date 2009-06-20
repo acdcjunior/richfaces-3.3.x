@@ -8,8 +8,8 @@
       </keywordset>
     </sectioninfo>
     <title>Description</title>
-    <para>The <emphasis role="bold">
-        <property>&lt;a4j:form&gt;</property>
-      </emphasis> component is very similar to the same component from the JSF HTML library, the only slight difference is in generation of links inside and possibility of Ajax by-default submission.</para>
+        <para>
+              The <emphasis role="bold"><property>&lt;a4j:form&gt;</property></emphasis> component is very similar to JSF <emphasis role="bold"><property>&lt;h:form&gt;</property></emphasis> the only difference is in generation of links inside and possibility of default Ajax submission.
+        </para>
   </section>
 </chapter>
