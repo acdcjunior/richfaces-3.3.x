@@ -10,6 +10,8 @@
 
 A4J.AJAX = {};
 
+A4J.AJAX.VIEW_ROOT_ID = "_viewRoot";
+
 A4J.AJAX.Stub = function() {};
 
 A4J.AJAX.isWebKit = navigator.userAgent.search(/( AppleWebKit\/)([^ ]+)/) != -1;
@@ -671,7 +673,7 @@ A4J.AJAX._pollers = {};
  * 
  * 
  */
-A4J.AJAX.Poll =  function( containerId, form, options ) {
+A4J.AJAX.Poll =  function(form, options) {
 	A4J.AJAX.StopPoll(options.pollId);
 	if(!options.onerror){
 	  options.onerror = function(req,status,message){
@@ -679,13 +681,13 @@ A4J.AJAX.Poll =  function( containerId, form, options ) {
 			A4J.AJAX.onError(req,status,message);
     	}		
 		// For error, re-submit request.
-    	A4J.AJAX.Poll(containerId,form,options);
+    	A4J.AJAX.Poll(form,options);
 	  };
 	}
 	
 	if (!options.onqueuerequestdrop) {
 		options.onqueuerequestdrop = function() {
-	    	A4J.AJAX.Poll(containerId,form,options);
+	    	A4J.AJAX.Poll(form,options);
 		};
 	}
 	
@@ -695,9 +697,9 @@ A4J.AJAX.Poll =  function( containerId, form, options ) {
 		A4J.AJAX._pollers[options.pollId]=undefined;
 		if((typeof(options.onsubmit) == 'function') && (options.onsubmit()==false)){
 			// Onsubmit disable current poll, start next interval.
-			A4J.AJAX.Poll(containerId,form,options);			
+			A4J.AJAX.Poll(form,options);			
 		} else {
-			A4J.AJAX.Submit(containerId,form,null,options);
+			A4J.AJAX.Submit(form,null,options);
 		}
 	},options.pollinterval);
 };
@@ -713,11 +715,11 @@ A4J.AJAX.StopPoll =  function( Id ) {
  * 
  * 
  */
-A4J.AJAX.Push =  function( containerId, form, options ) {
+A4J.AJAX.Push =  function(form, options) {
 	A4J.AJAX.StopPush(options.pushId);
 	options.onerror = function(){
 		// For error, re-submit request.
-		A4J.AJAX.Push(containerId,form,options);
+		A4J.AJAX.Push(form, options);
 	};
 	
 	options.onqueuerequestdrop = function() {
@@ -732,7 +734,7 @@ A4J.AJAX.Push =  function( containerId, form, options ) {
 		      		  if(request.status == 200){
 		      			if(request.getResponseHeader("Ajax-Push-Status")=="READY"){
 		      				A4J.AJAX.SetZeroRequestDelay(options);
-		      				A4J.AJAX.Submit(containerId,form||options.dummyForm,null,options);
+		      				A4J.AJAX.Submit(form||options.dummyForm,null,options);
 		      			}
 		      		  }
 		      		} catch(e){
@@ -742,10 +744,10 @@ A4J.AJAX.Push =  function( containerId, form, options ) {
 		      		request=null;
 					A4J.AJAX._pollers[options.pushId] = null;
 		      		// Re-send request.
-		      		A4J.AJAX.Push( containerId, form, options );
+		      		A4J.AJAX.Push(form, options);
 		      	}
 		}
-		A4J.AJAX.SendPush( request,options );
+		A4J.AJAX.SendPush(request, options);
 	},options.pushinterval);
 };
 
@@ -780,7 +782,7 @@ A4J.AJAX.CloneObject =  function( obj, noFunctions ) {
 }
 
 
-A4J.AJAX.SubmitForm =  function( containerId, form, options ) {
+A4J.AJAX.SubmitForm =  function(form, options) {
 	var opt = A4J.AJAX.CloneObject(options);
 	// Setup active control if form submitted by button.
 	if(A4J._formInput){
@@ -789,7 +791,7 @@ A4J.AJAX.SubmitForm =  function( containerId, form, options ) {
 		A4J._formInput = null;
 		opt.submitByForm=true;
 	}
-	A4J.AJAX.Submit(containerId,form,null,opt);
+	A4J.AJAX.Submit(form,null,opt);
 }
   
 /**
@@ -815,7 +817,7 @@ A4J.AJAX.CloneEvent = function(evt) {
 	return domEvt;
 };
 
-A4J.AJAX.PrepareQuery = function(containerId, formId, domEvt, options) {
+A4J.AJAX.PrepareQuery = function(formId, domEvt, options) {
 	// Process listeners.
 	for(var li = 0; li < A4J.AJAX._listeners.length; li++){
   	  	var listener = A4J.AJAX._listeners[li];
@@ -840,7 +842,7 @@ A4J.AJAX.PrepareQuery = function(containerId, formId, domEvt, options) {
     		return false;
     	};
     };
-    var tosend = new A4J.Query(containerId, form);
+    var tosend = new A4J.Query(options.containerId, form);
     tosend.appendFormControls(options.single, options.control);
     //appending options.control moved to appendFormControls
     //if(options.control){
@@ -906,9 +908,9 @@ A4J.AJAX.SubmitQuery = function (query, options, domEvt) {
 
 //Submit or put in queue request. It not full queues - framework perform waiting only one request to same queue, new events simple replace last.
 //If request for same queue already performed, replace with current parameters.
-A4J.AJAX.Submit =  function( containerId, formId, event , options ) {
+A4J.AJAX.Submit =  function(formId, event , options ) {
 	var domEvt = A4J.AJAX.CloneEvent(event);
-	var query = A4J.AJAX.PrepareQuery(containerId, formId, domEvt, options);
+	var query = A4J.AJAX.PrepareQuery(formId, domEvt, options);
     if (query) {
     	var queue = A4J.AJAX.EventQueue.getOrCreateQueue(options, formId);
     	
@@ -931,9 +933,9 @@ A4J.AJAX.Submit =  function( containerId, formId, event , options ) {
   // list of updated areas in response.
   // statusID - DOM id request status tags.
   // oncomplete - function for call after complete request.
-A4J.AJAX.SubmitRequest = function( containerId, formId, event, options ) {
+A4J.AJAX.SubmitRequest = function(formId, event, options ) {
 	var domEvt = A4J.AJAX.CloneEvent(event);
-	var query = A4J.AJAX.PrepareQuery(containerId, formId, domEvt, options);
+	var query = A4J.AJAX.PrepareQuery(formId, domEvt, options);
     if (query) {
     	A4J.AJAX.SubmitQuery(query, options, domEvt);
     }
@@ -1405,11 +1407,12 @@ A4J.AJAX.status = function(regionID,targetID,start){
   
 // Class for build query string.
 A4J.Query = function(containerId, form){ 
-	// For detect AJAX Request.
-	 this._query = {AJAXREQUEST : containerId};
+	 var containerIdOrDefault = containerId || A4J.AJAX.VIEW_ROOT_ID;
+	 // For detect AJAX Request.
+	 this._query = {AJAXREQUEST : containerIdOrDefault};
 	 this._oldSubmit = null ;	
 	 this._form = form;
-	 this._containerId = containerId;
+	 this._containerId = containerIdOrDefault;
 	 this._actionUrl = ( this._form.action)?this._form.action:this._form;
 	};
 

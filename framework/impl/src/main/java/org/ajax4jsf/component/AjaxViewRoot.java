@@ -70,8 +70,6 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 
 	public static final String ROOT_ID = "_viewRoot";
 	
-	public static final String JS_NULL = "null";
-
 	private Lifecycle lifecycle;
 
 	private AjaxRegionBrige _brige;
@@ -217,9 +215,8 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 			AjaxContext ajaxContext = AjaxContext.getCurrentInstance(context);
 			String submittedRegionClientId = ajaxContext
 					.getSubmittedRegionClientId();
-			// !submittedRegionClientId.equals(JS_NULL) - fix for myfaces 1.2.4  
 			if (ajaxContext.isAjaxRequest() && submittedRegionClientId != null && 
-							!submittedRegionClientId.equals(JS_NULL) 
+							!submittedRegionClientId.equals(ROOT_ID) 
 							&& !submittedRegionClientId.equals(getClientId(context))) {
 				invokeOnComponent(context, submittedRegionClientId, new InvokerCallbackWrapper(callback));
 			} else {
@@ -539,7 +536,7 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 			String submittedRegionClientId = ajaxContext
 					.getSubmittedRegionClientId();
 			boolean invoked = false; 
-			if (submittedRegionClientId != null && !submittedRegionClientId.equals(JS_NULL) && !submittedRegionClientId.equals(getClientId(context))) {
+			if (submittedRegionClientId != null && !submittedRegionClientId.equals(ROOT_ID) && !submittedRegionClientId.equals(getClientId(context))) {
 				invoked = invokeOnComponent(context, submittedRegionClientId, _ajaxInvoker);
 			} 
 			// if container not found, use Root for encode.
