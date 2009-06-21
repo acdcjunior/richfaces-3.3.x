@@ -128,7 +128,7 @@ public class DataFilterSliderRendererBase extends org.ajax4jsf.renderkit.HeaderR
 
     	JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(slider,context);
     	ajaxFunction.addParameter(AjaxRendererUtils.buildEventOptions(
-				context, slider));
+				context, slider, true));
     	StringBuffer script= new StringBuffer();
         ajaxFunction.appendScript(script);
         script.append("; return false");

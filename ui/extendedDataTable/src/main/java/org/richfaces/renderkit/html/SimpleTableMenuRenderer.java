@@ -90,7 +90,7 @@ public class SimpleTableMenuRenderer extends TableMenuRenderer {
             if ((!columnVisible) || (visibleColumnsCount > 1)) {
                 boolean ajaxSingle = true;
                 Map<String, Object> requestOpts = AjaxRendererUtils
-                        .buildEventOptions(context, dataColumn);
+                        .buildEventOptions(context, dataColumn, true);
 
                 if (onAjaxCompleteFunction != null)
                     requestOpts.put(AjaxRendererUtils.ONCOMPLETE_ATTR_NAME,

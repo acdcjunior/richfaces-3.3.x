@@ -103,7 +103,7 @@ public abstract class AbstractQueueComponentTest extends AbstractAjax4JsfTestCas
 		public void encodeToHead(FacesContext facesContext, UIComponent component)
 				throws IOException {
 			JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(component, facesContext);
-			Map<String, Object> options = AjaxRendererUtils.buildEventOptions(facesContext, component);
+			Map<String, Object> options = AjaxRendererUtils.buildEventOptions(facesContext, component, true);
 			options.put("requestDelay", new JSReference("options.requestDelay"));
 			options.put("similarityGroupingId", new JSReference("options.similarityGroupingId || '" + 
 					component.getClientId(facesContext) + "'"));

@@ -265,8 +265,6 @@ public class AbstractProgressBarRenderer extends TemplateEncoderRendererBase {
         RendererUtils utils = getUtils();
 
 		String clientId = component.getClientId(context);
-		String containerId = ((UIComponent) AjaxRendererUtils
-				.findAjaxContainer(context, component)).getClientId(context);
 		
         utils.addToScriptHash(options, "mode", component.getAttributes().get("mode"), "ajax"); 
         utils.addToScriptHash(options, "minValue", component.getAttributes().get("minValue"), "0"); 
@@ -279,8 +277,7 @@ public class AbstractProgressBarRenderer extends TemplateEncoderRendererBase {
         utils.addToScriptHash(options, "state", state, "initialState"); 
         utils.addToScriptHash(options, "value", variables.getVariable("value")); 
 
-		script.append("new ProgressBar('").append(clientId).append("','") // id
-				.append(containerId).append("'"); // containerId
+		script.append("new ProgressBar('").append(clientId).append("'");
         if (!options.isEmpty()) {
         	script.append(",").append(ScriptUtils.toScript(options));
 		}				
@@ -298,7 +295,7 @@ public class AbstractProgressBarRenderer extends TemplateEncoderRendererBase {
 	 */
 	private Map buildAjaxOptions(String clientId, UIProgressBar progressBar,
 			FacesContext context) {
-		Map options = AjaxRendererUtils.buildEventOptions(context, progressBar);
+		Map options = AjaxRendererUtils.buildEventOptions(context, progressBar, true);
 		Integer interval = new Integer(progressBar.getInterval());
 		options.put("pollId", clientId);
 		options.put("pollinterval", interval);

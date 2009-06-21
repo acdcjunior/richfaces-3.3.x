@@ -53,8 +53,6 @@
 		String ajaxActionUrl = ajaxContext.getAjaxActionURL(context);
 		
 		variables.setVariable("actionUrl", ajaxActionUrl);
-		variables.setVariable("formId",getFormId(context, component));
-		variables.setVariable("containerId",getContainerId(context, component));
 
 		variables.setVariable("listWidth", getFileListWidth(component));
 		variables.setVariable("listHeight", getFileListHeight(component));

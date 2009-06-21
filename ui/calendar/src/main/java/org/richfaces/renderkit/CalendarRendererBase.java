@@ -460,7 +460,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put(calendar.getClientId(context) + CURRENT_DATE_PRELOAD, Boolean.TRUE);
 		
-		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, calendar, params);
+		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, calendar, params, true);
 		options.put("calendar", JSReference.THIS);
 
 		String oncomplete = AjaxRendererUtils.getAjaxOncomplete(calendar);

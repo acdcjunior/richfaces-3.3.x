@@ -560,7 +560,7 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 		String id = tree.getBaseClientId(context);
 		JSFunction function = AjaxRendererUtils
 		.buildAjaxFunction(tree, context);
-		Map eventOptions = AjaxRendererUtils.buildEventOptions(context, tree);
+		Map eventOptions = AjaxRendererUtils.buildEventOptions(context, tree, true);
 		Map parameters = (Map) eventOptions.get("parameters");
 		parameters.remove(id);
 		parameters.put(id + UITree.SELECTED_NODE_PARAMETER_NAME,

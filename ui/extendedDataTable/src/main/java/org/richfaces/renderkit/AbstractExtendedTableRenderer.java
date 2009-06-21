@@ -920,7 +920,7 @@ public abstract class AbstractExtendedTableRenderer extends
         definition.addParameter("ascending");
         String id = table.getClientId(context);
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) eventOptions
                 .get("parameters");
@@ -955,7 +955,7 @@ public abstract class AbstractExtendedTableRenderer extends
     protected JSFunction getSortFunction(FacesContext context, UIDataTable table) {
         String id = table.getClientId(context);
         Map<String, Object> requestOpts = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) requestOpts
                 .get("parameters");
@@ -978,7 +978,7 @@ public abstract class AbstractExtendedTableRenderer extends
             UIDataTable table) {
         String id = table.getClientId(context);
         Map<String, Object> requestOpts = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) requestOpts
                 .get("parameters");
@@ -1003,7 +1003,7 @@ public abstract class AbstractExtendedTableRenderer extends
         definition.addParameter("columnId");
         String id = table.getClientId(context);
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) eventOptions
                 .get("parameters");
@@ -1032,7 +1032,7 @@ public abstract class AbstractExtendedTableRenderer extends
         definition.addParameter("event");
         definition.addParameter("groupIndex");
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) eventOptions
                 .get("parameters");
@@ -1055,7 +1055,7 @@ public abstract class AbstractExtendedTableRenderer extends
         definition.addParameter("columnWidths");
 
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) eventOptions
                 .get("parameters");
@@ -1076,7 +1076,7 @@ public abstract class AbstractExtendedTableRenderer extends
             FacesContext context, UIDataTable table) {
         boolean ajaxSingle = true;
         Map<String, Object> requestOpts = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
 
         JSFunctionDefinition onAjaxCompleteFunction = getOnAjaxCompleteFunction(
                 context, table);
@@ -1426,7 +1426,7 @@ public abstract class AbstractExtendedTableRenderer extends
         JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(table,
                 context);
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, table);
+                context, table, true);
         @SuppressWarnings("unchecked")
         Map<String, Object> parameters = (Map<String, Object>) eventOptions
                 .get("parameters");

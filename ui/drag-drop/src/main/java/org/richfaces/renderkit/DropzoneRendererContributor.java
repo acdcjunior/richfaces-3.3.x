@@ -278,7 +278,7 @@ public class DropzoneRendererContributor implements RendererContributor {
 		definition.addParameter("event");
 		definition.addParameter("drag");
 
-		Map requestOpts = AjaxRendererUtils.buildEventOptions(context, component);
+		Map requestOpts = AjaxRendererUtils.buildEventOptions(context, component, true);
 		definition.addToBody("var options = ").addToBody(ScriptUtils.toScript(requestOpts)).addToBody(";");
 		definition.addToBody("options.parameters['" + DROP_TARGET_ID + "'] = '" + component.getClientId(context) + "';");
 		//TODO nick - remove as legacy
