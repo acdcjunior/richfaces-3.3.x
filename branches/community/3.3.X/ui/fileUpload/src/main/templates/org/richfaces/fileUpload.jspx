@@ -191,8 +191,7 @@
 			<c:scriptOption name="labels"  value="#{labels}" />
 		</c:scriptObject>
 		<script type="text/javascript">
-			new FileUpload('#{clientId}','#{actionUrl}',#{this:getStopScript(context, component)},
-					#{this:getFileSizeScript(context, component)} ,'#{this:getProgressBarId(context, component)}',
+			new FileUpload('#{clientId}','#{actionUrl}', #{this:getActionScript(context, component)}, '#{this:getProgressBarId(context, component)}',
 					'#{this:getSessionId(context, component)}'
 						<c:if test="#{not empty options}">
 						, <f:writeAsScript value="#{options}" />
