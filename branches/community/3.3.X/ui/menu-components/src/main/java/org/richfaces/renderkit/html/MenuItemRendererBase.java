@@ -229,7 +229,7 @@ public class MenuItemRendererBase extends CompositeRenderer {
             		}
             	}
             	scriptValue.append(AjaxRendererUtils.buildOnEvent(
-                        menuItem, context, event).toString());
+                        menuItem, context, event, true).toString());
             	menuItemAttributes.put(HTML.onselect_ATTRIBUTE, null);
             } else if (MenuComponent.MODE_SERVER.equalsIgnoreCase(mode)) {
             	

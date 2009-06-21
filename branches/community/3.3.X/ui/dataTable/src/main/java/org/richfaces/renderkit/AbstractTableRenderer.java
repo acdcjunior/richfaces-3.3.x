@@ -656,7 +656,7 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 		setRequiresScripts(context);
 		
 		JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(table, context);
-		Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(context, table);
+		Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(context, table, true);
 		
 		
 		@SuppressWarnings("unchecked")

@@ -109,7 +109,7 @@ public class DraggableRendererContributor implements RendererContributor {
 			DraggableOptions options =  new DraggableOptions(draggable);
 
 			Map eventOptions = AjaxRendererUtils.buildEventOptions(context, component, 
-				Collections.singletonMap(DRAG_SOURCE_ID, (Object) component.getClientId(context)));
+				Collections.singletonMap(DRAG_SOURCE_ID, (Object) component.getClientId(context)), true);
 			Map parameters = (Map) eventOptions.get("parameters");
 
 			if (parameters == null) {

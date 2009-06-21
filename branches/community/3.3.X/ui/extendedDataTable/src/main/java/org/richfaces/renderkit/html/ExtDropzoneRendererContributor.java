@@ -95,7 +95,7 @@ public class ExtDropzoneRendererContributor implements RendererContributor {
 		definition.addParameter("event");
 		definition.addParameter("drag");
 
-		Map<String, Object> requestOpts = AjaxRendererUtils.buildEventOptions(context, column);
+		Map<String, Object> requestOpts = AjaxRendererUtils.buildEventOptions(context, column, true);
 		//replace parameters
 		String clientId = column.getClientId(context);
 		@SuppressWarnings("unchecked")

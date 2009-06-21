@@ -63,7 +63,7 @@ public class AjaxFunctionRendererBase extends AjaxCommandRendererBase {
 		// Create AJAX Submit function.
 		JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(
 				component, context,AjaxRendererUtils.AJAX_FUNCTION_NAME);
-		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component);
+		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component, true);
 		Map<String, Object> parameters = (Map<String, Object>) options.get("parameters");
 		if (null == parameters) {
 			parameters = new HashMap<String, Object>();

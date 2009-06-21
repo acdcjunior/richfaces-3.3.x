@@ -97,7 +97,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 			JSFunction function = AjaxRendererUtils.buildAjaxFunction(nodeFacet,
 					context);
 			Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(context,
-					nodeFacet);
+					nodeFacet, true);
 			Map<String, Object> parameters = (Map<String, Object>) eventOptions.get("parameters");
 			parameters.remove(id);
 

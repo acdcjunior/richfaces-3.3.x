@@ -75,7 +75,7 @@ public class ScrollableDataTableOptions extends ScriptOptions {
 		JSReference sortStartRow = new JSReference("event.startRow");
 		JSReference sortIndex = new JSReference("event.index");
 		
-		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, grid);
+		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, grid, true);
 		
 		@SuppressWarnings("unchecked")
 		Map<String, Object> parametersMap = (Map)options.get("parameters");

@@ -9,7 +9,7 @@ Object.extend(ProgressBar.prototype, {
 	options : {},
 	state : "initialState",
 	
-    initialize: function(id, containerId, options) {
+    initialize: function(id, options) {
 		this.id = id;
 		Object.extend(this, options);		
 		var f = this.getForm();
@@ -69,7 +69,7 @@ Object.extend(ProgressBar.prototype, {
 		
 	},
 	poll: function () {
-			A4J.AJAX.Poll(this.containerId, this.formId, this.options);
+			A4J.AJAX.Poll(this.formId, this.options);
 	},
 	interpolate: function (placeholders) {
 		for(var k in this.context) {
@@ -248,6 +248,6 @@ Object.extend(ProgressBar.prototype, {
 		if (oncomplete) {
 			options['oncomplete'] = oncomplete;
 		}
-		A4J.AJAX.SubmitRequest(this.containerId, this.formId, null, options);
+		A4J.AJAX.SubmitRequest(this.formId, null, options);
 	}
 	});

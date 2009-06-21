@@ -1008,7 +1008,7 @@ Object.extend(Object.extend(RichFaces.Suggestion.prototype, Suggestion.Base.prot
 			return;
 		}
 
-        A4J.AJAX.Submit(this.containerId, this.actionUrl, event, this.options);
+        A4J.AJAX.Submit(this.actionUrl, event, this.options);
     },
 
     onComplete: function(request, event, data) {

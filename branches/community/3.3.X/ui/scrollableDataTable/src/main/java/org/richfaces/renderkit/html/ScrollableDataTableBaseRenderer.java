@@ -628,7 +628,7 @@ public abstract class ScrollableDataTableBaseRenderer extends HeaderResourcesRen
 	public String getRowsAjaxUpdate(FacesContext context, UIScrollableDataTable grid){
 		
 		JSFunction function = AjaxRendererUtils.buildAjaxFunction(grid, context);
-		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, grid);
+		Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, grid, true);
 		options.put("oncomplete", AjaxFunctionBuilder.getOnComplete(context, grid, AjaxFunctionBuilder.SCROLL));
 
 		@SuppressWarnings("unchecked")

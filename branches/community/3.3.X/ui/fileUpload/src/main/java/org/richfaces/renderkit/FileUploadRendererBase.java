@@ -54,8 +54,6 @@ import org.ajax4jsf.javascript.JSLiteral;
 import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
-import org.ajax4jsf.renderkit.ComponentVariables;
-import org.ajax4jsf.renderkit.ComponentsVariableResolver;
 import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.request.MultipartRequest;
 import org.ajax4jsf.resource.CountingOutputWriter;
@@ -206,24 +204,6 @@ public abstract class FileUploadRendererBase extends
 			return form.getClientId(context);
 		}
 		return "";
-	}
-
-	/**
-	 * Gets container id
-	 * 
-	 * @param context -
-	 *            faces context
-	 * @param component -
-	 *            component
-	 * @return String container id
-	 */
-	public String getContainerId(FacesContext context, UIComponent component) {
-		UIComponent container = (UIComponent) AjaxRendererUtils
-				.findAjaxContainer(context, component);
-		if (container != null) {
-			return container.getClientId(context);
-		}
-		return null;
 	}
 
 	/**
@@ -437,31 +417,21 @@ public abstract class FileUploadRendererBase extends
 	@SuppressWarnings("unchecked")
 	private String getActionScript(FacesContext context, UIComponent component,
 			String action, Object oncomplete) throws IOException {
-		ComponentVariables variables = ComponentsVariableResolver.getVariables(
-				this, component);
 		String clientId = component.getClientId(context);
-		String containerId = (String) variables.getVariable("containerId");
-		JSFunction ajaxFunction = new JSFunction(
-				AjaxRendererUtils.AJAX_FUNCTION_NAME);
-		ajaxFunction.addParameter(containerId);
-		ajaxFunction.addParameter(new JSReference("formId"));
-		ajaxFunction.addParameter(new JSReference("event"));
-		// AjaxRendererUtils.buildAjaxFunction(
-		// component, context);
+		JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(component, context);
 
-		Map options = AjaxRendererUtils.buildEventOptions(context, component);
-		Map parameters = (Map) options.get("parameters");
+		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put(FileUploadConstants.FILE_UPLOAD_ACTION, action);
 		parameters.put(FileUploadConstants.UPLOAD_FILES_ID, new JSReference("uid"));
-		parameters.put(clientId, clientId);
 		parameters.put(AjaxRendererUtils.AJAX_SINGLE_ATTR, clientId);
+		
+		Map options = AjaxRendererUtils.buildEventOptions(context, component, parameters, true);
 		if (oncomplete != null) {
 			options.put("onbeforedomupdate", oncomplete);
 		}
 		ajaxFunction.addParameter(options);
 
 		JSFunctionDefinition function = new JSFunctionDefinition("uid");
-		function.addParameter("formId");
 		function.addParameter("event");
 		function.addToBody(ajaxFunction.toScript());
 

@@ -283,7 +283,7 @@ public class DataScrollerRenderer extends HeaderResourcesRendererBase {
 	JSFunction function = AjaxRendererUtils.buildAjaxFunction(component,
                 context);
         Map eventOptions = AjaxRendererUtils.buildEventOptions(context,
-                component);
+                component, true);
         Map parameters = (Map) eventOptions.get("parameters");
         
         Map params = getParameters(context,component);

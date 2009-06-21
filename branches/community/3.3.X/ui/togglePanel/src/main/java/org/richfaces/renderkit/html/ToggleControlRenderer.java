@@ -113,7 +113,7 @@ public class ToggleControlRenderer extends HeaderResourcesRendererBase {
 		} else if(UITogglePanel.AJAX_METHOD.equals(switchType)) {
 			// Ajax
 			if ( !getUtils().isBooleanAttribute(component,"disabled")) {
-				return AjaxRendererUtils.buildOnClick(component, context).toString();
+				return AjaxRendererUtils.buildOnClick(component, context, true).toString();
 			} else {
 				return "return false;";
 			}

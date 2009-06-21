@@ -184,7 +184,7 @@ Object.extend(FileUploadEntry.prototype, {
 	},
 	
 	stop: function() {
-		this.uploadObject.stopScript(this.uid, this.uploadObject.formId);
+		this.uploadObject.stopScript(this.uid);
 	},
 	
 	_clearInput: function() {
@@ -659,7 +659,7 @@ Object.extend(FileUpload.prototype, {
 			if (this.activeEntry) {
 				this._fileSizeScriptTimeoutId = setTimeout(function() {
 					this._fileSizeScriptTimeoutId = undefined;
-					this.getFileSizeScript(this.activeEntry.uid, this.formId);
+					this.getFileSizeScript(this.activeEntry.uid);
 				}.bind(this), this.progressBar.options['pollinterval'] || 500);
 			}
 		}
@@ -1123,7 +1123,7 @@ Object.extend(FileUpload.prototype, {
 				Richfaces.writeAttribute(parentForm, "enctype", "multipart/form-data"); 
 				
 				Richfaces.writeAttribute(parentForm, "action", 
-						this.actionUrl + (/\?/.test(this.actionUrl) ? '&_richfaces_upload_uid' : '?_richfaces_upload_uid') + '=' + encodeURI(entry.uid) + "&" + this.id + "=" + this.id + "&_richfaces_upload_file_indicator=true"+"&AJAXREQUEST="+this.progressBar.containerId);
+						this.actionUrl + (/\?/.test(this.actionUrl) ? '&_richfaces_upload_uid' : '?_richfaces_upload_uid') + '=' + encodeURI(entry.uid) + "&" + this.id + "=" + this.id + "&_richfaces_upload_file_indicator=true"+"&AJAXREQUEST=" + (this.progressBar.options.containerId || A4J.AJAX.VIEW_ROOT_ID));
 				
 				Richfaces.writeAttribute(parentForm, "target", this.id + "_iframe");
 				
@@ -1184,7 +1184,7 @@ Object.extend(FileUpload.prototype, {
 				this.currentInput.disabled = true;
 			}else {
 				Richfaces.writeAttribute(parentForm, "target", oldTarget);
-				this.getFileSizeScript(entry.uid, this.formId)
+				this.getFileSizeScript(entry.uid)
 			}
 		}
 	},
@@ -1336,7 +1336,7 @@ Object.extend(FileUpload.prototype, {
 	},
 	
 	_flashGetPostParams: function () {
-		var query = new A4J.Query(this.progressBar.containerId, this.form);
+		var query = new A4J.Query(this.progressBar.options.containerId, this.form);
 		if (query) {
 			query.appendFormControls();
 			var qStr = query.getQueryString();

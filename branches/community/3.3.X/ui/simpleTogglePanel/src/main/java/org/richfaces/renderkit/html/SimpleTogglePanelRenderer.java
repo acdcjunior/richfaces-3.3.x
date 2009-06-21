@@ -152,7 +152,7 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
         	onClick.append(";");
         
         	JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(tgComp, context);
-        	ajaxFunction.addParameter(AjaxRendererUtils.buildEventOptions(context, tgComp));
+        	ajaxFunction.addParameter(AjaxRendererUtils.buildEventOptions(context, tgComp, true));
            	ajaxFunction.appendScript(onClick);
            	
            	if (tgComp instanceof AjaxSupport) {

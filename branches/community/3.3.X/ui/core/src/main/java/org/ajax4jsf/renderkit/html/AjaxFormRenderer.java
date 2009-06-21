@@ -132,7 +132,7 @@ public class AjaxFormRenderer extends AjaxComponentRendererBase {
 						component, context,
 						AJAX_FORM_FUNCTION_NAME);
 				ajaxFunction.addParameter(AjaxRendererUtils.buildEventOptions(
-						context, component));
+						context, component, false));
 				ajaxFunction.appendScript(onSubmit);
 				writer.writeURIAttribute("action", onSubmit, "action");
 			} else {

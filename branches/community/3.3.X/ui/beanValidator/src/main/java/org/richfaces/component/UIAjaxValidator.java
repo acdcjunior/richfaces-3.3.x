@@ -133,7 +133,7 @@ public abstract class UIAjaxValidator extends UIComponentBase implements
 			buildOnEvent.append(onsubmit).append(";");
 		}
 		buildOnEvent.append(AjaxRendererUtils.buildOnEvent(this,
-				getFacesContext(), getEvent()));
+				getFacesContext(), getEvent(), true));
 		String script = buildOnEvent.toString();
 		return script;
 	}

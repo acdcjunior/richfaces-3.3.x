@@ -133,7 +133,7 @@ public class TabHeaderRendererBase extends org.ajax4jsf.renderkit.HeaderResource
                     JSFunction function = AjaxRendererUtils.buildAjaxFunction(tab,
                             context);
                     Map eventOptions = AjaxRendererUtils.buildEventOptions(context,
-                            tab);
+                            tab, true);
                     function.addParameter(eventOptions);
 
                     StringBuffer buffer = new StringBuffer();

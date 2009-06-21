@@ -80,7 +80,7 @@ public abstract class AjaxCommandRendererBase extends AjaxComponentRendererBase 
 	public String getOnClick(FacesContext context, UIComponent component) {
 		StringBuffer onClick;
 		if (!getUtils().isBooleanAttribute(component, "disabled")) {
-			onClick = AjaxRendererUtils.buildOnClick(component, context);
+			onClick = AjaxRendererUtils.buildOnClick(component, context, true);
 			if (!"reset".equals(component.getAttributes().get("type"))) {
 				onClick.append(";return false;");
 			}

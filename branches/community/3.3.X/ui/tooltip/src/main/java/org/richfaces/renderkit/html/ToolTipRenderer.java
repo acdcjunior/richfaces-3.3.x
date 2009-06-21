@@ -154,7 +154,7 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
     public Map<String, Object> buildEventOptions(FacesContext context,
             UIComponent component) {
         Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(
-                context, component);
+                context, component, true);
         
         String clientId = component.getClientId(context);
         String oncompleteTooltip = "; request.options.control.displayDiv();";

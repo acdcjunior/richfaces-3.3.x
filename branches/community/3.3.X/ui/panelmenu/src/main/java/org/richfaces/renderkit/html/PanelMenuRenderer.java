@@ -501,7 +501,7 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 		JSFunction function = AjaxRendererUtils.buildAjaxFunction(child,
                 context);
         Map eventOptions = AjaxRendererUtils.buildEventOptions(context,
-        		child);
+        		child, true);
         function.addParameter(eventOptions);
         
         buffer.append(",\"");

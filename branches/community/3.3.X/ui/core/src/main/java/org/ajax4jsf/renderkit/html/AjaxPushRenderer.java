@@ -69,7 +69,7 @@ public class AjaxPushRenderer extends AjaxCommandRendererBase {
 				if(push.isEnabled()){
 				JSFunction function = AjaxRendererUtils.buildAjaxFunction(component, context, AJAX_PUSH_FUNCTION);
 				// Set dummy form id, if nessesary.
-				Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component);
+				Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component, false);
 				options.put("dummyForm", component.getClientId(context)+RendererUtils.DUMMY_FORM_ID);
 				int interval = push.getInterval();
 				if(interval == Integer.MIN_VALUE){

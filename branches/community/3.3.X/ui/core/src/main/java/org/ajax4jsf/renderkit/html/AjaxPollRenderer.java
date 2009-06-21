@@ -59,7 +59,7 @@ public class AjaxPollRenderer extends AjaxCommandRendererBase {
 				StringBuffer script = new StringBuffer("\n");
 				if(poll.isEnabled()){
 				JSFunction function = AjaxRendererUtils.buildAjaxFunction(component, context, AJAX_POLL_FUNCTION);
-				Map options = AjaxRendererUtils.buildEventOptions(context, component);
+				Map options = AjaxRendererUtils.buildEventOptions(context, component, true);
 				Integer interval = new Integer(poll.getInterval());
 				options.put("pollinterval", interval);
 				options.put("pollId", component.getClientId(context));

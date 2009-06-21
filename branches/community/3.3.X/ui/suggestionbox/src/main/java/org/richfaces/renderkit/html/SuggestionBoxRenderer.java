@@ -391,7 +391,7 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 	submitSuggest.addParameter(targetId);
         submitSuggest.addParameter(component.getClientId(context));
         submitSuggest.addParameter(component.getAttributes().get("onsubmit"));
-        Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component);
+        Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component, true);
         options.put("popup", component.getClientId(context));
         for (int i = 0; i < OPTIONS.length; i++) {
             String option = OPTIONS[i];
