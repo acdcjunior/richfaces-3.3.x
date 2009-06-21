@@ -26,7 +26,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Locale;
@@ -127,6 +126,8 @@ public class AjaxRendererUtils {
 	
 	public static final String SIMILARITY_GROUPING_ID_ATTR = "similarityGroupingId";
 
+	private static final RendererUtils rendererUtils = RendererUtils.getInstance();
+	
 	/**
 	 * Static class - protect constructor 
 	 * 
@@ -145,7 +146,23 @@ public class AjaxRendererUtils {
 	 */
 	public static StringBuffer buildOnClick(UIComponent uiComponent,
 			FacesContext facesContext) {
-		return buildOnEvent(uiComponent, facesContext, HTML.onclick_ATTRIBUTE);
+		
+		return buildOnClick(uiComponent, facesContext, false);
+	}
+	
+	/**
+	 * Build JavaScript onclick event for given component
+	 * 
+	 * @param uiComponent -
+	 *            component for build event
+	 * @param facesContext
+	 * @param omitDefaultActionUrl - default action URL is not encoded if parameter is true     
+	 *       
+	 * @return <code>StringBuffer</code> with Javascript code
+	 */
+	public static StringBuffer buildOnClick(UIComponent uiComponent,
+			FacesContext facesContext, boolean omitDefaultActionUrl) {
+		return buildOnEvent(uiComponent, facesContext, HTML.onclick_ATTRIBUTE, omitDefaultActionUrl);
 	}
 
 	/**
@@ -160,6 +177,24 @@ public class AjaxRendererUtils {
 	 */
 	public static StringBuffer buildOnEvent(UIComponent uiComponent,
 			FacesContext facesContext, String eventName) {
+	
+		return buildOnEvent(uiComponent, facesContext, eventName, false);
+	}
+	
+	/**
+	 * Build JavaScript event for component
+	 * 
+	 * @param uiComponent -
+	 *            component for build event
+	 * @param facesContext
+	 * @param eventName -
+	 *            name of event
+	 * @param omitDefaultActionUrl - default action URL is not encoded if parameter is true           
+	 *           
+	 * @return <code>StringBuffer</code> with Javascript code 
+	 */
+	public static StringBuffer buildOnEvent(UIComponent uiComponent,
+			FacesContext facesContext, String eventName, boolean omitDefaultActionUrl) {
 		StringBuffer onEvent = new StringBuffer();
 		if (null != eventName) {
 			String commandOnEvent = (String) uiComponent.getAttributes().get(
@@ -182,7 +217,7 @@ public class AjaxRendererUtils {
 		// status - id of request status component.
 		// parameters - map of parameters name/value for append on request.
 		// ..........
-		ajaxFunction.addParameter(buildEventOptions(facesContext, uiComponent));
+		ajaxFunction.addParameter(buildEventOptions(facesContext, uiComponent, omitDefaultActionUrl));
 
 		// appendAjaxSubmitParameters(facesContext, uiComponent, onEvent);
 		ajaxFunction.appendScript(onEvent);
@@ -204,16 +239,36 @@ public class AjaxRendererUtils {
 		return buildEventOptions(facesContext, component, null);
 	}
 	
+	public static Map<String, Object> buildEventOptions(FacesContext facesContext,
+			UIComponent uiComponent, Map<String, Object> params) {
+		
+		return buildEventOptions(facesContext, uiComponent, params, false);
+	}
+	
+	public static Map<String, Object> buildEventOptions(FacesContext facesContext, 
+			UIComponent component, boolean omitDefaultActionUrl) {
+		
+		return buildEventOptions(facesContext, component, null, omitDefaultActionUrl);
+	}
+	
 	/**
 	 * @param facesContext
 	 * @param uiComponent
 	 * @return
 	 */
 	public static Map<String, Object> buildEventOptions(FacesContext facesContext,
-			UIComponent uiComponent, Map<String, Object> params) {
+			UIComponent uiComponent, Map<String, Object> params, boolean omitDefaultActionUrl) {
 		String clientId = uiComponent.getClientId(facesContext);
 		Map<String, Object> componentAttributes = uiComponent.getAttributes();
 		Map<String, Object> options = new HashMap<String, Object>();
+
+		UIComponent nestingContainer = (UIComponent) findAjaxContainer(
+				facesContext, uiComponent);
+		String containerClientId = nestingContainer.getClientId(facesContext);
+		if (containerClientId != null && !AjaxViewRoot.ROOT_ID.equals(containerClientId)) {
+			options.put("containerId", containerClientId);
+		}
+
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		UIComponent targetComponent = (uiComponent instanceof AjaxSupport)?uiComponent.getParent():uiComponent;
 		// UIForm form = getNestingForm(uiComponent);
@@ -242,9 +297,23 @@ public class AjaxRendererUtils {
 		controlValue = clientId;
 		parameters.put(controlName, controlValue);
 		AjaxContext ajaxContext = AjaxContext.getCurrentInstance(facesContext);
-		// Setup action URL. For portlet environment, it will be different from
-		// page. 
-		options.put("actionUrl", ajaxContext.getAjaxActionURL(facesContext));
+		
+		String ajaxActionURL = ajaxContext.getAjaxActionURL(facesContext);
+		if (omitDefaultActionUrl) {
+			UIComponent form = getNestingForm(uiComponent);
+			if (form != null && !rendererUtils.isBooleanAttribute(form, "ajaxSubmit")) {
+				if (rendererUtils.getActionUrl(facesContext).equals(ajaxActionURL)) {
+					ajaxActionURL = null;
+				}
+			}
+		}
+
+		if (ajaxActionURL != null) {
+			// Setup action URL. For portlet environment, it will be different from
+			// page. 
+			options.put("actionUrl", ajaxActionURL);
+		}
+		
 		// Add application-wide Ajax parameters
 		parameters.putAll(ajaxContext.getCommonAjaxParameters());
 		// add child parameters
@@ -399,18 +468,6 @@ public class AjaxRendererUtils {
 	public static JSFunction buildAjaxFunction(UIComponent uiComponent,
 			FacesContext facesContext, String functionName) {
 		JSFunction ajaxFunction = new JSFunction(functionName);
-		UIComponent nestingContainer = (UIComponent) findAjaxContainer(
-				facesContext, uiComponent);
-		
-		
-		String clientId = nestingContainer.getClientId(facesContext);
-		if (clientId != null) {
-		    ajaxFunction.addParameter(clientId);
-		} else {
-		    // fix for myfaces 1.2.4
-		    ajaxFunction.addParameter(JSReference.NULL);   
-		}
-				
 		// build form name or ActionUrl for script
 		UIComponent nestingForm = getNestingForm(uiComponent);
 		if (null == nestingForm) {
