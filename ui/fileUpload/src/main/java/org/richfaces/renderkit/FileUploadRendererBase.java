@@ -415,23 +415,21 @@ public abstract class FileUploadRendererBase extends
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	private String getActionScript(FacesContext context, UIComponent component,
-			String action, Object oncomplete) throws IOException {
+	public String getActionScript(FacesContext context, UIComponent component) throws IOException {
 		String clientId = component.getClientId(context);
 		JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(component, context);
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put(FileUploadConstants.FILE_UPLOAD_ACTION, action);
+		parameters.put(FileUploadConstants.FILE_UPLOAD_ACTION, new JSReference("action"));
 		parameters.put(FileUploadConstants.UPLOAD_FILES_ID, new JSReference("uid"));
 		parameters.put(AjaxRendererUtils.AJAX_SINGLE_ATTR, clientId);
 		
 		Map options = AjaxRendererUtils.buildEventOptions(context, component, parameters, true);
-		if (oncomplete != null) {
-			options.put("onbeforedomupdate", oncomplete);
-		}
+		options.put("onbeforedomupdate", new JSReference("callback"));
+		
 		ajaxFunction.addParameter(options);
 
-		JSFunctionDefinition function = new JSFunctionDefinition("uid");
+		JSFunctionDefinition function = new JSFunctionDefinition("uid", "action", "callback");
 		function.addParameter("event");
 		function.addToBody(ajaxFunction.toScript());
 
@@ -459,49 +457,6 @@ public abstract class FileUploadRendererBase extends
 			}
 		}
 		return accepted;
-	}
-
-	/**
-	 * Generates JS script for stopping uploading process
-	 * 
-	 * @param context
-	 * @param component
-	 * @return
-	 * @throws IOException
-	 */
-	public String getStopScript(FacesContext context, UIComponent component)
-			throws IOException {
-		JSFunctionDefinition oncomplete = new JSFunctionDefinition();
-		oncomplete.addParameter("request");
-		oncomplete.addParameter("event");
-		oncomplete.addParameter("data");
-		StringBuffer body = new StringBuffer("$('");
-		body.append(component.getClientId(context));
-		body.append("').component.cancelUpload(data);");
-		oncomplete.addToBody(body);
-		return getActionScript(context, component, FileUploadConstants.FILE_UPLOAD_ACTION_STOP, oncomplete);
-	}
-
-	/**
-	 * Generates JS script for getting file size from server
-	 * 
-	 * @param context
-	 * @param component
-	 * @return
-	 * @throws IOException
-	 */
-	public String getFileSizeScript(FacesContext context, UIComponent component)
-			throws IOException {
-		JSFunctionDefinition oncomplete = new JSFunctionDefinition();
-		oncomplete.addParameter("request");
-		oncomplete.addParameter("event");
-		oncomplete.addParameter("data");
-		StringBuffer body = new StringBuffer("$('");
-		body.append(component.getClientId(context));
-		body.append("').component.getFileSize(data);");
-		oncomplete.addToBody(body);
-		return getActionScript(context, component, FileUploadConstants.FILE_UPLOAD_ACTION_PROGRESS, oncomplete);
-
 	}
 
 	/**

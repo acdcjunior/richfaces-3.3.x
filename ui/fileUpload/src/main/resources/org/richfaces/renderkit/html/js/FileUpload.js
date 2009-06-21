@@ -184,7 +184,7 @@ Object.extend(FileUploadEntry.prototype, {
 	},
 	
 	stop: function() {
-		this.uploadObject.stopScript(this.uid);
+		this.uploadObject.executeStopScript(this.uid);
 	},
 	
 	_clearInput: function() {
@@ -425,7 +425,7 @@ Object.extend(FileUpload.prototype, {
 	
 	acceptedTypes: {"*" : true},
 	
-	initialize: function(id, actionUrl, stopScript, getFileSizeScript, progressBarId, sessionId, options) {
+	initialize: function(id, actionUrl, actionScript, progressBarId, sessionId, options) {
 		if(!options) {
 			options = {};
 		}
@@ -501,8 +501,7 @@ Object.extend(FileUpload.prototype, {
 		this.entries = new Array(); 
 		
 		this.element.component = this;
-		this.stopScript = stopScript;
-		this.getFileSizeScript = getFileSizeScript;
+		this.actionScript = actionScript;
 		
 		this.items = $(this.id + ":fileItems");
 		this.sessionId = sessionId;
@@ -521,7 +520,13 @@ Object.extend(FileUpload.prototype, {
 		this.initFileInput();
 	},
 	
-	cancelUpload: function(uid) {
+	executeStopScript: function (uid) {
+		this.actionScript(uid, "richfaces_file_upload_action_stop", this.cancelUpload.bind(this));
+	},
+	
+	cancelUpload: function(request, event, data) {
+		var uid = data;
+
 		if (this.activeEntry && this.activeEntry.uid == uid) {
 			if (this.watcher) {
 				this.watcher.oncancel();
@@ -641,9 +646,12 @@ Object.extend(FileUpload.prototype, {
 		}
 	},
 
-	getFileSize: function (data) {
+	executeFileSizeScript: function(uid) {
+		this.actionScript(uid, "progress", this.getFileSize.bind(this));
+	},
+	
+	getFileSize: function(request, event, data) {
 		if (data) {
-			
 			if (!this.isFlash) {
 				this.progressBar.enable();
 			}
@@ -655,11 +663,11 @@ Object.extend(FileUpload.prototype, {
 					this.activeEntry.setupLabelUpdate();
 				}
 			}
-		}else {
+		} else {
 			if (this.activeEntry) {
 				this._fileSizeScriptTimeoutId = setTimeout(function() {
 					this._fileSizeScriptTimeoutId = undefined;
-					this.getFileSizeScript(this.activeEntry.uid);
+					this.executeFileSizeScript(this.activeEntry.uid);
 				}.bind(this), this.progressBar.options['pollinterval'] || 500);
 			}
 		}
@@ -1184,7 +1192,7 @@ Object.extend(FileUpload.prototype, {
 				this.currentInput.disabled = true;
 			}else {
 				Richfaces.writeAttribute(parentForm, "target", oldTarget);
-				this.getFileSizeScript(entry.uid)
+				this.executeFileSizeScript(entry.uid)
 			}
 		}
 	},
