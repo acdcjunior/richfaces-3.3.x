@@ -55,13 +55,13 @@
 		<property>
 			<name>width</name>
 			<classname>int</classname>
-			<description> Attribute defines width of component. Default value is &quot;300&quot;.  </description>
+			<description> Attribute defines width of component. Default value is &quot;200&quot;.</description>
 			<defaultvalue>-1</defaultvalue>
 		</property>
 		<property>
 			<name>height</name>
 			<classname>int</classname>
-			<description>Attribute defines height of component. Default value is &quot;200&quot;.  </description>
+			<description>Attribute defines height of component. Default value is &quot;300&quot;.</description>
 			<defaultvalue>-1</defaultvalue>
 		</property>
 		<property>
