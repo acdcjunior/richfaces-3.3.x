@@ -285,7 +285,7 @@
 			<name>style</name>
 			<classname>java.lang.String</classname>
 			<description>
-				Holds a fragment of a style sheet that applies to the component
+				CSS style rules to be applied to the component
 			</description>
 		</property>
 		<property>
@@ -298,7 +298,7 @@
 		<property>
 			<name>inputStyle</name>
 			<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the component input field</description>
+			<description>CSS style rules to be applied to the component input field</description>
 		</property>
 		<property>
 			<name>inputClass</name>
