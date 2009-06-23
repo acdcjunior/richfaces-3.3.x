@@ -2,7 +2,7 @@
     <property>
         <name>headerStyle</name>
         <classname>java.lang.String</classname>
-        <description>Holds a fragment of a style sheet that applies to the component header</description>
+        <description>CSS style rules to be applied to the component header</description>
         <defaultvalue><![CDATA[""]]></defaultvalue>
     </property>
     <property>
