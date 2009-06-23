@@ -161,7 +161,7 @@
             <name>selectItemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-            	Holds a fragment of a style sheet that applies to the component selected item
+            	CSS style rules to be applied to the component selected item
             </description>
         </property>
 
@@ -178,7 +178,7 @@
             <name>disabledItemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-            	Holds a fragment of a style sheet that applies to the component disabled item
+            	CSS style rules to be applied to the component disabled item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -196,7 +196,7 @@
             <name>itemStyle</name>
             <classname>java.lang.String</classname>
             <description>
-            	Holds a fragment of a style sheet that applies to the component item
+            	CSS style rules to be applied to the component item
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
