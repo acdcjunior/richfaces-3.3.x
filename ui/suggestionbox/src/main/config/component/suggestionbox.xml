@@ -236,7 +236,7 @@
             <name>popupStyle</name>
             <classname>java.lang.String</classname>
             <description>
-            	Holds a fragment of a style sheet that applies to the content of the pop-up suggestion element
+            	CSS style rules to be applied to the content of the pop-up suggestion element
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
@@ -244,7 +244,7 @@
             <name>style</name>
             <classname>java.lang.String</classname>
             <description>
-            	Holds a fragment of a style sheet that applies to the component
+            	CSS style rules to be applied to the component
             </description>
             <defaultvalue>""</defaultvalue>
         </property>
