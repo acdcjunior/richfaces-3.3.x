@@ -130,7 +130,7 @@
 	    <property>
 	    	<name> inputStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description>Holds a fragment of a style sheet that applies to the component input field</description>
+	    	<description>CSS style rules to be applied to the component input field</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
 	    <property>
@@ -181,7 +181,7 @@
 		<property>
 	    	<name> style </name>
 	    	<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the component
+			<description>CSS style rules to be applied to the component
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
@@ -194,7 +194,7 @@
 		<property>
 	    	<name> barStyle </name>
 	    	<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the component bar element
+			<description>CSS style rules to be applied to the component bar element
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
@@ -219,7 +219,7 @@
 	    <property>
 	    	<name> tipStyle </name>
 	    	<classname>java.lang.String</classname>
-	    	<description> Holds a fragment of a style sheet that applies to the tool tip element of the handle
+	    	<description>CSS style rules to be applied to the tool tip element of the handle
 	    	</description>
 	    	<defaultvalue><![CDATA[""]]></defaultvalue>
 	    </property>
@@ -232,7 +232,7 @@
 	    <property>
             <name>increaseStyle</name>
             <classname>java.lang.String</classname>
-	    	<description>Holds a fragment of a style sheet that applies to the increase arrow element
+	    	<description>CSS style rules to be applied to the increase arrow element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
@@ -251,7 +251,7 @@
         <property>
             <name>decreaseStyle</name>
             <classname>java.lang.String</classname>
-        	<description>Holds a fragment of a style sheet that applies to the decrease arrow element
+        	<description>CSS style rules to be applied to the decrease arrow element
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
