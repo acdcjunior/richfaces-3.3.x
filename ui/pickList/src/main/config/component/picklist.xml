@@ -222,7 +222,7 @@
        		<property>
        			<name>disabledStyle</name>
        			<classname>java.lang.String</classname>
-       			<description>Holds a fragment of a style sheet that applies to the component disabled controls</description>
+       			<description>CSS style rules to be applied to the component disabled controls</description>
        		</property>
        		
        		<property>
@@ -234,7 +234,7 @@
        		<property>
        			<name>enabledStyle</name>
        			<classname>java.lang.String</classname>
-       			<description>Holds a fragment of a style sheet that applies to the component enabled controls</description>
+       			<description>CSS style rules to be applied to the component enabled controls</description>
        			
        		</property>
        		
