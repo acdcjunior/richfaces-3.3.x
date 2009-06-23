@@ -155,7 +155,7 @@
 		    <property>
 		    	<name>listStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component popup list</description>
+		    	<description>CSS style rules to be applied to the component popup list</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
@@ -166,7 +166,7 @@
 		    <property>
 		    	<name>inputStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component input field</description>
+		    	<description>CSS style rules to be applied to the component input field</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
@@ -177,7 +177,7 @@
 		    <property>
 		    	<name>inputDisabledStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component input field disabled</description>
+		    	<description>CSS style rules to be applied to the component input field disabled</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
@@ -188,7 +188,7 @@
 		    <property>
 		    	<name>inputInactiveStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component inactive input field</description>
+		    	<description>CSS style rules to be applied to the component inactive input field</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
@@ -209,7 +209,7 @@
 		    <property>
 		    	<name>buttonStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component button</description>
+		    	<description>CSS style rules to be applied to the component button</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		    <property>
@@ -220,7 +220,7 @@
 		    <property>
 		    	<name>buttonDisabledStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component button disabled</description>
+		    	<description>CSS style rules to be applied to the component button disabled</description>
 		    </property>
 		    <property>
 		    	<name>buttonDisabledClass</name>
@@ -231,7 +231,7 @@
 		    <property>
 		    	<name>buttonInactiveStyle</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component inactive button</description>
+		    	<description>CSS style rules to be applied to the component inactive button</description>
 		    </property>
 		    <property>
 		    	<name>buttonInactiveClass</name>
@@ -242,7 +242,7 @@
 		    <property>
 		    	<name>style</name>
 		    	<classname>java.lang.String</classname>
-		    	<description>Holds a fragment of a style sheet that applies to the component</description>
+		    	<description>CSS style rules to be applied to the component</description>
 		    	<defaultvalue><![CDATA[""]]></defaultvalue>
 		    </property>
 		   <property>
