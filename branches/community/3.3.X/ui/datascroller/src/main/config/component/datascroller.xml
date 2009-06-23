@@ -132,13 +132,13 @@
 		<property>
 			<name>selectedStyle</name>
 			<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the scroller selected cell
+			<description>CSS style rules to be applied to the scroller selected cell
 			</description>
 		</property>
 		<property>
 			<name>inactiveStyle</name>
 			<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the scroller inactive cells
+			<description>CSS style rules to be applied to the scroller inactive cells
 			</description>
 		</property>
 		<property>
@@ -162,7 +162,7 @@
 		<property>
 			<name>tableStyle</name>
 			<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the wrapper table element of the component
+			<description>CSS style rules to be applied to the wrapper table element of the component
 			</description>
 		</property>
 
@@ -176,7 +176,7 @@
 		<property>
 			<name>style</name>
 			<classname>java.lang.String</classname>
-			<description>Holds a fragment of a style sheet that applies to the component
+			<description>CSS style rules to be applied to the component
 			</description>			
 		</property>
 
