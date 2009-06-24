@@ -201,7 +201,7 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		for (Object key : FacesMessage.VALUES_MAP.keySet()) {
 			Severity sev = (Severity) FacesMessage.VALUES_MAP.get(key);
 			if (0 == sev.compareTo(severity)) {
-				return severenities.contains(key);
+				return severenities.contains(((String)key).toUpperCase());
 			}
 		}
 		return false;
