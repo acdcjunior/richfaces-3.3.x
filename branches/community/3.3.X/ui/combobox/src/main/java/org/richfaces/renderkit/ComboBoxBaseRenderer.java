@@ -87,7 +87,7 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
 	}
     }
     
-    public List<Object> encodeItems(FacesContext context, UIComponent component) throws IOException, IllegalArgumentException {
+    public List<Object> getItems(FacesContext context, UIComponent component) throws IOException, IllegalArgumentException {
     	List <Object>values = new ArrayList<Object>();
 		if (isAcceptableComponent(component)) {
 			UIComboBox comboBox = (UIComboBox) component;
@@ -95,7 +95,6 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
 			List<SelectItem> selectItems = SelectUtils.getSelectItems(context, component);
 			for (SelectItem selectItem : selectItems) {
 			    String convertedValue = getConvertedStringValue(context, component, selectItem.getValue());
-				encodeSuggestion(context, comboBox, convertedValue, RICH_COMBOBOX_ITEM_CLASSES);
 				values.add(convertedValue);
 			}
 		}
@@ -111,14 +110,12 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
 				Collection collection = (Collection) suggestionValues;
 				for (Object suggestionValue : collection) {
 				    String convertedValue = getConvertedStringValue(context, combobox, suggestionValue); 
-					encodeSuggestion(context, combobox, convertedValue, RICH_COMBOBOX_ITEM_CLASSES);
 					values.add(convertedValue);
 				}
 		    } else if (suggestionValues.getClass().isArray()) {
 				Object[] suggestions = (Object[]) suggestionValues;
 				for (Object suggestionValue: suggestions) {
 				    String convertedValue = getConvertedStringValue(context, combobox, suggestionValue); 
-				    encodeSuggestion(context, combobox, convertedValue, RICH_COMBOBOX_ITEM_CLASSES);
 				    values.add(convertedValue); 
 				}
 		    } else {
@@ -137,30 +134,7 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
     	return InputUtils.getConvertedStringValue(context, component, value);
     }
 
-    protected void encodeSuggestion(FacesContext context, UIComponent component, String value, String classes) throws IOException {
-    	ResponseWriter writer = context.getResponseWriter();
-    	if(writer != null) {
-	    	writer.startElement(HTML.SPAN_ELEM, component);
-	    	writer.writeAttribute(HTML.class_ATTRIBUTE, classes, null);
-	    	writer.writeText(value, null);
-	    	writer.endElement(HTML.SPAN_ELEM);
-    	}
-    }	
-    
     protected boolean isAcceptableComponent(UIComponent component) {
     	return component != null && this.getComponentClass().isAssignableFrom(component.getClass());
-    }
-    
-    public String getItemsTextAsJSArray(FacesContext context, UIComponent component, List items) {
-    	return ScriptUtils.toScript(items);
-    }
-
-    public String getAsEventHandler(FacesContext context, UIComponent component, String attributeName) {
-	JSFunctionDefinition script = getUtils().getAsEventHandler(context, component, attributeName, null);  
-	return ScriptUtils.toScript(script);
-    }
-    
-    public String encodeValue(String value){
-	return ScriptUtils.toScript(value);     
     }
 }
