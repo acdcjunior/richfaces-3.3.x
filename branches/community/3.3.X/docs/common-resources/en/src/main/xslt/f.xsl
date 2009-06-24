@@ -98,6 +98,30 @@
 				&lt;
 				<xsl:value-of select="concat($prefix,':', $tag_name)" />
 				&gt;
+				<emphasis role="since">
+					<superscript>
+						<xsl:choose>
+							<xsl:when test="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.desc.xml'))/node()/section/sectioninfo/releaseinfo">
+								<xsl:text> available since </xsl:text>
+								<emphasis role="version">
+									<xsl:value-of select="."/>					
+								</emphasis>
+							</xsl:when>
+							<xsl:when test="document(concat($lang, $separator,'included',$separator,$tag_name, '.desc.xml'))/root/section/sectioninfo/releaseinfo">
+								<xsl:text> available since </xsl:text>
+								<emphasis role="version">
+									<xsl:value-of select="."/>					
+								</emphasis>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> available since </xsl:text>
+								<emphasis role="version">
+									<xsl:text>3.0.0</xsl:text>
+								</emphasis>			
+							</xsl:otherwise>
+						</xsl:choose>
+					</superscript>
+				</emphasis>
 			</title>
 			<xsl:call-template name="fileMerge">
 				<xsl:with-param name="tag_name" select="$tag_name" />
@@ -129,7 +153,14 @@
 					<thead>
 						<row>
 							<entry>Attribute Name</entry>
-							<entry>Description</entry>
+							<entry>
+								<emphasis role="descriptionWrapper">Description</emphasis>
+								<emphasis role="arrowWrapper">
+									<ulink url="javascript:void(0);" role="html">
+										<inlinegraphic fileref="images/minus.gif" />
+									</ulink>
+								</emphasis>
+							</entry>
 						</row>
 					</thead>
 					<tbody>

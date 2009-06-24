@@ -6,10 +6,64 @@
     color:#6699CC;
     cursor:pointer;
 }
+a {
+	outline-style:none;
+}
+a#expand_collapse{
+	background:transparent url(../images/arrowsCollapse.png) no-repeat scroll 0 4px;
+	color:#666666;
+	display:block;
+	font-size:14px;
+	text-align:right;
+	text-decoration:none;
+	width:88px;
+}
+a#expand_collapse:hover{
+	color: #F2A23D;
+}
+.descriptionWrapper{
+	display:block;
+	float: left;
+	margin-top:5px;
+}
+.arrowWrapper{
+	display:block;
+	float: right;
+}
 
+.arrowWrapper a img{
+	border:none;
+	width: 30px;
+	height: 30px;
+	margin:0;
+}
+
+.table_expand_collapse{
+	background:transparent url(../images/minus.gif) no-repeat scroll 0 4px;
+	margin: 0px; 
+	width: 30px; 
+	height: 30px
+	display: block; 
+	float: right;
+}
+
+
+span.since sup {
+	color:#6e6e6e;
+	font-size:0.7em;
+	font-weight:100;
+}
+
+span.section a span.since {
+	display:none;
+}
 .toc dl dt span.chapter{
 	margin: 0px 0px 0px 20px;
 	padding: 0px;
+}
+
+h2.subtitle{
+	font-size:1.3em;
 }
 
 h2.title a, h3.title a, h4.title a, h5.title a, h6.title a, p.title a {

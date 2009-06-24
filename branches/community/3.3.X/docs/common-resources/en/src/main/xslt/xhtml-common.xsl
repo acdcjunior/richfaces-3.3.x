@@ -25,12 +25,152 @@ sect5     toc
 section   toc
 </xsl:param>
 	
+
+<xsl:template name="make.toc">
+  <xsl:param name="toc-context" select="."/>
+  <xsl:param name="toc.title.p" select="true()"/>
+  <xsl:param name="nodes" select="/NOT-AN-ELEMENT"/>
+
+  <xsl:variable name="nodes.plus" select="$nodes | qandaset"/>
+
+  <xsl:variable name="toc.title">
+    <xsl:if test="$toc.title.p">
+      <p>
+        <b>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">TableofContents</xsl:with-param>
+          </xsl:call-template>
+        </b>
+      </p>
+    </xsl:if>
+  </xsl:variable>
+
+  <xsl:choose>
+    <xsl:when test="$manual.toc != ''">
+      <xsl:variable name="id">
+        <xsl:call-template name="object.id"/>
+      </xsl:variable>
+      <xsl:variable name="toc" select="document($manual.toc, .)"/>
+      <xsl:variable name="tocentry" select="$toc//tocentry[@linkend=$id]"/>
+      <xsl:if test="$tocentry and $tocentry/*">
+      <a href="javascript:void(0);" id="expand_collapse">expand all</a>
+        <div class="toc">
+          <xsl:copy-of select="$toc.title"/>
+          <xsl:element name="{$toc.list.type}" namespace="http://www.w3.org/1999/xhtml">
+            <xsl:call-template name="manual-toc">
+              <xsl:with-param name="tocentry" select="$tocentry/*[1]"/>
+            </xsl:call-template>
+          </xsl:element>
+        </div>
+      </xsl:if>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:choose>
+        <xsl:when test="$qanda.in.toc != 0">
+          <xsl:if test="$nodes.plus">
+            <a href="javascript:void(0);" id="expand_collapse">expand all</a>
+            <div class="toc">
+              <xsl:copy-of select="$toc.title"/>
+              <xsl:element name="{$toc.list.type}" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:apply-templates select="$nodes.plus" mode="toc">
+                  <xsl:with-param name="toc-context" select="$toc-context"/>
+                </xsl:apply-templates>
+              </xsl:element>
+            </div>
+          </xsl:if>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:if test="$nodes">
+          <a href="javascript:void(0);" id="expand_collapse">expand all</a>
+            <div class="toc">
+              <xsl:copy-of select="$toc.title"/>
+              <xsl:element name="{$toc.list.type}" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:apply-templates select="$nodes" mode="toc">
+                  <xsl:with-param name="toc-context" select="$toc-context"/>
+                </xsl:apply-templates>
+              </xsl:element>
+            </div>
+          </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
+
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
    
-	<!--
-From: xhtml/docbook.xsl
-Reason: Remove inline style for draft mode
-Version: 1.72.0
--->
+<xsl:template name="toc.line">
+  <xsl:param name="toc-context" select="."/>
+  <xsl:param name="depth" select="1"/>
+  <xsl:param name="depth.from.context" select="8"/>
+  <xsl:param name="autotoc.label.in.hyperlink" select="1" />
+
+ <span>
+  <xsl:attribute name="class"><xsl:value-of select="local-name(.)"/></xsl:attribute>
+
+  <!-- * if $autotoc.label.in.hyperlink is zero, then output the label -->
+  <!-- * before the hyperlinked title (as the DSSSL stylesheet does) -->
+  <xsl:if test="$autotoc.label.in.hyperlink = 0">
+    <xsl:variable name="label">
+      <xsl:apply-templates select="." mode="label.markup"/>
+    </xsl:variable>
+    <xsl:copy-of select="$label"/>
+    <xsl:if test="$label != ''">
+      <xsl:value-of select="$autotoc.label.separator"/>
+    </xsl:if>
+  </xsl:if>
+  <a>
+    <xsl:attribute name="href">
+      <xsl:call-template name="href.target">
+        <xsl:with-param name="context" select="$toc-context"/>
+        <xsl:with-param name="toc-context" select="$toc-context"/>
+      </xsl:call-template>
+    </xsl:attribute>
+
+<!--xsl:choose>
+<xsl:when test="@role='new'">
+<xsl:attribute name="class">
+<xsl:value-of select="@role"/>
+</xsl:attribute>
+</xsl:when>
+<xsl:when test="@role='updated'">
+<xsl:attribute name="class">
+<xsl:value-of select="@role"/>
+</xsl:attribute>
+</xsl:when>
+</xsl:choose-->
+    
+  <!-- * if $autotoc.label.in.hyperlink is non-zero, then output the label -->
+  <!-- * as part of the hyperlinked title -->
+  <xsl:if test="not($autotoc.label.in.hyperlink = 0)">
+    <xsl:variable name="label">
+      <xsl:apply-templates select="." mode="label.markup"/>
+    </xsl:variable>
+    <xsl:copy-of select="$label"/>
+    <xsl:if test="$label != ''">
+      <xsl:value-of select="$autotoc.label.separator"/>
+    </xsl:if>
+  </xsl:if>
+
+    
+    <xsl:apply-templates select="." mode="titleabbrev.markup"/>
+
+  </a>
+  </span>
+</xsl:template>
+
+<!--xsl:template match="book" mode="toc">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:call-template name="subtoc">
+    <xsl:with-param name="toc-context" select="$toc-context"/>
+    <xsl:with-param name="nodes" select="part|reference |preface|chapter|appendix |article |bibliography|glossary|index |refentry |bridgehead[$bridgehead.in.toc != 0]"/>
+  </xsl:call-template>
+</xsl:template-->
+
+
+<!--xsl:template name="since" match="//emphasis[@role='since']" /-->
+
 
 <xsl:template name="head.content">
 	<xsl:param name="node" select="."/>
@@ -94,7 +234,7 @@ Version: 1.72.0
 	<div>
 	    <xsl:apply-templates select="." mode="class.attribute"/>
 	    <xsl:apply-templates mode="titlepage.mode"/>
-	  </div>
+	</div>
 </xsl:template>
 <xsl:template name="feedback">
    <!--[if IE 6]><iframe frameborder="0" class="problemLayer" id="place"><xsl:text> </xsl:text></iframe><![endif]-->
