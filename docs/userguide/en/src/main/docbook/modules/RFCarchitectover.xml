@@ -3231,13 +3231,7 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					url="http://wiki.jboss.org/wiki/HowToConfigureMavenForRichFaces"> JBoss wiki article </ulink>
 				. You can copy and paste these Maven instructions to command line and execute them. </para>
 			<programlisting role="XML"><![CDATA[...
-mvn archetype:create
--DarchetypeGroupId=org.richfaces.cdk
--DarchetypeArtifactId=maven-archetype-plug-n-skin
--DarchetypeVersion=RF-VERSION
--DartifactId=ARTIFACT-ID
--DgroupId=GROUP-ID
--Dversion=VERSION
+mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-plug-n-skin -DarchetypeVersion=RF-VERSION -DartifactId=ARTIFACT-ID -DgroupId=GROUP-ID -Dversion=VERSION
 ...]]></programlisting>
 			<para>Primary keys for the command:</para>
 			<itemizedlist>
@@ -3403,7 +3397,7 @@ mvn cdk:add-skin -Dname=SKIN-NAME -Dpackage=SKIN-PACKAGE
 							<code>&lt;f:verbatim&gt; &lt;![CDATA[ ...]]&gt;
 							&lt;/f:verbatim&gt;</code> tags.</para>
 					<para>For example </para>
-					<programlisting role="XML"><![CDATA[...
+					<programlisting role="CSS"><![CDATA[...
 .rich-calendar-cell {
      background: #537df8;
 }
@@ -3485,13 +3479,7 @@ mvn clean install
 					follow the steps described in the previous section.</para>
 				<para>This command will be used to create a template of the new skin project. </para>
 				<programlisting role="XML"><![CDATA[
-mvn archetype:create
--DarchetypeGroupId=org.richfaces.cdk
--DarchetypeArtifactId=maven-archetype-plug-n-skin
--DarchetypeVersion=3.3.2-SNAPSHOT
--DartifactId=P-n-S
--DgroupId=GROUPID
--Dversion=1.0.-SNAPSHOT
+mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-plug-n-skin -DarchetypeVersion=3.3.2-SNAPSHOT -DartifactId=P-n-S -DgroupId=GROUPID -Dversion=1.0.-SNAPSHOT 
 ]]></programlisting>
 				<para> Now you can browse the &quot;P-n-S&quot; folder to view what files and
 					folders were created there. </para>
@@ -3539,7 +3527,7 @@ mvn archetype:create
 						input[type=&quot;reset&quot;], input[type=&quot;submit&quot;],
 						input[type=&quot;button&quot;]</code>. So, the CSS code should look like
 					this. </para>
-				<programlisting role="XML"><![CDATA[
+				<programlisting role="CSS"><![CDATA[
 button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&quot;submit&quot;], input[type=&quot;reset&quot;], input[type=&quot;submit&quot;], input[type=&quot;button&quot;] {
 	font-weight: bold;
 }]]></programlisting>
