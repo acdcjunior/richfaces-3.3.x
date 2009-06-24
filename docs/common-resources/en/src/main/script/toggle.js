@@ -103,6 +103,74 @@ function init(input, textarea){
 	countLeft(textarea, "none", 500);
 }
 
+$(document).ready(function () {
+	var togglers = $("span.expand_collapse_toc:contains('+')");
+	if(togglers.length != 0){
+	    $("#expand_collapse").toggle(
+	      function () {
+		$("span.expand_collapse_toc:contains('+')").each(function (i, node) {			
+			toc.expand($(node)[0]);
+		});
+		$(this).html('collapse all');
+		$(this).css('background', 'url(images/arrowsExpand.png) no-repeat scroll 0 4px');
+	      },
+	      function () {
+	       $("span.expand_collapse_toc:contains('-')").each(function (i, node) {			
+			toc.collapse($(node)[0]);
+		});
+		$(this).html('expand all');
+		$(this).css('background', 'transparent url(images/arrowsCollapse.png) no-repeat scroll 0 4px');
+	      });
+	}else{
+	      $("#expand_collapse").css('display', 'none');
+      	}
+      	
+      	$(".arrowWrapper a").toggle(
+	      function () {
+		var table = $(this).parents().get(4);
+		$(table).children('tbody').hide();
+		$(this).children('img').attr('src', 'images/plus.gif');
+	      },
+	      function () {
+		var table = $(this).parents().get(4);
+		$(table).children('tbody').show();
+		$(this).children('img').attr('src', 'images/minus.gif');
+       });
+      	
+});
+/*
+$(document).ready(function () {
+	$("#search").focus(function () {
+		$("#search").val('');
+	});
+	$("#search_button").click(function () {
+	  $("div.time_out_div").css('display','block');	
+	  $("div.time_out_div").text('Please, wait...');
+		setTimeout(searchElements,0);
+	});
+});
+
+function searchElements(){
+	var patt=new RegExp($("#search").val().toString(),"i", "g");	
+	$("div.toc a").each(function (i, el) {
+			var tocEl = $(el).text();		
+			var dt = $(el).parents().get(1);
+			if(patt.test(tocEl)==true){
+				$(el).css('background-color','#B6CBE7');
+				$("span.expand_collapse_toc:contains('+')").each(function (i, node) {			
+					toc.expand($(node)[0]);
+				});
+			}else{
+				$(el).css('background','none');
+				//$(dt).children("span.expand_collapse_toc:contains('-')").each(function (i, node) {			
+				//	toc.collapse($(node)[0]);
+				//});
+			}
+		});
+	$("div.time_out_div").css('display','none');
+  $("div.time_out_div").text('');
+}
+*/
 function dbToggle(node, expandText, collapseText) {
 	var dt = node.parentNode;
 	if (dt.nodeName.toLowerCase() == 'dt') {
