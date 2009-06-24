@@ -129,7 +129,7 @@ HtmlComponentControl myComponentControl = new HtmlComponentControl();
     <para>
       The generated JavaScript function will look as shown below:
     </para>
-    <programlisting role="XML"><![CDATA[function func (event) {
+    <programlisting role="text/javascript"><![CDATA[function func (event) {
 }]]></programlisting>
       <para>
         An important <emphasis role="bold"><property>&lt;rich:componentControl&gt;</property></emphasis> feature, 
