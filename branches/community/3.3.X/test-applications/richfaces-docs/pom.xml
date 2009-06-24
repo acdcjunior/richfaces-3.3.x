@@ -175,14 +175,3 @@
 
 </dependencies>
 </project>
-
-
-  <form action="handler.php">
-    <p><select multiple size="1">
-    <option>Чебурашка</option>
-    <option>Крокодил Гена</option>
-    <option>Шапокляк</option>
-    <option>Крыса Лариса</option>
-    </select></p>
-  </form>
-
