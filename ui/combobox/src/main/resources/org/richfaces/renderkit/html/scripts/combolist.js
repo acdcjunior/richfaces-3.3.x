@@ -1,19 +1,26 @@
 if(!window.Richfaces) window.Richfaces = {};
 Richfaces.ComboBoxList = Class.create();
 Richfaces.ComboBoxList.prototype = {
-	
-	initialize: function(listId, parentListId, selectFirstOnUpdate, filterNewValues, classes, width, height, itemsText, onlistcall, onlistclose, fieldId, shadowId,decorationId,
-						 showDelay, hideDelay) {
-		 
-		this.list = document.getElementById(listId);
-		this.listParent = $(parentListId);
+		
+	//default values
+	selectFirstOnUpdate : true,
+	listHeight : "200px",
+	itemsText : [],
+	showDelay : 0,
+	hideDelay : 0,
+		
+	initialize: function(id, filterNewValues, classes, options) {
+		
+		Object.extend(this, options);		 
+		this.list = document.getElementById(id + "list");
+		this.listParent = $(id + "listParent");
 		this.listParentContainer = this.listParent.parentNode;
 		this.iframe = null;
-		this.fieldElem = document.getElementById(fieldId);
-		this.itemsText = itemsText;
-		this.shadowElem = document.getElementById(shadowId);
-		this.onlistcall = onlistcall; 
-		this.onlistclose = onlistclose; 
+		this.fieldElem = document.getElementById(id + "comboboxField");
+		//this.itemsText = itemsText || [];
+		this.shadowElem = document.getElementById(id + "shadow");
+		//this.onlistcall = onlistcall; 
+		//this.onlistclose = onlistclose; 
 		
 		if (this.onlistcall) {
 			this.listParent.observe("rich:onlistcall", this.onlistcall);
@@ -23,7 +30,7 @@ Richfaces.ComboBoxList.prototype = {
 			this.listParent.observe("rich:onlistclose", this.onlistclose);
 		}
 		
-		this.selectFirstOnUpdate = selectFirstOnUpdate;
+		//this.selectFirstOnUpdate = selectFirstOnUpdate;
 		this.filterNewValues = filterNewValues;
 		
 		this.isList = false;
@@ -33,15 +40,19 @@ Richfaces.ComboBoxList.prototype = {
 		this.selectedItem = null;
 		this.activeItem = null;
 		
-		this.showDelay = showDelay;
-		this.hideDelay = hideDelay;
+		//this.showDelay = showDelay;
+		//this.hideDelay = hideDelay;
 		this.classes = classes;
-		this.width = width;
-		this.height = height;
+		//this.listWidth = width;
+		//this.listHeight = height;
 		this.initDimensions();
 		this.scrollElements = null;
 		this.eventOnScroll = this.eventOnScroll.bindAsEventListener(this);
 		
+		if (Richfaces.browser.isIE6) {
+			this.createIframe(this.listParent.parentNode, this.listWidth, id, 
+										"rich-combobox-list-width rich-combobox-list-scroll rich-combobox-list-position");										
+		}
 	},
 	
 	initDimensions : function() {
@@ -177,7 +188,7 @@ Richfaces.ComboBoxList.prototype = {
 	},
 	
 	setSize : function() {
-		var height = this.height;
+		var height = this.listHeight;
 		
 		var currentItemsHeight;
 		var rowsAmount;
@@ -188,8 +199,8 @@ Richfaces.ComboBoxList.prototype = {
 			rowsAmount = this.getItems().length;
 			currentItemsHeight = itemHeight * rowsAmount;
 			
-			if (this.height) {
-				if (parseInt(this.height) > currentItemsHeight) {
+			if (this.listHeight) {
+				if (parseInt(this.listHeight) > currentItemsHeight) {
 					height = currentItemsHeight;
 				}
 			} else {
@@ -207,7 +218,7 @@ Richfaces.ComboBoxList.prototype = {
 			if (this.shadowElem) {
 				if (!Richfaces.browser.isIE6) {
 					// shadow offset
-					this.shadowElem.style.width = (parseInt(this.width) + 7) + "px";
+					this.shadowElem.style.width = (parseInt(this.listWidth) + 7) + "px";
 					this.shadowElem.style.height = (parseInt(height) + 9)+ "px";
 				} else {
 					this.shadowElem.style.visibility = "hidden";
@@ -216,7 +227,7 @@ Richfaces.ComboBoxList.prototype = {
 			if (this.iframe) {
 				this.iframe.style.height = height;			
 			}
-			this.setWidth(this.width);
+			this.setWidth(this.listWidth);
 		}
 	},
 	

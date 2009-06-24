@@ -4,62 +4,53 @@ Richfaces.ComboBox = Class.create();
 
 Richfaces.ComboBox.prototype = {
 	
-	initialize: function(combobox, listId, parentListId, valueFieldId, fieldId, buttonId, buttonBGId, shadowId, commonStyles,  userStyles, 
-						 listWidth, listHeight, itemsText, directInputSuggestions, filterNewValue, 
-						 selectFirstOnUpdate, onlistcall, onlistclose, onselected, defaultMessage, isDisabled, value,
-						 showDelay, hideDelay, onchange) {
-		
-		this.directInputSuggestions = directInputSuggestions;
-		this.filterNewValue = filterNewValue;
-		this.combobox = $(combobox); 
-		this.comboValue = document.getElementById(valueFieldId); 
-		this.field = document.getElementById(fieldId);  
+	//default values
+	filterNewValues : true,
+	defaultLabel : "",
+	
+	initialize: function(id, options) {
+		options = options || {};
+		Object.extend(this, options.fields);
+		this.combobox = $(id); 
+		this.comboValue = document.getElementById(id + "comboboxValue"); 
+		this.field = document.getElementById(id + "comboboxField");  
 		this.tempItem;
-		this.onchange = onchange;
 		
 		this.BUTTON_WIDTH = 17; //px
 		
-		this.classes = Richfaces.mergeStyles(userStyles,commonStyles.getCommonStyles());
+		this.classes = Richfaces.mergeStyles(options.userStyles,new Richfaces.ComboBoxStyles().getCommonStyles());
 		
 		
-		this.button = document.getElementById(buttonId);   
-		this.buttonBG = document.getElementById(buttonBGId);  
+		this.button = document.getElementById(id + "comboboxButton");   
+		this.buttonBG = document.getElementById(id + "comboBoxButtonBG");  
 		
 		this.setInputWidth();
 		
-		listWidth = (!listWidth) ? this.getCurrentWidth() : listWidth;
+		var listOptions = options.listOptions || {};
+		listOptions.listWidth = listOptions.listWidth || this.getCurrentWidth();
+		this.comboList = new Richfaces.ComboBoxList(id, this.filterNewValues, this.classes.combolist, listOptions);
 		
-		this.comboList = new Richfaces.ComboBoxList(listId, parentListId, selectFirstOnUpdate, filterNewValue, this.classes.combolist, listWidth, 
-													listHeight, itemsText, onlistcall, onlistclose, fieldId, shadowId, showDelay, hideDelay);
-		this.defaultMessage = defaultMessage;
-		
-		if (value) {
-			var item = this.comboList.findItemBySubstr(value);
+		if (options.value) {
+			var item = this.comboList.findItemBySubstr(options.value);
 			if (item) {
 				this.comboList.doSelectItem(item);
 			}
 			// RF-5056 
-			this.comboValue.value = value; 
+			this.comboValue.value = options.value; 
 			
 		} else {
-			if (this.defaultMessage) {
+			if (this.defaultLabel) {
 				this.applyDefaultText();
 			}
 		}
-		this.onselected = onselected;
 		this.isSelection = true;
-		this.isDisabled = isDisabled;
 		if (this.onselected) {
 			this.combobox.observe("rich:onselect", this.onselected);
 		}
-		if (this.isDisabled) {
+		if (this.disabled) {
 			this.disable(); //TODO rename to 'disable'
 		}
 		
-		if (Richfaces.browser.isIE6) {
-			this.comboList.createIframe(this.comboList.listParent.parentNode, listWidth, this.combobox.id, 
-										"rich-combobox-list-width rich-combobox-list-scroll rich-combobox-list-position");										
-		}
 		this.combobox.component = this;
 		this.initHandlers();
 		this["rich:destructor"] = "destroy";
@@ -274,7 +265,7 @@ Richfaces.ComboBox.prototype = {
 	
 	fieldFocusHandler : function() {
 		this.doActive();
-		if ((this.field.value == this.defaultMessage) && (this.comboValue.value == "")) {
+		if ((this.field.value == this.defaultLabel) && (this.comboValue.value == "")) {
 			this.field.value = "";
 		} else {
 			if (this.isSelection) {
@@ -311,7 +302,7 @@ Richfaces.ComboBox.prototype = {
 	
 	dataUpdating : function(event) {
 		if (Richfaces.ComboBox.SPECIAL_KEYS.indexOf(event.keyCode) == -1) {
-			if (this.filterNewValue) {
+			if (this.filterNewValues) {
 				this.comboList.hideWithDelay();
 				this.comboList.dataFilter(this.field.value);
 				if (this.comboList.getItems() && this.comboList.getItems().length != 0) {
@@ -401,7 +392,7 @@ Richfaces.ComboBox.prototype = {
 	
 	applyDefaultText : function() {
 		this.field.className = this.classes.field.classes.disabled;
-		this.field.value = this.defaultMessage;
+		this.field.value = this.defaultLabel;
 		this.comboValue.value = "";
 	},
 	
@@ -424,7 +415,7 @@ Richfaces.ComboBox.prototype = {
 		this.field.className = this.classes.field.classes.active;
 		Element.setStyle(this.field, this.classes.field.style.active);
 		 
-		this.isDisabled = false;
+		this.disabled = false;
 	},
 		
 	disable : function() {
@@ -446,7 +437,7 @@ Richfaces.ComboBox.prototype = {
 		this.button.disabled = true;
 		this.field.disabled = true;
 		
-		this.isDisabled = true;
+		this.disabled = true;
 	},
 	
 	enable : function() {
@@ -468,7 +459,7 @@ Richfaces.ComboBox.prototype = {
 						
 		this.button.disabled = false;
 		this.field.disabled = false;
-		this.isDisabled = false;
+		this.disabled = false;
 	},
 	
 	doDisable : function() {
@@ -487,7 +478,7 @@ Richfaces.ComboBox.prototype = {
 	 * user's JavaScript API
 	 */
 	 showList : function() {
-	 	if (this.isDisabled) {
+	 	if (this.disabled) {
 	 		return;
 	 	}
 	 	this.field.focus();
