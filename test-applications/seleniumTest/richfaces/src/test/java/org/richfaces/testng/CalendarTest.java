@@ -416,7 +416,7 @@ public class CalendarTest extends SeleniumTestBase {
     	
     	for (String weekday : WEEK_DAYS_RU) {
     		if (!weekDays.contains(weekday)) {
-    			Assert.fail("Internationalization failed. Weekdays should contain ["+weekday+"] in case of RU locale. But was: " + weekDays.toArray());    			
+    			Assert.fail("Internationalization failed. Weekdays should contain ["+weekday+"] in case of RU locale. But was: " + weekDays.toString());    			
     		}
     	}
     }
@@ -1808,7 +1808,7 @@ public class CalendarTest extends SeleniumTestBase {
 
         //top-left direction
         selenium.select(directionId, "top-left");
-        showPopup();        
+        showPopup();       
         assertTrue(calendarLeft, "<", jointPointLeft);
         assertTrue(calendarTop, "<", jointPointTop);
 

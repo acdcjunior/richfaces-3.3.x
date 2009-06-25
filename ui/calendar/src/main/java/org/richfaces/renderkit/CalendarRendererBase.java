@@ -29,6 +29,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -53,6 +54,7 @@ import org.ajax4jsf.javascript.JSFunctionDefinition;
 import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
+import org.ajax4jsf.renderkit.RendererUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.richfaces.component.UICalendar;
@@ -330,40 +332,27 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 
 	}
 
-	public void writeClass(FacesContext context, UIComponent component)
-			throws IOException {
-
-		UICalendar calendar = (UICalendar) component;
-		String styleClass = (String) calendar.getAttributes().get("styleClass");
-		if (styleClass != null && styleClass.length() != 0) {
-			ResponseWriter writer = context.getResponseWriter();
-			writer.writeText(",\n className: '" + styleClass + "'", null);
-		}
-	}
-
-	public void writeDayStyleClass(FacesContext context, UIComponent component)
-			throws IOException {
-
-		UICalendar calendar = (UICalendar) component;
-		String dayStyleClass = (String) calendar.getAttributes().get(
-				"dayStyleClass");
-		if (dayStyleClass != null && dayStyleClass.length() != 0) {
-			ResponseWriter writer = context.getResponseWriter();
-			writer.writeText(",\n dayStyleClass: " + dayStyleClass, null);
-		}
-
-	}
-
-	public void writeIsDayEnabled(FacesContext context, UIComponent component)
-			throws IOException {
+	public JSFunction getIsDayEnabled(FacesContext context, UIComponent component) {
 		UICalendar calendar = (UICalendar) component;
 		String isDayEnabled = (String) calendar.getAttributes().get(
 				"isDayEnabled");
 		if (isDayEnabled != null && isDayEnabled.length() != 0) {
-			ResponseWriter writer = context.getResponseWriter();
-			writer.writeText(",\n isDayEnabled: " + isDayEnabled, null);
+			return new JSFunction(isDayEnabled);
 		}
+		
+		return null;
 	}
+	
+	public JSFunction getDayStyleClass(FacesContext context, UIComponent component) {
+		UICalendar calendar = (UICalendar) component;
+		String dayStyleClass = (String) calendar.getAttributes().get(
+				"dayStyleClass");
+		if (dayStyleClass != null && dayStyleClass.length() != 0) {
+			return new JSFunction(dayStyleClass);
+		}
+		
+		return null;
+	}	
 
 	public void writeMarkupScriptBody(FacesContext context,
 			UIComponent component, boolean children) throws IOException {
@@ -414,19 +403,18 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		}
 	}
 
-	public void writeDayCellClass(FacesContext context, UIComponent component)
-			throws IOException {
+	public String getDayCellClass(FacesContext context, UIComponent component) {
 
 		String cellwidth = (String) component.getAttributes().get("cellWidth");
-		String cellheight = (String) component.getAttributes()
-				.get("cellHeight");
-		ResponseWriter writer = context.getResponseWriter();
+		String cellheight = (String) component.getAttributes().get("cellHeight");
 		if (cellwidth != null && cellwidth.length() != 0 || cellheight != null
 				&& cellheight.length() != 0) {
 			String clientId = component.getClientId(context);
-			writer.writeText(",\n dayCellClass: '" + clientId.replace(':', '_')
-					+ "DayCell'", null);
+			String value = clientId.replace(':', '_') + "DayCell";
+			return value;
 		}
+		
+		return null;
 	}
 
 	public void writeFacetMarkupScriptBody(FacesContext context,
@@ -449,9 +437,10 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		}
 	}
 
-	public void writeSubmitFunction(FacesContext context, UICalendar calendar)
+	public Object getSubmitFunction(FacesContext context, UICalendar calendar)
 			throws IOException {
-		ResponseWriter writer = context.getResponseWriter();
+		
+		if (!UICalendar.AJAX_MODE.equals(calendar.getAttributes().get("mode"))) return null;
 
 		JSFunction ajaxFunction = AjaxRendererUtils.buildAjaxFunction(calendar,
 				context, AjaxRendererUtils.AJAX_FUNCTION_NAME);
@@ -479,21 +468,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		JSFunctionDefinition definition = new JSFunctionDefinition();
 		definition.addParameter(requestValue);
 		definition.addToBody(ajaxFunction);
-		writer.write(definition.toScript());
-	}
-
-	public void writeEventHandlerFunction(FacesContext context,
-			UIComponent component, String eventName) throws IOException {
-
-		ResponseWriter writer = context.getResponseWriter();
-		Object script = component.getAttributes().get(eventName);
-		if (script != null && !script.equals("")) {
-			JSFunctionDefinition onEventDefinition = new JSFunctionDefinition();
-			onEventDefinition.addParameter("event");
-			onEventDefinition.addToBody(script);
-			writer.writeText(",\n" + eventName + ": "
-					+ onEventDefinition.toScript(), null);
-		}
+		return definition;
 	}
 
 	public String getInputValue(FacesContext context, UIComponent component) {
@@ -522,16 +497,16 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		ResponseWriter writer = facesContext.getResponseWriter();
 		Map<String, String[]> symbolsMap = getSymbolsMap(facesContext, calendar);
 		Iterator<Map.Entry<String, String[]>> entryIterator = symbolsMap.entrySet().iterator();
-		writer.writeText(", \n", null);
+		writer.writeText(",\n", null);
 		while (entryIterator.hasNext()) {
 			Map.Entry<String, String[]> entry = (Map.Entry<String, String[]>) entryIterator.next();
 
-			writer.writeText(ScriptUtils.toScript(entry.getKey()), null);
-			writer.writeText(": ", null);
+			/*writer.writeText(ScriptUtils.toScript(entry.getKey()), null);
+			writer.writeText(": ", null);*/
 			writer.writeText(ScriptUtils.toScript(entry.getValue()), null);
 
 			if (entryIterator.hasNext()) {
-				writer.writeText(", \n", null);
+				writer.writeText(",\n", null);
 			}
 		}
 	}
@@ -549,7 +524,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	}
 
 	protected Map<String, String[]> getSymbolsMap(FacesContext facesContext, UICalendar calendar) {
-		Map<String, String[]> map = new HashMap<String, String[]>();
+		Map<String, String[]> map = new LinkedHashMap<String, String[]>();
 
 		Locale locale = calendar.getAsLocale(calendar.getLocale());
 		Calendar cal = calendar.getCalendar();
@@ -613,12 +588,12 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		return formatter.format(date);
 	}
 
-	public String getCurrentDate(FacesContext context, UICalendar calendar,
+	public Object getCurrentDate(FacesContext context, UICalendar calendar,
 			Date date) throws IOException {
-		return ScriptUtils.toScript(formatDate(date));
+		return formatDate(date);
 	}
 
-	public String getSelectedDate(FacesContext context, UICalendar calendar)
+	public Object getSelectedDate(FacesContext context, UICalendar calendar)
 			throws IOException {
 	     	Object returnValue = null;
 	     	
@@ -630,7 +605,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	     		returnValue = formatSelectedDate(calendar.getTimeZone(), date);  
 	     	    }
 	     	}
-	     	return ScriptUtils.toScript(returnValue);    
+	     	return returnValue;    
 	}
 
 	public static Object formatDate(Date date) {
@@ -660,60 +635,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		return result;
 	}
 
-	/**
-	 * Write labels used in the Calendar component, taken from message bundles.
-	 * Try to use bundle1 at first. If the 1st bundle is null or it doesn't
-	 * contain requested message key, use the bundle2.
-	 * @param bundle1 - 1st bundle to be used as a source for messages
-	 * @param bundle2 - 2nd bundle to be used as a source for messages
-	 * @param name - name of the requested label
-	 * @param writer - response writer
-	 * @throws IOException
-	 */
-	public void writeStringsFromBundle(ResourceBundle bundle1, ResourceBundle bundle2, String name,
-		ResponseWriter writer) throws IOException {
-	    String label = null;
-	    String bundleKey = "RICH_CALENDAR_" + name.toUpperCase() + "_LABEL";
-	    
-	    if (bundle1 != null) {
-		try {
-		    label = bundle1.getString(bundleKey);
-		} catch (MissingResourceException mre) {
-		    // Current key was not found, ignore this exception;
-		}
-	    }
-	    // Current key wasn't found in application bundle, use CALENDAR_BUNDLE,
-	    // if it is not null
-	    if((label == null) && (bundle2 != null)) {
-		try {
-		    label = bundle2.getString(bundleKey);
-		} catch (MissingResourceException mre) {
-		    // Current key was not found, ignore this exception;
-		}
-	    }
-	    
-	    writeStringFoundInBundle(name, label, writer);
-	}
-	
-	public void writeStringFoundInBundle(String name, String value, ResponseWriter writer) throws IOException {
-		if(null!=value){
-			if (!("close").equals(name.toLowerCase())) {
-				writer.writeText(name.toLowerCase() + ":'" + value + "', ",null);
-			} else {
-				writer.writeText("close:'" + value + "'", null);					
-			}
-		}else{
-			if (!("close").equals(name.toLowerCase())) {
-				writer.writeText(name.toLowerCase() + ":'" + name + "', ",null);
-			} else {
-				writer.writeText("close:'x'", null);					
-			}
-		}
-		
-	}	
-
-	public void writeLabels(FacesContext context, UICalendar calendar)
-			throws IOException {
+	public Map<String, Object> getLabels(FacesContext context, UICalendar calendar) {
 
 		ResourceBundle bundle1 = null;
 		ResourceBundle bundle2 = null;
@@ -730,20 +652,37 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 				//No external bundle was found, ignore this exception.				
 		}
 		
-		ResponseWriter writer = context.getResponseWriter();		
-		writer.writeText(",\n labels:{", null);
+		Map<String, Object> labels = new HashMap<String, Object>();
+		
 		if (null != bundle1 || null != bundle2) {
-			writeStringsFromBundle(bundle1, bundle2, "Apply", writer);
-			writeStringsFromBundle(bundle1, bundle2, "Today", writer);
-			writeStringsFromBundle(bundle1, bundle2, "Clean", writer);
-			writeStringsFromBundle(bundle1, bundle2, "Cancel", writer);
-			writeStringsFromBundle(bundle1, bundle2, "OK", writer);
-			writeStringsFromBundle(bundle1, bundle2, "Close", writer);
-		}else{
-			// No bundles were found, use default labels.
-			writer.writeText("apply:'Apply', today:'Today', clean:'Clean', ok:'OK', cancel:'Cancel', close:'x'", null);			
+			// TODO: make one function call
+			String[] names = {"apply", "today", "clean", "cancel", "ok", "close"};
+			RendererUtils utils= getUtils();
+			
+			for (String name : names) {
+			    String label = null;
+			    String bundleKey = "RICH_CALENDAR_" + name.toUpperCase() + "_LABEL";
+			    
+			    if (bundle1 != null) {
+			    	try {
+			    		label = bundle1.getString(bundleKey);
+			    	} catch (MissingResourceException mre) {
+				    // Current key was not found, ignore this exception;
+			    	}
+			    }
+			    
+			    // Current key wasn't found in application bundle, use CALENDAR_BUNDLE,
+			    // if it is not null
+			    if((label == null) && (bundle2 != null)) {
+			    	try {
+			    		label = bundle2.getString(bundleKey);
+			    	} catch (MissingResourceException mre) {
+				    // Current key was not found, ignore this exception;
+			    	}
+			    }
+			    utils.addToScriptHash(labels, name, label); 			
+			}
 		}
-		writer.writeText("}", null);
-
+		return labels;
 	}
 }

@@ -333,6 +333,13 @@ Richfaces.Calendar.getDefaultMonthNames = function(shortNames)
 			: ['January','February','March','April','May','June','July','August','September','October','November','December']);
 };
 
+/*Richfaces.Calendar.getDefaultWeekDayNames = function(shortNames)
+{
+	return (shortNames
+			? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+			: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']);
+};*/
+
 Richfaces.Calendar.parseDate = function(dateString, pattern, monthNames, monthNamesShort)
 {
 	var re = /([.*+?^<>=!:${}()[\]\/\\])/g;
@@ -522,9 +529,7 @@ function weekNumber(year, month, mdifw, fdow) {
 
 Calendar = Class.create();
 Object.extend(Calendar.prototype, {
-    initialize: function(id,parameters) {
-		// dayListTableId, weekNumberBarId, weekDayBarId - 3 tables ids',
-
+    initialize: function(id, defaultTime, minDaysInFirstWeek, firstWeekDay, weekDayLabels, weekDayLabelsShort, monthLabels, monthLabelsShort, options, markups) {
 		// dayListMarkup - day cell markup
 		//		context: {day, date, weekNumber, weekDayNumber, isWeekend, isCurrentMonth,  elementId, component}
 		// weekNumberMarkup - week number cell markup
@@ -570,7 +575,7 @@ Object.extend(Calendar.prototype, {
 		
 		// dayCellClass - add div to day cell with class 'rich-calendar-cell-div' and add this class to TD if defined  
 		// style - table style
-		// className - table class
+		// styleClass - table class
 		
 		// disabled
 		// readonly
@@ -578,45 +583,43 @@ Object.extend(Calendar.prototype, {
 		//var _d = new Date();
 
 		this.id = id;
-		this.params = parameters;
+		
+		this.params = Object.clone(Richfaces.Calendar.defaultOptions);
+		Object.extend(this.params, options);
+		Object.extend(this.params, markups);
+		// labels
+		var value = options.labels || {};
+		var defaultLabels = {apply:'Apply', today:'Today', clean:'Clean', ok:'OK', cancel:'Cancel', close:'x'};
 
-		this.showApplyButton = (!this.params.popup) ? false : this.params.showApplyButton;
-
-		if (this.params.showWeekDaysBar==undefined) this.params.showWeekDaysBar = true;
-		if (this.params.showWeeksBar==undefined) this.params.showWeeksBar = true;
-
-		if (!this.params.datePattern) this.params.datePattern = "MMM d, y";
+		for (name in defaultLabels) {
+			if (!value[name]) value[name] = defaultLabels[name];
+		}
+		this.params.labels = value;
+		this.params.firstWeekDay = firstWeekDay;
+		this.params.minDaysInFirstWeek = minDaysInFirstWeek;
+		this.params.defaultTime = defaultTime;
+		this.params.weekDayLabels = weekDayLabels;
+		this.params.weekDayLabelsShort = weekDayLabelsShort;
+		this.params.monthLabels = monthLabels;
+		this.params.monthLabelsShort = monthLabelsShort;
+		
+		this.popupOffset = {dx:this.params.horizontalOffset, dy:this.params.verticalOffset};
+		
+		//
+		if (!this.params.popup) this.params.showApplyButton = false;
+		
+		//
+		this.params.boundaryDatesMode = this.params.boundaryDatesMode.toLowerCase();
+		this.params.todayControlMode = this.params.todayControlMode.toLowerCase();
 		
 		// time
 		this.setTimeProperties();
 		
-		// markups initialization
-		if (!this.params.dayListMarkup)
-		{
-			this.params.dayListMarkup = CalendarView.dayList;
-			this.customDayListMarkup = false;
-		}
-		else
-		{
-			this.customDayListMarkup = true;
-		}
-		if (!this.params.weekNumberMarkup) this.params.weekNumberMarkup = CalendarView.weekNumber;
-		if (!this.params.weekDayMarkup) this.params.weekDayMarkup = CalendarView.weekDay;
-		if (!this.params.headerMarkup) this.params.headerMarkup = CalendarView.header;
-		if (!this.params.footerMarkup) this.params.footerMarkup = CalendarView.footer;
-		
-		// popup offset
-		this.popupOffset = {dx: (isNaN(this.params.horizontalOffset) ? 0 : parseInt(this.params.horizontalOffset,10)), dy: (isNaN(this.params.verticalOffset) ? 0 : parseInt(this.params.verticalOffset,10))};
+		this.customDayListMarkup = (this.params.dayListMarkup!=CalendarView.dayList);
 		
 		this.currentDate = this.params.currentDate ? this.params.currentDate : (this.params.selectedDate ? this.params.selectedDate : new Date());
 		this.currentDate.setDate(1);
 		this.selectedDate = this.params.selectedDate;
-		
-		if (typeof this.params.boundaryDatesMode=="string") this.params.boundaryDatesMode = this.params.boundaryDatesMode.toLowerCase();
-		if (typeof this.params.todayControlMode=="string") this.todayControlMode = this.params.todayControlMode.toLowerCase();
-		
-		if (typeof this.params.isDayEnabled != "function") this.params.isDayEnabled = function (context) {return true;};
-		if (typeof this.params.dayStyleClass != "function") this.params.dayStyleClass = function (context) {return "";};
 				
 		this.todayDate = new Date();
 		
@@ -625,9 +628,11 @@ Object.extend(Calendar.prototype, {
 		
 		this.calendarContext = new CalendarContext(this);
 		
-		this.DATE_ELEMENT_ID = this.params.dayListTableId+'Cell';
-		this.WEEKNUMBER_ELEMENT_ID = this.params.weekNumberBarId+'Cell';
-		this.WEEKDAY_ELEMENT_ID = this.params.weekDayBarId+'Cell';
+		this.DATE_ELEMENT_ID = this.id+'DayCell';
+		this.WEEKNUMBER_BAR_ID = this.id+"WeekNum";
+		this.WEEKNUMBER_ELEMENT_ID = this.WEEKNUMBER_BAR_ID+'Cell';
+		this.WEEKDAY_BAR_ID = this.id+"WeekDay";
+		this.WEEKDAY_ELEMENT_ID = this.WEEKDAY_BAR_ID+'Cell';
 		this.POPUP_ID = this.id+'Popup';
 		this.POPUP_BUTTON_ID = this.id+'PopupButton';
 		this.INPUT_DATE_ID = this.id+'InputDate';
@@ -667,7 +672,7 @@ Object.extend(Calendar.prototype, {
 
 		var tempStr = "$('"+this.id+"').component.";
 
-		var htmlTextHeader = '<table id="'+this.id+'" border="0" cellpadding="0" cellspacing="0" class="rich-calendar-exterior rich-calendar-popup'+(this.params.className ? ' '+this.params.className : '')+'" style="'+popupStyles+this.params.style+'" onclick="'+tempStr+'skipEventOnCollapse=true;"><tbody>';
+		var htmlTextHeader = '<table id="'+this.id+'" border="0" cellpadding="0" cellspacing="0" class="rich-calendar-exterior rich-calendar-popup '+this.params.styleClass+'" style="'+popupStyles+this.params.style+'" onclick="'+tempStr+'skipEventOnCollapse=true;"><tbody>';
 		var colspan = (this.params.showWeeksBar ? "8" : "7");
 		var htmlHeaderOptional = (this.params.optionalHeaderMarkup) ? '<tr><td class="rich-calendar-header-optional" colspan="'+colspan+'" id="'+this.id+'HeaderOptional"></td></tr>' : '';
 		var htmlFooterOptional = (this.params.optionalFooterMarkup) ? '<tr><td class="rich-calendar-footer-optional" colspan="'+colspan+'" id="'+this.id+'FooterOptional"></td></tr>' : '';
@@ -685,7 +690,7 @@ Object.extend(Calendar.prototype, {
 		var eventsStr = this.params.disabled || this.params.readonly ? '' : 'onclick="'+tempStr+'eventCellOnClick(event, this);" onmouseover="'+tempStr+'eventCellOnMouseOver(event, this);" onmouseout="'+tempStr+'eventCellOnMouseOut(event, this);"';	
 		if (this.params.showWeekDaysBar)
 		{ 
-			htmlTextWeekDayBar.push('<tr id="'+this.params.weekDayBarId+'">');
+			htmlTextWeekDayBar.push('<tr id="'+this.WEEKDAY_BAR_ID+'">');
 			if (this.params.showWeeksBar) htmlTextWeekDayBar.push('<td class="rich-calendar-days"><br/></td>');
 			var weekDayCounter = this.params.firstWeekDay;
 			for (var i=0;i<7;i++)
@@ -713,7 +718,7 @@ Object.extend(Calendar.prototype, {
 		for (k=1;k<7;k++)
 		{
 			bottomStyleClass = (k==6 ? "rich-bottom-cell " : "");			
-			htmlTextWeek.push('<tr id="'+this.params.weekNumberBarId+k+'">');
+			htmlTextWeek.push('<tr id="'+this.WEEKNUMBER_BAR_ID+k+'">');
 			if (this.params.showWeeksBar)
 			{
 				context = {weekNumber: k, elementId:this.WEEKNUMBER_ELEMENT_ID+k, component:this}; 
@@ -1379,7 +1384,7 @@ Object.extend(Calendar.prototype, {
 				this.setupTimeForDate(date);
 			}
 			
-			if (this.selectDate(date,true, {event:e, element:obj}) && !this.showApplyButton)
+			if (this.selectDate(date,true, {event:e, element:obj}) && !this.params.showApplyButton)
 			{
 				this.doCollapse();
 			}
@@ -1395,7 +1400,7 @@ Object.extend(Calendar.prototype, {
 					this.setupTimeForDate(date);
 				}
 				
-				if (this.selectDate(date, false, {event:e, element:obj}) && !this.showApplyButton)
+				if (this.selectDate(date, false, {event:e, element:obj}) && !this.params.showApplyButton)
 				{
 				 	this.doCollapse();
 				}
@@ -1609,7 +1614,7 @@ Object.extend(Calendar.prototype, {
 		this.selectedDateCellId = this.clearEffect(this.selectedDateCellId, this.highlightEffect2);
 		
 		//var _d=new Date();
-		var obj = $(this.params.weekNumberBarId+"1");
+		var obj = $(this.WEEKNUMBER_BAR_ID+"1");
 		for (var k=1;k<7;k++)
 		{
 			//
@@ -1621,6 +1626,7 @@ Object.extend(Calendar.prototype, {
 			// week number update			
 			if (this.params.showWeeksBar)
 			{
+				// TODO: fix:  there is no weekNumber in dataobj if showWeeksBar == false;
 				if (weekflag && currentMonth==11 &&
 				   (k==5||k==6) &&
 				   (dataobj._month==1 || (currentMonthDays-dataobj.day+1)<this.params.minDaysInFirstWeek) )
@@ -1833,7 +1839,7 @@ Object.extend(Calendar.prototype, {
 				this.currentDate = new Date(nowyear, nowmonth, 1);
 			}
 	
-			if (this.todayControlMode=='select')
+			if (this.params.todayControlMode=='select')
 			{
 				noHighlight=true;
 			}
@@ -1858,7 +1864,7 @@ Object.extend(Calendar.prototype, {
 			}
 	
 			// todayControl select mode
-			if (this.todayControlMode=='select' && !this.params.disabled && !this.params.readonly)
+			if (this.params.todayControlMode=='select' && !this.params.disabled && !this.params.readonly)
 				if (updateflag && !noUpdate && this.submitFunction)
 				{
 					this.afterLoad = this.selectToday;
@@ -1878,7 +1884,7 @@ Object.extend(Calendar.prototype, {
 			{
 				this.setupTimeForDate(date);
 			}
-			if (daydata.enabled && this.selectDate(date,true) && !this.showApplyButton)
+			if (daydata.enabled && this.selectDate(date,true) && !this.params.showApplyButton)
 			{
 				this.doCollapse();
 			}
@@ -1978,17 +1984,17 @@ Object.extend(Calendar.prototype, {
 					this.renderHF();
 				}
 				
-				var todayControlMode = this.todayControlMode;
-				this.todayControlMode = '';
+				var todayControlMode = this.params.todayControlMode;
+				this.params.todayControlMode = '';
 				this.today(noUpdate, true);
-				this.todayControlMode = todayControlMode;
+				this.params.todayControlMode = todayControlMode;
 			}
 			
 			// call user event
 			if (isDateChange)
 			{
 				this.invokeEvent("dateselected", eventData.element, eventData.event, this.selectedDate);
-				if (!this.showApplyButton)
+				if (!this.params.showApplyButton)
 				{
 					this.setInputField(this.selectedDate!=null ? this.getSelectedDateString(this.params.datePattern) : "", eventData.event);
 				}
@@ -2009,7 +2015,7 @@ Object.extend(Calendar.prototype, {
 			this.selectedDateCellId = this.clearEffect(this.selectedDateCellId, this.highlightEffect2, "rich-calendar-select", (this.params.disabled || this.params.readonly ? null : "rich-calendar-btn"));
 			 
 			this.renderHF();
-			if (!this.showApplyButton)
+			if (!this.params.showApplyButton)
 			{
 				this.setInputField("", null);
 				this.doCollapse();
@@ -2117,11 +2123,11 @@ Object.extend(Calendar.prototype, {
 			{
 				this.selectedDate = date;
 				this.renderHF();
-				if (!this.params.popup || !this.showApplyButton) this.setInputField(this.getSelectedDateString(this.params.datePattern), null);
+				if (!this.params.popup || !this.params.showApplyButton) this.setInputField(this.getSelectedDateString(this.params.datePattern), null);
 				this.invokeEvent("timeselected",null, null, this.selectedDate);
 			}
 		}
-		if (this.params.popup && !this.showApplyButton) this.close(false);		
+		if (this.params.popup && !this.params.showApplyButton) this.close(false);		
 	},
 	
 	showDateEditor: function()
@@ -2217,13 +2223,13 @@ CalendarView.currentMonthControl = function (context) {
 	return markup;
 };
 CalendarView.todayControl = function (context) {
-	return (!context.calendar.params.disabled && context.calendar.todayControlMode!='hidden' ? CalendarView.getControl(context.controlLabels.today, CalendarView.toolButtonAttributes, "today") : "");
+	return (!context.calendar.params.disabled && context.calendar.params.todayControlMode!='hidden' ? CalendarView.getControl(context.controlLabels.today, CalendarView.toolButtonAttributes, "today") : "");
 };
 CalendarView.closeControl = function (context) {
 	return (context.calendar.params.popup ? CalendarView.getControl(context.controlLabels.close, CalendarView.toolButtonAttributes, "close", "false") : "");
 };
 CalendarView.applyControl = function (context) {
-	return (!context.calendar.params.disabled && !context.calendar.params.readonly && context.calendar.showApplyButton ? CalendarView.getControl(context.controlLabels.apply, CalendarView.toolButtonAttributes, "close", "true") : "");
+	return (!context.calendar.params.disabled && !context.calendar.params.readonly && context.calendar.params.showApplyButton ? CalendarView.getControl(context.controlLabels.apply, CalendarView.toolButtonAttributes, "close", "true") : "");
 };
 CalendarView.cleanControl = function (context) {
 	return (!context.calendar.params.disabled && !context.calendar.params.readonly && context.calendar.selectedDate ? CalendarView.getControl(context.controlLabels.clean, CalendarView.toolButtonAttributes, "resetSelectedDate") : "");
@@ -2289,7 +2295,7 @@ CalendarView.footer = [
 						new ET(function (context) { return Richfaces.evalMacro("timeControl", context)})
 					]),
 					new E('td',{'class': 'rich-calendar-toolfooter', 'style': 'background-image:none;', 'width': '100%'}, []),
-					new E('td',{'class': 'rich-calendar-toolfooter', 'style':function(context){return (this.isEmpty ? 'display:none;' : '')+(context.calendar.params.disabled || context.calendar.params.readonly || !context.calendar.showApplyButton ? 'background-image:none;' : '');}},
+					new E('td',{'class': 'rich-calendar-toolfooter', 'style':function(context){return (this.isEmpty ? 'display:none;' : '')+(context.calendar.params.disabled || context.calendar.params.readonly || !context.calendar.params.showApplyButton ? 'background-image:none;' : '');}},
 					[
 						new ET(function (context) { return Richfaces.evalMacro("todayControl", context)})
 					]),
@@ -2371,3 +2377,38 @@ Object.extend(CalendarContext.prototype, {
 	timeEditorFields: CalendarView.timeEditorFields,
 	timeEditorLayout: CalendarView.timeEditorLayout
 });
+
+Richfaces.Calendar.defaultOptions = {
+		showWeekDaysBar: true,
+		showWeeksBar: true,
+		datePattern: "MMM d, yyyy",
+		horizontalOffset: 0,
+		verticalOffset: 0,
+		dayListMarkup: CalendarView.dayList,
+		weekNumberMarkup: CalendarView.weekNumber,
+		weekDayMarkup: CalendarView.weekDay,
+		headerMarkup: CalendarView.header,
+		footerMarkup: CalendarView.footer,
+		isDayEnabled: function (context) {return true;},
+		dayStyleClass: function (context) {return "";},
+		showHeader: true,
+		showFooter: true,
+		direction: "bottom-right",
+		jointPoint: "bottom-left",
+		popup: true,
+		boundaryDatesMode: "inactive",
+		todayControlMode: "select",
+		style: "",
+		className: "",
+		disabled: false,
+		readonly: false,
+		enableManualInput: false,
+		showInput: true,
+		resetTimeOnDateSelect: false,
+		style: "z-index: 3;",
+		showApplyButton: false,
+		selectedDate: null,
+		currentDate: null
+};
+
+// must be :defaultTime, minDaysInFirstWeek, firstWeekday, weekDayLabels, weekDayLabelsShort, monthLabels, monthLabelsShort
