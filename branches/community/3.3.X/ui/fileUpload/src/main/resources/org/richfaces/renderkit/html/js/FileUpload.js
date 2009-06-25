@@ -240,15 +240,27 @@ Object.extend(ProgressData.prototype, {
 	},
 	
 	ss: function () {
-		return parseInt((this.time - this.startTime) % 60) + "";
+		var seconds = parseInt((this.time - this.startTime) % 60);
+		if(seconds < 10){
+			return "0" + seconds;
+		}
+		return seconds + "";
 	},
 	
 	mm: function () {
-		return parseInt((this.time - this.startTime)/60)+ "";
+		var minutes = parseInt((this.time - this.startTime)/60);
+		if(minutes < 10){
+			return "0" + minutes;
+		}
+		return minutes + "";
 	},
 	
 	hh: function () {
-		return parseInt((this.time - this.startTime)/3600) + "";
+		var hours = parseInt((this.time - this.startTime)/3600);
+		if(hours < 10){
+			return "0" + hours;
+		}
+		return hours + "";
 	},
 	
 	B: function () {
