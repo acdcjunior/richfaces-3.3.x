@@ -154,86 +154,64 @@
 	<div style="display: none;" id="#{clientId}">
 	</div>
 	<div style="display: none;" id="#{clientId}Script">
+	
+	<c:scriptObject var="options">
+		<c:scriptOption attributes="enableManualInput, disabled, readonly, resetTimeOnDateSelect, showApplyButton, styleClass" />
+		<c:scriptOption attributes="popup" defaultValue="true" />
+		<c:scriptOption attributes="showInput" defaultValue="true" />
+		<c:scriptOption attributes="ajaxSingle" defaultValue="true" />
+		<c:scriptOption attributes="showHeader" defaultValue="true" />
+		<c:scriptOption attributes="showFooter" defaultValue="true" />
+		<c:scriptOption attributes="showWeeksBar" defaultValue="true" />
+		<c:scriptOption attributes="showWeekDaysBar" defaultValue="true" />
+		<c:scriptOption attributes="todayControlMode" defaultValue="select" />
+		<c:scriptOption attributes="datePattern" defaultValue="MMM d, yyyy" />
+		<c:scriptOption attributes="jointPoint" defaultValue="bottom-left" />
+		<c:scriptOption attributes="direction" defaultValue="bottom-right" />
+		<c:scriptOption attributes="boundaryDatesMode" defaultValue="inactive" />
+		<c:scriptOption attributes="horizontalOffset" defaultValue="0" />
+		<c:scriptOption attributes="verticalOffset" defaultValue="0" />
+		
+		<c:scriptOption name="currentDate"  value="#{this:getCurrentDate(context, component, currentDate)}" />
+		<c:scriptOption name="selectedDate"  value="#{this:getSelectedDate(context, component)}" />
+		<c:scriptOption name="style"  value="z-index: #{component.attributes['zindex']}; #{component.attributes['style']}" defaultValue="z-index: 3; "/>
+		<c:scriptOption name="submitFunction"  value="#{this:getSubmitFunction(context, component)}" />
+		<c:scriptOption name="dayCellClass"  value="#{this:getDayCellClass(context, component)}" />
+		<c:scriptOption name="dayStyleClass"  value="#{this:getDayStyleClass(context, component)}" />
+		<c:scriptOption name="isDayEnabled"  value="#{this:getIsDayEnabled(context, component)}" />
+		
+		<c:scriptOption attributes="ondateselected, ondateselect, ontimeselect, ontimeselected, onchanged, ondatemouseover, ondatemouseout, onexpand, oncollapse, oncurrentdateselect, oncurrentdateselected" wrapper="eventHandler" />
+		<c:scriptOption name="labels" value="#{this:getLabels(context, component)}" />
+	</c:scriptObject>
 	<script type="text/javascript">
-		new Calendar('#{clientId}', {
-		
-			<jsp:scriptlet>/*<![CDATA[*/
-					String mode = (String) component.getAttributes().get("mode");
-					if(org.richfaces.component.UICalendar.AJAX_MODE.equals(mode)){
-			/*]]>*/</jsp:scriptlet>
-			
-			submitFunction: <jsp:scriptlet>/*<![CDATA[*/writeSubmitFunction(context, component);/*]]>*/</jsp:scriptlet>,
-			
-			<jsp:scriptlet>/*<![CDATA[*/
-					}
-			/*]]>*/</jsp:scriptlet>
-		
-			dayListTableId: '#{clientId}Day', 
-			weekNumberBarId: '#{clientId}WeekNum', 
-			weekDayBarId: '#{clientId}WeekDay',
-			currentDate: #{this:getCurrentDate(context, component, currentDate)}, 
-			selectedDate: #{this:getSelectedDate(context, component)}, 
-			datePattern: '#{component.datePattern}',
-			jointPoint: '#{component.jointPoint}',
-			direction: '#{component.direction}',
-			boundaryDatesMode:'#{component.boundaryDatesMode}',
-			popup: #{component.popup},
-			enableManualInput: #{component.attributes['enableManualInput']},
-			showInput: #{component.attributes['showInput']},
-			disabled: #{component.disabled},
-			readonly: #{component.attributes['readonly']},
-			ajaxSingle: #{component.attributes['ajaxSingle']},
-			verticalOffset:#{component.verticalOffset},
-			horizontalOffset: #{component.horizontalOffset},
-			style:'z-index: #{component.attributes["zindex"]}; #{component.attributes["style"]}',
-			firstWeekDay: #{this:getFirstWeekDay(context, component)}, 
-			minDaysInFirstWeek: #{this:getMinDaysInFirstWeek(context, component)},
-			todayControlMode:'#{component.attributes["todayControlMode"]}',
-			showHeader:#{component.attributes['showHeader']},
-			showFooter:#{component.attributes['showFooter']},
-			showWeeksBar:#{component.attributes['showWeeksBar']},
-			showWeekDaysBar:#{component.attributes['showWeekDaysBar']},
-			showApplyButton:#{component.attributes['showApplyButton']},
-			resetTimeOnDateSelect:#{component.attributes['resetTimeOnDateSelect']},
-			defaultTime:#{this:getPreparedDefaultTime(component)}
+		new Calendar('#{clientId}', 
+			#{this:getPreparedDefaultTime(component)},
+			#{this:getMinDaysInFirstWeek(context, component)},
+			#{this:getFirstWeekDay(context, component)}
+			<f:call name="writeSymbols" />,
 
-			<f:call name="writeLabels" />
-			
-			<f:call name="writeClass"/>
-			<f:call name="writeDayCellClass"/>
-			<f:call name="writeDayStyleClass"/>
-			<f:call name="writeIsDayEnabled"/>
-			<f:call name="writeSymbols" />
-
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ondateselected" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ondateselect" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ontimeselect" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ontimeselected" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="onchanged" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ondatemouseover" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="ondatemouseout" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="onexpand" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="oncollapse" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="oncurrentdateselect" /></f:call>
-			<f:call name="writeEventHandlerFunction"><f:parameter value="oncurrentdateselected" /></f:call>
-						
-			<jsp:scriptlet>/*<![CDATA[*/
-				if (component.getChildCount() != 0) {
-			/*]]>*/</jsp:scriptlet>
-					,\n  dayListMarkup: 
-			<jsp:scriptlet>/*<![CDATA[*/
-					writeMarkupScriptBody(context, component, true);
-				} 
-			/*]]>*/</jsp:scriptlet>
-							
-			<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalHeader" /></f:call>
-			<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalFooter" /></f:call>
-							
-			<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekDay" /></f:call>
-			<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekNumber" /></f:call>
-			<f:call name="writeFacetMarkupScriptBody"><f:parameter value="header" /></f:call>
-			<f:call name="writeFacetMarkupScriptBody"><f:parameter value="footer" /></f:call>				
-					
+			<c:if test="#{not empty options}">
+				<f:writeAsScript value="#{options}" />
+			</c:if>
+			<c:if test="#{empty options}">
+				{}
+			</c:if>, { 			
+				<jsp:scriptlet>/*<![CDATA[*/
+					if (component.getChildCount() != 0) {
+				/*]]>*/</jsp:scriptlet>
+						\n dayListMarkup: 
+				<jsp:scriptlet>/*<![CDATA[*/
+						writeMarkupScriptBody(context, component, true);
+					} 
+				/*]]>*/</jsp:scriptlet>
+								
+				<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalHeader" /></f:call>
+				<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalFooter" /></f:call>
+								
+				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekDay" /></f:call>
+				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekNumber" /></f:call>
+				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="header" /></f:call>
+				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="footer" /></f:call>
 		}).load(
 			<jsp:scriptlet>/*<![CDATA[*/
 				writePreloadBody(context, component);

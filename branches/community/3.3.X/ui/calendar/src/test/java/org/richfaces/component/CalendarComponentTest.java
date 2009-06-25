@@ -290,13 +290,11 @@ public class CalendarComponentTest extends AbstractAjax4JsfTestCase {
 					
 					assertTrue(scriptBodyString.contains("datePattern"));
 					assertTrue(scriptBodyString.contains("d/MM/yyyy"));
+					assertTrue(scriptBodyString.contains("currentDate"));
 					assertTrue(scriptBodyString.contains("selectedDate"));
-					assertTrue(scriptBodyString.contains("popup: true"));
-					assertTrue(scriptBodyString.contains("currentDate:"));
-					assertTrue(scriptBodyString.contains("selectedDate:"));
 				}else if(scriptBodyString.contains("form:timecalendar")){
 					
-					assertTrue(scriptBodyString.contains("selectedDate: new Date(2001,8,11,13,36,0)"));					
+					assertTrue(scriptBodyString.contains("&apos;selectedDate&apos;:new Date(2001,8,11,13,36,0)"));					
 				}
 			}
 			
