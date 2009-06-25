@@ -8,8 +8,6 @@
     </keywordset>
   </sectioninfo>
 <title>Description</title>
-      <para>The <emphasis role="bold">
-        <property>&lt;a4j:log &gt;</property>
-      </emphasis> component generates JavaScript for opening of the window with client-side debug information on an Ajax request.</para>
+      <para>The <emphasis role="bold"><property>&lt;a4j:log &gt;</property></emphasis> component generates JavaScript that opens a debug window with useful debug information.</para>
   </section>
 </root>

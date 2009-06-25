@@ -51,36 +51,40 @@
 AjaxLog myLog = new AjaxLog();
 ...]]></programlisting>
   </section>
-  <section>
-    <title>Key attributes and ways of usage</title>
-    <para>Usage of the appropriate component attributes could change a representation level of debug information as well as the  hot key for a window opening.</para>
-    <para>The hot key could be changed with the <emphasis >
-        <property>&quot;hotkey&quot;</property>
-       </emphasis> 
-attribute, where it&apos;s necessary to define one letter that together with &quot;CTRL+SHIFT&quot; opens a window.</para>
-    <para>The <emphasis >
-        <property>&quot;level&quot;</property>
-       </emphasis> 
-attribute with several possible values (&quot;FATAL&quot;, &quot;ERROR&quot;, &quot;WARN&quot;, &quot;INFO&quot;, &quot;ALL&quot;) could change a logging level.</para>
-    <para>The log could be generated not only in a new window, but also on the current page in a separate <emphasis role="bold"><property>&lt;div&gt;</property></emphasis>, this is also controlled with the <emphasis >
-        <property>&quot;popup&quot;</property>
-       </emphasis> 
-attribute on the component. </para>
-    <para><emphasis role="bold">Example:</emphasis>
+  
+      <section>
+            <title>Details of usage</title>
+            <para>
+                  The <emphasis role="bold"><property>&lt;a4j:log &gt;</property></emphasis> component generates JavaScript that opens a log window with useful debug information, 
+                  which contains data on requests and responses, DOM tree changes et al. 
+                  The log could be generated not only in a new window, but also on the current page in a separate <emphasis role="bold"><property>&lt;div&gt;</property></emphasis> element. 
+                  This feature is controlled with the component <emphasis><property>&quot;popup&quot;</property></emphasis> attribute. 
+                  The window is opened on pressing of &quot;CTRL+SHIFT+L&quot;, which is default registered key.
+                  The hot key could be changed with the <emphasis><property>&quot;hotkey&quot;</property></emphasis> attribute, where it&apos;s necessary to define one letter that together with &quot;CTRL+SHIFT&quot; opens a window.
+            </para>
+            
+            
+    <para>
+          The <emphasis><property>&quot;level&quot;</property></emphasis> attribute has several possible values &quot;FATAL&quot;, &quot;ERROR&quot;, &quot;WARN&quot;, &quot;INFO&quot;, &quot;ALL&quot; and is used when it is necessary to change a logging level. 
     </para>
-	<programlisting role="XML"><![CDATA[<a4j:log level="ALL" popup="false" width="400" height="200"/>]]></programlisting>
-    <para>The component defined this way is decoded on a page as <emphasis role="bold"><property>&lt;div&gt;</property></emphasis> inside a page, where all the information beginning with informational message is generated.</para>
+    
+    <para>
+          <emphasis role="bold">Example:</emphasis>
+    </para>
+            <programlisting role="XML"><![CDATA[<a4j:log level="ALL" popup="false" width="400" height="200"/>]]></programlisting>
+            
+    <para>
+          The component defined this way is decoded on a page as <emphasis role="bold"><property>&lt;div&gt;</property></emphasis> inside a page, where all the information beginning with informational message is generated.</para>
     <note>
       <title>Note:</title>
-      <para><emphasis role="bold"><property>&lt;a4j:log&gt;</property></emphasis> is getting renewed automatically after execution of Ajax requests. Don't renew <emphasis role="bold"><property>&lt;a4j:log&gt;</property></emphasis> by using reRender!</para>
+      <para><emphasis role="bold"><property>&lt;a4j:log&gt;</property></emphasis> is getting renewed automatically after execution of Ajax requests. Do not renew <emphasis role="bold"><property>&lt;a4j:log&gt;</property></emphasis> by using reRender!</para>
     </note>
   </section>
-
-  <section>
+      
+      <section>
     <title>Relevant resources links</title>
 	<para>
-	   <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/log.jsf?c=log">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold"
-	     ><property>&lt;a4j:log&gt;</property></emphasis> usage and sources for the given example.
+	      Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/log.jsf?c=log">Log page</ulink> at RichFaces LiveDemo for example of component usage and their sources.
 	</para>
   </section>   
 </chapter>
