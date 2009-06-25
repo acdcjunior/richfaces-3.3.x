@@ -112,7 +112,7 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                                         </listitem>
                               </itemizedlist> 
                               <para> It&apos;s possible to sort the table content after
-                              clicks on the header. The feature is optional. Every column should be
+                                        clicks on the header. The feature is optional (to disable it, use attribute sortable on rich:column). Every column should be
                               pointed to the comparator method that is used for sorting the table.
                               In case the <emphasis role="bold">
                                         <property>&lt;rich:scrollableDataTable&gt;</property>
