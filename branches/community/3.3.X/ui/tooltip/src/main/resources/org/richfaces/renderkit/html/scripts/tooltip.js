@@ -275,7 +275,10 @@ ToolTip.prototype = {
 			}
 			else
 			{
-				this.setToolTipVisible();			
+				if (this.toolTipDefaultContent)
+					{
+						this.setToolTipVisible();
+					}	
 				this.ajaxFunction(event);
 			}
 		} else {
