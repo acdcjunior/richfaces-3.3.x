@@ -1,12 +1,13 @@
 <?xml version='1.0'?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-		        version="1.0"
+		        version="2.0"
 		        xmlns="http://www.w3.org/TR/xhtml1/transitional"
 		        xmlns:fo="http://www.w3.org/1999/XSL/Format"
-                xmlns:jbh="java:org.jboss.highlight.renderer.FORenderer"
+                	xmlns:jbh="java:org.jboss.highlight.renderer.FORenderer"
 		        exclude-result-prefixes="jbh">
 
 <xsl:import href="classpath:/xslt/org/jboss/pdf.xsl" />
+
 <xsl:attribute-set name="book.titlepage.recto.style">
 	<xsl:attribute name="font-family">
 		<xsl:value-of select="$title.fontset"/>
@@ -16,6 +17,77 @@
 	<xsl:attribute name="font-size">12pt</xsl:attribute>
 	<xsl:attribute name="text-align">center</xsl:attribute>
 </xsl:attribute-set>
+
+<xsl:template name="toc.line">
+  <xsl:param name="toc-context" select="NOTANODE"/>  
+  <xsl:variable name="id">  
+    <xsl:call-template name="object.id"/>
+  </xsl:variable>
+
+  <xsl:variable name="label">  
+    <xsl:apply-templates select="." mode="label.markup"/>  
+  </xsl:variable>
+
+  <fo:block xsl:use-attribute-sets="toc.line.properties">  
+    <fo:inline keep-with-next.within-line="always">
+      
+      <fo:basic-link internal-destination="{$id}">  
+        <xsl:if test="$label != ''">
+          <xsl:copy-of select="$label"/>
+          <xsl:value-of select="$autotoc.label.separator"/>
+        </xsl:if>
+        <xsl:choose>
+		<xsl:when test="self::section/title/emphasis[@role='since']">
+			<xsl:variable name="titleWithoutEmphasis">
+				<xsl:copy-of select="self::section/title/text()" />
+			</xsl:variable>
+			<xsl:apply-templates select="$titleWithoutEmphasis" mode="title.markup"/>  
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:apply-templates select="." mode="title.markup"/>  
+		</xsl:otherwise>
+        </xsl:choose>
+      </fo:basic-link>
+    </fo:inline>
+    <fo:inline keep-together.within-line="always"> 
+      <xsl:text> </xsl:text>
+      <fo:leader leader-pattern="dots"
+                 leader-pattern-width="3pt"
+                 leader-alignment="reference-area"
+                 keep-with-next.within-line="always"/>
+      <xsl:text> </xsl:text>
+      <fo:basic-link internal-destination="{$id}">
+        <fo:page-number-citation ref-id="{$id}"/>
+      </fo:basic-link>
+    </fo:inline>
+  </fo:block>
+</xsl:template>
+
+
+
+<!--xsl:template match="section
+                     |sect1|sect2|sect3|sect4|sect5
+                     |refsect1|refsect2|refsect3|refsection
+                     |simplesect"
+              mode="title.markup">
+  <xsl:param name="allow-anchors" select="0"/>
+  <xsl:variable name="title" select="(info/title
+                                      |sectioninfo/title
+                                      |sect1info/title
+                                      |sect2info/title
+                                      |sect3info/title
+                                      |sect4info/title
+                                      |sect5info/title
+                                      |refsect1info/title
+                                      |refsect2info/title
+                                      |refsect3info/title
+                                      |refsectioninfo/title
+                                      |title/text())[1]"/>
+
+  <xsl:apply-templates select="$title" mode="title.markup">
+    <xsl:with-param name="allow-anchors" select="$allow-anchors"/>
+  </xsl:apply-templates>
+</xsl:template-->
 
    <!-- avoid page sequence  to generate blank pages after even page numbers -->
    
