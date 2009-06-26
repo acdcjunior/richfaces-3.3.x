@@ -36,54 +36,62 @@
       </table>
   
   <section>
-    <title>Creating on a page</title>
-    <para>To use the component, it&apos;s necessary to place the following strings on a page:</para>
-
-  <para>
-      <emphasis role="bold">Example:</emphasis>
- </para>
-     <programlisting role="XML"><![CDATA[<h:panelGroup id="wizard">
-		<a4j:include  viewId="/pages/include/first.xhtml" />
-</h:panelGroup>]]></programlisting>
-<para>For navigation inside a page defined in viewId any components responsible for Ajax requests to the server generation are used.</para>
-<para>For example, the following component on a page <code>&quot;/pages/include/first.xhtml&quot;</code></para>
-
-  <para>
-      <emphasis role="bold">Example:</emphasis>
- </para>
-<programlisting role="XML"><![CDATA[...
-<a4j:commandButton action="next" reRender="wizard"/>
-...]]></programlisting>
-<para>And in faces-config it&apos;s defined:</para>
-
-  <para>
-      <emphasis role="bold">Example:</emphasis>
- </para>
-<programlisting role="XML"><![CDATA[<navigation-rule>
-     <from-view-id>/pages/include/first.xhtml</from-view-id>
-     <navigation-case>
-          <from-outcome>next</from-outcome>
-          <to-view-id>/pages/include/second.xhtml</to-view-id>
-     </navigation-case>
+        <title>Creating the Component with a Page Tag</title>
+        <para>
+              To create the simplest variant of the component on a page use the following syntax:
+        </para>
+        <para>
+              <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML"><![CDATA[<h:panelGrid>
+      <a4j:include  viewId="/pages/include/first.xhtml" />
+</rich:panelGrid>]]></programlisting>
+  </section>
+      
+      <section>
+            <title>Creating the Component Dynamically Using Java</title>
+            <para>
+                  This component cannot be created dynamically.
+            </para>
+      </section>
+      
+      <section>
+            <title>Details of usage</title>
+            <para>
+                  The component is used to include one view as part of another and may be put anywhere in the page code. 
+                  The <emphasis><property>&apos;viewID&apos;</property></emphasis> attribute is used to point at the part to be included and should present a full context-relative path of the resource in order to be used as from-view and to-view in the JSF navigation cases. 
+                  In general the component functions as Fecelets <emphasis role="bold"><property>&lt;ui:include&gt;</property></emphasis> tag but with partial page navigation in Ajax mode as an advantage.
+            </para>
+                  <note>
+                        <title>Note:</title>
+                        <para>
+                              To make the RichFaces<emphasis role="bold"><property>&lt;a4j:include&gt;</property></emphasis> component (as well as Facelets<emphasis role="bold"><property>&lt;ui:include&gt;</property></emphasis> tag) work properly when including the part of the page check that included page does not generates extra HTML &lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;body&gt; tags.
+                        </para>
+                  </note>
+          
+          <para>
+                The navigation rules could look as following:
+          </para>
+            
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML"><![CDATA[<navigation-rule>
+      <from-view-id>/pages/include/first.xhtml</from-view-id>
+      <navigation-case>
+            <from-outcome>next</from-outcome>
+            <to-view-id>/pages/include/second.xhtml</to-view-id>
+      </navigation-case>
 </navigation-rule>]]></programlisting>
-<para>In this case after a click on a button defined inside <code>&quot;first.xhtml&quot;</code> view, navigation is performed after an Ajax request (the same as standard JSF one) only inside this view.</para>
- </section>
-  <section>
-    <title>Creating the Component Dynamically Using Java</title>
-    <para>
-      This component cannot be created dynamically. 
-    </para>
-</section>
-
+            
+      </section>
+      
+      
   <section>
     <title>Relevant resources links</title>
-    <para><ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/include.jsf?c=include"
-      >On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold"
-        ><property>&lt;a4j:include&gt;</property></emphasis> usage and sources for the given example. </para>
-	<para> 
-	Some additional information can be found on the <ulink url="http://jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=104158">Ajax4Jsf Users Forum</ulink>.
-	</para><!--
-	To see how component works on practice, look at a4j-include example from 
-	<ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/include.jsf?c=include">RichFaces Live Demo</ulink>.	 -->
+    <para>
+          Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/include.jsf?c=include">Include page</ulink> for examples of component usage and their sources. 
+    </para>
+        
   </section>
 </chapter>
