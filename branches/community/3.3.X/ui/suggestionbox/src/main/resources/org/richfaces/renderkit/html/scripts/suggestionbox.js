@@ -973,7 +973,7 @@ Suggestion.Base.prototype = {
 
 RichFaces.Suggestion = Class.create();
 Object.extend(Object.extend(RichFaces.Suggestion.prototype, Suggestion.Base.prototype), {
-    initialize: function(containerId, actionUrl, element, content, onsubmit, options) {
+    initialize: function(actionUrl, element, content, onsubmit, options) {
         var update = options.popup || 'ac1update';
         if (!$(update)) this.create(element, update, content, options);
         this.baseInitialize(element, update, options);
@@ -983,7 +983,6 @@ Object.extend(Object.extend(RichFaces.Suggestion.prototype, Suggestion.Base.prot
         this.options.defaultParams = this.options.parameters || null;
         this.content = content;
         this.contentTable = content+":suggest";
-        this.containerId = containerId;
         this.actionUrl = actionUrl;
 
         if (onsubmit && onsubmit != 'null'){
