@@ -1,12 +1,25 @@
 if(!window.Richfaces) window.Richfaces = {};
 Richfaces.InplaceSelect = Class.create(Richfaces.InplaceInput, {
-	initialize : function($super, listObj, clientId, temValueKeepId, valueKeepId, tabberId, attributes, events, userStyles, commonStyles, barParams, buttonId) {
-		this.button = $(buttonId);
-		this.comboList = listObj;
-		this.showValueInView = attributes.showValueInView;
-		$super(clientId, temValueKeepId, valueKeepId, tabberId, attributes, events, userStyles, commonStyles, barParams);
+	commonStyles : new Richfaces.InplaceSelectStyles().getCommonStyles(),
+	
+	initialize : function($super, id, options) {
+		options = options || {};
+		this.button = $(id + "inselArrow");
+		this.showValueInView = options.showValueInView;
+		var attributes = {
+				minInputWidth : "100px",
+				maxInputWidth : "200px",		
+				openOnEdit : true
+		};
+		Object.extend(attributes, options.attributes);		
+		options.attributes = attributes;
+		this.classes = Richfaces.mergeStyles(options.userStyles, this.commonStyles);
+		var listOptions = options.listOptions || {};
+		listOptions.selectFirstOnUpdate = true;
+		this.comboList = new Richfaces.InplaceSelectList(id, this.classes.combolist, listOptions, "tempValue", options.fieldValue);
+		$super(id, options);
 		this.clickOnBar = false;
-		this.inplaceSelect = $(clientId);		
+		this.inplaceSelect = $(id);		
 		this.inplaceSelect.component = this;
 				
 		this.currentItemValue = this.value;
@@ -168,7 +181,7 @@ Richfaces.InplaceSelect = Class.create(Richfaces.InplaceInput, {
 	save : function($super,e) {
 		this.applyTmpValue();
 		this.comboList.hide();
-		if (((this.attributes.closeOnSelect && !this.attributes.showControls) && this.comboList.isList) 
+		if ((!this.attributes.showControls && this.comboList.isList) 
 			|| (this.clickOnBar || !this.comboList.isList)) {
 				var unescapedValue = this.currentItemValue;
 				this.setValue(unescapedValue);

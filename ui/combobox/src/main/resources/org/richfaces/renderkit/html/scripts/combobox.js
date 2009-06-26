@@ -28,8 +28,12 @@ Richfaces.ComboBox.prototype = {
 		
 		var listOptions = options.listOptions || {};
 		listOptions.listWidth = listOptions.listWidth || this.getCurrentWidth();
-		this.comboList = new Richfaces.ComboBoxList(id, this.filterNewValues, this.classes.combolist, listOptions);
-		
+		this.comboList = new Richfaces.ComboBoxList(id, this.filterNewValues, this.classes.combolist, listOptions, "comboboxField");
+		if (Richfaces.browser.isIE6) {
+			this.comboList.createIframe(this.comboList.listParent.parentNode, this.comboList.listWidth, id, 
+										"rich-combobox-list-width rich-combobox-list-scroll rich-combobox-list-position");										
+		}
+	
 		if (options.value) {
 			var item = this.comboList.findItemBySubstr(options.value);
 			if (item) {

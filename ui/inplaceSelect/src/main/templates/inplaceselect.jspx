@@ -19,10 +19,11 @@
 	/org/richfaces/renderkit/html/scripts/jquery/jquery.js,
 	scripts/comboboxUtils.js      ,
 	scripts/combolist.js         ,
+	scripts/inplaceinputstyles.js,
 	scripts/inplaceinput.js     ,
+	scripts/inplaceselectstyles.js,
 	scripts/inplaceselectlist.js,
 	scripts/inplaceselect.js,
-	scripts/inplaceselectstyles.js,
 	/org/richfaces/renderkit/html/scripts/utils.js
 </h:scripts>
 
@@ -69,12 +70,9 @@
 			fieldInputLabel = fieldLabel; 
 		}
 		
-	   	String encodedFieldValue = encodeJS(fieldValue);
-	   	
 	   	variables.setVariable("fieldLabel", fieldLabel);
 	   	variables.setVariable("fieldValue", fieldValue);
 	   	variables.setVariable("fieldInputLabel", fieldInputLabel);
-	   	variables.setVariable("encodedFieldValue", encodedFieldValue);
 	   	
 	   	String saveIcon =  (String)component.getAttributes().get("saveControlIcon");
 	   	if (saveIcon != null && saveIcon.length() != 0 ) {
@@ -99,15 +97,15 @@
 	   	
 	   	String changedClass = (String)component.getAttributes().get("changedClass");
 	   	changedClass = (changedClass != null ? changedClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("changedClass", changedClass);
+	   	variables.setVariable("changedClass", changedClass.trim());
 	   	
 	   	String viewClass = (String)component.getAttributes().get("viewClass");
 	   	viewClass = (viewClass != null ? viewClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("viewClass", viewClass);
+	   	variables.setVariable("viewClass", viewClass.trim());
 	   	
 	   	String editClass = (String)component.getAttributes().get("editClass");
 	   	editClass = (editClass != null ? editClass.trim() : "") + " " + styleClass;
-	   	variables.setVariable("editClass", editClass);
+	   	variables.setVariable("editClass", editClass.trim());
 	   	
 	   	String layout = (String)component.getAttributes().get("layout");
 	   	
@@ -135,7 +133,7 @@
 <jsp:scriptlet>
 	} 	
 </jsp:scriptlet>	  
-	<input id="#{clientId}inplaceTmpValue" 
+	<input id="#{clientId}tempValue" 
 			   type="text"
 			   style='clip:rect(0px 0px 0px 0px)' 
 			   value="#{fieldInputLabel}" 
@@ -159,7 +157,7 @@
 			   
 			   />
 		<input id="#{clientId}inselArrow" readonly="readonly" type="text" value="" class="rich-inplace-select-arrow" style='display:none;'/>
-		<input autocomplete="off" id='#{clientId}inplaceValue' name='#{clientId}' type='hidden' value='#{fieldValue}'
+		<input autocomplete="off" id='#{clientId}value' name='#{clientId}' type='hidden' value='#{fieldValue}'
 			   onchange='#{component.attributes["onchange"]}'>
 		</input>
 	<div id="#{clientId}bar" class="rich-inplace-select-control-set" style="display:none;">
@@ -247,38 +245,49 @@
 			</div>
 			
 			
+			<c:scriptObject var="attributes">
+				<c:scriptOption name="defaultLabel" value="#{this:getDefaultLabel(context, component)}" defaultValue="\u00a0\u00a0\u00a0" />
+				<c:scriptOption attributes="showControls" />
+				<c:scriptOption attributes="editEvent" defaultValue="onclick"/>
+				<c:scriptOption name="verticalPosition" value="#{component.attributes['controlsVerticalPosition']}" defaultValue="center" />
+				<c:scriptOption name="horizontalPosition" value="#{component.attributes['controlsHorizontalPosition']}" defaultValue="right" />
+				<c:scriptOption name="inputWidth" value="#{component.attributes['selectWidth']}" />
+				<c:scriptOption name="minInputWidth" value="#{component.attributes['minSelectWidth']}" defaultValue="100px" />
+				<c:scriptOption name="maxInputWidth" value="#{component.attributes['maxSelectWidth']}" defaultValue="200px" />			
+				<c:scriptOption attributes="openOnEdit" defaultValue="true"/>
+			</c:scriptObject>
+			<c:scriptObject var="events">
+				<c:scriptOption attributes="oneditactivation, onviewactivation, oneditactivated, onviewactivated, onchange" wrapper="eventHandler" /> 
+			</c:scriptObject>
+			<c:scriptObject var="view">
+				<c:scriptOption name="normal" value="#{viewClass}" />
+				<c:scriptOption name="hovered" value="#{component.attributes['viewHoverClass']}" />
+			</c:scriptObject>
+			<c:scriptObject var="changed">
+				<c:scriptOption name="normal" value="#{changedClass}" />
+				<c:scriptOption name="hovered" value="#{component.attributes['changedHoverClass']}" />
+			</c:scriptObject>
+			<c:scriptObject var="componentStyles">
+				<c:scriptOption variables="view, changed" />
+				<c:scriptOption name="editable" value="#{editClass}" />
+			</c:scriptObject>
+			<c:scriptObject var="userStyles">
+				<c:scriptOption name="component" value="#{componentStyles}" />
+			</c:scriptObject>
+			<c:scriptObject var="listOptions">
+				<c:scriptOption attributes="listWidth, listHeight" defaultValue="200px"/>
+				<c:scriptOption name="itemsText" value="#{preparedItems}" />
+			</c:scriptObject>
+			<c:scriptObject var="options">
+				<c:scriptOption attributes="showValueInView" />
+				<c:scriptOption variables="attributes, events, userStyles, fieldValue, listOptions" />
+			</c:scriptObject>
 			<script type="text/javascript">
-				#{this:encodeScriptAttributes(context, component)};
-								
-				var inplaceSelectUserStyles = {
-					
-					combolist: {
-						list: { classes: {active:'#{listClass}'}},
-						item: { normal:'#{itemClass}', selected:'#{itemSelectedClass}'}
-					},
-					
-					component: {
-						changed :{normal:'#{changedClass}' ,hovered:'#{component.attributes["changedHoverClass"]}'}, 
-						view : {normal:'#{viewClass}',hovered:'#{component.attributes["viewHoverClass"]}'}, 
-						editable:'#{editClass}'
-					}
-				};
-				
-				var inplaceSelectCommonStyles = new Richfaces.InplaceSelectStyles();
-				
-				new Richfaces.InplaceSelect(new Richfaces.InplaceSelectList('#{clientId}list', '#{clientId}listParent', true,
-															inplaceSelectUserStyles.combolist, inplaceSelectCommonStyles.getCommonStyles().combolist, '#{component.attributes["listWidth"]}', '#{component.attributes["listHeight"]}',  #{this:encodeJS(preparedItems)}, null, 
-															'#{clientId}inplaceTmpValue', '#{clientId}shadow', 0, 0, #{encodedFieldValue}), 
-															'#{clientId}', '#{clientId}inplaceTmpValue', 
-															'#{clientId}inplaceValue', '#{clientId}tabber',
-															attributes,
-															{oneditactivation : #{this:getAsEventHandler(context, component, "oneditactivation")}, 
-															onviewactivation : #{this:getAsEventHandler(context, component, "onviewactivation")}, 
-															oneditactivated : #{this:getAsEventHandler(context, component, "oneditactivated")}, 
-															onviewactivated : #{this:getAsEventHandler(context, component, "onviewactivated")},
-															onchange : #{this:getAsEventHandler(context, component, "onchange")}}, 
-															inplaceSelectUserStyles,  inplaceSelectCommonStyles, 
-															['#{clientId}bar', '#{clientId}ok', '#{clientId}cancel', '#{clientId}buttons', '#{clientId}btns_shadow'], '#{clientId}inselArrow');
+				new Richfaces.InplaceSelect('#{clientId}'
+					<c:if test="#{not empty options}">
+					, <f:writeAsScript value="#{options}" />
+					</c:if> 					
+				);
 			</script>
 	</div>
 		
