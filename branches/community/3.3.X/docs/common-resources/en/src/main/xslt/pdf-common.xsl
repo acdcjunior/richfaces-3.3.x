@@ -63,31 +63,17 @@
   </fo:block>
 </xsl:template>
 
+<!-- avoid bulk HTML elements generation in the PDF table -->
+<xsl:template match="//emphasis[@role='arrowWrapper']" />
+<xsl:template match="//emphasis[@role='descriptionWrapper']">
+	<xsl:value-of select="." />
+</xsl:template>
+<xsl:template match="//emphasis[@role='since']">
+	<fo:inline font-size="75%" vertical-align="super">
+		<xsl:value-of select="." />
+	</fo:inline>
+</xsl:template>
 
-
-<!--xsl:template match="section
-                     |sect1|sect2|sect3|sect4|sect5
-                     |refsect1|refsect2|refsect3|refsection
-                     |simplesect"
-              mode="title.markup">
-  <xsl:param name="allow-anchors" select="0"/>
-  <xsl:variable name="title" select="(info/title
-                                      |sectioninfo/title
-                                      |sect1info/title
-                                      |sect2info/title
-                                      |sect3info/title
-                                      |sect4info/title
-                                      |sect5info/title
-                                      |refsect1info/title
-                                      |refsect2info/title
-                                      |refsect3info/title
-                                      |refsectioninfo/title
-                                      |title/text())[1]"/>
-
-  <xsl:apply-templates select="$title" mode="title.markup">
-    <xsl:with-param name="allow-anchors" select="$allow-anchors"/>
-  </xsl:apply-templates>
-</xsl:template-->
 
    <!-- avoid page sequence  to generate blank pages after even page numbers -->
    
