@@ -1,8 +1,10 @@
 if(!window.Richfaces) window.Richfaces = {};
 Richfaces.InplaceSelectList = Class.create(Richfaces.ComboBoxList, {
-	initialize : function($super, listId, parentListId, selectFirstOnUpdate, userStyles, commonStyles, width, height, itemsText, onlistcall, fieldId, shadowId, showDelay, hideDelay, value) {
-		this.classes = Richfaces.mergeStyles(userStyles, commonStyles);
-		$super(listId, parentListId, selectFirstOnUpdate, null, this.classes, width, height, itemsText, onlistcall, null /* onlistclose */, fieldId, shadowId, showDelay, hideDelay);
+	
+	listWidth : "200px",
+	
+	initialize : function($super, id, classes, options, fieldElemIdSuffix, value) {
+		$super(id, null, classes, options, fieldElemIdSuffix);
 		this.wrappingItems(value);
 		this.isListOpened = false;
 	},
@@ -12,7 +14,7 @@ Richfaces.InplaceSelectList = Class.create(Richfaces.ComboBoxList, {
 		
 		field.show();
 		if (Richfaces.browser.isIE6 && !this.iframe) {
-			this.createIframe(this.listParent.parentNode, this.width, this.list.id, "");
+			this.createIframe(this.listParent.parentNode, this.listWidth, this.list.id, "");
 		}
 					
 		$super(fieldTop, fieldLeft, field.offsetHeight);

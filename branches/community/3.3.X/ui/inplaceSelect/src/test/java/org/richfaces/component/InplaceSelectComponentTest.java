@@ -58,6 +58,7 @@ public class InplaceSelectComponentTest extends AbstractAjax4JsfTestCase {
 		javaScripts.add("scripts/comboboxUtils.js");
 		javaScripts.add("scripts/combolist.js");
 		javaScripts.add("scripts/inplaceinput.js");
+		javaScripts.add("scripts/inplaceinputstyles.js");
 		javaScripts.add("scripts/inplaceselectlist.js");
 		javaScripts.add("scripts/inplaceselectstyles.js");
 		javaScripts.add("scripts/inplaceselect.js");
@@ -135,9 +136,7 @@ public class InplaceSelectComponentTest extends AbstractAjax4JsfTestCase {
 			String srcAttr = item.getSrcAttribute();
 			if (item.getFirstDomChild() != null) {
 				String scriptBodyString = item.getFirstDomChild().toString();
-				assertTrue(scriptBodyString.contains("Richfaces.InplaceSelectList"));
 				assertTrue(scriptBodyString.contains("Richfaces.InplaceSelect"));
-				assertTrue(scriptBodyString.contains("inplaceSelectUserStyles"));
 			}
 			if (StringUtils.isNotBlank(srcAttr)) {
 				boolean found = false;

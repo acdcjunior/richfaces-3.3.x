@@ -16,8 +16,8 @@
 			new org.ajax4jsf.javascript.PrototypeScript(),
 			scripts/comboboxUtils.js,
 			scripts/utils.js,
-			scripts/inplaceinput.js,
-			scripts/inplaceinputstyles.js
+			scripts/inplaceinputstyles.js,
+			scripts/inplaceinput.js
 	</h:scripts>
 	<f:resource var="saveIcon" name="org.richfaces.renderkit.html.images.SaveControlIcon"/>
 	<f:resource var="cancelIcon" name="org.richfaces.renderkit.html.images.CancelControlIcon"/>

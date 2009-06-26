@@ -7,7 +7,9 @@ Richfaces.InplaceInput = Class.create();
 
 
 Richfaces.InplaceInput.prototype = {
-	//TODO: remove $$$$$
+	commonStyles : new Richfaces.InplaceInputStyles().getCommonStyles(),
+	
+	//TODO: remove $$$$$	
 	initialize: function(clientId, options) {
 		if(!options) {
 			options = {};
@@ -46,7 +48,7 @@ Richfaces.InplaceInput.prototype = {
 		
 		this.initHandlers();	
 		this.initEvents();
-		this.classes = Richfaces.mergeStyles(options.userStyles,new Richfaces.InplaceInputStyles().getCommonStyles());
+		this.classes = Richfaces.mergeStyles(options.userStyles, this.commonStyles);
 		this["rich:destructor"] = "destroy";
 		
 		this.skipSwitching = false;

@@ -164,34 +164,13 @@ public class InplaceSelectBaseRenderer extends HeaderResourcesRendererBase {
 		}
 	}
 
-	public String encodeScriptAttributes(FacesContext context, UIComponent component) {
-		StringBuilder attributes = new StringBuilder();
-		attributes.append("var attributes = ");
-
-		ScriptOptions options = new ScriptOptions(component);
-
-		String defaultLabel = (String)component.getAttributes().get("defaultLabel");
-
-		if (defaultLabel == null || defaultLabel.trim().equals("")) {
-			defaultLabel = EMPTY_DEFAULT_LABEL;
-		}
-
-		options.addOption("defaultLabel", defaultLabel);
-		options.addOption("showControls");
-		options.addOption("editEvent");
-		options.addOption("verticalPosition", component.getAttributes().get("controlsVerticalPosition"));
-		options.addOption("horizontalPosition", component.getAttributes().get("controlsHorizontalPosition"));
-		options.addOption("inputWidth",component.getAttributes().get("selectWidth") );
-		options.addOption("minInputWidth", component.getAttributes().get("minSelectWidth"));
-		options.addOption("maxInputWidth", component.getAttributes().get("maxSelectWidth") );
-		options.addOption("openOnEdit");
-		options.addOption("showValueInView");
-		options.addOption("closeOnSelect", true);
-
-		attributes.append(options.toScript());
-
-		return attributes.toString();
-	}
+    public String getDefaultLabel(FacesContext context, UIComponent component) {
+    	String defaultLabel = (String)component.getAttributes().get("defaultLabel");
+    	if (defaultLabel == null || defaultLabel.trim().equals("")) {
+    		defaultLabel = EMPTY_DEFAULT_LABEL;
+    	}
+    	return defaultLabel;
+    }
 
 	public void encodeControlsFacet(FacesContext context, UIComponent component) throws IOException {
 		UIComponent facet = component.getFacet(CONTROLS_FACET);
@@ -234,15 +213,6 @@ public class InplaceSelectBaseRenderer extends HeaderResourcesRendererBase {
 	//	return selectedItemLabel;
 	//    }
 
-	public String getAsEventHandler(FacesContext context, UIComponent component, String attributeName) {
-		JSFunctionDefinition script = getUtils().getAsEventHandler(context, component, attributeName, null);  
-		return ScriptUtils.toScript(script);
-	}
-
-    public String encodeJS(Object object) {
-    	return ScriptUtils.toScript(object);
-    }
-    
 	protected String getItemLabel(FacesContext context, UIInplaceSelect component, Object value) {
 		String itemLabel = null;
 		boolean equivValues;
