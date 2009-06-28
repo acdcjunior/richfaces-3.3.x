@@ -22,6 +22,30 @@
         <h:selectOneRadio binding="#{skinBean.component}"/>
         <h:commandLink action="#{skinBean.change}" value="set skin"/>
 
+        <!-- Start
+             dropDownMenu: menuGroupItem is displayed incorrectly with attribute disabled="true"
+             https://jira.jboss.org/jira/browse/RF-7383 
+        -->
+        <ddm:dropDownMenu value="my Menu" id="m">
+            <mc:menuItem value="1"/>
+            <mc:menuItem value="2"/>
+            <mc:menuGroup disabled="true" value="3" id="g">
+                <mc:menuItem value="3.1" />
+                <mc:menuItem value="3.2" />
+                <mc:menuItem value="3.3" />
+            </mc:menuGroup>
+            <mc:menuGroup disabled="false" value="4" id="g2">
+                <mc:menuItem value="4.1" />
+                <mc:menuItem value="4.2" />
+                <mc:menuItem value="4.3" />
+            </mc:menuGroup>
+            <mc:menuItem value="5" />
+        </ddm:dropDownMenu>
+        <!-- End
+             dropDownMenu: menuGroupItem is displayed incorrectly with attribute disabled="true"
+             https://jira.jboss.org/jira/browse/RF-7383 
+        -->
+
         <h:panelGrid id="grid" columns="2" cellspacing="4">
             <ddm:dropDownMenu  event="#{bean.event}" id="MenuItem1"
             		verticalOffset="#{bean.verticalOffset}"
