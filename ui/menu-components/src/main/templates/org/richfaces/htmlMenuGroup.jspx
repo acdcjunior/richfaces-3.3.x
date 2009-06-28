@@ -21,20 +21,36 @@
 	<f:call name="initializeResources" />
 	<f:call name="initializeStyleClasses" />
 	<f:resource name="/org/richfaces/renderkit/html/images/spacer.gif" var="spacer" />
-	
-		
-	<div id="#{clientId}" 
-		class="#{menuGroupClass}" 
-		style="#{menuItemStyle}"
-		onmousemove="#{menuItemMouseMove}"
-		onmouseout="RichFaces.Menu.groupMouseOut(event, this, '#{menuGroupCustomClass}', '#{onmouseoutInlineStyles}');"
-		onmouseover="RichFaces.Menu.groupMouseOver(event, this, '#{menuGroupHoverClass}', '#{onmouseoverInlineStyles}');">
+
+    <jsp:scriptlet>
+        <![CDATA[
+            boolean disabled = ((Boolean) component.getAttributes().get("disabled")).booleanValue();
+            if (disabled) {
+        ]]> 
+    </jsp:scriptlet>
+    <div id="#{clientId}" 
+        class="#{menuGroupClass}" 
+        style="#{menuItemStyle}"
+        onmousemove="#{menuItemMouseMove}" >
+    <jsp:scriptlet> 
+        <![CDATA[} else {]]> 
+    </jsp:scriptlet>
+    <div id="#{clientId}" 
+        class="#{menuGroupClass}" 
+        style="#{menuItemStyle}"
+        onmousemove="#{menuItemMouseMove}"
+        onmouseout="RichFaces.Menu.groupMouseOut(event, this, '#{menuGroupCustomClass}', '#{onmouseoutInlineStyles}');"
+        onmouseover="RichFaces.Menu.groupMouseOver(event, this, '#{menuGroupHoverClass}', '#{onmouseoverInlineStyles}');">
+    <jsp:scriptlet> 
+        <![CDATA[}]]> 
+    </jsp:scriptlet>
+        
+        
 		
 		<span id="#{clientId}:icon" 
 			class="#{menuGroupItemIconClass} #{component.attributes['iconClass']}">
 		<jsp:scriptlet>
 			<![CDATA[
-					boolean disabled = ((Boolean) component.getAttributes().get("disabled")).booleanValue();
 					String iconName = disabled ? "iconDisabled" : "icon";
 			        UIComponent iconFacet = component.getFacet(iconName);
 			        if (iconFacet !=null && iconFacet.isRendered()) {
@@ -91,6 +107,18 @@
 		<jsp:scriptlet>	
 		<![CDATA[}]]>
 		</jsp:scriptlet>
-	</div>
+
+    <jsp:scriptlet>
+        <![CDATA[if (disabled) {]]> 
+    </jsp:scriptlet>
+    </div>
+    <jsp:scriptlet> 
+        <![CDATA[} else {]]> 
+    </jsp:scriptlet>
+    </div>
+    <jsp:scriptlet> 
+        <![CDATA[}]]> 
+    </jsp:scriptlet>
+
 
 </f:root>
