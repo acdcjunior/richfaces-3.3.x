@@ -59,10 +59,11 @@ public class MenuItemRendererDelegate extends RendererBase {
 		String selectedLabelClass = (String) menuItem.getAttributes().get("labelClass");
 		
 		if (disabled) {
+            variables.setVariable("menuGroupClass", concatClasses("rich-menu-group rich-menu-group-disabled", itemClass, disabledItemClass, styleClass));
+            variables.setVariable("menuGroupItemIconClass", "rich-menu-item-icon-disabled rich-menu-group-icon");
 			variables.setVariable("menuItemClass", concatClasses("rich-menu-item rich-menu-item-disabled", styleClass, itemClass, disabledItemClass));
 			variables.setVariable("menuItemStyle", concatStyles(itemStyle, disabledItemStyle, style));
 			variables.setVariable("menuItemLabelClass", concatClasses("rich-menu-item-label rich-menu-item-label-disabled", labelClass, disabledLabelClass));
-			variables.setVariable("menuGroupClass", concatClasses("rich-menu-group rich-menu-group-disabled", itemClass, disabledItemClass, styleClass));
 			variables.setVariable("menuItemMouseMove", "");
 			variables.setVariable("menuItemItemIconClass", "rich-menu-item-icon-disabled");
 			variables.setVariable("menuItemItemLabelClass", concatClasses("rich-menu-item-label-disabled", labelClass));
