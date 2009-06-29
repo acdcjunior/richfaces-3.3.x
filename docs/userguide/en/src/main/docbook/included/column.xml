@@ -215,7 +215,7 @@ HtmlColumn myColumn = new HtmlColumn();
                               can find additional information about dynamic columns.</para>
           </section>
 
-          <section>
+	<section id="sortAndFilter">
                     <title>Sorting and Filtering</title>
                     <section id="sort">
                               <title>Sorting</title>
@@ -394,6 +394,13 @@ HtmlColumn myColumn = new HtmlColumn();
                               <para> In the example above the first column is sorted in descending
                                         order. But if recurring rows appear in the table the
                                         relative second column are sorted in ascending order. </para>
+                    	
+                    	<para>If the values of the columns are complex, the <emphasis>
+                    		<property>&quot;sortOrder&quot;</property>
+                    	</emphasis> attribute should point to a bean property containing the sort order. 
+                    				See how it&apos;s done in the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/columns.jsf?c=columns&amp;tab=usage">LiveDemo</ulink>
+                    				for <emphasis role="bold"><property>&lt;rich:columns&gt;</property></emphasis>.</para>
+                    	
                               <para>You can customize the sorting&apos;s icon element using
                               &quot;rich-sort-icon&quot; class.</para>
                               <note>
