@@ -171,6 +171,7 @@ section   toc
 
 <!--xsl:template name="since" match="//emphasis[@role='since']" /-->
 
+<xsl:template match="releaseinfo" mode="titlepage.mode" />
 
 <xsl:template name="head.content">
 	<xsl:param name="node" select="."/>
