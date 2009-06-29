@@ -327,8 +327,8 @@ HtmlColumn myColumns = new HtmlColumn();
 
 
 
-                    <para> Information about sorting and filtering you can find <link
-                                        linkend="sortAndFilter"> in the corresponding section</link>. </para>
+          	<para>Sorting and filtering for the <emphasis role="bold"><property>&lt;rich:columns&gt;</property></emphasis> component works the same 
+          		as for <emphasis role="bold"><property>&lt;rich:column&gt;</property></emphasis>. See the <link linkend="sortAndFilter">&quot;Sorting and Filtering&quot;</link> section.</para>
 
           </section>
 
