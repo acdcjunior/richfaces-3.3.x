@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter role="new">
-    <section>
+<section>
     <sectioninfo>
         <keywordset>
             <keyword>a4j:queue</keyword>
         </keywordset>
+        <releaseinfo>3.3.0</releaseinfo>
     </sectioninfo>
+    <section>
         <title>Description</title>
           <para>
                 The <emphasis role="bold"><property>&lt;a4j:queue&gt;</property></emphasis> component enqueues set of Ajax requests sent from client. 
-                The <emphasis role="bold"><property>&lt;a4j&gt;</property></emphasis> or <emphasis role="bold"><property>&lt;rich&gt;</property></emphasis> components with built-in Ajax can reference the queue to optimize Ajax requests.
-          </para>
-     
+                The RichFaces components with built-in Ajax can reference the queue to optimize Ajax requests.
+          </para>     
     </section>
-</chapter>
+</section>
