@@ -5,7 +5,8 @@
             <keyword>editor</keyword>
             <keyword>rich:editor</keyword>
         </keywordset>
- </sectioninfo>
+        <releaseinfo>3.3.0</releaseinfo>
+</sectioninfo>
     <section>
      <title>Description</title>
      <para>The <emphasis role="bold">
