@@ -44,7 +44,8 @@
 	
 	<xsl:template match="/f:template/f:verbatim"/-->
 	
-
+	
+	
 	<xsl:template match="javaee:taglib | taglib">
 		<xsl:variable name="excluded-tag-names">
 			header2,header3,header4,header5,header6
@@ -101,16 +102,16 @@
 				<emphasis role="since">
 					<superscript>
 						<xsl:choose>
-							<xsl:when test="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.desc.xml'))/node()/section/sectioninfo/releaseinfo">
+							<xsl:when test="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.desc.xml'))/section/sectioninfo/releaseinfo">
 								<xsl:text> available since </xsl:text>
 								<emphasis role="version">
-									<xsl:value-of select="."/>					
+									<xsl:value-of select="document(concat($lang, $separator, 'included', $separator, $prefix, '_', $tag_name, '.desc.xml'))/section/sectioninfo/releaseinfo"/>					
 								</emphasis>
 							</xsl:when>
-							<xsl:when test="document(concat($lang, $separator,'included',$separator,$tag_name, '.desc.xml'))/root/section/sectioninfo/releaseinfo">
+							<xsl:when test="document(concat($lang, $separator,'included',$separator,$tag_name, '.desc.xml'))/section/sectioninfo/releaseinfo">
 								<xsl:text> available since </xsl:text>
 								<emphasis role="version">
-									<xsl:value-of select="."/>					
+									<xsl:value-of select="document(concat($lang, $separator,'included',$separator,$tag_name, '.desc.xml'))/section/sectioninfo/releaseinfo"/>					
 								</emphasis>
 							</xsl:when>
 							<xsl:otherwise>
