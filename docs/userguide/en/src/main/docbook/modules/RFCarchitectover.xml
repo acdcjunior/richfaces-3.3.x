@@ -544,12 +544,12 @@
 						<programlisting role="XML"><![CDATA[...
 <a4j:queue name="sampleQueue"/>							
 <h:inputText value="#{bean.inputValue}" >
-	<a4j:support id="inputSupport" event="onkeyup" eventsQueue="sample"/>
+	<a4j:support id="inputSupport" event="onkeyup" eventsQueue="sampleQueue"/>
 </h:inputText>
-<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" eventsQueue="sample" />    
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" eventsQueue="sampleQueue" />    
 ...]]></programlisting>
 						<para>In this example, two components(&lt;a4j:queue&gt;,
-							&lt;rich:comboBox&gt;,) reference the named queue via the
+							&lt;rich:comboBox&gt;,) reference the named ( &quot;sampleQueue&quot;) queue via the
 							&quot;eventsQueue&quot; attribute. </para>
 					</section>
 			<section>
