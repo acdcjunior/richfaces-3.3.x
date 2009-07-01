@@ -970,23 +970,43 @@ Suggestion.Base.prototype = {
     
 }
 
+Richfaces.SuggestionBox = {}
+Richfaces.SuggestionBox.defaultOptions = {
+		popupClass: '',
+		popupStyle: '',
+        width: 200,
+        height: 200,
+        entryClass: 'richfaces_suggestionEntry',
+        selectedClass: '',
+        param: 'inputvalue',
+        frequency: 0.4,
+        minChars: 0,
+        tokens: null,
+        selectValueClass: 'richfaces_suggestionSelectValue',
+        usingSuggestObjects: false,
+        zindex: 200
+}
 
 RichFaces.Suggestion = Class.create();
 Object.extend(Object.extend(RichFaces.Suggestion.prototype, Suggestion.Base.prototype), {
-    initialize: function(actionUrl, element, content, onsubmit, options) {
-        var update = options.popup || 'ac1update';
-        if (!$(update)) this.create(element, update, content, options);
-        this.baseInitialize(element, update, options);
+    initialize: function(actionUrl, element, content, options) {
+	
+		this.options = Object.clone(Richfaces.SuggestionBox.defaultOptions);
+		Object.extend(this.options, options);
+	
+        var update = content || 'ac1update';
+        if (!$(update)) this.create(element, update, content, this.options);
+        this.baseInitialize(element, update, this.options);
         this.options.asynchronous = true;
-        this.options.onajaxcomplete = options.oncomplete;
+        this.options.onajaxcomplete = this.options.oncomplete;
         this.options.oncomplete = this.onComplete.bind(this);
         this.options.defaultParams = this.options.parameters || null;
         this.content = content;
         this.contentTable = content+":suggest";
         this.actionUrl = actionUrl;
 
-        if (onsubmit && onsubmit != 'null'){
-			this.onsubmitFunction = new Function(onsubmit+';return true;').bind(this.element);
+        if (this.options.onsubmit && this.options.onsubmit != 'null'){
+			this.onsubmitFunction = new Function(this.options.onsubmit+';return true;').bind(this.element);
 		}
 
 		this.update.component = this;

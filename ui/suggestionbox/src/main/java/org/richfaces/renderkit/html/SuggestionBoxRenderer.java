@@ -45,6 +45,7 @@ import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.RendererBase;
 import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
+import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.renderkit.compiler.HtmlCompiler;
 import org.ajax4jsf.renderkit.compiler.PreparedTemplate;
 import org.ajax4jsf.renderkit.compiler.TemplateContext;
@@ -63,13 +64,6 @@ import org.richfaces.util.ReferenceMap;
 public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
 
     private static final Map<String, Pattern> tokensCache = new ReferenceMap<String, Pattern>();
-
-    /**
-     * Component options.
-     */
-    private static final String[] OPTIONS = {"popupClass", "popupStyle",
-            "width", "height", "entryClass", "selectedClass", "param",
-            "frequency", "minChars", "tokens", "rows", "selectValueClass", "useSuggestObjects" };
 
     /**
      * Shadow depth.
@@ -390,64 +384,41 @@ public class SuggestionBoxRenderer extends AjaxComponentRendererBase {
                 component, context, "RichFaces.Suggestion");
 	submitSuggest.addParameter(targetId);
         submitSuggest.addParameter(component.getClientId(context));
-        submitSuggest.addParameter(component.getAttributes().get("onsubmit"));
         Map<String, Object> options = AjaxRendererUtils.buildEventOptions(context, component, true);
-        options.put("popup", component.getClientId(context));
-        for (int i = 0; i < OPTIONS.length; i++) {
-            String option = OPTIONS[i];
-            Object value = attributes.get(option);
-            
-            if(option.equals("entryClass") && isDefOptionValue(value)) {
-            	value = "richfaces_suggestionEntry";
-            }
-            
-            if(option.equals("selectValueClass") && isDefOptionValue(value)) {
-            	value = "richfaces_suggestionSelectValue";
-            }
-            
-            if (null != value) {
-                if (!"frequency".equals(option) || ((Double) value).doubleValue() > 1E-9) {
-                	
-                	options.put(option, value);
-                }
-            }
-        }
+        
+        getUtils().addToScriptHash(options, "onsubmit", attributes.get("onsubmit"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "popupClass", attributes.get("popupClass"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "popupStyle", attributes.get("popupStyle"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "width", attributes.get("width"),  "200" , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "height", attributes.get("height"),  "200" , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "entryClass", attributes.get("entryClass"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "selectedClass", attributes.get("selectedClass"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "param", attributes.get("param"),  "inputvalue" , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "frequency", attributes.get("frequency"),  "0.4" , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "minChars", attributes.get("minChars"),  "0" , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "tokens", attributes.get("tokens"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "selectValueClass", attributes.get("selectValueClass"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "usingSuggestObjects", attributes.get("usingSuggestObjects"),  null , ScriptHashVariableWrapper.DEFAULT);
+        getUtils().addToScriptHash(options, "zindex", attributes.get("zindex"),  "200" , ScriptHashVariableWrapper.DEFAULT);
+
         // If implicit ajax queue name not set, put clientId
         String implicitEventsQueue = (String) options.get("implicitEventsQueue");
         if (null == implicitEventsQueue) {
             options.put("implicitEventsQueue", component.getClientId(context));
         }
+        
         String onselect = (String) attributes.get("onselect");
         if (null != onselect) {
-            JSFunctionDefinition function = new JSFunctionDefinition("suggestion");
-            function.addParameter("event");
+            JSFunctionDefinition function = new JSFunctionDefinition("suggestion","event");
             function.addToBody(onselect);
-
             options.put("onselect", function);
-
         }
         String onobjectchange = (String) attributes.get("onobjectchange");
         if (null != onobjectchange) {
             JSFunctionDefinition function = new JSFunctionDefinition("suggestion","event");
             function.addToBody(onobjectchange);
-
             options.put("onobjectchange", function);
-
         }
-        if (component.getValueBinding("fetchValue") != null
-                || attributes.get("fetchValue") != null) {
-        	Object select = attributes.get("selectValueClass");
-        	if (isDefOptionValue(select)) {
-        		select = "richfaces_suggestionSelectValue";
-        	}
-            options.put("select", select);
-        }
-        
-        UISuggestionBox suggestionBox = (UISuggestionBox) component;
-        options.put("usingSuggestObjects", suggestionBox.isUsingSuggestObjects());
-
-        // pass "zindex" attribute to js though the "options" attribute
-        options.put("zindex", suggestionBox.getZindex());
 
         submitSuggest.addParameter(options);
         script.append(submitSuggest.toScript()).append(";\n");
