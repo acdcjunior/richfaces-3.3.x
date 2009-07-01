@@ -151,3 +151,7 @@ padding-top: 30px;
 .rich-page-sidebar{float:left;width:23.076923em;*width:22.500563em;}
 .rich-page-body{margin-left:24.076923em;*marginleft:23.475563em;}
 .rich-page-body{float:none;width:auto;}
+
+.rich-panel{
+	margin-bottom: 20px;
+}

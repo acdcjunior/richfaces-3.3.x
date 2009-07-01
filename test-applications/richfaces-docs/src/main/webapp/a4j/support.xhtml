@@ -1,0 +1,41 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<ui:define name="body">
+		<rich:panel>
+			<f:facet name="header">a4j:support - common usage</f:facet>
+			<h:outputText value="Simple Repeater" />
+			<h:form prependId="false">
+				<h:inputText value="#{support.text}" required="true">
+					<a4j:support event="onkeyup" reRender="repeater" />
+				</h:inputText>
+				<br />
+				<h:outputText id="repeater" value="#{support.text}" />
+			</h:form>
+		</rich:panel>
+
+		<rich:panel>
+			<f:facet name="header">a4j:support - &quot;onsubmit&quot; and &quot;oncomplete&quot; attributes</f:facet>
+			<h:form>
+				<h:outputText value="Select the item you want to store:" />
+				<h:selectOneMenu value="#{support.items}">
+					<f:selectItem itemValue="First Item" itemLabel="First Item" />
+					<f:selectItem itemValue=" Second Item" itemLabel="Second Item" />
+					<f:selectItem itemValue=" Third Item" itemLabel="Third Item" />
+					<a4j:support event="onblur" reRender="itemsStored"
+						onsubmit="if(!confirm('Are you sure to change the option ?')) {form.reset(); return false;}"
+						oncomplete="alert('Value succesfully stored')" />
+				</h:selectOneMenu>
+				<br />
+				<h:outputText id="itemsStored" value="Stored item: #{support.items}" />
+			</h:form>
+		</rich:panel>
+	</ui:define>
+</ui:composition>
