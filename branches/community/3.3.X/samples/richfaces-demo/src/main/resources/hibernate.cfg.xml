@@ -13,5 +13,7 @@
 		<property name="show_sql">false</property>
 		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<mapping resource="dataItem.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

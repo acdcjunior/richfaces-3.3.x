@@ -8,27 +8,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.faces.FacesException;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.classic.Session;
-import org.richfaces.model.SortOrder;
+import org.hibernate.Session;
+import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.Create;
+import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Logger;
+import org.jboss.seam.annotations.Name;
+import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.Startup;
+import org.jboss.seam.log.Log;
 
 /**
- * @author mikalaj
- *
+ * @author Nick Belaevski
+ * @since 3.3.1
  */
+@Scope(ScopeType.APPLICATION)
+@Startup
+@Name("hibernateBean")
 public class HibernateBean {
 
-	private SessionFactory factory;
+	@Logger
+	private Log log;
+	
+	@In
+	private Session hibernateSession;
 	
 	private static final String[] CSV_FIELDS = {
-		"issueType", "key", "summary",
-		"assignee", "fixVersion", "reporter", "priority", "status",
+		"key", "summary", "assignee", "fixVersion", "reporter", "priority", "status",
 		"resolution", "created", "updated"
 	};
 	
@@ -55,14 +64,8 @@ public class HibernateBean {
 		}
 	}
 	
-	public HibernateBean() {
-		Configuration configuration = new Configuration();
-		configuration.addResource("dataItem.hbm.xml");
-		configuration.configure();
-
-		factory = configuration.buildSessionFactory();
-		Session session = factory.openSession();
-		
+	@Create
+	public void fillDatabase() {
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(
@@ -78,40 +81,29 @@ public class HibernateBean {
 					try {
 						CSV_FIELDS_SETTERS[i].invoke(dataItem, split[i]);
 					} catch (IllegalArgumentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						log.error(e.getMessage(), e);
 					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						log.error(e.getMessage(), e);
 					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						log.error(e.getMessage(), e);
 					}
 				}
 				
-				session.persist(dataItem);
+				hibernateSession.persist(dataItem);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			try {
 				if (reader != null) {
 					reader.close();
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			}
 		}
 		
-		
-		session.flush();
-		session.close();
+		hibernateSession.flush();
 	}
-	
-	public SessionFactory getSessionFactory() {
-		return factory;
-	}
-	
+
 }
