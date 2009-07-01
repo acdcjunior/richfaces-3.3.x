@@ -79,9 +79,16 @@ xmlns="http://www.w3.org/1999/xhtml"
 <rich:panelMenuGroup label="A4J Components" id="group2" value="#{menuState.menu['group2']}">
 
 <rich:panelMenuItem actionListener="#{menuBean.select}" mode="server">
-<h:outputLink value="#{facesContext.externalContext.requestContextPath}/a4j/queue.xhtml" >a4j:queue</h:outputLink>
+	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/a4j/queue.xhtml" >a4j:queue</h:outputLink>
 </rich:panelMenuItem>
 
+<rich:panelMenuItem actionListener="#{menuBean.select}" mode="server">
+	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/a4j/support.xhtml" >a4j:support</h:outputLink>
+</rich:panelMenuItem>
+
+<rich:panelMenuItem actionListener="#{menuBean.select}" mode="server">
+	<h:outputLink value="#{facesContext.externalContext.requestContextPath}/a4j/media.xhtml" >a4j:mediaOutput</h:outputLink>
+</rich:panelMenuItem>
 
 
 </rich:panelMenuGroup>

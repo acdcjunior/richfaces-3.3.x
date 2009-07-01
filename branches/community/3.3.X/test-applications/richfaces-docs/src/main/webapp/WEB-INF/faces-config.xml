@@ -43,6 +43,21 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>support</managed-bean-name>
+  <managed-bean-class>org.docs.richfaces.Support</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>media</managed-bean-name>
+  <managed-bean-class>org.docs.richfaces.MediaBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+  <managed-bean>
+  <managed-bean-name>mediaData</managed-bean-name>
+  <managed-bean-class>org.docs.richfaces.MediaData</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
   <managed-bean-name>skin</managed-bean-name>
   <managed-bean-class>org.docs.richfaces.util.Skin</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
