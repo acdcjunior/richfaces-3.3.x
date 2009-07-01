@@ -282,7 +282,7 @@
                 suggestion pop-up it is caused again
             </description>
         </property>
-        <property required="true">
+        <property>
             <name>width</name>
             <classname>java.lang.String</classname>
             <description>
@@ -290,7 +290,7 @@
             </description>
             <defaultvalue>"200"</defaultvalue>
         </property>
-        <property required="true">
+        <property>
             <name>height</name>
             <classname>java.lang.String</classname>
             <description>
