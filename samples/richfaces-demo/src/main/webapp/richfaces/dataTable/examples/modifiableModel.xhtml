@@ -13,7 +13,7 @@
 		<a4j:queue requestDelay="100" />
 		<rich:messages />
 		<rich:dataTable value="#{hibernateDataModel}" var="row" rows="10"
-			rowKeyConverter="javax.faces.Long" reRender="datascroller" width="650"
+			rowKeyConverter="org.jboss.seam.ui.EntityConverter" reRender="datascroller" width="650"
 			rendered="#{componentNavigator.currentComponent.activeTab == 'modifiableDataModel'}">
 			<rich:columns value="#{hibernateBean.csvFields}" var="field" 
 				sortBy="#{field}" filterBy="#{field}" filterEvent="onkeyup"

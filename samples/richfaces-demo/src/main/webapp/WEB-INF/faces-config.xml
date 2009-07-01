@@ -11,25 +11,11 @@
   <converter-class>org.richfaces.demo.orderingList.SongConverter</converter-class>
  </converter>
 	<managed-bean>
-		<managed-bean-name>hibernateBean</managed-bean-name>
-		<managed-bean-class>org.richfaces.demo.modifiableModel.HibernateBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
 		<managed-bean-name>dataTableStateHolder</managed-bean-name>
 		<managed-bean-class>org.richfaces.demo.modifiableModel.DatatableStateHolder</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>hibernateDataModel</managed-bean-name>
-		<managed-bean-class>org.richfaces.demo.modifiableModel.HibernateDataModel</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-		<managed-property>
-			<property-name>sessionFactory</property-name>
-			<value>#{hibernateBean.sessionFactory}</value>
-		</managed-property>
-	</managed-bean> 
- <managed-bean>
   <managed-bean-name>tabsBean</managed-bean-name>
   <managed-bean-class>org.richfaces.demo.tab.TabsBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
