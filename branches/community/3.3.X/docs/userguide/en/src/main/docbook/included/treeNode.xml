@@ -346,6 +346,10 @@ HtmlTreeNode myPanel = new HtmlTreeNode();
             <entry>rich-tree-node-icon</entry>
             <entry>Defines styles for a tree node icon</entry>
           </row>
+        	<row>
+        		<entry>rich-tree-h-ic-img</entry>
+        		<entry>Defines styles for an image of a tree node</entry>
+        	</row>
           <row>
             <entry>rich-tree-node-icon-leaf</entry>
             <entry>Defines styles for a tree node icon leaf</entry>
@@ -386,12 +390,20 @@ HtmlTreeNode myPanel = new HtmlTreeNode();
         </tbody>
       </tgroup>
     </table>
-    
+  	
     <para>In order to redefine the style for all <emphasis role="bold">
       <property>&lt;rich:treeNode&gt;</property>
     </emphasis> components on a page using CSS, it&apos;s enough to create classes with the
       same names and define the necessary properties in them.</para>
     
+  	<para>For instance, if you need to change the size of a tree node image, you should redefine the <code>.rich-tree-h-ic-img</code> class properties:</para>
+  	<programlisting role="CSS"><![CDATA[...
+.rich-tree-h-ic-img{
+       width:30px;
+       height:30px;
+}	
+...]]></programlisting>  
+  	
     <para>To change the style of particular <emphasis role="bold">
       <property>&lt;rich:treeNode&gt;</property>
     </emphasis> components define your own style classes in the corresponding <emphasis
