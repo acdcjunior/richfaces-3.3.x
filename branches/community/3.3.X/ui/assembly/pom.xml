@@ -195,7 +195,13 @@
 									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/combolist-min.js
 								</include>
 								<include>
+									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/inplaceinputstyles-min.js
+								</include>
+								<include>
 									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/inplaceinput-min.js
+								</include>
+								<include>
+									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/inplaceselectstyles-min.js
 								</include>
 								<include>
 									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/inplaceselectlist-min.js
