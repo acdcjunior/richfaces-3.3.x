@@ -13,6 +13,35 @@
         <para>
              Work in progress...
         </para>
+        <section>
+          <title>Page flows: implementation details</title>
+         
+          <para>
+            This section covers how the particular elements that govern page flow are implemented in the application.
+          </para>
+          <section>
+            <title>Registering</title>
+            <para>
+              Registering in is basically the first step a user takes in the application. Have a look at a piece of code from <code>\includes\index\</code>
+            </para>
+            
+            <programlisting role="XML"><![CDATA[...
+<h:panelGroup rendered="#{!identity.loggedIn}"	styleClass="top-right-bottom-menu-item-link" layout="block">
+  <h:form style="margin: 0px">
+	<a4j:commandLink value="#{messages['login.register']}"actionListener="#{authenticator.goToRegister}" reRender="mainArea" />
+  </h:form>
+</h:panelGroup>
+...]]></programlisting> 
+            <para>When the button is hit the <code>goToRegister</code> method is evoked and the <code>START_REGISTER_EVENT</code> is raised. These action display the registration form that is included from <code>\includes\register.xhtml</code>. </para>
+            
+            
+            <para>The <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> displays the link to the registration form and invokes the  <code>goToRegister</code> method.
+            </para>
+            <para>When all fields are filled out with correct values the <code>register(user)</code> is triggered and a new user is set. </para>
+          </section>
+          
+        </section>
+        
       </section>
       <section id="dataModel">
       	<title>Data Model</title>
