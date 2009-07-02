@@ -25,6 +25,7 @@ import java.util.HashMap;
 
 import org.ajax4jsf.templatecompiler.builder.CompilationContext;
 import org.ajax4jsf.templatecompiler.builder.CompilationException;
+import org.ajax4jsf.templatecompiler.el.ELParser;
 import org.ajax4jsf.templatecompiler.elements.A4JRendererElementsFactory;
 import org.ajax4jsf.templatecompiler.elements.TemplateElementBase;
 import org.apache.velocity.VelocityContext;
@@ -44,6 +45,8 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 
 	private String variableName;
 
+	private String base;
+
 	private static final Class<?> VARIABLE_TYPE = HashMap.class;
 	
 	public ScriptObjectTemplateElement(final Node element,
@@ -58,6 +61,13 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 		
 		variableName = varNode.getNodeValue();
 		
+		Node baseNode = nnm.getNamedItem("base");
+		if (baseNode != null) {
+			base = ELParser.compileEL(baseNode.getNodeValue(), componentBean);
+		} else {
+			base = "";
+		}
+
 		try {
 			this.getComponentBean().addVariable(variableName, VARIABLE_TYPE.getName());
 		} catch (CompilationException e) {
@@ -76,6 +86,7 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 		VelocityContext context = new VelocityContext();
 		context.put("variable", this.variableName);
 		context.put("type", VARIABLE_TYPE.getName().replace('$', '.'));
+		context.put("base", this.base);
 		
 		return this.getComponentBean().processTemplate(getTemplateName(), context);
 	}

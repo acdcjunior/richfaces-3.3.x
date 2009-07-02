@@ -155,8 +155,8 @@
 	</div>
 	<div style="display: none;" id="#{clientId}Script">
 	
-	<c:scriptObject var="options">
-		<c:scriptOption attributes="enableManualInput, disabled, readonly, resetTimeOnDateSelect, showApplyButton, styleClass" />
+	<c:scriptObject var="options" base="#{this:getSymbolsMap(context, component)}">
+		<c:scriptOption attributes="enableManualInput, disabled, readonly, resetTimeOnDateSelect, showApplyButton, styleClass, minDaysInFirstWeek" />
 		<c:scriptOption attributes="popup" defaultValue="true" />
 		<c:scriptOption attributes="showInput" defaultValue="true" />
 		<c:scriptOption attributes="ajaxSingle" defaultValue="true" />
@@ -182,14 +182,12 @@
 		
 		<c:scriptOption attributes="ondateselected, ondateselect, ontimeselect, ontimeselected, onchanged, ondatemouseover, ondatemouseout, onexpand, oncollapse, oncurrentdateselect, oncurrentdateselected" wrapper="eventHandler" />
 		<c:scriptOption name="labels" value="#{this:getLabels(context, component)}" />
+		<c:scriptOption name="defaultTime" value="#{this:getPreparedDefaultTime(component)}" />
 	</c:scriptObject>
 	<script type="text/javascript">
+		<f:call name="writeDefaultSymbols" />
 		new Calendar('#{clientId}', 
-			#{this:getPreparedDefaultTime(component)},
-			#{this:getMinDaysInFirstWeek(context, component)},
-			#{this:getFirstWeekDay(context, component)}
-			<f:call name="writeSymbols" />,
-
+			"#{component.asLocale}",
 			<c:if test="#{not empty options}">
 				<f:writeAsScript value="#{options}" />
 			</c:if>

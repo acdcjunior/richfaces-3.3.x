@@ -54,7 +54,6 @@ import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.event.AjaxEvent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.richfaces.component.util.MessageUtil;
 import org.richfaces.event.CurrentDateChangeEvent;
 import org.richfaces.event.CurrentDateChangeListener;
 import org.richfaces.model.CalendarDataModel;
@@ -95,25 +94,10 @@ public abstract class UICalendar extends UIInput implements AjaxComponent {
 	public static final String COMPONENT_FAMILY = "org.richfaces.Calendar";
 	
 	/**
-	 * Default value of "defaultTime" attribute
-	 */
-	private static String DEFAULT_TIME_VALUE = "hours:12,minutes:0";
-	
-	/**
 	 * Default pattern for defaultTime
 	 */
 	private static String DEFAULT_TIME_PATTERN = "HH:mm";
 	
-	/**
-	 * Constant "hours"
-	 */
-	private static String HOURS_VALUE = "hours";
-	
-	/**
-	 * Constant "minutes"
-	 */
-	private static String MINUTES_VALUE = "minutes";
-
 	public static final String AJAX_MODE = "ajax";
 
 	public static final String CLIENT_MODE = "client";
@@ -212,6 +196,10 @@ public abstract class UICalendar extends UIInput implements AjaxComponent {
 	public abstract int getVerticalOffset();
 
 	public abstract void setVerticalOffset(int verticalOffset);
+
+	public abstract int getFirstWeekDay();
+
+	public abstract void setFirstWeekDay(int firstWeekDay);
 
 	public abstract int getHorizontalOffset();
 
@@ -331,34 +319,6 @@ public abstract class UICalendar extends UIInput implements AjaxComponent {
 	    return result;
 	}
 	
-	/**
-	 * Returns hours and minutes from "defaultTime" attribute as a String
-	 * with special format: 
-	 * hours:"value_hours",minutes:"value_minutes"
-	 * 
-	 * @return hours and minutes from "defaultTime" attribute
-	 */
-	public String getPreparedDefaultTime() {
-	    Date date = getFormattedDefaultTime();
-	    
-	    if (date == null) {
-		return DEFAULT_TIME_VALUE;
-	    }
-	    StringBuilder result = new StringBuilder();
-	    
-	    Calendar calendar = getCalendar();
-	    calendar.setTime(date);
-	    
-	    result.append("{").append(HOURS_VALUE).append(":");
-	    result.append(calendar.get(Calendar.HOUR_OF_DAY));
-	    result.append(",");
-	    result.append(MINUTES_VALUE).append(":");
-	    result.append(calendar.get(Calendar.MINUTE)).append("}");
-	    
-	    return result.toString();
-	    
-	} 
-
 	public void updateCurrentDate(FacesContext context, Object currentDate) {
 
 		if (context == null) {
@@ -705,6 +665,10 @@ public abstract class UICalendar extends UIInput implements AjaxComponent {
 		}		
 	}
 	
+	public Locale getAsLocale() {
+		return getAsLocale(getLocale());
+	}
+	
 	public Locale getAsLocale(Object locale) {
 
 		if (locale instanceof Locale) {
@@ -730,91 +694,6 @@ public abstract class UICalendar extends UIInput implements AjaxComponent {
 		}
 	}
 
-	protected int getDefaultFirstWeekDay() {
-		Calendar cal = getCalendar();
-		return cal.getFirstDayOfWeek() - cal.getActualMinimum(Calendar.DAY_OF_WEEK);
-	}
-	
-	protected int getDefaultMinDaysInFirstWeek() {
-		return getCalendar().getMinimalDaysInFirstWeek();
-	}
-	/**
-	 * Gets what the minimal days required in the first week of the year 
-			are; e.g., if the first week is defined as one that contains the first 
-			day of the first month of a year, this method returns 1. If the 
-			minimal days required must be a full week, this method returns 7.
-	 * Setter for minDaysInFirstWeek
-	 * @param minDaysInFirstWeek - new value
-	 */
-	public void setMinDaysInFirstWeek( int  __minDaysInFirstWeek ){
-		this._minDaysInFirstWeek = __minDaysInFirstWeek;
-		this._minDaysInFirstWeekSet = true;
-	}
-
-
-	/**
-	 * Gets what the minimal days required in the first week of the year 
-			are; e.g., if the first week is defined as one that contains the first 
-			day of the first month of a year, this method returns 1. If the 
-			minimal days required must be a full week, this method returns 7.
-	 * Getter for minDaysInFirstWeek
-	 * @return minDaysInFirstWeek value from local variable or value bindings
-	 */
-	public int getMinDaysInFirstWeek(  ){
-		if(this._minDaysInFirstWeekSet){
-			return this._minDaysInFirstWeek;
-		}
-		ValueExpression ve = getValueExpression("minDaysInFirstWeek");
-		if (ve != null) {
-		    	Integer value = (Integer) ve.getValue(getFacesContext().getELContext());
-			if (null == value) {
-				return getDefaultMinDaysInFirstWeek();
-			}
-			return (value.intValue());
-		} else {
-			return getDefaultMinDaysInFirstWeek();
-		}
-	}
-	/**
-	 * Gets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
-	 * Setter for firstWeekDay
-	 * @param firstWeekDay - new value
-	 */
-	public void setFirstWeekDay( int  __firstWeekDay ){
-		this._firstWeekDay = __firstWeekDay;
-		this._firstWeekDaySet = true;
-	}
-
-
-	/**
-	 * Gets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
-	 * Getter for firstWeekDay
-	 * @return firstWeekDay value from local variable or value bindings
-	 */
-	public int getFirstWeekDay(  ){
-		int result;
-		if (this._firstWeekDaySet) {
-			result = this._firstWeekDay;
-		}else{
-			ValueExpression ve = getValueExpression("firstWeekDay");
-			if (ve != null) {
-			    			    
-				Integer value = (Integer) ve.getValue(getFacesContext().getELContext());
-				result = (value.intValue());
-			} else {
-				result = getDefaultFirstWeekDay();
-			}
-		}
-		if (result < 0 || result > 6) {
-			getFacesContext().getExternalContext()
-				.log(result + " value of firstWeekDay attribute is not a legal one for component: "
-								+ MessageUtil.getLabel(getFacesContext(), this)
-								+ ". Default value was applied.");
-			result = getDefaultFirstWeekDay();
-		}
-		return result;
-	}
-	
 	public Object saveState(FacesContext context) {
 		return new Object [] {
 			super.saveState(context),
