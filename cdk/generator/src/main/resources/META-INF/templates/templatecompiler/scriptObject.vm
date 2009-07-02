@@ -1,1 +1,1 @@
-$type $variable = new $type();
+$type $variable = new $type($base);

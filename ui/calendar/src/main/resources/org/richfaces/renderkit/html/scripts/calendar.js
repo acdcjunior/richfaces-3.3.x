@@ -333,6 +333,12 @@ Richfaces.Calendar.getDefaultMonthNames = function(shortNames)
 			: ['January','February','March','April','May','June','July','August','September','October','November','December']);
 };
 
+Richfaces.Calendar.addLocale = function (locale, symbols) {
+	if (!Richfaces.Calendar[locale]) {
+		Richfaces.Calendar[locale] = symbols;
+	}
+};
+
 /*Richfaces.Calendar.getDefaultWeekDayNames = function(shortNames)
 {
 	return (shortNames
@@ -529,7 +535,7 @@ function weekNumber(year, month, mdifw, fdow) {
 
 Calendar = Class.create();
 Object.extend(Calendar.prototype, {
-    initialize: function(id, defaultTime, minDaysInFirstWeek, firstWeekDay, weekDayLabels, weekDayLabelsShort, monthLabels, monthLabelsShort, options, markups) {
+    initialize: function(id, locale, options, markups) {
 		// dayListMarkup - day cell markup
 		//		context: {day, date, weekNumber, weekDayNumber, isWeekend, isCurrentMonth,  elementId, component}
 		// weekNumberMarkup - week number cell markup
@@ -585,6 +591,7 @@ Object.extend(Calendar.prototype, {
 		this.id = id;
 		
 		this.params = Object.clone(Richfaces.Calendar.defaultOptions);
+		Object.extend(this.params, Richfaces.Calendar[locale]);
 		Object.extend(this.params, options);
 		Object.extend(this.params, markups);
 		// labels
@@ -595,13 +602,6 @@ Object.extend(Calendar.prototype, {
 			if (!value[name]) value[name] = defaultLabels[name];
 		}
 		this.params.labels = value;
-		this.params.firstWeekDay = firstWeekDay;
-		this.params.minDaysInFirstWeek = minDaysInFirstWeek;
-		this.params.defaultTime = defaultTime;
-		this.params.weekDayLabels = weekDayLabels;
-		this.params.weekDayLabelsShort = weekDayLabelsShort;
-		this.params.monthLabels = monthLabels;
-		this.params.monthLabelsShort = monthLabelsShort;
 		
 		this.popupOffset = {dx:this.params.horizontalOffset, dy:this.params.verticalOffset};
 		
@@ -2408,7 +2408,8 @@ Richfaces.Calendar.defaultOptions = {
 		style: "z-index: 3;",
 		showApplyButton: false,
 		selectedDate: null,
-		currentDate: null
+		currentDate: null,
+		defaultTime: {hours:12,minutes:0}
 };
 
 // must be :defaultTime, minDaysInFirstWeek, firstWeekday, weekDayLabels, weekDayLabelsShort, monthLabels, monthLabelsShort

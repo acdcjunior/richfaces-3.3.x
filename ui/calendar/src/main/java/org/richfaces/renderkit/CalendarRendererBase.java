@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -59,6 +59,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.richfaces.component.UICalendar;
 import org.richfaces.component.util.ComponentUtil;
+import org.richfaces.component.util.MessageUtil;
+import org.richfaces.context.RequestContext;
 import org.richfaces.event.CurrentDateChangeEvent;
 
 /**
@@ -76,6 +78,16 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	protected static final String WEEK_DAY_LABELS = "weekDayLabels";
 
 	/**
+	 * Constant "hours"
+	 */
+	private static String HOURS_VALUE = "hours";
+	
+	/**
+	 * Constant "minutes"
+	 */
+	private static String MINUTES_VALUE = "minutes";
+
+	/**
 	 * The constant used to resolve id of hidden input placed on the page
 	 * for storing current date in "MM/yyyy" format.
 	 * Actual id of hidden input used on the page is #{clientId}InputCurrentDate
@@ -88,6 +100,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 
 	public static final String CALENDAR_BUNDLE = "org.richfaces.renderkit.calendar";
 
+	private static final String LOCALES_KEY = "rich:locales";
 	private final static Log log = LogFactory
 			.getLog(CalendarRendererBase.class);
 
@@ -178,8 +191,24 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
      * 
      * @return hours and minutes from "defaultTime" attribute
      */
-    public String getPreparedDefaultTime(UICalendar calendar) {
-    	return calendar.getPreparedDefaultTime();
+    public String getPreparedDefaultTime(UICalendar component) {
+	    Date date = component.getFormattedDefaultTime();
+	    StringBuilder result = new StringBuilder();
+		if (date != null) {
+		    Calendar calendar = component.getCalendar();
+		    calendar.setTime(date);
+		    int hours = calendar.get(Calendar.HOUR_OF_DAY);
+		    int minutes = calendar.get(Calendar.MINUTE);
+		    
+		    if (hours != 12 || minutes != 0) {
+				result.append("{").append(HOURS_VALUE).append(":");
+				result.append(hours);
+				result.append(",");
+				result.append(MINUTES_VALUE).append(":");
+				result.append(minutes).append("}");
+			}
+	    }
+	    return result.toString();   
     } 
 
 	/**
@@ -492,22 +521,21 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		return returnValue;
 	}
 
-	public void writeSymbols(FacesContext facesContext, UICalendar calendar)
+	public void writeDefaultSymbols(FacesContext facesContext, UICalendar calendar)
 			throws IOException {
-		ResponseWriter writer = facesContext.getResponseWriter();
-		Map<String, String[]> symbolsMap = getSymbolsMap(facesContext, calendar);
-		Iterator<Map.Entry<String, String[]>> entryIterator = symbolsMap.entrySet().iterator();
-		writer.writeText(",\n", null);
-		while (entryIterator.hasNext()) {
-			Map.Entry<String, String[]> entry = (Map.Entry<String, String[]>) entryIterator.next();
-
-			/*writer.writeText(ScriptUtils.toScript(entry.getKey()), null);
-			writer.writeText(": ", null);*/
-			writer.writeText(ScriptUtils.toScript(entry.getValue()), null);
-
-			if (entryIterator.hasNext()) {
-				writer.writeText(",\n", null);
-			}
+		RequestContext context = RequestContext.getInstance(facesContext);
+		Set<String> locales = (Set<String>)context.getAttribute(LOCALES_KEY);
+		if (locales == null) {
+			locales = new HashSet<String>(1);
+			context.setAttribute(LOCALES_KEY, locales);
+		}
+		String locale = calendar.getAsLocale().toString();
+		if (!locales.contains(locale)) {
+			ResponseWriter writer = facesContext.getResponseWriter();
+			writer.writeText("Richfaces.Calendar.addLocale('" + locale + "', ", null);
+			writer.writeText(ScriptUtils.toScript(getDefaultSymbolsMap(calendar)), null);
+			writer.writeText(");\n", null);
+			locales.add(locale);
 		}
 	}
 
@@ -523,10 +551,29 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		return shiftedLabels;
 	}
 
-	protected Map<String, String[]> getSymbolsMap(FacesContext facesContext, UICalendar calendar) {
-		Map<String, String[]> map = new LinkedHashMap<String, String[]>();
+	protected Map<String, Object> getSymbolsMap(FacesContext facesContext, UICalendar calendar) {
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
+		RendererUtils utils = getUtils();
+		utils.addToScriptHash(map, WEEK_DAY_LABELS, ComponentUtil.asArray(calendar.getWeekDayLabels()));
+		utils.addToScriptHash(map, WEEK_DAY_LABELS_SHORT, ComponentUtil.asArray(calendar.getWeekDayLabelsShort()));
+		utils.addToScriptHash(map, MONTH_LABELS, ComponentUtil.asArray(calendar.getMonthLabels()));
+		utils.addToScriptHash(map, MONTH_LABELS_SHORT, ComponentUtil.asArray(calendar.getMonthLabelsShort()));
+		int day = calendar.getFirstWeekDay();
+		if (0 <= day && day <= 6) {
+			utils.addToScriptHash(map, "firstWeekDay", day);			
+		} else if (day != Integer.MIN_VALUE) {
+			facesContext.getExternalContext()
+				.log(day + " value of firstWeekDay attribute is not a legal one for component: "
+						+ MessageUtil.getLabel(facesContext, calendar) + ". Default value was applied.");
+		}
 
-		Locale locale = calendar.getAsLocale(calendar.getLocale());
+		return map;
+	}
+
+	protected Map<String, Object> getDefaultSymbolsMap(UICalendar calendar) {
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
+
+		Locale locale = calendar.getAsLocale();
 		Calendar cal = calendar.getCalendar();
 		int maximum = cal.getActualMaximum(Calendar.DAY_OF_WEEK);
 		int minimum = cal.getActualMinimum(Calendar.DAY_OF_WEEK);
@@ -535,50 +582,26 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		int monthMin = cal.getActualMinimum(Calendar.MONTH);
 
 		DateFormatSymbols symbols = new DateFormatSymbols(locale);
-		String[] weekDayLabels = ComponentUtil.asArray(calendar
-				.getWeekDayLabels());
-		if (weekDayLabels == null) {
-			weekDayLabels = symbols.getWeekdays();
-			weekDayLabels = shiftDates(minimum, maximum, weekDayLabels);
-		}
+		String[] weekDayLabels = symbols.getWeekdays();
+		weekDayLabels = shiftDates(minimum, maximum, weekDayLabels);
 
-		String[] weekDayLabelsShort = ComponentUtil.asArray(calendar
-				.getWeekDayLabelsShort());
-		if (weekDayLabelsShort == null) {
-			weekDayLabelsShort = symbols.getShortWeekdays();
-			weekDayLabelsShort = shiftDates(minimum, maximum,
-					weekDayLabelsShort);
-		}
+		String[] weekDayLabelsShort = symbols.getShortWeekdays();
+		weekDayLabelsShort = shiftDates(minimum, maximum, weekDayLabelsShort);
 
-		String[] monthLabels = ComponentUtil.asArray(calendar.getMonthLabels());
-		if (monthLabels == null) {
-			monthLabels = symbols.getMonths();
-			monthLabels = shiftDates(monthMin, monthMax, monthLabels);
-		}
+		String[] monthLabels  = symbols.getMonths();
+		monthLabels = shiftDates(monthMin, monthMax, monthLabels);
 
-		String[] monthLabelsShort = ComponentUtil.asArray(calendar
-				.getMonthLabelsShort());
-		if (monthLabelsShort == null) {
-			monthLabelsShort = symbols.getShortMonths();
-			monthLabelsShort = shiftDates(monthMin, monthMax, monthLabelsShort);
-		}
+		String[] monthLabelsShort  = symbols.getShortMonths();
+		monthLabelsShort = shiftDates(monthMin, monthMax, monthLabelsShort);
 
 		map.put(WEEK_DAY_LABELS, weekDayLabels);
 		map.put(WEEK_DAY_LABELS_SHORT, weekDayLabelsShort);
 		map.put(MONTH_LABELS, monthLabels);
 		map.put(MONTH_LABELS_SHORT, monthLabelsShort);
+		map.put("minDaysInFirstWeek", cal.getMinimalDaysInFirstWeek());
+		map.put("firstWeekDay", cal.getFirstDayOfWeek() - cal.getActualMinimum(Calendar.DAY_OF_WEEK));
 
 		return map;
-	}
-
-	public String getFirstWeekDay(FacesContext context, UICalendar calendar)
-			throws IOException {
-		return String.valueOf(calendar.getFirstWeekDay());
-	}
-
-	public String getMinDaysInFirstWeek(FacesContext context,
-			UICalendar calendar) throws IOException {
-		return String.valueOf(calendar.getMinDaysInFirstWeek());
 	}
 
 	public String getCurrentDateAsString(FacesContext context,
