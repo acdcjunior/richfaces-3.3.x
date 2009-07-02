@@ -64,10 +64,8 @@ public class ScriptObjectTemplateElement extends TemplateElementBase {
 		Node baseNode = nnm.getNamedItem("base");
 		if (baseNode != null) {
 			base = ELParser.compileEL(baseNode.getNodeValue(), componentBean);
-		} else {
-			base = "";
 		}
-
+		
 		try {
 			this.getComponentBean().addVariable(variableName, VARIABLE_TYPE.getName());
 		} catch (CompilationException e) {
