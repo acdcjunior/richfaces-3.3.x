@@ -461,14 +461,47 @@
 			<classname>java.lang.String</classname>
 			<description>Target frame for action to execute.</description>
 		</property>
+        
 		&ui_component_attributes;
 		&html_input_attributes;
-		&html_input_events;
 		&ui_input_attributes;
 		&ui_output_attributes;
 		&html_events;
 		&ajax_component_attributes;
 		&ui_command_attributes;
+
+        <property hidden="true">
+            <name>onblur</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onchange</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>oncomplete</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onfocus</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onkeydown</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onkeypress</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onkeyup</name>
+            <classname>java.lang.String</classname>
+        </property>
+        <property hidden="true">
+            <name>onselect</name>
+            <classname>java.lang.String</classname>
+        </property>
 		<property>
 			<name>oncollapse</name>
 			<classname>java.lang.String</classname>
