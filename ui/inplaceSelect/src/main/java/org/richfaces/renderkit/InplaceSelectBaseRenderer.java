@@ -130,7 +130,11 @@ public class InplaceSelectBaseRenderer extends HeaderResourcesRendererBase {
 		if(writer != null) {
 			writer.startElement(HTML.SPAN_ELEM, component);
 			writer.writeAttribute(HTML.class_ATTRIBUTE, classes, null);
-			writer.writeText(value, null);
+			if(value != null && value.trim().length() > 0) {
+				writer.writeText(value, null);
+			} else {
+				writer.write("\u00a0");
+			}
 			writer.endElement(HTML.SPAN_ELEM);
 		}
 	}	
