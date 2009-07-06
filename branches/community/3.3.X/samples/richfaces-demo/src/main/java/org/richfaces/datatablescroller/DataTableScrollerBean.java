@@ -138,8 +138,6 @@ public class DataTableScrollerBean {
 		for (int i = 1; i <= allCars.size() / getRows()+1; i++) {
 			if (Math.abs(i - scrollerPage) < 5) {
 				SelectItem item = new SelectItem(i);
-				if (scrollerPage == i)
-					item.setDisabled(true);
 				list.add(item);
 			}
 		}

@@ -72,8 +72,8 @@
 					</f:facet>
 					<f:facet name="pages">
 						<h:panelGroup>
-							<h:outputText value="Page " />
-							<h:selectOneMenu value="#{dataTableScrollerBean.scrollerPage}"
+							<h:outputText value="Page "/>
+							<h:selectOneMenu value="#{dataTableScrollerBean.scrollerPage}" 
 								onchange="#{rich:component('ds')}.switchToPage(this.value)">
 								<f:selectItems value="#{dataTableScrollerBean.pagesToScroll}" />
 							</h:selectOneMenu>
