@@ -95,6 +95,9 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
 			List<SelectItem> selectItems = SelectUtils.getSelectItems(context, component);
 			for (SelectItem selectItem : selectItems) {
 			    String convertedValue = getConvertedStringValue(context, component, selectItem.getValue());
+			    if("".equals(convertedValue)) {
+			    	convertedValue = "\u00A0";
+			    }
 				values.add(convertedValue);
 			}
 		}
