@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
 import org.richfaces.component.UIScrollableDataTable;
@@ -21,16 +23,15 @@ import org.richfaces.model.SortOrder;
 import org.richfaces.model.selection.SimpleSelection;
 
 /**
- * @author Nick Belaevski - nbelaevski@exadel.com
- * created 02.03.2007
+ * @author Nick Belaevski - nbelaevski@exadel.com created 02.03.2007
  * 
  */
 public class DataTableScrollerBean {
-	
-	private DemoInventoryItem currentItem = new DemoInventoryItem();	
+
+	private DemoInventoryItem currentItem = new DemoInventoryItem();
 
 	private int rows = 10;
-	
+
 	public int getRows() {
 		return rows;
 	}
@@ -39,74 +40,91 @@ public class DataTableScrollerBean {
 		this.rows = rows;
 	}
 
+	public void fetchCurrentRow(ActionEvent event) {
+		String vin=(FacesContext.getCurrentInstance().
+				getExternalContext().getRequestParameterMap().get("vin"));
+		currentRow = Integer.parseInt(FacesContext.getCurrentInstance().
+				getExternalContext().getRequestParameterMap().get("row"));
+		for (DemoInventoryItem item : allCars) {
+			if (item.getVin().equals(vin)){
+				currentItem=item;
+				break;
+			}
+		}
+	}
+
 	private Set<Integer> keys = new HashSet<Integer>();
-	
-	private int currentRow;	
-	
+
+	private int currentRow;
+
 	private SimpleSelection selection = new SimpleSelection();
-	
+
 	private UIScrollableDataTable table;
-	
+
 	private SortOrder order = new SortOrder();
-	
+
 	private int scrollerPage;
-	
+
 	private ArrayList<DemoInventoryItem[]> model = null;
-	
+
 	private ArrayList<DemoInventoryItem> selectedCars = new ArrayList<DemoInventoryItem>();
-	private ArrayList<Facet> columns = new ArrayList<Facet>(); 
+	private ArrayList<Facet> columns = new ArrayList<Facet>();
 	private static int DECIMALS = 1;
 	private static int ROUNDING_MODE = BigDecimal.ROUND_HALF_UP;
-	
-	private List <DemoInventoryItem> allCars = null;
+
+	private List<DemoInventoryItem> allCars = null;
 
 	public DataTableScrollerBean() {
 		initColumnsHeaders();
-		SortField[] fields = {new SortField("make", true)};
+		SortField[] fields = { new SortField("make", true) };
 		order.setFields(fields);
 	}
-	
-	public List <DemoInventoryItem> getAllCars() {
+
+	public List<DemoInventoryItem> getAllCars() {
 		synchronized (this) {
 			if (allCars == null) {
 				allCars = new ArrayList<DemoInventoryItem>();
 				for (int k = 0; k <= 5; k++) {
-					try{
+					try {
 						switch (k) {
 						case 0:
-							allCars.addAll(createCar("Chevrolet","Corvette", 5));
-							allCars.addAll(createCar("Chevrolet","Malibu", 8));
-							allCars.addAll(createCar("Chevrolet","S-10", 10));
-							allCars.addAll(createCar("Chevrolet","Tahoe", 6));
+							allCars
+									.addAll(createCar("Chevrolet", "Corvette",
+											5));
+							allCars.addAll(createCar("Chevrolet", "Malibu", 8));
+							allCars.addAll(createCar("Chevrolet", "S-10", 10));
+							allCars.addAll(createCar("Chevrolet", "Tahoe", 6));
 							break;
 
 						case 1:
-							allCars.addAll(createCar("Ford","Taurus", 12));
-							allCars.addAll(createCar("Ford","Explorer", 11));
+							allCars.addAll(createCar("Ford", "Taurus", 12));
+							allCars.addAll(createCar("Ford", "Explorer", 11));
 							break;
 						case 2:
-							allCars.addAll(createCar("Nissan","Maxima", 9));
+							allCars.addAll(createCar("Nissan", "Maxima", 9));
 							break;
 						case 3:
-							allCars.addAll(createCar("Toyota","4-Runner", 7));
-							allCars.addAll(createCar("Toyota","Camry", 15));
-							allCars.addAll(createCar("Toyota","Avalon", 13));
+							allCars.addAll(createCar("Toyota", "4-Runner", 7));
+							allCars.addAll(createCar("Toyota", "Camry", 15));
+							allCars.addAll(createCar("Toyota", "Avalon", 13));
 							break;
 						case 4:
-							allCars.addAll(createCar("GMC","Sierra", 8));
-							allCars.addAll(createCar("GMC","Yukon", 10));
+							allCars.addAll(createCar("GMC", "Sierra", 8));
+							allCars.addAll(createCar("GMC", "Yukon", 10));
 							break;
 						case 5:
-							allCars.addAll(createCar("Infiniti","G35", 6));
+							allCars.addAll(createCar("Infiniti", "G35", 6));
 							break;
-						/*case 6:
-							allCars.addAll(createCar("UAZ","469", 6));
-							break;*/
+						/*
+						 * case 6: allCars.addAll(createCar("UAZ","469", 6));
+						 * break;
+						 */
 						default:
 							break;
 						}
-					}catch(Exception e){
-						System.out.println("!!!!!!loadAllCars Error: " + e.getMessage());
+					} catch (Exception e) {
+						System.out.println("!!!!!!loadAllCars Error: "
+								+ e.getMessage());
 						e.printStackTrace();
 					}
 				}
@@ -117,74 +135,85 @@ public class DataTableScrollerBean {
 
 	public List<SelectItem> getPagesToScroll() {
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		for (int i = 0; i <=allCars.size()/getRows(); i++) {
-			if (Math.abs(i-scrollerPage) < 5){
+		for (int i = 0; i <= allCars.size() / getRows(); i++) {
+			if (Math.abs(i - scrollerPage) < 5) {
 				SelectItem item = new SelectItem(i);
-				if (scrollerPage==i) item.setDisabled(true); 
+				if (scrollerPage == i)
+					item.setDisabled(true);
 				list.add(item);
-			} 
+			}
 		}
 		return list;
 	}
 
 	public List<DemoInventoryItem> getTenRandomCars() {
 		List<DemoInventoryItem> result = new ArrayList<DemoInventoryItem>();
-		int size = getAllCars().size()-1; 
+		int size = getAllCars().size() - 1;
 		for (int i = 0; i < 10; i++) {
 			result.add(getAllCars().get(rand(1, size)));
 		}
 		return result;
 	}
-	
+
 	public int genRand() {
-		return rand(1,10000);
+		return rand(1, 10000);
 	}
 
-	public List <DemoInventoryItem> createCar(String make, String model, int count){
+	public List<DemoInventoryItem> createCar(String make, String model,
+			int count) {
 
-		ArrayList <DemoInventoryItem> iiList = null;
+		ArrayList<DemoInventoryItem> iiList = null;
 
-		try{
+		try {
 			int arrayCount = count;
 
 			DemoInventoryItem[] demoInventoryItemArrays = new DemoInventoryItem[arrayCount];
 
-			for (int j = 0; j < demoInventoryItemArrays.length; j++){
+			for (int j = 0; j < demoInventoryItemArrays.length; j++) {
 				DemoInventoryItem ii = new DemoInventoryItem();
 
 				ii.setMake(make);
 				ii.setModel(model);
-				ii.setStock(randomstring(6,7));
-				ii.setVin(randomstring(14,15));
-				ii.setMileage(new BigDecimal(rand(5000,80000)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setMileageMarket(new BigDecimal(rand(25000,45000)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setPrice(new Integer(rand(15000,55000)));
-				ii.setPriceMarket(new BigDecimal(rand(15000,55000)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setDaysLive(rand(1,90));
-				ii.setChangeSearches(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setChangePrice(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setExposure(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setActivity(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setPrinted(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
-				ii.setInquiries(new BigDecimal(rand(0,5)).setScale(DECIMALS, ROUNDING_MODE));
+				ii.setStock(randomstring(6, 7));
+				ii.setVin(randomstring(14, 15));
+				ii.setMileage(new BigDecimal(rand(5000, 80000)).setScale(
+						DECIMALS, ROUNDING_MODE));
+				ii.setMileageMarket(new BigDecimal(rand(25000, 45000))
+						.setScale(DECIMALS, ROUNDING_MODE));
+				ii.setPrice(new Integer(rand(15000, 55000)));
+				ii.setPriceMarket(new BigDecimal(rand(15000, 55000)).setScale(
+						DECIMALS, ROUNDING_MODE));
+				ii.setDaysLive(rand(1, 90));
+				ii.setChangeSearches(new BigDecimal(rand(0, 5)).setScale(
+						DECIMALS, ROUNDING_MODE));
+				ii.setChangePrice(new BigDecimal(rand(0, 5)).setScale(DECIMALS,
+						ROUNDING_MODE));
+				ii.setExposure(new BigDecimal(rand(0, 5)).setScale(DECIMALS,
+						ROUNDING_MODE));
+				ii.setActivity(new BigDecimal(rand(0, 5)).setScale(DECIMALS,
+						ROUNDING_MODE));
+				ii.setPrinted(new BigDecimal(rand(0, 5)).setScale(DECIMALS,
+						ROUNDING_MODE));
+				ii.setInquiries(new BigDecimal(rand(0, 5)).setScale(DECIMALS,
+						ROUNDING_MODE));
 				demoInventoryItemArrays[j] = ii;
 
 			}
 
-			iiList = new ArrayList<DemoInventoryItem>(Arrays.asList(demoInventoryItemArrays));
+			iiList = new ArrayList<DemoInventoryItem>(Arrays
+					.asList(demoInventoryItemArrays));
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("!!!!!!createCategory Error: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return iiList;
 	}
 
-	public static int rand(int lo, int hi)
-	{
+	public static int rand(int lo, int hi) {
 		Random rn2 = new Random();
-		//System.out.println("**" + lo);
-		//System.out.println("**" + hi);
+		// System.out.println("**" + lo);
+		// System.out.println("**" + hi);
 		int n = hi - lo + 1;
 		int i = rn2.nextInt() % n;
 		if (i < 0)
@@ -192,12 +221,11 @@ public class DataTableScrollerBean {
 		return lo + i;
 	}
 
-	public static String randomstring(int lo, int hi)
-	{
+	public static String randomstring(int lo, int hi) {
 		int n = rand(lo, hi);
 		byte b[] = new byte[n];
 		for (int i = 0; i < n; i++)
-			b[i] = (byte)rand('A', 'Z');
+			b[i] = (byte) rand('A', 'Z');
 		return new String(b);
 	}
 
@@ -208,18 +236,19 @@ public class DataTableScrollerBean {
 	public void setSelection(SimpleSelection selection) {
 		this.selection = selection;
 	}
-	
+
 	public String takeSelection() {
 		getSelectedCars().clear();
-		if (getSelection().isSelectAll()){
+		if (getSelection().isSelectAll()) {
 			getSelectedCars().addAll(allCars);
-		}else{
+		} else {
 			Iterator<Object> iterator = getSelection().getKeys();
-			while (iterator.hasNext()){
+			while (iterator.hasNext()) {
 				Object key = iterator.next();
 				table.setRowKey(key);
 				if (table.isRowAvailable()) {
-					getSelectedCars().add((DemoInventoryItem) table.getRowData());
+					getSelectedCars().add(
+							(DemoInventoryItem) table.getRowData());
 				}
 			}
 		}
@@ -241,42 +270,42 @@ public class DataTableScrollerBean {
 	public void setTable(UIScrollableDataTable table) {
 		this.table = table;
 	}
-	
-	public void initColumnsHeaders(){
+
+	public void initColumnsHeaders() {
 		columns.clear();
 		String header;
-		String footer="";
+		String footer = "";
 		header = "Chevrolet";
-		Facet facet = new Facet(header ,footer);
+		Facet facet = new Facet(header, footer);
 		columns.add(facet);
 		header = "Ford";
-		facet = new Facet(header ,footer);
+		facet = new Facet(header, footer);
 		columns.add(facet);
 		header = "Nissan";
-		facet = new Facet(header ,footer);
+		facet = new Facet(header, footer);
 		columns.add(facet);
 		header = "Toyota";
-		facet = new Facet(header ,footer);
+		facet = new Facet(header, footer);
 		columns.add(facet);
 		header = "GMC";
-		facet = new Facet(header ,footer);
+		facet = new Facet(header, footer);
 		columns.add(facet);
 		header = "Infiniti";
-		facet = new Facet(header ,footer);
+		facet = new Facet(header, footer);
 		columns.add(facet);
 	}
-	
+
 	public ArrayList<DemoInventoryItem[]> getModel() {
-		if (model == null){ 
+		if (model == null) {
 			model = new ArrayList<DemoInventoryItem[]>();
 			for (int i = 0; i < 9; i++) {
 				DemoInventoryItem[] items = new DemoInventoryItem[6];
-				items[0]=createCar("Chevrolet","Corvette", 1).get(0);
-				items[1]=createCar("Ford","Explorer", 1).get(0);
-				items[2]=createCar("Nissan","Maxima", 1).get(0);
-				items[3]=createCar("Toyota","Camry", 1).get(0);
-				items[4]=createCar("GMC","Yukon", 1).get(0);
-				items[5]=createCar("Infiniti","G35", 1).get(0);
+				items[0] = createCar("Chevrolet", "Corvette", 1).get(0);
+				items[1] = createCar("Ford", "Explorer", 1).get(0);
+				items[2] = createCar("Nissan", "Maxima", 1).get(0);
+				items[3] = createCar("Toyota", "Camry", 1).get(0);
+				items[4] = createCar("GMC", "Yukon", 1).get(0);
+				items[5] = createCar("Infiniti", "G35", 1).get(0);
 				model.add(items);
 			}
 		}
@@ -336,5 +365,5 @@ public class DataTableScrollerBean {
 	public void setKeys(Set<Integer> keys) {
 		this.keys = keys;
 	}
-	
+
 }
