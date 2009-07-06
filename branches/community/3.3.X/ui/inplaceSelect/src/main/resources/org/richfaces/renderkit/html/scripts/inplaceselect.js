@@ -226,7 +226,11 @@ Richfaces.InplaceSelect = Class.create(Richfaces.InplaceInput, {
 				if (!item.itemValue || item.itemValue.blank()) {
 					item.itemValue = "";
 				} 
-								
+				
+				if(item.itemLabel) {
+					item.itemLabel = item.itemLabel.replace(/\xA0/g, " ");
+				}
+				
 				if (!item.itemLabel || item.itemLabel.blank()) {
 					item.itemLabel = this.attributes.defaultLabel; 				
 				}
@@ -255,7 +259,8 @@ Richfaces.InplaceSelect = Class.create(Richfaces.InplaceInput, {
 	
 	applyTmpValue : function() {
 		if (this.comboList.activeItem) {
-			var userLabel = this.comboList.activeItem.innerHTML.unescapeHTML();
+			var userLabel = jQuery(this.comboList.activeItem).text();
+			//var userLabel = this.comboList.activeItem.innerHTML.unescapeHTML();
 			this.currentItemValue = this.comboList.activeItem.value;
 			if(this.showValueInView) {
 				userLabel = this.currentItemValue;
