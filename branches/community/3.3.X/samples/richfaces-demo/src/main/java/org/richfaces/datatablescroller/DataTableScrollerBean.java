@@ -63,7 +63,7 @@ public class DataTableScrollerBean {
 
 	private SortOrder order = new SortOrder();
 
-	private int scrollerPage;
+	private int scrollerPage=1;
 
 	private ArrayList<DemoInventoryItem[]> model = null;
 
@@ -135,7 +135,7 @@ public class DataTableScrollerBean {
 
 	public List<SelectItem> getPagesToScroll() {
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		for (int i = 0; i <= allCars.size() / getRows(); i++) {
+		for (int i = 1; i <= allCars.size() / getRows()+1; i++) {
 			if (Math.abs(i - scrollerPage) < 5) {
 				SelectItem item = new SelectItem(i);
 				if (scrollerPage == i)
