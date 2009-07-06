@@ -163,7 +163,7 @@ public class MediaData implements Serializable{
     Color DrawColor=new Color(0,0,0);
     Font font = new Font("Serif", Font.TRUETYPE_FONT, 30);
     
-    // Corresponding getters and setters
+    /* Corresponding getters and setters */
     
 }]]></programlisting>      
                   
