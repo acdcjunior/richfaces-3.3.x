@@ -40,7 +40,7 @@ public class UserBean {
 	}
 	
 	public String nameItJohn() {
-		setName("Jonh");
+		setName("John");
 		return null;
 	}
 	public String nameItMark() {
