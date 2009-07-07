@@ -38,15 +38,16 @@
           </para>
 
           <section>
-                    <title>Creating on a page</title>
-                    <para>The component definition on a page is the same as for the
-                                        <property>facelets</property> component:</para>
-                    <programlisting role="XML"><![CDATA[<a4j:repeat id="detail" value="#{bean.props}" var="detail">
+                <title>Creating the Component with a Page Tag</title>
+                    <para>
+                          To create the simplest variant on a page use the following syntax:
+                    </para>
+                <programlisting role="XML"><![CDATA[<a4j:repeat id="detail" value="#{bean.props}" var="detail">
 	<h:outputText value="#{detail.someProperty}"/>
 </a4j:repeat>]]></programlisting>
-                    <para>The output is generated according to a collection contained in
-                                        <code>bean.props</code> with the <code>detail</code> key
-                              passed to child components.</para>
+                    <para>
+                          The output is generated according to a collection contained in <code>bean.props</code> with the <code>detail</code> key passed to child components.
+                    </para>
           </section>
           <section>
                     <title>Creating the Component Dynamically Using Java</title>
@@ -61,45 +62,47 @@ HtmlAjaxRepeat repeater = new HtmlAjaxRepeat ();
 ]]></programlisting>
           </section>
           <section>
-                    <title>Key attributes and ways of usage</title>
-                    <para>The main difference of this component from iterative components of other
-                              libraries is a special <emphasis>
-                                        <property>&quot;ajaxKeys&quot;</property>
-                              </emphasis> attribute. This attribute defines row keys that are
-                              updated after an Ajax request. As a result it becomes easier to update
-                              several child components separately without updating the whole page.</para>
-
+                    <title>Details of usage</title>
+                    <para>
+                          The <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property></emphasis> component is similar to Facelets <emphasis role="bold"><property>&lt;ui:repeat&gt;</property></emphasis> tag, 
+                          which is used to iterate through a collection of objects binded with JSF page as EL expression. 
+                          The main difference of the <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property></emphasis> is a possibility to update particular components (it's children) instead of all using Ajax requests. 
+                          The feature that makes the component different is a special <emphasis><property>&quot;ajaxKeys&quot;</property></emphasis> attribute that defines row that are updated after an Ajax request. 
+                          As a result it becomes easier to update several child components separately without updating the whole page.
+                    </para>
+                
+     
                     <programlisting role="XML"><![CDATA[...
 <table>
-	<tbody>
-		<a4j:repeat value="#{repeatBean.items}" var="item"
-		     		ajaxKeys="#{updateBean.updatedRow}">
-			<tr>
-				<td><h:outputText value="#{item.code}" id="item1" /></td>
-				<td><h:outputText value="#{item.price}" id="item2" /></td>
-			</tr>
-		</a4j:repeat>
-	</tbody>
+      <tbody>
+            <a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}">
+                  <tr>
+                        <td><h:outputText value="#{item.code}" id="item1" /></td>
+                        <td><h:outputText value="#{item.price}" id="item2" /></td>
+                  </tr>
+            </a4j:repeat>
+      </tbody>
 </table>
-...]]></programlisting>
-                    <note>
-                              <title>Note:</title>
-                              <para>The <emphasis role="bold">
-                                                  <property>&lt;a4j:repeat&gt;</property>
-                                        </emphasis> component is defined as fully updated, but
-                                        really updated there are only the row keys which defined in the <emphasis>
-                                                  <property>&quot;ajaxKeys&quot;</property>
-                                        </emphasis> attribute. </para>
-                              <para>The set could be defined during the action method processing
-                                        using data on a model from the property
-                                                  <code>repeater.myRepeat</code>
-                              </para>
-                    </note>
-                    <para>One more benefit of this component is absence of strictly defined markup
-                              as JSF HTML DataTable and TOMAHAWK DataTable has, hence the components
-                              could be used more flexibly anywhere where it&apos;s necessary to
-                              output the results of selection from some collection.</para>
-                    <para>The next example shows collection output as a plain HTML list:</para>
+ ...]]></programlisting>
+                    
+                <para>
+                      The example above the <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property></emphasis> points to an method that contains row keys to be updated. 
+                </para>
+                <note>
+                      <title>Note:</title>
+                      <para>
+                            The <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property></emphasis> component is defined as fully updated, 
+                            but really updated there are only the row keys which defined in the <emphasis><property>&quot;ajaxKeys&quot;</property></emphasis> attribute. 
+                      </para>
+                </note>
+                
+                
+                    <para>
+                          One more benefit of this component is absence of strictly defined markup as JSF HTML DataTable and TOMAHAWK DataTable has. 
+                          Hence the components could be used more flexibly anywhere where it&apos;s necessary to output the results of selection from some collection.
+                    </para>
+                    
+                <para>The next example shows collection output as a plain HTML list:</para>
                     <programlisting role="XML"><![CDATA[<ul>
       <a4j:repeat ...>
 	    <li>...<li/>
@@ -118,11 +121,7 @@ HtmlAjaxRepeat repeater = new HtmlAjaxRepeat ();
           <section>
                     <title>Relevant resources links</title>
                     <para>
-                              <ulink
-                                        url="http://livedemo.exadel.com/richfaces-demo/richfaces/repeat.jsf?c=repeat"
-                                        >On the component LiveDemo page</ulink> you can see the example of <emphasis
-                                        role="bold">
-                                        <property>&lt;a4j:repeat&gt;</property>
-                              </emphasis> usage and sources for the given example. </para>
+                              Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/repeat.jsf?c=repeat">Repeat page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+                    </para>
           </section>
 </chapter>
