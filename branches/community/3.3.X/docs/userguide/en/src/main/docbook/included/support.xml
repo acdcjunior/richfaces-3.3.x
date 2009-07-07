@@ -194,8 +194,12 @@ public class PlanetsMoons {
 				<property>&quot;oncomplete&quot;</property>
 			</emphasis>
 			attributes the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component 
-			allows to use JavaScript calls before an Ajax request
-			and after an Ajax response respectively. 
+			allows to use JavaScript calls before and after an Ajax request
+			respectively. 
+			Actuallly the JavaScript specified in the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute
+			will be executed in any case whether the Ajax request is completed successfully or not. 
+		</para>
+		<para> 
 			You can easily add confirmation dialog for the planet select box and colorize 
 			<emphasis role="bold"><property>&lt;h:dataTable&gt;</property></emphasis> after the Ajax response:
 		</para>
