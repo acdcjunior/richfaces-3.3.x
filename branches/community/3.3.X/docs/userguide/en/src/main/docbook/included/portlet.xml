@@ -51,35 +51,43 @@ HtmlPortlet myPortlet = new HtmlPortlet();
   </section>
 
   <section>
-    <title>Key attributes and ways of usage</title>
-    <para> 
-	 The main component purpose is realization of possibility to create several instances the same portlet on
-	  one page. But clientId of elements
-      should be different for each window. In that case namespace is used for
-      each portlet. The <emphasis role="bold">
-        <property>&lt;a4j:portlet&gt;</property>
-      </emphasis> <code>implemets NaimingContainer</code> interface and adds namespace to all componets on a
-      page. All portlet content should be wrapped by <emphasis role="bold">
-        <property>&lt;a4j:portlet&gt;</property>
-      </emphasis> for resolving problems mentioned before. </para>
+    <title>Details of usage</title>
+    <para>
+          The main component purpose is realization of possibility to create several instances the same portlet on one page. 
+          But clientId of elements should be different for each window. In that case namespace is used for each portlet. 
+          The <emphasis role="bold"><property>&lt;a4j:portlet&gt;</property></emphasis> <code>implemets NaimingContainer</code> interface and adds namespace to all componets on a page. 
+          All portlet content should be wrapped by <emphasis role="bold"><property>&lt;a4j:portlet&gt;</property></emphasis> for resolving problems mentioned before. 
+    </para>
 
   </section>
-  <section>
-    <title>Relevant resources links</title>
-    <para><ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/portlet.jsf?c=portlet"
-      >On RichFaces LiveDemo page </ulink> you can found some additional information for <emphasis role="bold">
-        <property>&lt;a4j:portlet&gt;</property>
-      </emphasis> component usage. </para>
-    <para> The additional information about component usage you can find here: <ulink
-        url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325"
-        >Ajax4Jsf Users Forum</ulink>.
-    </para>
-    <para>Portlet Sample could be checked out from JBoss SVN: <ulink
-        url="http://anonsvn.jboss.org/repos/ajax4jsf/trunk/samples/portal-echo/">portal-echo
-        application</ulink>.
-    </para>
-    <para>Usage instructions for this demo could be found at the corresponding: <ulink
-      url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325">portal-echo
-      application</ulink>.</para>
+  
+      
+      <section>
+            <title>Relevant resources links</title>
+            <para>
+                  Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/portlet.jsf?c=portlet">Portlet page</ulink> at RichFaces LiveDemo for examples of component usage and their sources. 
+            </para>
+            
+            <para>
+                  Useful publications: 
+            </para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325">Ajax4Jsf Users Forum</ulink> — check the forum for additional information about component usage;
+                        </para>
+                  </listitem>
+                  <listitem>
+                        <para>
+                              <ulink url="http://anonsvn.jboss.org/repos/ajax4jsf/trunk/samples/portal-echo/">portal-echo application</ulink> — Portlet Sample, could be checked out from JBoss SVN;
+                        </para>
+                  </listitem>
+                  <listitem>
+                        <para>
+                              <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325">First snapshot with Portal environment support</ulink> contains usage instructions for the Portlet Sample demo.
+                        </para>
+                  </listitem>
+            </itemizedlist>
+
   </section>
 </chapter>
