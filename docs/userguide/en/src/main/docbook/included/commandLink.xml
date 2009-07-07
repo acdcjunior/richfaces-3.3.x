@@ -65,17 +65,38 @@ HtmlAjaxCommandLink myLink = new HtmlAjaxCommandLink();
       <para>
             The <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> component is used in the same way as JSF <emphasis role="bold"><property>&lt;h:commandLink&gt;</property></emphasis>. 
             The difference is that in case of <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> the components to be updated should be specified.
+            In this chapter we will use the code from <link linkend="RichFacesGreeterindex">RichFaces Greeter</link> and change there <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> to <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis>:
       </para>
           
+          <programlisting role="XML"><![CDATA[...
+<a4j:commandLink value="Get greeting" reRender="greeting" />
+...]]></programlisting>
+          
+          <para>
+                It&apos;s not necessary to add nested <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> as the <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> has an Ajax support already built-in. 
+                As a result of our changes we will get a form with &quot;Get greeting&quot; link instead of the button:
+          </para>
+          <figure>
+                <title>
+                      The RicjFaces greeter with <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis>
+                </title>
+                
+                <mediaobject>
+                      <imageobject>
+                            <imagedata fileref="images/commandLink_init.png"/>
+                      </imageobject>
+                </mediaobject>
+          </figure>
+                  
           <para>
                 The example <link linkend="CL_example">above</link> generates the following HTML code:
           </para>
           
-          <programlisting role="XML"><![CDATA[<a href="#" onclick="A4J.AJAX.Submit(?"request parameters"); return false;"><span>Follow this link</span></a>]]></programlisting>
+          <programlisting role="XML"><![CDATA[<a href="#" onclick="A4J.AJAX.Submit(?"request parameters"); return false;"><span>Get greeting</span></a>]]></programlisting>
           
           <para>
                 If you click on the generated anchor the utility method <code>A4J.AJAX.Submit()</code> will be fired. 
-                It&apos;s not necessary to add nested <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> as the <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> has an Ajax support already built-in.
+                
           </para> 
           
           <note>
