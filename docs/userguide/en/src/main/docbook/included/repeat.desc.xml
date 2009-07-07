@@ -8,8 +8,8 @@
         </keywordset>
     </sectioninfo>
 <title>Description</title>
-    <para>The <emphasis role="bold">
-        <property>&lt;a4j:repeat&gt;</property>
-      </emphasis> component implements a basic iteration component allowing to update a set of its children with Ajax.</para>
+    <para>
+          The <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property></emphasis> component implements a basic iteration component that allows to update a set of its children with Ajax.
+    </para>
 </section>
 </root>
