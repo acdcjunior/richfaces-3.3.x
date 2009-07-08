@@ -21,14 +21,19 @@
 package org.richfaces.renderkit;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.ajax4jsf.renderkit.ComponentVariables;
-import org.ajax4jsf.renderkit.ComponentsVariableResolver;
+import org.ajax4jsf.javascript.JSFunction;
+import org.ajax4jsf.javascript.JSFunctionDefinition;
+import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.renderkit.HeaderResourcesRendererBase;
 import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.resource.InternetResource;
@@ -89,81 +94,6 @@ public class ComponentControlRendererBase  extends HeaderResourcesRendererBase {
     }
 
     /**
-     * Prepare Java script according to the timing option of the component control
-     * and write it to the ResponceWriter
-     * @param context - FacesContext
-     * @param component - component control
-     * @throws IOException - is thrown in case of writing to ResponceWriter exception
-     */
-    protected void attachEventAccordingToTimingOption(FacesContext context,
-            UIComponent component) throws IOException {
-        if (!(component instanceof UIComponentControl)) {
-            return;
-        }
-        
-        UIComponentControl componentControl = (UIComponentControl) component;
-        String attachTo = componentControl.getAttachTo();
-        String attachTiming = componentControl.getAttachTiming();
-        boolean isImmediate = attachTiming.equals(IMMEDIATE);
-        boolean isOnLoad = attachTiming.equals(ON_LOAD);
-        boolean isOnAvailable = attachTiming.equals(ON_AVAILABLE);
-        
-        if (!(isImmediate || isOnLoad || isOnAvailable || attachTo == null || attachTo.length() == 0)) {
-            // unknown value of property "attachTiming"
-            return;
-        }
-        
-        ResponseWriter writer = context.getResponseWriter();
-        ComponentVariables variables = 
-            ComponentsVariableResolver.getVariables(this, componentControl);
-        
-        writer.startElement("script", componentControl);
-        getUtils().writeAttribute(writer, "type", "text/javascript");
-        writer.writeText("//", null);
-        writer.write("<![CDATA[");
-        
-        String attachEventBodyStart = "\n{\n    Richfaces.componentControl.attachEvent('";
-        StringBuilder attachEventBodyEnd = new StringBuilder();
-        attachEventBodyEnd.append("', '");
-        attachEventBodyEnd.append(convertToString(variables.getVariable("event")));
-        attachEventBodyEnd.append("', '");
-        attachEventBodyEnd.append(convertToString(variables.getVariable("forAttr")));
-        attachEventBodyEnd.append("', '");
-        attachEventBodyEnd.append(convertToString(variables.getVariable("operation")));
-        attachEventBodyEnd.append("', function() { return {");
-        attachEventBodyEnd.append(convertToString(variables.getVariable("params")));
-        attachEventBodyEnd.append("}; }, ");
-        attachEventBodyEnd.append(convertToString(componentControl.isDisableDefault()));
-        attachEventBodyEnd.append(");\n }");
-        
-        String pattern = "\\s*,\\s*";
-        // "attachTo" attribute may contain several ids splitted by ","
-        String[] result = attachTo.split(pattern);
-        for (int i = 0; i < result.length; i++) {
-            if (isOnLoad) {
-                writer.write("\n jQuery(document).ready(function()");
-            } else if (isOnAvailable) {
-                UIComponent target = RendererUtils.getInstance()
-                               .findComponentFor(context, component, result[i]);
-                String clientId = (target != null) ? target.getClientId(context) : result[i];
-                writer.write("\n Richfaces.onAvailable('" + clientId + "', function()");
-            } else if (isImmediate) {
-            }
-            
-            writer.write(attachEventBodyStart);
-            writer.write(getUtils().escapeJavaScript(replaceClientIds(context, component, result[i])));
-            writer.write(attachEventBodyEnd.toString());
-            
-            if (isOnLoad || isOnAvailable) {
-                writer.write(");");
-            }
-        }
-        writer.writeText("//", null);
-        writer.write("]]>");
-        writer.endElement("script");
-    }
-	
-    /**
      * Gets additional scripts.
      * 
      * @return array of resources
@@ -180,5 +110,119 @@ public class ComponentControlRendererBase  extends HeaderResourcesRendererBase {
      */
     private static String convertToString(Object obj ) {
         return ( obj == null ? "" : obj.toString() );
+    }
+    
+    private static String convertToString(List array, String separator ) {
+        StringBuilder sb = new StringBuilder();
+        boolean close = false;
+        Iterator<Object> i = array.iterator();
+        while (i.hasNext())
+        {
+        	Object item = i.next();
+        	if (close) {
+        		sb.append(separator);
+        	} else {
+        		close = true;
+        	}
+        	sb.append(item);
+        }
+        return sb.toString();
+    }
+    
+    public void getScript(FacesContext context, UIComponent component) throws IOException {
+    	
+    	UIComponentControl componentControl = (UIComponentControl) component;
+    	ResponseWriter writer = context.getResponseWriter();
+    	
+    	Map<String, Object> attributes = component.getAttributes();
+    	
+    	JSFunctionDefinition function = null;
+    	List<JSFunction> functionArray = new ArrayList<JSFunction>();
+    	
+    	String name = convertToString(attributes.get("name"));
+    	String attachTo = convertToString(attributes.get("attachTo"));
+    	String forAttr = convertToString(attributes.get("for"));
+    	forAttr = replaceClientIds(context, component, forAttr);
+    	String operation = convertToString(attributes.get("operation"));
+    	String attachTiming = componentControl.getAttachTiming();
+    	checkValidity(componentControl.getClientId(context), name, attachTiming, forAttr, operation);
+    	String event = convertToString(attributes.get("event"));
+    	
+    	String performScript = null;
+    	
+    	if (!"".equals(name.trim())) {
+    		JSFunction subFunction = new JSFunction("Richfaces.componentControl.performOperation");
+    		subFunction.addParameter(new JSReference("cevent"));
+    		subFunction.addParameter(event);
+    		subFunction.addParameter(forAttr);
+    		subFunction.addParameter(operation);
+    		componentControl.addOptions(subFunction);
+    		
+    		function = new JSFunctionDefinition("cevent");
+    		function.setName(name);
+    		function.addToBody(subFunction);
+    		performScript = function.toString();
+    	}
+    	
+    	if (attachTo != null && attachTo.trim().length() != 0 && !"#".equals(attachTo)) {
+    			
+	        boolean isImmediate = attachTiming.equals(IMMEDIATE);
+	        boolean isOnLoad = attachTiming.equals(ON_LOAD);
+	        boolean isOnAvailable = attachTiming.equals(ON_AVAILABLE);
+	        
+	        if (!(isImmediate || isOnLoad || isOnAvailable)) {
+	            // unknown value of property "attachTiming"
+	            return;
+	        }
+	        
+            String pattern = "\\s*,\\s*";
+            // "attachTo" attribute may contain several ids splitted by ","
+            String[] result = attachTo.split(pattern);
+            for (int i = 0; i < result.length; i++) {
+            	JSFunction mainFunction = null;
+                if (isOnLoad) {
+                	mainFunction = new JSFunction("jQuery(document).ready");
+                } else if (isOnAvailable) {
+                    UIComponent target = RendererUtils.getInstance().findComponentFor(context, component, result[i]);
+                    String clientId = (target != null) ? target.getClientId(context) : result[i];
+                    mainFunction = new JSFunction("Richfaces.onAvailable",clientId);
+                } else if (isImmediate) {
+                }
+                
+                if (mainFunction!=null)
+                {
+                    JSFunction subFunction = new JSFunction("Richfaces.componentControl.attachEvent");
+                    subFunction.addParameter(replaceClientIds(context, component, result[i]));
+        	        subFunction.addParameter(event);
+            		subFunction.addParameter(forAttr);
+            		subFunction.addParameter(operation);
+            		componentControl.addOptions(subFunction);
+            		
+            		function = new JSFunctionDefinition("");
+            		function.addToBody(subFunction);
+            		
+                    mainFunction.addParameter(function);
+                	functionArray.add(mainFunction);
+                }
+            }
+    	}
+    	
+    	if (!functionArray.isEmpty() || performScript!=null) {
+    		writer.startElement("script", componentControl);
+            getUtils().writeAttribute(writer, "type", "text/javascript");
+            writer.writeText("//", null);
+            writer.write("<![CDATA[\n");
+            if (performScript!= null) {
+            	 writer.write(performScript);
+            	 writer.write(";");
+            }
+            if (!functionArray.isEmpty()) {
+            	writer.write(convertToString(functionArray, ";"));
+            	writer.write(";");
+            }
+            writer.writeText("\n//", null);
+            writer.write("]]>");
+            writer.endElement("script");
+    	}
     }
 }

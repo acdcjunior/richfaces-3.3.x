@@ -158,11 +158,11 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
     	assertEquals(6, params.length);
     	
     	assertTrue(params[0].trim().endsWith("event"));
-    	assertEquals("'#button'", params[1].trim());
-    	assertEquals("'testOperation'", params[2].trim());
-    	assertTrue(params[3].trim().startsWith("{"));
-    	assertTrue(params[4].trim().endsWith("}"));
-    	assertTrue(params[5].trim().endsWith("false)"));
+    	assertEquals("'onclick'", params[1].trim());
+    	assertEquals("'#button'", params[2].trim());
+    	assertEquals("'testOperation'", params[3].trim());
+    	assertTrue(params[4].trim().startsWith("function(){return{"));
+    	assertTrue(params[5].trim().endsWith("}})"));
     }
     
     public void testParametersMap() throws Exception {

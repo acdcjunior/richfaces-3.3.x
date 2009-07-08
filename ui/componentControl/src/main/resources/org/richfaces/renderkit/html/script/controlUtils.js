@@ -31,7 +31,7 @@ Richfaces.componentControl.applyDecorations = function (element, forAttr, decora
 
 Richfaces.componentControl.attachEvent = function(attachTo, aevent, forAttr, operation, params, disableDefault) {
 	jQuery(attachTo).bind(Richfaces.effectEventOnOut(aevent),function(cevent) {
-		Richfaces.componentControl.performOperation(cevent,  forAttr, operation, params, disableDefault);
+		Richfaces.componentControl.performOperation(cevent, aevent, forAttr, operation, params, disableDefault);
 	}).each(function() {
 		Richfaces.componentControl.applyDecorations(this, forAttr, function(element) {
 			//TODO: handle component decoration
@@ -39,10 +39,19 @@ Richfaces.componentControl.attachEvent = function(attachTo, aevent, forAttr, ope
 	});
 };
 
-Richfaces.componentControl.performOperation = function( cevent,  forAttr, operation, params, disableDefault) {
+Richfaces.componentControl.checkDisableDefault = function (ename, disableDefault) {
+	if (disableDefault==undefined) {
+		var en=ename.toLowerCase();
+		return (en=="oncontextmenu" || en=="contextmenu" ? true : false);
+	} else {
+		return disableDefault;
+	}
+}
+
+Richfaces.componentControl.performOperation = function( cevent, aevent, forAttr, operation, params, disableDefault) {
 	
 	// stop event before event isn't extended by prototype  
-	if (disableDefault) {
+	if (Richfaces.componentControl.checkDisableDefault(aevent, disableDefault)) {
 		var event = jQuery.event.fix(cevent);
 		event.stopPropagation();
 		event.preventDefault();
