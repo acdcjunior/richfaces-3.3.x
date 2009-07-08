@@ -72,7 +72,7 @@ A4J.AJAX.XMLHttpRequest.prototype = {
  					return;
  				};
  				
-          		LOG.debug("Reqest state : "+_this._request.readyState );
+          		LOG.debug("Request state : "+_this._request.readyState );
 		      	if (_this._request.readyState == 4  ) {
 	 				if(_this._aborted){
  					    //this will be true just once for request - no need to track state of status
@@ -82,7 +82,7 @@ A4J.AJAX.XMLHttpRequest.prototype = {
 	 					return;
 	 				};
 
-	 				LOG.debug("Reqest end with state 4");
+	 				LOG.debug("Request end with state 4");
 		      		if(_this._timeoutID){
 		      			window.clearTimeout(_this._timeoutID);
 		      		}
@@ -115,7 +115,7 @@ A4J.AJAX.XMLHttpRequest.prototype = {
 		      			}      			
 		      			
 		      		} else {
-		      			_this._errorMessage = "Reqest error, status : "+requestStatus +" " + requestStatusText ;
+		      			_this._errorMessage = "Request error, status : "+requestStatus +" " + requestStatusText ;
 		      			LOG.error(_this._errorMessage);
 		      			if(typeof(_this._onerror) == "function"){
 		      				_this._onerror(_this,requestStatus,_this._errorMessage);
