@@ -38,7 +38,6 @@ import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
@@ -69,7 +68,6 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     private static final OrderingComponentRendererBase.ControlsHelper[] SHUTTLE_HELPERS = PickListControlsHelper.HELPERS;
     
     protected static final class ListStateFlags {
-
     	public ListStateFlags() {
     		super();
     	}
@@ -79,40 +77,19 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     	protected boolean isAvailableList;
     }
     
-    protected List<SelectItem> selectItemsForSelectedList(FacesContext facesContext, UIComponent uiComponent, List<SelectItem> selectItemList, List<Object> lookupList) {
-		
-    	List<SelectItem> selectItemForSelectedValues = new ArrayList<SelectItem>();
+    protected List<ConvertedSelectItem> selectItemsForSelectedList(List<ConvertedSelectItem> selectItems) {
+    	List<ConvertedSelectItem> result = new ArrayList<ConvertedSelectItem>();
 	
-		for (Object lookupItem: lookupList) {
-		    
-			for (SelectItem selectItem: selectItemList) {
-		    	
-				if(selectItem instanceof SelectItemGroup) {
-
-					SelectItem[] items = ((SelectItemGroup) selectItem).getSelectItems();
-					for (int j = 0; j < items.length; j++) {
-						if(lookupItem.equals(items[j].getValue())) {
-							selectItemForSelectedValues.add(items[j]);
-						}
-					}
-					
-				} else {
-					
-					if (lookupItem.equals(selectItem.getValue())) {
-						selectItemForSelectedValues.add(selectItem);
-					}
-					
-				}
-				
+		for (ConvertedSelectItem selectItem: selectItems) {
+		    if (selectItem.isSelected()) {
+		        result.add(selectItem);
 		    }
-		    
-		}
+	    }
 		
-		return selectItemForSelectedValues;
+		return result;
     }
     
     protected List<Object> getValuesList(UIPickList pickList) {
-    	
     	List <Object> valuesList = new ArrayList<Object>();
     	
     	Object value = getCurrentValue(FacesContext.getCurrentInstance(), pickList);
@@ -130,19 +107,13 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     			if(localValue != null) {
     				valuesList.add(localValue);
     			}
-    			
  		    }
     		
  		    return valuesList;
     	} else if(value instanceof List) {
-    		List <?> list = (List<?>) value;
-   		
-    		for (Object item: list) {
-    			valuesList.add(item);
-		    }
-		    	
-		   	return valuesList;
-		
+			valuesList.addAll((List<?>)value);
+		   	
+			return valuesList;
     	} else {
 			throw new IllegalArgumentException("Error: value of UIPickList component is not of type Array or List");
 		}
@@ -165,37 +136,20 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
                 return submittedValue;
             }
         }
-        Object currentValue = ((UIPickList)component).getValue();
-        return currentValue;
 
+        return ((UIPickList)component).getValue();
     }
     
-    protected List <SelectItem> selectItemsForAvailableList(FacesContext facesContext, UIComponent uiComponent, List<SelectItem> selectItemList,
-	    List<SelectItem> selectItemsForSelectedList) {
-    	    	
-    	  List <SelectItem> processItems = new ArrayList<SelectItem>();	
-    	  
-    	  for(SelectItem item: selectItemList) {
-    		  
-    		  if(item instanceof SelectItemGroup) {
-    			
-    			SelectItem items[] = ((SelectItemGroup)item).getSelectItems();  
-    			for (int i = 0; i < items.length; i++) {
-					processItems.add(items[i]);
-				}
-    			
-    		  } else {
-    			  processItems.add(item);
-    		  }
-    		  
-    	  }
-    	
-    	  for (SelectItem selectItem: selectItemsForSelectedList) {
-              processItems.remove(selectItem);
-          }
-          
-    	  return processItems;
-      	
+    protected List<ConvertedSelectItem> selectItemsForAvailableList(List<ConvertedSelectItem> selectItems) {
+        List<ConvertedSelectItem> result = new ArrayList<ConvertedSelectItem>();
+        
+        for (ConvertedSelectItem selectItem: selectItems) {
+            if (!selectItem.isSelected()) {
+                result.add(selectItem);
+            }
+        }
+        
+        return result;
     }
 
     protected List <SelectItem> getSelectItemsList(FacesContext context, UIComponent component) {
@@ -238,7 +192,6 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     }
 
     private static boolean isTrue(Object obj) {
-		
     	if (!(obj instanceof Boolean)) {
 		    return false;
 		}
@@ -260,56 +213,13 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
       	return convertedValue;
     }
     
-    private void encodeRows(FacesContext context, UIPickList pickList, boolean source, ListStateFlags flags) throws IOException {
-    	
-    	List <SelectItem> selectItemsList = SelectUtils.getSelectItems(context, pickList);
-
-    	Converter converter = pickList.getConverter();
-    	
-		List <Object> values = getValuesList(pickList); // PickListUtils.getValuesList(context, pickList, converter);
-		
-		List <SelectItem> selectItemsForSelectedValues = selectItemsForSelectedList(context, pickList, selectItemsList, values);
-		List <SelectItem> selectItemsForAvailableList = selectItemsForAvailableList(context, pickList, selectItemsList, selectItemsForSelectedValues);
-		
-		flags.isSelectedList = !selectItemsForSelectedValues.isEmpty();
-		flags.isAvailableList = !selectItemsForAvailableList.isEmpty();
-	
-		List <SelectItem> selectItemList = null;
-		
-		if (source) {
-		    selectItemList = selectItemsForAvailableList;
-		} else {
-		    selectItemList = selectItemsForSelectedValues;
+    private void encodeRows(FacesContext context, UIPickList pickList, boolean source, ListStateFlags flags, List<ConvertedSelectItem> selectItemList) throws IOException {
+		for (ConvertedSelectItem item : selectItemList) {
+	    	encodeItem(context, pickList, item, source);
 		}
-	
-		if(selectItemList != null) {
-			
-			SelectItem [] itemsList =  selectItemList.toArray(new SelectItem[selectItemList.size()]);
-			
-			for (int i = 0; i < itemsList.length; i++) {
-			    
-				SelectItem selectItem = itemsList[i];
-			   
-				if (selectItem instanceof SelectItemGroup) {
-					
-			    	SelectItem[] items = ((SelectItemGroup) selectItem).getSelectItems();
-					for (int j = 0; j < items.length; j++) {
-					    encodeItem(context, pickList, converter, items[j], source, "group:" + j);
-					}
-					
-			    } else {
-			    	
-			    	encodeItem(context, pickList, converter, selectItem, source, Integer.toString(i));
-			    	
-			    }
-				
-			}
-		
-		}
-		
     }
 
-    public void encodeItem(FacesContext context, UIComponent component, Converter converter, SelectItem selectItem, boolean source, String suff)
+    public void encodeItem(FacesContext context, UIComponent component, ConvertedSelectItem selectItem,  boolean source)
 	    throws IOException {
 
     	ResponseWriter writer = context.getResponseWriter();
@@ -321,23 +231,18 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     		clientId += ":source:";
     	}
     	
-    	String id = clientId + ":" + suff;
-	
+    	String id = clientId + ":" + selectItem.getSuffix();
     	writer.writeAttribute("id", id, null);
 
 		StringBuffer rowClassName = new StringBuffer();
 		StringBuffer cellClassName = new StringBuffer();
 
 		if (source) {
-			
 			rowClassName.append("rich-picklist-source-row");
 			cellClassName.append("rich-picklist-source-cell");
-			
 		} else {
-			
 			rowClassName.append("rich-picklist-target-row");
 			cellClassName.append("rich-picklist-target-cell");
-			
 		}
 
 		writer.writeAttribute("class", rowClassName.toString(), null);
@@ -353,32 +258,34 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
 
 		boolean escape = isTrue(component.getAttributes().get("escape"));
 		if (escape) {
-			writer.writeText(selectItem.getLabel(), null);
+			writer.writeText(selectItem.getItem().getLabel(), null);
 		} else {
-			writer.write(selectItem.getLabel());
+			writer.write(selectItem.getItem().getLabel());
 		}
-		
-		String itemValue;
-		if (converter != null) {
-			itemValue = converter.getAsString(context, component, selectItem.getValue());
-		} else {
-			Object valueObject = selectItem.getValue();
-			itemValue = (valueObject != null ? valueObject.toString() : "");
-		}
-				
-		encodeItemValue(context, component, writer, id, itemValue);
+		encodeItemValue(context, component, writer, id, selectItem.getConvertedValue());
 		
 		writer.endElement(HTML.td_ELEM);
 		writer.endElement(HTML.TR_ELEMENT);
-
     }
 
-    public void encodeTargetRows(FacesContext context, UIPickList pickList, ListStateFlags flags) throws IOException {
-    	encodeRows(context, pickList, false, flags);
+    public void encodeTargetRows(FacesContext context, UIPickList pickList, ListStateFlags flags, List<ConvertedSelectItem> convertedItems) throws IOException {
+        List<ConvertedSelectItem> selectItemsForSelectedValues = 
+            selectItemsForSelectedList(convertedItems);
+        
+        flags.isSelectedList = !selectItemsForSelectedValues.isEmpty();
+        flags.isAvailableList = selectItemsForSelectedValues.size() != convertedItems.size();
+        
+    	encodeRows(context, pickList, false, flags, selectItemsForSelectedValues);
     }
 
-    public void encodeSourceRows(FacesContext context, UIPickList pickList, ListStateFlags flags) throws IOException {
-    	encodeRows(context, pickList, true, flags);
+    public void encodeSourceRows(FacesContext context, UIPickList pickList, ListStateFlags flags, List<ConvertedSelectItem> convertedItems) throws IOException {
+        List<ConvertedSelectItem> selectItemsForAvailableList = 
+            selectItemsForAvailableList(convertedItems);
+
+        flags.isSelectedList = selectItemsForAvailableList.size() != convertedItems.size();
+        flags.isAvailableList = !selectItemsForAvailableList.isEmpty();
+        
+    	encodeRows(context, pickList, true, flags, selectItemsForAvailableList);
     }
 
     private void encodeItemValue(FacesContext context, UIComponent component, ResponseWriter writer, String id, String itemValue) throws IOException { //rowKey = i
@@ -408,25 +315,7 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
 		writer.endElement(HTML.IMG_ELEMENT);
     }
 
-    public void encodeHiddenField(FacesContext context, UIPickList pickList) throws IOException {
-    
-    	Converter converter = pickList.getConverter();
-		List <String> lookupList = new ArrayList<String>();
-		List <Object> values = getValuesList(pickList);
-
-		for (Object value: values) {
-    		if(converter != null) {
-        		lookupList.add(converter.getAsString(context, pickList, value));
-        	} else {
-        		lookupList.add(value != null ? value.toString() : "");
-        	}
-    	}
-
-		encodeHiddenField(context, pickList, lookupList);
-    	
-    }
-
-    private void encodeHiddenField(FacesContext context, UIComponent component, List <String> lookupList) throws IOException {
+    public void encodeHiddenField(FacesContext context, UIPickList component, List<ConvertedSelectItem> lookupList) throws IOException {
 
     	String hiddenFieldCliendId = component.getClientId(context) + HIDDEN_SUFFIX;
     	
@@ -439,19 +328,16 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     	writer.writeAttribute("name", hiddenFieldCliendId, null);
     	
     	StringBuffer sb = new StringBuffer();
-    	
-    	int n = 0;
 
-    	for (Iterator <String> i = lookupList.iterator(); i.hasNext();) {
-    		
+    	int n = 0;
+    	for (Iterator<ConvertedSelectItem> i = selectItemsForSelectedList(lookupList).iterator(); i.hasNext();) {
     		if (n > 0) {
     			sb.append(",");
     		}
     	
-    		String value = i.next();
-    		sb.append(value);
+    		ConvertedSelectItem value = i.next();
+    		sb.append(value.getConvertedValue());
     		n++;
-    		
     	}
 
 		writer.writeAttribute(HTML.value_ATTRIBUTE, sb.toString(), null);
@@ -560,6 +446,34 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
     	
     }
 
+    public List<ConvertedSelectItem> getConvertedItems(FacesContext context, UIPickList pickList) {
+        List<ConvertedSelectItem> convertedItems = new ArrayList<ConvertedSelectItem>();
+        final List<SelectItem> selectItems = SelectUtils.getSelectItems(context, pickList);
+        for (int i = 0; i < selectItems.size(); i++ ) {
+            SelectItem item = selectItems.get(i);
+            if (item instanceof SelectItemGroup) {
+                SelectItem[] groupItems = ((SelectItemGroup) item).getSelectItems();
+                for (int j = 0; j < groupItems.length; j++) {
+                    convertedItems.add(ConvertedSelectItem.get(context, pickList, groupItems[j], "group:" + j));
+                }                
+            } else {
+                convertedItems.add(ConvertedSelectItem.get(context, pickList, item, Integer.toString(i)));
+            }
+        }
+        
+        List<Object> valueItems = getValuesList(pickList);
+        for (ConvertedSelectItem item : convertedItems) {
+            for (Object selectedValue : valueItems) {
+                if (item.getValue().equals(selectedValue)) {
+                    item.setSelected();
+                    break;
+                }
+            }
+        }
+        
+        return convertedItems;
+    }
+    
     protected ClassLoader getCurrentLoader(Object fallbackClass) {
         
     	ClassLoader loader = Thread.currentThread().getContextClassLoader();
