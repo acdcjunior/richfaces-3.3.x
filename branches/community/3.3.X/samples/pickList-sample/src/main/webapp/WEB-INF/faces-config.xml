@@ -8,6 +8,11 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>rf7472</managed-bean-name>
+  <managed-bean-class>org.richfaces.rf7472</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
         <managed-bean-name>skinBean</managed-bean-name>
         <managed-bean-class>org.richfaces.SkinBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
