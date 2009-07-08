@@ -292,6 +292,7 @@ Richfaces.ComboBox.prototype = {
 				}
 			}
 			this.comboList.hideWithDelay();
+			this.setValue(false);
 		} else {
 			this.doActive();
 		}
@@ -326,10 +327,29 @@ Richfaces.ComboBox.prototype = {
 			}
 			
 			if (this.isValueSet(event) && isSearchSuccessful) {
-				this.setValue();
+				var value = this.getActiveItemValue();
+				if(value && this.directInputSuggestions) {
+					this.doDirectSuggestion(value);
+				}	
 			}
 			this.comboValue.value = this.field.value; 
 		}
+	},
+	
+	getActiveItemValue: function(){
+		var value;
+		if (this.comboList.activeItem) { 	
+			value = jQuery(this.comboList.activeItem).text();
+			value = value.replace(/\xA0/g," ").strip();
+		}	
+		return value;
+	},
+	
+	doDirectSuggestion: function(value) {
+		var startInd = this.field.value.length; 
+		var endInd = value.length;
+		this.field.value = value;
+		Richfaces.ComboBox.textboxSelect(this.field, startInd, endInd);
 	},
 	
 	wasTextDeleted : function(event) {
@@ -342,7 +362,7 @@ Richfaces.ComboBox.prototype = {
 	},
 	
 	isValueSet : function(event) {
-		/*if (this.field.prevValue) {
+		/* if (this.field.prevValue) {
 			if (this.field.prevValue.toLowerCase() != this.field.value.toLowerCase()) {
 				return true;
 			}
@@ -360,38 +380,46 @@ Richfaces.ComboBox.prototype = {
 	},
 	
 	setValue : function(toSetOnly) {
-		if (!this.comboList.activeItem) {
-			return;
+//
+//		if(this.comboValue.value != value) {
+//			Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:value});
+//		}	
+			
+//		if (this.comboList.activeItem) {
+//			
+//			var value = jQuery(this.comboList.activeItem).text();
+//			value = value.replace(/\xA0/g," ").strip();
+		var value = this.getActiveItemValue();
+		if(value && toSetOnly) {
+//			var oV = this.field.value;
+//			if (oV == value) {
+//				if (Prototype.Browser.Gecko) {
+//					this.field.value = "";
+//					this.comboValue.value = "";
+//				}
+//			}
+//			this.field.prevValue = value;
+//			this.field.value = value;
+//			this.comboValue.value = value;
+				this.comboValue.value = value;
+				this.comboList.doSelectItem(this.comboList.activeItem);
+				this.combobox.fire("rich:onselect", {});
 		}
+//			else if (this.directInputSuggestions) {
+//					var startInd = this.field.value.length; 
+//					var endInd = value.length;
+//					this.comboValue.value = value;
+//					Richfaces.ComboBox.textboxSelect(this.field, startInd, endInd);
+//			}
+//		}
+		
+		var newValue = this.comboValue.value;
+		var oldValue = this.field.prevValue;
 
-		var value = jQuery(this.comboList.activeItem).text();
-		value = value.replace(/\xA0/g," ").strip();
-			
-		if(this.comboValue.value && (this.comboValue.value != value)) {
-			Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:value});
-		}	
-
-			
-		if (toSetOnly) {
-			var oV = this.field.value; 
-			if (oV == value) {
-				if (Prototype.Browser.Gecko) {
-					this.field.value = "";
-					this.comboValue.value = "";
-				}
-			}
-			this.field.prevValue = value;
-			this.field.value = value;
-			this.comboValue.value = value;
-			this.comboList.doSelectItem(this.comboList.activeItem);
-			this.combobox.fire("rich:onselect", {});
-		} else {
-			if (this.directInputSuggestions) {
-				var startInd = this.field.value.length; 
-				var endInd = value.length;
-				this.field.value = value;
-				Richfaces.ComboBox.textboxSelect(this.field, startInd, endInd);
-			} 
+		if(newValue && (newValue != oldValue)) {
+			this.field.prevValue = newValue;
+			this.field.value = newValue;
+			Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:newValue});
 		}
 	},
 	
