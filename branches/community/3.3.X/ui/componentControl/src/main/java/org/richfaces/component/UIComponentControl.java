@@ -68,13 +68,30 @@ public abstract class UIComponentControl extends UIComponentBase
         
         JSFunction invocation = new JSFunction("Richfaces.componentControl.performOperation");
         invocation.addParameter(new JSReference("event"));
+        invocation.addParameter(getEvent());
         invocation.addParameter(targetId);
         invocation.addParameter(getOperation());
-        invocation.addParameter(new JSReference("{" + getEncodedParametersMap() + "}"));
-        invocation.addParameter(Boolean.valueOf(isDisableDefault()));
+        addOptions(invocation);
         
         return invocation.toScript();
     }
+    
+	public void addOptions(JSFunction function) {
+		String params = getEncodedParametersMap();
+		
+		if (params.length()!=0) {
+			function.addParameter(new JSReference("function(){return{"+params+"}}"));
+		}
+		String event = (String) getEvent();
+		boolean disableDefault = isDisableDefault();
+		boolean isOnContextMenu = ("contextmenu".equalsIgnoreCase(event) || "oncontextmenu".equalsIgnoreCase(event));
+		if ( isOnContextMenu ^ disableDefault ) {
+			if (params.length()==0) {
+				function.addParameter(new JSReference("{}"));
+			}
+			function.addParameter(disableDefault);
+		}
+	}
     
     public String getEncodedParametersMap() {
         StringBuilder result = new StringBuilder();
