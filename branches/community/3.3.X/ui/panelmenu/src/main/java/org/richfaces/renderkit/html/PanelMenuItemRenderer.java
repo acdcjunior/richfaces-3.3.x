@@ -89,7 +89,7 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 		
 		UIPanelMenu panelMenu = findMenu(component);
 		ResponseWriter writer 	= context.getResponseWriter();
-		boolean isTopLevel 		= isTopLevel(component);		
+		boolean isTopLevel 		= false;		
 		String iconType			= null;	
 		UIPanelMenuItem item = (UIPanelMenuItem)component;
 		
