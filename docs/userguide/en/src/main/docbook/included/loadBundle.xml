@@ -31,73 +31,181 @@
       </tgroup>
     </table>
   
-  <section>
-    <title>Creating on a page</title>
-
-    <para>To create the simplest variant on a page use the following syntax:</para>
-
-	  <para>
-		  <emphasis role="bold">Example:</emphasis></para>
-		<programlisting role="XML"><![CDATA[<a4j:loadBundle baseName="demo.bundle.Messages" var="Message"/>]]></programlisting>
-	 
-  </section>
-  
-  <section>
-    <title>Creating the Component Dynamically Using Java</title>
-
-	  <para>
-		  <emphasis role="bold">Example:</emphasis></para>	
-	  <programlisting role="JAVA"><![CDATA[import org.ajax4jsf.component.html.AjaxLoadBundle;
+      <section>
+            <title>Creating the Component with a Page Tag</title>
+            <para>
+                  To create the simplest variant on a page use the following syntax:
+            </para>
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML"><![CDATA[<a4j:loadBundle baseName="demo.bundle.Messages" var="Message"/>]]></programlisting>
+      </section>
+      
+      <section>
+            <title>Creating the Component Dynamically Using Java</title>
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="JAVA"><![CDATA[import org.ajax4jsf.component.html.AjaxLoadBundle;
 ...
 AjaxLoadBundle myBundle = new AjaxLoadBundle();
-...
-		]]></programlisting>
-	
-  </section>
+...]]></programlisting>
+      </section>
+      
+      <section>
+            <title>Details of usage</title>
+            <para>
+                  Internationalization and Localization are the processes of adaptation of web applications for different languages and cultures. 
+                  When you develop English and German versions of a site it can be said that you localize the site for England and Germany. 
+                  Language is not the only thing that undergoes the localization — dates, times, numbers, currencies, phone numbers, addresses, graphics, icons, colors, personal titles and even favourite sounds are also varies from country to country. 
+                  It means that an internationalized application may have lots of different type information, which should be changed depending on user location. 
+            </para>
+            <para>
+                  There are several approaches of organizing the localization. 
+                  The JSF <emphasis role="bold"><property>&lt;h:loadBundle&gt;</property></emphasis> loads bundles into the request scope when page is being rendered and updates all the needed areas in a crowd. 
+                  Ajax requests work in their own request scopes, so bundle information loaded in such way became unavailable. 
+                  The approach provided by RichFaces <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> component enriches one given by the JSF <emphasis role="bold"><property>&lt;h:loadBundle&gt;</property></emphasis> with Ajax capability: 
+                  It allows to use reference to a particular bundle item during an Ajax update.
+            </para>
+            <para>
+                  Using of the <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> is pretty simple. 
+                  Imagine a small application that says &quot;Hello!&quot; in different languages where switching between translations (localization in our case) occurs on clicking the corresponding links, like you have used to see on lots of sites. 
+                  In our JSF with RichFaces application (those who feel not strong in that should better read the &quot;<link linkend="GettingStarted">Getting started with RichFaces</link>&quot; chapter) create resource bundles with &quot;Hello!&quot; message for three different languages: English, German and Italian. 
+                  Resource bundles are represented with <code>*.properties</code> extention files that keep items in <code>Key(Name)/Value</code> pairs. 
+                  A key for an item should be the same for all locales. 
+            </para>
+            <figure>
+                  <title>
+                        Resource bundles <code>*.properties</code> files with Keys and Values for multi-language application. View in JBDS.
+                  </title>
+                  <mediaobject>
+                        <imageobject>
+                              <imagedata fileref="images/loadBundle_init.png"/>
+                        </imageobject>
+                  </mediaobject>
+            </figure>
+            <para>
+                  Мessage resource bundles should be registered in the Faces configuration (<code>faces-config.xml</code>) file of your application as <code>&lt;message-bundle&gt;</code> inside the <code>&lt;application&gt;</code> element. 
+                  Name of a resource should be specified without language or country code and without <code>.properties</code> extension. 
+                  Supported locales should be specified inside the <code>&lt;supported-locale&gt;</code> element. 
+            </para>
+            <para>
+                  <emphasis role="bold">Registering resource bundles in the Faces configuration file:</emphasis>
+            </para>
+            <programlisting role="XML"><![CDATA[<application>
+      <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>de</supported-locale>
+            <supported-locale>it</supported-locale>
+      </locale-config>
+      <message-bundle>demo.message</message-bundle>
+</application>]]></programlisting>
+            
+            <para>
+                  For the application we will use JSF <code>javax.faces.component.UIViewRoot.setLocale</code> method that will set a needed Locale 
+                  (each link will invoke corresponding method — there are, off course, another ways to do that). 
+            </para>
+            <para>
+                  <emphasis role="bold"><code>ChangeLocale</code> Java class with three methods for setting the correponding Locale:</emphasis>
+            </para>
+            <programlisting role="JAVA"><![CDATA[package demo;
 
-  <section>
-    <title>Key attributes and ways of usage</title>
-	<para>
+ import java.util.Locale;
+ import javax.faces.context.FacesContext;
 
-	<emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property>
-	</emphasis>allows to use reference to bundle messages during the Ajax re-rendering. 
-<emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property>
-	</emphasis> is a substitute for the
-<emphasis role="bold"><property>&lt;f:loadBundle&gt;</property>
-	</emphasis> in JSF 1.1 which is not a JSF component originally. 
+ public class ChangeLocale {
+    public String germanAction() {
+       FacesContext context = FacesContext.getCurrentInstance();
+       context.getViewRoot().setLocale(Locale.GERMAN);
+       return null;
+    }
 
-<emphasis role="bold"><property>&lt;f:loadBundle&gt;</property>
-	</emphasis>	 is a jsp tag that load the bundle messages into the request scope when page is rendered. As soon as each Ajax request
-works in own request scope, the bundles loaded with 
-<emphasis role="bold"><property>&lt;f:loadBundle&gt;</property>
-	</emphasis> are unavailable. 
-Instead of 
-<emphasis role="bold"><property>&lt;f:loadBundle&gt;</property>
-	</emphasis> that might be located anywhere on a page, the 
-
-	<emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property>
-	</emphasis> should be declared inside the  
-
-	<emphasis role="bold"><property>&lt;f:view&gt;</property>
-	</emphasis>	(this does not matter in case on using Facelets) 
-JSF 1.2 introduces the bundle registered in the faces-config.xml. This fixed the problem with 
-	<emphasis role="bold"><property>&lt;f:loadBundle&gt;</property>
-	</emphasis>. 
-Therefore, you can use this JSF 1.2 way to declare your bundles. 
-
-	</para>
-  </section>
+    public String englishAction() {
+       FacesContext context = FacesContext.getCurrentInstance();
+       context.getViewRoot().setLocale(Locale.ENGLISH);
+       return null;
+    }
+    
+    public String italianAction() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getViewRoot().setLocale(Locale.ITALIAN);
+        return null;
+     }
+}]]></programlisting>
+                  
+                  <para>
+                        Recently, the JSP page will look as following:
+                  </para>
+            
+            <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:loadBundle var="msg" basename="demo.message"/>
+      <h:outputText id="messageBundle" value="#{msg.greeting}"/>&nbsp;
+      <a4j:commandLink value="De" action="#{changeLocale.germanAction}" reRender="messageBundle" />&nbsp;
+      <a4j:commandLink value="Eng" action="#{changeLocale.englishAction}" reRender="messageBundle" />&nbsp;
+      <a4j:commandLink value="It" action="#{changeLocale.italianAction}" reRender="messageBundle" />
+</h:form> ]]></programlisting>
+      
+      <para>
+            As an output we will get a simple application with English &quot;Hello!&quot; by default. 
+            Clicking on links &quot;De&quot;, &quot;Eng&quot; and &quot;It&quot; will show the messages specified within the corresponding <code>*.properties</code> file.
+            To reference to a particular bundle item during an Ajax update it is necessary to point the component(s) that shold be re-rendered (in this example it is done with the help of <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> <emphasis><property>&quot;reRender&quot;</property></emphasis> attribute).
+            The <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> should be declared inside the f:view (this does not matter when using Facelets). 
+      </para>
+            
+            <figure>
+                  <title>
+                        Using of the RichFaces <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> component for application localization.
+                  </title>
+                  <mediaobject>
+                        <imageobject>
+                              <imagedata fileref="images/loadBundle2.png"/>
+                        </imageobject>
+                  </mediaobject>
+            </figure>
+      </section>
+      
   <section>
     <title>Relevant resources links</title>
-	<para>
-	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/bundle.jsf?c=loadBundle">On RichFaces LiveDemo page </ulink> you can found some additional information for <emphasis role="bold"
-	    ><property>&lt;a4j:loadBundle&gt;</property></emphasis> component usage.
-	</para>
-    <para>
-      <ulink url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/loadBundle.html">On RichFaces LiveDemo page </ulink> you can found some additional information about <emphasis role="bold"><property>&lt;f:loadBundle&gt;</property></emphasis> component.
-    </para>
-    <para>
-      <ulink url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/view.html">On RichFaces LiveDemo page </ulink> you can found some additional information about <emphasis role="bold"><property>&lt;f:view&gt;</property></emphasis> component.
-    </para>
+        <para>
+              Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/bundle.jsf?c=loadBundle">LoadBundle page</ulink> at RichFaces LiveDemo for additional information on the component. 
+        </para>
+        <para>
+              More useful examples and articles: 
+        </para>
+    <itemizedlist>
+          <listitem>
+                <para>
+                      <ulink url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/loadBundle.html">loadBundle tag reference</ulink> at java.sun portal;
+                </para>
+          </listitem>
+
+        <listitem>
+              <para>
+                    <ulink url="http://java.sun.com/docs/books/tutorial/i18n/resbundle/propfile.html">Backing a ResourceBundle with Properties Files</ulink> at java.sun portal;
+              </para>
+        </listitem>
+                    
+          <listitem>
+                <para>
+                      <ulink url="http://www.objectsource.com/j2eechapters/Ch19-I18N_and_L10N.htm">Internationalization and Localization of J2EE application</ulink> explains main principles of  the internationalization of a web application;
+                </para>
+          </listitem>
+
+          <listitem>
+                <para>
+                      <ulink url="http://www.laliluna.de/javaserver-faces-message-resource-bundle-tutorial.html">one more useful tutorial</ulink> explains the internationalization of a web application using JSF message resource bundle;
+                </para>
+          </listitem>
+          
+          <listitem>
+          <para>
+                <ulink url="http://www.i-coding.de/www/en/jsf/application/locale.html">Some special problem with JSF internationalization</ulink> and solution from the i-coding.de portal.
+          </para>
+          </listitem>
+
+    </itemizedlist>  
+    
   </section>  
 </chapter>   
