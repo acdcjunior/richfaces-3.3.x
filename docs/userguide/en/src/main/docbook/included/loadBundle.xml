@@ -59,25 +59,25 @@ AjaxLoadBundle myBundle = new AjaxLoadBundle();
                   Internationalization and Localization are the processes of adaptation of web applications for different languages and cultures. 
                   When you develop English and German versions of a site it can be said that you localize the site for England and Germany. 
                   Language is not the only thing that undergoes the localization — dates, times, numbers, currencies, phone numbers, addresses, graphics, icons, colors, personal titles and even favourite sounds are also varies from country to country. 
-                  It means that an internationalized application may have lots of different type information, which should be changed depending on user location. 
+                  It means that an internationalized application may have lots of different types information, which should be changed depending on user location. 
             </para>
             <para>
                   There are several approaches of organizing the localization. 
                   The JSF <emphasis role="bold"><property>&lt;h:loadBundle&gt;</property></emphasis> loads bundles into the request scope when page is being rendered and updates all the needed areas in a crowd. 
-                  Ajax requests work in their own request scopes, so bundle information loaded in such way became unavailable. 
+                  Bundle information loaded in such way becomes unavailable when dealing with Ajax requests that work in their own request scopes. 
                   The approach provided by RichFaces <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> component enriches one given by the JSF <emphasis role="bold"><property>&lt;h:loadBundle&gt;</property></emphasis> with Ajax capability: 
-                  It allows to use reference to a particular bundle item during an Ajax update.
+                  it allows to use reference to a particular bundle item during an Ajax update.
             </para>
             <para>
-                  Using of the <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> is pretty simple. 
-                  Imagine a small application that says &quot;Hello!&quot; in different languages where switching between translations (localization in our case) occurs on clicking the corresponding links, like you have used to see on lots of sites. 
-                  In our JSF with RichFaces application (those who feel not strong in that should better read the &quot;<link linkend="GettingStarted">Getting started with RichFaces</link>&quot; chapter) create resource bundles with &quot;Hello!&quot; message for three different languages: English, German and Italian. 
-                  Resource bundles are represented with <code>*.properties</code> extention files that keep items in <code>Key(Name)/Value</code> pairs. 
+                  The <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> usage is pretty simple. 
+                  Imagine a small application that says &quot;Hello!&quot; in different languages, where switching between translations (localizations, in our case) occurs when corresponding links are being clicked, like you have used to see on lots of sites. 
+                  In our JSF with RichFaces application (those who feel not strong with that should better read the &quot;<link linkend="GettingStarted">Getting started with RichFaces</link>&quot; chapter) create resource bundles with &quot;Hello!&quot; message for three different languages: English, German and Italian. 
+                  Resource bundles are represented with <code>*.properties</code> extention files that keep items in <code>key(name) - value</code> pairs. 
                   A key for an item should be the same for all locales. 
             </para>
             <figure>
                   <title>
-                        Resource bundles <code>*.properties</code> files with Keys and Values for multi-language application. View in JBDS.
+                        Resource bundles <code>*.properties</code> files with Keys and Values for multi-language application. 
                   </title>
                   <mediaobject>
                         <imageobject>
@@ -141,9 +141,9 @@ AjaxLoadBundle myBundle = new AjaxLoadBundle();
             
             <programlisting role="XML"><![CDATA[<h:form>
       <a4j:loadBundle var="msg" basename="demo.message"/>
-      <h:outputText id="messageBundle" value="#{msg.greeting}"/>&nbsp;
-      <a4j:commandLink value="De" action="#{changeLocale.germanAction}" reRender="messageBundle" />&nbsp;
-      <a4j:commandLink value="Eng" action="#{changeLocale.englishAction}" reRender="messageBundle" />&nbsp;
+      <h:outputText id="messageBundle" value="#{msg.greeting}"/>
+      <a4j:commandLink value="De" action="#{changeLocale.germanAction}" reRender="messageBundle" />
+      <a4j:commandLink value="Eng" action="#{changeLocale.englishAction}" reRender="messageBundle" />
       <a4j:commandLink value="It" action="#{changeLocale.italianAction}" reRender="messageBundle" />
 </h:form> ]]></programlisting>
       
@@ -151,7 +151,6 @@ AjaxLoadBundle myBundle = new AjaxLoadBundle();
             As an output we will get a simple application with English &quot;Hello!&quot; by default. 
             Clicking on links &quot;De&quot;, &quot;Eng&quot; and &quot;It&quot; will show the messages specified within the corresponding <code>*.properties</code> file.
             To reference to a particular bundle item during an Ajax update it is necessary to point the component(s) that shold be re-rendered (in this example it is done with the help of <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> <emphasis><property>&quot;reRender&quot;</property></emphasis> attribute).
-            The <emphasis role="bold"><property>&lt;a4j:loadBundle&gt;</property></emphasis> should be declared inside the f:view (this does not matter when using Facelets). 
       </para>
             
             <figure>
