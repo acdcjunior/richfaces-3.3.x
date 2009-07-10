@@ -42,24 +42,30 @@ Richfaces.ListShuttle.Target.SelectItem.prototype.CLASSES = {
 }
 
 Richfaces.ListShuttle.prototype = {
-	initialize: function(targetList, sourceList, clientId, controlIds, switchByClick, switchByDblClick, events) {
-		this.containerId = clientId;
+	HANDLERS : {
+		copy:      function (e) { this.copy(); return false; },
+		copyAll:   function (e) { this.copyAll(); return false; },
+		remove:    function (e) { this.remove(); return false; },
+		removeAll: function (e) { this.removeAll(); return false; }
+	},
+	
+	initialize: function(id, options) {
+		options = options || {};
 		this["rich:destructor"] = "destroy";
 		
-		this.container = $(this.containerId);
+		var internalOptions = options.internalOptions || {};
+		this.createLists(id, internalOptions);
+		
+		this.container = $(id);
 		this.container.component = this;
-		
-		this.targetList = targetList;
-		this.sourceList = sourceList;
-		
-		this.events = events;
+		this.events = options.events || {};
 		
 		this.isFocused = false;
 		this.wasMouseDown = false;
 		this.skipBlurEvent = false;
 		
-		this.targetLayoutManager = targetList.layoutManager;
-		this.sourceLayoutManager = sourceList.layoutManager;
+		this.targetLayoutManager = this.targetList.layoutManager;
+		this.sourceLayoutManager = this.sourceList.layoutManager;
 		
 		//for focus\blur custom events
 		this.container.observe("focus", function (e) {this.focusOrBlurHandlerLS(e);}.bindAsEventListener(this));
@@ -69,29 +75,29 @@ Richfaces.ListShuttle.prototype = {
 		this.container.observe("click", function (e) {this.focusOrBlurHandlerLS(e);}.bindAsEventListener(this));
 		this.container.observe("blur", function (e) {this.focusOrBlurHandlerLS(e);}.bindAsEventListener(this));
 		
-		if (switchByClick == "true") {
+		if (options.switchByClick) {
 			this.targetList.shuttleTable.observe("click", function(e) {this.moveItemByClick(window.event||e, this.targetList, this.sourceList)}.bindAsEventListener(this));
 			this.sourceList.shuttleTable.observe("click", function(e) {this.moveItemByClick(window.event||e, this.sourceList, this.targetList)}.bindAsEventListener(this));
 			Event.stopObserving(this.sourceList.shuttleTable, "click", this.sourceList.clckHandler);
 			Event.stopObserving(this.targetList.shuttleTable, "click", this.targetList.clckHandler);
 		} else {
-			if (switchByDblClick == "true"){
+			if (options.switchByDblClick){
 				this.targetList.shuttleTable.observe("dblclick", function(e) {this.moveItemByClick(window.event||e, this.targetList, this.sourceList)}.bindAsEventListener(this));
 				this.sourceList.shuttleTable.observe("dblclick", function(e) {this.moveItemByClick(window.event||e, this.sourceList, this.targetList)}.bindAsEventListener(this));
 			}
-			sourceList._onclickHandler = sourceList.onclickHandler;
-			sourceList.onclickHandler = function(e) { this.onclickHandler(e, sourceList); }.bindAsEventListener(this);
-			targetList._onclickHandler = targetList.onclickHandler;
-			targetList.onclickHandler = function(e) { this.onclickHandler(e, targetList); }.bindAsEventListener(this);
+			this.sourceList._onclickHandler = this.sourceList.onclickHandler;
+			this.sourceList.onclickHandler = function(e) { this.onclickHandler(e, this.sourceList); }.bindAsEventListener(this);
+			this.targetList._onclickHandler = this.targetList.onclickHandler;
+			this.targetList.onclickHandler = function(e) { this.onclickHandler(e, this.targetList); }.bindAsEventListener(this);
 		}
 		
-		sourceList._onkeydownHandler = sourceList.onkeydownHandler;
-		sourceList.onkeydownHandler = function(e) { this.onkeydownHandler(e, sourceList); }.bindAsEventListener(this);
-		targetList._onkeydownHandler = targetList.onkeydownHandler;
-		targetList.onkeydownHandler = function(e) { this.onkeydownHandler(e, targetList); }.bindAsEventListener(this);
+		this.sourceList._onkeydownHandler = this.sourceList.onkeydownHandler;
+		this.sourceList.onkeydownHandler = function(e) { this.onkeydownHandler(e, this.sourceList); }.bindAsEventListener(this);
+		this.targetList._onkeydownHandler = this.targetList.onkeydownHandler;
+		this.targetList.onkeydownHandler = function(e) { this.onkeydownHandler(e, this.targetList); }.bindAsEventListener(this);
 			
 		this.controlList = new Array();
-		this.initControlList(clientId, controlIds);
+		this.initControlList(id);
 	
 		for (var e in this.events) {
 			if (e && this.events[e]) {
@@ -100,23 +106,30 @@ Richfaces.ListShuttle.prototype = {
 		}
 	},
 	
+	createLists: function(id, options) {
+		this.sourceList = new Richfaces.ListShuttle.Source(id, Richfaces.ListShuttle.Source.SelectItem, options.classes);
+		options.idFuffix = "tl";
+		options.itemClass = Richfaces.ListShuttle.Target.SelectItem;
+		this.targetList = new Richfaces.ListShuttle.Target(id, options);
+	},
+	
 	destroy: function() {
 		this.container.component = null;
 		this.targetList.destroy();
 		this.sourceList.destroy();
 	},
 	
-	initControlList : function(clientId, ids) {
+	initControlList : function(containerId, ids) {
+		var ids = ['copy', 'copyAll', 'remove', 'removeAll'];
 		for (var i = 0; i < ids.length; i++) {
 			var id = ids[i];
-			var node = $(clientId + id[0]);
-			var disNode = $(clientId + id[1]);
+			var node = $(containerId + id);
+			var disNode = $(containerId + "dis" + id);
 			if (node && disNode) { 
-				node.observe("click", Richfaces.ListShuttle.HANDLERS[id[0]].bindAsEventListener(this));	
-				this.controlList[i] = new Richfaces.Control(node, disNode, false, false, id[0]);
+				node.observe('click', this.HANDLERS[id].bindAsEventListener(this));
+				this.controlList[i] = new Richfaces.Control(node, disNode, false, false, id);
 			}
 		}
-		//this.controlListManager();
 	},
 	
 	controlListManager : function() {
@@ -209,7 +222,7 @@ Richfaces.ListShuttle.prototype = {
 	},
 	
 	addItem : function(component, item) {
-		item.doNormal(Richfaces.getExternalClass(item.rowIndex), component.columnsClasses);
+		item.doNormal(Richfaces.getExternalClass(item.rowIndex), component.columnClasses);
 		
 		component.shuttleTbody.insertBefore(item._node, null);
 		component.shuttleItems.push(item);
@@ -339,11 +352,4 @@ Richfaces.ListShuttle.prototype = {
 		this.isFocused = false;
 		this.container.fire("rich:onblur", {});
 	}
-};
-
-Richfaces.ListShuttle.HANDLERS = {
-	copy:      function (e) { this.copy(); return false; },
-	copyAll:   function (e) { this.copyAll(); return false; },
-	remove:    function (e) { this.remove(); return false; },
-	removeAll: function (e) { this.removeAll(); return false; }
 };
