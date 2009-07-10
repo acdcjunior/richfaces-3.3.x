@@ -36,7 +36,7 @@
     </table>
   
   <section>
-    <title>Creating on a page</title>
+        <title>Creating the Component with a Page Tag</title>
     <para>To create the simplest variant on a page use the following syntax:</para>
 
   <para>
@@ -58,28 +58,29 @@ HtmlLoadScript myScript = new HtmlLoadScript();
 ]]></programlisting>
   </section>
   <section>
-    <title>Key attributes and ways of usage</title>
+    <title>Details of usage</title>
     <para>
-      As it was mentioned <link linkend="loadScript">above</link> this component returns its value as the value of 
-      the <emphasis><property>&quot;src&quot;</property></emphasis> attribute passing it to the
-    	 <code>getResourceURL()</code> method of the ViewHandler for this application, and passing 
-    	 the result	through the <code>encodeResourceURL()</code> method of the ExternalContext.
+          The main attribute of the <emphasis role="bold"><property>&lt;a4j:loadScript&gt;</property></emphasis> is <emphasis><property>&quot;src&quot;</property></emphasis>, wich defines the context relative path to the script. 
+          The value of the attribute does not require a prefix of an application. 
+          Leading slash in the path means the root of the web context.
+          It is also possible to use <code>resource:///</code> prefix to access the script file using RichFaces resource framework.
     </para>
-    <para>
-    	It means that the Context is inserts automatically to the link. And calls
-    	 like <code>resource://</code> is properly handled.
-    </para>
-    <para>
-    	Except this - you may be free to put your script links right from the child 
-    	page while using <property>facelets templates</property>.
-    </para>
+        <para>
+              <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="JAVA"><![CDATA[<a4j:loadScript src="resource:///org/mycompany/assets/script/focus.js" />]]></programlisting>
+          <para>
+                The <emphasis><property>&quot;src&quot;</property></emphasis> attribute passses value to the <code>getResourceURL()</code> method of the ViewHandler of the application, 
+                The result is passed through the <code>encodeResourceURL()</code> method of the ExternalContext. 
+          </para>
+          
+      
 </section>
 
   <section>
     <title>Relevant resources links</title>
 	<para>
-	   <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/script.jsf?c=loadScript">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold"
-	     ><property>&lt;a4j:loadScript&gt;</property></emphasis> usage and sources for the given example.
+	      Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/script.jsf?c=loadScript">Script page at RichFaces LiveDemo</ulink> for examples of component usage abd their sources.
 	</para>
   </section>
 
