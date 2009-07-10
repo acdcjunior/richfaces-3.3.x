@@ -124,9 +124,9 @@ public class InplaceSelectTest extends InplacesTest {
 	
 	public void initIds() {
 		super.initIds();
-		inplaceValuePrefix = "inplaceValue";
+		inplaceValuePrefix = "value";
 		inplaceId = formId + "ii";
-		iTempValuePx = "inplaceTmpValue";
+		iTempValuePx = "tmpValue";
 	}
 
 }
