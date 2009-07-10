@@ -1,12 +1,18 @@
 var inputCorrect = false;
 var textCorrect = false;
-
+//variables for menu
+var	closedItems=new Array(), //define var for items to be stored in cookie
+	//name of the cookie for closed elements
+	cookieClosedItems=document.title.replace(/\s*|\s*/g,'')+"_closedItems";
+	cookieButtons=document.title.replace(/\s*|\s*/g,'')+"_Buttons";
+	StateOfButtons=new Array();
+	
 
 function showPopup(_popupId) {
 	document.getElementById(_popupId).style.display = "block";
 	document.getElementById('timeOutDiv').style.display = "block";
 	document.getElementById("feedback-maincontainer").style.display = "block";
-		document.getElementById("guide_words").style.display = "block";
+	document.getElementById("guide_words").style.display = "block";
 
 }
 
@@ -113,13 +119,19 @@ $(document).ready(function () {
 		});
 		$(this).html('collapse all');
 		$(this).css('background', 'url(images/arrowsExpand.png) no-repeat scroll 0 4px');
+		StateOfButtons[1]="expand";
+		jQuery.cookie(cookieButtons, StateOfButtons, {  expires: 365 });		
 	      },
 	      function () {
 	       $("span.expand_collapse_toc:contains('-')").each(function (i, node) {			
 			toc.collapse($(node)[0]);
-		});
-		$(this).html('expand all');
-		$(this).css('background', 'transparent url(images/arrowsCollapse.png) no-repeat scroll 0 4px');
+			});
+			StateOfButtons[1]="collapse";
+			
+		  
+			$(this).html('expand all');
+			$(this).css('background', 'transparent url(images/arrowsCollapse.png) no-repeat scroll 0 4px');
+			jQuery.cookie(cookieButtons, StateOfButtons, {  expires: 365 });
 	      });
 	}else{
 	      $("#expand_collapse").css('display', 'none');
@@ -135,7 +147,82 @@ $(document).ready(function () {
 		var table = $(this).parents().get(4);
 		$(table).children('tbody').show();
 		$(this).children('img').attr('src', 'images/minus.gif');
-       });
+       });       
+       
+	var target=new Object();
+	var itext=" ";
+	if (jQuery.cookie) {
+		
+		  /*if no cookie called "closedItems" exists, then create one with
+		  elements you want hidden by default.
+		  '1' is given as first value to prevent cookie from being
+		  deleted if it contains no ids*/
+		//read cookie for closed elements
+		if (!jQuery.cookie(cookieClosedItems)) {
+			jQuery.cookie(cookieClosedItems, 'start_cookie_file, collapse', {  expires: 365 });
+		}
+		//if cookie called "closedItems" exists
+		if (jQuery.cookie(cookieClosedItems)) {
+
+
+			//split cookie into array
+			closedItems = jQuery.cookie(cookieClosedItems).split(',');
+
+			//iterate through array and expand each element within it
+			for (var i = 0; i < closedItems.length; ++i) {
+																	
+				target=jQuery("a[href='"+closedItems[i]+"']")[0];							
+				if(target){
+					target=target.parentNode.previousSibling.previousSibling;
+				 	toc.show(toc.findDD(target))
+					toc.hide(target);
+					toc.show(target.nextSibling);					
+				 }
+			}		
+		}
+		//read cookie for buttons
+		if (!jQuery.cookie(cookieButtons)) {
+			jQuery.cookie(cookieButtons, 'start_cookie_file', {  expires: 365 });
+		}
+		if (jQuery.cookie(cookieButtons)) {
+
+
+			//split cookie into array
+			StateOfButtons = jQuery.cookie(cookieButtons).split(',');
+			idButtons="#expand_collapse"
+			
+
+			//iterate through array and expand each element within it
+			if(StateOfButtons[1])
+			{
+				if(StateOfButtons[1]=="expand"){
+					$(idButtons).html('collapse all')
+								.css('background', 'url(images/arrowsExpand.png) no-repeat scroll 0 4px')
+								.one("click", function(){
+								$("span.expand_collapse_toc:contains('-')").each(function (i, node) {			
+									toc.collapse($(node)[0]);
+									});
+									StateOfButtons[1]="collapse";									
+									jQuery.cookie(cookieButtons, StateOfButtons, {  expires: 365 });
+									$(this).html('expand all');
+									$(this).css('background', 'transparent url(images/arrowsCollapse.png) no-repeat scroll 0 4px');
+									
+								});
+	 							
+      							
+
+				}
+				if(StateOfButtons[1]=="collapse")
+				{
+					$(idButtons).html('expand all')
+								.css('background', 'transparent url(images/arrowsCollapse.png) no-repeat scroll 0 4px');
+				}
+			}	
+		}
+		
+		
+	}
+	
       	
 });
 /*
@@ -149,6 +236,7 @@ $(document).ready(function () {
 		setTimeout(searchElements,0);
 	});
 });
+
 
 function searchElements(){
 	var patt=new RegExp($("#search").val().toString(),"i", "g");	
@@ -171,6 +259,7 @@ function searchElements(){
   $("div.time_out_div").text('');
 }
 */
+
 function dbToggle(node, expandText, collapseText) {
 	var dt = node.parentNode;
 	if (dt.nodeName.toLowerCase() == 'dt') {
@@ -192,25 +281,60 @@ function dbToggle(node, expandText, collapseText) {
 	
 }
 
+
 var toc = {
 	expand: function(node) {
 		toc.show(toc.findDD(node))
 		toc.hide(node);
 		toc.show(node.nextSibling);
+		toc.updateArray(node.nextSibling.nextSibling.getElementsByTagName('*'), "expand");
 	}, 
 	collapse : function(node) {
 		toc.hide(toc.findDD(node))
 		toc.hide(node);
 		toc.show(node.previousSibling);
+		toc.updateArray(node.nextSibling.getElementsByTagName('*'), "collapse");
 	}, 
+	
 	findDD : function(node) {
 		return node.parentNode.nextSibling;
+		//return node.parent().next();
 	},
 	
-	hide: function(node) {
+	hide : function(node) {
 		node.style.display = "none";
+		//node.attr("style","display: none ;");
+		
 	},
-	show: function(node) {
+	show : function(node) {
 		node.style.display = "";
+		//node.attr("style","display: ;");
+	},
+	updateArray : function(node, collapse_expand) {
+	
+		//get id of element clicked for adding to closed items array
+		var eId = jQuery(node).attr("href");
+
+		//look for element in cookie array
+		var arrPos = jQuery.inArray(eId, closedItems);
+		//arrPos=-1;
+
+		if (arrPos == -1 ) {
+
+			//element is not in array, so add it
+			if(collapse_expand!="collapse") closedItems.push(eId);
+
+		} else {
+
+			//element is in array, so remove it
+			if(collapse_expand!="expand") closedItems.splice(arrPos, 1);
+
+		}
+
+		//update cookie
+		jQuery.cookie(cookieClosedItems, closedItems, {  expires: 365 });		
 	}
+	
 };
+
+

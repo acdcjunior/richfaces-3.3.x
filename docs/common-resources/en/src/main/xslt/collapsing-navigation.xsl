@@ -166,6 +166,7 @@
 	<xsl:template name="user.head.content">
 		<xsl:param name="node" select="." />
 		<script type="text/javascript" src="script/jquery.js"><xsl:comment>If you see this message, your web browser doesn't support JavaScript or JavaScript is disabled.</xsl:comment></script>
+		<script type="text/javascript" src="script/jquery.cookie.js"><xsl:comment>If you see this message, your web browser doesn't support JavaScript or JavaScript is disabled.</xsl:comment></script>
 		<script type="text/javascript" src="script/toggle.js"><xsl:comment>If you see this message, your web browser doesn't support JavaScript or JavaScript is disabled.</xsl:comment></script>
 	</xsl:template>
 
