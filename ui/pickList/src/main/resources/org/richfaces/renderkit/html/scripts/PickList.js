@@ -1,12 +1,24 @@
 if(!window.Richfaces) window.Richfaces = {};
 
 Richfaces.PickList = Class.create(Richfaces.ListShuttle, {
-		initialize : function($super, targetList, sourceList, clientId, controlIds, switchByClick, switchByDblClick, events, valueKeeperId) {
-			$super(targetList, sourceList, clientId, controlIds, switchByClick, switchByDblClick, events);
-			this.valueKeeper = $(valueKeeperId);
+		HANDLERS : {
+			copy:      function (e) { this.moveItems(this.sourceList, this.targetList, this.sourceList.selectedItems); return false; },
+			copyAll:   function (e) { this.moveItems(this.sourceList, this.targetList, this.sourceList.shuttleItems); return false; },
+			remove:    function (e) { this.moveItems(this.targetList, this.sourceList, this.targetList.selectedItems); return false; },
+			removeAll: function (e) { this.moveItems(this.targetList, this.sourceList, this.targetList.shuttleItems); return false; }
+		},
+		
+		initialize : function($super, id, options) {
+			$super(id, options);
+			this.valueKeeper = $(id + "valueKeeper");
 			//this.controlListManager();
 		},
 		
+		createLists: function(id, options) {
+			this.sourceList = new Richfaces.PickList.Source(id, Richfaces.PickList.Source.SelectItem, options.classes);
+			this.targetList = new Richfaces.PickList.Target(id + "tl", Richfaces.PickList.Target.SelectItem, options.classes);
+		},
+
 		moveItems : function($super, sourceComponent, targetComponent, items) {
 			this.saveState(items, this.isAdd(sourceComponent));
 			$super(sourceComponent, targetComponent, items);
@@ -95,11 +107,4 @@ Richfaces.PickList.Target.SelectItem.prototype.CLASSES = {
 		BEGIN:	" rich-picklist-target-cell-first",
 		END:	" rich-picklist-target-cell-last"
 	}
-};
-
-Richfaces.PickList.HANDLERS = {
-	copy:      function (e) { this.moveItems(this.sourceList, this.targetList, this.sourceList.selectedItems); return false; },
-	copyAll:   function (e) { this.moveItems(this.sourceList, this.targetList, this.sourceList.shuttleItems); return false; },
-	remove:    function (e) { this.moveItems(this.targetList, this.sourceList, this.targetList.selectedItems); return false; },
-	removeAll: function (e) { this.moveItems(this.targetList, this.sourceList, this.targetList.shuttleItems); return false; }
 };
