@@ -144,7 +144,7 @@ public class PickListTest extends SeleniumTestBase {
         String parentId = getParentId() + "_form:";
         String pickListId = parentId + PICK_LIST;
 
-        String destListId = parentId + PICK_LIST + "tlTbody";
+        String destListId = parentId + PICK_LIST + "tltbody";
         String srcListId = parentId + PICK_LIST + "tbody";
 
         Assert.assertEquals(getNumberOfChildren(srcListId),  6);
@@ -193,7 +193,7 @@ public class PickListTest extends SeleniumTestBase {
         writeStatus("Check 'switchByClick' attribute");
 
         String parentId = getParentId() + "_form:";
-        String destListId = parentId + PICK_LIST + "tlTbody";
+        String destListId = parentId + PICK_LIST + "tltbody";
         String srcListId = parentId + PICK_LIST + "tbody";
 
         assertButtonEnabled(COPY_ALL_BTN);
@@ -218,7 +218,7 @@ public class PickListTest extends SeleniumTestBase {
 
         String pickListId = getParentId() + "_form:" + PICK_LIST;
         String focusKeeper = pickListId + "focusKeeper";
-        String destListId = pickListId + "tlTbody";
+        String destListId = pickListId + "tltbody";
         String srcListId = pickListId + "tbody";
         String copyElemId = pickListId + COPY_BTN;
         String removeAllElemId = pickListId + REMOVE_ALL_BTN;
