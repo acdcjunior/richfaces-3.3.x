@@ -112,7 +112,7 @@ public class ListShuttleTest extends SeleniumTestBase {
         sourceSelectionTableId = parentId + "sourceSelectionTableId";
         targetSelectionTableId = parentId + "targetSelectionTableId";
         availebleListId = parentId + "lstbody";
-        targetListId = parentId + "lstlTbody";
+        targetListId = parentId + "lstltbody";
         copyAllId = parentId + "lscopyAll";
         copyId = parentId + "lscopy";
         removeId = parentId + "lsremove";
@@ -152,8 +152,8 @@ public class ListShuttleTest extends SeleniumTestBase {
         for (int i = 1; i <= 2; i++) {
         	Assert.assertEquals(selenium.getElementWidth("xpath=" + tdXpath + "[" + i + "]").intValue(), selenium.getElementWidth("xpath=" + thXpath + "[" + i + "]").intValue());
 		}
-        tdXpath = "id('" + lsId +"tlTbody')/tr[1]/td";
-        thXpath = "id('" + lsId +"tlInternal_header_tab')/thead/tr/th";
+        tdXpath = "id('" + lsId +"tltbody')/tr[1]/td";
+        thXpath = "id('" + lsId +"tlinternal_header_tab')/thead/tr/th";
 		Assert.assertEquals(selenium.getXpathCount(thXpath).intValue(), 2);
         for (int i = 1; i <= 2; i++) {
         	Assert.assertEquals(selenium.getElementWidth("xpath=" + tdXpath + "[" + i + "]").intValue(), selenium.getElementWidth("xpath=" + thXpath + "[" + i + "]").intValue());
