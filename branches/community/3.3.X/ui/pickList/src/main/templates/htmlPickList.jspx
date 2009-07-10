@@ -69,13 +69,7 @@
 					    //variables.setVariable("selectionState", targetSelectionState);
 						//String encodedTargetRows = encodeRows(context, component, false);
 						ListStateFlags listStateFlags = new ListStateFlags();
-						
-						Boolean switchByClick = (Boolean) component.getAttributes().get("switchByClick");
-						variables.setVariable("switchByClick", switchByClick);
-						
-						Boolean switchByDblClick = (Boolean) component.getAttributes().get("switchByDblClick");
-						variables.setVariable("switchByDblClick", switchByDblClick);
-					
+											
 						variables.setVariable("baseClientId", component.getBaseClientId(context));
                         
 						java.util.List<org.richfaces.renderkit.ConvertedSelectItem> convertedItems = getConvertedItems(context, component);
@@ -142,13 +136,13 @@
                                 encodeHiddenField(context, component, convertedItems);
                             ]]></jsp:scriptlet>
 
-					    	<input id="#{clientId}tlFocusKeeper" type="button" value="" style="width: 1px; position: absolute; left: -32767px;"/>
+					    	<input id="#{clientId}tlfocusKeeper" type="button" value="" style="width: 1px; position: absolute; left: -32767px;"/>
 							
-							<table id="#{clientId}tlTable" cellpadding="0" cellspacing="0" class="rich-picklist-body">
+							<table id="#{clientId}tltable" cellpadding="0" cellspacing="0" class="rich-picklist-body">
 								<tbody>
 									<tr>
 										<td style="border:0px;padding : 0px;">
-											<div id="#{clientId}tlHeaderBox" class="rich-picklist-list">
+											<div id="#{clientId}tlheaderBox" class="rich-picklist-list">
 												<jsp:scriptlet>
 													<![CDATA[
 									                	String trContentContainerStyle = "";
@@ -167,9 +161,9 @@
 									                	}
 		                							]]>
 		                						</jsp:scriptlet>
-												<div id="#{clientId}tlContentBox" class="rich-picklist-list-content" style="#{trContentContainerStyle}">
-													<table id="#{clientId}tlInternal_tab" class="rich-picklist-internal-tab" cellpadding="0" cellspacing="0">
-														<tbody id="#{clientId}tlTbody">
+												<div id="#{clientId}tlcontentBox" class="rich-picklist-list-content" style="#{trContentContainerStyle}">
+													<table id="#{clientId}tlinternal_tab" class="rich-picklist-internal-tab" cellpadding="0" cellspacing="0">
+														<tbody id="#{clientId}tltbody">
 															<jsp:scriptlet>
 																<![CDATA[
 																encodeTargetRows(context, component, listStateFlags, convertedItems);
@@ -196,22 +190,26 @@
 		<f:call name="reRenderScript" />
 		
         <c:if test="#{!component.disabled}">  							
+			<c:scriptObject var="classes">
+				<c:scriptOption attributes="columnClasses, rowClasses" wrapper="asArray" />
+			</c:scriptObject>
+			<c:scriptObject var="internalOptions">
+				<c:scriptOption variables="classes"  />
+			</c:scriptObject>
+			<c:scriptObject var="events">
+				<c:scriptOption attributes="onlistchanged, onlistchange, onfocus, onblur" wrapper="eventHandler" />
+			</c:scriptObject>
+			<c:scriptObject var="options">
+				<c:scriptOption attributes="switchByClick, switchByDblClick" />
+				<c:scriptOption variables="events, internalOptions"  />
+			</c:scriptObject>
 			<script type="text/javascript">
-				
-					var clientId = '#{clientId}';
 					new Richfaces.PickList(
-						new Richfaces.PickList.Target('#{clientId}', '#{clientId}tlInternal_tab', '#{clientId}tlInternal_header_tab', '#{clientId}tlFocusKeeper', undefined, Richfaces.PickList.Target.SelectItem, #{this:getColumnClassesAsJSArray(context, component)}, #{this:getRowClassesAsJSArray(context, component)}),
-						new Richfaces.PickList.Source('#{clientId}', '#{clientId}internal_tab', '#{clientId}internal_header_tab', '#{clientId}focusKeeper', undefined, Richfaces.PickList.Source.SelectItem, #{this:getColumnClassesAsJSArray(context, component)}, #{this:getRowClassesAsJSArray(context, component)}), 
-						"#{clientId}", 
-						[['copy', 'discopy'], ['copyAll', 'discopyAll'], ['remove', 'disremove'], ['removeAll','disremoveAll']],
-						"#{switchByClick}", 
-						"#{switchByDblClick}", 
-						{onlistchanged: #{this:getAsEventHandler(context, component, "onlistchanged")},
-						 onlistchange: #{this:getAsEventHandler(context, component, "onlistchange")},
-						 onfocus:#{this:getAsEventHandler(context, component, "onfocus")},
-						 onblur:#{this:getAsEventHandler(context, component, "onblur")}
-						},
-						"#{clientId}valueKeeper");
+						"#{clientId}"
+						<c:if test="#{not empty options}">
+						, <f:writeAsScript value="#{options}" />
+						</c:if>		
+					);
 			</script>
 		</c:if>
 	</span>
