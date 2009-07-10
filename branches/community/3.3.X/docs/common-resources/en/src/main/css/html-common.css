@@ -118,7 +118,7 @@ th, td {
     border: 1px solid #AAAAAA;
 }
 #title, ul.docnav{
-	margin:0 auto;
+	/*margin:0 auto;*/
 	width:1000px;
 	margin-left:0px;
 }
