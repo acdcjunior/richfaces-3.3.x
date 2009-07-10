@@ -19,15 +19,17 @@ Richfaces.OrderingListSelectItem.prototype.CLASSES = {
 },
 
 
-Richfaces.OrderingList = Class.create(Richfaces.ListBase, {
-	initialize: function($super, containerId, contentTableId, headerTableId, focusKeeperId, ids, onclickControlId, events, controlClass, columnsClasses, rowClasses) {
-		$super(containerId, contentTableId, headerTableId, focusKeeperId, onclickControlId, controlClass, columnsClasses, rowClasses);
-		
+Richfaces.OrderingList = Class.create(Richfaces.ListBase, {	
+	initialize: function($super, id, options) {
+		options = options || {};
+		var containerId = id + (options.idFuffix || "");
+		$super(containerId, options.itemClass || Richfaces.OrderingListSelectItem, options.classes);
+		this.container = $(id);
 		this.container.component = this;
 		
-		this.events = events;
+		this.events = options.events || {};
 		this.controlList = new Array();
-		this.initControlList(containerId, ids);
+		this.initControlList(id);
 		
 		for (var e in this.events) {
 			if (e && this.events[e]) {
@@ -42,14 +44,15 @@ Richfaces.OrderingList = Class.create(Richfaces.ListBase, {
 		this.container.component = null;
 	},
 	
-	initControlList : function(containerId, ids) {
+	initControlList : function(containerId) {
+		var ids = ['up', 'down', 'last', 'first'];
 		for (var i = 0; i < ids.length; i++) {
 			var id = ids[i];
-			var node = $(containerId + id[0]);
-			var disNode = $(containerId + id[1]);
+			var node = $(containerId + id);
+			var disNode = $(containerId + "dis" + id);
 			if (node && disNode) { 
-				node.observe('click', Richfaces.OrderingList.HANDLERS[id[0]].bindAsEventListener(this));
-				this.controlList[i] = new Richfaces.Control(node, disNode, false, false, id[0]);
+				node.observe('click', Richfaces.OrderingList.HANDLERS[id].bindAsEventListener(this));
+				this.controlList[i] = new Richfaces.Control(node, disNode, false, false, id);
 			}
 		}
 	},
@@ -179,7 +182,7 @@ Richfaces.OrderingList = Class.create(Richfaces.ListBase, {
 					  if (event.ctrlKey) { 
 						this.selectAll();
 					  } 
-					  this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);
+					  this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);
 					  this.controlListManager();
 					  Event.stop(event);
 					  break; 

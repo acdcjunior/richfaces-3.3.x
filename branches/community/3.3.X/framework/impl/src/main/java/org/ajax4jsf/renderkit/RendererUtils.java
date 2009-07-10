@@ -51,6 +51,7 @@ import org.ajax4jsf.renderkit.compiler.TemplateContext;
 import org.ajax4jsf.resource.InternetResource;
 import org.ajax4jsf.resource.Java2Dresource;
 import org.ajax4jsf.util.HtmlDimensions;
+import org.richfaces.component.util.ComponentUtil;
 
 /**
  * Util class for common render operations - render passthru html attributes,
@@ -589,6 +590,19 @@ public class RendererUtils {
 			@Override
 			Object wrap(Object o) {
 				return o;
+			}
+			
+		}, 
+		
+
+		/**
+		 * Convert parameter to array of srings.
+		 */
+		AS_ARRAY {
+
+			@Override
+			Object wrap(Object o) {
+				return ComponentUtil.asArray(o);
 			}
 			
 		}, 

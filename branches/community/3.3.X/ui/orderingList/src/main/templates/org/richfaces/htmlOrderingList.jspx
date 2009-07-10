@@ -116,21 +116,21 @@
 		</table>
 		
 	<f:clientId var="cId"/>		
+	<c:scriptObject var="events">
+		<c:scriptOption attributes="onorderchanged, onorderchange, ontopclick, onbottomclick, onupclick, ondownclick" wrapper="eventHandler" />
+	</c:scriptObject>
+	<c:scriptObject var="classes">
+		<c:scriptOption attributes="columnClasses, rowClasses" wrapper="asArray" />
+	</c:scriptObject>
+	<c:scriptObject var="options">
+		<c:scriptOption variables="events, classes"  />
+	</c:scriptObject>
 	<script type="text/javascript">
-			var clientId = '#{cId}';
-			new Richfaces.OrderingList('#{cId}', '#{cId}internal_tab', 
-													 '#{cId}internal_header_tab', '#{cId}focusKeeper', 
-													 [['up', 'disup'], ['down', 'disdown'], ['last', 'dislast'], ['first','disfirst']],
-													 '#{cId}sortLabel', 
-													 {onorderchanged:#{this:getAsEventHandler(context, component, "onorderchanged")},
-													  onorderchange:#{this:getAsEventHandler(context, component, "onorderchange")},
-													  ontopclick:#{this:getAsEventHandler(context, component, "ontopclick")},
-													  onbottomclick:#{this:getAsEventHandler(context, component, "onbottomclick")},
-													  onupclick:#{this:getAsEventHandler(context, component, "onupclick")},
-													  ondownclick:#{this:getAsEventHandler(context, component, "ondownclick")}}, 
-													 Richfaces.OrderingListSelectItem, 
-													 #{this:getColumnClassesAsJSArray(context, component)}, 
-													 #{this:getRowClassesAsJSArray(context, component)});
+			new Richfaces.OrderingList('#{cId}'
+				<c:if test="#{not empty options}">
+				, <f:writeAsScript value="#{options}" />
+				</c:if>
+			);
 	</script>
 	</div> 
 </f:root>
