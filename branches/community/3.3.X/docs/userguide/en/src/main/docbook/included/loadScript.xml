@@ -68,7 +68,7 @@ HtmlLoadScript myScript = new HtmlLoadScript();
         <para>
               <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="JAVA"><![CDATA[<a4j:loadScript src="resource:///org/mycompany/assets/script/focus.js" />]]></programlisting>
+        <programlisting role="XML"><![CDATA[<a4j:loadScript src="resource:///org/mycompany/assets/script/focus.js" />]]></programlisting>
           <para>
                 The <emphasis><property>&quot;src&quot;</property></emphasis> attribute passses value to the <code>getResourceURL()</code> method of the ViewHandler of the application, 
                 The result is passed through the <code>encodeResourceURL()</code> method of the ExternalContext. 
