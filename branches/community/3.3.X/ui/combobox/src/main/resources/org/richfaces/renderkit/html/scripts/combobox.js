@@ -110,7 +110,7 @@ Richfaces.ComboBox.prototype = {
 	},
 	
 	setInputWidth : function() {
-		var width = (parseInt(this.field.parentNode.style.width) - this.BUTTON_WIDTH) - Richfaces.getBorderWidth(this.field, "lr") - Richfaces.getBorderWidth(this.button, "lr") - Richfaces.getPaddingWidth(this.field,"lr");
+		var width = parseInt(this.field.parentNode.style.width) - this.BUTTON_WIDTH;
 		this.field.style.width = width + "px"; 	
 	},
 	
