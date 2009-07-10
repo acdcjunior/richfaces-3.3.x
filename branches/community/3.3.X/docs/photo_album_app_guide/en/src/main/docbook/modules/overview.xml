@@ -11,8 +11,17 @@
       <section id="pageFlows">
       	<title>Page flows</title>
         <para>
-             Work in progress...
+            
+            The page flow of the application is illustrated on the diagram.
         </para>
+        <figure>
+          <title>Page Flow diagram</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/diagram.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
         <section>
           <title>Page flows: implementation details</title>
          
@@ -40,7 +49,52 @@
             <para>When all fields are filled out with correct values the <code>register(user)</code> is triggered and a new user is set. </para>
           </section>
           
-        </section>
+          <section>
+            <title>Navigation Between Pages</title>
+            <para>
+  Technically, user do not browse between pages of the application: every content page is included into the content area of <code>index.xhtml</code> file.
+            </para>
+            <programlisting role="XML"><![CDATA[...
+<h:panelGroup styleClass="content_box" layout="block">
+  <ui:include src="#{model.mainArea.template}" />
+</h:panelGroup>
+...]]></programlisting> 
+            <para>
+              
+              The <code>NavigationEnum</code> class  encapsulated all possible states, that can be applied to content area (&quot;mainArea&quot;)  on the page.
+              
+            </para>
+            
+            <programlisting role="XML"><![CDATA[...
+ public enum NavigationEnum {
+	ANONYM("includes/publicShelves.xhtml"),
+	FILE_UPLOAD("includes/fileUpload.xhtml"),
+	USER_PREFS("includes/userPrefs.xhtml"),
+	REGISTER("includes/register.xhtml"),
+	SEARCH("includes/search.xhtml"),
+	ALBUM_PREVIEW("includes/album.xhtml"),
+	ALBUM_IMAGE_PREVIEW("/includes/image.xhtml"),
+	SHELF_PREVIEW("/includes/shelf.xhtml"),
+	ALL_SHELFS("/includes/userShelves.xhtml"),
+	TAGS("includes/tag.xhtml"),
+	ALL_ALBUMS("/includes/userAlbums.xhtml"),
+	ALL_IMAGES("/includes/userImages.xhtml"),
+	ALBUM_IMAGE_EDIT("/includes/imageEdit.xhtml"),
+	ALBUM_EDIT("/includes/albumEdit.xhtml"),
+	SHELF_EDIT("/includes/shelfEdit.xhtml"),
+	SHELF_UNVISITED("/includes/shelfUnvisited.xhtml"),
+	USER_SHARED_ALBUMS("/includes/userSharedAlbums.xhtml"),
+	USER_SHARED_IMAGES("/includes/userSharedImages.xhtml"),
+	ALBUM_UNVISITED("/includes/albumUnvisited.xhtml");
+...
+}
+]]></programlisting> 
+            <para>
+              
+              This class specifies which file is included depending on some user action.     
+              The template to be loaded is identified according to some condition in a Controller (<code>Controllor.java</code>) method and is saved to the Model (<code>Model.java</code>). During <code>index.xhtml</code> page rendering the value is taken from the Model to define what should be rendered to the page.
+               </para>
+          </section>
         
       </section>
       <section id="dataModel">
@@ -58,11 +112,12 @@
           </mediaobject>
         </figure>
       </section>
-      <section id="setUp">
+        </section>
+      <!--section id="setUp">
       	<title>Project Set Up</title>
         <para>
              Work in progress...
         </para>
-      </section>
+      </section-->
 </chapter>
 
