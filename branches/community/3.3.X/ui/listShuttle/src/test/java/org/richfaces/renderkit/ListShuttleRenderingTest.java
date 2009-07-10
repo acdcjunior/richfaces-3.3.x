@@ -202,7 +202,7 @@ public class ListShuttleRenderingTest extends AbstractAjax4JsfTestCase {
         assertNotNull(inputs);
         assertEquals(1, inputs.size());
         inputs = view.getDocumentHtmlElement().
-        	getHtmlElementsByAttribute(HTML.INPUT_ELEM, HTML.id_ATTRIBUTE, listShuttle.getClientId(facesContext) + "tlFocusKeeper");
+        	getHtmlElementsByAttribute(HTML.INPUT_ELEM, HTML.id_ATTRIBUTE, listShuttle.getClientId(facesContext) + "tlfocusKeeper");
         assertNotNull(inputs);
         assertEquals(1, inputs.size());
         

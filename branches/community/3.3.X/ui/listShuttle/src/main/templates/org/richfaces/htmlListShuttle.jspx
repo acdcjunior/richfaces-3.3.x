@@ -46,13 +46,7 @@
 					    SelectionState targetSelectionState = new SelectionState();     
 					    variables.setVariable(SELECTION_STATE_VAR_NAME, targetSelectionState);
 						String encodedTargetRows = encodeRows(context, component, false);
-						
-						Boolean switchByClick = (Boolean) component.getAttributes().get("switchByClick");
-						variables.setVariable("switchByClick", switchByClick);
-					
-						Boolean switchByDblClick = (Boolean) component.getAttributes().get("switchByDblClick");
-						variables.setVariable("switchByDblClick", switchByDblClick);
-						
+												
 						variables.setVariable("baseClientId", component.getBaseClientId(context));
 					]]>
 				</jsp:scriptlet>
@@ -130,13 +124,13 @@
 						<div class="rich-shuttle-target-items #{component.listClass}" >
 							<input autocomplete="off" type="hidden" value=":" style="display: none;" name="#{baseClientId}" />
 	
-					    	<input id="#{clientId}tlFocusKeeper" type="button" value="" style="width: 1px; position: absolute; left: -32767px;"/>
+					    	<input id="#{clientId}tlfocusKeeper" type="button" value="" style="width: 1px; position: absolute; left: -32767px;"/>
 							
-							<table id="#{clientId}tlTable" cellpadding="0" cellspacing="0" class="rich-shuttle-body">
+							<table id="#{clientId}tltable" cellpadding="0" cellspacing="0" class="rich-shuttle-body">
 								<tbody>
 									<tr>
 										<td style="border:0px;padding : 0px;">
-											<div id="#{clientId}tlHeaderBox" class="rich-shuttle-list">
+											<div id="#{clientId}tlheaderBox" class="rich-shuttle-list">
 												<jsp:scriptlet>
 													<![CDATA[
 									                	String trContentContainerStyle = "";
@@ -149,7 +143,7 @@
 													]]>
 			                					</jsp:scriptlet>
 												<div class="rich-shuttle-list-header" style="#{trContentContainerStyle}">
-													<table id="#{clientId}tlInternal_header_tab" class="rich-shuttle-internal-header-tab" cellpadding="0" cellspacing="0">
+													<table id="#{clientId}tlinternal_header_tab" class="rich-shuttle-internal-header-tab" cellpadding="0" cellspacing="0">
 														<f:call name="encodeTLHeader"/>
 													</table>
 												</div>
@@ -162,9 +156,9 @@
 									                	}
 		                							]]>
 		                						</jsp:scriptlet>
-												<div id="#{clientId}tlContentBox" class="rich-shuttle-list-content" style="#{trContentContainerStyle}">
-													<table id="#{clientId}tlInternal_tab" class="rich-shuttle-internal-tab" cellpadding="0" cellspacing="0">
-														<tbody id="#{clientId}tlTbody">
+												<div id="#{clientId}tlcontentBox" class="rich-shuttle-list-content" style="#{trContentContainerStyle}">
+													<table id="#{clientId}tlinternal_tab" class="rich-shuttle-internal-tab" cellpadding="0" cellspacing="0">
+														<tbody id="#{clientId}tltbody">
 															<jsp:scriptlet><![CDATA[
 																writer.write(encodedTargetRows);
 																encodedTargetRows = null;															
@@ -186,49 +180,30 @@
 							]]></jsp:scriptlet>
 						</div>
 
+						<c:scriptObject var="internalEvents">
+							<c:scriptOption attributes="onorderchanged, onorderchange, ontopclick, onbottomclick, onupclick, ondownclick" wrapper="eventHandler" />
+						</c:scriptObject>
+						<c:scriptObject var="classes">
+							<c:scriptOption attributes="columnClasses, rowClasses" wrapper="asArray" />
+						</c:scriptObject>
+						<c:scriptObject var="internalOptions">
+							<c:scriptOption name="events" value="#{internalEvents}"  />
+							<c:scriptOption variables="classes"  />
+						</c:scriptObject>
+						<c:scriptObject var="events">
+							<c:scriptOption attributes="onlistchanged, onlistchange, oncopyallclick, oncopyclick, onremoveallclick, onremoveclick, onfocus, onblur" wrapper="eventHandler" />
+						</c:scriptObject>
+						<c:scriptObject var="options">
+							<c:scriptOption attributes="switchByClick, switchByDblClick" />
+							<c:scriptOption variables="events, internalOptions"  />
+						</c:scriptObject>
 						<script type="text/javascript">
-							var clientId = '#{clientId}';
-									new Richfaces.ListShuttle(
-										new Richfaces.ListShuttle.Target(
-											'#{clientId}', 
-											'#{clientId}tlInternal_tab', 
-											'#{clientId}tlInternal_header_tab', 
-											'#{clientId}tlFocusKeeper',
-											[['up', 'disup'], ['down', 'disdown'], ['last', 'dislast'], ['first','disfirst']],
-											'#{clientId}sortLabel', 
-											{onorderchanged:#{this:getAsEventHandler(context, component, "onorderchanged")},
-											 onorderchange:#{this:getAsEventHandler(context, component, "onorderchange")},
-											 ontopclick:#{this:getAsEventHandler(context, component, "ontopclick")},
-											 onbottomclick:#{this:getAsEventHandler(context, component, "onbottomclick")},
-											 onupclick:#{this:getAsEventHandler(context, component, "onupclick")},
-											 ondownclick:#{this:getAsEventHandler(context, component, "ondownclick")}}, 
-											 Richfaces.ListShuttle.Target.SelectItem, 
-											 #{this:getColumnClassesAsJSArray(context, component)}, 
-											 #{this:getRowClassesAsJSArray(context, component)}
-										), 
-										new Richfaces.ListShuttle.Source(
-											'#{clientId}', 
-											'#{clientId}internal_tab', 
-											'#{clientId}internal_header_tab', 
-											'#{clientId}focusKeeper', 
-											undefined, 
-											Richfaces.ListShuttle.Source.SelectItem, 
-											#{this:getColumnClassesAsJSArray(context, component)}, 
-											#{this:getRowClassesAsJSArray(context, component)}), 
-										"#{clientId}", 
-										[['copy', 'discopy'], ['copyAll', 'discopyAll'], ['remove', 'disremove'], ['removeAll','disremoveAll']],
-										"#{switchByClick}", 
-										"#{switchByDblClick}",
-										{onlistchanged:#{this:getAsEventHandler(context, component, "onlistchanged")},
-										 onlistchange:#{this:getAsEventHandler(context, component, "onlistchange")},
-										 oncopyallclick:#{this:getAsEventHandler(context, component, "oncopyallclick")},
-										 oncopyclick:#{this:getAsEventHandler(context, component, "oncopyclick")},
-										 onremoveallclick:#{this:getAsEventHandler(context, component, "onremoveallclick")},
-										 onremoveclick:#{this:getAsEventHandler(context, component, "onremoveclick")},
-										 onfocus:#{this:getAsEventHandler(context, component, "onfocus")},
-										 onblur:#{this:getAsEventHandler(context, component, "onblur")}
-										}
-								);
+							new Richfaces.ListShuttle(
+								"#{clientId}"
+								<c:if test="#{not empty options}">
+								, <f:writeAsScript value="#{options}" />
+								</c:if>		
+							);
 						</script>
 					</td>
 				</tr>
