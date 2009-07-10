@@ -611,47 +611,4 @@ public abstract class OrderingComponentRendererBase extends
 		}
 		return "display: none;";
 	}
-
-	public String getAsEventHandler(FacesContext context,
-			UIComponent component, String attributeName) {
-		String event = (String) component.getAttributes().get(attributeName);
-		ScriptString result = JSReference.NULL;
-
-		if (event != null) {
-			event = event.trim();
-
-			if (event.length() != 0) {
-				JSFunctionDefinition function = new JSFunctionDefinition();
-				function.addParameter("event");
-				function.addToBody(event);
-
-				result = function;
-			}
-		}
-
-		return ScriptUtils.toScript(result);
-	}
-
-	public String getColumnClassesAsJSArray(FacesContext context,
-			UIComponent component) {
-		return ScriptUtils.toScript(getClassesAsList(context, component,
-				"columnClasses"));
-	}
-
-	public String getRowClassesAsJSArray(FacesContext context,
-			UIComponent component) {
-		return ScriptUtils.toScript(getClassesAsList(context, component,
-				"rowClasses"));
-	}
-
-	protected List getClassesAsList(FacesContext context,
-			UIComponent component, String attr) {
-
-		String value = (String) ((UIDataAdaptor) component).getAttributes()
-				.get(attr);
-		if (value != null && (value.length() != 0)) {
-			return Arrays.asList(value.split(","));
-		}
-		return null;
-	}
 }

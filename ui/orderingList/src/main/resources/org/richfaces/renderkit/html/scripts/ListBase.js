@@ -31,16 +31,14 @@ Richfaces.ListBase.DESC = "desc";
 Richfaces.ListBase.CONTROL_SET = ["A", "INPUT", "TEXTAREA", "SELECT", "OPTION", "BUTTON"];
 
 Richfaces.ListBase.prototype = {
-	initialize : function(containerId, contentTableId, headerTableId, focusKeeperId, 
-				   		  onclickControlId, controlClass, columnsClasses, rowClasses) {
+	initialize : function(containerId, controlClass, classes) {
 		this["rich:destructor"] = "destroy";
 		this.selectedItems = new Array();
 		
-		//this.layoutManager = layoutManager;
-		this.container = $(containerId);
+		var contentTableId = containerId + "internal_tab";
 		this.shuttleTable = $(contentTableId);
 		this.shuttleTable.onselectstart = Richfaces.disableSelectionText;
-		this.focusKeeper = $(focusKeeperId);
+		this.focusKeeper = $(containerId + "focusKeeper");
 		this.focusKeeper.focused = false;
 		//this.setFocus();
 		this.focusKeeper.observe("keydown", (function(e) {this.onkeydownHandler(window.event || e)}).bindAsEventListener(this));
@@ -54,8 +52,7 @@ Richfaces.ListBase.prototype = {
 		this.items = null;
 		
 		//FIX
-		this.rowClasses = rowClasses;
-		this.columnsClasses = columnsClasses;
+		Object.extend(this, classes);
 		
 		this.controlClass = controlClass;
 		this.retrieveShuttleItems(containerId, controlClass);
@@ -65,7 +62,7 @@ Richfaces.ListBase.prototype = {
 		this.clckHandler = function(e) {this.onclickHandler(window.event || e)}.bindAsEventListener(this);
 		this.shuttleTable.observe("click", this.clckHandler);
 
-		this.layoutManager = new LayoutManager(headerTableId, contentTableId);
+		this.layoutManager = new LayoutManager(containerId + "internal_header_tab", contentTableId);
 //---   http://jira.jboss.com/jira/browse/RF-3830 FF3 & Safari only!
 		this.tableElement = document.getElementById(contentTableId);
 		var rows = this.tableElement.tBodies[0].rows;
@@ -79,7 +76,7 @@ Richfaces.ListBase.prototype = {
 //---		 
 		var synch = function() {this.layoutManager.widthSynchronization()}.bindAsEventListener(this);
 		RichShuttleUtils.execOnLoad(
-			synch, RichShuttleUtils.Condition.ElementPresent(this.container), 100
+			synch, RichShuttleUtils.Condition.ElementPresent(this.shuttleTable.parentNode), 100
 		);
 	},
 	
@@ -174,7 +171,7 @@ Richfaces.ListBase.prototype = {
 		}
 
 		if (this.activeItem) {
-			this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);
+			this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);
 		}
 	},
 	
@@ -223,7 +220,7 @@ Richfaces.ListBase.prototype = {
 					  if (event.ctrlKey) { 
 						this.selectAll();
 					  } 
-					  this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);
+					  this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);
 					  Event.stop(event);
 					  break; 
 		}
@@ -246,8 +243,8 @@ Richfaces.ListBase.prototype = {
 		item.item.doNormal();
 		this.resetMarked();
 		
-		newItem.item.doSelect(this.getExtRowClass(newItem.rowIndex), this.columnsClasses);
-		newItem.item.doActive(this.getExtRowClass(newItem.rowIndex), this.columnsClasses);
+		newItem.item.doSelect(this.getExtRowClass(newItem.rowIndex), this.columnClasses);
+		newItem.item.doActive(this.getExtRowClass(newItem.rowIndex), this.columnClasses);
 		this.setActiveItem(newItem);
 		this.selectedItems.push(newItem);
 	},
@@ -267,9 +264,9 @@ Richfaces.ListBase.prototype = {
 		
 		this.resetMarked();
 		if (activeItem.item.isSelected()) {
-			activeItem.item.doNormal(this.getExtRowClass(activeItem.rowIndex), this.columnsClasses);
+			activeItem.item.doNormal(this.getExtRowClass(activeItem.rowIndex), this.columnClasses);
 		} else {
-			activeItem.item.doSelect(this.getExtRowClass(activeItem.rowIndex), this.columnsClasses);
+			activeItem.item.doSelect(this.getExtRowClass(activeItem.rowIndex), this.columnClasses);
 			this.selectedItems[0] = markedShuttleItem; //TODO: delete 
 		}
 	},
@@ -282,18 +279,18 @@ Richfaces.ListBase.prototype = {
 		
 		if (activeItem.item.isSelected()) {
 			this.selectedItems.remove(markedShuttleItem); //TODO :delete
-			activeItem.item.doNormal(this.getExtRowClass(activeItem.rowIndex), this.columnsClasses);
+			activeItem.item.doNormal(this.getExtRowClass(activeItem.rowIndex), this.columnClasses);
 		} else {
-			activeItem.item.doSelect(this.getExtRowClass(activeItem.rowIndex), this.columnsClasses);
+			activeItem.item.doSelect(this.getExtRowClass(activeItem.rowIndex), this.columnClasses);
 			this.selectedItems.push(markedShuttleItem); //TODO :delete
 		}
 		
 		if ((this.activeItem != null) && (this.activeItem.rowIndex != activeItem.rowIndex)) {
 			//reset activity of an element
 			if (this.activeItem.item.isSelected()) {
-				this.activeItem.item.doSelect(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses); 			
+				this.activeItem.item.doSelect(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses); 			
 			} else {
-				this.activeItem.item.doNormal(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);				
+				this.activeItem.item.doNormal(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);				
 			}
 		}
 	},
@@ -323,7 +320,7 @@ Richfaces.ListBase.prototype = {
 	selectItemRange : function(startIndex, endIndex) {
 		var rows = this.shuttleTbody.rows;
 		for (var i = startIndex; i <= endIndex; i++) {
-			rows[i].item.doSelect(this.getExtRowClass(rows[i].rowIndex), this.columnsClasses);
+			rows[i].item.doSelect(this.getExtRowClass(rows[i].rowIndex), this.columnClasses);
 			this.selectedItems.push(rows[i]);
 		}	
 	},
@@ -333,7 +330,7 @@ Richfaces.ListBase.prototype = {
 		var length = rows.length;
 		for (var i = 0; i < length; i++) {
 			var shuttleItem = rows[i]; 
-			shuttleItem.item.doNormal(this.getExtRowClass(shuttleItem.rowIndex), this.columnsClasses);
+			shuttleItem.item.doNormal(this.getExtRowClass(shuttleItem.rowIndex), this.columnClasses);
 		}	
 		this.selectedItems.length = 0;
 		
@@ -385,9 +382,9 @@ Richfaces.ListBase.prototype = {
 		
 		if (this.activeItem) {
 			if (this.activeItem.item.isSelected()) {
-				this.activeItem.item.doSelect(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);			
+				this.activeItem.item.doSelect(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);			
 			} else {
-				this.activeItem.item.doNormal(this.getExtRowClass(this.activeItem.rowIndex), this.columnsClasses);
+				this.activeItem.item.doNormal(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);
 			}
 		}
 	},
