@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter>
-	<section>
-		<sectioninfo>
-			<keywordset>
-				<keyword>loadStyle</keyword>
-			</keywordset>
-		</sectioninfo>
-		
-		<title>Description</title>
-		<para>
-			The component Inserts stylesheet links to the head element. Render the value of the component, after passing it to the <code>getResourceURL()</code> method of the ViewHandler for this application, and passing the result through the <code>encodeResourceURL()</code> method of the ExternalContext.		
-		</para>
-	</section>
+      <section>
+            <sectioninfo>
+                  <keywordset>
+                        <keyword>loadStyle</keyword>
+                  </keywordset>
+            </sectioninfo>
+            <title>Description</title>
+            <para>
+                  The <emphasis role="bold"><property>&lt;a4j:loadStyle&gt;</property></emphasis> component allows to load a style sheet file from alternative sources like a jar file, etc. 
+                  It inserts stylesheet links to the head element. 
+            </para>
+      </section>
 </chapter>
