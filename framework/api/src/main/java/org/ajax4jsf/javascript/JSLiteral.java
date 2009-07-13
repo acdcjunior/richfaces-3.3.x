@@ -31,6 +31,21 @@ public class JSLiteral extends ScriptStringBase {
     /** Javascript literal text */
     private String literal;
     
+    private static final class ImmutableJSLiteral extends JSLiteral {
+
+		public ImmutableJSLiteral(String literal) {
+			super(literal);
+		}
+
+		@Override
+		public void setLiteral(String literal) {
+			throw new UnsupportedOperationException();
+		}
+    };
+    
+    public static final JSLiteral EMPTY_HASH = new ImmutableJSLiteral("{}");
+
+    public static final JSLiteral EMPTY_LIST = new ImmutableJSLiteral("[]");
 
     /**
      * Default constructor
