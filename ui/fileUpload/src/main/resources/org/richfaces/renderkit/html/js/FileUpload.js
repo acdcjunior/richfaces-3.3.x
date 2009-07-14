@@ -521,7 +521,6 @@ Object.extend(FileUpload.prototype, {
 		this.currentInput = $(this.id + ":file");
 
 		this.actionUrl = actionUrl;
-		this.options = {allowFlash : "false"};
 		this.initFlashModule();
 		this.initEvents();
 		this.setupAutoUpload();
