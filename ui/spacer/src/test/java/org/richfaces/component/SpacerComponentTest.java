@@ -69,7 +69,7 @@ public class SpacerComponentTest extends AbstractAjax4JsfTestCase {
 		spacer.setId("spacer");
 		spacer.getAttributes().put("width", "30");
 		spacer.getAttributes().put("height", "10");
-		spacer.getAttributes().put("title", "10");
+		spacer.getAttributes().put("title", "title");
 		spacer.getAttributes().put("style", "background-color: lime");
 
 		// spacer.getAttributes().put("height", new Integer(10));
@@ -102,19 +102,13 @@ public class SpacerComponentTest extends AbstractAjax4JsfTestCase {
 				.getHtmlElementById(spacer.getClientId(facesContext));
 		assertNotNull(htmlSpacer);
 
-		String str = htmlSpacer.getAttributeValue("width");
-		assertEquals("30", str);
-		str = htmlSpacer.getAttributeValue("height");
-		assertEquals("10", str);
-		str = htmlSpacer.getAttributeValue("style");
-		assertEquals("background-color: lime", str);
-
-		str = htmlSpacer.getClassAttribute();
-		str = htmlSpacer.getAttributeValue("class");
-		assertTrue(str.contains("rich-spacer"));
-
-		str = htmlSpacer.getSrcAttribute();
-		assertTrue(str.contains("images/spacer.gif"));
+		assertEquals("30", htmlSpacer.getAttributeValue("width"));
+		assertEquals("10", htmlSpacer.getAttributeValue("height"));
+		assertEquals("title", htmlSpacer.getAttributeValue("title"));
+		assertEquals("", htmlSpacer.getAttributeValue("alt"));
+		assertEquals("background-color: lime", htmlSpacer.getAttributeValue("style"));
+		assertTrue(htmlSpacer.getAttributeValue("class").contains("rich-spacer"));
+		assertTrue(htmlSpacer.getSrcAttribute().contains("images/spacer.gif"));
 
 		//System.out.println(renderedView.getWebResponse().getContentAsString());
 
