@@ -721,9 +721,8 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	 * 
 	 * @param rowKey
 	 *            of the node to expand
-	 * @throws IOException
 	 */
-	public void queueNodeExpand(TreeRowKey rowKey) throws IOException {
+	public void queueNodeExpand(TreeRowKey rowKey) {
 		new ExpandNodeCommandEvent(this, rowKey).queue();
 	}
 
@@ -733,27 +732,22 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	 * 
 	 * @param rowKey
 	 *            of the node to expand
-	 * @throws IOException
 	 */
-	public void queueNodeCollapse(TreeRowKey rowKey) throws IOException {
+	public void queueNodeCollapse(TreeRowKey rowKey) {
 		new CollapseNodeCommandEvent(this, rowKey).queue();
 	}
 
 	/**
 	 * Queues all node expansion command
-	 * 
-	 * @throws IOException
 	 */
-	public void queueExpandAll() throws IOException {
+	public void queueExpandAll() {
 		new ExpandAllCommandEvent(this).queue();
 	}
 
 	/**
 	 * Queues all node collapsion command
-	 * 
-	 * @throws IOException
 	 */
-	public void queueCollapseAll() throws IOException {
+	public void queueCollapseAll() {
 		new CollapseAllCommandEvent(this).queue();
 	}
 
