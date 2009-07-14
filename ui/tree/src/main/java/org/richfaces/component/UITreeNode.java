@@ -20,6 +20,7 @@
  */
 package org.richfaces.component;
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIViewRoot;
@@ -526,6 +527,8 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		 if (this.ajaxSingleSet) {
 			return this.ajaxSingle;
 		 }
+		 
+		 // ValueExpression ve = getValueExpression("ajaxSingle");
     	ValueBinding vb = getValueBinding("ajaxSingle");
     	if (vb != null) {
     	    Boolean value = (Boolean) vb.getValue(getFacesContext());

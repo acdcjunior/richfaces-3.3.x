@@ -262,7 +262,7 @@ public abstract class NodeRendererBase extends CompositeRenderer {
 		String nodeExpandedId = id + NODE_EXPANDED_INPUT_SUFFIX;
 		Object nodeExpandedValue = requestMap.get(nodeExpandedId);
 		if (nodeExpandedValue != null) {
-			boolean nodeExpanded = Boolean.valueOf(nodeExpandedValue.toString());
+			boolean nodeExpanded = Boolean.parseBoolean(nodeExpandedValue.toString());
 			if (tree.isExpanded() ^ nodeExpanded) {
 				if (nodeExpanded) {
 					new ExpandNodeCommandEvent(tree, key).queue();
