@@ -20,10 +20,9 @@ new org.ajax4jsf.javascript.ImageCacheScript(),
 scripts/simpleTogglePanel.js
 </h:scripts>
 
-    <div id="#{clientId}" x:passThruWithExclusions="id,value,style,styleClass,class"
-         class="rich-stglpanel #{component.attributes['styleClass']}"
-         style="width: #{component.attributes['width']}; #{component.attributes['style']};">
-
+    <jsp:scriptlet>
+        encodeDivStart(writer, context, component);
+    </jsp:scriptlet>
         <script type="text/javascript">
             SimpleTogglePanelManager.add(new SimpleTogglePanel("#{clientId}", 
             													"#{component.attributes['opened']}",{ 
@@ -38,7 +37,7 @@ scripts/simpleTogglePanel.js
         <div id="#{clientId}_header"
              class="rich-stglpanel-header #{component.attributes['headerClass']}"
              onclick="#{this:getOnClick(context,component)}">
-					
+                    
 			<div class="rich-stglpanel-marker">
             	<div id="#{clientId}_switch_on" style="display: #{this:getSwitchOnStatus(context, component)};" class="rich-stglpnl-marker">
 	                <jsp:scriptlet><![CDATA[
@@ -92,15 +91,14 @@ scripts/simpleTogglePanel.js
         </jsp:scriptlet>
         <f:call name="utils.encodeEndFormIfNessesary"/>
 
-        <div id="#{clientId}_body"
-       		 class="rich-stglpanel-body #{component.attributes['bodyClass']}"
-             style="display : #{this:getdivdisplay(context, component)};
-             height: #{component.attributes['height']};">
-
+        <jsp:scriptlet>
+            encodeBodyDivStart(writer, context, component);
+        </jsp:scriptlet>
             <vcp:body>
                 <f:call name="renderChildren" />
             </vcp:body>
-        </div>
-    </div>
-
+        <jsp:scriptlet>
+            encodeDivEnd(writer);
+            encodeDivEnd(writer);
+        </jsp:scriptlet>
 </f:root>

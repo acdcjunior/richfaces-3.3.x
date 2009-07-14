@@ -30,6 +30,7 @@ import java.util.Map;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
 
 import org.ajax4jsf.component.AjaxSupport;
 import org.ajax4jsf.context.AjaxContext;
@@ -185,6 +186,76 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
         {
             super.encodeChildren(context, component);
         }
+    }
+    
+    public void encodeDivStart(ResponseWriter writer,
+            FacesContext context, UISimpleTogglePanel component) throws IOException {
+        String clientId = component.getClientId(context);
+        writer.startElement("div", component);
+        getUtils().writeAttribute(writer, "class", "rich-stglpanel " + convertToString(component.getAttributes().get("styleClass")) );
+        getUtils().writeAttribute(writer, "id", clientId );
+        
+        String style = convertToString(component.getAttributes().get("style"));
+        String width = convertToString(component.getAttributes().get("width"));
+        if (!isEmpty(width)) {
+            width = "width: " + convertToString(width);
+            style = width + (isEmpty(style) ? ";" : "; " + style + ";");
+        }
+        if (!isEmpty(style)) {
+            getUtils().writeAttribute(writer, "style",  style); 
+        }
+
+        getUtils().encodeAttributesFromArray(context,component,new String[] {
+                "align",
+                "dir",
+                "lang",
+                "onclick",
+                "ondblclick",
+                "onkeydown",
+                "onkeypress",
+                "onkeyup",
+                "onmousedown",
+                "onmousemove",
+                "onmouseout",
+                "onmouseover",
+                "onmouseup",
+                "title",
+                "xml:lang" });
+    }
+    
+    public void encodeBodyDivStart(ResponseWriter writer,
+            FacesContext context, UISimpleTogglePanel component) throws IOException {
+        String clientId = component.getClientId(context);
+        writer.startElement("div", component);
+        getUtils().writeAttribute(writer, "class", "rich-stglpanel-body " + convertToString(component.getAttributes().get("bodyClass")) );
+        getUtils().writeAttribute(writer, "id", convertToString(clientId) + "_body" );
+        
+        String display = convertToString(component.getAttributes().get("display"));
+        if (!isEmpty(display)) {
+            display = "display: " + convertToString(display) + "; ";
+        }
+
+        String height = convertToString(component.getAttributes().get("height"));
+        if (!isEmpty(height)) {
+            height = "height: " + convertToString(component.getAttributes().get("height")) + ";";
+        }
+        
+        String style = display + height;
+        if (!isEmpty(style)) {
+            getUtils().writeAttribute(writer, "style", style);
+        }
+    }
+    
+    private boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
+    }
+    
+    private String convertToString(Object obj ) {
+        return ( obj == null ? "" : obj.toString() );
+    }
+    
+    public void encodeDivEnd(ResponseWriter writer) throws IOException {
+        writer.endElement("div");
     }
     
     public String getSwitchOnStatus(FacesContext context, UIComponent component) {

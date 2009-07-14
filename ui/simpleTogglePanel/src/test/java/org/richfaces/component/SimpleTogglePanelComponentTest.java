@@ -93,7 +93,7 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         stp1.setId("simpleTogglePanel1");
         stp1.setOpened(true);
         stp1.setSwitchType(UISimpleTogglePanel.SERVER_SWITCH_TYPE);
-
+        
         openMarker1 = (UIOutput) application.createComponent(UIOutput.COMPONENT_TYPE);
         openMarker1.setId("openMarker");
         openMarker1.setValue("open");
@@ -163,9 +163,9 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         HtmlElement div1 = page.getHtmlElementById(stp1.getClientId(facesContext));
         assertNotNull(div1);
         assertEquals("div", div1.getNodeName());
-
-        String classAttr1 = div1.getAttributeValue("class");
-        assertTrue(classAttr1.contains("rich-stglpanel"));
+        assertTrue(div1.getAttributeValue("class").contains("rich-stglpanel"));
+        assertEquals("", div1.getAttributeValue("style"));
+        
 
         HtmlDivision div2 = (HtmlDivision)page.getHtmlElementById(stp1.getClientId(facesContext) + "_header");
         assertNotNull(div2);
@@ -185,7 +185,8 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         HtmlElement div4 = page.getHtmlElementById(stp1.getClientId(facesContext) + "_body");
         assertNotNull(div4);
         assertEquals("div", div4.getNodeName());
-
+        assertEquals("", div4.getAttributeValue("style"));
+        
         try {
             page.getHtmlElementById(openMarker1.getClientId(facesContext));
             assertTrue(false);
