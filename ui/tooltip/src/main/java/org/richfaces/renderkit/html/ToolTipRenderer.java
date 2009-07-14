@@ -50,6 +50,9 @@ import org.richfaces.skin.Skin;
 
 public class ToolTipRenderer extends AjaxComponentRendererBase {
     
+    private static final String DIRECTION_AUTO = "auto";
+    private static final String DIRECTION_BOTTOM_RIGHT = "bottom-right";
+
     private static final String AJAX_MODE = "ajax";
 
     private final InternetResource[] styles = { getResource("/org/richfaces/renderkit/html/css/tooltip.xcss") };
@@ -283,7 +286,11 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
         utils.addToScriptHash(options, "onshow", showFunc); 
         
         utils.addToScriptHash(options, "disabled", toolTip.isDisabled(), "false");
-        utils.addToScriptHash(options, "direction", toolTip.getDirection(), "bottom-right");
+        String direction = toolTip.getDirection();
+        if (DIRECTION_AUTO.equalsIgnoreCase(direction)) {
+            direction = DIRECTION_BOTTOM_RIGHT;
+        }
+        utils.addToScriptHash(options, "direction", direction, DIRECTION_BOTTOM_RIGHT);
         utils.addToScriptHash(options, "followMouse", toolTip.isFollowMouse(), "false");
         utils.addToScriptHash(options, "horizontalOffset", toolTip.getHorizontalOffset(), "10");
         utils.addToScriptHash(options, "verticalOffset", toolTip.getVerticalOffset(), "10");
