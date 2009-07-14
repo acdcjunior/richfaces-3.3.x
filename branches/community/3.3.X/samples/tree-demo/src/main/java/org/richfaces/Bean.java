@@ -99,7 +99,17 @@ public class Bean extends TreeContainer {
 	private String ajaxNodeSelectionEncodeBehavior;
 	private String ajaxChildActivationEncodeBehavior;
 
-	public String getIcon() {
+	private String value;
+	
+	public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getIcon() {
 		return icon;
 	}
 
@@ -279,12 +289,7 @@ public class Bean extends TreeContainer {
 
 	public String expand() {
 		if (expandPath != null && expandPath.length() != 0) {
-			try {
-				tree.queueNodeExpand(new ListRowKey(null, expandPath));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			tree.queueNodeExpand(new ListRowKey(null, expandPath));
 		}
 
 		return null;
@@ -312,12 +317,7 @@ public class Bean extends TreeContainer {
 	}
 
 	public String expandAll() {
-		try {
-			this.tree.queueExpandAll();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.tree.queueExpandAll();
 		return null;
 	}
 
@@ -397,11 +397,7 @@ public class Bean extends TreeContainer {
 	public String expandNode() {
 		String pathToExpand = getPathToExpand();
 		if (pathToExpand != null && pathToExpand.trim().length() != 0) {
-			try {
-				((UITree) getTree()).queueNodeExpand(new ListRowKey(null, pathToExpand));
-			} catch (IOException e) {
-				throw new FacesException(e);
-			}
+			((UITree) getTree()).queueNodeExpand(new ListRowKey(null, pathToExpand));
 		}
 		
 		return null;
