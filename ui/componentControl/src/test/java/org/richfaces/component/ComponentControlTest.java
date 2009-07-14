@@ -144,7 +144,7 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
         String eventString = null;
         for (Object obj : scripts) {
             HtmlScript element = (HtmlScript) obj;
-            if (element.asXml().contains("Richfaces.componentControl.attachEvent")) {
+            if (element.asXml().contains("Richfaces.componentControl.attachAvailable")) {
                 eventString = element.asXml(); 
                 break; 
             }
