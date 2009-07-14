@@ -34,6 +34,8 @@ import org.ajax4jsf.component.AjaxSupport;
 import org.ajax4jsf.component.EventValueExpression;
 import org.ajax4jsf.component.JavaScriptParameter;
 import org.ajax4jsf.javascript.JSFunction;
+import org.ajax4jsf.javascript.JSFunctionDefinition;
+import org.ajax4jsf.javascript.JSLiteral;
 import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.apache.commons.logging.Log;
@@ -68,26 +70,38 @@ public abstract class UIComponentControl extends UIComponentBase
         
         JSFunction invocation = new JSFunction("Richfaces.componentControl.performOperation");
         invocation.addParameter(new JSReference("event"));
-        invocation.addParameter(getEvent());
-        invocation.addParameter(targetId);
-        invocation.addParameter(getOperation());
-        addOptions(invocation);
+        addOptions(invocation, getEvent(), targetId, getOperation());
         
         return invocation.toScript();
     }
     
-	public void addOptions(JSFunction function) {
+    private static boolean isContextMenuEvent(String event) {
+    	return ("contextmenu".equalsIgnoreCase(event) || "oncontextmenu".equalsIgnoreCase(event));
+    }
+    
+	public void addOptions(JSFunction function, String event, String targetId, String operation) {
+        function.addParameter(event);
+        function.addParameter(targetId);
+        function.addParameter(operation);
+
+		boolean parametersEncoded = false;
+
 		String params = getEncodedParametersMap();
-		
-		if (params.length()!=0) {
-			function.addParameter(new JSReference("function(){return{"+params+"}}"));
+		if (params.length() != 0) {
+			parametersEncoded = true;
+			//parameters should be evaluated in time of componentControl execution, not at page rendering
+			//e.g. event.clientX, that's why they're rendered in function
+			JSFunctionDefinition parametersFunction = new JSFunctionDefinition().
+				addToBody("return{").addToBody(params).addToBody("}");
+			
+			function.addParameter(parametersFunction);
 		}
-		String event = (String) getEvent();
+
 		boolean disableDefault = isDisableDefault();
-		boolean isOnContextMenu = ("contextmenu".equalsIgnoreCase(event) || "oncontextmenu".equalsIgnoreCase(event));
-		if ( isOnContextMenu ^ disableDefault ) {
-			if (params.length()==0) {
-				function.addParameter(new JSReference("{}"));
+		boolean isOnContextMenu = isContextMenuEvent(event);
+		if (isOnContextMenu ^ disableDefault) {
+			if (!parametersEncoded) {
+				function.addParameter(JSLiteral.EMPTY_HASH);
 			}
 			function.addParameter(disableDefault);
 		}
@@ -179,8 +193,7 @@ public abstract class UIComponentControl extends UIComponentBase
     	    }
     	}
 
-    	String event = getEvent();
-	    return ("contextmenu".equalsIgnoreCase(event) || "oncontextmenu".equalsIgnoreCase(event));
+	    return isContextMenuEvent(getEvent());
     }
 
     public void setDisableDefault(boolean disableDefault) {

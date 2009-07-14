@@ -30,12 +30,28 @@ Richfaces.componentControl.applyDecorations = function (element, forAttr, decora
 };
 
 Richfaces.componentControl.attachEvent = function(attachTo, aevent, forAttr, operation, params, disableDefault) {
-	jQuery(attachTo).bind(Richfaces.effectEventOnOut(aevent),function(cevent) {
-		Richfaces.componentControl.performOperation(cevent, aevent, forAttr, operation, params, disableDefault);
+	jQuery(attachTo).bind(Richfaces.effectEventOnOut(aevent),function(event) {
+		Richfaces.componentControl.performOperation(event, aevent, forAttr, operation, params, disableDefault);
 	}).each(function() {
 		Richfaces.componentControl.applyDecorations(this, forAttr, function(element) {
 			//TODO: handle component decoration
 		});
+	});
+};
+	
+Richfaces.componentControl.attachAvailable = function(attachTo, aevent, forAttr, operation, params, disableDefault) {
+	var ids = attachTo.split(',');
+	for (var i = 0; i < ids.length; i++) {
+		var id = ids[i];
+		Richfaces.onAvailable(id.replace(/^#|\\(:)/g, "$1"), function() {
+			Richfaces.componentControl.attachEvent(id, aevent, forAttr, operation, params, disableDefault);
+		});
+	}
+};
+	
+Richfaces.componentControl.attachReady = function(attachTo, aevent, forAttr, operation, params, disableDefault) {
+	jQuery(document).ready(function() {
+		Richfaces.componentControl.attachEvent(attachTo, aevent, forAttr, operation, params, disableDefault);
 	});
 };
 
@@ -46,15 +62,15 @@ Richfaces.componentControl.checkDisableDefault = function (ename, disableDefault
 	} else {
 		return disableDefault;
 	}
-}
+};
 
-Richfaces.componentControl.performOperation = function( cevent, aevent, forAttr, operation, params, disableDefault) {
+Richfaces.componentControl.performOperation = function(event, aevent, forAttr, operation, params, disableDefault) {
 	
 	// stop event before event isn't extended by prototype  
 	if (Richfaces.componentControl.checkDisableDefault(aevent, disableDefault)) {
-		var event = jQuery.event.fix(cevent);
-		event.stopPropagation();
-		event.preventDefault();
+		var fixedEvent = jQuery.event.fix(event);
+		fixedEvent.stopPropagation();
+		fixedEvent.preventDefault();
 	}
 	
 	Richfaces.componentControl.eachComponent(forAttr, function(component) {
@@ -63,7 +79,7 @@ Richfaces.componentControl.performOperation = function( cevent, aevent, forAttr,
 			paramsValue = params();
 		}
 		
-		component[operation](cevent, paramsValue);
+		component[operation](event, paramsValue);
 	});
 };
 
