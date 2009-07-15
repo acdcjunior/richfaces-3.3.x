@@ -342,7 +342,7 @@ public class EditorRendererBase extends InputRendererBase {
 							+ onchange + "\n" + "};\n", null);
 		}
 		if (onsetup != null && onsetup.length() > 0) {
-			writer.writeText("tinyMceParams.setup = function (event, ed) {\n"
+			writer.writeText("tinyMceParams.setup = function (ed, event) {\n"
 					+ onsetup + "\n" + "};\n", null);
 
 		}
