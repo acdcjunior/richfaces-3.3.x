@@ -357,7 +357,7 @@ ClientUI.controls.grid.GridHeader = Class.create(ClientUI.common.box.Box, {
 		            }
 		        }
 				*/
-				var rows = this.grid.getBody().templFrozen.getElement().rows;
+				var rows = this.grid.getBody().templNormal.getElement().rows;
 				var startRow = rows && rows.length>0 ? this.grid.getBody()._getRowIndex(rows[0].id) : 0;
 				this.grid.element.fire("grid:onsort",{ column: sortColumnId,
 					startRow: startRow,
