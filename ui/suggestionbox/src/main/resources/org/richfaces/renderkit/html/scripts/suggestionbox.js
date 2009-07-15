@@ -437,9 +437,13 @@ Suggestion.Base.prototype = {
         } catch(e) {
             LOG.warn("Exception on clone event");
         }
-        this.observerHandle =
-        window.setTimeout(this.onObserverEvent.bind(this, domEvt), this.options.frequency
+        if ((event.rich && event.rich.ignoreFrequency)) {
+        	this.onObserverEvent(domEvt);
+        }else{
+        	this.observerHandle =
+        	window.setTimeout(this.onObserverEvent.bind(this, domEvt), this.options.frequency
                 * 1000);
+        }
     },
 
     _findTr: function(event) {
@@ -819,7 +823,7 @@ Suggestion.Base.prototype = {
         domEvt.shiftKey = false;
         domEvt.which = 40;
         //this hash is used in keydown handler - modify with care
-        domEvt.rich = {"isCallSuggestion":true, "ignoreMinChars": ignoreMinChars};
+        domEvt.rich = {"isCallSuggestion":true, "ignoreMinChars": ignoreMinChars, "ignoreFrequency" : true};
     	
     	this.onKeyDownListener(domEvt);
     },
