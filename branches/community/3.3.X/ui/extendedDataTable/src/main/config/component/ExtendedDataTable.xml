@@ -115,9 +115,7 @@
                     <property>
                               <name>cellspacing</name>
                               <classname>java.lang.String</classname>
-                              <description>This attribute specifies the amount of space between the
-                                        border of the cell and its contents. The attribute also
-                                        specifies the amount of space to leave between cells. Default value is &quot;0&quot;</description>
+                              <description>The cellspacing attribute specifies the space between cells. Default value is &quot;0&quot;</description>
                               <defaultvalue>"0"</defaultvalue>
                     </property>
                     <property>
