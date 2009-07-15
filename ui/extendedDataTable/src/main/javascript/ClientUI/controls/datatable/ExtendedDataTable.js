@@ -77,6 +77,9 @@ ExtendedDataTable.DataTable = Class.create({
      */
     showRow: function(rowIndex) {
         var row = $(this.id+":n:"+rowIndex);
+        if(!row){
+        	row = $(this.id+":n:"+0);
+        }
         var offsetTop = this.tableB.offsetTop + row.offsetTop;
         var scrollTop = this.scrollingDiv.getElement().scrollTop;
         
