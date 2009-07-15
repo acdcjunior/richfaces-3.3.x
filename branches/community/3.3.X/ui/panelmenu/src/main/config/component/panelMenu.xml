@@ -424,11 +424,33 @@
 				Default value is &quot;grid&quot;.</description>
 			<defaultvalue><![CDATA["grid"]]></defaultvalue>
 		</property>
+		<property hidden="true">
+	        <name>accesskey</name>
+	        <classname>java.lang.String</classname>
+	        <description></description>
+	    </property>
+	    <property hidden="true">
+		    <name>maxlength</name>
+		    <classname>int</classname>
+		    <description>Specifies the maximum number of digits that could be entered into the input field. 
+				The maximum number is unlimited by default. 
+			</description>
+		</property>
 		<property>
 			<name>expanded</name>
 			<classname>boolean</classname>
 			<description>If true group will be displayed expanded initially. Default value is &quot;false&quot;.</description>
 			<defaultvalue>false</defaultvalue>
+		</property>
+		<property hidden="true">
+       		<name>size</name>
+       		<classname>int</classname>
+       		<description>This attribute tells the user agent the initial width of the control. The width is given in pixels except when type attribute has the value "text" or "password". In that case, its value refers to the (integer) number of characters</description>
+       	</property>
+		<property hidden="true">
+		  	<name>tabindex</name>
+		  	<classname>int</classname>
+		  	<description>Serves to define the tabbing order</description>
 		</property>
 		<property>
 			<name>iconDisabled</name>
@@ -442,7 +464,7 @@
 			<description> If true sets state of the item to disabled state. Default value is &quot;false&quot;. </description>
 			<defaultvalue>false</defaultvalue>
 		</property>
-		<property>
+		<property hidden="true">
 			<name>name</name>
 			<classname>java.lang.String</classname>
 			<description>Refers to group/item with the same
