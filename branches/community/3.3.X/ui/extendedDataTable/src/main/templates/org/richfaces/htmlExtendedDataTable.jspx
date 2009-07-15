@@ -54,7 +54,7 @@
 		>
 
 	<div id="#{clientId}:od" class="extdt-outerdiv"
-		style="width:100%; height:100%;overflow: hidden;"
+		style="width:100%; height:100%;overflow-y:hidden;overflow-x:auto;"
 		>
 		<div id="#{clientId}:dataTable_indicator" class="drgind_fly drgind_default drag_indicator" style="display: none;" >
 	        <f:call name="encodeNamespace" />
