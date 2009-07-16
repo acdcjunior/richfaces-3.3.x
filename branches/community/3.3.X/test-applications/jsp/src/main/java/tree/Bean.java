@@ -209,12 +209,7 @@ public class Bean {
 
 	public String expand() {
 		if (expandPath != null && expandPath.length() != 0) {
-			try {
-				tree.queueNodeExpand(new ListRowKey(null, expandPath));
-			} catch (IOException e) {
-			
-				e.printStackTrace();
-			}
+			tree.queueNodeExpand(new ListRowKey(null, expandPath));
 		}
 
 		return null;
@@ -242,12 +237,7 @@ public class Bean {
 	}
 
 	public String expandAll() {
-		try {
-			this.tree.queueExpandAll();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		this.tree.queueExpandAll();
 		return null;
 	}
 
@@ -314,11 +304,7 @@ public class Bean {
 	public String expandNode() {
 		String pathToExpand = getPathToExpand();
 		if (pathToExpand != null && pathToExpand.trim().length() != 0) {
-			try {
-				((UITree) getTree()).queueNodeExpand(new ListRowKey(null, pathToExpand));
-			} catch (IOException e) {
-				throw new FacesException(e);
-			}
+			((UITree) getTree()).queueNodeExpand(new ListRowKey(null, pathToExpand));
 		}
 
 		return null;
