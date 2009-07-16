@@ -21,14 +21,20 @@
 package org.richfaces.renderkit;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
 
-import org.ajax4jsf.javascript.JSEncoder;
+import org.ajax4jsf.javascript.JSFunction;
+import org.ajax4jsf.javascript.JSLiteral;
+import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.renderkit.HeaderResourcesRendererBase;
 import org.ajax4jsf.renderkit.RendererUtils;
+import org.ajax4jsf.renderkit.RendererUtils.HTML;
+import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.richfaces.component.UIEffect;
 import org.richfaces.json.JSONTokener;
 
@@ -45,19 +51,6 @@ public class EffectRendererBase extends HeaderResourcesRendererBase {
 	 */
 	protected Class getComponentClass() {
 		return UIEffect.class;
-	}
-
-	private static final Pattern VARIABLE_PATTERN = Pattern.compile("^\\s*[_,A-Z,a-z]\\w*(?:\\.[_,A-Z,a-z]\\w*)*\\s*$");
-
-	public String convertElementParameter(Object parameter) {
-	        if (parameter==null)
-	        	return "''";
-		String s = parameter.toString();
-		if (VARIABLE_PATTERN.matcher(s).matches()) {
-			return "typeof "+s+" == \"object\" ? "+s+" : $('"+s+"')";
-		} else {
-			return "'"+s+"'";
-		}
 	}
 	
 	public String convertParameters(FacesContext context, UIEffect effect) throws IOException {
@@ -149,20 +142,76 @@ public class EffectRendererBase extends HeaderResourcesRendererBase {
         }
 	}	
 	
-	public String escapeJavaScript(Object s) {
-		if (s != null) {
-			JSEncoder encoder = new JSEncoder();
-			StringBuffer result = new StringBuffer();
-			String string = s.toString();
-			int length = string.length();
-			
-			for (int i = 0; i < length; i++) {
-				result.append(encoder.encode(string.charAt(i)));
+	private String findComponentId(String id, FacesContext context, UIComponent component) {
+		String result = null;
+		if (! "".equals(id)) {
+			UIComponent comp = getUtils().findComponentFor(component,id);
+        	if (comp != null) {
+        		String cid= comp.getClientId(context);
+        		result = cid;
+        	}
+		}
+		return result;
+	}
+	
+	public void writeScript (FacesContext context, UIComponent component) throws IOException {
+		
+		Map<String, Object> attributes = component.getAttributes();
+		String attachObj = "";
+		String attachId = "";
+		
+		String id = (String) attributes.get("for");
+		if (! "".equals(id)) {
+			attachId = findComponentId(id, context, component);
+			if (attachId == null) {
+	    		// if no corresponded component id,  may be it is non-jsf id.
+	        	// So, returning the id as is
+				attachId = id;
+				 // it might be the DOM object
+				attachObj = id;				
 			}
-
-			return result.toString();
-		} else {
-			return null;
+		}
+		
+		String event = (String)attributes.get("event");
+        Boolean needsFunction = new Boolean(! "".equals(attributes.get("name")) && "".equals(event));
+        Boolean needsObserver = new Boolean(! "".equals(event) && ! "".equals(attachId) );
+        
+		if (needsFunction || needsObserver) {
+		
+			String targetObj = "";
+			String targetId = "";
+			
+			id = (String) attributes.get("targetId");
+			targetId = findComponentId(id, context, component);
+			if (targetId == null) {
+				// if no corresponded component id,  may be it is non-jsf id.
+				// So, returning the id as is
+				targetId = id;
+				// it might be the DOM object
+				targetObj = id;
+			}
+			
+			Map<String, Object> options = new HashMap<String, Object>();
+			getUtils().addToScriptHash(options, "targetObj", targetObj,  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "attachObj", attachObj,  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "targetId", targetId,  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "attachId", attachId,  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "type", attributes.get("type"),  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "event", attributes.get("event"),  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "name", attributes.get("name"),  null , ScriptHashVariableWrapper.DEFAULT);
+			getUtils().addToScriptHash(options, "params", new JSLiteral(convertParameters(context, (UIEffect)component)),  null , ScriptHashVariableWrapper.DEFAULT);
+			
+			JSFunction function = new JSFunction("Richfaces.effect.create");
+			if (!options.isEmpty()) {
+				function.addParameter(options);
+			}
+			
+			ResponseWriter writer = context.getResponseWriter();
+			
+			writer.startElement(HTML.SCRIPT_ELEM, component);
+			getUtils().writeAttribute(writer, HTML.TYPE_ATTR, "text/javascript");
+			writer.writeText(function.toScript(), component, null);
+			writer.endElement(HTML.SCRIPT_ELEM);
 		}
 	}
 }
