@@ -18,12 +18,7 @@
 		<groupId>apache-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>
 		<version>1.0</version>   
-    </dependency>
-	<dependency>
-		<groupId>apache-fileupload</groupId>
-		<artifactId>commons-fileupload</artifactId>
-		<version>1.0</version>   
-    </dependency>
+    </dependency>	
 	<dependency>
 		<groupId>myfaces</groupId>
 		<artifactId>myfaces-extensions</artifactId>
