@@ -125,10 +125,9 @@ HtmlPage myPage = new HtmlPage();
       
   <section>
     <title>Relevant resources links</title>
-	<para>
-	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/page.jsf?c=page">On RichFaces LiveDemo page </ulink> you can found some additional information for <emphasis role="bold"
-	    ><property>&lt;a4j:page&gt;</property></emphasis> component usage.
-	</para>  	
+        <para>
+              Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/page.jsf?c=page">AjaxPage page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+        </para>  	
   </section>
   
 </chapter>
