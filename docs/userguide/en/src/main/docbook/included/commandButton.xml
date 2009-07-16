@@ -112,6 +112,25 @@ HtmlAjaxCommandButton myButton = new HtmlAjaxCommandButton();
                   As any Core Ajax component that sends Ajax requests and processes server responses the <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> has all attributes that provide the required behavior of requests (delay, limitation of submit area and rendering, etc.)
             </para>
             
+            <note>
+                  <title>Note:</title>
+                  <para>
+                        When attaching a JavaScript API function to the <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> with the help of the <emphasis role="bold"><property>&lt;rich:componentControl&gt;</property></emphasis> do not use the <emphasis><property>&quot;attachTo&quot;</property></emphasis> attribute of the last one. 
+                        The attribute adds event handlers using <code>Event.observe</code> but <emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> has no such event. 
+                        The example below will not work:
+                  </para>
+                        <programlisting role="XML"><![CDATA[<a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button">
+      <rich:componentControl attachTo="button" for="panel" event="oncomplete" operation="show" />
+</a4j:commandButton>]]></programlisting>
+                        
+                        <para>
+                              This one should work properly:
+                        </para>
+                  <programlisting role="XML"><![CDATA[<a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button">
+      <rich:componentControl for="panel" event="oncomplete" operation="show" />
+</a4j:commandButton>]]></programlisting>
+            </note>
+            
             <para>
                   Information about the <emphasis><property>&quot;process&quot;</property></emphasis> attribute usage you can find in the &quot;<link linkend="process">Decide what to process</link>&quot; guide section.
       </para>
