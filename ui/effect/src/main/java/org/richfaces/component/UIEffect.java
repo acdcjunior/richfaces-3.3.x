@@ -21,12 +21,13 @@
 
 package org.richfaces.component;
 
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.ajax4jsf.Messages;
 import org.ajax4jsf.component.EventValueBinding;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
-import javax.faces.component.NamingContainer;
 import javax.faces.context.FacesContext;
 import org.ajax4jsf.component.AjaxSupport;
 import org.apache.commons.logging.Log;
@@ -52,39 +53,45 @@ public abstract class UIEffect extends UIComponentBase implements AjaxSupport {
      */
     public String getEventString()
     {
-        StringBuffer buildOnEvent = new StringBuffer();
+        StringBuffer buildOnEvent = new StringBuffer("Richfaces.processEffect(");
+        StringBuffer options = new StringBuffer();
+        StringBuffer extendStr = new StringBuffer("Object.extend({targetId:");
 
-	String targetId=getTargetId();
-	String targetPart = "{}";
+        String targetId=getTargetId();
         UIComponent targetComponent=null;
 
- 	if (!"".equals(targetId)) {
-		targetComponent=RendererUtils.getInstance().findComponentFor(this,targetId);
-	}
-        if (targetComponent!=null) {
-	       targetPart = "{targetId:'"+targetComponent.getClientId(FacesContext.getCurrentInstance())+"'}";
-	} else {
-		// it might be html tag id or DOM object
-	        targetPart = targetId != ""
-		? "typeof "+targetId+"=='object'?{targetId:"+targetId+"}:{targetId:$('"+targetId+"')}" : "{}" ;
-	}
-
-	String type=getType();
-	String typePart = type!=""?"{type:'"+type+"'}":"{}";
-
-	String params=getParams();
-	String paramsPart = params!=""?"{"+params+"}":"{}";
-
-	 
-        buildOnEvent.append("Richfaces.processEffect(Object.extend(Object.extend({targetId:this},"+targetPart+"),"+
-        "Object.extend("+typePart+","+paramsPart+") ) )");
+	 	if (!"".equals(targetId)) {
+			targetComponent=RendererUtils.getInstance().findComponentFor(this,targetId);
+		}
+	    if (targetComponent!=null) {
+	    		targetId = "'"+targetComponent.getClientId(FacesContext.getCurrentInstance())+"'";
+		} else {
+			// it might be html tag id or DOM object 
+			targetId = !"".equals(targetId) ? "typeof "+targetId+"=='object'?"+targetId+":$('"+targetId+"')" : "";
+		}
+	    
+    	extendStr.append("".equals(targetId) ? "this" : targetId);
+	
+		String type=getType();
+		if (!"".equals(type)) {
+			options.append("type:'" + type);
+			options.append('\'');
+		}
+	
+		String params=getParams();
+		if (!"".equals(params)) {
+			if (options.length() != 0) {
+				options.append(',');
+			}
+			options.append(params);
+		}
+		
+		buildOnEvent.append(extendStr);
+		buildOnEvent.append("},{");
+		buildOnEvent.append(options);
+		buildOnEvent.append("}));");
        
-	return buildOnEvent.toString();
-
-//if (typeof '' == 'object') {pm.attachId= '';if (''=='') pm.targetId=''; };
-
-         
-
+		return buildOnEvent.toString();
     }
 
     public abstract String getEvent();
