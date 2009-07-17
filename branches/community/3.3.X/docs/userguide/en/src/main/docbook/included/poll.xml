@@ -163,7 +163,7 @@ AjaxPoll myPoll = new AjaxPoll();
       <section>
             <title>Relevant resources links</title>
             <para>
-                  Vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/poll.jsf?c=poll">Poll page</ulink> at RichFaces LiveDemo for examples of the component usage and their sources.
+                  Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/poll.jsf?c=poll">Poll page</ulink> at RichFaces LiveDemo for examples of the component usage and their sources.
             </para>
             
             <para>
