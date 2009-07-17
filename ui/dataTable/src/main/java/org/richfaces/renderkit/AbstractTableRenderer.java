@@ -543,35 +543,37 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 				UIComponent child = iterator.next();
 				if (child instanceof org.richfaces.component.UIColumn) {
 					org.richfaces.component.UIColumn column = (org.richfaces.component.UIColumn) child;
-					child.setId(child.getId());
-					if (sortColumnId != null) {
-						String columnClientId = child.getClientId(context);
-						if (sortColumnId.equals(columnClientId)) {
-							String id = child.getId();
-							Collection<Object> sortPriority = table.getSortPriority();
-							if (isSingleSortMode) {
-								sortPriority.clear();
+					if(column.isRendered()){
+						child.setId(child.getId());
+						if (sortColumnId != null) {
+							String columnClientId = child.getClientId(context);
+							if (sortColumnId.equals(columnClientId)) {
+								String id = child.getId();
+								Collection<Object> sortPriority = table.getSortPriority();
+								if (isSingleSortMode) {
+									sortPriority.clear();
+								}
+								if(!sortPriority.contains(id)) {
+									sortPriority.add(id);
+								}
+								column.toggleSortOrder();
+							} else if(isSingleSortMode){
+								column.setSortOrder(Ordering.UNSORTED);
 							}
-							if(!sortPriority.contains(id)) {
-								sortPriority.add(id);
+							
+							RequestContext requestContext = RequestContext.getInstance(context);
+							requestContext.setAttribute(columnClientId + SORT_DIV, Boolean.TRUE);
+						}
+						UIInput filterValueInput = (UIInput)child.getFacet(FILTER_INPUT_FACET_NAME);
+						if (null != filterValueInput) {
+							filterValueInput.setId(filterValueInput.getId());
+							filterValueInput.decode(context);
+							Object submittedValue = filterValueInput.getSubmittedValue();
+							if (null != submittedValue) {
+								column.setFilterValue(filterValueInput.getSubmittedValue().toString());
 							}
-							column.toggleSortOrder();
-						} else if(isSingleSortMode){
-							column.setSortOrder(Ordering.UNSORTED);
 						}
-						
-						RequestContext requestContext = RequestContext.getInstance(context);
-						requestContext.setAttribute(columnClientId + SORT_DIV, Boolean.TRUE);
-					}
-					UIInput filterValueInput = (UIInput)child.getFacet(FILTER_INPUT_FACET_NAME);
-					if (null != filterValueInput) {
-						filterValueInput.setId(filterValueInput.getId());
-						filterValueInput.decode(context);
-						Object submittedValue = filterValueInput.getSubmittedValue();
-						if (null != submittedValue) {
-							column.setFilterValue(filterValueInput.getSubmittedValue().toString());
-						}
-					}
+					}	
 				}
 
 			}
