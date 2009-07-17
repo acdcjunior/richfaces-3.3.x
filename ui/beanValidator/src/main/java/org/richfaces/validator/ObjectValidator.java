@@ -19,6 +19,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.el.ELContextWrapper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public abstract class ObjectValidator {
 
@@ -32,6 +34,8 @@ public abstract class ObjectValidator {
 			.getName();
 
 	private static final Object MUTEX = new Object();
+	
+	private static final Log log = LogFactory.getLog(ObjectValidator.class);
 
 	/**
 	 * Create BeanValidator instance. For a Junit tests only.
@@ -45,12 +49,12 @@ public abstract class ObjectValidator {
 		ObjectValidator validator;
 		try {
 			validator = new BeanValidator();
-
-		} catch (NoClassDefFoundError e) {
+		} catch (Throwable e) {
+			log.warn("Bean Validator could not be instantiated", e);
 			try {
 				validator = new HibernateValidator();
-
-			} catch (NoClassDefFoundError e2) {
+			} catch (Throwable e2) {
+				log.warn("Hibernate Validator could not be instantiated, use stub instead", e);
 				validator = new NullValidator();
 			}
 		}

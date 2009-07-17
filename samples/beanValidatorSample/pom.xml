@@ -135,5 +135,16 @@
 			</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+		<!-- That profile appends validation-api library to check initialization process -->
+			<id>validation-api</id>			
+			<dependencies>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.CR2</version>
+		</dependency>
+		</dependencies>
+		</profile>
 	</profiles>
 </project>
