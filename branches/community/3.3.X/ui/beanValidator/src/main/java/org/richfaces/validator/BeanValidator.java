@@ -24,11 +24,15 @@ import javax.validation.groups.Default;
 public class BeanValidator extends ObjectValidator {
 
 	private static final Class[] DEFAULT_PROFILE = new Class[] {};
-	private volatile ValidatorFactory validatorFactory = null;
+	private final ValidatorFactory validatorFactory;
 
 	BeanValidator() {
 		// Enforce class to load
 		ValidatorFactory.class.getName();
+		// Check Factory, to avoid instantiation errors
+		// https://jira.jboss.org/jira/browse/RF-7226
+		validatorFactory = Validation
+					.buildDefaultValidatorFactory();
 	}
 
 	/*
@@ -103,22 +107,6 @@ public class BeanValidator extends ObjectValidator {
 	}
 
 	protected Validator getValidator(Locale locale) {
-		if (null == validatorFactory) {
-			synchronized (this) {
-				if (null == validatorFactory) {
-					try {
-						validatorFactory = Validation
-								.buildDefaultValidatorFactory();
-					} catch (ValidationException e) {
-						throw new FacesException(
-								"Could not build a default Bean Validator factory",
-								e);
-					}
-
-				}
-			}
-		}
-
 		ValidatorContext validatorContext = validatorFactory.usingContext();
 		MessageInterpolator jsfMessageInterpolator = new JsfMessageInterpolator(
 				locale, validatorFactory.getMessageInterpolator());
