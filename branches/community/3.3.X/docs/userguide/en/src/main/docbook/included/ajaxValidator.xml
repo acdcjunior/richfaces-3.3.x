@@ -105,17 +105,25 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
 
                     <programlisting role="XML"><![CDATA[...
 <rich:panel>
-       <f:facet name="header">
-              <h:outputText value="User Info:" />
-       </f:facet>
-       <h:panelGrid columns="3">
-              <h:outputText value="Name:" />
-              <h:inputText value="#{userBean.name}" id="name" required="true">
-                     <f:validateLength minimum="3" maximum="12"/>
-                     <rich:ajaxValidator event="onblur"/>
-              </h:inputText>
-              <rich:message for="name" />
-       </h:panelGrid>
+      <f:facet name="header">
+            <h:outputText value="User Info:" />
+      </f:facet>
+      <h:panelGrid columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{userBean.name}" id="name" required="true">
+                  <f:validateLength minimum="3" maximum="12"/>
+                  <rich:ajaxValidator event="onblur"/>
+            </h:inputText>
+            <rich:message for="name" />
+                
+            <h:outputText value="Age:" />
+                  <h:inputText value="#{userBean.age}" id="age" required="true">
+                        <f:convertNumber integerOnly="true"/>
+                        <f:validateLongRange minimum="18" maximum="99"/>
+                        <rich:ajaxValidator event="onblur"/>
+                  </h:inputText>
+                  <rich:message for="age"/>
+      </h:panelGrid>
 </rich:panel>
 ...]]></programlisting>
 
@@ -152,7 +160,8 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
                                                   the data to be validated. A reference on Hibernate
                                                   Validator can be found <ulink
                                                   url="http://www.hibernate.org/hib_docs/validator/reference/en/html_single/"
-                                                  >in Hibernated documentation</ulink>.</para>
+                                                  >in Hibernated documentation</ulink>.
+                                        </para>
                               </listitem>
                     </itemizedlist>
 
@@ -161,16 +170,28 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
 
                     <programlisting role="XML"><![CDATA[...
 <rich:panel>
-       <f:facet name="header">
-              <h:outputText value="User Info:" />
-       </f:facet>
-       <h:panelGrid columns="3">
-              <h:outputText value="Name:" />
-              <h:inputText value="#{validationBean.name}" id="name" required="true">
-                     <rich:ajaxValidator event="onblur" />
-              </h:inputText>
-              <rich:message for="name" />
-       </h:panelGrid>
+      <f:facet name="header">
+            <h:outputText value="User Info:" />
+      </f:facet>
+      <h:panelGrid  columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{validationBean.name}" id="name" required="true">
+                  <rich:ajaxValidator event="onblur" />
+            </h:inputText>
+            <rich:message for="name" />
+            
+            <h:outputText value="Email:" />
+                  <h:inputText value="#{validationBean.email}" id="email">
+                        <rich:ajaxValidator event="onblur" />
+                  </h:inputText>
+                  <rich:message for="email" />
+                  
+                  <h:outputText value="Age:" />
+                  <h:inputText value="#{validationBean.age}" id="age">
+                        <rich:ajaxValidator event="onblur" />
+                  </h:inputText>
+                  <rich:message for="age" />
+      </h:panelGrid>
 </rich:panel>
 ...]]></programlisting>
 
@@ -178,38 +199,39 @@ HtmlAjaxValidator myAjaxValidator= new HtmlAjaxValidator();
                     <para>Here is the source code of the managed bean.</para>
 
 
-                    <programlisting role="JAVA"><![CDATA[...
-package org.richfaces.demo.validation;
+                <programlisting role="JAVA"><![CDATA[package org.richfaces.demo.validation;
 
-import org.hibernate.validator.NotEmpty;
 import org.hibernate.validator.Email;
 import org.hibernate.validator.Length;
+import org.hibernate.validator.Max;
+import org.hibernate.validator.Min;
+import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Pattern;
 
 public class ValidationBean {
 
-	@NotEmpty
-	@Length(min=3,max=12)
-	private String name;
-	@Email (message="wrong email format")
-	@NotEmpty
-	private String email;
-		
-	public ValidationBean() {
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-}
-...]]></programlisting>
+    private String progressString="Fill the form please";
+    
+    @NotEmpty
+    @Pattern(regex=".*[^\\s].*", message="This string contain only spaces")
+    @Length(min=3,max=12)
+    private String name;
+    @Email
+    @NotEmpty
+    private String email;
+    
+    @NotNull
+    @Min(18)
+    @Max(100)
+    private Integer age;
+    
+    public ValidationBean() {
+    }
+
+    /* Corresponding Getters and Setters */
+    
+}]]></programlisting>
 
                     <para>By default the Hibernate Validator generates an error message in 10
                               language, though you can redefine the messages that are displayed to a
@@ -231,12 +253,9 @@ public class ValidationBean {
           </section>
           <section>
                     <title>Relevant Resources Links</title>
-                    <para><ulink
-                                        url="http://livedemo.exadel.com/richfaces-demo/richfaces/ajaxValidator.jsf?c=ajaxValidator"
-                                        > On RichFaces LiveDemo page </ulink> you can see an example of <emphasis
-                                        role="bold">
-                                        <property>&lt;rich:ajaxValidator&gt;</property>
-                              </emphasis> usage and sources for the given example. </para>
+                    <para>
+                          Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/ajaxValidator.jsf?c=ajaxValidator">AjaxValidator page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+                    </para>
           </section>
 
 </section>
