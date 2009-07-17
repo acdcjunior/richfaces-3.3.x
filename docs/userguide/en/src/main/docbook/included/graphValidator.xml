@@ -80,13 +80,12 @@
 ...
 HtmlgraphValidator mygraphValidator= new HtmlgraphValidator();
 ...]]></programlisting>
-
-
           </section>
 
-          <para> The<emphasis role="bold">
-                              <property>&lt;rich:graphValidator&gt;</property>
-                    </emphasis>component behaves basically the same way as the <emphasis role="bold">
+<section>
+      <title>Details of usage</title>
+          <para>
+                The<emphasis role="bold"><property>&lt;rich:graphValidator&gt;</property></emphasis>component behaves basically the same way as the <emphasis role="bold">
                               <property>&lt;rich:beanValidator&gt;</property>
                     </emphasis> The deference between these two components is that in order to
                     validate some input data with a <emphasis role="bold">
@@ -113,8 +112,7 @@ HtmlgraphValidator mygraphValidator= new HtmlgraphValidator();
           <rich:message for="email" />
      </h:panelGrid>
 </rich:graphValidator>
-...
-]]></programlisting>
+...]]></programlisting>
 
           <para>The data validation can be also performed using Hibernate Validator, the same way as
                     it is done with <emphasis role="bold">
@@ -164,14 +162,14 @@ HtmlgraphValidator mygraphValidator= new HtmlgraphValidator();
                               </imageobject>
                     </mediaobject>
           </figure>
-          
-          
          <para> The figure above  shows that the entered data was revalidated after all fields were completed,  and the data did not pass revalidation since the total sum was incorrect. </para> 
-          <section>
+</section>
+      
+      <section>
                     <title>Relevant Resources Links</title>
-                    <para><ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/graphValidator.jsf?c=graphValidator">
-                              On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold"><property>&lt;rich:graphValidator&gt;</property>
-                              </emphasis> usage and sources for the given example. </para>
+                    <para>
+                          Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/graphValidator.jsf?c=graphValidator">GraphValidator page</ulink> at RichFaces LiveDemo for examples of component  usage and their sources.
+                    </para>
           </section>
 
 </section>
