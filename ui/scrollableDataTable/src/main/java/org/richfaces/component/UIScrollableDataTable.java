@@ -101,6 +101,8 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 	
 	private int reqRowsCount = -1;
 	
+	private transient boolean keepSaved;
+	
 	private String scrollPos;
 	
 	private SortListener sortListener;
@@ -366,7 +368,7 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 		
 		setFirst(e.getFirst());
 		reqRowsCount = e.getRows();
-		
+		keepSaved = true;
 		getFacesContext().renderResponse();
 	}
 	
@@ -526,5 +528,10 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 	@Override
 	public void setRowKeyConverter(Converter rowKeyConverter) {
 		super.setRowKeyConverter(rowKeyConverter);
+	}
+	
+	@Override
+	protected boolean keepSaved(FacesContext context) {
+		return keepSaved || super.keepSaved(context);
 	}
 }
