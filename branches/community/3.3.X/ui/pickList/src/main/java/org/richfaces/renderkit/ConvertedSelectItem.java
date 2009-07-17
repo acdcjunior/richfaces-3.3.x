@@ -25,6 +25,7 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
 import org.richfaces.component.UIPickList;
+import org.richfaces.json.XML;
 
 public class ConvertedSelectItem {
     private SelectItem item;
