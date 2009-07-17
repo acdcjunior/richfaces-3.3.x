@@ -358,6 +358,7 @@ public class NekkoParser implements HtmlParser {
 				} else if (haveHead) {
 					// <title> or <base> in the head
 					if (!("title".equalsIgnoreCase(element.rawname) || "base"
+							.equalsIgnoreCase(element.rawname) || "meta"
 							.equalsIgnoreCase(element.rawname))) {
 						insertResources(element.prefix, element.uri);
 					}
@@ -506,6 +507,7 @@ public class NekkoParser implements HtmlParser {
 				if (haveHead) {
 					// <title> or <base> in the head
 					if (!("title".equalsIgnoreCase(name.rawname) || "base"
+							.equalsIgnoreCase(name.rawname) || "meta"
 							.equalsIgnoreCase(name.rawname))) {
 						insertResources(name.prefix, name.uri);
 					}

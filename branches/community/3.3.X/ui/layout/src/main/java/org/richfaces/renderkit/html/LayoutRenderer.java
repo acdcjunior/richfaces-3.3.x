@@ -70,7 +70,7 @@ public class LayoutRenderer extends
 		}
 		// line separator.
 		writer.startElement(HTML.DIV_ELEM, layout);
-		writer.writeAttribute(HTML.style_ATTRIBUTE, "display: block; height: 0; clear: both; visibility: hidden;", null);
+		writer.writeAttribute(HTML.style_ATTRIBUTE, "display: block; height: 0;lineHeight:0px;fontSize:0px; clear: both; visibility: hidden;", null);
 		writer.writeText(".", null);
 		writer.endElement(HTML.DIV_ELEM);
 		if (null != structure.getBottom()) {

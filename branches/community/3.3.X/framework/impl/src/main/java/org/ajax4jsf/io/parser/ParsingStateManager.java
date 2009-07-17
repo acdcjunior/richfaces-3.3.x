@@ -99,6 +99,8 @@ public class ParsingStateManager {
 
 	ParserState BASE = new KeywordState("base",ELEMENT);
 	
+	ParserState META = new KeywordState("meta",ELEMENT);
+	
 	// Html content
 
 	ParserState HTML = new KeywordState("tml",ELEMENT);
@@ -111,7 +113,7 @@ public class ParsingStateManager {
 		// Inicialize parsing states
 		DOCUMENT.nextStates = new ParserState[]{LT,DOCUMENT};
 		// after < possible ! & / or start element 
-		LT.nextStates = new ParserState[]{EXCLAM,PISTART,CLOSINGELEMENT,H,TITLE,BASE,ELEMENT,DOCUMENT};
+		LT.nextStates = new ParserState[]{EXCLAM,PISTART,CLOSINGELEMENT,H,META,TITLE,BASE,ELEMENT,DOCUMENT};
 		//
 		EXCLAM.nextStates = new ParserState[]{COMMENTSTART,CDATASTART,DOCTYPESTART,DOCUMENT};
 		// doctype declaration
@@ -156,6 +158,7 @@ public class ParsingStateManager {
 		H.nextStates = new ParserState[]{HEAD,HTML,ENDELEMENT,INELEMENT,ELEMENT,LT,DOCUMENT};
 		HEAD.nextStates = new ParserState[]{HEAD,ENDELEMENT,INELEMENT,ELEMENT};
 		HTML.nextStates = new ParserState[]{HTML,ENDELEMENT,INELEMENT,ELEMENT};
+		META.nextStates = new ParserState[]{META,ENDELEMENT,INELEMENT,ELEMENT};
 		TITLE.nextStates = new ParserState[]{TITLE,ENDELEMENT,INELEMENT,ELEMENT};
 		BASE.nextStates = new ParserState[]{BASE,ENDELEMENT,INELEMENT,ELEMENT};
 	}

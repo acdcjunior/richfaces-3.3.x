@@ -132,7 +132,14 @@ public class FastHtmlParser implements HtmlParser {
 						if (log.isDebugEnabled()) {
 							log.debug("Found <title> element");
 						}
-					} else if (context.getLastMatched() == stateManager.BASE) {
+					} else if (context.getLastMatched() == stateManager.META) {
+						context.send();
+						haveHead = true;
+						haveHtml = true;
+						if (log.isDebugEnabled()) {
+							log.debug("Found <meta> element");
+						}
+					}else if (context.getLastMatched() == stateManager.BASE) {
 						context.send();
 						haveHead = true;
 						haveHtml = true;

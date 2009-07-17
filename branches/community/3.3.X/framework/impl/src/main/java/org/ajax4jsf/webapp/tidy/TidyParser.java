@@ -232,6 +232,7 @@ public class TidyParser implements TidyMessageListener, HtmlParser {
 						if (child instanceof Element) {
 							String nodeName = ((Element) child).getNodeName();
 							if (!("title".equalsIgnoreCase(nodeName) || "base"
+									.equalsIgnoreCase(nodeName) || "meta"
 									.equalsIgnoreCase(nodeName))) {
 								break;
 							}
