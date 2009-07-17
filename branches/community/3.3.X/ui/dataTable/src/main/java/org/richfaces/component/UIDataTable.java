@@ -91,16 +91,17 @@ public abstract class UIDataTable extends SequenceDataAdaptor {
 			UIComponent component = iterator.next();
 			if (component instanceof org.richfaces.component.UIColumn) {
 				org.richfaces.component.UIColumn column = (org.richfaces.component.UIColumn) component;
-				FilterField filterField = column.getFilterField();
-				if (filterField != null) {
-					filterFields.add(filterField);
-				}
-				SortField2 sortField = column.getSortField();
-				if (sortField != null) {
-					sortFieldsMap.put(component.getId(), sortField);
+				if(column.isRendered()){
+					FilterField filterField = column.getFilterField();
+					if (filterField != null) {
+						filterFields.add(filterField);
+					}
+					SortField2 sortField = column.getSortField();
+					if (sortField != null) {
+						sortFieldsMap.put(component.getId(), sortField);
+					}
 				}
 			}
-			
 		}
 		List<SortField2> sortFields = new LinkedList<SortField2>();
 		Collection<Object> sortPriority = getSortPriority();
