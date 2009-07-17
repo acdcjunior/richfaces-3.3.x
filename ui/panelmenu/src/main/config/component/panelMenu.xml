@@ -41,7 +41,7 @@
 			<name>mode</name>
 			<classname>java.lang.String</classname>
 			<description> Set the submission mode for all panel menu items on the panel menu except
-				ones where this attribute redefined. Possible values are &quot;ajax&quot;, &quot;server&quot;, &quot;none&quot;. Default value is &quot;server&quot;.</description>
+				ones where this attribute redefined. Possible values are &quot;ajax&quot;, &quot;server&quot;, &quot;server&quot;. Default value is &quot;server&quot;.</description>
 			<defaultvalue><![CDATA["server"]]></defaultvalue>
 		</property>
 		<property>
