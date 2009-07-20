@@ -118,8 +118,8 @@ public class FastParserTest extends TestCase {
 		assertTrue(resultString.indexOf("<title>")<resultString.lastIndexOf("<link"));
 		assertTrue(resultString.indexOf("</head>")>resultString.lastIndexOf("</script"));
 		assertTrue(resultString.indexOf("</head>")>resultString.lastIndexOf("<link"));
-		assertTrue(resultString.indexOf("<meta")>resultString.lastIndexOf("</script"));
-		assertTrue(resultString.indexOf("<meta")>resultString.lastIndexOf("<link"));
+		assertTrue(resultString.indexOf("<meta")<resultString.lastIndexOf("</script"));
+		assertTrue(resultString.indexOf("<meta")<resultString.lastIndexOf("<link"));
 	}
 
 	/**
