@@ -95,7 +95,7 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 	/**
 	 * hold list of ranges previously accessed until updates are fully done for them
 	 */
-	private List<Range> ranges;
+	private List<ScrollableTableDataRange> ranges;
 	
 	private Collection<String> responseData = new ArrayList<String>();
 	
@@ -289,7 +289,7 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 	public void restoreState(FacesContext context, Object state) {
 		Object values[] = (Object[])state;
 		super.restoreState(context, values[0]);
-		ranges = ((List<Range>)values[1]);
+		ranges = ((List<ScrollableTableDataRange>)values[1]);
 		scrollPos = (String)values[2]; 
 		sortListener = (SortListener) restoreAttachedState(context, values[3]);
 	}
@@ -387,22 +387,54 @@ public abstract class UIScrollableDataTable extends SequenceDataAdaptor implemen
 		getFacesContext().renderResponse();
 	}
 	
-	public void walk(FacesContext faces, DataVisitor visitor, Object argument) throws IOException {
+	private void addRange() {
+		ScrollableTableDataRange visitedRange = (ScrollableTableDataRange)getComponentState().getRange();
 		
-		Range visitedRange = getComponentState().getRange();
-	
 		if(ranges == null){
-			ranges = new ArrayList<Range>();
+			ranges = new ArrayList<ScrollableTableDataRange>();
 		}
 		
-		if(!ranges.contains(visitedRange)){
+		Iterator<ScrollableTableDataRange> iter = ranges.iterator();
+		ScrollableTableDataRange range = null;
+		while (iter.hasNext() && range == null) {
+			ScrollableTableDataRange temp = iter.next();
+			if (temp.getLast() >= visitedRange.getFirst()) {
+				range = temp;
+			}
+		}
+
+		if (range != null) {
+			if (range.getFirst() > visitedRange.getLast()) {
+				ranges.add(0, visitedRange);
+			} else {
+				if (range.getFirst() > visitedRange.getFirst()) {
+					range.setFirst(visitedRange.getFirst());
+				}
+				if (range.getLast() < visitedRange.getLast()) {
+					ScrollableTableDataRange nextRange = null;
+					if (iter.hasNext()) {
+						nextRange = iter.next();
+					}
+					if (nextRange != null && nextRange.getFirst() <= visitedRange.getLast()) {
+						range.setLast(nextRange.getLast());
+					} else {
+						range.setLast(visitedRange.getLast());
+					}
+				}
+			}
+		} else {
 			ranges.add(visitedRange);
 		}
+	}
+	
+	public void walk(FacesContext faces, DataVisitor visitor, Object argument) throws IOException {
+		
+		addRange();
 				
 		if(useSavedRanges){
 			
-			for (Iterator<Range> iter = ranges.iterator(); iter.hasNext();) {
-				ScrollableTableDataRange range = (ScrollableTableDataRange) iter.next();
+			for (Iterator<ScrollableTableDataRange> iter = ranges.iterator(); iter.hasNext();) {
+				ScrollableTableDataRange range = iter.next();
 				
 				if (log.isDebugEnabled()) {
 					log.debug("Range is: " + range.getFirst() + " - " + range.getLast() + " sortOrder: " + range.getSortOrder() );
