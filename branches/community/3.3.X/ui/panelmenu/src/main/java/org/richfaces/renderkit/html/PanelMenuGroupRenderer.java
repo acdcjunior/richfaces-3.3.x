@@ -37,13 +37,13 @@ import org.richfaces.renderkit.PanelMenuRendererBase;
 
 public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 
-	protected Class getComponentClass() {
+	protected Class<UIPanelMenuGroup> getComponentClass() {
 		return UIPanelMenuGroup.class;
 	}
 	
 	protected void doDecode(FacesContext context, UIComponent component) {
 		String clientId = component.getClientId(context);
-		Map requestMap =context.getExternalContext().getRequestParameterMap();
+		Map<String, String> requestMap = context.getExternalContext().getRequestParameterMap();
 		UIPanelMenuGroup group = ((UIPanelMenuGroup)component);
 		
 		if(requestMap.containsKey("panelMenuState"+clientId)){
@@ -137,7 +137,7 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 		String iconCollapsed = "";
 
 		iconExpanded = panelMenuGroup.isDisabled() ? panelMenuGroup.getIconDisabled() : panelMenuGroup.getIconExpanded();
-		iconCollapsed = panelMenuGroup.isDisabled() ? panelMenuGroup.getIconDisabled() : panelMenuGroup.getIconCollapsed();
+		iconCollapsed = panelMenuGroup.isDisabled() ? panelMenuGroup.getIconDisabled(): panelMenuGroup.getIconCollapsed();
 		
 		String icon = null;
 		if(isOpened){
