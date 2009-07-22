@@ -23,7 +23,6 @@ package org.richfaces.renderkit;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -426,7 +425,11 @@ public class PickListRenderer extends HeaderResourcesRendererBase {
                 attr);
         
         if (value != null && (value.length() != 0)) {
-            return Arrays.asList(value.split(","));
+            List<String> result = new ArrayList<String>();
+            for(String val : value.split(",")) {
+                result.add(val);
+            }
+            return result;
         }
         
         return null;
