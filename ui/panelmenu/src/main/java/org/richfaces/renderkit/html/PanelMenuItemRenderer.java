@@ -34,7 +34,7 @@ import org.richfaces.component.UIPanelMenuItem;
 import org.richfaces.renderkit.PanelMenuRendererBase;
 
 public class PanelMenuItemRenderer extends PanelMenuRendererBase {
-	protected Class getComponentClass() {
+	protected Class<UIPanelMenuItem> getComponentClass() {
 		return UIPanelMenuItem.class;
 	}
 
@@ -43,7 +43,6 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 	}
 	protected void doDecode(FacesContext context, UIComponent component) {
 		if(isSubmitted(context, component)) {
-			UIPanelMenuItem item = (UIPanelMenuItem)component;
 			new ActionEvent(component).queue();
             if ("ajax".equals(getItemMode(component))) {
                 new AjaxEvent(component).queue();
@@ -88,9 +87,9 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 			throws IOException{
 		
 		UIPanelMenu panelMenu = findMenu(component);
-		ResponseWriter writer 	= context.getResponseWriter();
-		boolean isTopLevel 		= false;		
-		String iconType			= null;	
+		ResponseWriter writer = context.getResponseWriter();
+		boolean isTopLevel = isTopLevel(component);		
+		String iconType	= null;	
 		UIPanelMenuItem item = (UIPanelMenuItem)component;
 		
 		String defaultItemIcon = null;
@@ -124,7 +123,10 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 		
 		if(customItemIcon == null || customItemIcon.equals("")){
 			iconType = defaultItemIcon;
-		} else iconType = customItemIcon;
+			isTopLevel = false; // for RF-7390
+		} else {
+		    iconType = customItemIcon;
+		}
 		
 		boolean drawHidden = false;
 		String source = getIconByType(iconType, isTopLevel, context, component);

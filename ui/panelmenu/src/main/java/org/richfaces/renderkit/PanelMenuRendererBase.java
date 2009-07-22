@@ -176,9 +176,9 @@ public abstract class PanelMenuRendererBase extends HeaderResourcesRendererBase 
 	
 	protected boolean isChildrenExpanded(UIComponent component){
 		if (component.getChildren() != null){
-			Iterator itr = component.getChildren().iterator();
+			Iterator<UIComponent> itr = component.getChildren().iterator();
 			while(itr.hasNext()){
-				UIComponent child = (UIComponent)itr.next();
+				UIComponent child = itr.next();
 				if(child instanceof UIPanelMenuGroup){
 					if(  ((UIPanelMenuGroup)child).isExpanded() ){
 						return true;
@@ -208,7 +208,7 @@ public abstract class PanelMenuRendererBase extends HeaderResourcesRendererBase 
 	protected boolean isSubmitted(FacesContext context, UIComponent component){
         boolean submitted = false;
 		String clientId = component.getClientId(context);
-		Map requestParameterMap = context.getExternalContext().getRequestParameterMap();
+		Map<String, String> requestParameterMap = context.getExternalContext().getRequestParameterMap();
 		
 		Object value = requestParameterMap.get("panelMenuAction"+clientId);
 		if (clientId!=null&&value!=null){
