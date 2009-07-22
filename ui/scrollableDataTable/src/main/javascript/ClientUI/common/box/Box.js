@@ -72,7 +72,7 @@ ClientUI.common.box.Box = Class.create({
 	getHeight: function() {
 		var el = this.getElement();
 		if(el.tagName.toLowerCase() != "body") {
-			var h = el.offsetHeight;
+			var h = el.getHeight(); // offsetHeight;
 			return h>0 ? h : (this.element.boxHeight ? parseInt(this.element.boxHeight) : 0);
 		}
 
