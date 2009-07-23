@@ -23,7 +23,7 @@
           </row>
           <row>
             <entry>component-class</entry>
-            <entry>org.richfaces.component.html.HtmltoolTip</entry>
+            <entry>org.richfaces.component.html.HtmlToolTip</entry>
           </row>
           <row>
           <entry>component-family</entry>
@@ -35,7 +35,7 @@
           </row>          
           <row>
             <entry>tag-class</entry>
-            <entry>org.richfaces.taglib.HtmltoolTipTag</entry>
+            <entry>org.richfaces.taglib.HtmlToolTipTag</entry>
           </row>
         </tbody>
       </tgroup>
@@ -58,7 +58,7 @@
     <para>
       <emphasis role="bold">Example:</emphasis>
     </para>
-  <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmltoolTip;
+  <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmlToolTip;
 ...
 HtmltoolTip mytoolTip = new  HtmltoolTip();
 ...
