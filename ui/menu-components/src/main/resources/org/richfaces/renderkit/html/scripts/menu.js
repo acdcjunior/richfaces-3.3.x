@@ -552,8 +552,8 @@ RichFaces.Menu.DelayedDropDown = function(layer, elementId, e) {
 			direction = sDir.indexOf('BOTTOM-RIGHT')!= -1?3:direction;
 			direction = sDir.indexOf('BOTTOM-LEFT') != -1?4:direction;
 		}
-		var hOffset = options.horizontalOffset;
-		var vOffset = options.verticalOffset;
+		var hOffset = options.horizontalOffset || 0;
+		var vOffset = options.verticalOffset || 0;
 
 		var listPos = this.listPositions(jointPoint, direction);
 		var layerPos;
@@ -741,18 +741,16 @@ RichFaces.Menu.MouseIn = false;
 
 RichFaces.Menu.Layer = Class.create();
 RichFaces.Menu.Layer.prototype = {
-	initialize: function(id,delay, hideDelay, selectedClass){
+		
+	delay : 300,
+	hideDelay : 300,
+		
+	initialize: function(id, options){
 		RichFaces.Menu.Layers.listl.push(id);
    		this.id = id;
    		this.layer = $(id);
    		this.level = 0;
-   		this.delay = delay;
-   		if (hideDelay){
-   		 this.hideDelay=hideDelay;
-   		}
-   		else{
-   		 this.hideDelay=hideDelay;
-   		}
+   		Object.extend(this, options);
         RichFaces.Menu.fitLayerToContent(this.layer);
         this.items = new Array();
    		RichFaces.Menu.Layers.layers[id] = this;
@@ -854,9 +852,6 @@ RichFaces.Menu.Layer.prototype = {
 			A4J.AJAX.AddListener(listener);
 		}		*/
 		
-		if (selectedClass) {
-			this.selectedClass = selectedClass;
-		}
  	},
 
 	getLabel : function() {
@@ -1028,8 +1023,8 @@ RichFaces.Menu.Layer.prototype = {
 		RichFaces.Menu.Layers.LMPopUpL(this.id, false,e);
 //		if (this.eventOnClose) this.eventOnClose();
 	},
-	asDropDown: function(topLevel, bindElementId, onEvt, offEvt, options){
-		this.options = options || {};
+	asDropDown: function(topLevel, options){
+		this.options = options = options || {};
 		if (this.options.ongroupactivate){
 			this.eventOnGroupActivate = this.options.ongroupactivate.bindAsEventListener(this);
 		}
@@ -1065,15 +1060,6 @@ RichFaces.Menu.Layer.prototype = {
 	            }
 			};
 
-			if(!onEvt){
-				onEvt = 'onmouseover';
-			}
-			onEvt = this.eventJsToPrototype(onEvt);
-			if(!offEvt){
-				offEvt = 'onmouseout';
-			}
-			offEvt = this.eventJsToPrototype(offEvt);
-
 			var addBinding = function(elementId, eventName, handler) {
 		 		var binding = new RichFaces.Menu.Layer.Binding(elementId, eventName, handler);
 		 		this.bindings.push(binding);
@@ -1081,7 +1067,7 @@ RichFaces.Menu.Layer.prototype = {
 			}.bind(this);
 
 			//if (onEvt == 'mouseover') {
-				addBinding(topLevel, onEvt, function(e) {
+				addBinding(topLevel, this.eventJsToPrototype(options.onEvt || "mouseover"), function(e) {
 					menuOn.call(this, e);
 					mouseover.call(this, e);
 				}.bindAsEventListener(this));
@@ -1090,23 +1076,18 @@ RichFaces.Menu.Layer.prototype = {
 			//	addBinding(topLevel, 'mouseover', mouseover.bindAsEventListener(this));
 			//}
 			
-			if (offEvt == 'mouseout') {
-				addBinding(topLevel, offEvt, function(e) {
-					menuOff.call(this, e);
-					mouseout.call(this, e);
-				}.bindAsEventListener(this));
-			} else {
-				addBinding(bindElementId, offEvt, menuOff.bindAsEventListener(this));
-				addBinding(topLevel, 'mouseout', mouseout.bindAsEventListener(this));
-			}
+			addBinding(topLevel, 'mouseout', function(e) {
+				menuOff.call(this, e);
+				mouseout.call(this, e);
+			}.bindAsEventListener(this));
 			
 	 		RichFaces.Menu.Layers.horizontals[this.id] = topLevel;
 //		}
 		return this;
 	},
 
-	asSubMenu: function(parentv, refLayerName, evtName, options){
-		this.options = options || {};
+	asSubMenu: function(parentv, refLayerName, options){
+		this.options = options = options || {};
 		if (this.options.onclose){
 			this.eventOnClose = this.options.onclose.bindAsEventListener(this);
 		}
@@ -1114,19 +1095,12 @@ RichFaces.Menu.Layer.prototype = {
 			this.eventOnOpen = this.options.onopen.bindAsEventListener(this);
 		}
 
-		if(!evtName){
-			evtName = 'onmouseover';
-		}
-		evtName = this.eventJsToPrototype(evtName);
 		this.level = RichFaces.Menu.Layers.layers[parentv].level + 1;
    		RichFaces.Menu.Layers.father[this.id] = parentv;
-   		if(!refLayerName){
-   			refLayerName = parentv;
-   		}
    		var refLayer = $(refLayerName);
    		this.refItem = RichFaces.Menu.Layers.layers[parentv].items[refLayerName];
    		this.refItem.childMenu = this;
- 		var binding = new RichFaces.Menu.Layer.Binding(refLayerName, evtName,	this.showMe.bindAsEventListener(this));
+ 		var binding = new RichFaces.Menu.Layer.Binding(refLayerName, this.eventJsToPrototype(options.evtName || "mouseover"),	this.showMe.bindAsEventListener(this));
  		this.bindings.push(binding);
  		binding.refresh();
 
