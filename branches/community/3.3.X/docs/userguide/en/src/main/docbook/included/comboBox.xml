@@ -43,18 +43,12 @@
     <section>
         <title>Creating the Component with a Page Tag</title>
         <para>Here is a simple example as it could be used on a page: </para>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
         <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" />
 ...]]></programlisting>
     </section>
     <section>
         <title>Creating the Component Dynamically Using Java</title>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
         <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmlComboBox;
 ...	
 HtmlComboBox myComboBox = new HtmlComboBox();
@@ -86,9 +80,6 @@ HtmlComboBox myComboBox = new HtmlComboBox();
             <itemizedlist>
                 <listitem>
                     <para>Using the <emphasis><property>&quot;suggestionValues&quot;</property></emphasis> attribute, that defines the suggestion collection</para>
-                    <para>
-                        <emphasis role="bold">Example:</emphasis>
-                    </para>
                     <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" />    
 ...]]></programlisting>                        
@@ -98,9 +89,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
                 Using the <emphasis role="bold"><property>&lt;f:selectItem /&gt;</property></emphasis> or <emphasis role="bold">
                     <property>&lt;f:selectItems /&gt;</property></emphasis> JSF components.
                 </para>
-                <para>
-                    <emphasis role="bold">Example:</emphasis>
-                </para>
+
                 <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" valueChangeListener="#{bean.selectionChanged}">
         <f:selectItems  value="#{bean.selectItems}"/>
@@ -127,9 +116,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
             The <emphasis><property> &quot;directInputSuggestions&quot;</property></emphasis> attribute defines, how the first value from the suggested one appears in an input field. 
             If it&apos;s &quot;true&quot; the first value appears with the suggested part highlighted. 
         </para>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
+ 
         <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" directInputSuggestions="true" />            
 ...]]></programlisting>        
@@ -149,9 +136,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
         The <emphasis><property> &quot;selectFirstOnUpdate&quot;</property></emphasis> attribute defines if the first value from suggested is selected in a popup list. 
         If it&apos;s &quot;false&quot; nothing is selected in the list before a user hovers some item with the mouse. 
         </para>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
+
         <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" selectFirstOnUpdate="false" />           
 ...]]></programlisting>     
@@ -175,9 +160,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
         <para>
           The <emphasis><property>&quot;defaultLabel&quot;</property></emphasis> attribute defines the default label of the input element. Simple example is placed below.
         </para>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
+
         <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." />            
 ...]]></programlisting>     
@@ -197,9 +180,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
                 With the help of the <emphasis><property>&quot;disabled&quot;</property></emphasis> attribute you can disable the whole 
                 <emphasis role="bold"><property>&lt;rich:comboBox&gt;</property></emphasis> component. See the following example.
             </para>
-            <para>
-                <emphasis role="bold">Example:</emphasis>
-            </para>
+
             <programlisting role="XML"><![CDATA[...
 <rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." disabled="true" />            
 ...]]></programlisting>  
@@ -215,18 +196,8 @@ HtmlComboBox myComboBox = new HtmlComboBox();
                     </mediaobject>
                 </figure>      
         <para>
-      	The 
-      		<emphasis>
-      			<property>
-      				&quot;enableManualInput&quot;
-      			</property>
-      		</emphasis> 
-      	attribute enables/disables input field, so when 
-      	<code>
-      		enableManualInput = &quot;false&quot;
-      	</code>,
-      	user can only pick the value manually and has no possibility to type in the value 
-      	(default value is &quot;false&quot;).
+              The <emphasis><property>&quot;enableManualInput&quot;</property></emphasis> attribute enables/disables input field, so when <code>enableManualInput = &quot;false&quot;</code>,
+      	user can only pick the value manually and has no possibility to type in the value (default value is &quot;false&quot;).
       </para>
         <!--para>
         The <emphasis role="bold"><property>&lt;rich:comboBox&gt;</property></emphasis> component provides the possibility to use 
@@ -944,8 +915,7 @@ HtmlComboBox myComboBox = new HtmlComboBox();
     <section>
         <title>Relevant Resources Links</title>
         <para>
-            <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/comboBox.jsf?c=comboBox">On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold"><property>&lt;rich:comboBox&gt;</property></emphasis> usage 
-            and sources for the given example. 
-        </para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/comboBox.jsf?c=comboBox">ComboBox page</ulink> at  RichFaces LiveDemo for examples of component usage and their sources.
+      </para>
     </section>
 </section>
