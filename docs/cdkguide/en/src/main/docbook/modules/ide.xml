@@ -159,7 +159,7 @@
     		Once you have built your projects for Eclipse IDE
     		you can easily migrate to NetBeans IDE.
     		You can get all necessary information at
-    		<ulink url="http://www.netbeans.org/kb/articles/import-eclipse.html">Automatically Import Your Projects From Eclipse to NetBeans IDE</ulink>
+    		<ulink url="http://www.netbeans.org/kb/docs/java/import-eclipse.html">Automatically Import Your Projects From Eclipse to NetBeans IDE</ulink>
     		page.
     	</para>
 	</section>
