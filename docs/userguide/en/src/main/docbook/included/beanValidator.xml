@@ -55,26 +55,17 @@
           <section>
                     <title>Creating the Component with a Page Tag</title>
 
-                    <para>To create the simplest variant of the component on a page use the
-                              following syntax:</para>
-
-
                     <para>
-                              <emphasis role="bold">Example:</emphasis>
+                          To create the simplest variant of the component on a page use the following syntax:
                     </para>
-                    <programlisting role="XML"><![CDATA[...
-<h:inputText value="#{validationBean.email}" id="email">
-       <rich:beanValidator summary="Invalid email"/>
-</h:inputText>
-...]]></programlisting>
+
+                    <programlisting role="XML"><![CDATA[<h:inputText value="#{validationBean.email}" id="email">
+      <rich:beanValidator summary="Invalid email"/>
+</h:inputText>]]></programlisting>
           </section>
 
           <section>
                     <title>Creating the Component Dynamically Using Java</title>
-
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
                     <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmlCalendar; 	
 ...
 HtmlbeanValidator mybeanValidator= new HtmlbeanValidator();
@@ -82,80 +73,93 @@ HtmlbeanValidator mybeanValidator= new HtmlbeanValidator();
 ]]></programlisting>
           </section>
 
-                    <!-- Start  Details of Usage-->
+
                     <section>
                               <title>Details of Usage</title>
 
-                              <para> Starting from 3.2.2 GA version Rich Faces provides support for
-                                        model-based constraints defined using Hibernate Validator.
-                                        Thus it's possible to use Hibernate Validators the same as
-                                        for Seam based applications. </para>
+                              <para>Starting from 3.2.2 GA version Rich Faces provides support for model-based constraints defined using Hibernate Validator. 
+                                    Thus it's possible to use Hibernate Validators the same as for Seam based applications.
+                              </para>
+                              <para>
+                                    The <emphasis role="bold"><property>&lt;rich:beanValidator&gt;</property></emphasis> component is defined in the same way as any JSF validator. 
+                                    Look at the example below.
+                              </para>
+                          <programlisting role="XML"><![CDATA[<rich:panel>
+      <f:facet name="header">
+            <h:outputText value="#{validationBean.progressString}" id="progress"/>
+      </f:facet>
+      <h:panelGrid columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{validationBean.name}" id="name">
+                  <rich:beanValidator summary="Invalid name"/>
+            </h:inputText>
+            <rich:message for="name" />
 
-                              <para>The <emphasis role="bold">
-                                                  <property>&lt;rich:beanValidator&gt;</property>
-                                        </emphasis> component is defined in the same way as any JSF
-                                        validator. Look at the example below. </para>
+            <h:outputText value="Email:" />
+            <h:inputText value="#{validationBean.email}" id="email">
+                  <rich:beanValidator summary="Invalid email"/>
+            </h:inputText>
+            <rich:message for="email" />
+            
+            <h:outputText value="Age:" />
+            <h:inputText value="#{validationBean.age}" id="age">
+                  <rich:beanValidator summary="Wrong age"/>
+            </h:inputText>
+            <rich:message for="age" />
+            <f:facet name="footer">
+                  <a4j:commandButton value="Submit" action="#{validationBean.success}" reRender="progress"/>
+            </f:facet>
+      </h:panelGrid>
+</rich:panel>]]></programlisting>
 
-                              <programlisting role="XML"><![CDATA[...
-<rich:panel>
-       <f:facet name="header">
-              <h:outputText value="#{validationBean.progressString}" id="progress"/>
-       </f:facet>
-       <h:panelGrid columns="3">
-              <h:outputText value="Name:" />
-              <h:inputText value="#{validationBean.name}" id="name">
-                     <rich:beanValidator summary="Invalid name"/>
-              </h:inputText>
-              <rich:message for="name" />
-              <h:outputText value="Email:" />
-              <h:inputText value="#{validationBean.email}" id="email">
-                     <rich:beanValidator summary="Invalid email"/>
-              </h:inputText>
-              <rich:message for="email" />
-              <f:facet name="footer">
-                     <a4j:commandButton value="Submit" action="#{validationBean.success}" reRender="progress"/>
-              </f:facet>
-       </h:panelGrid>
-</rich:panel>
-...]]></programlisting>
-
-                              <para>Please play close attention on the bean code that contains the
-                                        constraints defined with Hibernate annotation which perform
-                                        validation of the input data.</para>
+                              <para>
+                                    Please play close attention on the bean code that contains the constraints defined with Hibernate annotation which perform validation of the input data.
+                              </para>
 
                               <programlisting role="JAVA"><![CDATA[
+
 package org.richfaces.demo.validation;
 
 import org.hibernate.validator.Email;
 import org.hibernate.validator.Length;
+import org.hibernate.validator.Max;
+import org.hibernate.validator.Min;
 import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Pattern;
 
 public class ValidationBean {
 
+    private String progressString="Fill the form please";
+    
     @NotEmpty
+    @Pattern(regex=".*[^\\s].*", message="This string contain only spaces")
     @Length(min=3,max=12)
     private String name;
     @Email
     @NotEmpty
     private String email;
     
+    @NotNull
+    @Min(18)
+    @Max(100)
+    private Integer age;
+    
     public ValidationBean() {
     }
 
-    public String getName() {
-        return name;
+    /* Corresponding Getters and Setters */
+    
+    public void success() {
+        setProgressString(getProgressString() + "(Strored successfully)");
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProgressString() {
+        return progressString;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setProgressString(String progressString) {
+        this.progressString = progressString;
     }
 }]]></programlisting>
 

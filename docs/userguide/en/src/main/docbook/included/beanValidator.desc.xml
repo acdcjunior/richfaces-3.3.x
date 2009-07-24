@@ -3,23 +3,21 @@
     <sectioninfo>
         <keywordset>
             <keyword>rich:beanValidator</keyword>
+              <keyword>RichFaces</keyword>
         </keywordset>
         <releaseinfo>3.2.2</releaseinfo>
     </sectioninfo>
     <section>
         <title>Description</title>
-        <para>The<emphasis role="bold">
-            <property>&lt;rich:beanValidator&gt;</property> 
-        </emphasis>is a component designed to provide validation using Hibernate model-based constraints</para>
-
-
-
-
+        <para>
+              The<emphasis role="bold"><property>&lt;rich:beanValidator&gt;</property></emphasis> component designed to provide validation using Hibernate model-based constraints.
+        </para>
     </section>
+      
     <section>
-        <title>Key Features</title>
-        <itemizedlist>
-            <listitem><para>Validation using Hibernate constraints</para></listitem>
-        </itemizedlist>
+          <title>Key Features</title>
+          <itemizedlist>
+                <listitem><para>Validation using Hibernate constraints</para></listitem>
+          </itemizedlist>
     </section>
 </section>
