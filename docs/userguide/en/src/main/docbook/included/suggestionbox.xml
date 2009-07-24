@@ -189,7 +189,7 @@ HtmlSuggestionBox myList = new HtmlSuggestionBox();
                               appearing in popup (for additional information, read JSF Reference)
                               and custom attribute managing Ajax requests sending (for additional
                               information, see <ulink
-                                        url="http://www.jboss.org/projects/jbossajax4jsf">Ajax4JSF
+                                        url="http://www.jboss.org/community/wiki/Ajax4jsf">Ajax4JSF
                                         Project</ulink>).</para>
                     <para>In addition to these attributes common for Ajax action components and
                               limiting requests quantity and frequency,

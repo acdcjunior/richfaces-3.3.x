@@ -288,7 +288,8 @@ HtmlRichMessages myMessages = new HtmlRichMessages();
           <section>
                     <title>Relevant Resources Links</title>
                     <para><ulink
-                                        url="http://livedemo.exadel.com/richfaces-demo/richfaces/messsages.jsf?c=messages"
+                              url="http://livedemo.exadel.com/richfaces-demo/richfaces/messages.jsf?c=messages&amp;tab=usage"
+                                              
                                         >On the component LiveDemo page</ulink> you can see the example of <emphasis
                                         role="bold">
                                         <property>&lt;rich:messages&gt;</property>
