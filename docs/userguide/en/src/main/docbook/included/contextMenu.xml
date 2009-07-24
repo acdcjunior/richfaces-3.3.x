@@ -42,18 +42,13 @@
     <section>
         <title>Creating the Component with a Page Tag</title>
         <para>To create the simplest variant on a page use the following syntax:</para>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
         <programlisting role="XML"><![CDATA[...
 <rich:contextMenu event="oncontextmenu" attached="true">
 ...]]></programlisting>
     </section>
     <section>
-        <title>Creating the Component Dynamically Using Java</title>
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
+
+          <title>Creating the Component Dynamically Using Java</title>        
         <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.ContextMenu;   
 ...
 html.ContextMenu myContextMenu = new html.ContextMenu();
@@ -94,24 +89,24 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
 		component is attached to the parent component or to the component, which 
 		<emphasis><property>&quot;id&quot;</property></emphasis> is specified in the 
 		<emphasis><property>&quot;attachTo&quot;</property></emphasis> attribute. 
-		An example is placed below.</para>
+		</para>
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
         <programlisting role="XML"><![CDATA[...
 <rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none">
-		<rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/>
-       	<rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/>
+      <rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/>
+      <rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/>
 </rich:contextMenu>
 <h:panelGrid columns="1" columnClasses="cent">
-		<h:panelGroup id="picture">
-       			<h:graphicImage value="/richfaces/jQuery/images/pic1.png" id="pic"/>
-       </h:panelGroup>
+      <h:panelGroup id="picture">
+            <h:graphicImage value="/richfaces/jQuery/images/pic1.png" id="pic"/>
+      </h:panelGroup>
 </h:panelGrid>
 <h:panelGrid columns="1" columnClasses="cent">
-		<h:panelGroup id="picture1">
-       			<h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/>
-       	</h:panelGroup>
+      <h:panelGroup id="picture1">
+            <h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/>
+       </h:panelGroup>
 </h:panelGrid>
 ...]]></programlisting>
         <para>The <code>&quot;enlarge()&quot;</code> and
@@ -171,60 +166,54 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
         <para id="ex">
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML"><![CDATA[...
-<h:form id="form">
-		<rich:contextMenu attached="false" id="menu" submitMode="ajax">
-       			<rich:menuItem ajaxSingle="true">
-               		<b>{car} {model}</b> details
-                       <a4j:actionparam name="det" assignTo="#{ddmenu.current}" value="{car} {model} details"/>
-               </rich:menuItem>
-               <rich:menuGroup value="Actions">  
-               		<rich:menuItem ajaxSingle="true">
-                      		Put <b>{car} {model}</b> To Basket
-                             <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Put {car} {model} To Basket"/>
-                     	</rich:menuItem>
-                      <rich:menuItem value="Read Comments" ajaxSingle="true">
-                      		<a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Read Comments"/>
-                      </rich:menuItem>                
-                      <rich:menuItem ajaxSingle="true">
-                      		Go to <b>{car}</b> site
-                             	<a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Go to {car} site"/>
-                     	</rich:menuItem>
-       			</rich:menuGroup>
-       	</rich:contextMenu> 
+        <programlisting role="XML"><![CDATA[<h:form id="form">
+      <rich:contextMenu attached="false" id="menu" submitMode="ajax">
+            <rich:menuItem ajaxSingle="true">
+                  <b>{car} {model}</b> details
+                  <a4j:actionparam name="det" assignTo="#{ddmenu.current}" value="{car} {model} details"/>
+            </rich:menuItem>
+            <rich:menuGroup value="Actions">
+                  <rich:menuItem ajaxSingle="true">
+                        Put <b>{car} {model}</b> To Basket
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Put {car} {model} To Basket"/>
+                  </rich:menuItem>
+                  <rich:menuItem value="Read Comments" ajaxSingle="true">
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Read Comments"/>
+                  </rich:menuItem>
+                  <rich:menuItem ajaxSingle="true">
+                        Go to <b>{car}</b> site
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Go to {car} site"/>
+                  </rich:menuItem>
+            </rich:menuGroup>
+      </rich:contextMenu> 
 
-      	<h:panelGrid columns="2">
-       			<rich:dataTable value="#{dataTableScrollerBean.tenRandomCars}" var="car" id="table"
-                                                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
-                                                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" rowClasses="cur">
-               		<rich:column>
-                      		<f:facet name="header">Make</f:facet>
-                             	<h:outputText value="#{car.make}"/>
-                     	</rich:column>
-                      <rich:column>
-                      		<f:facet name="header">Model</f:facet>
-                             	<h:outputText value="#{car.model}"/>
-                      </rich:column>
-                      <rich:column>
-                      		<f:facet name="header">Price</f:facet>
-                             	<h:outputText value="#{car.price}" />
-                       </rich:column>
-
-						<rich:componentControl event="onRowClick" for="menu" operation="show">
-                       		<f:param value="#{car.model}" name="model"/>
-                             	<f:param value="#{car.make}" name="car"/>
-                      </rich:componentControl>
- 				</rich:dataTable>
-
-               <a4j:outputPanel ajaxRendered="true">
-               		<rich:panel>
-                 				<f:facet name="header">Last Menu Action</f:facet>
-                             <h:outputText value="#{ddmenu.current}"></h:outputText>
-                    	</rich:panel>       
-             	</a4j:outputPanel>
-		</h:panelGrid>
- </h:form>           
- ...]]></programlisting>
+      <h:panelGrid columns="2">
+            <rich:dataTable value="#{dataTableScrollerBean.tenRandomCars}" var="car" id="table" onRowMouseOver="this.style.backgroundColor='#F8F8F8'" onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" rowClasses="cur">
+                  <rich:column>
+                        <f:facet name="header">Make</f:facet>
+                        <h:outputText value="#{car.make}"/>
+                  </rich:column>
+                  <rich:column>
+                        <f:facet name="header">Model</f:facet>
+                        <h:outputText value="#{car.model}"/>
+                  </rich:column>
+                  <rich:column>
+                        <f:facet name="header">Price</f:facet>
+                        <h:outputText value="#{car.price}" />
+                  </rich:column>
+                  <rich:componentControl event="onRowClick" for="menu" operation="show">
+                        <f:param value="#{car.model}" name="model"/>
+                        <f:param value="#{car.make}" name="car"/>
+                  </rich:componentControl>
+            </rich:dataTable>
+            <a4j:outputPanel ajaxRendered="true">
+                  <rich:panel>
+                        <f:facet name="header">Last Menu Action</f:facet>
+                        <h:outputText value="#{ddmenu.current}"></h:outputText>
+                  </rich:panel>
+            </a4j:outputPanel>
+      </h:panelGrid>
+</h:form>]]></programlisting>
         <para>This is a result:</para>
         <figure>
             <title>The <emphasis>
@@ -300,36 +289,26 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
             </emphasis> item&apos;s attributes are ignored. Menu items don't fire any submits
             themselves. The behavior is fully defined by the components nested inside items.</para>
 
-        <note><title>Note:</title><para> As the <emphasis role="bold">
-                <property>&lt;rich:contextMenu&gt;</property>
-            </emphasis> component doesn't provide its own form, use it between
-            <emphasis role="bold">
-                <property>&lt;h:form&gt;</property>
-            </emphasis> and <emphasis role="bold">
-                <property>&lt;/h:form&gt;</property>
-            </emphasis> tags.</para></note>
-        
         <note>
-            <title>Note:</title>
-            <para>When using 
-                <emphasis role="bold">
-                    <property>&lt;rich:contextMenu&gt;</property>
-                </emphasis> component with
-            <emphasis role="bold">
-                <property>&lt;h:outputText&gt;</property>
-            </emphasis> JSF component, specify id for 
-                <emphasis role="bold">
-                <property>&lt;h:outputText&gt;</property>
-                </emphasis> or move 
-                <emphasis role="bold">
-                <property>&lt;rich:contextMenu&gt;</property>
-                </emphasis> out from
-                <emphasis role="bold">
-                    <property>&lt;h:outputText&gt;</property>
-                </emphasis>to provide component&apos;s correct work.
-            </para>
+              <title>Notes:</title>
+              <itemizedlist>
+                    <listitem>
+                          <para>
+                                When nesting <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> into JSF <emphasis role="bold"><property>&lt;h:outputText&gt;</property></emphasis>, 
+                                specify an <code>id</code> for <emphasis role="bold"><property>&lt;h:outputText&gt;</property></emphasis>, otherwise, do not nest the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> to make it work properly.
+                          </para>
+                    </listitem>
+              </itemizedlist>      
+              
+              <itemizedlist>
+                    <listitem>
+                          <para>
+                                As the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> component doesn't provide its own form, 
+                                use it between <emphasis role="bold"><property>&lt;h:form&gt;</property></emphasis> and <emphasis role="bold"><property>&lt;/h:form&gt;</property></emphasis> tags.
+                          </para>
+                    </listitem>
+              </itemizedlist>
         </note>
-        
         
 
    <!--     <para>It&apos;s possible to handle events for contextMenu from JavaScript code. A simplest example of usage JavaScript API is placed below:</para>
@@ -658,11 +637,9 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
 
     <section>
         <title>Relevant Resources Links</title>
-        <para><ulink
-                url="http://livedemo.exadel.com/richfaces-demo/richfaces/contextMenu.jsf?c=contextMenu"
-                >On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold">
-                <property>&lt;rich:contextMenu&gt;</property>
-            </emphasis> usage and sources for the given example. </para>
+        <para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/contextMenu.jsf?c=contextMenu">ContextMenu page</ulink> at RichFaces LiveDemo fro examples of component usage and their sources. 
+        </para>
     </section>
 
 </section>
