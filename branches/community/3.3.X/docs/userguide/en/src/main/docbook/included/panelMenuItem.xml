@@ -560,7 +560,7 @@ HtmlPanelMenuItem myPanelMenuItem = new HtmlPanelMenuItem();
           <section>
                     <title>Relevant resources links</title>
                     <para> Some additional information about usage of component can be found on this <ulink
-                                        url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenuItem"
+                              url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenu&amp;tab=usage"
                                         >LiveDemo page</ulink>. </para>
           </section>
 </section>
