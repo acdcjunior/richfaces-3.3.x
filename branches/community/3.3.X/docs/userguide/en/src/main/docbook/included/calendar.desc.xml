@@ -8,9 +8,9 @@
     </sectioninfo>
     <section>
         <title>Description</title>
-        <para>The <emphasis role="bold">
-                <property>&lt;rich:calendar&gt;</property> 
-        </emphasis> component is used for creating monthly calendar elements on a page.</para>
+        <para>
+              The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> component is used for creating inputs for dates enriched with interactive calendar that allows navigate through monthes and years.
+        </para>
         <figure>
             <title><emphasis role="bold"> <property>&lt;rich:calendar&gt;</property></emphasis> component</title>
                 <mediaobject>

@@ -57,10 +57,6 @@
 
                     <para>To create the simplest variant on a page use the following syntax:</para>
 
-
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
                     <programlisting role="XML"><![CDATA[...
 <rich:calendar popup="false"/>
 ...]]></programlisting>
@@ -69,9 +65,7 @@
           <section>
                     <title>Creating the Component Dynamically Using Java</title>
 
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
+                    
                     <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmlCalendar;
 ...
 HtmlCalendar myCalendar = new HtmlCalendar();
