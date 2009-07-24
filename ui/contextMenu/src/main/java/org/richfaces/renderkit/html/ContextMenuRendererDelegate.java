@@ -130,11 +130,18 @@ public class ContextMenuRendererDelegate extends AbstractMenuRenderer {
 			styleClass = "";
 		}
 
-		writer.writeAttribute(HTML.onmousemove_ATTRIBUTE, layer.getAttributes().get("onmousemove"), null);
-		writer.writeAttribute(HTML.onmouseout_ATTRIBUTE, layer.getAttributes().get("onmouseout"), null);
-		writer.writeAttribute(HTML.onmouseover_ATTRIBUTE, layer.getAttributes().get("onmouseover"), null);
+        writeAttr(writer, HTML.onmousemove_ATTRIBUTE, layer.getAttributes().get("onmousemove"));
+        writeAttr(writer, HTML.onmouseout_ATTRIBUTE, layer.getAttributes().get("onmouseout"));
+        writeAttr(writer, HTML.onmouseover_ATTRIBUTE, layer.getAttributes().get("onmouseover"));
 
 		writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-menu-list-border " + styleClass, null);
 		writer.writeAttribute(HTML.style_ATTRIBUTE, "display: none; z-index: 2; " + style, null);
 	}
+
+    private void writeAttr(ResponseWriter writer, final String name, final Object value) throws IOException {
+        if (value != null) {
+            writer.writeAttribute(name, value, null);
+        }
+        
+    }
 }
