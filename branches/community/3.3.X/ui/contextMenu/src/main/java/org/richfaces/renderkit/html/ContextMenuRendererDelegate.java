@@ -22,17 +22,19 @@
 package org.richfaces.renderkit.html;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import org.ajax4jsf.javascript.JSFunction;
+import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
+import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIContextMenu;
-import org.richfaces.component.UIMenuGroup;
-import org.richfaces.renderkit.ScriptOptions;
 
 /**
  * @author Maksim Kaszynski
@@ -40,71 +42,23 @@ import org.richfaces.renderkit.ScriptOptions;
  */
 public class ContextMenuRendererDelegate extends AbstractMenuRenderer {
 
-	/* (non-Javadoc)
-	 * @see org.richfaces.renderkit.html.AbstractMenuRenderer#getLayerScript(javax.faces.context.FacesContext, javax.faces.component.UIComponent)
-	 */
-	protected String getLayerScript(FacesContext context, UIComponent component) {
-		StringBuffer buffer = new StringBuffer();
-		JSFunction function = new JSFunction("new RichFaces.Menu.Layer");
-		function.addParameter(component.getClientId(context)+"_menu");
-		function.addParameter(component.getAttributes().get("showDelay"));
-        
-		if (component instanceof UIContextMenu) {
-    		function.addParameter(component.getAttributes().get("hideDelay"));
-        } else {
-        	function.addParameter(new Integer(300));
-        }
-        
-		function.appendScript(buffer);
-		
-		if (component instanceof UIMenuGroup) {
-			  buffer.append(".");
-			  function = new JSFunction("asSubMenu");
-			  function.addParameter(component.getParent().getClientId(context)+"_menu");
-			  function.addParameter(component.getClientId(context));
-	 		  String evt = (String) component.getAttributes().get("event");
-			  if(evt == null || evt.trim().length() == 0){
-				  evt = "onmouseover";
-			  }
-			  function.addParameter(evt);
-			  ScriptOptions subMenuOptions = new ScriptOptions(component);
-			  subMenuOptions.addEventHandler("onopen");
-			  subMenuOptions.addEventHandler("onclose");
-			  subMenuOptions.addOption("direction");
-			  subMenuOptions.addOption("dummy", "dummy");
-			  function.addParameter(subMenuOptions);
-			  function.appendScript(buffer);
-
-		} else {
-			  buffer.append(".");
-			  function = new JSFunction("asContextMenu");
-/*			  function.addParameter(component.getParent().getClientId(context));
-  			  String evt = (String) component.getAttributes().get("event");
-			  if(evt == null || evt.trim().length() == 0){
-					evt = "oncontextmenu";
-			  }
-			  function.addParameter(evt);
-			  function.addParameter("onmouseout");
-*/			  ScriptOptions menuOptions = new ScriptOptions(component);
-
-			  menuOptions.addOption("direction");
-			  menuOptions.addOption("jointPoint");
-			  menuOptions.addOption("verticalOffset");
-
-
-			  menuOptions.addOption("horizontalOffset");
-			  menuOptions.addEventHandler("oncollapse");
-			  menuOptions.addEventHandler("onexpand");
-			  menuOptions.addEventHandler("onitemselect");
-			  menuOptions.addEventHandler("ongroupactivate");
-			  
-			  menuOptions.addOption("dummy", "dummy");
-			  function.addParameter(menuOptions);
-			  function.appendScript(buffer);
-
+	protected void appendMenuScript(FacesContext context, UIComponent component, StringBuffer buffer) {
+        Map<String, Object> options = new HashMap<String, Object>();
+        RendererUtils utils = getUtils();
+		buffer.append(".");
+		JSFunction function = new JSFunction("asContextMenu");
+		utils.addToScriptHash(options, "direction", component.getAttributes().get("direction"), "auto"); 
+		utils.addToScriptHash(options, "jointPoint", component.getAttributes().get("jointPoint"), "auto"); 
+		utils.addToScriptHash(options, "verticalOffset", component.getAttributes().get("verticalOffset"), "0"); 
+		utils.addToScriptHash(options, "horizontalOffset", component.getAttributes().get("horizontalOffset"), "0"); 
+		utils.addToScriptHash(options, "oncollapse", component.getAttributes().get("oncollapse"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "onexpand", component.getAttributes().get("onexpand"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "onitemselect", component.getAttributes().get("onitemselect"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "ongroupactivate", component.getAttributes().get("ongroupactivate"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		if (!options.isEmpty()) {
+			function.addParameter(options);
 		}
-		
-		return buffer.toString();
+		function.appendScript(buffer);
 	}
 
 	/* (non-Javadoc)
