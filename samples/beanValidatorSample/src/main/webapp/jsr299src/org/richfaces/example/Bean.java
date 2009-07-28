@@ -58,7 +58,7 @@ public class Bean {
 	 */
 	@NotEmpty
 //	@Email
-	@Pattern(regexp="^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$")
+//	@Pattern(regexp="^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$")
 	public String getEmail() {
 		return email;
 	}

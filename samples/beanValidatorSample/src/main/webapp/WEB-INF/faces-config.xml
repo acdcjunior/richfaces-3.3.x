@@ -1,7 +1,16 @@
-<?xml version="1.0"?>
-<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
-                              "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
-<faces-config>
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+  version="1.2">
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>de</supported-locale>
+			<supported-locale>fr</supported-locale>
+		</locale-config>
+	</application>
  <managed-bean>
   <managed-bean-name>bean</managed-bean-name>
   <managed-bean-class>org.richfaces.example.Bean</managed-bean-class>
@@ -26,6 +35,11 @@
  	<managed-bean-name>pages</managed-bean-name>
  	<managed-bean-class>org.richfaces.Pages</managed-bean-class>
  	<managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>locale</managed-bean-name>
+ 	<managed-bean-class>org.richfaces.LocaleBean</managed-bean-class>
+ 	<managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
  	<managed-bean-name>contentBean</managed-bean-name>

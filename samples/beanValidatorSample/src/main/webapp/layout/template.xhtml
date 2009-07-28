@@ -1,10 +1,11 @@
-<a:page xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:s="http://jboss.com/products/seam/taglib"
-	xmlns:a="http://richfaces.org/a4j" 
-	xmlns:rich="http://richfaces.org/rich"
-	pageTitle="#{title}" format="xhtml">
+<f:view xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:a="http://richfaces.org/a4j" 
+    xmlns:rich="http://richfaces.org/rich"
+    locale="#{locale.current}">
+<a:page pageTitle="#{title}" format="xhtml">
 	<a:loadStyle src="/css/grids.css" />
 	<a:loadStyle src="resource://css/panel.xcss" />
 	<a:loadStyle src="resource://css/table.xcss" />
@@ -16,6 +17,14 @@
 	<div class="yui-b">
 		<!-- YOUR NAVIGATION GOES HERE -->
 		<ui:include src="/include/pagesList.xhtml" />
+        <h:form>
+        <h:selectOneMenu value="#{locale.language}">
+    <f:selectItem itemLabel="English" itemValue="en"/>
+    <f:selectItem itemLabel="Deutsch" itemValue="de"/>
+    <f:selectItem itemLabel="Francais" itemValue="fr"/>
+</h:selectOneMenu>
+<h:commandButton action="#{locale.select}" value="ChangeLanguage"/>
+</h:form>
 	</div>
 	<div class="yui-main">
 	<div class="yui-b">
@@ -47,3 +56,4 @@
 	</div>
 	</div>
 </a:page>
+</f:view>

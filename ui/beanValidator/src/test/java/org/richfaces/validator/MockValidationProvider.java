@@ -7,16 +7,17 @@ import java.io.InputStream;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.validation.BeanDescriptor;
 import javax.validation.Configuration;
-import javax.validation.ConstraintDescriptor;
 import javax.validation.ConstraintValidatorFactory;
 import javax.validation.ConstraintViolation;
 import javax.validation.MessageInterpolator;
+import javax.validation.Path;
 import javax.validation.TraversableResolver;
 import javax.validation.Validator;
 import javax.validation.ValidatorContext;
 import javax.validation.ValidatorFactory;
+import javax.validation.metadata.BeanDescriptor;
+import javax.validation.metadata.ConstraintDescriptor;
 import javax.validation.spi.BootstrapState;
 import javax.validation.spi.ConfigurationState;
 import javax.validation.spi.ValidationProvider;
@@ -30,10 +31,6 @@ public class MockValidationProvider implements ValidationProvider {
 	public <T> ConstraintViolation<T> getDefaultConstraint(){
 		return new ConstraintViolation<T>(){
 
-		public ConstraintDescriptor<?> getConstraintDescriptor() {
-			// TODO Auto-generated method stub
-			return null;
-		}
 
 		public Object getInvalidValue() {
 			// TODO Auto-generated method stub
@@ -55,7 +52,7 @@ public class MockValidationProvider implements ValidationProvider {
 			return null;
 		}
 
-		public String getPropertyPath() {
+		public Path getPropertyPath() {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -66,6 +63,11 @@ public class MockValidationProvider implements ValidationProvider {
 		}
 
 		public Class<T> getRootBeanClass() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public ConstraintDescriptor<?> getConstraintDescriptor() {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -125,6 +127,12 @@ public class MockValidationProvider implements ValidationProvider {
 								ConstraintViolation<T> constrain = getDefaultConstraint();
 								return Collections.singleton(constrain);
 							}
+
+							public <T> T unwrap(Class<T> type) {
+								// TODO Auto-generated method stub
+								return null;
+							}
+
 							
 						};
 					}
@@ -142,6 +150,11 @@ public class MockValidationProvider implements ValidationProvider {
 					}
 					
 				};
+			}
+
+			public <T> T unwrap(Class<T> type) {
+				// TODO Auto-generated method stub
+				return null;
 			}
 			
 		};
@@ -218,6 +231,11 @@ public class MockValidationProvider implements ValidationProvider {
 			Class<? extends Configuration<?>> configurationClass) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Configuration createSpecializedConfiguration(BootstrapState state) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
