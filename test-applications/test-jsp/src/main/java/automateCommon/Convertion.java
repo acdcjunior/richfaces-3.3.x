@@ -26,6 +26,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.component.UIComponent;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
+import javax.faces.event.PhaseId;
 
 import util.data.Car;
 import util.parser.Attribute;
@@ -54,13 +55,13 @@ public class Convertion {
 	 * The phase converter get as object keeps the JSF phase on which
 	 * getAsObject is triggered.
 	 */
-	private String phaseConverterGetAsObject = "UNDEFINED";
+	private PhaseId phaseConverterGetAsObject = PhaseId.ANY_PHASE;
 
 	/**
 	 * The phase converter get as string keeps the JSF phase on which
 	 * getAsString is triggered.
 	 */
-	private String phaseConverterGetAsString = "UNDEFINED";
+	private PhaseId phaseConverterGetAsString = PhaseId.ANY_PHASE;
 
 	/** The converter message test which is actual displayed on the page. */
 	private String converterMessageTest = "";
@@ -84,6 +85,8 @@ public class Convertion {
 		converterMessageTest = "";
 		statusConverterGetAsObject = false;
 		statusConverterGetAsString = false;
+		phaseConverterGetAsObject = PhaseId.ANY_PHASE;
+		phaseConverterGetAsString = PhaseId.ANY_PHASE;
 	}
 
 	/**
@@ -106,8 +109,7 @@ public class Convertion {
 				// getAsObject is called
 				statusConverterGetAsObject = true;
 				// keep phase
-				phaseConverterGetAsObject = PhaseTracker.currentPhase
-						.toString();
+				phaseConverterGetAsObject = PhaseTracker.currentPhase;
 				if (newValue.equals("converter"))
 					throw new ConverterException(new FacesMessage(
 							FacesMessage.SEVERITY_ERROR, "Converter error",
@@ -128,8 +130,7 @@ public class Convertion {
 				// getAsString is called
 				statusConverterGetAsString = true;
 				// keep phase
-				phaseConverterGetAsString = PhaseTracker.currentPhase
-						.toString();
+				phaseConverterGetAsString = PhaseTracker.currentPhase;
 
 				return (null == value) ? null : value.toString();
 			}
@@ -156,8 +157,7 @@ public class Convertion {
 				// getAsObject is called
 				statusConverterGetAsObject = true;
 				// keep phase
-				phaseConverterGetAsObject = PhaseTracker.currentPhase
-						.toString();
+				phaseConverterGetAsObject = PhaseTracker.currentPhase;
 				if (newValue.indexOf("converter") > -1)
 					throw new ConverterException(new FacesMessage(
 							FacesMessage.SEVERITY_ERROR, "Converter error",
@@ -179,9 +179,7 @@ public class Convertion {
 				// getAsString is called
 				statusConverterGetAsString = true;
 				// keep phase
-				phaseConverterGetAsString = PhaseTracker.currentPhase
-						.toString();
-
+				phaseConverterGetAsString = PhaseTracker.currentPhase;
 				if (value instanceof Car) {
 					Car car = (Car) value;
 					return (null == car) ? null : car.toString();
@@ -203,13 +201,14 @@ public class Convertion {
 		// converter should be called...
 		if ((statusConverterGetAsObject) && (statusConverterGetAsString)) {
 			// ... getAsObject on the 3th phase if component is not immediate...
-			if (((phaseConverterGetAsObject.equals("PROCESS_VALIDATIONS(3)"))
+			if (((phaseConverterGetAsObject.equals(PhaseId.PROCESS_VALIDATIONS))
 					&& (!immediate)
 			// ... getAsObject or on the 2th phase if component is immediate...
-			|| (phaseConverterGetAsObject.equals("APPLY_REQUEST_VALUES(2)"))
+			|| (phaseConverterGetAsObject.equals(PhaseId.APPLY_REQUEST_VALUES))
 					&& (immediate))
 					// ... and getAsString on the 6th phase
-					&& (phaseConverterGetAsString.equals("RENDER_RESPONSE(6)"))) {
+					&& (phaseConverterGetAsString
+							.equals(PhaseId.RENDER_RESPONSE))) {
 				attr.setStatus(Status.PASSED);
 			} else {
 				attr.setStatus(Status.FAILED);

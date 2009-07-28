@@ -26,6 +26,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.faces.validator.ValidatorException;
 
 import util.parser.Attribute;
@@ -54,7 +55,7 @@ public class Validation {
 	private boolean statusValidator = false;
 
 	/** The phase validator keeps the JSF phase on which validator is triggered. */
-	private String phaseValidator = "UNDEFINED";
+	private PhaseId phaseValidator = PhaseId.ANY_PHASE;
 
 	/**
 	 * Instantiates a new validation.
@@ -73,7 +74,7 @@ public class Validation {
 		validatorMessageTest = "";
 		requiredMessageTest = "";
 		statusValidator = false;
-		phaseValidator = "UNDEFINED";
+		phaseValidator = PhaseId.ANY_PHASE;
 	}
 
 	/**
@@ -95,7 +96,7 @@ public class Validation {
 		// validator is called
 		statusValidator = true;
 		// keep phase
-		phaseValidator = PhaseTracker.currentPhase.toString();
+		phaseValidator = PhaseTracker.currentPhase;
 		if (value != null) {
 			if (value instanceof List) {
 				List<Object> arr_value = (List<Object>) value;
@@ -133,10 +134,10 @@ public class Validation {
 		// validator should be called...
 		if (statusValidator) {
 			// ... on the 3th phase if component is not immediate...
-			if ((phaseValidator.equals("PROCESS_VALIDATIONS(3)"))
+			if ((phaseValidator.equals(PhaseId.PROCESS_VALIDATIONS))
 					&& (!immediate)
 					// ... or on the 2th phase if component is immediate
-					|| (phaseValidator.equals("APPLY_REQUEST_VALUES(2)"))
+					|| (phaseValidator.equals(PhaseId.APPLY_REQUEST_VALUES))
 					&& (immediate)) {
 				attr.setStatus(Status.PASSED);
 			} else {
@@ -178,7 +179,7 @@ public class Validation {
 		// component should be immediate...
 		if ((statusValidator) && (immediate)) {
 			// ...and validator should be called on the 2th phase
-			if (phaseValidator.equals("APPLY_REQUEST_VALUES(2)")) {
+			if (phaseValidator.equals(PhaseId.APPLY_REQUEST_VALUES)) {
 				attr.setStatus(Status.PASSED);
 			} else {
 				attr.setStatus(Status.FAILED);

@@ -32,6 +32,7 @@
 		converterMessage="#{convertion.converterMessage}"
 		required="#{pickList.required}"
 		requiredMessage="#{validation.requiredMessage}"
+		valueChangeListener="#{listeners.valueChangeListener}"
 		immediate="#{pickList.immediate}">
 		<f:selectItems value="#{pickList.selectItems}" />
 		<f:selectItem itemLabel="validator" itemValue="validator" />

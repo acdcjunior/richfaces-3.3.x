@@ -47,7 +47,7 @@ public class AutoGeneral {
 	 */
 	private static final String[] autoGeneralAttrs = { "immediate",
 			"validator", "validatorMessage", "required", "requiredMessage",
-			"converter", "converterMessage" };
+			"converter", "converterMessage", "valueChangeListener" };
 
 	/** The result auto general grid. */
 	private HtmlPanelGrid resultAutoGeneralGrid = null;
@@ -139,6 +139,13 @@ public class AutoGeneral {
 							.equalsIgnoreCase("converterMessage"))
 						// run test for "converterMessage" attribute
 						convertionBean.converterMessageCheck(attr);
+				} else if (attr.getName().equalsIgnoreCase("valueChangeListener")) {
+					Listeners listenersBean = (Listeners) BeanManager
+							.getManagedBeanFromSession("listeners");
+					ImmediateComponentBean compInt = (ImmediateComponentBean) BeanManager
+							.getManagedBeanFromSession(component);
+					// run test for "valueChangeListener" attribute
+					listenersBean.valueChangeListenerCheck(attr, compInt.isImmediate());
 				}
 			}
 			// redraw the results grid with the last test results
@@ -170,6 +177,10 @@ public class AutoGeneral {
 				.getManagedBeanFromSession("convertion");
 		if (null != convertionBean)
 			convertionBean.reset();
+		
+		Listeners listenersBean = (Listeners) BeanManager
+				.getManagedBeanFromSession("listeners");
+		listenersBean.reset();
 
 		UIViewRoot vr = FacesContext.getCurrentInstance().getViewRoot();
 		UIInput inp = (UIInput) vr

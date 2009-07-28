@@ -9,6 +9,7 @@
 	<rich:comboBox id="comboBoxID" value="#{comboBox.value}"
 		validator="#{validation.validate}"
 		validatorMessage="#{validation.validatorMessage}"
+		valueChangeListener="#{listeners.valueChangeListener}"
 		converter="#{convertion.convert}"
 		converterMessage="#{convertion.converterMessage}"
 		onblur="markEventAsWorkable('onblur');"
@@ -42,7 +43,8 @@
 		inputStyle="inputStyle:inputStyle" itemClass="itemClass-itemClass"
 		itemSelectedClass="itemSelectedClass-itemSelectedClass"
 		listClass="listClass-listClass" listStyle="listStyle:listStyle"
-		required="#{comboBox.required}" requiredMessage="#{validation.requiredMessage}"
+		required="#{comboBox.required}"
+		requiredMessage="#{validation.requiredMessage}"
 		immediate="#{comboBox.immediate}">
 		<f:selectItem itemValue="validator" />
 		<f:selectItem itemValue="converter" />
