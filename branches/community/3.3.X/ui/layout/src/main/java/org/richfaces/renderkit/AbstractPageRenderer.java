@@ -79,8 +79,8 @@ public abstract class AbstractPageRenderer extends HeaderResourcesRendererBase {
 		ResponseWriter out = context.getResponseWriter();
 		Map<String, Object> attributes = component.getAttributes();
 		String format = (String) attributes.get("markupType");
-		String contentType = null;
-		String namespace = null;
+		String contentType = (String) attributes.get("contentType");
+		String namespace = (String) attributes.get("namespace");
 		// String characterEncoding = out.getCharacterEncoding();
 		String[] docType = null;
 		if (null != format) {
@@ -97,12 +97,14 @@ public abstract class AbstractPageRenderer extends HeaderResourcesRendererBase {
 			}
 		}
 		if (null != docType) {
-			contentType = docType[1];
-			namespace = docType[2];
+			if (null == contentType) {
+				contentType = docType[1];
+			}
+			// https://jira.jboss.org/jira/browse/RF-7367
+			if (null == namespace) {
+				namespace = docType[2];
+			}
 			out.write(docType[0]);
-		}
-		if (null == contentType) {
-			contentType = (String) attributes.get("contentType");
 		}
 		if (null != contentType) {
 			// response.setContentType(contentType /*+ ";charset=" +
