@@ -6,6 +6,7 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.Stack;
@@ -15,6 +16,7 @@ import javax.el.ELException;
 import javax.el.ELResolver;
 import javax.el.ValueExpression;
 import javax.faces.FacesException;
+import javax.faces.application.Application;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -113,7 +115,7 @@ public abstract class ObjectValidator {
 		if (null != target) {
 			ELContext elContext = context.getELContext();
 			ValidationResolver validationResolver = createValidationResolver(
-					elContext.getELResolver(), calculateLocale(context),profiles);
+					context, elContext.getELResolver(),profiles);
 			ELContextWrapper wrappedElContext = new ELContextWrapper(elContext,
 					validationResolver);
 			// TODO - handle ELExceptions ?
@@ -142,7 +144,7 @@ public abstract class ObjectValidator {
 
 	/**
 	 * Validate bean property for a new value.
-	 * 
+	 * @param facesContext TODO
 	 * @param base
 	 *            - bean
 	 * @param property
@@ -150,39 +152,46 @@ public abstract class ObjectValidator {
 	 * @param value
 	 *            new value.
 	 * @param profiles TODO
+	 * 
 	 * @return null for a valid value, array of the validation messages
 	 *         othervise.
 	 */
-	protected abstract String[] validate(Object base, String property,
-			Object value, Locale locale, Set<String> profiles);
+	protected abstract String[] validate(FacesContext facesContext, Object base,
+			String property, Object value, Set<String> profiles);
 
-	protected ResourceBundle getCurrentResourceBundle(Locale locale) {
-		if (null == FacesContext.getCurrentInstance()
-				|| null == FacesContext.getCurrentInstance().getApplication()) {
-			throw new FacesException(FACES_CONTEXT_IS_NULL);
+	protected ResourceBundle getResourceBundle(FacesContext facesContext, String name) {
+		// TODO - cache resource bundles.
+		ResourceBundle bundle = null;
+		if (null != facesContext) {
+			Application application = facesContext.getApplication();
+			try {
+				bundle = application.getResourceBundle(facesContext,
+						name);
+
+			} catch (Exception e) {
+				// Let one more attempt to load resource
+			}
 		}
-		String appBundle = FacesContext.getCurrentInstance().getApplication()
-				.getMessageBundle();
-		if (null == appBundle || null == locale) {
-			return null;
+		if (null == bundle) {
+			ClassLoader classLoader = Thread.currentThread()
+					.getContextClassLoader();
+			if (null == classLoader) {
+				classLoader = this.getClass().getClassLoader();
+			}
+			try {
+				bundle = ResourceBundle.getBundle(name, calculateLocale(facesContext),
+						classLoader);
+
+			} catch (MissingResourceException e) {
+				// Do nothing, use default bundle.
+			}
 		}
-
-		ResourceBundle bundle;
-
-		ClassLoader classLoader = Thread.currentThread()
-				.getContextClassLoader();
-		if (classLoader != null) {
-			bundle = ResourceBundle.getBundle(appBundle, locale, classLoader);
-		} else {
-			bundle = ResourceBundle.getBundle(appBundle, locale);
-		}
-
 		return bundle;
 	}
 
-	protected ValidationResolver createValidationResolver(ELResolver parent,
-			Locale locale, Set<String> profiles) {
-		return new ValidationResolver(parent, locale, profiles);
+	protected ValidationResolver createValidationResolver(FacesContext context,
+			ELResolver parent, Set<String> profiles) {
+		return new ValidationResolver(parent, context, profiles);
 	}
 
 	/**
@@ -308,20 +317,21 @@ public abstract class ObjectValidator {
 
 		private String[] validationMessages = null;
 
-		private Locale locale = null;
-
 		private Stack<BasePropertyPair> valuesStack;
 
 		private Set<String> profiles;
 
+		private FacesContext facesContext;
+
 		/**
 		 * @param parent
+		 * @param context 
 		 */
-		public ValidationResolver(ELResolver parent, Locale locale,Set<String> profiles) {
+		public ValidationResolver(ELResolver parent, FacesContext context, Set<String> profiles) {
 			this.parent = parent;
-			this.locale = locale;
 			this.valuesStack = new Stack<BasePropertyPair>();
 			this.profiles = profiles;
+			this.facesContext = context;
 		}
 
 		public boolean isValid() {
@@ -412,8 +422,8 @@ public abstract class ObjectValidator {
 					// apache el looses locale information during value
 					// resolution,
 					// so we use our own
-					validationMessages = validate(base, property.toString(),
-							value, locale, profiles);
+					validationMessages = validate(facesContext, base,
+							property.toString(), value, profiles);
 					valid = null == validationMessages
 							|| 0 == validationMessages.length;
 

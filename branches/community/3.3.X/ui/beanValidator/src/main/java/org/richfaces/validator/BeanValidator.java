@@ -42,10 +42,10 @@ public class BeanValidator extends ObjectValidator {
 	 * java.lang.String, java.lang.Object, java.util.Locale)
 	 */
 	@Override
-	protected String[] validate(Object base, String property, Object value,
-			Locale locale, Set<String> profiles) {
+	protected String[] validate(FacesContext facesContext, Object base, String property,
+			Object value, Set<String> profiles) {
 		Class beanType = base.getClass();
-		Set<ConstraintViolation<Object>> constrains = getValidator(locale)
+		Set<ConstraintViolation<Object>> constrains = getValidator(facesContext)
 				.validateValue(beanType, property, value, getGroups(profiles));
 		return extractMessages(constrains);
 	}
@@ -62,7 +62,7 @@ public class BeanValidator extends ObjectValidator {
 			Set<String> profiles) {
 		Class<?>[] groups = getGroups(profiles);
 		Set<ConstraintViolation<Object>> violations = getValidator(
-				calculateLocale(context)).validate(value, groups);
+				context).validate(value, groups);
 		String[] messages = extractMessages(violations);
 		return messages;
 	}
@@ -106,10 +106,10 @@ public class BeanValidator extends ObjectValidator {
 		return messages;
 	}
 
-	protected Validator getValidator(Locale locale) {
+	protected Validator getValidator(FacesContext facesContext) {
 		ValidatorContext validatorContext = validatorFactory.usingContext();
 		MessageInterpolator jsfMessageInterpolator = new JsfMessageInterpolator(
-				locale, validatorFactory.getMessageInterpolator());
+				calculateLocale(facesContext), validatorFactory.getMessageInterpolator());
 		validatorContext.messageInterpolator(jsfMessageInterpolator);
 		Validator beanValidator = validatorContext.getValidator();
 		return beanValidator;
@@ -138,7 +138,12 @@ public class BeanValidator extends ObjectValidator {
 
 		public String interpolate(String messageTemplate, Context context,
 				Locale locale) {
-			return delegate.interpolate(messageTemplate, context, locale);
+			if (null != locale) {
+				return delegate.interpolate(messageTemplate, context,
+						this.locale);
+			} else {
+				return delegate.interpolate(messageTemplate, context, locale);
+			}
 		}
 
 	}

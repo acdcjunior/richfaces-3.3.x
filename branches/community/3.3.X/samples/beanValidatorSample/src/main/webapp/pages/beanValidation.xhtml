@@ -20,7 +20,7 @@
 			<h:panelGrid columns="3">
 			<h:outputLabel for="email" value="Email Address:" />
 			<h:inputText id="email" value="#{bean.email}" label="Email">
-				<rich:beanValidator summary="Invalid Email address" profiles="javax.validation.groups.Default"/>
+				<rich:beanValidator summary="Invalid Email address" />
 			</h:inputText>
 			<rich:message for="email"/>
 			<h:outputLabel for="card" value="Credit card number:" />

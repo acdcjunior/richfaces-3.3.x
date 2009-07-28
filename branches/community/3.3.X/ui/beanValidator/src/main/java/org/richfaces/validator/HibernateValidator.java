@@ -22,10 +22,13 @@ package org.richfaces.validator;
 
 import java.beans.FeatureDescriptor;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EmptyStackException;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.Stack;
@@ -37,6 +40,8 @@ import javax.faces.context.FacesContext;
 
 import org.hibernate.validator.ClassValidator;
 import org.hibernate.validator.InvalidValue;
+import org.hibernate.validator.MessageInterpolator;
+import org.hibernate.validator.Validator;
 
 /**
  * Perform validation by Hibernate Validator annotations
@@ -45,6 +50,9 @@ import org.hibernate.validator.InvalidValue;
  * 
  */
 public class HibernateValidator extends ObjectValidator {
+
+	static final String DEFAULT_VALIDATOR_MESSAGES = "org.hibernate.validator.resources.DefaultValidatorMessages";
+	static final String VALIDATOR_MESSAGES = "ValidatorMessages";
 
 	private Map<ValidatorKey, ClassValidator<? extends Object>> classValidators = new ConcurrentHashMap<ValidatorKey, ClassValidator<? extends Object>>();
 
@@ -64,7 +72,7 @@ public class HibernateValidator extends ObjectValidator {
 		String validationMessages[] = null;
 		if (null != value) {
 			ClassValidator<Object> validator = (ClassValidator<Object>) getValidator(
-					value.getClass(), calculateLocale(context));
+					context, value.getClass());
 			if (validator.hasValidationRules()) {
 				InvalidValue[] invalidValues = validator
 						.getInvalidValues(value);
@@ -83,16 +91,16 @@ public class HibernateValidator extends ObjectValidator {
 
 	/**
 	 * Validate bean property in the base class aganist new value.
-	 * 
 	 * @param beanClass
 	 * @param property
 	 * @param value
+	 * 
 	 * @return
 	 */
-	protected InvalidValue[] validateClass(Class<? extends Object> beanClass,
-			String property, Object value, Locale locale) {
+	protected InvalidValue[] validateClass(FacesContext facesContext,
+			Class<? extends Object> beanClass, String property, Object value) {
 		ClassValidator<? extends Object> classValidator = 
-		    getValidator(beanClass, locale);
+		    getValidator(facesContext, beanClass);
 		
 		InvalidValue[] invalidValues = classValidator
 				.getPotentialInvalidValues(property, value);
@@ -101,18 +109,18 @@ public class HibernateValidator extends ObjectValidator {
 
 	/**
 	 * Get ( or create ) {@link ClassValidator} for a given bean class.
-	 * 
 	 * @param beanClass
+	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
 	protected ClassValidator<? extends Object> getValidator(
-			Class<? extends Object> beanClass, Locale locale) {
+			FacesContext facesContext, Class<? extends Object> beanClass) {
 		// TODO - localization support.
-		ValidatorKey key = new ValidatorKey(beanClass, locale);
+		ValidatorKey key = new ValidatorKey(beanClass, calculateLocale(facesContext));
 		ClassValidator result = classValidators.get(key);
 		if (null == result) {
-			result = createValidator(beanClass, locale);
+			result = createValidator(facesContext, beanClass);
 			classValidators.put(key, result);
 		}
 		return result;
@@ -126,17 +134,32 @@ public class HibernateValidator extends ObjectValidator {
 	 */
 	@SuppressWarnings("unchecked")
 	protected ClassValidator<? extends Object> createValidator(
-			Class<? extends Object> beanClass, Locale locale) {
-		ResourceBundle bundle = getCurrentResourceBundle(locale);
+			FacesContext facesContext, Class<? extends Object> beanClass) {
+		ResourceBundle bundle = createHibernateMessages(facesContext);
 		return bundle == null ? new ClassValidator(beanClass)
 				: new ClassValidator(beanClass, bundle);
 	}
 
+	/**
+	 * @param facesContext
+	 * @return
+	 */
+	protected ResourceBundle createHibernateMessages(FacesContext facesContext) {
+		ResourceBundle bundle = getResourceBundle(facesContext, VALIDATOR_MESSAGES);
+		ResourceBundle defaultMessagesBundle = getResourceBundle(facesContext, DEFAULT_VALIDATOR_MESSAGES);
+		if(null != bundle && defaultMessagesBundle != null){
+			bundle = new ResourceBundleChain(bundle, defaultMessagesBundle);
+		} else if(null != defaultMessagesBundle){
+			bundle = defaultMessagesBundle;
+		}
+		return bundle;
+	}
+
 	@Override
-	protected String[] validate(Object base, String property, Object value,
-			Locale locale, Set<String> profiles) {
-				InvalidValue[] invalidValues = validateBean(base, property, value,
-						locale);
+	protected String[] validate(FacesContext facesContext, Object base, String property,
+			Object value, Set<String> profiles) {
+				InvalidValue[] invalidValues = validateBean(facesContext, base, property,
+						value);
 				if (null == invalidValues) {
 					return null;
 				} else {
@@ -151,19 +174,68 @@ public class HibernateValidator extends ObjectValidator {
 
 	/**
 	 * Validate bean property of the base object aganist new value
-	 * 
 	 * @param base
 	 * @param property
 	 * @param value
+	 * 
 	 * @return
 	 */
-	protected InvalidValue[] validateBean(Object base, String property, Object value,
-			Locale locale) {
+	protected InvalidValue[] validateBean(FacesContext facesContext, Object base, String property,
+			Object value) {
 		Class<? extends Object> beanClass = base.getClass();
 		
-		InvalidValue[] invalidValues = validateClass(beanClass, property, value, locale);
+		InvalidValue[] invalidValues = validateClass(facesContext, beanClass, property, value);
 		return invalidValues;
 	}
 
+	private static class JsfMessageInterpolator implements MessageInterpolator {
+
+		private Locale locale;
+		private MessageInterpolator delegate;
+
+		public JsfMessageInterpolator(Locale locale,
+				MessageInterpolator delegate) {
+			this.locale = locale;
+			this.delegate = delegate;
+		}
+
+
+		public String interpolate(String message, Validator validator,
+				MessageInterpolator defaultInterpolator) {
+			return delegate.interpolate(message, validator, defaultInterpolator);
+		}
+
+	}
 	
+	static class ResourceBundleChain extends ResourceBundle {
+		
+		private final ResourceBundle delegate;
+		
+		public ResourceBundleChain(ResourceBundle delegate, ResourceBundle parent) {
+			this.delegate = delegate;
+			setParent(parent);
+		}
+
+		@Override
+		public Enumeration<String> getKeys() {
+			// TODO Auto-generated method stub
+			return null!=delegate?delegate.getKeys():Collections.<String>enumeration(Collections.<String>emptyList());
+		}
+
+		@Override
+		protected Object handleGetObject(String key) {
+			try {
+				return null != delegate ? delegate.getObject(key) : null;
+
+			} catch (MissingResourceException e) {
+				return null;
+			}
+		}
+
+		@Override
+		public Locale getLocale() {
+			return null!=delegate?delegate.getLocale():null;
+		}
+	}
+
 }

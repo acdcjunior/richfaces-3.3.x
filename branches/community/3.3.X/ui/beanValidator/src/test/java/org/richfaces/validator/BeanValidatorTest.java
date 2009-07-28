@@ -21,7 +21,6 @@
 package org.richfaces.validator;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -50,7 +49,7 @@ public class BeanValidatorTest extends AbstractAjax4JsfTestCase {
 	
     public void testValidate() throws Exception {
     	BeanValidator validator = new BeanValidator();
-    	String[] validate = validator.validate(new Bean(), "property", null, Locale.ENGLISH, null);
+    	String[] validate = validator.validate(facesContext, new Bean(), "property", null, null);
     	assertNotNull(validate);
     	assertEquals(1, validate.length);
 	}

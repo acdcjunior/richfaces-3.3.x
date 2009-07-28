@@ -3,7 +3,6 @@
  */
 package org.richfaces.validator;
 
-import java.util.Locale;
 import java.util.Set;
 
 import javax.faces.context.FacesContext;
@@ -18,8 +17,8 @@ public class NullValidator extends ObjectValidator {
 	 * @see org.richfaces.validator.ObjectValidator#validate(java.lang.Object, java.lang.String, java.lang.Object, java.util.Locale)
 	 */
 	@Override
-	protected String[] validate(Object base, String property, Object value,
-			Locale locale, Set<String> profiles) {
+	protected String[] validate(FacesContext facesContext, Object base, String property,
+			Object value, Set<String> profiles) {
 		// do nothing.
 		return null;
 	}
