@@ -1011,10 +1011,15 @@ RichFaces.Menu.Layer.prototype = {
 	},
 	//addItem: function(itemId, hoverClass, plainClass, hoverStyle, plainStyle){
 	addItem: function(itemId, options) {
-		var dis = this;
 		var item = new RichFaces.Menu.Item(itemId, this, options || {});
 		//item.menu = this;
 		this.items[itemId] = item;
+		return this;
+	},
+	addItems: function(scriptObjects) {
+		for ( var i = 0; i < scriptObjects.length; i++) {
+			this.addItem.apply(this, scriptObjects[i]);
+		}
 		return this;
 	},
 	hideMe: function(e){
@@ -1299,7 +1304,10 @@ RichFaces.Menu.isWithin = function (event, element) {
 
 RichFaces.Menu.Item = Class.create({
 	initialize: function(id, menu, options) {
-		this.options = options;
+		this.options = {
+			closeOnClick : true
+		};
+		Object.extend(this.options, options);
 		this.id = id;
 		this.menu = menu;
 		this.mouseOver = false;
@@ -1499,14 +1507,14 @@ RichFaces.Menu.groupMouseOut = function(event, element, menuGroupClass, menuGrou
 	element.style.cssText = menuGroupStyle;
 }
 
-RichFaces.Menu.itemMouseOut = function(event, element, menuItemClass, menuItemStyle, iconClass) {
+RichFaces.Menu.itemMouseOut = function(event, element, classes) {
 	if (RichFaces.Menu.isWithin(event, element)) {
 		return;
 	}
 	
-	element.className = 'rich-menu-item rich-menu-item-enabled ' + (menuItemClass ? menuItemClass : '');
-	element.style.cssText = menuItemStyle;
-	$(element.id + ':icon').className='rich-menu-item-icon ' + (iconClass ? iconClass : '');
+	element.className = 'rich-menu-item rich-menu-item-enabled ' + (classes.styleClass || '');
+	element.style.cssText = classes.style || "";
+	$(element.id + ':icon').className='rich-menu-item-icon ' + (classes.iconClass || '');
 	Element.removeClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
 	
 }
@@ -1520,14 +1528,14 @@ RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, me
 	element.style.cssText = menuGroupStyle;
 }
 
-RichFaces.Menu.itemMouseOver = function(event, element, menuItemHoverClass, menuItemStyle, iconClass) {
+RichFaces.Menu.itemMouseOver = function(event, element, classes) {
 	if (RichFaces.Menu.isWithin(event, element)) {
 		return;
 	}
 	
-	element.className = 'rich-menu-item rich-menu-item-hover ' + (menuItemHoverClass ? menuItemHoverClass : '');
-	element.style.cssText = menuItemStyle;
+	element.className = 'rich-menu-item rich-menu-item-hover ' + (classes.styleClass || '');
+	element.style.cssText = classes.style || "";
 	
-	$(element.id + ':icon').className='rich-menu-item-icon rich-menu-item-icon-selected ' + (iconClass ? iconClass : '');
+	$(element.id + ':icon').className='rich-menu-item-icon rich-menu-item-icon-selected ' + (classes.iconClass || '');
 	Element.addClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
 }
