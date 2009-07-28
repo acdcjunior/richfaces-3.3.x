@@ -33,8 +33,8 @@ import applicationStructure.PageContent;
 
 /**
  * The Class UtilListeners is used for changing "required" and "immediate"
- * attributes. Listeners are added to the corresponding buttons when results
- * grids are generated.
+ * attributes of the tested component. Listeners are added to the corresponding
+ * buttons when results grids are generated.
  */
 public class UtilListeners {
 

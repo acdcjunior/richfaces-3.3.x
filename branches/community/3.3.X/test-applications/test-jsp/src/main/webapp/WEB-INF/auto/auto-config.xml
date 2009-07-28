@@ -12,6 +12,13 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>listeners</managed-bean-name>
+		<managed-bean-class>
+			automateCommon.Listeners
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>convertion</managed-bean-name>
 		<managed-bean-class>
 			automateCommon.Convertion
