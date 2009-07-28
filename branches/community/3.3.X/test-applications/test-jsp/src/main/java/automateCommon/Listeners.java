@@ -61,7 +61,7 @@ public class Listeners {
 	 *            the parameter of the value change listener
 	 */
 	public void valueChangeListener(ValueChangeEvent e) {
-		System.out.println("++>> TUT");
+		System.out.println("++>> valueChangeListener was called");
 		statusValueChangeListener = true;
 		phaseValueChangeListener = PhaseTracker.currentPhase;
 	}
