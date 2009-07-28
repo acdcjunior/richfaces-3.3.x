@@ -22,25 +22,27 @@
 package org.richfaces.renderkit.html;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.javascript.JSFunction;
 import org.ajax4jsf.renderkit.HeaderResourcesRendererBase;
+import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
+import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIMenuGroup;
 import org.richfaces.component.UIMenuItem;
 import org.richfaces.component.UIMenuSeparator;
 import org.richfaces.component.util.HtmlUtil;
-import org.richfaces.renderkit.ScriptOptions;
 
 /**
  * @author Maksim Kaszynski
@@ -69,21 +71,62 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
         
         buffer.append(getLayerScript(context, component));
         
-        List children = component.getChildren();
-        for (Iterator it = children.iterator(); it.hasNext();) {
-            buffer.append(getItemScript(context, (UIComponent) it.next()));
+        List<UIComponent> children = component.getChildren();
+        List<Object> scriptObjects = new ArrayList<Object>(children.size());
+        for (Iterator<UIComponent> it = children.iterator(); it.hasNext();) {
+        	Object scriptObject = getItemScriptObject(context, it.next());
+        	if(scriptObject != null) {
+        		scriptObjects.add(scriptObject);
+        	}
         }
-        
-        ResponseWriter out = context.getResponseWriter();
-        String script = buffer.append(";").toString();
-        out.write(script);
+		if (!scriptObjects.isEmpty()) {
+			  buffer.append(".");
+			  JSFunction function = new JSFunction("addItems");
+			  function.addParameter(scriptObjects);
+			  function.appendScript(buffer);
+		}
+        buffer.append(";");
+        context.getResponseWriter().write(buffer.toString());
     }
     
-    protected abstract String getLayerScript(FacesContext context,
-            UIComponent layer);
+    protected abstract void appendMenuScript(FacesContext context, UIComponent component, StringBuffer buffer);
+
+    protected String getLayerScript(FacesContext context, UIComponent component) {
+		StringBuffer buffer = new StringBuffer();
+        Map<String, Object> options = new HashMap<String, Object>();
+        RendererUtils utils = getUtils();
+		JSFunction function = new JSFunction("new RichFaces.Menu.Layer");
+		function.addParameter(component.getClientId(context)+"_menu");
+		utils.addToScriptHash(options, "delay", component.getAttributes().get("showDelay"), "300"); 
+		utils.addToScriptHash(options, "hideDelay", component.getAttributes().get("hideDelay"), "300"); 
+		utils.addToScriptHash(options, "selectedClass", component.getAttributes().get("selectedLabelClass")); 
+        if (!options.isEmpty()) {
+        	function.addParameter(options);
+		}
+		function.appendScript(buffer);
+		if (component instanceof UIMenuGroup) {
+			options = new HashMap<String, Object>();
+			buffer.append(".");
+			function = new JSFunction("asSubMenu");
+			function.addParameter(component.getParent().getClientId(context)+"_menu");
+			function.addParameter(component.getClientId(context));
+			utils.addToScriptHash(options, "evtName", component.getAttributes().get("event"), "onmouseover"); 
+			utils.addToScriptHash(options, "direction", component.getAttributes().get("direction"), "auto"); 
+			utils.addToScriptHash(options, "onopen", component.getAttributes().get("onopen"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+			utils.addToScriptHash(options, "onclose", component.getAttributes().get("onclose"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		    if (!options.isEmpty()) {
+		    	function.addParameter(options);
+		    }
+			function.appendScript(buffer);
+		} else {
+			appendMenuScript(context, component, buffer);
+		}
+		return buffer.toString();
+    }
     
-    protected String getItemScript(FacesContext context, UIComponent kid) {
+    protected Object getItemScriptObject(FacesContext context, UIComponent kid) {
         String itemId = null;
+        List<Object> scriptObject = null;
         boolean closeOnClick = true;
         Integer flagGroup = null;
         boolean disabled = false;
@@ -105,43 +148,35 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
             }
         }
         if (itemId != null) {
-            JSFunction function = new JSFunction(".addItem");
-            function.addParameter(itemId);
-            ScriptOptions options = new ScriptOptions(kid);
+        	scriptObject = new ArrayList<Object>();
+            Map<String, Object> options = new HashMap<String, Object>(2);
+            RendererUtils utils = getUtils();
+            scriptObject.add(itemId);
             
-            options.addEventHandler("onmouseout");
-            options.addEventHandler("onmouseover");
-            
-            if (closeOnClick) {
-                options.addOption("closeOnClick", Boolean.TRUE);
-            }
-            options.addOption("flagGroup", flagGroup);
-            
-            options.addOption("styleClass");
-            options.addOption("style");
-            options.addOption("itemClass");
-            options.addOption("itemStyle");
-            options.addOption("disabledItemClass");
-            options.addOption("disabledItemStyle");
-            options.addOption("selectItemClass");
-            options.addOption("labelClass");
-            options.addOption("selectedLabelClass");
-            options.addOption("disabledLabelClass");
-            
-            options.addOption("selectClass");
-            options.addOption("selectStyle");
-            options.addOption("iconClass");
-            
-            if (disabled) {
-                options.addOption("disabled", Boolean.TRUE);
-            }
-            
-            options.addEventHandler("onselect");
-            
-            function.addParameter(options);
-            return function.toScript();
+			utils.addToScriptHash(options, "onmouseout", kid.getAttributes().get("onmouseout"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+			utils.addToScriptHash(options, "onmouseover", kid.getAttributes().get("onmouseover"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+			utils.addToScriptHash(options, "onselect", kid.getAttributes().get("onselect"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+			utils.addToScriptHash(options, "closeOnClick", closeOnClick, "true"); 
+			utils.addToScriptHash(options, "flagGroup", flagGroup); 
+			utils.addToScriptHash(options, "styleClass", kid.getAttributes().get("styleClass")); 
+			utils.addToScriptHash(options, "style", kid.getAttributes().get("style")); 
+			utils.addToScriptHash(options, "itemClass", kid.getAttributes().get("itemClass")); 
+			utils.addToScriptHash(options, "itemStyle", kid.getAttributes().get("itemStyle")); 
+			utils.addToScriptHash(options, "disabledItemClass", kid.getAttributes().get("disabledItemClass")); 
+			utils.addToScriptHash(options, "disabledItemStyle", kid.getAttributes().get("disabledItemStyle")); 
+			utils.addToScriptHash(options, "selectItemClass", kid.getAttributes().get("selectItemClass")); 
+			utils.addToScriptHash(options, "labelClass", kid.getAttributes().get("labelClass")); 
+			utils.addToScriptHash(options, "selectedLabelClass", kid.getAttributes().get("selectedLabelClass")); 
+			utils.addToScriptHash(options, "disabledLabelClass", kid.getAttributes().get("disabledLabelClass")); 
+			utils.addToScriptHash(options, "selectClass", kid.getAttributes().get("selectClass")); 
+			utils.addToScriptHash(options, "selectStyle", kid.getAttributes().get("selectStyle")); 
+			utils.addToScriptHash(options, "iconClass", kid.getAttributes().get("iconClass")); 
+			utils.addToScriptHash(options, "disabled", disabled); 
+			if (!options.isEmpty()) {
+				scriptObject.add(options);
+			}
         }
-        return "";
+        return scriptObject;
     }
     
     public boolean getRendersChildren() {
