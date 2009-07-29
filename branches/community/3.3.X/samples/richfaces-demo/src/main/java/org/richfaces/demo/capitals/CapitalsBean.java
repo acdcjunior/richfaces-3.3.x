@@ -19,6 +19,9 @@ public class CapitalsBean {
 	private List<SelectItem> capitalsOptions = new ArrayList<SelectItem>();
     private String capital = ""; 
 	
+    private String currentStateFilterValue;
+    private String currentNameFilterValue;
+    
 	public List<Capital> autocomplete(Object suggest) {
         String pref = (String)suggest;
         ArrayList<Capital> result = new ArrayList<Capital>();
@@ -55,6 +58,11 @@ public class CapitalsBean {
 		}
 	}
 	
+	public void resetFilter() {
+		setCurrentNameFilterValue("");
+		setCurrentStateFilterValue("");
+	}
+	
 	public String addCapital(Capital capital) {
 		capitals.add(capital);
 		return null;
@@ -78,6 +86,22 @@ public class CapitalsBean {
 
 	public ArrayList<String> getCapitalsNames() {
 		return capitalsNames;
+	}
+
+	public String getCurrentStateFilterValue() {
+		return currentStateFilterValue;
+	}
+
+	public void setCurrentStateFilterValue(String currentStateFilterValue) {
+		this.currentStateFilterValue = currentStateFilterValue;
+	}
+
+	public String getCurrentNameFilterValue() {
+		return currentNameFilterValue;
+	}
+
+	public void setCurrentNameFilterValue(String currentNameFilterValue) {
+		this.currentNameFilterValue = currentNameFilterValue;
 	}
 
 }
