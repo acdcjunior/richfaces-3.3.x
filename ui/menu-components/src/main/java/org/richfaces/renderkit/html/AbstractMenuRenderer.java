@@ -89,7 +89,7 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
         context.getResponseWriter().write(buffer.toString());
     }
     
-    protected abstract void appendMenuScript(FacesContext context, UIComponent component, StringBuffer buffer);
+    protected abstract JSFunction getMenuScriptFunction(FacesContext context, UIComponent component);
 
     protected String getLayerScript(FacesContext context, UIComponent component) {
 		StringBuffer buffer = new StringBuffer();
@@ -107,24 +107,49 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
 		if (component instanceof UIMenuGroup) {
 			options = new HashMap<String, Object>();
 			buffer.append(".");
-			function = new JSFunction("asSubMenu");
-			function.addParameter(component.getParent().getClientId(context)+"_menu");
-			function.addParameter(component.getClientId(context));
+			JSFunction subMenuFunction = new JSFunction("asSubMenu");
+			subMenuFunction.addParameter(component.getParent().getClientId(context)+"_menu");
+			subMenuFunction.addParameter(component.getClientId(context));
 			utils.addToScriptHash(options, "evtName", component.getAttributes().get("event"), "onmouseover"); 
 			utils.addToScriptHash(options, "direction", component.getAttributes().get("direction"), "auto"); 
 			utils.addToScriptHash(options, "onopen", component.getAttributes().get("onopen"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
 			utils.addToScriptHash(options, "onclose", component.getAttributes().get("onclose"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
 		    if (!options.isEmpty()) {
-		    	function.addParameter(options);
+		    	subMenuFunction.addParameter(options);
 		    }
-			function.appendScript(buffer);
+			subMenuFunction.appendScript(buffer);
 		} else {
-			appendMenuScript(context, component, buffer);
+			buffer.append(".");
+			JSFunction menuFunction = getMenuScriptFunction(context, component);
+			Map<String, Object> menuOptions = getMenuOptions(component);
+			if (!menuOptions.isEmpty()) {
+				menuFunction.addParameter(menuOptions);
+			}
+			menuFunction.appendScript(buffer);
 		}
 		return buffer.toString();
     }
     
-    protected Object getItemScriptObject(FacesContext context, UIComponent kid) {
+	protected Map<String, Object> getMenuOptions(UIComponent component) {
+        Map<String, Object> options = new HashMap<String, Object>();
+		RendererUtils utils = getUtils();
+		utils.addToScriptHash(options, "direction", component.getAttributes().get("direction"), "auto"); 
+		utils.addToScriptHash(options, "jointPoint", component.getAttributes().get("jointPoint"), "auto"); 
+		utils.addToScriptHash(options, "verticalOffset", component.getAttributes().get("verticalOffset"), "0"); 
+		utils.addToScriptHash(options, "horizontalOffset", component.getAttributes().get("horizontalOffset"), "0"); 
+		utils.addToScriptHash(options, "oncollapse", component.getAttributes().get("oncollapse"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "onexpand", component.getAttributes().get("onexpand"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "onitemselect", component.getAttributes().get("onitemselect"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
+		utils.addToScriptHash(options, "ongroupactivate", component.getAttributes().get("ongroupactivate"), null, ScriptHashVariableWrapper.EVENT_HANDLER);
+		
+		utils.addToScriptHash(options, "selectItemClass", component.getAttributes().get("selectItemClass"));
+		utils.addToScriptHash(options, "itemClass", component.getAttributes().get("itemClass"));
+		utils.addToScriptHash(options, "selectItemStyle", component.getAttributes().get("selectItemStyle"));
+		utils.addToScriptHash(options, "itemStyle", component.getAttributes().get("itemStyle"));
+		return options;
+	}
+
+	protected Object getItemScriptObject(FacesContext context, UIComponent kid) {
         String itemId = null;
         List<Object> scriptObject = null;
         boolean closeOnClick = true;
@@ -160,11 +185,8 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
 			utils.addToScriptHash(options, "flagGroup", flagGroup); 
 			utils.addToScriptHash(options, "styleClass", kid.getAttributes().get("styleClass")); 
 			utils.addToScriptHash(options, "style", kid.getAttributes().get("style")); 
-			utils.addToScriptHash(options, "itemClass", kid.getAttributes().get("itemClass")); 
-			utils.addToScriptHash(options, "itemStyle", kid.getAttributes().get("itemStyle")); 
 			utils.addToScriptHash(options, "disabledItemClass", kid.getAttributes().get("disabledItemClass")); 
 			utils.addToScriptHash(options, "disabledItemStyle", kid.getAttributes().get("disabledItemStyle")); 
-			utils.addToScriptHash(options, "selectItemClass", kid.getAttributes().get("selectItemClass")); 
 			utils.addToScriptHash(options, "labelClass", kid.getAttributes().get("labelClass")); 
 			utils.addToScriptHash(options, "selectedLabelClass", kid.getAttributes().get("selectedLabelClass")); 
 			utils.addToScriptHash(options, "disabledLabelClass", kid.getAttributes().get("disabledLabelClass")); 

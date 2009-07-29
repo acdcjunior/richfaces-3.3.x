@@ -241,8 +241,6 @@ public class MenuItemComponentTest extends AbstractAjax4JsfTestCase {
         String onclickAttr = div.getAttributeValue(HTML.onclick_ATTRIBUTE);
         assertNotNull(onclickAttr);
         assertTrue(onclickAttr.length() > 0);
-        classAttr = div.getAttributeValue(HTML.onmouseover_ATTRIBUTE);
-        assertTrue(classAttr.contains("menuItemSelectStyle"));
     }
 
     /**

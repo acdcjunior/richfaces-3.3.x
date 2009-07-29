@@ -200,11 +200,6 @@ public class MenuItemRendererBase extends CompositeRenderer {
                     	null, ScriptHashVariableWrapper.EVENT_HANDLER);
             }
 
-            variables.setVariable("onmouseoutInlineStyles",
-                    collectInlineStyles(context, menuItem, false));
-            variables.setVariable("onmouseoverInlineStyles",
-            		collectInlineStyles(context, menuItem, true));
-
             //-----------------------------------
             StringBuilder scriptValue = new StringBuilder();
             String mode = resolveSubmitMode(menuItem);
@@ -340,15 +335,6 @@ public class MenuItemRendererBase extends CompositeRenderer {
         }
 
         return MenuComponent.MODE_SERVER;
-    }
-
-    protected String collectInlineStyles(FacesContext context, UIMenuItem menuItem, boolean isOnmouseover) {
-    	return delegate.collectInlineStyles(context, menuItem, isOnmouseover);
-    }
-    
-    @Deprecated
-    protected String processInlineStyles(FacesContext context, UIMenuItem menuItem, boolean isOnmouseover) {
-    	return delegate.processInlineStyles(context, menuItem, isOnmouseover);
     }
     
     protected UIComponent getParentMenu(FacesContext context, UIMenuItem menuItem) {
