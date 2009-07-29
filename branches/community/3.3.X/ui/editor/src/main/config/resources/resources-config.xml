@@ -6,13 +6,52 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/license.txt</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/license.txt</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/tiny_mce.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/tiny_mce_popup.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce_popup.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/tiny_mce_src.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce_src.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/ar.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/ar.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/langs/az.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/az.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/be.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/be.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/bg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/bg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/bn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/bn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/br.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/br.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -36,6 +75,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/langs/cy.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/cy.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/da.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/da.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -43,6 +87,11 @@
  <resource>
   <name>scripts/tiny_mce/langs/de.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/de.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/dv.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/dv.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -86,8 +135,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/langs/gu.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/gu.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/he.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/he.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/hi.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/hi.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -103,6 +162,11 @@
  <resource>
   <name>scripts/tiny_mce/langs/ia.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/ia.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/id.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/id.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -146,6 +210,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/langs/ml.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/ml.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/mn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/mn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/ms.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/ms.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -163,6 +237,11 @@
  <resource>
   <name>scripts/tiny_mce/langs/nn.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/nn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/no.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/no.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -226,6 +305,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/langs/ta.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/ta.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/te.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/te.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/langs/th.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/th.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/langs/tr.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/langs/tr.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -256,14 +350,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/license.txt</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/license.txt</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/advhr/css/advhr.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/css/advhr.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/advhr/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -272,6 +358,15 @@
   <name>scripts/tiny_mce/plugins/advhr/editor_plugin_src.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/editor_plugin_src.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/rule.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/rule.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/css/advhr.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/css/advhr.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/advhr/js/rule.js</name>
@@ -284,8 +379,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -309,6 +424,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -316,6 +436,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -359,8 +484,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -376,6 +511,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -419,6 +559,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -436,6 +586,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -499,6 +654,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advhr/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advhr/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -529,15 +699,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/advhr/rule.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advhr/rule.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/advimage/css/advimage.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/css/advimage.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/advimage/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -551,6 +712,10 @@
   <name>scripts/tiny_mce/plugins/advimage/image.htm</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/image.htm</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/css/advimage.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/css/advimage.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/advimage/img/sample.gif</name>
@@ -567,8 +732,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -592,6 +777,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -599,6 +789,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -642,8 +837,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -659,6 +864,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -702,6 +912,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -719,6 +939,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -782,6 +1007,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advimage/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advimage/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advimage/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -812,10 +1052,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/advlink/css/advlink.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/css/advlink.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/advlink/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -824,6 +1060,15 @@
   <name>scripts/tiny_mce/plugins/advlink/editor_plugin_src.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/editor_plugin_src.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/link.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/link.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/css/advlink.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/css/advlink.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/advlink/js/advlink.js</name>
@@ -836,8 +1081,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -861,6 +1126,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -868,6 +1138,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -911,8 +1186,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -928,6 +1213,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -971,6 +1261,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -988,6 +1288,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1051,6 +1356,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/advlink/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/advlink/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1081,9 +1401,14 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/advlink/link.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/advlink/link.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+  <name>scripts/tiny_mce/plugins/autoresize/editor_plugin.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/autoresize/editor_plugin.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/autoresize/editor_plugin_src.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/autoresize/editor_plugin_src.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/autosave/editor_plugin.js</name>
@@ -1225,8 +1550,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1250,6 +1595,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1257,6 +1607,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1300,8 +1655,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1317,6 +1682,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1360,6 +1730,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1377,6 +1757,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1437,6 +1822,21 @@
  <resource>
   <name>scripts/tiny_mce/plugins/emotions/langs/sv_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/sv_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/emotions/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/emotions/langs/th_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1504,10 +1904,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/fullpage/css/fullpage.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/css/fullpage.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/fullpage/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1523,6 +1919,10 @@
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/css/fullpage.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/css/fullpage.xcss</path>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/fullpage/js/fullpage.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/js/fullpage.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1533,8 +1933,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1558,6 +1978,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1565,6 +1990,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1608,8 +2038,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1625,6 +2065,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1668,6 +2113,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1685,6 +2140,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1745,6 +2205,21 @@
  <resource>
   <name>scripts/tiny_mce/plugins/fullpage/langs/sv_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/sv_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/fullpage/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/fullpage/langs/th_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1813,6 +2288,15 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/inlinepopups/template.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/template.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.xcss</path>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/alert.gif</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/alert.gif</path>
  </resource>
@@ -1841,15 +2325,6 @@
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/img/vertical.gif</path>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/inlinepopups/template.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/inlinepopups/template.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/insertdatetime/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/insertdatetime/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1870,14 +2345,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/media/css/content.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/css/content.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/media/css/media.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/css/media.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/media/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1886,6 +2353,19 @@
   <name>scripts/tiny_mce/plugins/media/editor_plugin_src.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/editor_plugin_src.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/media.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/media.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/css/content.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/css/content.xcss</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/css/media.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/css/media.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/media/img/flash.gif</name>
@@ -1931,8 +2411,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/media/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -1956,6 +2456,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/media/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -1963,6 +2468,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/media/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2006,8 +2516,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/media/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2023,6 +2543,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/media/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2066,6 +2591,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/media/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2083,6 +2618,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/media/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2146,6 +2686,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/media/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/media/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2176,11 +2731,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/media/media.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/media/media.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/nonbreaking/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/nonbreaking/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2201,10 +2751,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/pagebreak/css/content.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/pagebreak/css/content.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/pagebreak/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/pagebreak/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2215,25 +2761,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/pagebreak/css/content.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/pagebreak/css/content.xcss</path>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/pagebreak/img/pagebreak.gif</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/pagebreak/img/pagebreak.gif</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/pagebreak/img/trans.gif</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/pagebreak/img/trans.gif</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/paste/blank.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/blank.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/paste/css/blank.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/css/blank.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/paste/css/pasteword.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/css/pasteword.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/paste/editor_plugin.js</name>
@@ -2244,6 +2781,16 @@
   <name>scripts/tiny_mce/plugins/paste/editor_plugin_src.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/editor_plugin_src.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/pastetext.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/pastetext.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/pasteword.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/pasteword.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/paste/js/pastetext.js</name>
@@ -2261,8 +2808,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2286,6 +2853,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2293,6 +2865,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2336,8 +2913,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2353,6 +2940,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2396,6 +2988,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2413,6 +3015,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2476,6 +3083,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/paste/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/paste/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2506,16 +3128,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/paste/pastetext.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/pastetext.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/paste/pasteword.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/paste/pasteword.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/preview/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/preview/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2531,14 +3143,14 @@
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/preview/jscripts/embed.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/preview/jscripts/embed.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/preview/preview.html</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/preview/preview.html</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/preview/jscripts/embed.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/preview/jscripts/embed.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/print/editor_plugin.js</name>
@@ -2576,10 +3188,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/searchreplace/css/searchreplace.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/css/searchreplace.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2588,6 +3196,15 @@
   <name>scripts/tiny_mce/plugins/searchreplace/editor_plugin_src.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/editor_plugin_src.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/searchreplace.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/searchreplace.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/css/searchreplace.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/css/searchreplace.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/js/searchreplace.js</name>
@@ -2600,8 +3217,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2625,6 +3262,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2632,6 +3274,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2675,8 +3322,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2692,6 +3349,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2735,6 +3397,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2752,6 +3424,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2815,6 +3492,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/searchreplace/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/searchreplace/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2845,15 +3537,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/searchreplace/searchreplace.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/searchreplace/searchreplace.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/spellchecker/css/content.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/spellchecker/css/content.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/spellchecker/editor_plugin.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/spellchecker/editor_plugin.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2864,12 +3547,12 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/spellchecker/img/wline.gif</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/spellchecker/img/wline.gif</path>
+  <name>scripts/tiny_mce/plugins/spellchecker/css/content.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/spellchecker/css/content.xcss</path>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/style/css/props.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/css/props.xcss</path>
+  <name>scripts/tiny_mce/plugins/spellchecker/img/wline.gif</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/spellchecker/img/wline.gif</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/style/editor_plugin.js</name>
@@ -2882,6 +3565,15 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/props.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/props.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/css/props.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/css/props.xcss</path>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/js/props.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/js/props.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2892,8 +3584,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2917,6 +3629,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -2924,6 +3641,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/style/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2967,8 +3689,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -2984,6 +3716,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/style/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3027,6 +3764,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3044,6 +3791,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/style/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3107,6 +3859,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/style/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/style/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3137,13 +3904,43 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/style/props.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/style/props.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+  <name>scripts/tiny_mce/plugins/tabfocus/editor_plugin.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/tabfocus/editor_plugin.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/tabfocus/editor_plugin_src.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/tabfocus/editor_plugin_src.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/table/cell.htm</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/cell.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/editor_plugin.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/editor_plugin.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/editor_plugin_src.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/editor_plugin_src.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/merge_cells.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/merge_cells.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/row.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/row.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/table.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/table.htm</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
@@ -3157,16 +3954,6 @@
  <resource>
   <name>scripts/tiny_mce/plugins/table/css/table.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/css/table.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/table/editor_plugin.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/editor_plugin.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/table/editor_plugin_src.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/editor_plugin_src.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/table/js/cell.js</name>
@@ -3194,8 +3981,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/table/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3219,6 +4026,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/table/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3226,6 +4038,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/table/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3269,8 +4086,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/table/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3286,6 +4113,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/table/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3329,6 +4161,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/table/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3346,6 +4188,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/table/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3409,6 +4256,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/table/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/table/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3439,28 +4301,9 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/table/merge_cells.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/merge_cells.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/table/row.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/row.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/table/table.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/table/table.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/template/blank.htm</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/blank.htm</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/template/css/template.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/css/template.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/template/editor_plugin.js</name>
@@ -3473,6 +4316,15 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/template.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/template.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/css/template.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/css/template.xcss</path>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/js/template.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/js/template.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3483,8 +4335,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3508,6 +4380,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3515,6 +4392,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/template/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3558,8 +4440,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3575,6 +4467,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/template/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3618,6 +4515,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3635,6 +4542,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/template/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3698,6 +4610,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/template/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/template/langs/tr_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/tr_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3726,11 +4653,6 @@
   <name>scripts/tiny_mce/plugins/template/langs/zh_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/langs/zh_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/template/template.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/template/template.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/visualchars/editor_plugin.js</name>
@@ -3763,14 +4685,6 @@
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/plugins/xhtmlxtras/css/attributes.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/css/attributes.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/plugins/xhtmlxtras/css/popup.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/css/popup.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/del.htm</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/del.htm</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
@@ -3789,6 +4703,14 @@
   <name>scripts/tiny_mce/plugins/xhtmlxtras/ins.htm</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/ins.htm</path>
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/css/attributes.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/css/attributes.xcss</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/css/popup.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/css/popup.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/js/abbr.js</name>
@@ -3831,8 +4753,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3856,6 +4798,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/da_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/da_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3863,6 +4810,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3906,8 +4858,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3923,6 +4885,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -3966,6 +4933,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/ms_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/ms_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -3983,6 +4960,11 @@
  <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4043,6 +5025,21 @@
  <resource>
   <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/sv_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/sv_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/plugins/xhtmlxtras/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/plugins/xhtmlxtras/langs/th_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4111,8 +5108,19 @@
   <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/link.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/link.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/source_editor.htm</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/source_editor.htm</path>
+  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/img/colorpicker.jpg</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/img/colorpicker.jpg</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/advanced/img/icons.gif</name>
@@ -4164,6 +5172,26 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/az.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/az.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/az_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/az_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/be.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/be.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/be_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/be_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/bg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/bg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4171,6 +5199,26 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/bg_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/bg_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/bn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/bn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/bn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/bn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/br.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/br.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/br_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/br_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4214,6 +5262,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/cy.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/cy.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/cy_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/cy_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/da.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/da.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4231,6 +5289,16 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/de_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/de_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/dv.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/dv.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/dv_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/dv_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4314,6 +5382,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/gu.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/gu.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/gu_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/gu_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/he.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/he.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4321,6 +5399,16 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/he_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/he_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/hi.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/hi.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/hi_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/hi_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4351,6 +5439,16 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/ia_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ia_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/id.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/id.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/id_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/id_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4434,6 +5532,26 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/ml.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ml.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/ml_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ml_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/mn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/mn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/mn_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/mn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/ms.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ms.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4471,6 +5589,16 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/nn_dlg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/nn_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/no.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/no.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/no_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/no_dlg.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4594,6 +5722,36 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/ta.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ta.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/ta_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/ta_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/te.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/te.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/te_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/te_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/th.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/th.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/langs/th_dlg.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/th_dlg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/advanced/langs/tr.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/langs/tr.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4654,17 +5812,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/themes/advanced/link.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/link.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
- </resource>
- <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/default/content.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/default/content.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/default/dialog.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/default/dialog.xcss</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/skins/default/ui.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/default/ui.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/default/img/buttons.png</name>
@@ -4691,10 +5848,6 @@
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/default/img/tabs.gif</path>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/themes/advanced/skins/default/ui.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/default/ui.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/o2k7/content.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/content.xcss</path>
  </resource>
@@ -4705,6 +5858,14 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/o2k7/ui.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/ui.xcss</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/skins/o2k7/ui_black.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/ui_black.xcss</path>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/advanced/skins/o2k7/ui_silver.xcss</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/ui_silver.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/o2k7/img/button_bg.png</name>
@@ -4719,14 +5880,6 @@
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/img/button_bg_silver.png</path>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/themes/advanced/skins/o2k7/ui_black.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/ui_black.xcss</path>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/themes/advanced/skins/o2k7/ui_silver.xcss</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/o2k7/ui_silver.xcss</path>
- </resource>
- <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/richfaces/content.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/richfaces/content.xcss</path>
  </resource>
@@ -4737,14 +5890,6 @@
  <resource>
   <name>scripts/tiny_mce/themes/advanced/skins/richfaces/ui.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/skins/richfaces/ui.xcss</path>
- </resource>
- <resource class="org.richfaces.renderkit.html.images.EditorAdvancedThemeIcons">
-  <name>org.richfaces.renderkit.html.images.EditorAdvancedThemeIcons</name>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/themes/advanced/source_editor.htm</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/advanced/source_editor.htm</path>
-  <renderer class="org.richfaces.renderkit.resources.EditorHTMLRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/simple/editor_template.js</name>
@@ -4766,8 +5911,28 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/az.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/az.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/be.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/be.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/langs/bg.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/bg.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/bn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/bn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/br.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/br.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4791,6 +5956,11 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/cy.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/cy.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/langs/da.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/da.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4798,6 +5968,11 @@
  <resource>
   <name>scripts/tiny_mce/themes/simple/langs/de.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/de.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/dv.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/dv.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4841,8 +6016,18 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/gu.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/gu.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/langs/he.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/he.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/hi.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/hi.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4858,6 +6043,11 @@
  <resource>
   <name>scripts/tiny_mce/themes/simple/langs/ia.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/ia.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/id.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/id.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4901,6 +6091,16 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/ml.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/ml.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/mn.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/mn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/langs/ms.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/ms.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -4918,6 +6118,11 @@
  <resource>
   <name>scripts/tiny_mce/themes/simple/langs/nn.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/nn.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/no.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/no.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
@@ -4981,6 +6186,21 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/ta.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/ta.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/te.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/te.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
+  <name>scripts/tiny_mce/themes/simple/langs/th.js</name>
+  <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/th.js</path>
+  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
+ </resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/langs/tr.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/langs/tr.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
@@ -5030,31 +6250,13 @@
   <name>scripts/tiny_mce/themes/simple/skins/o2k7/img/button_bg.png</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/skins/o2k7/img/button_bg.png</path>
  </resource>
-  <resource>
+ <resource>
   <name>scripts/tiny_mce/themes/simple/skins/richfaces/content.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/skins/richfaces/content.xcss</path>
  </resource>
  <resource>
   <name>scripts/tiny_mce/themes/simple/skins/richfaces/ui.xcss</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/themes/simple/skins/richfaces/ui.xcss</path>
- </resource>
- <resource class="org.richfaces.renderkit.html.images.EditorSimpleThemeIcons">
-  <name>org.richfaces.renderkit.html.images.EditorSimpleThemeIcons</name>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/tiny_mce.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/tiny_mce_popup.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce_popup.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
- <resource>
-  <name>scripts/tiny_mce/tiny_mce_src.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce_src.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
   <name>scripts/tiny_mce/utils/editable_selects.js</name>
@@ -5072,11 +6274,6 @@
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
  </resource>
  <resource>
-  <name>scripts/tiny_mce/utils/validate.js</name>
-  <path>org/richfaces/renderkit/html/scripts/tiny_mce/utils/validate.js</path>
-  <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>
- </resource>
-  <resource>
   <name>scripts/tiny_mce/utils/validate.js</name>
   <path>org/richfaces/renderkit/html/scripts/tiny_mce/utils/validate.js</path>
   <renderer class="org.ajax4jsf.resource.ScriptRenderer"/>

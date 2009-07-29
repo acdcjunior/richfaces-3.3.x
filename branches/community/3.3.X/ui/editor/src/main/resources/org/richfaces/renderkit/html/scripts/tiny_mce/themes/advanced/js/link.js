@@ -90,8 +90,11 @@ var LinkDialog = {
 	},
 
 	checkPrefix : function(n) {
-		if (n.value && Validator.isEmail(n) && !/^\s*mailto:/i.test(n.value) && confirm(tinyMCEPopup.getLang('advanced_dlg.link_is_email')))
+		// RF: variable added with regexp to avoid error in JSMin.java
+		var re = /^\s*mailto:/i;
+		if (n.value && Validator.isEmail(n) && !re.test(n.value) && confirm(tinyMCEPopup.getLang('advanced_dlg.link_is_email')))
 			n.value = 'mailto:' + n.value;
+		// RF: end
 
 		if (/^\s*www\./i.test(n.value) && confirm(tinyMCEPopup.getLang('advanced_dlg.link_is_external')))
 			n.value = 'http://' + n.value;
