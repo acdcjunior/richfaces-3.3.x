@@ -11,7 +11,7 @@
 		<h:panelGrid columns="2" columnClasses="top,top">
 		<rich:extendedDataTable value="#{extendedTableBean.capitalsDataModel}" var="cap" id="table" 
 			width="580px" height="400px" sortMode="#{extendedTableBean.sortMode}" 
-				selectionMode="#{extendedTableBean.selectionMode}">
+				selectionMode="#{extendedTableBean.selectionMode}" tableState="#{extendedTableBean.tableState}">
 			<rich:column sortable="false" label="Flag">  
 				<f:facet name="header">
 					<h:outputText value="Flag"/>
