@@ -22,17 +22,13 @@
 package org.richfaces.renderkit.html;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import org.ajax4jsf.javascript.JSFunction;
-import org.ajax4jsf.renderkit.RendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils.HTML;
-import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIContextMenu;
 
@@ -42,23 +38,9 @@ import org.richfaces.component.UIContextMenu;
  */
 public class ContextMenuRendererDelegate extends AbstractMenuRenderer {
 
-	protected void appendMenuScript(FacesContext context, UIComponent component, StringBuffer buffer) {
-        Map<String, Object> options = new HashMap<String, Object>();
-        RendererUtils utils = getUtils();
-		buffer.append(".");
-		JSFunction function = new JSFunction("asContextMenu");
-		utils.addToScriptHash(options, "direction", component.getAttributes().get("direction"), "auto"); 
-		utils.addToScriptHash(options, "jointPoint", component.getAttributes().get("jointPoint"), "auto"); 
-		utils.addToScriptHash(options, "verticalOffset", component.getAttributes().get("verticalOffset"), "0"); 
-		utils.addToScriptHash(options, "horizontalOffset", component.getAttributes().get("horizontalOffset"), "0"); 
-		utils.addToScriptHash(options, "oncollapse", component.getAttributes().get("oncollapse"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
-		utils.addToScriptHash(options, "onexpand", component.getAttributes().get("onexpand"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
-		utils.addToScriptHash(options, "onitemselect", component.getAttributes().get("onitemselect"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
-		utils.addToScriptHash(options, "ongroupactivate", component.getAttributes().get("ongroupactivate"), null, ScriptHashVariableWrapper.EVENT_HANDLER); 
-		if (!options.isEmpty()) {
-			function.addParameter(options);
-		}
-		function.appendScript(buffer);
+	@Override
+	protected JSFunction getMenuScriptFunction(FacesContext context, UIComponent component) {
+		return new JSFunction("asContextMenu");
 	}
 
 	/* (non-Javadoc)
