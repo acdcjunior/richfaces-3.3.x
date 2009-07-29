@@ -39,14 +39,19 @@ var tinymce = {
 		}
 
 		function getBase(n) {
-			if (n.src && /tiny_mce(|_gzip|_jquery|_prototype)(_dev|_src)?.js/.test(n.src)) {
-				if (/_(src|dev)\.js/g.test(n.src))
+			//RF: added by PY
+			var local_src = n.src.replace("/org/richfaces/ui.pack.js", "scripts/tiny_mce/tiny_mce_src.js");
+			//RF: end
+
+			//RF: changed "n.src" to "local_src" by PY
+			if (local_src && /tiny_mce(|_gzip|_jquery|_prototype)(_dev|_src)?.js/.test(local_src)) {
+				if (/_(src|dev)\.js/g.test(local_src))
 					t.suffix = '_src';
 
-				if ((p = n.src.indexOf('?')) != -1)
-					t.query = n.src.substring(p + 1);
+				if ((p = local_src.indexOf('?')) != -1)
+					t.query = local_src.substring(p + 1);
 
-				t.baseURL = n.src.substring(0, n.src.lastIndexOf('/'));
+				t.baseURL = local_src.substring(0, local_src.lastIndexOf('/'));
 
 				// If path to script is relative and a base href was found add that one infront
 				if (base && t.baseURL.indexOf('://') == -1)
@@ -54,6 +59,7 @@ var tinymce = {
 
 				return t.baseURL;
 			}
+			//RF: end
 
 			return null;
 		};
@@ -405,6 +411,15 @@ var tinymce = {
 
 	_addVer : function(u) {
 		var v;
+
+		// RF: added by PY
+		var isCSS = false;
+		if (u.indexOf(tinymce.baseURL)==0)
+		{
+				u = u.replace(Richfaces.Editor.REGEXP_CSS, function($1,$2,$3){isCSS=true; return $2+($3=='c' ? "xcss":"XCSS");});
+				if (Richfaces && Richfaces.Editor) u += (isCSS ? Richfaces.Editor.extCssSuffix : Richfaces.Editor.extScriptSuffix);
+		}
+		// RF: end
 
 		if (!this.query)
 			return u;
@@ -8995,8 +9010,17 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 			DOM.get(o.editorContainer).style.display = t.orgDisplay;
 			DOM.get(t.id).style.display = 'none';
 
-			if (!isIE || !tinymce.relaxedDomain)
-				t.setupIframe();
+			//RF changes
+			if (!isIE || !tinymce.relaxedDomain) {
+				if (!isWebKit || !n || n.tagName != 'iframe' /* not XHTML mode */) {
+					t.setupIframe();
+				} else {
+					var _t = t;
+					setTimeout(function() { _t.setupIframe(); _t = undefined; }, 0);
+				}
+			}
+			//RF changes end
+
 
 			e = n = o = null; // Cleanup
 		},
