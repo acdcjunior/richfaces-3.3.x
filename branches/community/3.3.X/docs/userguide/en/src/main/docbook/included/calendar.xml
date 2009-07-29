@@ -57,15 +57,15 @@
 
                     <para>To create the simplest variant on a page use the following syntax:</para>
 
-                    <programlisting role="XML"><![CDATA[...
-<rich:calendar popup="false"/>
-...]]></programlisting>
+                    <programlisting role="XML"><![CDATA[<rich:calendar />]]></programlisting>
           </section>
 
           <section>
                     <title>Creating the Component Dynamically Using Java</title>
-
-                    
+                        
+                <para>
+                      <emphasis role="bold">Example:</emphasis>
+                </para>
                     <programlisting role="JAVA"><![CDATA[import org.richfaces.component.html.HtmlCalendar;
 ...
 HtmlCalendar myCalendar = new HtmlCalendar();
@@ -74,30 +74,94 @@ HtmlCalendar myCalendar = new HtmlCalendar();
           </section>
 
           <section>
-                    <title>Details of Usage</title>
-                    <para>The <emphasis>
-                                        <property>&quot;popup&quot; </property>
-                              </emphasis> attribute defines calendar representation mode on a page.
-                              If it&apos;s &quot;true&quot; the calendar is represented
-                              on a page as an input field and a button. Clicking on the button calls
-                              the calendar popup as it&apos;s shown on the picture below. 
-                              For popup rendering a &quot;lazy&quot; loading is implemented: after the request is completed a client side script method builds the popup. 
-                              Such improvement speeds up page loading time. 
-                    
-                    </para>
-                    <figure>
-                              <title>Using the <emphasis>
-                                                  <property>&quot;popup&quot;</property>
-                                        </emphasis> attribute: calendar calls after you click on the
-                                        button.</title>
+                <title>Details of Usage</title>
+                
+                <para>
+                      The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> component can work properly in two ways of data loading
+                      defined by the <emphasis><property>&quot;mode&quot;</property></emphasis> attribute. 
+                      The attribute has two possible values:
+                </para>
+                <itemizedlist>
+                      <listitem>
+                            <para>
+                                  <code>client</code> — the default mode. 
+                                  In this mode calendar loads an initial portion of data within a definite date range. 
+                                  The range is specified with the help of <emphasis><property>&quot;preloadDateRangeBegin&quot;</property></emphasis> and <emphasis><property>&quot;preloadDateRangeEnd&quot;</property></emphasis> attributes 
+                                  that are designed for this mode only! 
+                                  Additional data requests are not sent.
+                            </para>
+                      </listitem>
+                </itemizedlist>
+                <itemizedlist>
+                      <listitem>
+                            <para>
+                                  <code>ajax</code> — in this mode the <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> requests portions of data for element rendering from special Data Model.
+                                  The default calendar Data Model could be redefined with the help of <emphasis><property>dataModel</property></emphasis> attribute that points to the object that implements <code><ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/model/CalendarDataModel.html">CalendarDataModel</ulink></code> interface. 
+                                  If <emphasis><property>&quot;dataModel&quot;</property></emphasis> attribute has <emphasis><property>&quot;null&quot;</property></emphasis> value, data requests are not sent. 
+                                  In this case the &quot;<code>ajax</code>&quot; mode is equal to the &quot;<code>client</code>&quot;. 
+                            </para>
+                      </listitem>
+                </itemizedlist>
 
-                              <mediaobject>
-                                        <imageobject>
-                                                  <imagedata fileref="images/calendar_init.png"/>
-                                        </imageobject>
-                              </mediaobject>
-                    </figure>
-                    <para>Usage <emphasis>
+                <para>
+                      The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> could be represented on a page in two ways (a) the calendar itself without input field and button and 
+                      (b) date input with button and popping-up calendar. 
+                      This is defined with <emphasis><property>&quot;popup&quot; </property></emphasis> attribute, which is <emphasis><property>&quot;true&quot;</property></emphasis> by default. 
+                      For popup rendering a &quot;lazy&quot; loading is implemented: a client side script method builds the popup after request is completed. 
+                      Such improvement speeds up page loading time.
+                </para>
+                      
+                <figure>
+                      <title>The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> with <emphasis><property>popup=&quot;false&quot;</property></emphasis> (a) and default representation (b)</title>
+                      <mediaobject>
+                            <imageobject>
+                                  <imagedata fileref="images/calendar7.png"/>
+                            </imageobject>
+                      </mediaobject>
+                </figure>
+                
+                <para>
+                      By default the <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> is rendered as input filed with a button and calendar hidden in a pop-up. 
+                      The button is represented with calendar pictogramm. 
+                      This pictogramm could be easily changed with the help of <emphasis><property>&quot;buttonIcon&quot;</property></emphasis> 
+                      and <emphasis><property>&quot;buttonIconDisabled&quot;</property></emphasis> attributes, which specify the icon for button enabled and disabled states respectively. 
+                      To change the button appearance from icon to usual button define the value for the <emphasis><property>&quot;buttonLabel&quot;</property></emphasis> attribute. 
+                      In this case <emphasis><property>&quot;buttonIcon&quot;</property></emphasis> and <emphasis><property>&quot;buttonIconDisabled&quot;</property></emphasis> attributes are ignored.
+                </para>
+                
+                <figure>
+                      <title>The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> with <emphasis><property>buttonLabel=&quot;Open calendar&quot;</property></emphasis> attribute</title>
+                      <mediaobject>
+                            <imageobject>
+                                  <imagedata fileref="images/calendar8.png"/>
+                            </imageobject>
+                      </mediaobject>
+                </figure>
+                
+                
+                 <para>
+                       There are two attributes that specify the place where the popup calendar is rendered relative to the input field and icon: 
+                       <emphasis><property>&quot;jointPoint&quot;</property></emphasis> and <emphasis><property>&quot;direction&quot;</property></emphasis> attributes.  
+                       By default the pop-up calendar appears under input and aligned with it left border (see Fig. 6.211, b).  
+                       Speaking in terms of RichFaces it means that <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> <emphasis><property>jointPoint=&quot;bottom-left&quot;</property></emphasis> 
+                       and <emphasis><property>direction=&quot;bottom-right&quot;.</property></emphasis> 
+                       There are four possible joint-points and four possible directions for each joint-point. 
+                       Besides that, the values of <emphasis><property>&quot;jointPoint&quot;</property></emphasis> and <emphasis><property>&quot;direction&quot;</property></emphasis> could be set to 
+                       <emphasis><property>&quot;auto&quot;</property></emphasis> that activates smart pop-up positioning.
+                  </para> 
+                
+                <figure>
+                      <title>Four possible positions of joint-points (red) and four possible directions (black) shown for bottom-left joint-point.</title>
+                      <mediaobject>
+                            <imageobject>
+                                  <imagedata fileref="images/calendar9.png"/>
+                            </imageobject>
+                      </mediaobject>
+                </figure>
+                
+                
+                
+                <para>Usage <emphasis>
                                         <property>&quot;currentDate&quot;</property>
                     </emphasis> attribute isn&apos;t available in the popup mode.</para>
                     <para>With help of the <emphasis>
@@ -165,48 +229,7 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                     
                     
                     
-                    <para>The <emphasis role="bold">
-                                        <property>&lt;rich:calendar&gt;</property>
-                              </emphasis> component can render pages of days in two modes. A mode
-                              could be defined with the <emphasis>
-                                        <property>&quot;mode&quot;</property>
-                              </emphasis> attribute with two possible parameters:
-                                        &quot;<code>ajax</code>&quot; and
-                                        &quot;<code>client</code>&quot;. Default value is
-                                        <code>&quot;client&quot;</code>.</para>
-                    <itemizedlist>
-                              <listitem>
-                                        <para>
-                                                  <code>Ajax</code>
-                                        </para>
-                              </listitem>
-                    </itemizedlist>
-                    <para>Calendar requests portions of data from Data Model for a page rendering.
-                              If <emphasis>
-                                        <property>&quot;dataModel&quot;</property>
-                              </emphasis> attribute has &quot;null&quot; value, data
-                              requests are not sent. In this case the
-                              &quot;<code>ajax</code>&quot; mode is equal to the
-                                        &quot;<code>client</code>&quot;. </para>
-                    <itemizedlist>
-                              <listitem>
-                                        <para>
-                                                  <code>Client</code>
-                                        </para>
-                              </listitem>
-                    </itemizedlist>
-                    <para>Calendar loads an initial portion of data in a specified range and use
-                              this data to render months. Additional data requests are not sent.</para>
-                    <note>
-                              <title>Note:</title>
-                              <para><emphasis>
-                                                  <property>&quot;preloadDateRangeBegin&quot;</property>
-                                        </emphasis> and <emphasis>
-                                                  <property>&quot;preloadDateRangeEnd&quot;</property>
-                                        </emphasis> attributes were designed only for the
-                                                  &quot;<code>client</code>&quot; mode to
-                                        load some data initially.</para>
-                    </note>
+                   
                     <para><emphasis>
                                         <property>&quot;ondateselect&quot;</property>
                               </emphasis> attribute is used to define an event that is triggered
@@ -267,94 +290,14 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                                         <property>&quot;process&quot;</property>
                               </emphasis> attribute usage you can find <link linkend="process"
                               >in the corresponding section </link>. </para>
-                    <para>There are three button-related attributes:</para>
-                    <itemizedlist>
-                              <listitem>
-                                        <para><emphasis>
-                                                  <property>&quot;buttonLabel&quot;</property>
-                                                  </emphasis> defines a label for the button. If the
-                                                  attribute is set <emphasis>
-                                                  <property>&quot;buttonIcon&quot;</property>
-                                                  </emphasis> and <emphasis>
-                                                  <property>&quot;buttonIconDisabled&quot;</property>
-                                                  </emphasis> are ignored </para>
-                              </listitem>
-                              <listitem>
-                                        <para><emphasis>
-                                                  <property>&quot;buttonIcon&quot;</property>
-                                                  </emphasis> defines an icon for the button</para>
-                              </listitem>
-                              <listitem>
-                                        <para><emphasis>
-                                                  <property>&quot;buttonIconDisabled&quot;</property>
-                                                  </emphasis> defines an icon for the disabled state
-                                                  of the button</para>
-                              </listitem>
-                    </itemizedlist>
-                    <para>The <emphasis>
-                                        <property>&quot;direction&quot;</property>
-                              </emphasis> and <emphasis>
-                                        <property>&quot;jointPoint&quot;</property>
-                              </emphasis> attributes are used for defining aspects of calendar
-                              appearance.</para>
-                    <para>The possible values for the <emphasis>
-                                        <property>&quot;direction&quot;</property>
-                              </emphasis> are: </para>
-                    <itemizedlist>
-                              <listitem>
-                                        <para>&quot;top-left&quot; - a calendar drops to the
-                                                  top and left</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;top-right&quot; - a calendar drops to
-                                                  the top and right</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;bottom-left&quot; - a calendar drops to
-                                                  the bottom and left</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;bottom-right&quot; - a calendar drops to
-                                                  the bottom and right</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;auto&quot; - smart positioning
-                                                  activation</para>
-                              </listitem>
-                    </itemizedlist>
-                    <para> By default, the <emphasis>
-                                        <property>&quot;direction&quot;</property>
-                              </emphasis> attribute is set to &quot;bottom-right&quot;.</para>
-                    <para>The possible values for the <emphasis>
-                                        <property>&quot;jointPoint&quot;</property>
-                              </emphasis> are: </para>
-                    <itemizedlist>
-                              <listitem>
-                                        <para>&quot;top-left&quot; - a calendar docked to
-                                                  the top-left point of the button element</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;top-right&quot; - a calendar docked to
-                                                  the top-right point of the button element</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;bottom-left&quot; - a calendar docked to
-                                                  the bottom-left point of the button element</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;bottom-right&quot; - a calendar docked
-                                                  to the bottom-right point of the button
-                                        element</para>
-                              </listitem>
-                              <listitem>
-                                        <para>&quot;auto&quot; - smart positioning
-                                                  activation</para>
-                              </listitem>
-                    </itemizedlist>
-                    <para> By default, the <emphasis>
-                                        <property>&quot;jointPoint&quot;</property>
-                              </emphasis> attribute is set to &quot;bottom-left&quot;.</para>
-                    <para> The <emphasis>
+                    
+                
+
+                    
+                
+                
+                
+                <para> The <emphasis>
                                         <property>&quot;label&quot;</property>
                               </emphasis> attribute is a generic attribute. The <emphasis>
                                         <property>&quot;label&quot;</property>
@@ -554,7 +497,10 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                     <para>Also the discussion about this problem can be found on the <ulink
                                         url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4078301#4078301"
                                         >RichFaces Users Forum</ulink>.</para>
-                    <para>The <emphasis role="bold">
+                    
+                
+                
+   <!--             <para>The <emphasis role="bold">
                                         <property>&lt;rich:calendar&gt;</property>
                               </emphasis> component provides the possibility to use a special Data
                               Model to define data for element rendering. Data Model includes two
@@ -572,7 +518,9 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                                         </para>
                               </listitem>
                     </itemizedlist>
-                    <para><code>CalendarDataModel</code> provides the following function:</para>
+                    
+                
+                <para><code>CalendarDataModel</code> provides the following function:</para>
                     <itemizedlist>
                               <listitem>
                                         <para><code>CalendarDataModelItem[]
@@ -615,7 +563,10 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                                                   could be used in the custom date representation on
                                                   the calendar (inside the custom facet).</para>
                               </listitem>
-                    </itemizedlist>
+                    </itemizedlist> 
+
+-->
+
 
                     <para> The <emphasis role="bold">
                                         <property>&lt;rich:calendar&gt;</property>

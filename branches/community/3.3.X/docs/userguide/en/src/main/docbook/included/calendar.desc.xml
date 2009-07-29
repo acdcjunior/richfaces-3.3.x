@@ -9,7 +9,7 @@
     <section>
         <title>Description</title>
         <para>
-              The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> component is used for creating inputs for dates enriched with interactive calendar that allows navigate through monthes and years.
+              The <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> component is used to create inputs for date and time and enter them inline or using pup-up calendar that allows to navigate through monthes and years.
         </para>
         <figure>
             <title><emphasis role="bold"> <property>&lt;rich:calendar&gt;</property></emphasis> component</title>
