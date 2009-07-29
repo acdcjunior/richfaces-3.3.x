@@ -106,32 +106,6 @@ public class MenuItemRendererBaseTest extends AbstractAjax4JsfTestCase {
     }
 
     /**
-     * Test for processInlineStyles method.
-     */
-    public void testProcessInlineStylesMethod() throws Exception {
-        String style = "some style";
-        String selectStyle = "some select style";
-        String result = renderer.processInlineStyles(facesContext, menuItem,true);
-        
-        assertNotNull(result);
-        assertTrue(result.startsWith("$('menuItem').style.cssText="));
-
-        menuItem.getAttributes().put("selectStyle", selectStyle);
-        result = renderer.processInlineStyles(facesContext, menuItem, false);
-        assertTrue(!result.contains(selectStyle));
-        assertTrue(!result.contains(style));
-
-        result = renderer.processInlineStyles(facesContext, menuItem, true);
-        assertTrue(result.contains(selectStyle));
-        assertTrue(!result.contains(style));
-
-        menuItem.getAttributes().put("style", style);
-        result = renderer.processInlineStyles(facesContext, menuItem, true);
-        assertTrue(result.contains(selectStyle));
-        assertTrue(result.contains(style));
-    }
-
-    /**
      * Test for getComponentClass methods.
      */
     public void testGetComponentClassMethod() throws Exception {

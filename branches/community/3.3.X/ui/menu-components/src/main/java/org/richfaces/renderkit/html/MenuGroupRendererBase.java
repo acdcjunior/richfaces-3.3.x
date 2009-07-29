@@ -30,7 +30,6 @@ import org.ajax4jsf.renderkit.ComponentVariables;
 import org.ajax4jsf.renderkit.ComponentsVariableResolver;
 import org.ajax4jsf.renderkit.HeaderResourcesRendererBase;
 import org.richfaces.component.UIMenuGroup;
-import org.richfaces.component.UIMenuItem;
 import org.richfaces.component.util.ViewUtil;
 
 
@@ -106,14 +105,4 @@ public class MenuGroupRendererBase extends HeaderResourcesRendererBase {
 		return delegate.getParentMenu(context, menuGroup);
 	}
 	
-    protected String collectInlineStyles(FacesContext context, UIMenuItem menuItem, boolean isOnmouseover) {
-    	return delegate.collectInlineStyles(context, menuItem, isOnmouseover);
-    }
-    
-	@Deprecated
-	protected String processInlineStyles(FacesContext context,
-			UIMenuGroup menuGroup, boolean isOnmouseover) {
-
-		return delegate.processInlineStyles(context, menuGroup, isOnmouseover);
-	}
 }

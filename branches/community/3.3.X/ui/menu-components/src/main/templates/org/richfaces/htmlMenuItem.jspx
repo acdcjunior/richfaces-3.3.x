@@ -42,8 +42,7 @@
 	<div id="#{clientId}" 		
 		class="#{menuItemClass}"
 		style="#{menuItemStyle}"
-		onclick="Event.stop(event);"
-        onContextMenu="return false;" >
+		onclick="Event.stop(event);" >
 		
 	<jsp:scriptlet><![CDATA[
 		} else {
@@ -57,27 +56,12 @@
 	    	*/
 	]]></jsp:scriptlet>
 	
-	<c:scriptObject var="onmouseoutClasses">
-		<c:scriptOption name="styleClass" value="#{menuItemCustomClass}"/>
-		<c:scriptOption name="style" value="#{onmouseoutInlineStyles}"/>
-		<c:scriptOption attributes="iconClass"/>
-	</c:scriptObject>
-	<c:scriptObject var="onmouseoverClasses">
-		<c:scriptOption name="styleClass" value="#{menuItemHoverClass}"/>
-		<c:scriptOption name="style" value="#{onmouseoverInlineStyles}"/>
-		<c:scriptOption attributes="iconClass"/>
-	</c:scriptObject>
 	<div id="#{clientId}" 
 		class="#{menuItemClass}"
 		
-		onmouseout="RichFaces.Menu.itemMouseOut(event, this, #{onmouseoutClasses});"
-		onmouseover="RichFaces.Menu.itemMouseOver(event, this, #{onmouseoverClasses});"
-
 		onmouseup="Event.stop(event); #{component.attributes['onmouseup']}"
 		onmousedown="Event.stop(event); #{component.attributes['onmousedown']}"
 		onclick="#{onclick}"
-        onContextMenu="Event.stop(event); return false;"
-	
 		style="#{menuItemStyle}">
 		<f:call name="utils.encodeAttributes">
 			<f:parameter value="onmousemove" />
@@ -90,8 +74,7 @@
 		
 		<span id="#{clientId}:icon" 
 			class="rich-menu-item-icon #{iconDisabledClasses} #{component.attributes['iconClass']}"
-			style="#{component.attributes['iconStyle']}" 
-            onContextMenu="Event.stop(event); return false;">
+			style="#{component.attributes['iconStyle']}">
 			
 			<jsp:scriptlet><![CDATA[
 				UIComponent iconFacet = getIconFacet((org.richfaces.component.UIMenuItem) component);			
@@ -111,9 +94,7 @@
 		</span>
 		
 		<span id="#{clientId}:anchor"			
-			class="#{menuItemLabelClass}"
-            onContextMenu="Event.stop(event); return false;"
-			>
+			class="#{menuItemLabelClass}">
 			#{component.attributes['value']}
 			<f:call name="renderChildren" />
 		</span>

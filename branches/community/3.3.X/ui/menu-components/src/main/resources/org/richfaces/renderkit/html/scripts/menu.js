@@ -1312,7 +1312,8 @@ RichFaces.Menu.Item = Class.create({
 		this.menu = menu;
 		this.mouseOver = false;
 		
-
+		this.getElement().oncontextmenu = this.getIcon().oncontextmenu
+			= this.getLabel().oncontextmenu = function(event) {Event.stop(event); return false;};
 
 		var binding; 
 
@@ -1402,6 +1403,13 @@ RichFaces.Menu.Item = Class.create({
 			this.highLightGroup(true);
 		}
 		RichFaces.Menu.Items.onmouseover(this);
+		var menuOptions = this.menu.options;
+		element.className = 'rich-menu-item rich-menu-item-hover ' 
+			+ this.options.styleClass || "" + " " + this.options.selectClass || "" + " " + menuOptions.selectItemClass || "";
+		element.style.cssText = this.options.style || "" + "; " + menuOptions.itemStyle || ""
+			+ this.options.selectStyle || "" + "; " + menuOptions.selectItemStyle || "";
+		this.getIcon().className='rich-menu-item-icon rich-menu-item-icon-selected ' + (this.options.iconClass || '');
+		Element.addClassName(this.getLabel(), 'rich-menu-item-label-selected');
 	},
 	onmouseout : function(event) {
 		Event.extend(event);
@@ -1424,6 +1432,12 @@ RichFaces.Menu.Item = Class.create({
 					this.highLightGroup(false);
  		}
 		RichFaces.Menu.Items.onmouseout(this);
+		var menuOptions = this.menu.options;
+		element.className = 'rich-menu-item rich-menu-item-enabled '
+			+ this.options.styleClass || "" + " " + menuOptions.itemClass || "";
+		element.style.cssText = this.options.style || "" + "; " + menuOptions.itemStyle || "";
+		this.getIcon().className='rich-menu-item-icon ' + this.options.iconClass || "";
+		Element.removeClassName(this.getLabel(), 'rich-menu-item-label-selected');
 	},
 	highLightGroup: function(light)  {
 		if (light) {
@@ -1506,19 +1520,6 @@ RichFaces.Menu.groupMouseOut = function(event, element, menuGroupClass, menuGrou
 	element.className = 'rich-menu-group rich-menu-group-enabled ' + (menuGroupClass ? menuGroupClass : '');
 	element.style.cssText = menuGroupStyle;
 }
-
-RichFaces.Menu.itemMouseOut = function(event, element, classes) {
-	if (RichFaces.Menu.isWithin(event, element)) {
-		return;
-	}
-	
-	element.className = 'rich-menu-item rich-menu-item-enabled ' + (classes.styleClass || '');
-	element.style.cssText = classes.style || "";
-	$(element.id + ':icon').className='rich-menu-item-icon ' + (classes.iconClass || '');
-	Element.removeClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
-	
-}
-
 RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, menuGroupStyle) {
 	if (RichFaces.Menu.isWithin(event, element)) {
 		return;
@@ -1526,16 +1527,4 @@ RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, me
 	
 	element.className = 'rich-menu-group rich-menu-group-enabled ' + (menuGroupHoverClass ? menuGroupHoverClass : '');
 	element.style.cssText = menuGroupStyle;
-}
-
-RichFaces.Menu.itemMouseOver = function(event, element, classes) {
-	if (RichFaces.Menu.isWithin(event, element)) {
-		return;
-	}
-	
-	element.className = 'rich-menu-item rich-menu-item-hover ' + (classes.styleClass || '');
-	element.style.cssText = classes.style || "";
-	
-	$(element.id + ':icon').className='rich-menu-item-icon rich-menu-item-icon-selected ' + (classes.iconClass || '');
-	Element.addClassName($(element.id + ':anchor'), 'rich-menu-item-label-selected');
 }

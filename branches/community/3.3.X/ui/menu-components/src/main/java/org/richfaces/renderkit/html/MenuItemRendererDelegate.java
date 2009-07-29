@@ -51,7 +51,6 @@ public class MenuItemRendererDelegate extends RendererBase {
 			selectItemClass = (String) parentMenu.getAttributes().get("selectItemClass");
 			
 		}
-		String selectClass = (String) menuItem.getAttributes().get("selectClass");
 		String styleClass = (String) menuItem.getAttributes().get("styleClass");
 		String style = (String) menuItem.getAttributes().get("style");
 		String labelClass = (String) menuItem.getAttributes().get("labelClass");
@@ -69,10 +68,8 @@ public class MenuItemRendererDelegate extends RendererBase {
 			variables.setVariable("menuItemItemLabelClass", concatClasses("rich-menu-item-label-disabled", labelClass));
 			variables.setVariable("menuItemItemFolderClass", "rich-menu-item-folder-disabled");
 		} else {
-			variables.setVariable("menuItemCustomClass", concatClasses(styleClass, itemClass));
 			variables.setVariable("menuItemClass", concatClasses("rich-menu-item rich-menu-item-enabled", styleClass, itemClass));
 			variables.setVariable("menuItemStyle", concatStyles(itemStyle, style));
-			variables.setVariable("menuItemHoverClass", concatClasses(styleClass, selectClass, selectItemClass));
 			variables.setVariable("menuItemLabelClass", concatClasses("rich-menu-item-label", labelClass));
 			variables.setVariable("selectLabelClass", selectedLabelClass);
 			variables.setVariable("menuGroupClass", concatClasses("rich-menu-group rich-menu-group-enabled", itemClass, styleClass));
@@ -81,35 +78,9 @@ public class MenuItemRendererDelegate extends RendererBase {
 			variables.setVariable("menuGroupItemIconClass", "rich-menu-item-icon-enabled rich-menu-group-icon");
 			variables.setVariable("menuGroupItemLabelClass", concatClasses("rich-menu-item-label rich-menu-group-label", labelClass));
 			variables.setVariable("menuGroupItemFolderClass", "rich-menu-item-folder rich-menu-group-folder");
-			variables.setVariable("onmouseoutInlineStyles", collectInlineStyles(context, menuItem, false));
-            variables.setVariable("onmouseoverInlineStyles", collectInlineStyles(context, menuItem, true));
             
             variables.setVariable("menuGroupHoverClass", concatClasses(itemClass, selectItemClass, styleClass));
 		}
-	}
-	
-	protected String collectInlineStyles(FacesContext context, UIComponent menuItem, boolean isOnmouseover) {
-		String style = (String) menuItem.getAttributes().get("style");
-		String selectStyle = (String) menuItem.getAttributes().get("selectStyle");
-
-		UIComponent parentMenu = getParentMenu(context, menuItem);
-		String selectItemStyle = null;
-		String itemStyle = null;
-		if (parentMenu != null) {
-			selectItemStyle = (String) parentMenu.getAttributes().get("selectItemStyle");
-			itemStyle = (String) parentMenu.getAttributes().get("itemStyle");
-		}
-
-		if (isOnmouseover) {
-			return concatStyles(style, itemStyle, selectItemStyle, selectStyle);
-		} else {
-			return concatStyles(style, itemStyle);
-		}
-	}
-	
-	@Deprecated
-	protected String processInlineStyles(FacesContext context, UIComponent menuItem, boolean isOnmouseover) {
-		return ("$('" + menuItem.getClientId(context) + "').style.cssText='" + collectInlineStyles(context, menuItem, isOnmouseover) + "';");
 	}
 	
 	protected UIComponent getParentMenu(FacesContext context, UIComponent menuItem) {
