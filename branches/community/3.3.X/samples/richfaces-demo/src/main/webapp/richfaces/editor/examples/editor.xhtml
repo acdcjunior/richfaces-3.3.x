@@ -7,7 +7,7 @@
 	xmlns:s="http://jboss.com/products/seam/taglib">
 	<style>
 	.column {
-		width: 400px;
+		width: 410px;
 		vertical-align: top;
 	}
 	</style>
@@ -66,12 +66,12 @@
 				<rich:message for="editor" style="color: red;"  />
 
 				<rich:panel rendered="#{editorBean.liveUpdatesEnabled}"
-					style="#{facesContext.maximumSeverity != null ? 'display: none;' : ''}">
+					style="#{facesContext.maximumSeverity != null ? 'display: none;' : ''};width:400px;">
 					<f:facet name="header">
 						<h:outputText value="Preview" />
 					</f:facet>
 					<h:inputTextarea readonly="true" id="editorvalue" value="#{editorBean.value}"
-						cols="55" rows="20"/>
+						style="width:375px;"/>
 				</rich:panel>
 			</a4j:outputPanel>
 			<h:outputText />
