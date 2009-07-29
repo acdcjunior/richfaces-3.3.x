@@ -17,7 +17,7 @@ import org.richfaces.model.ExtendedTableDataModel;
 public class ExtendedTableBean {
 	private String sortMode="single";
 	private String selectionMode="multi";
-	
+	private Object tableState;
 	private ExtendedTableDataModel<Capital> dataModel;
 	private List<Capital> capitals = new ArrayList<Capital>();
 	
@@ -74,6 +74,14 @@ public class ExtendedTableBean {
 
 	public void setCapitals(List<Capital> capitals) {
 		this.capitals = capitals;
+	}
+
+	public Object getTableState() {
+		return tableState;
+	}
+
+	public void setTableState(Object tableState) {
+		this.tableState = tableState;
 	}
 
 }
