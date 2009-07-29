@@ -13,22 +13,38 @@
 	<!-- Page header -->
 	<ui:define name="header">
 		<h1>&lt;rich:graphValidator&gt; usage</h1>
+        <p>In that sampe &lt;rich:graphValidator&gt; component appends JSR-299 or Hibernate validators to all enclosed input components
+        that check restrictions for field values, and, in addition, validates whole bean.</p>
+        <p>JSF bean fields are annotated with @Min/@Max restrictions and getter for the 'total' attribute is also annotated by the @Max</p>
+        <p>As a result, even valid field values would make whole bean an invalid. For example, values '2','7','15' are valid for fields values but their sum exceed maximum total value '20'</p>
+        <p>Validator assignes new values to a cloned bean instance hence model is not updated with invalid values.</p>
 	</ui:define>
 	<!-- content -->
 	<ui:define name="content">
 	<h:form id="form">
 			<rich:graphValidator value="#{graphValidatorBean}" id="validator" profiles="javax.validation.groups.Default">	
-			<h:panelGrid columns="3">
-  				<h:outputLabel for="value0" value="First value:" />
+			<h:panelGrid columns="4">
+                <h:outputText value=""/>
+                <h:outputText value="Input"/>
+                <h:outputText value="Message"/>
+                <h:outputText value="Model value"/>
+
+  				<h:outputLabel for="value0" value="First value, integer from 0 to 10:" />
 				<h:inputText id="value0" value="#{graphValidatorBean.first}" label="First" />
 				<rich:message for="value0"/>
-  				<h:outputLabel for="value1" value="Second value:" />
+                <h:outputText value="#{graphValidatorBean.first}"/>
+
+  				<h:outputLabel for="value1" value="Second value,integer from 5 to 15:" />
 				<h:inputText id="value1" value="#{graphValidatorBean.second}" label="First" />
 				<rich:message for="value1"/>
-  				<h:outputLabel for="value2" value="Third value:" />
+                <h:outputText value="#{graphValidatorBean.second}"/>
+
+  				<h:outputLabel for="value2" value="Third value,integer from 0 to 20:" />
 				<h:inputText id="value2" value="#{graphValidatorBean.third}" label="First" />
 				<rich:message for="value2"/>
-  				<h:outputLabel for="total" value="Total:" />
+                <h:outputText value="#{graphValidatorBean.third}"/>
+
+  				<h:outputLabel for="total" value="Total, should be no more then 20:" />
 				<h:outputText id="total" value="#{graphValidatorBean.summ}"/>
 			</h:panelGrid>
 					<h:commandButton value="Submit" action="#{graphValidatorBean.action}"></h:commandButton>

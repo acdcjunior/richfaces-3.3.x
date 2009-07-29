@@ -23,6 +23,7 @@ import javax.faces.context.FacesContext;
 import org.ajax4jsf.el.ELContextWrapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.richfaces.component.ClonedObjectResolver;
 
 public abstract class ObjectValidator {
 
@@ -323,6 +324,8 @@ public abstract class ObjectValidator {
 
 		private FacesContext facesContext;
 
+		private boolean clonedObject = false;
+
 		/**
 		 * @param parent
 		 * @param context 
@@ -382,7 +385,13 @@ public abstract class ObjectValidator {
 		 *      java.lang.Object, java.lang.Object)
 		 */
 		public Object getValue(ELContext context, Object base, Object property) {
-			Object value = parent.getValue(context, base, property);
+			Object value = ClonedObjectResolver.resolveCloned(context, base, property);
+			if(null != value){
+				this.clonedObject =true;
+				context.setPropertyResolved(true);
+			} else {
+				value = parent.getValue(context, base, property);
+			}
 			valuesStack.push(new BasePropertyPair(base, property));
 			return value;
 		}
@@ -411,6 +420,10 @@ public abstract class ObjectValidator {
 		public void setValue(ELContext context, Object base, Object property,
 				Object value) {
 			if (null != base && null != property) {
+				// TODO - detect value object from inderect references ( e.g. data table variables ).
+				if(this.clonedObject){
+					parent.setValue(context, base, property, value);
+				}
 				context.setPropertyResolved(true);
 				// For Arrays, Collection or Map use parent base and property.
 				BasePropertyPair basePropertyPair = lookupBeanProperty(new BasePropertyPair(

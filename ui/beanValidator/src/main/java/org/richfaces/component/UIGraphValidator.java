@@ -21,15 +21,19 @@
 package org.richfaces.component;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.EditableValueHolder;
+import javax.faces.component.NamingContainer;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIInput;
@@ -46,10 +50,12 @@ import org.ajax4jsf.component.AjaxContainer;
 import org.ajax4jsf.component.AjaxSupport;
 import org.ajax4jsf.component.EventValueExpression;
 import org.ajax4jsf.context.AjaxContext;
+import org.ajax4jsf.el.ELContextWrapper;
 import org.ajax4jsf.event.AjaxEvent;
 import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.renderkit.AjaxContainerRenderer;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
+import org.ajax4jsf.util.CapturingELResolver;
 import org.richfaces.event.ValidationEvent;
 import org.richfaces.validator.HibernateValidator;
 import org.richfaces.validator.FacesBeanValidator;
@@ -65,6 +71,11 @@ public abstract class UIGraphValidator extends UIComponentBase {
 	public static final String COMPONENT_TYPE = "org.richfaces.GraphValidator";
 
 	public static final String COMPONENT_FAMILY = "org.richfaces.GraphValidator";
+
+	public static final String STATE_ATTRIBUTE_PREFIX = COMPONENT_TYPE+NamingContainer.SEPARATOR_CHAR;
+	
+	
+	
 
 	/**
 	 * Get object for validation
@@ -121,11 +132,79 @@ public abstract class UIGraphValidator extends UIComponentBase {
 	public abstract void setType(String newvalue);
 
 
+	@Override
+	public void processDecodes(FacesContext context) {
+		GraphValidatorState validatorState = null;
+		// Detect value EL-expression.
+		ValueExpression valueExpression = getValueExpression("value");
+		if (null != valueExpression) {
 
+			
+			Object value = getValue();
+			if (null !=value && value instanceof Cloneable) {
+				try {
+				ELContext initialELContext = context.getELContext();
+
+				CapturingELResolver capturingELResolver = new CapturingELResolver(initialELContext.getELResolver());
+				Class<?> type = valueExpression.getType(new ELContextWrapper(initialELContext, capturingELResolver));
+				if(null != type) {
+					validatorState = new GraphValidatorState();
+					Method method = value.getClass().getDeclaredMethod("clone");
+					method.setAccessible(true);
+					validatorState.cloned = method.invoke(value);
+					validatorState.base = capturingELResolver.getBase();
+					validatorState.property = capturingELResolver.getProperty();
+					validatorState.active = true;
+					context.getExternalContext().getRequestMap().put(getStateId(context), validatorState);
+				}
+				} catch (NoSuchMethodException e) {
+					// do nothing, that is really not possible.
+				} catch (InvocationTargetException e) {
+					throw new FacesException(e);
+				} catch (IllegalArgumentException e) {
+					// do nothing, that is really not possible.
+				} catch (IllegalAccessException e) {
+					throw new FacesException(e);
+				}
+			}
+		}
+		super.processDecodes(context);
+		if(null != validatorState){
+			validatorState.active = false;
+		}
+	}
+
+	protected String getStateId(FacesContext context) {
+		String stateId = STATE_ATTRIBUTE_PREFIX+getClientId(context);
+		return stateId;
+	}
+	
+	protected GraphValidatorState getValidatorState(FacesContext context){
+		return (GraphValidatorState) context.getExternalContext().getRequestMap().get(getStateId(context));
+	}
+
+	@Override
+	public void processValidators(FacesContext context) {
+		GraphValidatorState validatorState = getValidatorState(context);
+		if(null != validatorState){
+			validatorState.active = true;
+		}
+		super.processValidators(context);
+		if(null != validatorState){
+			validatorState.active = false;
+			validateObject(context, validatorState.cloned);
+			context.getExternalContext().getRequestMap().remove(getStateId(context));
+		}
+	}
+	
 	@Override
 	public void processUpdates(FacesContext context) {
 		super.processUpdates(context);
 		Object value = getValue();
+		validateObject(context, value);
+	}
+
+	private void validateObject(FacesContext context, Object value) {
 		if (null != value) {
 			Validator validator = context.getApplication().createValidator(getType());
 			if (validator instanceof GraphValidator) {
@@ -204,6 +283,77 @@ public abstract class UIGraphValidator extends UIComponentBase {
 	@Override
 	public boolean getRendersChildren() {
 		return true;
+	}
+	
+	public static final class GraphValidatorState {
+		private boolean active = false;
+		private Object cloned;
+		private Object base;
+		private Object property;
+		/**
+		 * @return the active
+		 */
+		public boolean isActive() {
+			return active;
+		}
+		/**
+		 * @param active the active to set
+		 */
+		public void setActive(boolean active) {
+			this.active = active;
+		}
+		/**
+		 * @return the cloned
+		 */
+		public Object getCloned() {
+			return cloned;
+		}
+		/**
+		 * @param cloned the cloned to set
+		 */
+		public void setCloned(Object cloned) {
+			this.cloned = cloned;
+		}
+		/**
+		 * @return the base
+		 */
+		public Object getBase() {
+			return base;
+		}
+		/**
+		 * @param base the base to set
+		 */
+		public void setBase(Object base) {
+			this.base = base;
+		}
+		/**
+		 * @return the property
+		 */
+		public Object getProperty() {
+			return property;
+		}
+		/**
+		 * @param property the property to set
+		 */
+		public void setProperty(Object property) {
+			this.property = property;
+		}
+		
+		public boolean isSameBase(Object base){
+			return (null == base && null == this.base)||(base == this.base);
+		}
+		
+		public boolean isSameProperty(Object property){
+			if(null == this.property){
+				return null == property;
+			} else {
+				return this.property.equals(property);
+			}
+		}
+		
+		public boolean isSame(Object base, Object property){
+			return isSameBase(base)&& isSameProperty(property)&& active;
+		}
 	}
 
 }
