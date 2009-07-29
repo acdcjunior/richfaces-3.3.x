@@ -21,6 +21,7 @@
 package org.richfaces.validator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ import org.hibernate.validator.NotNull;
  * @author asmirnov
  *
  */
-public class ValidableBean {
+public class ValidableBean implements Cloneable {
 	
 	@Min(2)
 	@Max(5)
@@ -141,6 +142,61 @@ public class ValidableBean {
 	@NotNull
 	public void setFoo(Object foo) {
 		this.foo = foo;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(array);
+		result = prime * result + ((foo == null) ? 0 : foo.hashCode());
+		result = prime * result + integerProperty;
+		result = prime * result + ((list == null) ? 0 : list.hashCode());
+		result = prime * result + ((map == null) ? 0 : map.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof ValidableBean))
+			return false;
+		ValidableBean other = (ValidableBean) obj;
+		if (!Arrays.equals(array, other.array))
+			return false;
+		if (foo == null) {
+			if (other.foo != null)
+				return false;
+		} else if (!foo.equals(other.foo))
+			return false;
+		if (integerProperty != other.integerProperty)
+			return false;
+		if (list == null) {
+			if (other.list != null)
+				return false;
+		} else if (!list.equals(other.list))
+			return false;
+		if (map == null) {
+			if (other.map != null)
+				return false;
+		} else if (!map.equals(other.map))
+			return false;
+		if (text == null) {
+			if (other.text != null)
+				return false;
+		} else if (!text.equals(other.text))
+			return false;
+		return true;
 	}
 
 }

@@ -10,17 +10,17 @@ import org.hibernate.validator.Min;
  * @author asmirnov
  *
  */
-public class GraphValidatorBean {
+public class GraphValidatorBean implements Cloneable {
 
 	@Min(0)
 	@Max(10)
 	private int first ;
 
-	@Min(0)
-	@Max(10)
+	@Min(5)
+	@Max(15)
 	private int second ;
 	@Min(0)
-	@Max(10)
+	@Max(20)
 	private int third ;
 
 	private String actionResult;
@@ -93,5 +93,14 @@ public class GraphValidatorBean {
 		// Persist your data here
 		setActionResult("Data have been saved");
 		return "ok";
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		GraphValidatorBean cloned = (GraphValidatorBean) super.clone();
+		cloned.first = this.first;
+		cloned.second = this.second;
+		cloned.third = this.third;
+		return cloned;
 	}
 }

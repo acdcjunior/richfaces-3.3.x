@@ -31,7 +31,7 @@ import org.ajax4jsf.el.ELResolverWrapper;
  * @since 3.3.0
  */
 
-class CapturingELResolver extends ELResolverWrapper {
+public class CapturingELResolver extends ELResolverWrapper {
 
 	private Object base;
 	
@@ -43,7 +43,7 @@ class CapturingELResolver extends ELResolverWrapper {
 
 	@Override
 	public Object getValue(ELContext context, Object base, Object property) {
-		if (base != null && property != null) {
+		if (/*base != null && */property != null) {
 			this.base = base;
 			this.property = property;
 		}
@@ -53,7 +53,7 @@ class CapturingELResolver extends ELResolverWrapper {
 	
 	@Override
 	public Class<?> getType(ELContext context, Object base, Object property) {
-		if (base != null && property != null) {
+		if (/*base != null &&*/ property != null) {
 			this.base = base;
 			this.property = property;
 		}

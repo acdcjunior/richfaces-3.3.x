@@ -389,15 +389,24 @@ public class SAXResponseWriter extends ResponseWriter {
 
         void writeAttribute(String name, Object value, String property)
                 throws IOException {
-            attributes.addAttribute(getNamespaceURI(), name, name, "id".equalsIgnoreCase(name)?"ID":"CDATA", value.toString());
-        }
+			if (null != value) {
+				attributes.addAttribute(getNamespaceURI(), name, name, "id"
+						.equalsIgnoreCase(name) ? "ID" : "CDATA", value
+						.toString());
+
+			}
+		}
 
         void writeURIAttribute(String name, Object value, String property)
                 throws IOException {
-            String uri = value.toString();
-            // TODO - perform encodeActionURL() or ???
-            attributes.addAttribute(getNamespaceURI(), name, name, "CDATA", uri);
-        }
+			if (null != value) {
+				String uri = value.toString();
+				// TODO - perform encodeActionURL() or ???
+				attributes.addAttribute(getNamespaceURI(), name, name, "CDATA",
+						uri);
+
+			}
+		}
 
         /*
          * (non-Javadoc)
