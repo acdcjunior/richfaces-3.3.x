@@ -19,18 +19,16 @@
 					</rich:column>
 				</rich:columnGroup>
 			</f:facet>
-			<rich:column filterBy="#{cap.state}" filterEvent="onkeyup">
-				<f:facet name="header">
-					<h:outputText value=" " title="Hack due to bug. Shuold be remoevd till release"></h:outputText>
-				</f:facet>
+			<rich:column filterBy="#{cap.state}" filterEvent="onkeyup" filterValue="#{capitalsBean.currentStateFilterValue}">
 				<h:outputText value="#{cap.state}"/>
 			</rich:column> 
-			<rich:column filterBy="#{cap.name}" filterEvent="onkeyup">
+			<rich:column filterBy="#{cap.name}" filterEvent="onkeyup" filterValue="#{capitalsBean.currentNameFilterValue}">
 				<h:outputText value="#{cap.name}"/> 
 			</rich:column>
 			<f:facet name="footer">
 				<rich:datascroller id="ds" renderIfSinglePage="false"></rich:datascroller>
 			</f:facet>
 		</rich:dataTable>
+		<a4j:commandButton action="#{capitalsBean.resetFilter}" value="Reset Current Filtering" reRender="simpletable" ajaxSingle="true" limitToList="true"/>
 	</h:form>
 </ui:composition>
