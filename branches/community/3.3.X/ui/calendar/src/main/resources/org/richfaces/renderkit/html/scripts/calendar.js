@@ -1133,12 +1133,11 @@ Object.extend(Calendar.prototype, {
 		
 		if (!this.params.popup || !this.isVisible) return;
 		
-		if (this.isEditorVisible) this.hideEditor();
-		
 		var element = $(this.id);
 		
 		if (this.invokeEvent("collapse", element))
 		{
+			if (this.isEditorVisible) this.hideEditor();
 			Richfaces.removeScrollEventHandlers(this.scrollElements, this.eventOnScroll);
 			Event.stopObserving(window.document, "click", this.eventOnCollapse, false);
 			
