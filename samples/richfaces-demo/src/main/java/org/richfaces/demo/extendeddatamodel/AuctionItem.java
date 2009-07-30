@@ -1,19 +1,23 @@
 package org.richfaces.demo.extendeddatamodel;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-public class AuctionItem {
+public class AuctionItem implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -775342254945959655L;
 	private Integer pk;
 	private String description;
 	private Double bid;
 	private Double highestBid;
 	private Integer qtyRequested;
 	private Integer qtyAvialable;
-	private UIComponent bidInput;
-	private UIComponent qtyInput;
 	private boolean won = false;
 	private boolean loose = false;
 	private Double amount;
@@ -78,21 +82,4 @@ public class AuctionItem {
 			ctx.addMessage(event.getComponent().getClientId(ctx), new FacesMessage(FacesMessage.SEVERITY_ERROR,"Bid value is missing","You must provide bid value"));
 		}
 	}
-
-	public UIComponent getBidInput() {
-		return bidInput;
-	}
-
-	public void setBidInput(UIComponent bidInput) {
-		this.bidInput = bidInput;
-	}
-
-	public UIComponent getQtyInput() {
-		return qtyInput;
-	}
-
-	public void setQtyInput(UIComponent qtyInput) {
-		this.qtyInput = qtyInput;
-	}
-	
 }

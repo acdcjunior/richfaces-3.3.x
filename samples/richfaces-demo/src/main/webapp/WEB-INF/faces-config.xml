@@ -277,9 +277,14 @@
   <managed-bean-class>org.richfaces.demo.extendeddatamodel.AuctionDataModel</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
   <managed-property>
-   <property-name>dataProvider</property-name>
-   <property-class>org.richfaces.demo.extendeddatamodel.AuctionDataProvider</property-class>
-   <value>#{auctionDataProvider}</value>
+  	<property-name>auctionDataModelExpressionString</property-name>
+  	<property-class>java.lang.String</property-class>
+	<value>auctionDataModel</value>
+  </managed-property>
+  <managed-property>
+  	<property-name>auctionDataProviderExpressionString</property-name>
+  	<property-class>java.lang.String</property-class>
+	<value>auctionDataProvider</value>
   </managed-property>
  </managed-bean>
  <managed-bean>

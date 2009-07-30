@@ -1,11 +1,13 @@
 package org.richfaces.demo.extendeddatamodel;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.model.DataVisitor;
@@ -85,7 +87,7 @@ public class AuctionDataModel extends SerializableDataModel {
 	 * We strongly recommend use of local cache in that method. 
 	 */
 	@Override
-	public Object getRowData() {
+	public AuctionItem getRowData() {
 		if (currentPk==null) {
 			return null;
 		} else {
@@ -156,21 +158,61 @@ public class AuctionDataModel extends SerializableDataModel {
 			return null;
 		}
 	}
+	
+	private <V> V lookupInContext(String expression, Class<? extends V> c) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		Application application = facesContext.getApplication();
+		return c.cast(application.evaluateExpressionGet(facesContext, MessageFormat.format("#'{'{0}'}'", expression), c));
+	}
+	
+	private String auctionDataModelExpressionString;
+
+	private String auctionDataProviderExpressionString;
+
+	
 	/**
 	 * This is helper method that is called by framework after model update. In must delegate actual database update to 
 	 * Data Provider.
 	 */
 	@Override
 	public void update() {
-		getDataProvider().update();
+		AuctionDataModel auctionDataModel = lookupInContext(auctionDataModelExpressionString, AuctionDataModel.class);
+		Object savedKey = getRowKey();
+		for (Integer key : wrappedKeys) {
+			auctionDataModel.setRowKey(key);
+			auctionDataModel.getRowData().setBid(wrappedData.get(key).getBid());
+		}
+		setRowKey(savedKey);
+		//getDataProvider().update();
+		
+		this.wrappedData.clear();
+		this.wrappedKeys.clear();
+		resetDataProvider();
+	}
+	
+	protected void resetDataProvider() {
+		this.dataProvider = null;
 	}
 
 	public AuctionDataProvider getDataProvider() {
+		if (dataProvider == null) {
+			dataProvider = lookupInContext(auctionDataProviderExpressionString, AuctionDataProvider.class);
+		}
 		return dataProvider;
 	}
-
-	public void setDataProvider(AuctionDataProvider dataProvider) {
-		this.dataProvider = dataProvider;
+	public String getAuctionDataModelExpressionString() {
+		return auctionDataModelExpressionString;
+	}
+	public void setAuctionDataModelExpressionString(
+			String auctionDataModelExpressionString) {
+		this.auctionDataModelExpressionString = auctionDataModelExpressionString;
+	}
+	public String getAuctionDataProviderExpressionString() {
+		return auctionDataProviderExpressionString;
+	}
+	public void setAuctionDataProviderExpressionString(
+			String auctionDataProviderExpressionString) {
+		this.auctionDataProviderExpressionString = auctionDataProviderExpressionString;
 	}
 
 }
