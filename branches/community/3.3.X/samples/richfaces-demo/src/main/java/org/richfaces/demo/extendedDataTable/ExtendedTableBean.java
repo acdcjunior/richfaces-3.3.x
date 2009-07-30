@@ -4,11 +4,15 @@
 package org.richfaces.demo.extendedDataTable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.richfaces.demo.capitals.Capital;
+import org.richfaces.demo.datafilterslider.DemoInventoryItem;
 import org.richfaces.model.DataProvider;
 import org.richfaces.model.ExtendedTableDataModel;
+import org.richfaces.model.selection.Selection;
+import org.richfaces.model.selection.SimpleSelection;
 
 /**
  * @author Ilya Shaikovsky
@@ -18,8 +22,10 @@ public class ExtendedTableBean {
 	private String sortMode="single";
 	private String selectionMode="multi";
 	private Object tableState;
-	private ExtendedTableDataModel<Capital> dataModel;
+	private Selection selection = new SimpleSelection();
 	private List<Capital> capitals = new ArrayList<Capital>();
+	private ExtendedTableDataModel<Capital> dataModel;
+	private List<Capital> selectedCapitals = new ArrayList<Capital>();
 	
 	public String getSortMode() {
 		return sortMode;
@@ -38,6 +44,15 @@ public class ExtendedTableBean {
 	}
 
 	public ExtendedTableBean() {
+	}
+	
+	public void takeSelection(){
+		selectedCapitals.clear();
+		Iterator<Object> iterator = getSelection().getKeys();
+		while (iterator.hasNext()) {
+			Object key = iterator.next();
+			selectedCapitals.add(getCapitalsDataModel().getObjectByKey(key));
+		}
 	}
 	
 	public ExtendedTableDataModel<Capital> getCapitalsDataModel() {
@@ -82,6 +97,22 @@ public class ExtendedTableBean {
 
 	public void setTableState(Object tableState) {
 		this.tableState = tableState;
+	}
+
+	public Selection getSelection() {
+		return selection;
+	}
+
+	public void setSelection(Selection selection) {
+		this.selection = selection;
+	}
+
+	public List<Capital> getSelectedCapitals() {
+		return selectedCapitals;
+	}
+
+	public void setSelectedCapitals(List<Capital> selectedCapitals) {
+		this.selectedCapitals = selectedCapitals;
 	}
 
 }
