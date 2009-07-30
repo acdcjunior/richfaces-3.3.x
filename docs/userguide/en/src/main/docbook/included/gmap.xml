@@ -203,26 +203,34 @@ HtmlGmap myMap = new HtmlGmap();
 			</mediaobject>
 		</figure>
 		<para>
-			To set all these parameters and perform some activity (Zoom
+			To set the controls as well as to perform other activities (Zoom
 			In/Out etc.) is possible with your JavaScript, i.e. declare
-			a name of an object on a
-			<property>map</property>
-			in the
+			a name of a <property>map</property> object in the
 			<emphasis>
 				<property>&quot;gmapVar&quot;</property>
 			</emphasis>
-			attribute and then call the object directly with API
+			attribute and then call the object directly with
 			<emphasis>
-				<property>Google Map</property>
-				.
-			</emphasis>
+				<property>Google Maps</property>
+			</emphasis> API.
 		</para>
+		
 		<para>
-			For example, to approximate a map for
-			<code>gmapVar = &quot;map&quot;</code>
-			declared inside the component, call <code>map.zoomIn()</code> on an
-			event.
+			For instance, if you have <code>gmapVar = &quot;map&quot;</code> declared for your component, to zoom in a map you should call <code>map.zoomIn()</code> on an
+			event. See also an example of <emphasis role="bold">
+				<property>&lt;rich:gmap&gt;</property> 
+			</emphasis> usage on the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/gmap.jsf?c=gmap">RichFaces Live Demo</ulink>.
 		</para>
+		
+		<tip>
+			<title>Tip:</title>
+			<para>You do not need to use reRender to perform uptades for the <emphasis role="bold">
+				<property>&lt;rich:gmap&gt;</property>
+			</emphasis> component. Use the <emphasis>
+				<property>&quot;gmapVar&quot;</property></emphasis> attribute and 
+				<ulink url="http://code.google.com/intl/ru/apis/maps/documentation/reference.html">Google Maps native API</ulink> instead as it&apos;s described above.</para>
+		</tip>
+		
 		<para>
 			Moreover, to add e.g. some JavaScript effects, events
 			defined on it are used.
