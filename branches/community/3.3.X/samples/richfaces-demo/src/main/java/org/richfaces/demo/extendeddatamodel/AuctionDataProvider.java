@@ -1,11 +1,12 @@
 package org.richfaces.demo.extendeddatamodel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.richfaces.demo.common.RandomDataHelper;
 
-public class AuctionDataProvider {
+public class AuctionDataProvider implements Serializable{
 	
 	private String allDescriptions[] = {
 			"Digital temperature sensor IC LM75A SOIC8 +Free adapter",
