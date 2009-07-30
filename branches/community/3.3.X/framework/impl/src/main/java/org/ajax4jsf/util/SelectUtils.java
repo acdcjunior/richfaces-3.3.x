@@ -34,6 +34,7 @@ import java.util.Map.Entry;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIOutput;
@@ -180,8 +181,7 @@ public class SelectUtils {
 					arrayComponentType == null ? Object.class
 							: arrayComponentType, len);
 			for (int i = 0; i < len; i++) {
-				convertedValues[i] = converter.getAsObject(facesContext,
-						component, submittedValue[i]);
+				convertedValues[i] = getConvertedValue(facesContext, component, submittedValue[i], converter);
 			}
 			return convertedValues;
 		}
@@ -196,8 +196,10 @@ public class SelectUtils {
 			int len = submittedValue.length;
 			List<Object> lst = new ArrayList<Object>(len);
 			for (int i = 0; i < len; i++) {
-				lst.add(converter.getAsObject(facesContext, component,
-						submittedValue[i]));
+				Object convertedValue = getConvertedValue(facesContext, component, submittedValue[i], converter);
+				if (convertedValue != null) {
+				    lst.add(convertedValue);
+				}
 			}
 			return lst;
 		}
@@ -211,8 +213,10 @@ public class SelectUtils {
 			int len = submittedValue.length;
 			Object convertedValues = Array.newInstance(arrayComponentType, len);
 			for (int i = 0; i < len; i++) {
-				Array.set(convertedValues, i, converter.getAsObject(
-						facesContext, component, submittedValue[i]));
+				Object convertedValue = getConvertedValue(facesContext, component, submittedValue[i], converter);
+				if (convertedValue != null) {
+				    Array.set(convertedValues, i, convertedValue);
+				}
 			}
 			return convertedValues;
 		} else {
@@ -220,13 +224,37 @@ public class SelectUtils {
 			int len = submittedValue.length;
 			ArrayList<Object> convertedValues = new ArrayList<Object>(len);
 			for (int i = 0; i < len; i++) {
-				convertedValues.add(i, converter.getAsObject(facesContext,
-						component, submittedValue[i]));
+				Object convertedValue = getConvertedValue(facesContext, component, submittedValue[i], converter);
+				if (convertedValue != null) {
+				    convertedValues.add(i, convertedValue);
+				} 
 			}
 			return convertedValues.toArray((Object[]) Array.newInstance(
 					arrayComponentType, len));
 		}
 	}
+
+    private static Object getConvertedValue(FacesContext context,
+            UISelectMany component, String submittedValue, Converter converter) {
+        try {
+            return converter.getAsObject(context, component, submittedValue);
+        } catch (ConverterException e) {
+            addConversionErrorMessage(context, component.getClientId(context), 
+                    component.getConverterMessage());
+        }
+        return null;
+    }
+	
+    private static void addConversionErrorMessage(FacesContext context,
+            String clientId, String converterMessage) {
+        
+        if (converterMessage == null) {
+            return;
+        }
+            
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, converterMessage, converterMessage);
+        context.addMessage(clientId, message);
+    }
 
 	public static Object getConvertedUIInputValue(
 			FacesContext facesContext, UIInput component,
