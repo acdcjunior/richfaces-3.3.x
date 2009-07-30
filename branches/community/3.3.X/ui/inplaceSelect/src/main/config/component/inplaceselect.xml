@@ -221,7 +221,7 @@
                               <property>
                                         <name>onviewactivated</name>
                                         <classname>java.lang.String</classname>
-                                        <description>The client-side script method to be called when the component view state is activated</description>
+                                        <description>The client-side script method to be called when the component view state is activated. onviewactivated fires request only if the value is changed</description>
                               </property>
                               <property hidden="true">
                                         <name>selectOnEdit</name>
