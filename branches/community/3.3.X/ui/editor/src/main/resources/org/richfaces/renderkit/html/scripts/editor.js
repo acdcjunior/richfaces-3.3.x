@@ -40,7 +40,7 @@ Object.extend(RichEditor.prototype, {
     destruct: function(isAjax) { 
     	A4J.AJAX.removeListener(this.onBeforeAjaxListener);
 		
-		if(isAjax){
+		if(isAjax && this.tinyMCE_editor){
 			this.tinyMCE_editor.remove();
 		}
 		this.onInitInstanceCallbackFunction = null;
@@ -77,7 +77,9 @@ Object.extend(RichEditor.prototype, {
 	},
 	
 	onBeforeAjax: function() {
-        this.tinyMCE_editor.save();
+		if (this.tinyMCE_editor) {
+			this.tinyMCE_editor.save();
+		}
 	},
 	
 	onInitInstanceCallback: function(inst) {		
