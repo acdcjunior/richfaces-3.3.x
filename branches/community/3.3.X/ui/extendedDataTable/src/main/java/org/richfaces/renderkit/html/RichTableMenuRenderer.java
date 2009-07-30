@@ -353,6 +353,7 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
         JSFunction invocation = new JSFunction(
                 "Richfaces.componentControl.performOperation");
         invocation.addParameter(new JSReference("event"));
+        invocation.addParameter(new JSReference("event.type"));
         invocation.addParameter(new JSReference("menuId"));
         invocation.addParameter("show");
         // invocation.addParameter(new JSReference("{'columnId':columnId}"));
