@@ -59,12 +59,11 @@
 	<div id="#{clientId}" 
 		class="#{menuItemClass}"
 		
-		onmouseup="Event.stop(event); #{component.attributes['onmouseup']}"
-		onmousedown="Event.stop(event); #{component.attributes['onmousedown']}"
+
 		onclick="#{onclick}"
 		style="#{menuItemStyle}">
 		<f:call name="utils.encodeAttributes">
-			<f:parameter value="onmousemove" />
+			<f:parameter value="onmousemove,onmousedown,onmouseup" />
 		</f:call>
 		
 	<jsp:scriptlet><![CDATA[
