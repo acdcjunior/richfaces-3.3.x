@@ -140,9 +140,13 @@ public class ResourceLifecycle extends Lifecycle {
 					// Invoke before render view phase listeners
 			        PhaseEvent renderViewEvent = new PhaseEvent(facesContext,
 							PhaseId.RENDER_RESPONSE, this);
-					processPhaseListeners(phaseListeners, renderViewEvent, true);
-					sendResource(resourceContext, resource);
-					processPhaseListeners(phaseListeners, renderViewEvent, false);
+					
+					try {
+						processPhaseListeners(phaseListeners, renderViewEvent, true);
+						sendResource(resourceContext, resource);
+					} finally {
+						processPhaseListeners(phaseListeners, renderViewEvent, false);
+					}
 				}
 
 			} finally {
