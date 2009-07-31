@@ -27,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import javax.el.ELException;
 import javax.el.ValueExpression;
@@ -173,7 +174,11 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	 */
 	protected void addMessagesForId(FacesContext context, String forId,
 			List<String> severenities) {
-		Iterator<FacesMessage> messages = context.getMessages(forId);
+	    if (isGlobalOnly() && forId != null) {
+	        return;
+	    }
+	    
+	    Iterator<FacesMessage> messages = context.getMessages(forId);
 		while (messages.hasNext()) {
 			FacesMessage message = messages.next();
 			if (severenities.size() == 0 || severenities.contains("ALL")
@@ -201,7 +206,7 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		for (Object key : FacesMessage.VALUES_MAP.keySet()) {
 			Severity sev = (Severity) FacesMessage.VALUES_MAP.get(key);
 			if (0 == sev.compareTo(severity)) {
-				return severenities.contains(((String)key).toUpperCase());
+				return severenities.contains(((String)key).toUpperCase(Locale.ENGLISH));
 			}
 		}
 		return false;
