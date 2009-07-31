@@ -119,25 +119,24 @@ public abstract class UIDataTable extends SequenceDataAdaptor {
 		}
 		sortFields.addAll(sortFieldsMap.values());
 		ExtendedDataModel dataModel = super.createDataModel();
-		if ((filterFields != null && !filterFields.isEmpty())
-				|| (sortFields != null && !sortFields.isEmpty())) {
-			Modifiable modifiable = null;
-			if (dataModel instanceof Modifiable) {
-				modifiable = (Modifiable) dataModel;
-			} else {
-				ModifiableModel modifiableModel = new ModifiableModel(dataModel, getVar());
-				dataModel = modifiableModel;
-				modifiable = modifiableModel;
+		Modifiable modifiable = null;
+		if (dataModel instanceof Modifiable) {
+			modifiable = (Modifiable) dataModel;
+		} else if (!filterFields.isEmpty() || !sortFields.isEmpty()) {
+			ModifiableModel modifiableModel = new ModifiableModel(dataModel, getVar());
+			dataModel = modifiableModel;
+			modifiable = modifiableModel;
+		}
+		
+		if (dataModel instanceof LocaleAware) {
+			FacesContext facesContext = getFacesContext();
+			if (ContextInitParameters.isDatatableUsesViewLocale(facesContext)) {
+				UIViewRoot viewRoot = facesContext.getViewRoot();
+				((LocaleAware) dataModel).setLocale(viewRoot.getLocale());
 			}
-			
-			if (dataModel instanceof LocaleAware) {
-				FacesContext facesContext = getFacesContext();
-				if (ContextInitParameters.isDatatableUsesViewLocale(facesContext)) {
-					UIViewRoot viewRoot = facesContext.getViewRoot();
-					((LocaleAware) dataModel).setLocale(viewRoot.getLocale());
-				}
-			}
-			
+		}
+		
+		if (modifiable != null) {
 			modifiable.modify(filterFields, sortFields);
 		}
 		return dataModel;
