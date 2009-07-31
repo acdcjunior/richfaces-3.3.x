@@ -12,8 +12,8 @@
         <para>
         	The <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component 
         	is the most important core component in the RichFaces library. 
-        	It enriches any existing non-Ajax JSF or RichFaces component with an Ajax capability. 
-            All the other RichFaces Ajax components are based on the same principles 
+        	It enriches any existing non-Ajax JSF or RichFaces component with  Ajax capability. 
+            All other RichFaces Ajax components are based on the same principles 
             <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> has.  
              <!-- 
              The requests are invoked by definite user activity and used for updating 

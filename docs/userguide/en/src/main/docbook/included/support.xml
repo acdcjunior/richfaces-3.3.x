@@ -99,12 +99,12 @@ inputText.getFacets().put("a4jsupport", ajaxSupport);
 			<listitem>
 				<para>
 				<emphasis><property>&quot;reRender&quot;</property></emphasis> attribute that defines id(s) 
-				of JSF component(s) that should be rerendered after	an Ajax request 
+				of JSF component(s) that should be rerendered after an Ajax request 
 				</para>
 			</listitem>
 		</itemizedlist>
 		<para>
-			As mentioned above the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component
+			As mentioned above, the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component
 			adds Ajax capability to non-Ajax JSF components.
 			Let&apos;s create ajaxed <emphasis role="bold"><property>&lt;h:selectOneMenu&gt;</property></emphasis> called
 			&quot;Planets and Their Moons&quot;. 
@@ -112,7 +112,7 @@ inputText.getFacets().put("a4jsupport", ajaxSupport);
 		<para>
 			We begin with the common behavior description. When a page is rendered you see only one select box with the list of planets.
 			When you select a planet the  <emphasis role="bold"><property>&lt;h:dataTable&gt;</property></emphasis>
-			containig moons of the selected planet appears.   
+			containing moons of the selected planet appears.   
 		</para>
 		<para>
 			In other words we need <emphasis role="bold"><property>&lt;h:selectOneMenu&gt;</property></emphasis>
@@ -196,7 +196,7 @@ public class PlanetsMoons {
 			attributes the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component 
 			allows to use JavaScript calls before and after an Ajax request
 			respectively. 
-			Actuallly the JavaScript specified in the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute
+			Actually the JavaScript specified in the <emphasis><property>&quot;oncomplete&quot;</property></emphasis> attribute
 			will be executed in any case whether the Ajax request is completed successfully or not. 
 		</para>
 		<para> 
