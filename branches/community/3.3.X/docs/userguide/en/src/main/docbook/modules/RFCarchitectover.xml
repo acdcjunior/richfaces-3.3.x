@@ -445,7 +445,7 @@
 				<itemizedlist>
 					<listitem><para>Only one global queue will ever exist on a view</para>
 						
-						<para>If you define more then one with this name while attempting to set its attributes a warning will appear in server console
+						<para>If you define more than one with this name while attempting to set its attributes a warning will appear in server console
 							during rendering. All the same named queues after the first instance are ignored.</para></listitem>
 					<listitem><para>The queue class name is &quot;org.richfaces.queue.global&quot;</para>
 				
@@ -466,7 +466,10 @@
 ]]></programlisting>
 				<para>The global default queue is disabled by default, because artificial
 					serializing of all Ajax requests on a page can significantly affect expected
-					behavior. </para>
+					behavior. The global default queue causes all Asynchronous JavaScript And XML requests becoming synchronous via the single global queue. 
+					If the global queue is turned on it can change the behavior on all views of the application without any visible or obvious setting. 
+				
+				</para>
 				
 			</section>
 				<section>
