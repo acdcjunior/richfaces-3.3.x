@@ -43,6 +43,8 @@ public class HibernateValidatorTest extends AbstractAjax4JsfTestCase {
 	
 	public void setUp() throws Exception {
     	super.setUp();
+    	
+    	Locale.setDefault(Locale.US);
     }
 
     public void tearDown() throws Exception {
