@@ -95,4 +95,14 @@ public class ELContextWrapper extends ELContext {
 	public void setLocale(Locale locale) {
 		parent.setLocale(locale);
 	}
+	
+	@Override
+	public boolean isPropertyResolved() {
+		return parent.isPropertyResolved();
+	}
+	
+	@Override
+	public void setPropertyResolved(boolean resolved) {
+		parent.setPropertyResolved(resolved);
+	}
 }
