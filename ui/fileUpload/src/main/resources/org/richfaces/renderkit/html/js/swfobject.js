@@ -517,7 +517,9 @@ var swfobject = function() {
 		if (ua.ie && ua.win && typeof doc.styleSheets != UNDEF && doc.styleSheets.length > 0) {
 			var ls = doc.styleSheets[doc.styleSheets.length - 1];
 			if (typeof ls.addRule == OBJECT) {
-				ls.addRule(sel, decl);
+				try {
+					ls.addRule(sel, decl);
+				} catch(e) {}
 			}
 		}
 	}
