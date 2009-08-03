@@ -182,7 +182,7 @@ Richfaces.ListBase.prototype = {
 		var activeElem = this.getEventTargetRow(event);
 		if (activeElem != null) {
 			
-			if (event.ctrlKey) {
+			if (event.ctrlKey || e.metaKey) {
 			 	this.addSelectedItem(activeElem);
 			 	this.setActiveItem(activeElem);
 			} else if (event.shiftKey) {
@@ -217,7 +217,7 @@ Richfaces.ListBase.prototype = {
 					  Event.stop(event);
 					  break;
 			case 65 : // Ctrl + A
-					  if (event.ctrlKey) { 
+					  if (event.ctrlKey || e.metaKey) { 
 						this.selectAll();
 					  } 
 					  this.activeItem.item.doActive(this.getExtRowClass(this.activeItem.rowIndex), this.columnClasses);
