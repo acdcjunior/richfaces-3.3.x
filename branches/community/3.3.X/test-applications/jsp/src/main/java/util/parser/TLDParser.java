@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -13,7 +12,7 @@ public class TLDParser {
 	protected String component;
 	protected JarEntry tld;
 	protected JarFile richfacesUI;
-	protected AttributesList allAttributes;	
+	protected AttributesList allAttributes;
 
 	public TLDParser(String str) {
 		this.component = str;
@@ -49,32 +48,52 @@ public class TLDParser {
 												position + 6, end).trim());
 									}
 									// find attribute description
-									if ((position = line.indexOf("<description>")) != -1) {
-										
-										if((end = line.indexOf("</description>")) != -1){											
-											attribute.setDescription(line.substring(position + 13, line.length()-14));
-										}else{
-											sb.append(line.substring(position + 13, line.length()).trim().replaceAll("\t", ""));											
+									if ((position = line
+											.indexOf("<description>")) != -1) {
+
+										if ((end = line
+												.indexOf("</description>")) != -1) {
+											attribute
+													.setDescription(line
+															.substring(
+																	position + 13,
+																	line
+																			.length() - 14));
+										} else {
+											sb.append(line.substring(
+													position + 13,
+													line.length()).trim()
+													.replaceAll("\t", ""));
 											line = reader.readLine();
-											while ((end = line.indexOf("</description>")) == -1) {
-												sb.append(line.substring(0, line.length()).replaceAll("\t", ""));													
+											while ((end = line
+													.indexOf("</description>")) == -1) {
+												sb.append(line.substring(0,
+														line.length())
+														.replaceAll("\t", ""));
 												line = reader.readLine();
 											}
-											sb.append(line.substring(0, line.length() - 14).trim().replaceAll("\t", ""));											
-											
-											attribute.setDescription(sb.toString());
+											sb.append(line.substring(0,
+													line.length() - 14).trim()
+													.replaceAll("\t", ""));
+
+											attribute.setDescription(sb
+													.toString());
 											sb.delete(0, sb.length());
-										}										
-									}									
+										}
+									}
 									// find attribute type
 									if ((position = line.indexOf("<type>")) != -1) {
 										end = line.indexOf("</type>");
-											attribute.setType(line.substring(position + 6, end).trim());
+										attribute.setType(line.substring(
+												position + 6, end).trim());
 									}
 									// find attribute method-signature
-									if ((position = line.indexOf("<method-signature>")) != -1) {
-										end = line.indexOf("</method-signature>");
-											attribute.setType(line.substring(position + 18, end).trim());
+									if ((position = line
+											.indexOf("<method-signature>")) != -1) {
+										end = line
+												.indexOf("</method-signature>");
+										attribute.setType(line.substring(
+												position + 18, end).trim());
 									}
 								} while (!((line = reader.readLine())
 										.contains("</attribute>")));
@@ -114,12 +133,17 @@ public class TLDParser {
 		int position;
 		try {
 			if ((position = getExtPath().indexOf('!')) != -1) {
-				temp = getExtPath().substring("jar:file:\\".length(), position);
+				if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
+					temp = getExtPath().substring("jar:file:\\".length(), position);
+				} else {
+					temp = "/"	+ getExtPath().substring("jar:file:/".length(),	position);
+				}
+
 			}
 			richfacesUI = new JarFile(temp);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return richfacesUI;
-	}	
+	}
 }
