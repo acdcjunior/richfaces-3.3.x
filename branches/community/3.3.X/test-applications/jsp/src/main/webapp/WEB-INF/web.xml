@@ -215,6 +215,14 @@
 		<param-value>false</param-value>
 	</context-param>
 
+	<!-- FOR JBOSS CONTAINER!!! -->
+	<context-param>
+		<param-name>
+			org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<filter>
 		<display-name>Ajax4jsf Filter</display-name>
 		<filter-name>ajax4jsf</filter-name>
@@ -253,14 +261,16 @@
 			<param-name>uploadThresholdSize</param-name>
 			<param-value>100k</param-value>
 		</init-param>
-		
-			<init-param>
+
+		<init-param>
 			<param-name>uploadRepositoryPath</param-name>
 			<param-value>/temp</param-value>
-			<description>Set the path where the intermediary files will be stored.
+			<description>
+				Set the path where the intermediary files will be
+				stored.
 			</description>
-			</init-param>
-		
+		</init-param>
+
 	</filter>
 
 	<filter-mapping>
