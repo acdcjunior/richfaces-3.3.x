@@ -530,7 +530,7 @@ var swfobject = function() {
 			getElementById(id).style.visibility = v;
 		}
 		else {
-			createCSS("#" + id.replace(/\:/g, '\\:'), "visibility:" + v);
+			createCSS("#" + id, "visibility:" + v);
 		}
 	}
 
