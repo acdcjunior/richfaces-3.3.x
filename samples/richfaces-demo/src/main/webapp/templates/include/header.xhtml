@@ -5,6 +5,7 @@
       xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 <ui:composition>
+<f:loadBundle var="path" basename="org/richfaces/demo/common/path"/>
 <div class="page_brick"></div>
 <table class="top_navbar" cellpadding="0" cellspacing="0" border="0">
 <tbody>
@@ -19,7 +20,7 @@
 			<h:outputLink value="http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261">Support</h:outputLink>
 		</td>
 		<td>
-			<h:outputLink value="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/index.html">Developer Guide</h:outputLink>
+			<h:outputLink value="#{path.dgPath}">Developer Guide</h:outputLink>
 		</td>
 	</tr>
 </tbody>

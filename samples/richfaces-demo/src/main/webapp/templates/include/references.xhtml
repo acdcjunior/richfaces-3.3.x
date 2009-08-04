@@ -10,8 +10,8 @@
 	<strong>#{componentNavigator.currentComponent.name}</strong>
 	<ul>  
 		<li><h:outputLink target="_blank" value="#{path.dgPath}#{componentNavigator.currentComponent != null ? componentNavigator.currentComponent.devGuideLocation : 'index.html'}">Developers Guide</h:outputLink></li>
-		<li class="tldDoc"><h:outputLink target="_blank" value="#{path.tldPath}#{componentNavigator.currentComponent !=null ? componentNavigator.currentComponent.tldDocLocation : 'jbossrichfaces/freezone/docs/tlddoc/overview-summary.html'}">Tld Documentation</h:outputLink></li>
-		<li  class="uiClass"><h:outputLink target="_blank" value="#{path.apiPath}#{componentNavigator.currentComponent !=null ? componentNavigator.currentComponent.javaDocLocation : 'jbossrichfaces/freezone/docs/apidoc/overview-summary.html'}">Component Class Documentation</h:outputLink></li>
+		<li class="tldDoc"><h:outputLink target="_blank" value="#{path.tldPath}#{componentNavigator.currentComponent !=null ? componentNavigator.currentComponent.tldDocLocation : ''}">Tld Documentation</h:outputLink></li>
+		<li  class="uiClass"><h:outputLink target="_blank" value="#{path.apiPath}#{componentNavigator.currentComponent !=null ? componentNavigator.currentComponent.javaDocLocation : ''}">Component Class Documentation</h:outputLink></li>
 	</ul>
 </rich:panel>
 </ui:composition>
