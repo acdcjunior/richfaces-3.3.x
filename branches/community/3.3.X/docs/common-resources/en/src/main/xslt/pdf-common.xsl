@@ -7,7 +7,7 @@
 		        exclude-result-prefixes="jbh">
 
 <xsl:import href="classpath:/xslt/org/jboss/pdf.xsl" />
-
+	
 <xsl:attribute-set name="book.titlepage.recto.style">
 	<xsl:attribute name="font-family">
 		<xsl:value-of select="$title.fontset"/>
@@ -75,6 +75,98 @@
 </xsl:template>
 
 
+	<xsl:attribute-set name="header.content.properties">
+		<xsl:attribute name="font-family">Helvetica</xsl:attribute>
+		<xsl:attribute name="font-size">9pt</xsl:attribute>
+		<xsl:attribute name="font-weight">bold</xsl:attribute>
+		
+	</xsl:attribute-set>
+	
+	<xsl:template name="header.content">  
+		<xsl:param name="pageclass" select="''"/>
+		<xsl:param name="sequence" select="''"/>
+		<xsl:param name="position" select="''"/>
+		<xsl:param name="gentext-key" select="''"/>
+		<fo:block> 
+		<!--	sequence can be odd, even, first, blank
+				position can be left, center, right-->
+			<xsl:choose>
+				
+				<xsl:when test="$sequence = 'odd' and $position = 'left'">
+					<xsl:apply-templates select="." 
+						mode="object.title.markup"/>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'odd' and $position = 'center'">
+					<xsl:call-template name="draft.text"/>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'odd' and $position = 'right'">
+					
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'even' and $position = 'left'">  
+					<xsl:apply-templates select="." 
+						mode="object.title.markup"/>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'even' and $position = 'center'">
+					<xsl:call-template name="draft.text"/>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'even' and $position = 'right'">
+					
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'first' and $position = 'left'">
+					<xsl:apply-templates select="." 
+						mode="object.title.markup"/>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'first' and $position = 'right'">
+					
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'first' and $position = 'center'"> 
+					<xsl:value-of 
+						select="ancestor-or-self::book/bookinfo/corpauthor"/>
+					
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'blank' and $position = 'left'">
+					<fo:page-number/>
+					
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'blank' and $position = 'center'">
+					<xsl:text>This page intentionally left blank</xsl:text>
+				</xsl:when>
+				
+				<xsl:when test="$sequence = 'blank' and $position = 'right'">
+				</xsl:when>
+				
+			</xsl:choose>
+		</fo:block>
+	</xsl:template>  
+	
+	<xsl:template name="footer.content">
+		<xsl:param name="pageclass" select="''"/>
+		<xsl:param name="sequence" select="''"/>
+		<xsl:param name="position" select="''"/>
+		<xsl:param name="gentext-key" select="''"/>
+		
+		<fo:block>
+			<!-- pageclass can be front, body, back -->
+			<!-- sequence can be odd, even, first, blank -->
+			<!-- position can be left, center, right -->
+			<xsl:choose>
+				<xsl:when test="($sequence = 'odd'or $sequence = 'even' or $sequence = 'blank' or $sequence = 'first') and $position = 'right'">
+					<fo:page-number/>
+				</xsl:when>
+			</xsl:choose>
+		</fo:block>
+	</xsl:template>
+	
    <!-- avoid page sequence  to generate blank pages after even page numbers -->
    
    <xsl:template name="force.page.count">
@@ -82,6 +174,7 @@
       <xsl:param name="master-reference" select="''"/>
       <xsl:text>no-force</xsl:text>
    </xsl:template>
+   
    
    <!-- adding corpauthor entry to the titlepage -->
    
@@ -167,4 +260,87 @@
          <xsl:apply-templates select="." mode="book.titlepage.recto.mode"/>
       </fo:block>
    </xsl:template>
+	
+	<!--#################################remove column-width unspecified  Warning########-->
+	<xsl:template name="generate.col">
+		<!-- generate the table-column for column countcol -->
+		<xsl:param name="countcol">1</xsl:param>
+		<xsl:param name="colspecs" select="./colspec"/>
+		<xsl:param name="count">1</xsl:param>
+		<xsl:param name="colnum">1</xsl:param>
+		
+		<xsl:choose>
+			<xsl:when test="$count>count($colspecs)">
+				<fo:table-column column-number="{$countcol}" column-width="proportional-column-width(1)">
+					<xsl:variable name="colwidth">
+						<xsl:call-template name="calc.column.width"/>
+					</xsl:variable>
+					<xsl:if test="$colwidth != 'proportional-column-width(1)'">
+						<xsl:attribute name="column-width">
+							<xsl:value-of select="$colwidth"/>
+						</xsl:attribute>
+					</xsl:if>
+				</fo:table-column>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="colspec" select="$colspecs[$count=position()]"/>
+				
+				<xsl:variable name="colspec.colnum">
+					<xsl:choose>
+						<xsl:when test="$colspec/@colnum">
+							<xsl:value-of select="$colspec/@colnum"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$colnum"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				
+				<xsl:variable name="colspec.colwidth">
+					<xsl:choose>
+						<xsl:when test="$colspec/@colwidth">
+							<xsl:value-of select="$colspec/@colwidth"/>
+						</xsl:when>
+						<xsl:otherwise>1*</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				
+				<xsl:choose>
+					<xsl:when test="$colspec.colnum=$countcol">
+						<fo:table-column column-number="{$countcol}" column-width="proportional-column-width(1)">
+							<xsl:variable name="colwidth">
+								<xsl:call-template name="calc.column.width">
+									<xsl:with-param name="colwidth">
+										<xsl:value-of select="$colspec.colwidth"/>
+									</xsl:with-param>
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:if test="$colwidth != 'proportional-column-width(1)'">
+								<xsl:attribute name="column-width">
+									<xsl:value-of select="$colwidth"/>
+								</xsl:attribute>
+							</xsl:if>
+						</fo:table-column>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="generate.col">
+							<xsl:with-param name="countcol" select="$countcol"/>
+							<xsl:with-param name="colspecs" select="$colspecs"/>
+							<xsl:with-param name="count" select="$count+1"/>
+							<xsl:with-param name="colnum">
+								<xsl:choose>
+									<xsl:when test="$colspec/@colnum">
+										<xsl:value-of select="$colspec/@colnum + 1"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="$colnum + 1"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:with-param>
+						</xsl:call-template>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 </xsl:stylesheet>
