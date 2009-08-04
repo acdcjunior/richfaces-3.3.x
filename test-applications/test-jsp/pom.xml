@@ -9,22 +9,20 @@
 	<groupId>org.richfaces.test-applications</groupId>
 	<artifactId>test-jsp</artifactId>
 	<packaging>war</packaging>
-	<name>RichFaces Test Application (JSP + MyFaces)</name>
+	<name>RichFaces Test Application (TEST-JSP)</name>
 	<build>
 		<finalName>richfaces-test-jsp</finalName>
 	</build>
 <dependencies>
 	<dependency>
-            <groupId>org.apache.myfaces.tomahawk</groupId>
-            <artifactId>tomahawk</artifactId>
-            <version>1.1.7</version>
-            <scope>runtime</scope>    
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>jstl</artifactId>
-                </exclusion>
-            </exclusions>    
-        </dependency>
+		<groupId>apache-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.0</version>   
+    </dependency>	
+	<dependency>
+		<groupId>myfaces</groupId>
+		<artifactId>myfaces-extensions</artifactId>
+		<version>1.0.9</version>
+	</dependency>
 </dependencies>
 </project>
