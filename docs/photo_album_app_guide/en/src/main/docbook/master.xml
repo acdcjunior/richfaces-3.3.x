@@ -22,6 +22,15 @@
 	<!ENTITY validators SYSTEM "includes/validators.xml">
 	<!ENTITY button SYSTEM "includes/button.xml">
 	<!ENTITY a4j_status SYSTEM "includes/a4j_status.xml">
+	
+	<!ENTITY cdkguide "../../cdkguide/html_single/index.html">
+	<!ENTITY devguide "../../devguide//html_single/index.html">
+	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
+	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
+	<!ENTITY realworld "../../realworld/html_single/index.html">
+	<!ENTITY tlddoc "../../tlddoc/html_single/index.html">
+	<!ENTITY apidoc "../../apidoc/html_single/index.html">
+	<!ENTITY apidoc_framework "../../apidoc_framework/html_single/index.html">
 
 ]>
 
