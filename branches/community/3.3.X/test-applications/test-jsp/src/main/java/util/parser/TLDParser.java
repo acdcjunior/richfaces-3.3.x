@@ -198,7 +198,11 @@ public class TLDParser {
 		int position;
 		try {
 			if ((position = getExtPath().indexOf('!')) != -1) {
-				temp = getExtPath().substring("jar:file:\\".length(), position);
+				if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
+					temp = getExtPath().substring("jar:file:\\".length(), position);
+				} else {
+					temp = "/"	+ getExtPath().substring("jar:file:/".length(),	position);
+				}
 			}
 			richfacesUI = new JarFile(temp);
 		} catch (IOException e) {
