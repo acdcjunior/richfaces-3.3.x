@@ -36,7 +36,7 @@
             <listitem>
             	<para>
             		<emphasis>Highly customizable look-and-feel</emphasis> - the <property>RichFaces</property> have special feature called 
-                  	<ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/ArchitectureOverview.html#Skinnability">Skinnability</ulink>.
+            	      <ulink url="&devguide;/#Skinnability">Skinnability</ulink>.
                 </para>
             </listitem>
       </itemizedlist>

@@ -41,6 +41,6 @@ generalFamilyFont=Arial, Verdana, sans-serif
 ...]]></programlisting> 
     
     <para>
-        You can find more information about the  Skinnability feature in  <ulink  url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/ArchitectureOverview.html#Skinnability">RichFaces Developer Guide</ulink>.
+        You can find more information about the  Skinnability feature in  <ulink  url="&devguide;/#Skinnability">RichFaces Developer Guide</ulink>.
     </para>
 </section>
