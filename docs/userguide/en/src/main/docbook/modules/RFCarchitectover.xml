@@ -2263,6 +2263,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Html Elements Skin Bindings for input, select, textarea, button, keygen,
 						isindex, legend </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2288,6 +2290,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Html Elements Skin Bindings for fieldset </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2305,6 +2309,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title>Html Elements Skin Bindings for hr</title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2322,6 +2328,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title>Html Elements Skin Bindings for a</title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2339,6 +2347,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Html Elements Skin Bindings for a:hover </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2356,6 +2366,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Html Elements Skin Bindings for a:visited </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2374,6 +2386,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Rich Elements Skin Bindings for .rich-input, .rich-select,
 						.rich-textarea, .rich-keygen, .rich-isindex, .rich-link </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2399,6 +2413,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-fieldset </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2416,6 +2432,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-hr </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2441,6 +2459,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-link </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2458,6 +2478,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-link:hover </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2475,6 +2497,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-link:visited </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2492,6 +2516,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-field </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2529,6 +2555,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-field-edit </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2558,6 +2586,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-field-error </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2600,6 +2630,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Rich Elements Skin Bindings for .rich-button, .rich-button-disabled,
 						.rich-button-over </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2649,6 +2681,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-button-press </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2666,6 +2700,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-container fieldset, .rich-fieldset </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2699,6 +2735,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-legend </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2728,6 +2766,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Rich Elements Skin Bindings for .rich-form </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS Properties</entry>
@@ -2754,6 +2794,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Html Elements Skin Bindings for input, select, textarea, button, keygen,
 						isindex </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2779,6 +2821,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Html Elements Skin Bindings for *|button </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2819,6 +2863,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 						button[type=submit], input[type=reset], input[type=submit],
 						input[type=button] </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2858,6 +2904,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Html Elements Skin Bindings for *|button[disabled], .rich-container
 						*|button[disabled], .rich-button-disabled </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2898,6 +2946,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 						.rich-container input[type=&quot;button&quot;][disabled],
 						.rich-input-button-disabled </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2935,6 +2985,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 						input[type=&quot;submit&quot;][disabled],
 						input[type=&quot;button&quot;][disabled] </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2960,6 +3012,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<table>
 					<title> Html Elements Skin Bindings for *|textarea </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -2999,6 +3053,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Html Elements Skin Bindings for textarea[type=textarea],
 						input[type=text], input[type=password], select </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -3038,6 +3094,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<title> Html Elements Skin Bindings for *|textarea[disabled], .rich-container
 						*|textarea[disabled] </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -3057,6 +3115,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 						input[type=&quot;text&quot;][disabled],
 						input[type=&quot;password&quot;][disabled] </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -3076,6 +3136,8 @@ onsubmit="if (mynosendfunct()==false){return false}"
 						input[type=&quot;text&quot;][disabled],
 						input[type=&quot;password&quot;][disabled] </title>
 					<tgroup cols="2">
+						<colspec colnum="1" colwidth="1*"/>
+						<colspec colnum="2" colwidth="3*"/>
 						<thead>
 							<row>
 								<entry>CSS properties</entry>
@@ -3531,8 +3593,7 @@ mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=
 						input[type=&quot;button&quot;]</code>. So, the CSS code should look like
 					this. </para>
 				<programlisting role="CSS"><![CDATA[
-button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&quot;submit&quot;], input[type=&quot;reset&quot;], input[type=&quot;submit&quot;], input[type=&quot;button&quot;] {
-	font-weight: bold;
+button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&quot;submit&quot;], input[type=&quot;reset&quot;], input[type=&quot;submit&quot;], input[type=&quot;button&quot;] { font-weight: bold;
 }]]></programlisting>
 				<para>All the changes that were planned to be preformed are done and now you can
 					proceed to building the new PlugnSkinDemo skin and import it into the project.
