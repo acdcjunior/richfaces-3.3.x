@@ -15,7 +15,7 @@
 		RichFaces has a number of predefined skins you could use wtih the <emphasis role="bold"><property>&lt;inputDate&gt;</property></emphasis> component.
 		But if you want to create your own skin, please, read carefully 
 		the <property>&quot;Skinnability&quot;</property> section of the 
-		<ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/ArchitectureOverview.html#Skinnability">RichFaces Developer Guide</ulink>. You could find all neccesary information about 
+		<ulink url="&devguide;/#Skinnability">RichFaces Developer Guide</ulink>. You could find all neccesary information about 
 		<property>Built-in skinnability in RichFaces</property>, <property>XCSS file format</property>, <property>Plug-n-Skin feature</property>, etc. there.
 	</para>
 	<para>

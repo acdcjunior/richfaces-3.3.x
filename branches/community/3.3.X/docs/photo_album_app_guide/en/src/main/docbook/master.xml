@@ -24,7 +24,7 @@
 	<!ENTITY a4j_status SYSTEM "includes/a4j_status.xml">
 	
 	<!ENTITY cdkguide "../../cdkguide/html_single/index.html">
-	<!ENTITY devguide "../../devguide//html_single/index.html">
+	<!ENTITY devguide "../../devguide/html_single/index.html">
 	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
 	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
 	<!ENTITY realworld "../../realworld/html_single/index.html">

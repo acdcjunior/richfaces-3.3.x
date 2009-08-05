@@ -70,6 +70,6 @@
 	</para>
 	<para>
 		
-		If you would like to get more details about the <emphasis role="bold"><property>&lt;a4j:status&gt;</property></emphasis> please visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/status.jsf?c=status">Live Demo</ulink> web page and <ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/status.html">RichFaces Developer Guide</ulink>.  
+		If you would like to get more details about the <emphasis role="bold"><property>&lt;a4j:status&gt;</property></emphasis> please visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/status.jsf?c=status">Live Demo</ulink> web page and <ulink url="&devguide;/#a4j_status">RichFaces Developer Guide</ulink>.  
 	</para>
 </section>
