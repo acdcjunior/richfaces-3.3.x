@@ -558,12 +558,12 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
                 >On RichFaces LiveDemo page </ulink> you can see how to configure filter for this framework in web.xml file
             in order to handle <emphasis role="bold">
                 <property>&lt;rich:fileUpload&gt;</property>
-            </emphasis> requests. </para>
+            </emphasis> requests. </para-->
         <para>To make <property>&lt;rich:fileUpload&gt;</property> component work properly
             with MyFaces extensions, the order in which filters are defined and mapped in web.xml,
             is important. See <ulink
-                url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#richfileUploadforMyFaces"
-                >corresponding FAQ chapter</ulink>. </para-->
+                url="http://www.jboss.org/community/docs/DOC-13537"
+                >corresponding FAQ chapter</ulink>. </para>
 
     </section>
     <!-- JavaScript API-->
