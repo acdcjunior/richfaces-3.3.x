@@ -62,7 +62,7 @@ public class AuctionDataModel extends SerializableDataModel {
 		int firstRow = ((SequenceRange)range).getFirstRow();
 		int numberOfRows = ((SequenceRange)range).getRows();
 		wrappedKeys = new ArrayList<Integer>();
-		for (AuctionItem item:dataProvider.getItemsByrange(new Integer(firstRow), numberOfRows, null, true)) {
+		for (AuctionItem item:getDataProvider().getItemsByrange(new Integer(firstRow), numberOfRows, null, true)) {
 			wrappedKeys.add(item.getPk());
 			wrappedData.put(item.getPk(), item);
 			visitor.process(context, item.getPk(), argument);
