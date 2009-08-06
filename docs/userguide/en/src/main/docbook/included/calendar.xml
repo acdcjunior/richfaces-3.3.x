@@ -96,7 +96,7 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                       <listitem>
                             <para>
                                   <code>ajax</code> — in this mode the <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> requests portions of data for element rendering from special Data Model.
-                                  The default calendar Data Model could be redefined with the help of <emphasis><property>dataModel</property></emphasis> attribute that points to the object that implements <code><ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/model/CalendarDataModel.html">CalendarDataModel</ulink></code> interface. 
+                                      The default calendar Data Model could be redefined with the help of <emphasis><property>dataModel</property></emphasis> attribute that points to the object that implements <code><ulink url="&apidoc_framework;/org/richfaces/model/CalendarDataModel.html">CalendarDataModel</ulink></code> interface. 
                                   If <emphasis><property>&quot;dataModel&quot;</property></emphasis> attribute has <emphasis><property>&quot;null&quot;</property></emphasis> value, data requests are not sent. 
                                   In this case the &quot;<code>ajax</code>&quot; mode is equal to the &quot;<code>client</code>&quot;. 
                             </para>
@@ -581,7 +581,7 @@ HtmlCalendar myCalendar = new HtmlCalendar();
                                         <code>RICH_CALENDAR_CANCEL_LABEL </code> there. </para>
                     <para>You could also pack <code>org.richfaces.renderkit.calendar</code>
                               <ulink
-                                        url="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/apidoc/org/richfaces/renderkit/CalendarRendererBase.html#CALENDAR_BUNDLE"
+                                        url="&apidoc;/org/richfaces/renderkit/CalendarRendererBase.html#CALENDAR_BUNDLE"
                                         >resource</ulink> bundle with your JARs defining the same
                               properties. </para>
                     <note>

@@ -87,7 +87,7 @@ ImplBean myListener = new ImplBean();
 
 <para>
       The <emphasis><property>&quot;type&quot;</property></emphasis> attribute defines the fully qualified Java class name for the listener. 
-      This Java class implements <code><ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/ajax4jsf/event/AjaxListener.html"><property>org.ajax4jsf.event.AjaxListener</property></ulink></code>interface, which is base interface for all listeners, capable for receiving Ajax events. 
+      This Java class implements <code><ulink url="&apidoc_framework;/org/ajax4jsf/event/AjaxListener.html"><property>org.ajax4jsf.event.AjaxListener</property></ulink></code>interface, which is base interface for all listeners, capable for receiving Ajax events. 
       The source of the event could be accessed using the <code><ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/EventObject.html"><property>java.util.EventObject.getSource()</property></ulink></code> call. 
 </para>
 

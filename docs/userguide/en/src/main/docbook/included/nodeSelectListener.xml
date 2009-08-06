@@ -76,7 +76,7 @@ ImplBean myListener = new ImplBean();
 </para>
 <para>
 Attribute <emphasis><property>&quot;type&quot;</property></emphasis> defines the fully qualified Java class name for listener.
-  This class should implement <ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/event/NodeSelectedListener.html">  <code>org.richfaces.event.NodeSelectedListener</code></ulink>.
+  This class should implement <ulink url="&apidoc_framework;/org/richfaces/event/NodeSelectedListener.html">  <code>org.richfaces.event.NodeSelectedListener</code></ulink>.
   interface</para>
 	
   <para>

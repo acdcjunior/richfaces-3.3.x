@@ -2662,7 +2662,7 @@ A4J.AJAX.onExpired = function(loc,expiredMsg){
 ...]]></programlisting>
 							<para>
 								For the detailed description see 
-								the <ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html_single/index.html#RequestErrorsAndSessionExpirationHandling">Request Errors and Session Expiration Handling</ulink> section of the Developer Guide.
+								the <ulink url="&devguide;/#RequestErrorsAndSessionExpirationHandling">Request Errors and Session Expiration Handling</ulink> section of the Developer Guide.
 							</para>
                     	</listitem>
                     </itemizedlist> 

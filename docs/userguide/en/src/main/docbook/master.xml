@@ -128,13 +128,13 @@
 	<!ENTITY rich_jQuery SYSTEM "../../../target/generated/rich_jQuery.xml">	
 	
 	<!ENTITY cdkguide "../../cdkguide/html_single/index.html">
-	<!ENTITY devguide "../../devguide//html_single/index.html">
+	<!ENTITY devguide "../../devguide/html_single/index.html">
 	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
 	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
 	<!ENTITY realworld "../../realworld/html_single/index.html">
-	<!ENTITY tlddoc "../../tlddoc/html_single/index.html">
-	<!ENTITY apidoc "../../apidoc/html_single/index.html">
-	<!ENTITY apidoc_framework "../../apidoc_framework/html_single/index.html">
+	<!ENTITY tlddoc "../../tlddoc/index.html">
+	<!ENTITY apidoc "../../apidoc/index.html">
+	<!ENTITY apidoc_framework "../../apidoc_framework/index.html">
 	
 ]>
 <book>
@@ -163,7 +163,7 @@
        </para>
 </abstract>
 <!--citebiblioid>
-<ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/pdf/richfaces-usersguide.pdf">PDF version</ulink>.
+<ulink url="../../devguide/en/pdf/richfaces-usersguide.pdf">PDF version</ulink>.
 </citebiblioid-->
 
  	</bookinfo>
