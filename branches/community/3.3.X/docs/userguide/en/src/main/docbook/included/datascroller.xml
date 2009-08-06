@@ -217,7 +217,7 @@ HtmlDatascroller myScroll = new HtmlDatascroller();
                                         <property>&lt;rich:datascroller&gt;</property>
                               </emphasis> page links the input field rerenders and current page
                               number changes. </para>
-                    <para> This is a result: </para>
+                    <para>The result should be like below: </para>
                     <figure>
                               <title>The <emphasis>
                                                   <property>&quot;page&quot;</property>
@@ -622,7 +622,7 @@ HtmlDatascroller myScroll = new HtmlDatascroller();
                                                   <row>
                                                   <entry>rich-dtascroller-table</entry>
                                                   <entry>Defines styles for a wrapper
-                                                  table element of a
+                                                  	&lt;table&gt; element of a
                                                   datascroller</entry>
                                                   </row>
                                                   <row>
@@ -763,7 +763,7 @@ HtmlDatascroller myScroll = new HtmlDatascroller();
                                         <property>&lt;rich:dataTable&gt;</property>
                               </emphasis> and <emphasis role="bold">
                                         <property>&lt;rich:datascroller&gt;</property>
-                              </emphasis> in a context of Extended Data Model see on the<ulink
+                              </emphasis> in a context of Extended Data Model see on the <ulink
                                         url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=115636"
                                         >RichFaces Users Forum</ulink>.</para>
           </section>
