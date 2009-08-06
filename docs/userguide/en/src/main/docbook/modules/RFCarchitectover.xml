@@ -137,14 +137,13 @@
 		</itemizedlist>
 		<para> For more information about framework and libraries loading see the following section
 			in the <ulink
-				url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#d0e581"
-				>FAQ</ulink>. </para>
+				url="http://www.jboss.org/community/wiki/Commonclientside#resourcesfromjars">FAQ</ulink>. </para>
 		<note>
 			<title>Note:</title>
 			<para> In order to prevent JavaScript versions conflict you should use only one version
 				of the framework or library. You could find more information about libraries
 				exclusion in the <ulink
-					url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#d0e1546"
+					url="http://www.jboss.org/community/wiki/Commonclientside#jsconflicts"
 					>FAQ</ulink>. </para>
 		</note>
 	</section>

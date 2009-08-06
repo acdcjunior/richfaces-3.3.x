@@ -551,7 +551,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
 
 
 
-        <para> The <emphasis role="bold">
+        <!--para> The <emphasis role="bold">
                 <property>&lt;rich:fileUpload&gt;</property>
             </emphasis> component could work together with Seam framework. <ulink
                 url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#fileUploadConf"
@@ -563,7 +563,7 @@ HtmlFileUpload myFileUpload = new HtmlFileUpload();
             with MyFaces extensions, the order in which filters are defined and mapped in web.xml,
             is important. See <ulink
                 url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#richfileUploadforMyFaces"
-                >corresponding FAQ chapter</ulink>. </para>
+                >corresponding FAQ chapter</ulink>. </para-->
 
     </section>
     <!-- JavaScript API-->

@@ -857,7 +857,7 @@ HtmlModalPanel myPanel = new HtmlModalPanel();
                                                   <property>&lt;rich:modalPanel&gt;</property>
                                                   </emphasis> component (the same could also be
                                                   found in the &quot;<ulink
-                                                  url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/faq/faq.html#Organizewizards"
+                                                  url="http://www.jboss.org/community/wiki/PanelsandOutput#Organizewizards"
                                                   > How to organize wizards using the
                                                   &lt;rich:modalPanel&gt;
                                                   component?</ulink>&quot; chapter of RichFaces
