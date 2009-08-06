@@ -105,7 +105,7 @@ HtmlTree myTree = new HtmlTree();
                                         <property>&lt;rich:tree&gt;</property>
                               </emphasis> component interacts with data model via
                                         <code>&quot;TreeNode&quot;</code> interface (<ulink
-                                        url="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/model/TreeNode.html"
+                                        url="&apidoc_framework;/org/richfaces/model/TreeNode.html"
                                         > org.richfaces.model.TreeNode </ulink>) that is used for
                               the <emphasis role="bold">
                                         <property>&lt;rich:tree&gt;</property>
@@ -114,7 +114,7 @@ HtmlTree myTree = new HtmlTree();
                                         <code>&quot;TreeNode&quot;</code> interface or use a
                               default one, which is defined with a default class
                                         <code>&quot;TreeNodeImpl&quot;</code> (<ulink
-                                        url="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/model/TreeNodeImpl.html"
+                                        url="&apidoc_framework;/org/richfaces/model/TreeNodeImpl.html"
                                         > org.richfaces.model.TreeNodeImpl </ulink>). </para>
                     <para> The <emphasis>
                                         <property>&quot;value&quot;</property>
@@ -186,11 +186,11 @@ for (int i = 0; i < kickRadioFeed.length; i++){
                               approach implies using a
                                         <code>&quot;XmlTreeDataBuilder&quot;</code> class
                                         (<ulink
-                                        url="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/apidoc/org/richfaces/component/xml/XmlTreeDataBuilder.html"
+                                        url="&apidoc;/org/richfaces/component/xml/XmlTreeDataBuilder.html"
                                         > org.richfaces.component.xml.XmlTreeDataBuilder </ulink>)
                               that allows to transform XML into structures of objects containing
                                         <code>&quot;XmlNodeData&quot;</code> (<ulink
-                                        url="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/component/xml/XmlNodeData.html"
+                                        url="&apidoc_framework;/org/richfaces/component/xml/XmlNodeData.html"
                                         > org.richfaces.component.xml.XmlNodeData </ulink>)
                               instances as data, which could be represented by the <emphasis
                                         role="bold">

@@ -103,7 +103,7 @@ ImplBean myListener = new ImplBean();
 			defines the fully qualified Java class name for the
 			listener. This class should implement
 			<ulink
-			url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/event/DropListener.html">
+			url="&apidoc_framework;/org/richfaces/event/DropListener.html">
 				<code>org.richfaces.event.DropListener</code>
 			</ulink>
 			interface.

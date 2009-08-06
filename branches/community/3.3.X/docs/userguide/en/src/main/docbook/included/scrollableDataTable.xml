@@ -150,7 +150,7 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                                         <property>one and multi-selection rows mode</property>.</para>
                     <para>This attribute is a reference to object to the instance of
                               
-                              <ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/apidoc_framework/org/richfaces/model/selection/Selection.html">     <code>org.richfaces.model.selection.Selection</code></ulink>.
+                              <ulink url="&apidoc_framework;/org/richfaces/model/selection/Selection.html">     <code>org.richfaces.model.selection.Selection</code></ulink>.
                               interface
                     
                                                                   

@@ -28,9 +28,9 @@
 	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
 	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
 	<!ENTITY realworld "../../realworld/html_single/index.html">
-	<!ENTITY tlddoc "../../tlddoc/html_single/index.html">
-	<!ENTITY apidoc "../../apidoc/html_single/index.html">
-	<!ENTITY apidoc_framework "../../apidoc_framework/html_single/index.html">
+	<!ENTITY tlddoc "../../tlddoc/index.html">
+	<!ENTITY apidoc "../../apidoc/index.html">
+	<!ENTITY apidoc_framework "../../apidoc_framework/index.html">
 
 ]>
 
@@ -76,7 +76,7 @@
             <!--<abstract>
                   <title/>
                   <para>
-                        <ulink url="http://www.jboss.org/file-access/default/members/jbossrichfaces/freezone/docs/migrationguide/en/pdf/richfaces_migration_guide.pdf">PDF version</ulink>
+                  <ulink url="../../migrationguide/pdf/richfaces_migration_guide.pdf">PDF version</ulink>
                   </para>
             </abstract> -->
             
