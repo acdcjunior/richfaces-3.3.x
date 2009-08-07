@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section id="skinnability" xreflabel="skinnability">
 <?dbhtml filename="skinnability.html"?>
-	<title>Skinnability TBR</title>
+	<title>Skinnability</title>
     <para>
        
         The Photo Album application employs such feature of RichFaces framework as skinnability. If you have a look at the web.xml you will see that the <code>
