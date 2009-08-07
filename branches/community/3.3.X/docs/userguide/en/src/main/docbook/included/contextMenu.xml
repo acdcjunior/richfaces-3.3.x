@@ -42,9 +42,7 @@
     <section>
         <title>Creating the Component with a Page Tag</title>
         <para>To create the simplest variant on a page use the following syntax:</para>
-        <programlisting role="XML"><![CDATA[...
-<rich:contextMenu event="oncontextmenu" attached="true">
-...]]></programlisting>
+        <programlisting role="XML"><![CDATA[<rich:contextMenu />]]></programlisting>
     </section>
     <section>
 
@@ -68,33 +66,20 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
             </emphasis> event by default to call a context menu by clicking on the right mouse
             button.</para>
 
-        <para><property>
-                <link linkend="menuGroup">&lt;rich:menuGroup&gt;</link>
-            </property>, <property>
-                <link linkend="menuItem">&lt;rich:menuItem&gt;</link>
-            </property> and <property>
-                <link linkend="menuSeparator">&lt;rich:menuSeparator&gt;</link>
-            </property> components are used as nested elements for <emphasis role="bold">
-                <property>&lt;rich:contextMenu&gt;</property>
-            </emphasis>in the same way as for <emphasis role="bold">
-                <property>&lt;rich:dropDownMenu&gt;</property>
-            </emphasis>. </para>
-			<para>
-        		By default, the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> completely disables
-        		right mouse click on a page in the context menu area only. 
-        		But if you want to disable browser&apos;s context menu completely you should set the  
-        		<emphasis><property>&quot;disableDefaultMenu&quot;</property></emphasis> attribute value to &quot;true&quot;.     
-			</para>
-        <para>If <emphasis><property>&quot;attached&quot;</property></emphasis> value is &quot;true&quot; (default value), 
-		component is attached to the parent component or to the component, which 
-		<emphasis><property>&quot;id&quot;</property></emphasis> is specified in the 
-		<emphasis><property>&quot;attachTo&quot;</property></emphasis> attribute. 
-		</para>
         <para>
-            <emphasis role="bold">Example:</emphasis>
+              <property><link linkend="menuGroup">&lt;rich:menuGroup&gt;</link></property>, <property><link linkend="menuItem">&lt;rich:menuItem&gt;</link></property> and <property><link linkend="menuSeparator">&lt;rich:menuSeparator&gt;</link></property> components 
+              can be used as nested elements for <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis>in the same way as for <emphasis role="bold"><property>&lt;rich:dropDownMenu&gt;</property></emphasis>.
         </para>
-        <programlisting role="XML"><![CDATA[...
-<rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none">
+          <para>
+                By default, the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> disables right mouse click on a page in the context menu area only. 
+                But if you want to disable browser&apos;s context menu completely you should set the <emphasis><property>&quot;disableDefaultMenu&quot;</property></emphasis> attribute value to &quot;true&quot;.
+          </para>
+          <para>
+                If <emphasis><property>&quot;attached&quot;</property></emphasis> value is &quot;true&quot; (default value), component is attached to the parent component or to the component, 
+                which <emphasis><property>&quot;id&quot;</property></emphasis> is specified in the <emphasis><property>&quot;attachTo&quot;</property></emphasis> attribute:
+          </para>
+
+          <programlisting role="XML"><![CDATA[<rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none">
       <rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/>
       <rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/>
 </rich:contextMenu>
@@ -107,13 +92,11 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
       <h:panelGroup id="picture1">
             <h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/>
        </h:panelGroup>
-</h:panelGrid>
-...]]></programlisting>
+</h:panelGrid>]]></programlisting>
         <para>The <code>&quot;enlarge()&quot;</code> and
                 <code>&quot;decrease()&quot;</code> functions definition is placed
             below.</para>
-        <programlisting role="JAVA"><![CDATA[...
-<script type="text/javascript">
+        <programlisting role="JAVA"><![CDATA[<script type="text/javascript">
 		function enlarge(){
        			document.getElementById('pic').width=document.getElementById('pic').width*1.1;
                document.getElementById('pic').height=document.getElementById('pic').height*1.1;
@@ -122,8 +105,7 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
        			document.getElementById('pic').width=document.getElementById('pic').width*0.9;
                document.getElementById('pic').height=document.getElementById('pic').height*0.9;
       	}
-</script>
-...]]></programlisting>
+</script>]]></programlisting>
 
         <para>In the example a picture zooming possibility with <emphasis role="bold">
                 <property>&lt;rich:contextMenu&gt;</property>
@@ -262,23 +244,19 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
 
         <itemizedlist>
             <listitem>
-                <para><code>Server</code> (default)</para>
+                  <para><code>Server</code> — default value, uses regular form submition request;</para>
             </listitem>
         </itemizedlist>
 
-        <para>Regular form submition request is used</para>
-
         <itemizedlist>
             <listitem>
-                <para><code>Ajax</code></para>
+                  <para><code>Ajax</code> — Ajax submission is used for switching;</para>
             </listitem>
         </itemizedlist>
 
-        <para>Ajax submission is used for switching</para>
-
         <itemizedlist>
             <listitem>
-                <para><code>None</code></para>
+                  <para><code>None</code> — neither <code>Server</code> nor <code>Ajax</code> is used.</para>
             </listitem>
         </itemizedlist>
 
@@ -575,9 +553,6 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
         </emphasis> components on a page using CSS, it&apos;s enough to create classes with the
             same names (possible classes could be found in the tables <link linkend="cMC"> above</link>) and define necessary properties in them. </para>
         
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
         <programlisting role="CSS"><![CDATA[...
 .rich-menu-item{
         font-style:italic;
@@ -601,9 +576,6 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
             ><property>&lt;rich:contextMenu&gt;</property></emphasis> component. In this case you should create own style classes and use them in corresponding <emphasis role="bold"
                 ><property>&lt;rich:contextMenu&gt;</property></emphasis> <emphasis><property>styleClass</property></emphasis> attributes. An example is placed below:</para>
         
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
         <programlisting role="CSS"><![CDATA[...
 .myClass{
         font-weight:bold;
@@ -611,10 +583,7 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
 ...]]></programlisting>  
         <para>The <emphasis><property>&quot;rowClasses&quot;</property></emphasis> attribute for <emphasis role="bold"
             ><property>&lt;h:panelGrid&gt; </property></emphasis> is defined as it&apos;s shown in the example below:</para>
-        
-        <para>
-            <emphasis role="bold">Example:</emphasis>
-        </para>
+ 
         <programlisting role="XML"><![CDATA[<h:panelGrid ... rowClasses="myClass"/>
 ]]></programlisting>    
         
@@ -638,7 +607,7 @@ html.ContextMenu myContextMenu = new html.ContextMenu();
     <section>
         <title>Relevant Resources Links</title>
         <para>
-              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/contextMenu.jsf?c=contextMenu">ContextMenu page</ulink> at RichFaces LiveDemo fro examples of component usage and their sources. 
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/contextMenu.jsf?c=contextMenu">ContextMenu page</ulink> at RichFaces LiveDemo for examples of component usage and their sources. 
         </para>
     </section>
 
