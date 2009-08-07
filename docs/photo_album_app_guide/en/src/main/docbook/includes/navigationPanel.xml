@@ -4,7 +4,7 @@
             <title>Navigation tree</title>
         		<para>
                         The <emphasis role="bold"><property>&lt;rich:tree&gt;</property></emphasis> component takes one of the main places  
-                        in the <property>Photo Album</property> and is tightly bounded with the application logic. 
+                        in the <property>Photo Album</property> and is tightly bound with the application logic. 
 						It helps to represent 
                         and implement inherently the &quot;Shelves - Albums&quot; hierarchy. 
                         Shelf  is the highest possible level in the tree hierarchy, that 
