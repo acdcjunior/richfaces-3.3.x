@@ -34,7 +34,7 @@
 	<!ENTITY realworld "../../realworld/html_single/index.html">
 	<!ENTITY tlddoc "../../tlddoc/index.html">
 	<!ENTITY apidoc "../../apidoc/index.html">
-	<!ENTITY apidoc_framework "../../apidoc_framework/index.html"
+	<!ENTITY apidoc_framework "../../apidoc_framework/index.html">
 	
 ]>
 <book>
