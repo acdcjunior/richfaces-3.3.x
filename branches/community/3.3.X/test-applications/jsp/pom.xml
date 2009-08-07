@@ -13,16 +13,18 @@
 	<build>
 		<finalName>richfaces-test-jsp</finalName>
 	</build>
-<dependencies>
+<dependencies>	
 	<dependency>
-		<groupId>apache-fileupload</groupId>
-		<artifactId>commons-fileupload</artifactId>
-		<version>1.0</version>   
-    </dependency>	
+		<groupId>xml-apis</groupId> 
+ 		<artifactId>xml-apis</artifactId> 
+		<version>1.0.b2</version> 
+		<scope>provided</scope> 
+	</dependency>
 	<dependency>
-		<groupId>myfaces</groupId>
-		<artifactId>myfaces-extensions</artifactId>
-		<version>1.0.9</version>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope> 
 	</dependency>
 </dependencies>
 </project>
