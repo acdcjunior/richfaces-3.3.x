@@ -77,8 +77,8 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                               </emphasis> also has optional footer and header that could be
                               implemented using the corresponding facets. Columns of the table are
                               optionally resizable. Resizing is available using "drag and drop" of
-                              the column vertical borders. There is possibility to expand or
-                              collapse the columns through JS API on the client side. You can define
+                              the column vertical borders. <!--There is possibility to expand or
+                              collapse the columns through JS API on the client side. -->You can define
                               the number of the fixed columns from the left side using attribute <emphasis>
                                         <property>&quot;frozenColCount&quot;</property>
                               </emphasis> that is not scrolled via horizontal scroll. </para>
@@ -103,14 +103,14 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                               </itemizedlist>
                     
 
-                    <para> The columns provides the possibility of expanding/collapsing on the
+                    <!--para> The columns provides the possibility of expanding/collapsing on the
                               client side through the next JS API:</para> <itemizedlist>
                                         <listitem>
                                                   <para><code>collapse(columnId)</code> - Performs
                                                   the collapse action for the column with
                                                   the corresponding id</para>
                                         </listitem>
-                              </itemizedlist> 
+                              </itemizedlist--> 
                               <para> It&apos;s possible to sort the table content after
                                         clicks on the header. The feature is optional (to disable it, use attribute sortable on rich:column ). Every column should be
                               pointed to the comparator method that is used for sorting the table.
@@ -296,7 +296,7 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
           </section>
 
 
-          <section>
+          <!--section>
                     <title>JavaScript API</title>
                     <table>
                               <title>JavaScript API</title>
@@ -324,7 +324,7 @@ HtmlScrollableDataTable myScrollableDataTable = new HtmlScrollableDataTable();
                               </tgroup>
                     </table>
 
-          </section>
+          </section-->
 
           <section>
                     <title>Facets</title>
