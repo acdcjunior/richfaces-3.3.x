@@ -21,7 +21,7 @@
 		<rich:messages id="messagesID" showDetail="true" styleClass="error" />
 
 		<a4j:outputPanel id="componentID" layout="block">
-			<jsp:include page="#{pageContent.currentComponent}" /></a4j:outputPanel>
+			<jsp:include page="${pageContent.currentComponent}" /></a4j:outputPanel>
 
 		<h:panelGrid columns="4" border="1">
 			<a4j:commandLink value="ManualGeneralAttribute" reRender="testPageID"
@@ -47,7 +47,7 @@
 		</h:panelGrid>
 
 		<a4j:outputPanel id="testPageID" layout="block"><jsp:include
-				page="#{pageContent.currentTestPage}" /></a4j:outputPanel>
+				page="${pageContent.currentTestPage}" /></a4j:outputPanel>
 	</h:form>
 	</body>
 	</html>

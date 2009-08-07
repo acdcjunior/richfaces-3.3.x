@@ -29,7 +29,7 @@
 				startStyle="color: red;"></a4j:status>
 			<a4j:outputPanel id="currentComponentInsideModalPanelID"
 				layout="block">
-				<jsp:include page="#{pageContent.currentComponent}" />
+				<jsp:include page="${pageContent.currentComponent}" />
 			</a4j:outputPanel>
 			<a4j:commandButton reRender="currentComponentInsideModalPanelID"
 				value="reRender"></a4j:commandButton>
