@@ -7,12 +7,12 @@
                   
             </keywordset>
       </chapterinfo>
-      <title>Application Overview</title>
+      <title>Application Overview TBR</title>
       <section id="pageFlows">
       	<title>Page flows</title>
         <para>
             
-            The page flow of the application is illustrated on the diagram.
+            The page flow of the application is illustrated in the diagram.
         </para>
         <figure>
           <title>Page Flow diagram</title>
@@ -31,9 +31,8 @@
           <section>
             <title>Registering</title>
             <para>
-              Registering in is basically the first step a user takes in the application. Have a look at a piece of code from <code>\includes\index\</code>
-            </para>
-            
+              Registering in is basically the first step a user takes in the application if he/she wants to have access to all features of the application. Have a look at a piece of code from <code>\includes\index\index.xhtml</code>:
+            </para>         
             <programlisting role="XML"><![CDATA[...
 <h:panelGroup rendered="#{!identity.loggedIn}"	styleClass="top-right-bottom-menu-item-link" layout="block">
   <h:form style="margin: 0px">
@@ -41,27 +40,36 @@
   </h:form>
 </h:panelGroup>
 ...]]></programlisting> 
-            <para>When the button is hit the <code>goToRegister</code> method is evoked and the <code>START_REGISTER_EVENT</code> is raised. These action display the registration form that is included from <code>\includes\register.xhtml</code>. </para>
+            <para>When the button is hit the <code>goToRegister</code> method of the <code>Authenticator</code> class is invoked and the <code>START_REGISTER_EVENT</code> is raised. These action display the registration form that is included from <code>\includes\register.xhtml</code>. </para>
             
-            
+                        
             <para>The <emphasis role="bold"><property>&lt;a4j:commandLink&gt;</property></emphasis> displays the link to the registration form and invokes the  <code>goToRegister</code> method.
             </para>
-            <para>When all fields are filled out with correct values the <code>register(user)</code> is triggered and a new user is set. </para>
+            <para>When all fields are filled out with correct values the <code>authenticator.register(user)</code> is triggered and a new user object is declared. </para>
           </section>
           
           <section>
             <title>Navigation Between Pages</title>
             <para>
-  Technically, user do not browse between pages of the application: every content page is included into the content area of <code>index.xhtml</code> file.
+  Technically, user does not browse between pages of the application: every content page is included into the content area of <code>index.xhtml</code> file after a certain action performed by user.
             </para>
             <programlisting role="XML"><![CDATA[...
 <h:panelGroup styleClass="content_box" layout="block">
   <ui:include src="#{model.mainArea.template}" />
 </h:panelGroup>
 ...]]></programlisting> 
+           <figure>
+             <title>Content Area</title>
+             <mediaobject>
+               <imageobject>
+                 <imagedata fileref="images/contentArea.png"/>
+               </imageobject>
+             </mediaobject>
+           </figure> 
+            
             <para>
               
-              The <code>NavigationEnum</code> class  encapsulated all possible states, that can be applied to content area (&quot;mainArea&quot;)  on the page.
+              The <code>NavigationEnum</code> enumeration  encapsulated all possible states, that can be applied to content area (&quot;mainArea&quot;)  on the page.
               
             </para>
             
@@ -89,12 +97,14 @@
 ...
 }
 ]]></programlisting> 
+            
             <para>
               
               This class specifies which file is included depending on some user action.     
-              The template to be loaded is identified according to some condition in a Controller (<code>Controllor.java</code>) method and is saved to the Model (<code>Model.java</code>). During <code>index.xhtml</code> page rendering the value is taken from the Model to define what should be rendered to the page.
-               </para>
-          </section>
+              The template to be loaded is identified according to some condition  in the Controller
+              (<code>Controllor.java</code>) class and is saved to the Model (<code>Model.java</code>). During <code>index.xhtml</code> page rendering the value is taken from the Model to define what should be rendered to the page.
+            </para>
+            </section>
         
       </section>
       <section id="dataModel">
