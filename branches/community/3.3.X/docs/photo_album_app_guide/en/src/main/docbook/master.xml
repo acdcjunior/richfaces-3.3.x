@@ -14,7 +14,6 @@
 	<!ENTITY shelfView SYSTEM "includes/shelfView.xml">
 	<!ENTITY albumView SYSTEM "includes/albumView.xml">
 	<!ENTITY errorsReports SYSTEM "includes/errorsReports.xml">
-	<!ENTITY userPreferencesView SYSTEM "includes/userPreferencesView.xml">
 	<!ENTITY imageView SYSTEM "includes/imageView.xml">
 	<!ENTITY contextMenu SYSTEM "includes/contextMenu.xml">
 	<!ENTITY tooltips SYSTEM "includes/tooltips.xml">
