@@ -12,7 +12,7 @@
             <title>Environment Configuration</title>
             <para>
                   In order to download, build, modify, and deploy the Photo Album application 
-                  you need the following installed and configured: 
+                  you need to have the following installed and configured: 
             </para>
             <itemizedlist>
                   <listitem>
@@ -67,7 +67,7 @@
                   </listitem>
                   <listitem>
                   	<para>
-                  		<emphasis>Import the project into your IDE</emphasis>. 
+                  		<emphasis>Import the project into Eclipse IDE</emphasis>. 
                   		You can just deploy Photo Album application onto the server, but
                   		the convenient way is to import the project into your IDE. 
                         We recommend Eclipse with JBoss Tools since this bundle is more preferable to 
@@ -128,11 +128,11 @@ mvn clean install -Plivedemo
                   </tip>
       </section>
       <section>
-            <title>Running Functional(Selenium) Tests</title>
+            <title>Running Functional(Selenium) Tests TBR</title>
             <para>
-                  Before starting Selenium test please make sure that you have Firefox browser installed on your local machine and 
-                 since the Photo Album application is designed to be deployed and run on JBoss Application server,
-                 so please make sure that the &lt;jboss.installer.url&gt; property of the project pom.xml (<code>examples/photoalbum/</code>) points to a existing JBoss Application server copy.
+                  Before starting Selenium test please make sure that you have Firefox browser installed on your local machine, as
+                  the Photo Album application is designed to be deployed and run on JBoss Application server,
+                 so please make sure that the &lt;jboss.installer.url&gt; property of the project pom.xml (<code>examples/photoalbum/</code>) points to an existing JBoss Application server copy.
             </para>
             
             <para>
@@ -156,7 +156,7 @@ mvn clean integration-test
       <section>
             <title>Context Help</title>
             <para>
-               The Photo Album appellation was developed in the first place to demonstrate the mighty power of RichFaces thus most of UI elements in the application has a context help article that tells how a particular element works, providing technical details about it.
+               The Photo Album application was developed in the first place to demonstrate the mighty power of RichFaces thus most of UI elements in the application has a context help article that tells how a particular element works, providing technical details about it.
                A context help article is displayed when you click on the question mark icon ( 
                   <inlinemediaobject>  
                              <imageobject>
