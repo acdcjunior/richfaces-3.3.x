@@ -68,6 +68,10 @@
 		</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<context-param>
+		<param-name>facelets.LIBRARIES</param-name>
+		<param-value>/WEB-INF/myTags.taglib.xml</param-value>
+	</context-param>
 	<filter>
 		<display-name>Ajax4jsf Filter</display-name>
 		<filter-name>ajax4jsf</filter-name>
@@ -88,6 +92,12 @@
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
+
+	<listener>
+		<listener-class>
+			com.sun.faces.config.ConfigureListener
+		</listener-class>
+	</listener>
 
 	<session-config>
 		<session-timeout>500</session-timeout>
