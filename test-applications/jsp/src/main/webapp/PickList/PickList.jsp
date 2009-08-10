@@ -3,7 +3,8 @@
 <%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
 <%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
 <f:subview id="pickListSubviewID">
-	<rich:pickList id="pickListID" value="#{pickList.arrValue}"
+	<rich:pickList id="pickListID" 
+        value="#{pickList.value}"
 		showButtonsLabel="#{pickList.showButtonLabels}"
 		valueChangeListener="#{pickList.valueChangeListener}"
 		controlClass="#{style.controlClass}" 
@@ -40,7 +41,7 @@
 		<f:selectItems value="#{pickList.data}"/>
 	</rich:pickList>
 	<h:panelGrid columns="2">
-		<a4j:commandButton value="refresh" reRender="pickListvalueCLID"></a4j:commandButton>
+		<a4j:commandButton value="refresh" reRender="pickListvalueCLID" ></a4j:commandButton>
 		<h:outputText id="pickListvalueCLID" value="#{pickList.valueCL}"></h:outputText>
 	</h:panelGrid>
 </f:subview>
