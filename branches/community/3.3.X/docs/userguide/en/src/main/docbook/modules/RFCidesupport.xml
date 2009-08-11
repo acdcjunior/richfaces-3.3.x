@@ -17,7 +17,7 @@
 	<para> 
 		RichFaces support is implemented in 
 		<ulink url="http://www.redhat.com/developers/rhds/index.html">JBoss Developer Studio 1.0.0 GA</ulink> and in 
-		<ulink url="http://www.jboss.org/tools/index.html">Jboss Tools</ulink>. JBoss Developer Studio is a  fully packaged
+		<ulink url="http://jboss.org/tools">Jboss Tools</ulink>. JBoss Developer Studio is a  fully packaged
 		<property>IDE</property> that provides full support for Java Server Faces, RichFaces, Facelets, Struts and other Web technologies. 
 		In addition to this, it seamlessly combines visual and source-oriented development approaches. 
 		One of the special support feature for RichFaces is that it is available as project &quot;capabilitiy&quot; 
