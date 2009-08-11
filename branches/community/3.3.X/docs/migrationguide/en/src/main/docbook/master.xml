@@ -28,7 +28,7 @@
 	<!ENTITY dataTableAjax SYSTEM "included/dataTableAjax.xml">
 	
 	<!ENTITY cdkguide "../../cdkguide/html_single/index.html">
-	<!ENTITY devguide "../../devguide//html_single/index.html">
+	<!ENTITY devguide "../../devguide/html_single/index.html">
 	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
 	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
 	<!ENTITY realworld "../../realworld/html_single/index.html">
