@@ -43,15 +43,15 @@
 
 	<h:panelGrid id="richGridID" columns="1" width="100%">
 		<h:panelGroup rendered="#{option.reComponent}">
-			<ui:include src="#{richBean.pathComponent}"/>
+			<ui:include src="${richBean.pathComponent}"/>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{option.reStraightforward}">
-			<ui:include src="#{richBean.pathStraightforward}" />
+			<ui:include src="${richBean.pathStraightforward}" />
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{option.reProperty}">
-			<ui:include src="#{richBean.pathProperty}" />
+			<ui:include src="${richBean.pathProperty}" />
 		</h:panelGroup>
 		<a4j:log popup="false" rendered="#{option.log}"></a4j:log>
 	</h:panelGrid>
