@@ -40,7 +40,7 @@
 					<groupId>javax.el</groupId>
 				</exclusion>
 				<exclusion>
-					<groupId>org.jboss.seam</groupId>
+					<groupId>org.jboss.el</groupId>
 					<artifactId>jboss-el</artifactId>
 				</exclusion>
 				<exclusion>
@@ -118,16 +118,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.jboss.seam</groupId>
+			<groupId>org.jboss.el</groupId>
 			<artifactId>jboss-el</artifactId>
-			<version>2.0.0.GA</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>el-api</artifactId>
-					<groupId>javax.el</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>		
+			<version>2.0.2.CR1</version>
+		</dependency>	
 	</dependencies>
 	<build>
 		<finalName>${projectName}-ear-1.0-SNAPSHOT</finalName>

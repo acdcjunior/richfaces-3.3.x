@@ -13,7 +13,7 @@
 		<jbossDownloadURL>http://downloads.sourceforge.net/jboss/jboss-4.2.2.GA.zip</jbossDownloadURL>
 		<jbossDeployDir>jboss-4.2.2.GA/jboss-4.2.2.GA/server/default/</jbossDeployDir>
 		<droolsVersion>4.0.0</droolsVersion>
-		<faceletsVersion>1.1.14</faceletsVersion>
+		<faceletsVersion>1.1.15.B1</faceletsVersion>
 		<installDir>E:/apps/jboss</installDir>
 	</properties>
     <repositories>
