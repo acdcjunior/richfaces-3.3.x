@@ -1164,107 +1164,87 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
   
                     
                     
-                    </section>
-          <section id="EditorDefinitionofCustomStyleSelectors">
-                    <title>Definition of Custom Style Selectors</title>
+          </section>
+      
+      <section id="EditorDefinitionofCustomStyleSelectors">
+            <title>Definition of Custom Style Selectors</title>
             
-                              <para>On the screenshot there are CSS selectors  that define styles for component elements.</para>
-                              
-                              <figure>
+            <para>On the screenshot there are CSS selectors  that define styles for component elements.</para>
+            
+            <figure>
                                         <title>Classes names</title>
                                         <mediaobject>
                                                   <imageobject>
                                                             <imagedata fileref="images/editor3.png"/>
                                                   </imageobject>
                                         </mediaobject>
-                              </figure>
+            </figure>
+            
+            <table>
+                  <title>CSS selectors for the layout of the editor</title>
+                  <tgroup cols="4">
+                        <thead>
+                              <row>
+                                    <entry>Class name (selector)</entry>
+                                    <entry>Description</entry>
+                                    <entry>Skin Parameter</entry>
+                                    <entry>CSS property</entry>
+                              </row>
+                        </thead>
+                        <tbody>                                                  
+                              <row>
+                                    <entry>.richfacesSkin .mceButton</entry>
+                                    <entry>Defines styles for the buttons</entry> 
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceButtonDisabled .mceIcon </entry>
+                                    <entry>Defines styles for the icons</entry>
+                              </row>
+                              <row> 
+                                    <entry>.richfacesSkin .mceIframeContainer</entry>
+                                    <entry>Defines styles for the container</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceListBox</entry>
+                                    <entry>Defines styles for the list box</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceMenu</entry>
+                                    <entry>Defines styles for the menus</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
+                                    <entry>Defines styles for the active menu items</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
+                                    <entry>Defines styles for the active menu items</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceSeparator</entry>
+                                    <entry>Defines styles for the buttons separator</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin .mceToolbar</entry>
+                                    <entry>Defines styles for the toolbar</entry>
+                              </row>
+                              <row>
+                                    <entry morerows="2">.richfacesSkin table.mceLayout</entry>
+                                    <entry morerows="2">Defines styles for the table layout</entry>
+                                    <entry>additionalBackgroundColor</entry>
+                                    <entry>panelBorderColor</entry>
+                              </row>
+                              <row>
+                                    <entry>.richfacesSkin table.mceToolbar</entry>
+                                    <entry>Defines styles for the rows of icons within toolbar</entry>
+                              </row>                             
+                        </tbody>
+                  </tgroup>
+            </table>
+                 
                     
-                    <table>
-                              <title>CSS selectors for the layout of the editor</title>
-                              
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                            <entry>Selector</entry>
-                                                            
-                                                            <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-                                        
-                                        <tbody>
-                                                  <row>
-                                                            <entry>.richfacesSkin table.mceToolbar</entry>
-                                                            <entry>Defines styles for the rows of icons within toolbar</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceButton</entry>
-                                                            <entry>Defines styles for the buttons</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceButtonDisabled .mceIcon </entry>
-                                                            <entry>Defines styles for the icons</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceListBox</entry>
-                                                            <entry>Defines styles for the list box</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceSeparator</entry>
-                                                            <entry>Defines styles for the buttons separator</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceIframeContainer</entry>
-                                                            <entry>Defines styles for the container</entry>
-                                                  </row>
-                                    
-                                                  <row>
-                                                            <entry>.richfacesSkin table.mceLayout</entry>
-                                                            <entry>Defines styles for the table layout</entry>
-                                                  </row>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceToolbar</entry>
-                                                            <entry>Defines styles for the toolbar</entry>
-                                                  </row>
-                                           
-                                                  
-                                        </tbody>
-                              </tgroup>
-                    </table>
-                    
-                    
-                    
-                    <table>
-                              <title>CSS selectors for the menus</title>
-                              
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                            <entry>Selector</entry>
-                                                            
-                                                            <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-                                        
-                                        <tbody>
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceMenu</entry>
-                                                            <entry>Defines styles for the menus</entry>
-                                                  </row>
-                                                
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
-                                                            <entry>Defines styles for the active menu items</entry>
-                                                  </row>
-                                                  
-                                                  
-                                                  <row>
-                                                            <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
-                                                            <entry>Defines styles for the active menu items</entry>
-                                                  </row>
-                                        </tbody>
-                              </tgroup>
-                    </table>
-                    <para>In order to redefine styles for all <emphasis role="bold">
+            
+            <para>In order to redefine styles for all <emphasis role="bold">
                               <property>&lt;rich:editor&gt;</property>
                     </emphasis> components on a page using CSS, it&apos;s enough to create classes with the
                               same names (possible classes could be found in the tables <link linkend="EditorDefinitionofCustomStyleSelectors">above</link>) and define necessary properties in them.
