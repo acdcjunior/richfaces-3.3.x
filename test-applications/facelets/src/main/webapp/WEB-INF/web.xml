@@ -67,11 +67,7 @@
 			org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL
 		</param-name>
 		<param-value>true</param-value>
-	</context-param>
-	<context-param>
-		<param-name>facelets.LIBRARIES</param-name>
-		<param-value>/WEB-INF/myTags.taglib.xml</param-value>
-	</context-param>
+	</context-param>	
 	<filter>
 		<display-name>Ajax4jsf Filter</display-name>
 		<filter-name>ajax4jsf</filter-name>
