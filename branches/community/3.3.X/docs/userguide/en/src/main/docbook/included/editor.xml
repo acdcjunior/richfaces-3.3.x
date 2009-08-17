@@ -380,43 +380,33 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
-                                                            <entry>CSS properties</entry>
+                                                           <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
                                         
                                         <tbody>
                                                   <row>
                                                             <entry>additionalBackgroundColor</entry>
-                                                            
                                                             <entry>background</entry>
                                                   </row>
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
 
-
-
                     <table>
                               <title>Skin parameters redefinition for external controls</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-color</entry>
                                                   </row>
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
@@ -424,12 +414,10 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
 
                     <table>
                               <title>Skin parameters redefinition for layout</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
@@ -437,386 +425,235 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                                         <tbody>
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-left-color</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-right-color</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-top-color</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-bottom-color</entry>
                                                   </row>
-                                                  
                                                   <row>
-                                                                                                                     
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
                                                   <row>
                                                             <entry>generalTextColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>headerBackgroundColor</entry>
-                                                            
                                                             <entry>background-color</entry>
                                                   </row>
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>                
                         <table>
                                                             <title>Skin parameters redefinition for buttons</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                  
-                                                  
                                                   <row>
                                                             <entry>headerBackgroundColor</entry>
-                                                            
                                                             <entry>background-color</entry>
                                                   </row>
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-
-
-
-
 
                                                   <table>
                                                             <title>Skin parameters redefinition for list box</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
-																						  
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>tableBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>panelBorderColor</entry>
-                                                                                          
                                                                                           <entry>border-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalFamilyFont</entry>
-                                                                                          
                                                                                           <entry>font-family</entry>
                                                                                 </row>
-                                                                                
-                                                                                
-                                                                       
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                                                  
-                                                  
                                                   
                                                   <table>
                                                             <title>Skin parameters redefinition for color split button</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>tableBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>panelBorderColor</entry>
-                                                                                          
                                                                                           <entry>border-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalFamilyFont</entry>
-                                                                                          
                                                                                           <entry>font-family</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>additionalBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background-color</entry>
                                                                                 </row>
-                                                            
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                                                  
-                                                  
                                                   <table>
                                                             <title>Skin parameters redefinition for  hovered color split button</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
                                                                                   <row>
                                                                                           <entry>headerBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>border-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                                                  
-                                                  
-                                                  
                                                   <table>
                                                             <title>Skin parameters redefinition for menu</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
                                                                                 <row>
                                                                                           <entry>panelBorderColor</entry>
-                                                                                          
                                                                                           <entry>border-color</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>tableBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalFamilyFont</entry>
-                                                                                          
                                                                                           <entry>font-family</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalTextColor</entry>
-                                                                                          
                                                                                           <entry>color</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>additionalBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>additionalBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background-color</entry>
                                                                                 </row>
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                                                  
                                                   <table>
                                                             <title>Skin parameters redefinition for menu item</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
                                                                                 <row>
                                                                                           <entry>additionalBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>panelBorderColor</entry>
-                                                                                          
                                                                                           <entry>border-bottom-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalTextColor</entry>
-                                                                                          
                                                                                           <entry>color</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>generalTextColor</entry>
-                                                                                          
                                                                                           <entry>color</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>tabDisabledTextColor</entry>
-                                                                                          
                                                                                           <entry>color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
-                                                                         
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                                                  
-                                                  
-                                                  
                                                   <table>
                                                             <title>Skin parameters redefinition for progress and resize states</title>
-                                                            
                                                             <tgroup cols="2">
                                                                       <thead>
                                                                                 <row>
                                                                                           <entry>Skin parameters</entry>
-                                                                                          
                                                                                           <entry>CSS properties</entry>
                                                                                 </row>
                                                                       </thead>
-                                                                      
                                                                       <tbody>                     
-                                                                                
                                                                                 <row>
                                                                                           <entry>tableBackgroundColor</entry>
-                                                                                          
                                                                                           <entry>background</entry>
                                                                                 </row>
-                                                                                
                                                                                 <row>
                                                                                           <entry>tableBorderColor</entry>
-                                                                                          
                                                                                           <entry>border-color</entry>
                                                                                 </row>
-                                                                                
-                                                                                
-                                                                            
-                                                                                
-                                                                                
-                                                                                
                                                                       </tbody>
                                                             </tgroup>
                                                   </table>
-                    
-                    
-                    
-                    
                     
                     <table>
                               <title>Skin parameters redefinition for dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>generalBackgroundColor</entry>
-                                                            
                                                             <entry>background</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
@@ -829,341 +666,199 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalTextColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>hoverLinkColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
-                    
-                    
                     <table>
                               <title>Skin parameters redefinition for link in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalTextColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>hoverLinkColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                                
-                                
                     <table>
                               <title>Skin parameters redefinition for fieldset  in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
                                                             <entry>border-color</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-
-
-
-
                     <table>
                               <title>Skin parameters redefinition for fieldset legend in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalLinkColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                             
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-
-
-
 
                     <table>
                               <title>Skin parameters redefinition for input elements in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>warningColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
                                                   <row>
                                                             <entry>warningColor</entry>
-                                                            
                                                             <entry>border-color</entry>
                                                   </row>
-                                                  
-            
-            
                                                   <row>
                                                             <entry>controlBackgroundColor</entry>
-                                                            
                                                             <entry>background</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>tableBorderColor</entry>
-                                                            
                                                             <entry>border-color</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
-                 
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
-                    
                     
                     <table>
                               <title>Skin parameters redefinition for panel wrapper in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>panelBorderColor</entry>
-                                                            
-                                                            <entry>border-color</entry>
+                                                           <entry>border-color</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>tableBackgroundColor</entry>
-                                                            
                                                             <entry>background</entry>
                                                   </row>
-                                                  
-                                                  
-                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
                     <table>
                               <title>Skin parameters redefinition for headers in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalLinkColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                              
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
                     <table>
                               <title>Skin parameters redefinition for links in tabs in dialog box</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>generalTextColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
-                    
                     <table>
                               <title>Skin parameters redefinition for main text area</title>
-                              
                               <tgroup cols="2">
                                         <thead>
                                                   <row>
                                                             <entry>Skin parameters</entry>
-                                                            
                                                             <entry>CSS properties</entry>
                                                   </row>
                                         </thead>
-                                        
                                         <tbody>                     
-                                                  
                                                   <row>
                                                             <entry>generalFamilyFont</entry>
-                                                            
                                                             <entry>font-family</entry>
                                                   </row>
-                                                  
-                                                  
                                                   <row>
                                                             <entry>generalTextColor</entry>
-                                                            
                                                             <entry>color</entry>
                                                   </row>
-                                                  
                                                   <row>
                                                             <entry>tableBackgroundColor</entry>
-                                                            
                                                             <entry>background</entry>
                                                   </row>
-                                                  
-                                                  
-                                                  
                                         </tbody>
                               </tgroup>
                     </table>
-                    
-                    
-  
-                    
-                    
           </section>
       
       <section id="EditorDefinitionofCustomStyleSelectors">
@@ -1195,48 +890,79 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                               <row>
                                     <entry>.richfacesSkin .mceButton</entry>
                                     <entry>Defines styles for the buttons</entry> 
+                                    <entry>n/a</entry>
+                                    <entry>background-image</entry>
                               </row>
+                              
                               <row>
                                     <entry>.richfacesSkin .mceButtonDisabled .mceIcon </entry>
                                     <entry>Defines styles for the icons</entry>
+                                    <entry>n/a</entry>
+                                    <entry>opacity</entry>
                               </row>
+                              
                               <row> 
                                     <entry>.richfacesSkin .mceIframeContainer</entry>
                                     <entry>Defines styles for the container</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-top-color, border-bottom-color</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry morerows="2">.richfacesSkin .mceListBox .mceText</entry>
+                                    <entry morerows="2">Defines styles for the list box</entry>
+                                    <entry>generalFamilyFont</entry>
+                                    <entry>font-family</entry>
                               </row>
                               <row>
-                                    <entry>.richfacesSkin .mceListBox</entry>
-                                    <entry>Defines styles for the list box</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
                               </row>
+                              <row>
+                                    <entry>tableBackgroundColor</entry>
+                                    <entry>background</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin .mceExternalToolbar</entry>
+                                    <entry>Defines styles for the toolbar</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
+                              </row>
+                              
                               <row>
                                     <entry>.richfacesSkin .mceMenu</entry>
                                     <entry>Defines styles for the menus</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
                               </row>
+                              
                               <row>
                                     <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
                                     <entry>Defines styles for the active menu items</entry>
+                                    <entry>additionalBackgroundColor</entry>
+                                    <entry>background-color</entry>
                               </row>
-                              <row>
-                                    <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
-                                    <entry>Defines styles for the active menu items</entry>
-                              </row>
+                             
                               <row>
                                     <entry>.richfacesSkin .mceSeparator</entry>
                                     <entry>Defines styles for the buttons separator</entry>
+                                    <entry>n/a</entry>
+                                    <entry>background-image</entry>
                               </row>
+                              
                               <row>
-                                    <entry>.richfacesSkin .mceToolbar</entry>
-                                    <entry>Defines styles for the toolbar</entry>
-                              </row>
-                              <row>
-                                    <entry morerows="2">.richfacesSkin table.mceLayout</entry>
-                                    <entry morerows="2">Defines styles for the table layout</entry>
-                                    <entry>additionalBackgroundColor</entry>
+                                    <entry>.richfacesSkin table.mceLayout</entry>
+                                    <entry>Defines styles for the table layout</entry>
                                     <entry>panelBorderColor</entry>
+                                    <entry>border-left-color, border-right-color</entry>
                               </row>
+                              
                               <row>
                                     <entry>.richfacesSkin table.mceToolbar</entry>
                                     <entry>Defines styles for the rows of icons within toolbar</entry>
+                                    <entry>n/a</entry>
+                                    <entry>padding</entry>
                               </row>                             
                         </tbody>
                   </tgroup>
