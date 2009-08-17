@@ -80,7 +80,7 @@ HtmlDataList myList = new HtmlDataList();
       </emphasis> attribute, which corresponds to the <emphasis>
         <property>&quot;type&quot;</property>
       </emphasis> parameter for the <emphasis role="bold">
-        <property>&lt;UL&gt;</property>
+        <property>&lt;ul&gt;</property>
       </emphasis> HTML element and defines a marker type. Possible values for <emphasis>
         <property>&quot;type&quot;</property>
       </emphasis> attribute are: &quot;disc&quot;,
@@ -118,16 +118,16 @@ HtmlDataList myList = new HtmlDataList();
 
     <para>In the example the <emphasis>
         <property>&quot;rows&quot;</property>
-      </emphasis> attribute limits number of output elements of the list.</para>
+      </emphasis> attribute limits a number of output elements of the list.</para>
 
-    <para><emphasis>
+    <para>The <emphasis>
         <property>&quot;first&quot;</property>
-    </emphasis> attribute defines first element for output. <emphasis>
+    </emphasis> attribute defines the first element for output. <emphasis>
       <property>&quot;title&quot;</property>
-    </emphasis> are used for popup title. See picture below:</para>
+    </emphasis> is used for a popup title. See the picture below:</para>
     
     <figure>
-      <title><emphasis role="bold">
+      <title>The <emphasis role="bold">
         <property>&lt;rich:dataList&gt;</property>
       </emphasis> component with <emphasis>
         <property>&quot;title&quot;</property>
@@ -139,9 +139,11 @@ HtmlDataList myList = new HtmlDataList();
       </mediaobject>
     </figure>
     
-    <para>The component was created basing on the <emphasis role="bold">
-        <property>&lt;a4j:repeat&gt;</property>
-      </emphasis> component and as a result it could be partially updated with Ajax. <emphasis>
+  	<para>The 	<emphasis role="bold">
+  		<property>&lt;rich:dataList&gt;</property>
+  	</emphasis>
+  		component could be partially updated with
+  		Ajax. The <emphasis>
         <property>&quot;ajaxKeys&quot;</property>
       </emphasis> attribute allows to define row keys that are updated after an Ajax request.</para>
     <para>Here is an example:</para>
@@ -161,7 +163,7 @@ HtmlDataList myList = new HtmlDataList();
 
     <para> In the example <emphasis>
         <property>&quot;reRender&quot;</property>
-      </emphasis> attribute contains value of <emphasis>
+      </emphasis> attribute contains the value of <emphasis>
         <property>&quot;id&quot;</property>
       </emphasis> attribute for <emphasis role="bold">
         <property>&lt;rich:dataList&gt;</property>
@@ -257,7 +259,7 @@ HtmlDataList myList = new HtmlDataList();
       </mediaobject>
     </figure>
     
-    <para>In the example the font style for list item text was changed.</para>
+  	<para>In the example the font style for the text of the list item was changed.</para>
     
     <para>Also it&apos;s possible to change styles of particular <emphasis role="bold"
       ><property>&lt;rich:dataList&gt;</property></emphasis> component. In this case you should create own style classes and use them in corresponding <emphasis role="bold"
