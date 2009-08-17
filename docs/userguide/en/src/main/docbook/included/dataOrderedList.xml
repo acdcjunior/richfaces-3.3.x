@@ -96,7 +96,7 @@ HtmlDataOrderedList myList = new HtmlDataOrderedList();
 			</emphasis>
 			parameter for the
 			<emphasis role="bold">
-				<property>&lt;OL&gt;</property>
+				<property>&lt;ol&gt;</property>
 			</emphasis>
 			HTML element and defines a marker type. Possible values for
 			<emphasis>
@@ -126,7 +126,7 @@ HtmlDataOrderedList myList = new HtmlDataOrderedList();
 				<emphasis role="bold">
 					<property>&lt;rich:dataOrderedList&gt;</property>
 				</emphasis>
-				component with
+				component with the
 				<emphasis>
 					<property>&quot;type&quot;</property>
 				</emphasis>
@@ -144,27 +144,26 @@ HtmlDataOrderedList myList = new HtmlDataOrderedList();
 			<emphasis>
 				<property>&quot;rows&quot;</property>
 			</emphasis>
-			attribute limits number of output elements of the list.
+			attribute limits a number of output elements of the list.
 		</para>
 
-		<para>
+		<para>The
 			<emphasis>
 				<property>&quot;first&quot;</property>
 			</emphasis>
-			attribute defines first element for output.
+			attribute defines the first element for output.
 			<emphasis>
 				<property>&quot;title&quot;</property>
 			</emphasis>
-			are used for popup title.
+			is used for a popup title.
 		</para>
 
 		<para>
-			The component was created basing on the
-			<emphasis role="bold">
-				<property>&lt;a4j:repeat&gt;</property>
+			The 	<emphasis role="bold">
+				<property>&lt;rich:dataOrderedList&gt;</property>
 			</emphasis>
-			component and as a result it could be partially updated with
-			Ajax.
+			component could be partially updated with
+			Ajax. The
 			<emphasis>
 				<property>&quot;ajaxKeys&quot;</property>
 			</emphasis>
@@ -191,11 +190,11 @@ HtmlDataOrderedList myList = new HtmlDataOrderedList();
 			<emphasis>
 				<property>&quot;reRender&quot;</property>
 			</emphasis>
-			attribute contains value of
+			attribute contains value of the 
 			<emphasis>
 				<property>&quot;id&quot;</property>
 			</emphasis>
-			attribute for
+			attribute for the
 			<emphasis role="bold">
 				<property>&lt;rich:dataOrderedList&gt;</property>
 			</emphasis>
