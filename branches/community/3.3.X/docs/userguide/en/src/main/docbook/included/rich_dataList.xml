@@ -1,0 +1,213 @@
+<section role="NotInToc" id="rich_dataList">
+   <title>
+				&lt;
+				rich:dataList
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component to render unordered lists that allows choosing data from a model
+    and obtains built-in support of Ajax updates.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataList&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/dataList_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title> 
+      <itemizedlist>
+         <listitem>
+            <para>A completely skinned list and child elements</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to update a limited set of rows with Ajax</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to receive values dynamically from a model</para>
+         </listitem>
+      </itemizedlist>  
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:dataList&gt;</property>
+         </emphasis> component allows to generate a list from a model.</para>
+      <para>The component has the <emphasis>
+            <property>"type"</property>
+         </emphasis> attribute, which corresponds to the <emphasis>
+            <property>"type"</property>
+         </emphasis> parameter for the <emphasis role="bold">
+            <property>&lt;ul&gt;</property>
+         </emphasis> HTML element and defines a marker type. Possible values for <emphasis>
+            <property>"type"</property>
+         </emphasis> attribute are: "disc",
+        "circle",
+      "square".</para>
+      <para>Here is an example:</para>
+
+      <programlisting role="XML">...
+&lt;h:form&gt;
+		&lt;rich:dataList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" type="disc" title="Car Store"&gt;
+       			&lt;h:outputText value="#{car.make} #{car.model}"/&gt;&lt;br/&gt;
+            	&lt;h:outputText value="Price:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.price} "/&gt;&lt;br/&gt;
+            	&lt;h:outputText value="Mileage:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.mileage} "/&gt;&lt;br/&gt;
+		&lt;/rich:dataList&gt;
+&lt;/h:form&gt;
+...
+</programlisting>
+
+      <para>This is a result:</para>
+
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataList&gt;</property>
+            </emphasis> component with <emphasis>
+               <property>"type"</property>
+            </emphasis> attribute</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dataList2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <para>In the example the <emphasis>
+            <property>"rows"</property>
+         </emphasis> attribute limits a number of output elements of the list.</para>
+
+      <para>The <emphasis>
+            <property>"first"</property>
+         </emphasis> attribute defines the first element for output. <emphasis>
+            <property>"title"</property>
+         </emphasis> is used for a popup title. See the picture below:</para>
+    
+      <figure>
+         <title>The <emphasis role="bold">
+               <property>&lt;rich:dataList&gt;</property>
+            </emphasis> component with <emphasis>
+               <property>"title"</property>
+            </emphasis> attribute</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dataList3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    
+  	   <para>The 	<emphasis role="bold">
+  		        <property>&lt;rich:dataList&gt;</property>
+  	      </emphasis>
+  		component could be partially updated with
+  		Ajax. The <emphasis>
+            <property>"ajaxKeys"</property>
+         </emphasis> attribute allows to define row keys that are updated after an Ajax request.</para>
+      <para>Here is an example:</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:dataList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+                        binding="#{listBean.dataList}" id="list" rows="5" type="disc"&gt;
+		...
+&lt;/rich:dataList&gt;
+...
+&lt;a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/&gt;
+...
+</programlisting>
+
+      <para> In the example <emphasis>
+            <property>"reRender"</property>
+         </emphasis> attribute contains the value of <emphasis>
+            <property>"id"</property>
+         </emphasis> attribute for <emphasis role="bold">
+            <property>&lt;rich:dataList&gt;</property>
+         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dataList.html">Table of 
+							&lt;rich:dataList&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.DataList</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlDataList</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.DataList</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.DataListRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.DataListTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="dataLC">
+         <title>Classes names that define a list appearance</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-datalist</entry>
+                  <entry>Defines styles for an html &lt;ul&gt; element</entry>
+               </row>
+               <row>
+                  <entry>rich-list-item</entry>
+                  <entry>Defines styles for an html &lt;li&gt; element</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataLists.jsf?c=dataList">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:dataList&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

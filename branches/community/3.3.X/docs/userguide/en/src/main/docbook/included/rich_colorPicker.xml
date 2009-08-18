@@ -1,0 +1,309 @@
+<section role="NotInToc" id="rich_colorPicker">
+   <title>
+				&lt;
+				rich:colorPicker
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.3.1</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+		    <title>Description</title>
+		    <para>
+			The
+			<emphasis role="bold">
+				        <property>&lt;rich:colorPicker&gt;</property>
+			      </emphasis>
+			component 
+        lets you visually choose a color or define it in hex, RGB, or HSB input fields.
+		</para>
+		    <figure>
+			      <title>
+				Simple
+				<emphasis role="bold">
+					          <property>&lt;rich:colorPicker&gt;</property>
+				        </emphasis>
+				component
+			</title>
+			      <mediaobject>
+				        <imageobject>
+					          <imagedata fileref="images/colorPicker_init.png"/>
+				        </imageobject>
+			      </mediaobject>
+		    </figure>
+	  </section>
+   <section>
+		    <title>Key Features</title>
+		    <itemizedlist>
+			      <listitem>
+				        <para>Possibility to get color in hex, or RGB color models</para>
+			      </listitem>
+			      <listitem>
+				        <para>Flat/inline representation</para>
+			      </listitem>
+			      <listitem>
+				        <para>Highly customizable look and feel</para>
+			      </listitem>
+		    </itemizedlist>
+	  </section>
+   <section>
+      <title>Details of Usage</title>
+      <para> The <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> component allows you easily select a color or define it in hex, RGB, or HSB input
+      fields. There are two squares in the widget that help you to compare the currently selected
+      color and the already selected color. </para>
+      <para> The <property>
+            <emphasis>"value"</emphasis>
+         </property> attribute stores the selected color. </para>
+      <para> The value of the <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> component could be saved in hex or RGB color models. You can explicitly define a
+      color model in the <property>
+            <emphasis>"colorMode"</emphasis>
+         </property> attribute. </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">
+...
+&lt;rich:colorPicker value="#{bean.color}" colorMode="rgb" /&gt;
+...
+		</programlisting>
+      <para>This is the result:</para>
+      <figure>
+         <title> Usage of the <property>
+               <emphasis>"colorMode"</emphasis>
+            </property> attribute. </title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/colorPicker_rgb.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para> The <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> component has two representation states: flat and inline. With the help of the <property>
+            <emphasis>"flat"</emphasis>
+         </property> attribute you can define whether the component is rendered flat. </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">
+...
+&lt;rich:colorPicker value="#{bean.color}" flat="true" /&gt;
+...
+		</programlisting>
+
+      <para>The component specific event handler <property>
+            <emphasis>"onbeforeshow"</emphasis>
+         </property> captures the event which occurs before
+      the <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> widget is opened. The <property>
+            <emphasis>"onbeforeshow"</emphasis>
+         </property> attribute could be used in order to cancel this
+      event. See the example below:</para>
+      <programlisting role="XML">
+...
+&lt;rich:colorPicker value="#{bean.color}" onbeforeshow="if (!confirm('Are you sure you want to change a color?')){return false;}" /&gt;
+...
+     </programlisting>
+    
+      <para> The <property>
+            <emphasis>"showEvent"</emphasis>
+         </property> attribute defines the event that shows <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> widget. The default value is "onclick". </para>
+      <para> The <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> component allows to use the <emphasis>
+            <property>"icon"</property>
+         </emphasis> facet. </para>
+      <para> You can also customize <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> rainbow slider ( <inlinemediaobject>
+            <imageobject>
+               <imagedata fileref="images/colorPicker_arrows.png"/>
+            </imageobject>
+         </inlinemediaobject> ) with the help of the <property>
+            <emphasis>"arrows"</emphasis>
+         </property> facet. </para>
+      <programlisting role="XML">
+...
+&lt;rich:colorPicker value="#{bean.color}"&gt;
+	&lt;f:facet name="icon"&gt;
+		&lt;h:graphicImage value="/pages/colorPicker_ico.png" /&gt;
+	&lt;/f:facet&gt;
+	&lt;f:facet name="arrows"&gt;
+		&lt;f:verbatim&gt;		
+			&lt;div style="width: 33px; height: 5px; border: 1px solid #bed6f8; background:none;" /&gt;
+		&lt;/f:verbatim&gt;
+	&lt;/f:facet&gt;
+&lt;/rich:colorPicker&gt;
+...
+		</programlisting>
+      <para>This is the result:</para>
+      <figure>
+         <title> Usage of the <emphasis>
+               <property>"icon"</property>
+            </emphasis>, and <emphasis>
+               <property>"arrows"</property>
+            </emphasis> facets </title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/colorPicker_facets.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/colorPicker.html">Table of 
+							&lt;rich:colorPicker&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.ColorPicker</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlColorPicker</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.ColorPicker</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.ColorPickerRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.ColorPickerTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+                              <title>Facets</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Facet</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                            <entry>arrows</entry>
+                                                            <entry>Redefines colorPicker arrows</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>icon</entry>
+                                                            <entry>Redefines colorPicker icon</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table id="colorPicker_cn_inline">
+         <title> Classes names for the representation of the input field and icon containing selected
+        color </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Selector name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>.rich-colorpicker-span input</entry>
+                  <entry>Defines styles for the input field that contains selected color</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-icon</entry>
+                  <entry>Defines styles for the icon</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="colorPicker_cn_widget">
+         <title>Classes names for the widget</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>.rich-colorpicker-ext</entry>
+                  <entry>Defines styles for the wrapper &lt;div&gt; element of a widget</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-color</entry>
+                  <entry>Defines styles for the color palette</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-current-color</entry>
+                  <entry>Defines styles for the currently selected color</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-new-color</entry>
+                  <entry>Defines styles for the already selected color</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-colors-input</entry>
+                  <entry>Defines styles for the hex, RGB, and HSB input fileds</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="colorPicker_cn_buttons">
+         <title>Classes names for the buttons representation</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>.rich-colorpicker-submit</entry>
+                  <entry>Defines styles for the "Apply" button</entry>
+               </row>
+               <row>
+                  <entry>.rich-colorpicker-cancel</entry>
+                  <entry>Defines styles for the "Cancel" button</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/colorPicker.jsf?c=colorPicker">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:colorPicker&gt;</property>
+         </emphasis> component usage and sources for the given example. </para>
+  </section>
+</section>

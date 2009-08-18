@@ -1,0 +1,538 @@
+<section role="NotInToc" id="rich_datascroller">
+   <title>
+				&lt;
+				rich:datascroller
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component designed for providing the functionality of tables scrolling using Ajax 
+    requests.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:datascroller&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/datascroller_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+   </section>
+   <section>
+        <title>Key Features</title>
+        
+        <itemizedlist>
+            <listitem>
+                <para>Provides table scrolling functionality</para>
+            </listitem>
+            
+            <listitem>
+                <para>Built-in Ajax processing</para>
+            </listitem>
+            
+            <listitem>
+                <para>Provides fast controls</para>
+            </listitem>
+            
+            <listitem>
+                <para>Skin support</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>The <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> component provides table scrolling functionalitity the
+                              same as TOMAHAWK scroller but with Ajax requests usage.</para>
+                              <para> The
+                              	<emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> component should be reRendered also with <emphasis role="bold">
+                                        <property>&lt;rich:dataTable&gt;</property>
+                              </emphasis> when you changing filter in order to be updated according to the <emphasis role="bold">
+                                        <property>&lt;rich:dataTable&gt;</property>
+                              </emphasis> current model.
+                              </para>
+                    <para>The component should be placed into footer of the parent table or be bound
+                              to it with the <emphasis>
+                                        <property>"for"</property>
+                              </emphasis> attribute. Note, that <emphasis>
+                                        <property>"for"</property>
+                              </emphasis> is evaluated on view build, not on view render, that is
+                              why it will ignore JSTL tags.</para>
+                    <para>The table should also have the defined <emphasis>
+                                        <property>"rows"</property>
+                              </emphasis> attribute limiting the quantity of inputted table rows.</para>
+                    <para>The scroller could limit the maximum quantity of rendered links on the
+                              table pages with the help of the <emphasis>
+                                        <property>"maxPages"</property>
+                              </emphasis> attribute.</para>
+                    <para>Component provides two controllers groups for switching:</para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>Page numbers for switching onto a particular
+                                        page</para>
+                              </listitem>
+                              <listitem>
+                                        <para>The controls of fast switching: <emphasis>
+                                                  <property>"first",</property>
+                                                  </emphasis>
+                                                  <emphasis>
+                                                  <property>"last",</property>
+                                                  </emphasis>
+                                                  <emphasis>
+                                                  <property>"next",</property>
+                                                  </emphasis>
+                                                  <emphasis>
+                                                  <property>"previous",</property>
+                                                  </emphasis>
+                                                  <emphasis>
+                                                  <property>"fastforward",</property>
+                                                  </emphasis>
+                                                  <emphasis>
+                                                  <property>"fastrewind"</property>
+                                                  </emphasis>
+            </para>
+                              </listitem>
+                    </itemizedlist>
+                    <para>The controls of fast switching are created adding the facets component
+                              with the corresponding name:</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML"> ...
+&lt;rich:datascroller for="table" maxPages="10"&gt;
+          &lt;f:facet name="first"&gt;
+                    &lt;h:outputText value="First"/&gt;
+          &lt;/f:facet&gt;
+          &lt;f:facet name="last"&gt;
+                    &lt;h:outputText value="Last"/&gt;
+          &lt;/f:facet&gt;
+&lt;/rich:datascroller&gt;
+...</programlisting>
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                        </emphasis> controls of fast switching</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/datascroller2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>The screenshot shows one controller from each group.</para>
+                    <para> There are also facets used to create the disabled states:
+                                        <code>"first_disabled",</code>
+                              <code>"last_disabled",</code>
+                              <code>"next_disabled",</code>
+                              <code>"previous_disabled",</code>
+                              <code>"fastforward_disabled",</code>
+                              <code>"fastrewind_disabled"</code>. </para>
+                    <para>For the
+                                        <code>"fastforward"/"fastrewind"</code>
+                              controls customization the additional <emphasis>
+                                        <property>"fastStep"</property>
+                              </emphasis> attribute is used. The attribute indicates pages quantity
+                              to switch onto when fast scrolling is used. </para>
+
+                    <para> The <emphasis>
+                                        <property>"page"</property>
+                              </emphasis> is a value-binding attribute used to define and save
+                              current page number. The example is placed below. </para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;h:form id="myForm"&gt;
+	&lt;rich:dataTable id="carList" rows="7" value="#{dataTableScrollerBean.allCars}" var="category"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;rich:columnGroup&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Make" /&gt;
+				&lt;/h:column&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Model" /&gt;
+				&lt;/h:column&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Price" /&gt;
+				&lt;/h:column&gt;
+			&lt;/rich:columnGroup&gt;
+		&lt;/f:facet&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.make}" /&gt;
+		&lt;/h:column&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.model}" /&gt;
+		&lt;/h:column&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.price}" /&gt;
+		&lt;/h:column&gt;
+	&lt;/rich:dataTable&gt;
+	&lt;rich:datascroller id="sc2" for="carList" reRender="sc1" maxPages="7" page="#{dataTableScrollerBean.scrollerPage}" /&gt;
+	&lt;h:panelGrid&gt;
+		&lt;h:panelGroup&gt;
+			&lt;h:outputText value="Set current page number:" /&gt;
+			&lt;h:inputText value="#{dataTableScrollerBean.scrollerPage}" id="sc1" size="1"/&gt;
+			&lt;h:commandButton value="Set" /&gt;
+		&lt;/h:panelGroup&gt;
+	&lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+...</programlisting>
+
+                    <para> In the example above you can enter the page number you want and set it by
+                              clicking on the <emphasis role="bold">
+                                        <property>&lt;h:commandButton&gt;</property>
+                              </emphasis>. By the way, if you use <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> page links the input field rerenders and current page
+                              number changes. </para>
+                    <para>The result should be like below: </para>
+                    <figure>
+                              <title>The <emphasis>
+                                                  <property>"page"</property>
+                                        </emphasis> attribute usage</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/datascroller3.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <!--
+    	The <emphasis><property>&quot;pageIndexVar&quot;</property></emphasis> and <emphasis>
+      <property>&;pagesVar&quot;</property>
+    </emphasis> attributes provide an ability to show the current page and the number of pages in
+      the <emphasis role="bold">
+      <property>&lt;rich:datascroller&gt;</property>
+    </emphasis>.
+    -->
+
+
+                    <para> The <emphasis>
+                                        <property>"pageIndexVar"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"pagesVar"</property>
+                              </emphasis> attributes define a request scope variables and provide an
+                              ability to show the current page and the number of pages in the
+                                        <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis>. </para>
+                    <para> These attributes are used for definition the names of variables, that is
+                              used in the facet with name <emphasis>
+                                        <property>"pages"</property>
+                              </emphasis>. An example can be found below: </para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+	&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt;
+		&lt;rich:column&gt;
+			&lt;h:outputText value="#{cap.name}" /&gt;
+		&lt;/rich:column&gt;
+		&lt;f:facet name="footer"&gt;
+			&lt;rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"&gt;
+				&lt;f:facet name="pages"&gt;
+					&lt;h:outputText value="#{pageIndex} / #{pages}" /&gt;
+				&lt;/f:facet&gt;
+			&lt;/rich:datascroller&gt;
+		&lt;/f:facet&gt;
+	&lt;/rich:dataTable&gt;
+&lt;/h:form&gt;
+...
+</programlisting>
+                    <para> It's possible to insert optional separators between controls.
+                              For this purpose use a <emphasis>
+                                        <property>"controlsSeparator"</property>
+                              </emphasis> facet. An example is placed below. </para>
+                    <programlisting role="XML"> ...
+&lt;f:facet name="controlsSeparator"&gt;
+          &lt;h:graphicImage value="/image/sep.png"/&gt;
+&lt;/f:facet&gt;
+...</programlisting>
+                    <para> Starting from 3.2.1 of RichFaces multiple <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> instances behavior and page bindings are corrected.
+                              Incorrect page after model changes handling is added. Phase Listener
+                              called before RenderResponce scans the page for the <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> and performs the following operations: </para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para> Checks if the <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                                  </emphasis> is rendered. (If the checking
+                                                  generates an exception, the <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                                  </emphasis> is considered to be not rendered )
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para> If the <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                                  </emphasis> is rendered - the table to which the
+                                                  <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                                  </emphasis> is attached gets the value of the page
+                                                  attribute of <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                                  </emphasis>. </para>
+                              </listitem>
+                    </itemizedlist>
+                    <para> Information about the <emphasis>
+                                        <property>"process"</property>
+                              </emphasis> attribute usage you can find in the <link linkend="process">" Decide what to process " </link> guide section. </para>
+                    <note>
+                              <title>Note:</title>
+                              <para>Make sure, that all <emphasis role="bold">
+                                                  <property>&lt;rich:datascroller&gt;</property>
+                                        </emphasis> components, defined for a table, have same
+                                        values for all<emphasis>
+                                                  <property>"page"</property>
+                                        </emphasis> attributes. The page, specified in the last <emphasis>
+                                                  <property>"page"</property>
+                                        </emphasis>, will be rendered in browser. </para>
+                    </note>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/datascroller.html">Table of 
+							&lt;rich:datascroller&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.Datascroller</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlDatascroller</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.Datascroller</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.DataScrollerRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.DatascrollerTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+                              <title>JavaScript API</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Function</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                   <row>
+                                                            <entry>switchToPage(page)</entry>
+                                                             <entry>Switches to the defined page, "page" is Number or String </entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>next()</entry>
+                                                            <entry>Navigates to the next page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>previous()</entry>
+                                                            <entry>Navigates to the previous page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>first()</entry>
+                                                            <entry>Navigates to the first page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>last()</entry>
+                                                            <entry>Navigates to the last page</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastForward()</entry>
+                                                            <entry>Navigates ahead over a certain number of pages. The number of pages to traverse is defined with fastStep attribute</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastRewind()</entry>
+                                                            <entry>Navigates backwards over a certain number of pages. The number of pages to traverse is defined with fastStep attribute</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Facets</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Facet</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                            <entry>controlsSeparator</entry>
+                                                            <entry>Redefines optional separators between controls</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>first</entry>
+                                                            <entry>Redefines the "first" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>first_disabled</entry>
+                                                            <entry>Redefines the disabled "first" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>last</entry>
+                                                            <entry>Redefines the "last" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>last_disabled</entry>
+                                                            <entry>Redefines the disabled "last" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastrewind</entry>
+                                                            <entry>Redefines the "fastrewind" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>fastrewind_disabled</entry>
+                                                            <entry>Redefines the disabled "fastrewind" button with the content set</entry>
+                                                  </row>
+												  <row>
+                                                            <entry>fastforward</entry>
+                                                            <entry>Redefines the "fastforward" button with the content set</entry>
+                                                  </row>
+												  <row>
+                                                            <entry>fastforward_disabled</entry>
+                                                            <entry>Redefines the disabled "fastforward" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>previous</entry>
+                                                            <entry>Redefines the "previous" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>previous_disabled</entry>
+                                                            <entry>Redefines the disabled "previous" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>next</entry>
+                                                            <entry>Redefines the "next" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>next_disabled</entry>
+                                                            <entry>Redefines the disabled "next" button with the content set</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>pages</entry>
+                                                            <entry>Redefines the pages buttons with the content set</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table id="tab_cn2">
+                              <title>Classes names that define a component appearance</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-datascr</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  &lt;div&gt; element of
+                                                  a datascroller</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-dtascroller-table</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  	&lt;table&gt; element of a
+                                                  datascroller</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-datascr-button</entry>
+                                                  <entry>Defines styles for a
+                                                  button</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-datascr-ctrls-separator</entry>
+                                                  <entry>Defines styles for a separator
+                                                  between buttons</entry>
+                                                  </row>
+                                        </tbody>
+
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define a buttons appearance</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-datascr-act</entry>
+                                                  <entry>Defines styles for an active
+                                                  button</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-datascr-inact</entry>
+                                                  <entry>Defines styles for an inactive
+                                                  button</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-datascr-button-dsbld</entry>
+                                                  <entry>Defines styles for a disabled
+                                                  button</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTableScroller.jsf?c=dataTableScroller">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+                    <para> The solution about how to do correct pagination using datascroller (load
+                              a part of data from database) can be found on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4060199#4060199">RichFaces Users Forum</ulink>. </para>
+                    <para>How to use <emphasis role="bold">
+                                        <property>&lt;rich:dataTable&gt;</property>
+                              </emphasis> and <emphasis role="bold">
+                                        <property>&lt;rich:datascroller&gt;</property>
+                              </emphasis> in a context of Extended Data Model see on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=115636">RichFaces Users Forum</ulink>.</para>
+          </section>
+</section>

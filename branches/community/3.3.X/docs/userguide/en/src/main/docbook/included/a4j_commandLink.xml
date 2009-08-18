@@ -1,0 +1,152 @@
+<section role="NotInToc" id="a4j_commandLink">
+   <title>
+				&lt;
+				a4j:commandLink
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+         <keywordset>
+            <keyword>a4j:commandLink</keyword>
+         </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para> The <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis>component is very similar to the <emphasis role="bold">
+            <property>&lt;h:commandLink&gt;</property>
+         </emphasis> component, the only difference is that an Ajax form submit is generated on a click and it allows dynamic rerendering after a response comes back. It's not necessary to plug any support into the component, as Ajax support is already built in.</para>
+   </section>
+   <section>
+          <title>Details of Usage</title>
+      <para>
+            The <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis> component is used in the same way as JSF <emphasis role="bold">
+            <property>&lt;h:commandLink&gt;</property>
+         </emphasis>. 
+            The difference is that in case of <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis> the components to be updated should be specified.
+            In this chapter we will use the code from <link linkend="RichFacesGreeterindex">RichFaces Greeter</link> and change there <emphasis role="bold">
+            <property>&lt;a4j:commandButton&gt;</property>
+         </emphasis> to <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis>:
+      </para>
+          
+          <programlisting role="XML">...
+&lt;a4j:commandLink value="Get greeting" reRender="greeting" /&gt;
+...</programlisting>
+          
+          <para>
+                It's not necessary to add nested <emphasis role="bold">
+            <property>&lt;a4j:support&gt;</property>
+         </emphasis> as the <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis> has an Ajax support already built-in. 
+                As a result of our changes we will get a form with "Get greeting" link instead of the button:
+          </para>
+          <figure>
+                <title>
+                      The RicjFaces greeter with <emphasis role="bold">
+               <property>&lt;a4j:commandLink&gt;</property>
+            </emphasis>
+                </title>
+                
+                <mediaobject>
+                      <imageobject>
+                            <imagedata fileref="images/commandLink_init.png"/>
+                      </imageobject>
+                </mediaobject>
+          </figure>
+                  
+          <para>
+                The example <link linkend="CL_example">above</link> generates the following HTML code:
+          </para>
+          
+          <programlisting role="XML">&lt;a href="#" onclick="A4J.AJAX.Submit(?"request parameters"); return false;"&gt;&lt;span&gt;Get greeting&lt;/span&gt;&lt;/a&gt;</programlisting>
+          
+          <para>
+                If you click on the generated anchor the utility method <code>A4J.AJAX.Submit()</code> will be fired. 
+                
+          </para>                                                                                                                                                                                                                                                                      
+      <note>
+                <title>Note:</title>
+                <para>
+                      Common JSF navigation could be performed after Ajax submit and partial rendering, but Navigation Case must be defined as <emphasis role="bold">
+               <property>&lt;redirect/&gt;</property>
+            </emphasis> in order to avoid problems with some browsers.
+                </para>
+          </note>
+          
+          <para>
+                As any Core Ajax component that sends Ajax requests and processes server responses the <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis> has all attributes that provide the required behavior of requests (delay, limitation of submit area and rendering, etc.)
+          </para>
+          
+      <para>
+            Information about the <emphasis>
+            <property>"process"</property>
+         </emphasis> attribute usage you can find "<link linkend="process">Decide what to process</link>" guide section.
+      </para>
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/commandLink.html">Table of 
+							&lt;a4j:commandLink&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+         <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.CommandLink</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>javax.faces.Command </entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlAjaxCommandLink</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.components.AjaxCommandLinkRenderer </entry>
+               </row>
+            </tbody>
+        </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+	     <para>Visit
+	    <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/commandLink.jsf?c=commandLink">CommandLink demo</ulink> page at RichFaces 
+		live demo for examples of component usage and their sources.
+	</para>
+	     <para>Useful articles:</para>
+	     <itemizedlist>
+	        <listitem>
+	           <para>
+	              <ulink url="http://www.jboss.org/community/docs/DOC-11850">How to use "window.confirm" JavaScript with &lt;a4j:commandLink&gt; "onclick" attribute</ulink> 
+		  in RichFaces cookbook at JBoss portal.
+		</para>
+	        </listitem>
+	     </itemizedlist>
+  </section>
+</section>

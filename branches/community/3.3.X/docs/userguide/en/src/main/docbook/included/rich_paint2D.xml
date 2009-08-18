@@ -1,0 +1,180 @@
+<section role="NotInToc" id="rich_paint2D">
+   <title>
+				&lt;
+				rich:paint2D
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>Create image by painting from a managed bean method, same as <emphasis>
+            <property>"paint"</property>
+         </emphasis> (Graphics2D) 
+    in <emphasis>
+            <property>"SWING"</property>
+         </emphasis> components. </para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:paint2D&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/paint2D_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Simple Graphics2D - painting style directly on the Web page</para>
+         </listitem>
+        <listitem>
+            <para>Supports client/server caching for generated images</para>
+         </listitem>
+        <listitem>
+            <para>Fully supports <emphasis>
+                  <property>"JPEG"</property>
+               </emphasis> (24-bit, default), <emphasis>
+                  <property>"GIF"</property>
+               </emphasis> (8-bit with
+         transparency), and <emphasis>
+                  <property>"PNG"</property>
+               </emphasis> (32-bit with transparency)
+        formats for sending generated images</para>
+         </listitem>
+        <listitem>
+            <para>Easily customizable borders and white space to wrap the image</para>
+         </listitem>
+        <listitem>
+            <para>Dynamically settable paint parameters using tag attributes</para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The example shows two main attributes of the component:</para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property>"paint"</property>
+               </emphasis>
+            </para>
+            <para>Specify a method receiving an object specified in data as a parameter and sending
+          graphical information into the stream</para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property>"data"</property>
+               </emphasis>
+            </para>
+            <para>Specifies a bean class keeping your data for rendering</para>
+         </listitem>
+      </itemizedlist>
+      <para>
+         <note>
+            <title>Note:</title>
+            <para>Data object should implement serializable interface </para>
+         </note>
+      </para>
+      <para>The <emphasis>
+            <property>"format"</property>
+         </emphasis> attribute of the component defines a format of visual data passing to the server.</para>
+      <para>Generated data can be used as a cacheable or non-cacheable resource. It's defined
+      with <emphasis>
+            <property>"cacheable"</property>
+         </emphasis> attribute. If cache support is turned on, a key is created in URI with a mix of
+      size (width/height), <code>"paint"</code> method, <emphasis>
+            <property>"format"</property>
+         </emphasis> and <emphasis>
+            <property>"data"</property>
+         </emphasis> attributes.</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="JAVA">paintBean.java:
+      
+public void paint(Graphics2D g2, Object obj) {
+		// code that gets data from the data Bean (PaintData)
+       PaintData data = (PaintData) obj;
+      	...
+       	// a code drawing a rectangle
+   	  	g2.drawRect(0, 0, data.Width, data.Height);
+   	 	...
+		// some more code placing graphical data into g2 stream below
+}
+     
+dataBean.java:
+    
+public class PaintData implements Serializable{
+		private static final long serialVersionUID = 1L;
+       	Integer Width=100;
+       	Integer Height=50;
+       ...
+}
+    
+page.xhtml:
+
+...
+&lt;rich:paint2D paint="#{paint2D.paint}" data="#{paint2DModel.data}"/&gt;
+... 
+</programlisting>
+
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/paint2D.html">Table of 
+							&lt;rich:paint2D&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.Paint2D</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlPaint2D</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>javax.faces.Output</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.Paint2DRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.Paint2DTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/paint2D.jsf?c=paint2d">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:paint2D&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

@@ -1,0 +1,325 @@
+<section role="NotInToc" id="rich_menuItem">
+   <title>
+				&lt;
+				rich:menuItem
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:menuItem&gt;</property>
+         </emphasis> component is used for the definition of a single item inside a pop-up list.</para>
+        <para>This component can be used not only within <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;rich:contextMenu&gt;</property>
+         </emphasis>, but also it can used as a standalone component. 
+		For example, you can use it as nested component of the <emphasis role="bold">
+            <property>&lt;rich:toolBar&gt;</property>
+         </emphasis>.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:menuItem&gt;</property>
+            </emphasis> component</title> 
+         <mediaobject>
+             <imageobject>
+                <imagedata fileref="images/menuItem_init.png"/> 
+            </imageobject>
+        </mediaobject>
+      </figure>
+   </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Highly customizable look-and-feel</para>
+         </listitem>
+        <listitem>
+            <para>Different submission modes</para>
+         </listitem>
+        <listitem>
+            <para>Support for disabling</para>
+         </listitem>
+        <listitem>
+            <para>Custom content support</para>
+         </listitem>
+      </itemizedlist>
+      
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para> The <emphasis>
+                                        <property>"value"</property>
+                              </emphasis> attribute defines the text representation for an item
+                              element. </para>
+                    <para> There are two icon-related attributes. The <emphasis>
+                                        <property>"icon"</property>
+                              </emphasis> attribute defines an icon. The <emphasis>
+                                        <property>"iconDisabled"</property>
+                              </emphasis> attribute defines an icon for a disabled item. Also you
+                              can use the <emphasis>
+                                        <property>"icon"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"iconDisabled"</property>
+                              </emphasis> facets. If the facets are defined, the corresponding <emphasis>
+                                        <property>"icon"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"iconDisabled"</property>
+                              </emphasis> attributes are ignored and the facets content is shown as
+                              an icon. It could be used for an item check box implementation. </para>
+                    <para> Here is an example: </para>
+                    <programlisting role="XML">...
+&lt;f:facet name="icon"&gt;
+		&lt;h:selectBooleanCheckbox value="#{bean.property}"/&gt;
+&lt;/f:facet&gt;
+...
+</programlisting>
+
+                    <para>The <emphasis role="bold">
+                                        <property>&lt;rich:menuItem&gt;</property>
+                              </emphasis>
+                              <emphasis>
+                                        <property>"submitMode"</property>
+                              </emphasis> attribute can be set to three possible parameters:</para>
+
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+               <code>Server</code> (default)</para>
+                              </listitem>
+                    </itemizedlist>
+
+                    <para>Regular form submission request is used.</para>
+
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <code>Ajax</code>
+                                        </para>
+                              </listitem>
+                    </itemizedlist>
+
+                    <para>Ajax submission is used for switching.</para>
+
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <code>None</code>
+                                        </para>
+                              </listitem>
+                    </itemizedlist>
+
+                    <para>The <emphasis>
+                                        <property>"action"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"actionListener"</property>
+                              </emphasis> item's attributes are ignored. Menu items
+                              don' fire any submits themselves. The behavior is fully
+                              defined by the components nested into items.</para>
+                    <para> For example, you can put any content into an item, but, in this case, you
+                              should set the <emphasis>
+                                        <property>"submitMode"</property>
+                              </emphasis> attribute as <emphasis>
+                                        <property>"none"</property>
+                              </emphasis>.</para>
+                    <para> Here is an example: </para>
+                    <programlisting role="XML">...
+&lt;rich:dropDownMenu&gt;
+		...
+       &lt;rich:menuItem submitMode="none"&gt;
+       			&lt;h:outputLink value="www.jboss.org"/&gt;
+       	&lt;/rich:menuItem&gt;
+       	...
+&lt;rich:dropDownMenu&gt;
+...
+</programlisting>
+                    <para> You can use the <emphasis>
+                                        <property>"disabled"</property>
+                              </emphasis> attribute to set the item state. </para>
+                    <para> Here is an example: </para>
+                    <programlisting role="XML">...
+&lt;rich:dropDownMenu&gt;
+		&lt;rich:menuItem value="Disable" disabled="true"/&gt;
+&lt;rich:dropDownMenu&gt;
+...
+</programlisting>
+                    <note>
+                              <title>Note:</title>
+                              <para> The <emphasis role="bold">
+                                                  <property>&lt;rich:menuItem&gt;</property>
+                                        </emphasis> component was designed to be used only for
+                                        pop-up menu list creation.</para>
+                    </note>
+                    <para> Information about the <emphasis>
+                                        <property>"process"</property>
+                              </emphasis> attribute usage you can find <link linkend="process">RichFaces Developer Guide section about "process" attribute </link>. </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/menuItem.html">Table of 
+							&lt;rich:menuItem&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.MenuItem</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlMenuItem</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.DropDownMenu</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.MenuItemRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.MenuItemTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+                              <title>Facets</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Facet</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                            <entry>icon</entry>
+                                                            <entry>Redefines the icon for the enabled item state. Related attribute is "icon"</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>iconDisabled</entry>
+                                                            <entry>Redefines the folder icon the disabled item state. Related attribute is "iconDisabled"</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table id="tab_mI">
+                              <title>Classes names that define an appearance of item elements</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-menu-item</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  &lt;div&gt; element
+                                                  for an item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-label</entry>
+                                                  <entry>Defines styles for a label of an
+                                                  item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-icon</entry>
+                                                  <entry>Defines styles for the left icon
+                                                  of an item</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define different states</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-menu-item-disabled</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  &lt;div&gt; element of
+                                                  an item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-enabled</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  &lt;div&gt; element of
+                                                  an enabled item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-hover</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  &lt;div&gt; element of
+                                                  a hover item</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-menu-item-label-disabled</entry>
+                                                  <entry>Defines styles for a label of a
+                                                  disabled item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-icon-disabled</entry>
+                                                  <entry>Defines styles for the left icon
+                                                  of a disabled item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-label-enabled</entry>
+                                                  <entry>Defines styles for a label of an
+                                                  enabled item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-icon-enabled</entry>
+                                                  <entry>Defines styles for the left icon
+                                                  of an enabled item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-label-selected</entry>
+                                                  <entry>Defines styles for a label of a
+                                                  selected item</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-menu-item-icon-selected</entry>
+                                                  <entry>Defines styles for the left icon
+                                                  of a selected item</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dropDownMenu.jsf?c=menuItem">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:menuItem&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>

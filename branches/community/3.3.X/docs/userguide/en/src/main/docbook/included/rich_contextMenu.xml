@@ -1,0 +1,561 @@
+<section role="NotInToc" id="rich_contextMenu">
+   <title>
+				&lt;
+				rich:contextMenu
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>
+              The <emphasis role="bold">
+            <property>&lt;rich:contextMenu&gt;</property>
+         </emphasis> component is used for creation of multilevelled context menus that are activated after defined events like <emphasis>
+            <property>"onmouseover"</property>
+         </emphasis>, <emphasis>
+            <property>"onclick"</property>
+         </emphasis> etc. 
+              The component could be applied to any element on the page.
+        </para>
+            <figure>
+                <title>
+            <emphasis role="bold">
+                    <property>&lt;rich:contextMenu&gt;</property>
+                </emphasis> component</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="images/contextMenu_init.png"/>
+            </imageobject>
+        </mediaobject>
+        </figure>
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+            <listitem>
+            <para>Highly customizable look and feel</para>
+         </listitem>     
+            <listitem>
+            <para>
+               <emphasis>
+                  <property>"oncontextmenu"</property>
+               </emphasis> event support</para>
+         </listitem>
+            <listitem>
+            <para>Disablement support</para>
+         </listitem>
+            <listitem>
+            <para>Pop-up appearance event customization</para>
+         </listitem>
+            <listitem>
+            <para>Usage of shared instance of a menu on a page</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+        <title>Details of Usage</title>
+        <para>
+            <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> is a support-like component. Context menu itself is an invisible panel that
+            appears after a particular client-side event (<emphasis>
+            <property>"onmouseover"</property>
+         </emphasis>, <emphasis>
+            <property>"onclick"</property>
+         </emphasis>, etc.) occurred on a
+            parent component. The event is defined with an <emphasis>
+                <property>"event"</property>
+            </emphasis> attribute. The component uses <emphasis>
+                <property>"oncontextmenu"</property>
+            </emphasis> event by default to call a context menu by clicking on the right mouse
+            button.</para>
+
+        <para>
+              <property>
+            <link linkend="menuGroup">&lt;rich:menuGroup&gt;</link>
+         </property>, <property>
+            <link linkend="menuItem">&lt;rich:menuItem&gt;</link>
+         </property> and <property>
+            <link linkend="menuSeparator">&lt;rich:menuSeparator&gt;</link>
+         </property> components 
+              can be used as nested elements for <emphasis role="bold">
+            <property>&lt;rich:contextMenu&gt;</property>
+         </emphasis>in the same way as for <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis>.
+        </para>
+          <para>
+                By default, the <emphasis role="bold">
+            <property>&lt;rich:contextMenu&gt;</property>
+         </emphasis> disables right mouse click on a page in the context menu area only. 
+                But if you want to disable browser's context menu completely you should set the <emphasis>
+            <property>"disableDefaultMenu"</property>
+         </emphasis> attribute value to "true".
+          </para>
+          <para>
+                If <emphasis>
+            <property>"attached"</property>
+         </emphasis> value is "true" (default value), component is attached to the parent component or to the component, 
+                which <emphasis>
+            <property>"id"</property>
+         </emphasis> is specified in the <emphasis>
+            <property>"attachTo"</property>
+         </emphasis> attribute:
+          </para>
+
+          <programlisting role="XML">&lt;rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none"&gt;
+      &lt;rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/&gt;
+      &lt;rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/&gt;
+&lt;/rich:contextMenu&gt;
+&lt;h:panelGrid columns="1" columnClasses="cent"&gt;
+      &lt;h:panelGroup id="picture"&gt;
+            &lt;h:graphicImage value="/richfaces/jQuery/images/pic1.png" id="pic"/&gt;
+      &lt;/h:panelGroup&gt;
+&lt;/h:panelGrid&gt;
+&lt;h:panelGrid columns="1" columnClasses="cent"&gt;
+      &lt;h:panelGroup id="picture1"&gt;
+            &lt;h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/&gt;
+       &lt;/h:panelGroup&gt;
+&lt;/h:panelGrid&gt;</programlisting>
+        <para>The <code>"enlarge()"</code> and
+                <code>"decrease()"</code> functions definition is placed
+            below.</para>
+        <programlisting role="JAVA">&lt;script type="text/javascript"&gt;
+		function enlarge(){
+       			document.getElementById('pic').width=document.getElementById('pic').width*1.1;
+               document.getElementById('pic').height=document.getElementById('pic').height*1.1;
+      	}
+       	function decrease(){
+       			document.getElementById('pic').width=document.getElementById('pic').width*0.9;
+               document.getElementById('pic').height=document.getElementById('pic').height*0.9;
+      	}
+&lt;/script&gt;</programlisting>
+
+        <para>In the example a picture zooming possibility with <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> component usage was shown. The picture is placed on the <emphasis role="bold">
+                <property>&lt;h:panelGroup&gt;</property>
+            </emphasis> component. The <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> component is not nested to <emphasis role="bold">
+                <property>&lt;h:panelGroup&gt;</property>
+            </emphasis> and has a value of the<emphasis>
+                <property>"attachTo"</property>
+            </emphasis> attribute defined as <code>"pic1"</code>. Thus,
+            the context menu is attached to the component, which 
+			<emphasis>
+            <property>"id"</property>
+         </emphasis> is <code>"pic1"</code>. 
+			The context menu has two items to zoom in (zoom out) a picture by <emphasis>
+            <property>"onclick"</property>
+         </emphasis> event.
+            For earch item corresponding JavaScript function is defined to provide necessary action
+            as a result of the clicking on it. For the menu is defined an <emphasis>
+                <property>"oncontextmenu"</property>
+            </emphasis> event to call the context menu on a right click mouse event.</para>
+
+        <para>In the example the context menu is defined for the parent <emphasis role="bold">
+                <property>&lt;h:panelGroup&gt;</property>
+            </emphasis> component with a value of <emphasis>
+                <property>"id"</property>
+            </emphasis> attribute equal to "<code>picture</code>" You
+            should be careful with such definition, because a client context menu is looked for a
+            DOM element with a client Id of a parent component on a server. If a parent component
+            doesn't encode an Id on a client, it can't be found by the <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> and it's attached to its closest parent in a DOM tree.</para>
+
+        <para> If the <emphasis>
+                <property>"attached"</property>
+            </emphasis> attribute has "false" value,
+            component activates via JavaScript API with assistance of <emphasis role="bold">
+                <property>&lt;rich:componentControl&gt;</property>
+            </emphasis>. An example is placed below.</para>
+        <para id="ex">
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML">&lt;h:form id="form"&gt;
+      &lt;rich:contextMenu attached="false" id="menu" submitMode="ajax"&gt;
+            &lt;rich:menuItem ajaxSingle="true"&gt;
+                  &lt;b&gt;{car} {model}&lt;/b&gt; details
+                  &lt;a4j:actionparam name="det" assignTo="#{ddmenu.current}" value="{car} {model} details"/&gt;
+            &lt;/rich:menuItem&gt;
+            &lt;rich:menuGroup value="Actions"&gt;
+                  &lt;rich:menuItem ajaxSingle="true"&gt;
+                        Put &lt;b&gt;{car} {model}&lt;/b&gt; To Basket
+                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Put {car} {model} To Basket"/&gt;
+                  &lt;/rich:menuItem&gt;
+                  &lt;rich:menuItem value="Read Comments" ajaxSingle="true"&gt;
+                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Read Comments"/&gt;
+                  &lt;/rich:menuItem&gt;
+                  &lt;rich:menuItem ajaxSingle="true"&gt;
+                        Go to &lt;b&gt;{car}&lt;/b&gt; site
+                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Go to {car} site"/&gt;
+                  &lt;/rich:menuItem&gt;
+            &lt;/rich:menuGroup&gt;
+      &lt;/rich:contextMenu&gt; 
+
+      &lt;h:panelGrid columns="2"&gt;
+            &lt;rich:dataTable value="#{dataTableScrollerBean.tenRandomCars}" var="car" id="table" onRowMouseOver="this.style.backgroundColor='#F8F8F8'" onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" rowClasses="cur"&gt;
+                  &lt;rich:column&gt;
+                        &lt;f:facet name="header"&gt;Make&lt;/f:facet&gt;
+                        &lt;h:outputText value="#{car.make}"/&gt;
+                  &lt;/rich:column&gt;
+                  &lt;rich:column&gt;
+                        &lt;f:facet name="header"&gt;Model&lt;/f:facet&gt;
+                        &lt;h:outputText value="#{car.model}"/&gt;
+                  &lt;/rich:column&gt;
+                  &lt;rich:column&gt;
+                        &lt;f:facet name="header"&gt;Price&lt;/f:facet&gt;
+                        &lt;h:outputText value="#{car.price}" /&gt;
+                  &lt;/rich:column&gt;
+                  &lt;rich:componentControl event="onRowClick" for="menu" operation="show"&gt;
+                        &lt;f:param value="#{car.model}" name="model"/&gt;
+                        &lt;f:param value="#{car.make}" name="car"/&gt;
+                  &lt;/rich:componentControl&gt;
+            &lt;/rich:dataTable&gt;
+            &lt;a4j:outputPanel ajaxRendered="true"&gt;
+                  &lt;rich:panel&gt;
+                        &lt;f:facet name="header"&gt;Last Menu Action&lt;/f:facet&gt;
+                        &lt;h:outputText value="#{ddmenu.current}"&gt;&lt;/h:outputText&gt;
+                  &lt;/rich:panel&gt;
+            &lt;/a4j:outputPanel&gt;
+      &lt;/h:panelGrid&gt;
+&lt;/h:form&gt;</programlisting>
+        <para>This is a result:</para>
+        <figure>
+            <title>The <emphasis>
+                <property>"attached"</property>
+            </emphasis> attribute usage</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/contextMenu2.png" scalefit="1"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+
+        <para>In the example the context menu is activated (by clicking on the left mouse button) on
+            the table via JavaScript API with assistance of <emphasis role="bold">
+                <property>&lt;rich:componentControl&gt;</property>
+            </emphasis>. The attribute <emphasis>
+                <property>"for"</property>
+            </emphasis> contains a value of the <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> Id. For menu appearance Java Script API function
+                <code>"show()"</code> is used. It is defined with <emphasis>
+                <property>"operation"</property>
+            </emphasis> attribute for the <emphasis role="bold">
+                <property>&lt;rich:componentControl&gt;</property>
+            </emphasis> component. Context menu is recreated after the every call on a client and
+            new {car} and {model} values are inserted in it. In the example for a menu customization
+            macrosubstitutions were used.</para>
+
+        <para>The <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> component can be defined once on a page and can be used as shared for
+            different components (this is the main difference from the <emphasis role="bold">
+                <property>&lt;rich:dropDownMenu&gt;</property>
+            </emphasis> component). It's necessary to define it once on a page (as it was
+            shown in the example <link linkend="ex">above</link>) and activate it on required
+            components via JavaScript API with assistance of <emphasis role="bold">
+                <property>&lt;rich:componentControl&gt;</property>
+            </emphasis>.</para>
+
+        <para>The <emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis>
+            <emphasis>
+                <property>"submitMode"</property>
+            </emphasis> attribute can be set to three possible parameters:</para>
+
+        <itemizedlist>
+            <listitem>
+                  <para>
+               <code>Server</code> — default value, uses regular form submition request;</para>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                  <para>
+               <code>Ajax</code> — Ajax submission is used for switching;</para>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                  <para>
+               <code>None</code> — neither <code>Server</code> nor <code>Ajax</code> is used.</para>
+            </listitem>
+        </itemizedlist>
+
+        <para>The <emphasis>
+                <property>"action"</property>
+            </emphasis> and <emphasis>
+                <property>"actionListener"</property>
+            </emphasis> item's attributes are ignored. Menu items don't fire any submits
+            themselves. The behavior is fully defined by the components nested inside items.</para>
+
+        <note>
+              <title>Notes:</title>
+              <itemizedlist>
+                    <listitem>
+                          <para>
+                                When nesting <emphasis role="bold">
+                     <property>&lt;rich:contextMenu&gt;</property>
+                  </emphasis> into JSF <emphasis role="bold">
+                     <property>&lt;h:outputText&gt;</property>
+                  </emphasis>, 
+                                specify an <code>id</code> for <emphasis role="bold">
+                     <property>&lt;h:outputText&gt;</property>
+                  </emphasis>, otherwise, do not nest the <emphasis role="bold">
+                     <property>&lt;rich:contextMenu&gt;</property>
+                  </emphasis> to make it work properly.
+                          </para>
+                    </listitem>
+              </itemizedlist>                                                                                                                                                                                                                                                                          
+         <itemizedlist>
+                    <listitem>
+                          <para>
+                                As the <emphasis role="bold">
+                     <property>&lt;rich:contextMenu&gt;</property>
+                  </emphasis> component doesn't provide its own form, 
+                                use it between <emphasis role="bold">
+                     <property>&lt;h:form&gt;</property>
+                  </emphasis> and <emphasis role="bold">
+                     <property>&lt;/h:form&gt;</property>
+                  </emphasis> tags.
+                          </para>
+                    </listitem>
+              </itemizedlist>
+        </note>
+        
+
+      <!--     <para>It&apos;s possible to handle events for contextMenu from JavaScript code. A simplest example of usage JavaScript API is placed below:</para>
+        <para>
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML"><![CDATA[...
+    <rich:contextMenu ... id="cmID">
+        ...
+    </rich:contextMenu>
+    ...
+<h:commandButton value="Show" onclick="#{rich:component('cmID')}.show(event)"/>
+...]]></programlisting>  -->
+
+        <!-- Will be done for latest version -->
+        <!--para> It&apos;s possible to define the direction for list appear in the <emphasis>
+                <property>&quot;direction&quot;</property>
+            </emphasis>attribute. If the accordance of the popup corner to corner of the label isn&apos;t
+            set <emphasis>
+                <property>&quot;direction&quot;</property>
+            </emphasis> attribute must set next accordances: </para>
+        <itemizedlist>
+            <listitem>
+                <para>top-left - a menu drops to the top and left</para>
+            </listitem>
+
+            <listitem>
+                <para>top-right - a menu drops to the top and right</para>
+            </listitem>
+
+            <listitem>
+                <para>bottom-left - a menu drops to the bottom and left</para>
+            </listitem>
+
+            <listitem>
+                <para>bottom-right - a menu drops to the bottom and right</para>
+            </listitem>
+
+            <listitem>
+                <para>auto(default) - smart positioning activation</para>
+            </listitem>
+        </itemizedlist>
+        <para><emphasis role="bold">
+                <property>&lt;rich:contextMenu&gt;</property>
+            </emphasis> provides <emphasis>
+                <property>&quot;jointPoint&quot;</property>
+            </emphasis> attribute to set the point on the label element to connect popup. Possible
+            values are:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para>tr - a menu is attached to the top-right point of the button element</para>
+            </listitem>
+
+            <listitem>
+                <para>tl - a menu is attached to the top-left point of the button element</para>
+            </listitem>
+
+            <listitem>
+                <para>br - a menu is attached to the bottom-right point of the button element</para>
+            </listitem>
+
+            <listitem>
+                <para>bl - a menu is attached to the bottom-left point of the button element</para>
+            </listitem>
+
+            <listitem>
+                <para>auto(default) - smart positioning activation</para>
+            </listitem>
+        </itemizedlist>
+
+        <para>In order to set the offset for the menu popup relatively to label, you can use <emphasis>
+                <property>&quot;horizontalOffset&quot;</property>
+            </emphasis> and <emphasis>
+                <property>&quot;verticalOffset&quot;</property>
+            </emphasis> attributes. Values can be negative.</para-->
+
+        <!-- For menuItem, not for contexMenu -->
+        <!--para><property>menuItem</property> provides <emphasis>
+                <property>&quot;submitMode&quot;</property>
+            </emphasis> attribute to define the way of submission. Possible values : <itemizedlist>
+                <listitem>
+                    <para>Server (default)</para>
+                </listitem>
+            </itemizedlist>
+            <para>The standard form submission is performed and the page is completely refreshed.</para>
+            <itemizedlist>
+                <listitem>
+                    <para>Ajax</para>
+                </listitem>
+            </itemizedlist>
+            <para>An Ajax form submission is performed, and specified elements in the <emphasis>
+                    <property>&quot;reRender&quot;</property>
+                </emphasis> attribute are rerendered.</para>
+            <itemizedlist>
+                <listitem>
+                    <para>None</para>
+                </listitem>
+            </itemizedlist>
+            <para> The <emphasis>
+                    <property>&quot;action&quot;</property>
+                </emphasis> and <emphasis>
+                    <property>&quot;actionListener&quot;</property>
+                </emphasis> item&apos;s attributes are ignored. Menu items don't fire any submits
+                themselves. The behavior is fully defined by the components nested inside items.</para>
+            <template
+        <para>emphasis role="bold">
+            <property>&lt;contextMenu&gt;</property>
+            </emphasis> could not be generated for every component where it&apos;s defined. Templating could
+            be used instead. So only representation data could be loaded from server. And markup
+            could be evaluated on client side. So it&apos;s should accept macrosubstitutions like
+            {value} </para>
+         
+        </para-->
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/contextMenu.html">Table of 
+							&lt;rich:contextMenu&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-type</entry>
+                    <entry>org.richfaces.ContextMenu</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.ContextMenu</entry>
+                </row>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.ContextMenu</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.DropDownMenuRenderer</entry>
+                </row>
+                <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.ContextMenuTagHandler</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table>
+            <title>JavaScript API</title>
+            <tgroup cols="3">
+                <thead>
+                    <row>
+                        <entry>Function</entry>
+                        <entry>Description</entry>
+                        <entry>Apply to</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <!--Sorting API -->
+                    <row>
+                        <entry>hide()</entry>
+                        <entry>Hides component or group</entry>
+                        <entry>Component, group</entry>
+                    </row>
+                    <row>
+                        <entry>show(event, context)</entry>
+                        <entry>Shows component or group</entry>
+                        <entry>Component, group</entry>
+                    </row>
+                    <!--row>
+                        <entry>Enable()</entry>
+                        <entry>Enable component, item, group</entry>
+                        <entry>Component, Item, Group</entry>
+                    </row>
+                    <row>
+                        <entry>Disable()</entry>
+                        <entry>Disable component, item or group</entry>
+                        <entry>Component, Item, Group</entry>
+                    </row-->
+                </tbody>
+            </tgroup>
+        </table>
+      <table id="cMC">
+            <title>Classes names that define the contextMenu element</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-menu-list-border</entry>
+                        <entry>Defines styles for borders</entry>
+                    </row>
+                    <row>
+                        <entry>rich-menu-list-bg</entry>
+                        <entry>Defines styles for a general background list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-menu-list-strut</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element for a strut
+                            of a popup list</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/contextMenu.jsf?c=contextMenu">ContextMenu page</ulink> at RichFaces LiveDemo for examples of component usage and their sources. 
+        </para>
+    </section>
+</section>

@@ -1,0 +1,175 @@
+<section role="NotInToc" id="a4j_push">
+   <title>
+				&lt;
+				a4j:push
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+        <keywordset>
+            <keyword>a4j:push</keyword>
+        </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;a4j:push&gt;</property>
+         </emphasis>periodically perform Ajax request to server, to simulate 'push' data.</para>
+      <para>The main difference between <emphasis role="bold">
+            <property>&lt;a4j:push&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;a4j:poll&gt;</property>
+         </emphasis> components is that <emphasis role="bold">
+            <property>&lt;a4j:push&gt;</property>
+         </emphasis> 
+        makes request to minimal code only (not to JSF tree) in order to check the presence of messages in the queue. 
+        If the message exists the complete request is performed. The component doesn't poll registered beans 
+        but registers <code>EventListener</code> which receives messages about events.</para>
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>The <emphasis role="bold">
+                                        <property>&lt;a4j:push&gt;</property>
+                              </emphasis> implements reverse Ajax technique. </para>
+
+                    <para>The bean, for example, could be subscribed to Java Messaging Service
+                                        (<ulink url="http://java.sun.com/products/jms/">JMS</ulink>)
+                              topic or it could be implemented as Message Driven Bean (MDB) in order
+                              to send a message to the <emphasis role="bold">
+                                        <property>&lt;a4j:push&gt;</property>
+                              </emphasis> component about an event presence. In the presence of the
+                              event some action occurs.</para>
+
+                    <para>Thus, a work paradigm with the <emphasis role="bold">
+                                        <property>&lt;a4j:push&gt;</property>
+                              </emphasis> component corresponds to an anisochronous model, but not
+                              to pools as for <emphasis role="bold">
+                                        <property>&lt;a4j:poll&gt;</property>
+                              </emphasis>
+                              <link linkend="poll">component</link>. See the simplest example below:</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="JAVA">...
+class MyPushEventListener implements PushEventListener {
+    public void onEvent(EventObject evt) {
+        System.out.println(evt.getSource());
+            //Some action
+    }
+}    
+...</programlisting>
+
+                    <para>Code for <code>EventListener</code> registration in the bean is placed
+                              below:</para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="JAVA">...
+public void addListener(EventListener listener) {
+		synchronized (listener) {
+        		if (this.listener != listener) {
+               		this.listener = (PushEventListener) listener;
+               }
+		}
+}
+...</programlisting>
+
+                    <para>A page code for this example is placed below.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;a4j:status startText="in progress" stopText="done"/&gt;
+&lt;a4j:form&gt;
+     &lt;a4j:region&gt;
+           &lt;a4j:push reRender="msg" eventProducer="#{pushBean.addListener}" interval="2000"/&gt;
+     &lt;/a4j:region&gt;
+     &lt;a4j:outputPanel id="msg"&gt;
+          &lt;h:outputText value="#{pushBean.date}"&gt;
+               &lt;f:convertDateTime type="time"/&gt;
+          &lt;/h:outputText&gt;
+     &lt;/a4j:outputPanel&gt;
+     &lt;a4j:commandButton value="Push!!" action="#{pushBean.push}" ajaxSingle="true"/&gt;
+&lt;/a4j:form&gt;
+...</programlisting>
+
+                    <para>The example shows how date is updated on a page in compliance with data
+                              taken from a server. In the example <emphasis>
+                                        <property>"interval"</property>
+                              </emphasis> attribute has value "2000". This
+                              attribute defines an interval in milliseconds between the previous
+                              response and the next request. Default value is set to
+                              "1000" milliseconds (1 second). It's
+                              possible to set value equal to "0". In this case
+                              connection is permanent. </para>
+                    <para>The <emphasis>
+                                        <property>"timeout"</property>
+                              </emphasis> attribute defines response waiting time in milliseconds.
+                              If a response isn't received during this period a connection
+                              is aborted and the next request is sent. Default value for <emphasis>
+                                        <property>"timeout"</property>
+                              </emphasis> attribute isn't set. Usage of <emphasis>
+                                        <property>"interval"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"timeout"</property>
+                              </emphasis> attributes gives an opportunity to set short polls of
+                              queue state or long connections.</para>
+
+                    <note>
+                              <title>Note:</title>
+                              <para> The form around the <emphasis role="bold">
+                                                  <property>&lt;a4j:push&gt;</property>
+                                        </emphasis> component is required.</para>
+                    </note>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/push.html">Table of 
+							&lt;a4j:push&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.ajax4jsf.Push</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.ajax4jsf.components.AjaxPush</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.ajax4jsf.component.html.AjaxPush</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.ajax4jsf.components.AjaxPushRenderer</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+   </section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/push.jsf?c=push">On RichFaces LiveDemo page </ulink> you can found some additional information for
+                                        <emphasis role="bold">
+                                        <property>&lt;a4j:push&gt;</property>
+                              </emphasis> component usage. </para>
+          </section>
+</section>

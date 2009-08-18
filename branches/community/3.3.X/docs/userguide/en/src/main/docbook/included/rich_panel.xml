@@ -1,0 +1,270 @@
+<section role="NotInToc" id="rich_panel">
+   <title>
+				&lt;
+				rich:panel
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A skinnable <property>panel</property> that is rendered as a bordered rectangle with or
+    without a header.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:panel&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/panel_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Highly customizable look and feel </para>
+         </listitem>
+        <listitem>
+            <para>Support for any content inside</para>
+         </listitem>
+        <listitem>
+            <para>Header adding feature</para>
+         </listitem> 
+      </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The <emphasis>
+            <property>"header"</property>
+         </emphasis> attribute defines text to be represented. If you can use the
+      <emphasis>
+            <property>"header"</property>
+         </emphasis> facet, you can even not use the <emphasis>
+            <property>"header"</property>
+         </emphasis> attribute.</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:panel&gt;
+		&lt;f:facet name="header"&gt;  
+       			&lt;h:graphicImage value="/images/img1.png"/&gt;
+       	&lt;/f:facet&gt;
+       	...
+       	&lt;!--Any Content inside--&gt;
+      	...
+&lt;/rich:panel&gt;
+...
+</programlisting>
+    
+      <para>
+         <emphasis role="bold">
+            <property>&lt;rich:panel&gt;</property>
+         </emphasis> components are used to group page content pieces on similarly formatted
+      rectangular <property>panels</property>. </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:panel&gt;
+		...
+&lt;/rich:panel&gt;
+...
+</programlisting>
+      <para>It's generating on a page in the following way:</para>
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:panel&gt;</property>
+            </emphasis> without header</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/panel2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+ 
+      <para>The example shows that similar rectangular areas are formed with a particular style.</para>
+      <para>When creating a <property>panel</property> with a header element, one more <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> element is added with content defined for a header.</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:panel&gt;
+		&lt;f:facet name="header"&gt;
+       			&lt;h:outputText value="Olympus EVOLT E-500 "/&gt;
+      	&lt;/f:facet&gt;
+      	...
+&lt;/rich:panel&gt;
+...
+</programlisting>
+      <para>It's displayed on a page in the following way:</para>
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:panel&gt;</property> with header</emphasis>
+         </title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/panel3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>As it has been mentioned <link linkend="panel">above</link>, the component is mostly used for a page style definition,
+      hence the main attributes are style ones.</para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property> "styleClass" </property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property> "headerClass" </property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property> "bodyClass" </property>
+               </emphasis>
+            </para>
+         </listitem>
+      </itemizedlist>
+      <para>Moreover, to add e.g. some JavaScript effects, events defined on it are used.</para>
+      <itemizedlist>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onmouseover"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onclick"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onmouseout"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> etc. </para>
+         </listitem>
+      </itemizedlist>
+    
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/panel.html">Table of 
+							&lt;rich:panel&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.panel</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlPanel</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.panel</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.PanelRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.PanelTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+			      <title>Facets</title>
+				     <tgroup cols="2">
+					       <thead>
+						         <row>
+							           <entry>Facet name</entry>
+							           <entry>Description</entry>
+						         </row>
+					       </thead>
+					       <tbody>
+						         <row>
+							           <entry>header</entry>
+							           <entry>Defines the header content</entry>
+						         </row>
+					       </tbody>
+				     </tgroup>
+		    </table>
+      <table id="tab_cn11">
+         <title>Classes names that define a component appearance</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Class description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-panel</entry>
+                  <entry>Defines styles for a wrapper  &lt;div&gt; element of a component</entry>
+               </row>
+               <row>
+                  <entry>rich-panel-header</entry>
+                  <entry>Defines styles for a header element</entry>
+               </row>
+               <row>
+                  <entry>rich-panel-body</entry>
+                  <entry>Defines styles for a body element</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panel.jsf?c=panel">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:panel&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

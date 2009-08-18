@@ -1,0 +1,335 @@
+<section role="NotInToc" id="rich_tabPanel">
+   <title>
+				&lt;
+				rich:tabPanel
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A <property>tab panel</property> displaying tabs for grouping content of the panel.</para>
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:tabPanel&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/tabPanel_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Skinnable <property>tab panel</property> and child items</para>
+         </listitem>
+        <listitem>
+            <para>Disabled/enabled tab options</para>
+         </listitem>  
+        <listitem>
+            <para>Customizable headers</para>
+         </listitem>
+        <listitem>
+            <para>Group any content inside a tab</para>
+         </listitem> 
+        <listitem>
+            <para>Each tab has a unique name for direct access (e.g. for switching between tabs)</para>
+         </listitem>
+        <listitem>
+            <para>Switch methods can be easily customized with attribute to:</para>
+            <itemizedlist>
+               <listitem>
+                  <para>
+                     <code>
+        Server
+        </code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>Client</code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>AJAX</code>
+                  </para>
+               </listitem>
+      
+            </itemizedlist>
+	        </listitem>
+         <listitem>
+            <para>Switch methods can be selected for the whole <property>tab panel</property> and for the
+     each tab separately</para>
+         </listitem>
+      </itemizedlist>
+    </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>As it was mentioned <link linkend="tabPanel">above</link>,
+                                        <property>tabPanel</property> groups content on panels and
+                              performs switching from one to another. Hence, modes of switching
+                              between panels are described first of all.</para>
+                    <note>
+                              <title>Note:</title>
+                              <para> All <property>tabPanels</property> should be wrapped into a
+                                        form element so as content is correctly submitted inside. If
+                                        a form is placed into each tab, the Action elements of Tab
+                                        controls appear to be out of the form and content submission
+                                        inside the panels could be performed only for Action
+                                        components inside tabs.</para>
+                    </note>
+                    <para>Switching mode could be chosen with the <property>tabPanel</property>
+                              attribute <emphasis>
+                                        <property>"switchType"</property>
+                              </emphasis> with three possible parameters.</para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+               <code>Server</code> (DEFAULT)</para>
+                                        <para>The common submission is performed around
+                                                  <property>tabPanel</property> and a page
+                                                  is completely rendered on a called panel. Only one
+                                                  at a time <property>tabPanel</property> is
+                                                  uploaded onto the client side.</para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <code>Ajax</code>
+                                        </para>
+                                        <para>AJAX form submission is performed around the
+                                                  <property>tabPanel</property>, content
+                                                  of the called <property>tabPanel</property> is
+                                                  uploaded on Ajax request. Only one at a
+                                                  time <property>tabPanel</property> is uploaded on
+                                                  the client.</para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <code>Client</code>
+                                        </para>
+                                        <para> All <property>tabPanels</property> are uploaded on
+                                                  the client side. The switching from the active to
+                                                  the hidden <property>panel</property> is performed
+                                                  with client JavaScript.</para>
+                              </listitem>
+                    </itemizedlist>
+                    <para>As a result, the <property>tabPanel</property> is switched to the second
+                              tab according to the action returning outcome for moving onto another
+                              page and switching from the second to the first tab is performed.</para>
+                    <para>There is also the <emphasis>
+                                        <property>"selectedTab"</property>
+                              </emphasis> attribute. The attribute keeps an active tab name;
+                              therefore, an active <property>tabPanel</property> could be changed
+                              with setting a name of the necessary tab to this attribute.</para>
+                    <para>There is also the <emphasis>
+                                        <property>"headerAlignment"</property>
+                              </emphasis> attribute responsible for rendering of
+                              <property>tabPanel</property> components. The attribute has several
+                              values: "left" (Default), "right",
+                              "center", which specify Tabs components location on
+                              the top of the tabPanel.</para>
+
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:tabPanel width="40%" headerAlignment="right"&gt;
+		&lt;rich:tab label="Canon"&gt;
+       			...
+       	&lt;/rich:tab&gt;
+      	&lt;rich:tab label="Nikon"&gt;
+       			...
+      	&lt;/rich:tab&gt;
+       	&lt;rich:tab label="Olympus"&gt;
+       			...
+      	&lt;/rich:tab&gt;
+&lt;/rich:tabPanel&gt;
+...
+</programlisting>
+
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:tabPanel&gt;</property>
+                                        </emphasis> with right aligned tabs</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/tabPanel2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para> The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute is a generic attribute. The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute provides an association between a component, and
+                              the message that the component (indirectly) produced. This attribute
+                              defines the parameters of localized error and informational messages
+                              that occur as a result of conversion, validation, or other application
+                              actions during the request processing lifecycle. With the help of this
+                              attribute you can replace the last parameter substitution token shown
+                              in the messages. For example, {1} for
+                                        <code>"DoubleRangeValidator.MAXIMUM"</code>,
+                              {2} for <code>"ShortConverter.SHORT"</code>. </para>
+                    <para>Except the specific attributes, the component has all necessary attributes
+                              for JavaScript events definition.</para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseover"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseout"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para> etc. </para>
+                              </listitem>
+                    </itemizedlist>
+
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/tabPanel.html">Table of 
+							&lt;rich:tabPanel&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.tabPanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmltabPanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.tabPanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.tabPanelRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.tabPanelTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table id="tab_cn5">
+                              <title>Classes names that define a component appearance</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-tabpanel</entry>
+                                                  <entry>Defines styles for all
+                                                  tabPanel</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabpanel-content</entry>
+                                                  <entry>Defines styles for an internal
+                                                  content</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabpanel-content-position</entry>
+                                                  <entry>Defines styles for a wrapper
+                                                  element of a tabPanel content.
+                                                  It should define a shift equal
+                                                  to borders width in order to
+                                                  overlap panel tabs</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabhdr-side-border</entry>
+                                                  <entry>Defines styles for side elements
+                                                  of a tabPanel header</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabhdr-side-cell</entry>
+                                                  <entry>Defines styles for a header
+                                                  internal element</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tab-bottom-line</entry>
+                                                  <entry>Defines styles for a tab bottom
+                                                  line element of a tabPanel
+                                                  </entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define different tab header states
+                                        (corresponds to rich-tabhdr-side-cell)</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-tabhdr-cell-active</entry>
+                                                  <entry>Defines styles for an internal
+                                                  element of an active
+                                                  header</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabhdr-cell-inactive</entry>
+                                                  <entry>Defines styles for an internal
+                                                  element of an inactive label
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tabhdr-cell-disabled</entry>
+                                                  <entry>Defines styles for an internal
+                                                  element of a disabled label
+                                                  </entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/tabPanel.jsf?c=tabPanel">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:tabPanel&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>

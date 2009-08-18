@@ -1,0 +1,626 @@
+<section role="NotInToc" id="rich_column">
+   <title>
+				&lt;
+				rich:column
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component for row rendering for a UIData component.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:column&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/column_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title> 
+      <itemizedlist>
+         <listitem>
+            <para>Completely skinned table rows and child elements</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to combine columns with the help of <emphasis>
+                  <property>"colspan"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>Possibility to combine rows with the help of <emphasis>
+                  <property>"rowspan"</property>
+               </emphasis> and <emphasis>
+                  <property>"breakBefore"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="sort">Sorting column values</link>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="filter">Filtering column values</link>
+            </para>
+         </listitem>
+      </itemizedlist>  
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>To output a simple table, the <emphasis role="bold">
+                                        <property>&lt;rich:column&gt;</property>
+                              </emphasis> component is used the same way as the standard <emphasis role="bold">
+                                        <property>&lt;h:column&gt;</property>
+                              </emphasis>, i.e. the following code on a page is used:</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
+     &lt;rich:column&gt;
+          &lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
+          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column&gt;
+           &lt;f:facet name="header"&gt;State Name&lt;/f:facet&gt;
+           &lt;h:outputText value="#{cap.state}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column &gt;
+          &lt;f:facet name="header"&gt;State Capital&lt;/f:facet&gt;
+          &lt;h:outputText value="#{cap.name}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column&gt;
+          &lt;f:facet name="header"&gt;Time Zone&lt;/f:facet&gt;
+          &lt;h:outputText value="#{cap.timeZone}"/&gt;
+     &lt;/rich:column&gt;
+&lt;/rich:dataTable&gt;
+...
+</programlisting>
+                    <para>The result is:</para>
+                    <figure>
+                              <title>Generated <emphasis role="bold">
+                                                  <property>&lt;rich:column&gt;</property>
+                                        </emphasis> component</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/column2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>Now, in order to group columns with text information into one row in one
+                              column with a flag, use the <emphasis>
+                                        <property>"colspan"</property>
+                              </emphasis> attribute, which is similar to an HTML one, specifying
+                              that the first column contains 3 columns. In addition, it's
+                              necessary to specify that the next column begins from the first row
+                              with the help of the
+                              <code>breakBefore="true"</code>.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
+     &lt;rich:column colspan="3"&gt;
+          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column breakBefore="true"&gt; 
+          &lt;h:outputText value="#{cap.state}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column &gt;
+          &lt;h:outputText value="#{cap.name}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column&gt;
+          &lt;h:outputText value="#{cap.timeZone}"/&gt;
+     &lt;/rich:column&gt;
+&lt;/rich:dataTable&gt;
+...
+</programlisting>
+                    <para>As a result the following structure is rendered:</para>
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:column&gt;</property>
+                                        </emphasis> modified with <emphasis>
+                                                  <property>"colspan"</property>
+                                        </emphasis> and <emphasis>
+                                                  <property>"breakbefore"</property>
+                                        </emphasis> attributes</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/column3.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>The same way is used for <property>columns</property> grouping with the <emphasis>
+                                        <property>"rowspan"</property>
+                              </emphasis> attribute that is similar to an HTML one responsible for
+                              rows quantity definition occupied with the current one. The only thing
+                              to add in the example is an instruction to move onto the next row for
+                              each next after the second column.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
+     &lt;rich:column rowspan="3"&gt;
+          &lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
+          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column&gt; 
+          &lt;f:facet name="header"&gt;State Info&lt;/f:facet&gt;
+          &lt;h:outputText value="#{cap.state}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column breakBefore="true"&gt;
+          &lt;h:outputText value="#{cap.name}"/&gt;
+     &lt;/rich:column&gt;
+     &lt;rich:column breakBefore="true"&gt;
+          &lt;h:outputText value="#{cap.timeZone}"/&gt;
+     &lt;/rich:column&gt;
+&lt;/rich:dataTable&gt;
+...
+</programlisting>
+                    <para>As a result:</para>
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:column&gt;</property>
+                                        </emphasis> generated with <emphasis>
+                                                  <property>"rowspan"</property>
+                                        </emphasis> attribute</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/column4.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>Hence, additionally to a standard output of a particular row provided with
+                              the <emphasis role="bold">
+                                        <property>&lt;h:column&gt;</property>
+                              </emphasis> component, it becomes possible to group easily the rows
+                              with special HTML attribute.</para>
+                    <para>The columns also could be grouped in a particular way with the help of the
+                                        <emphasis role="bold">
+                                        <property>&lt;h:columnGroup&gt;</property>
+                              </emphasis> component that is described in <link linkend="columnGroup">the following chapter</link>.</para>
+                    <para>
+         <ulink url="http://wiki.jboss.org/wiki/DynamicColumns">In the Dynamic Columns Wiki article</ulink> you
+                              can find additional information about dynamic columns.</para>
+          </section>
+   <section id="sortAndFilter">
+                    <title>Sorting and Filtering</title>
+                    <section id="sort">
+                              <title>Sorting</title>
+                              <para> In order to sort the columns you should use <emphasis>
+                                                  <property>"sortBy"</property>
+                                        </emphasis> attribute that indicates what values to be
+                                        sorted.This attribute can be used only with the <emphasis role="bold">
+               <property>&lt;rich:dataTable&gt;</property>
+            </emphasis> component. 
+                                        In order to sort the column you should click on its
+                                        header. See the following example. </para>
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+                              <programlisting role="XML">...
+&lt;h:form&gt;
+    &lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px"&gt;
+        &lt;f:facet name="header"&gt;
+            &lt;h:outputText value="Sorting Example"/&gt;
+        &lt;/f:facet&gt;
+        &lt;rich:column sortBy="#{cap.state}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="State Name"/&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="#{cap.state}"/&gt;
+        &lt;/rich:column&gt; 
+        &lt;rich:column sortBy="#{cap.name}"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="State Capital"/&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="#{cap.name}"/&gt; 
+        &lt;/rich:column&gt;
+    &lt;/rich:dataTable&gt;
+&lt;/h:form&gt;
+...</programlisting>
+                              <para>This is result:</para>
+                              <figure>
+                                        <title>
+                                                  <emphasis role="bold">
+                                                  <property>&lt;rich:column&gt;</property>
+                                                  </emphasis> with <emphasis>
+                                                  <property>"sortBy"</property>
+                                                  </emphasis> attribute </title>
+                                        <mediaobject>
+                                                  <imageobject>
+                                                  <imagedata fileref="images/column5.png"/>
+                                                  </imageobject>
+                                        </mediaobject>
+                              </figure>
+                              <para>The <emphasis>
+                                        <property>"sortExpression"</property>
+                              </emphasis> attribute defines a bean property which is used
+                                        for sorting of a column. This attribute can be used only with the <emphasis role="bold">
+               <property>&lt;rich:scrollableDataTable&gt;</property>
+            </emphasis> component.
+                                        The following example is a example of the attribute usage.
+                              </para>
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+                              <programlisting role="XML">...
+&lt;rich:scrollableDataTable id="carList"
+		value="#{dataTableScrollerBean.allCars}" sortMode="single"
+		binding="#{dataTableScrollerBean.table}"&gt;
+		&lt;rich:column id="make" sortExpression="#{cap.make}"&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText styleClass="headerText" value="Make" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="#{category.make}" /&gt;
+		&lt;/rich:column&gt;
+		&lt;rich:column id="model"&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText styleClass="headerText" value="Model" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="#{category.model}" /&gt;
+		&lt;/rich:column&gt;
+		&lt;rich:column id="price"&gt;
+			&lt;f:facet name="header"&gt;
+				&lt;h:outputText styleClass="headerText" value="Price" /&gt;
+			&lt;/f:facet&gt;
+			&lt;h:outputText value="#{category.price}" /&gt;
+		&lt;/rich:column&gt;
+&lt;/rich:scrollableDataTable&gt;
+...</programlisting>
+                            <!--  <figure>
+                                        <title>The <emphasis>
+                                                  <property>&quot;sortExpression&quot;</property>
+                                        </emphasis> attribute usage</title>
+                                        <mediaobject>
+                                                  <imageobject>
+                                                            <imagedata fileref="images/column7.png"
+                                                            />
+                                                  </imageobject>
+                                        </mediaobject>
+                              </figure>-->
+                              <para> The <emphasis>
+                                                  <property>"selfSorted"</property>
+                                        </emphasis> attribute that would add the possibility of
+                                        automatic sorting by clicking the column header. Default
+                                        value is "true". In the example below the
+                                        second column is unavailable for sorting. </para>
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+                              <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap"&gt;
+        &lt;rich:column&gt;
+                &lt;f:facet name="header"&gt;
+                        &lt;h:outputText value="State Flag"/&gt;
+                &lt;/f:facet&gt;
+                &lt;h:graphicImage value="#{cap.stateFlag}"/&gt; 
+        &lt;/rich:column&gt;
+        &lt;rich:column sortBy="#{cap.state}" selfSorted="false"&gt; 
+                &lt;f:facet name="header"&gt;
+                        &lt;h:outputText value="State Name"/&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="#{cap.state}"/&gt;
+        &lt;/rich:column&gt; 
+&lt;/rich:dataTable&gt;
+...</programlisting>
+                              <para>
+                                        <emphasis>
+                                                  <property>"sortOrder"</property>
+                                        </emphasis> attribute is used for changing the sorting of
+                                        columns by means of external controls. </para>
+                              <para>Possible values are:</para>
+                              <itemizedlist>
+                                        <listitem>
+                                                  <para> "ASCENDING" - column is
+                                                  sorted in ascending </para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para> "DESCENDING" - column is
+                                                  sorted in descending </para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para> "UNSORTED" - column
+                                                  isn't sorted </para>
+                                        </listitem>
+                              </itemizedlist>
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+                              <programlisting role="XML">...
+&lt;h:form&gt;
+    &lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px"&gt;
+        &lt;f:facet name="header"&gt;
+            &lt;h:outputText value="Sorting Example"/&gt;
+        &lt;/f:facet&gt;
+        &lt;rich:column sortBy="#{cap.state}" sortOrder="ASCENDING"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="State Name"/&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="#{cap.state}"/&gt;
+        &lt;/rich:column&gt; 
+        &lt;rich:column sortBy="#{cap.name}" sortOrder="DESCENDING"&gt;
+            &lt;f:facet name="header"&gt;
+                &lt;h:outputText value="State Capital"/&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value="#{cap.name}"/&gt; 
+        &lt;/rich:column&gt;
+    &lt;/rich:dataTable&gt;
+&lt;/h:form&gt;
+...</programlisting>
+                              <para>Below you can see the result:</para>
+                              <figure>
+                                        <title>
+               <emphasis role="bold">
+                                                  <property>&lt;rich:column&gt;</property>
+                                                  </emphasis> with <emphasis>
+                                                  <property>"sortOrder"</property>
+                                                  </emphasis> attribute</title>
+                                        <mediaobject>
+                                                  <imageobject>
+                                                  <imagedata fileref="images/column6.png"/>
+                                                  </imageobject>
+                                        </mediaobject>
+                              </figure>
+                              <para> In the example above the first column is sorted in descending
+                                        order. But if recurring rows appear in the table the
+                                        relative second column are sorted in ascending order. </para>                                                                                                                                                                                                                                                                                	
+         <para>If the values of the columns are complex, the <emphasis>
+                    		<property>"sortOrder"</property>
+                    	</emphasis> attribute should point to a bean property containing the sort order. 
+                    				See how it's done in the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/columns.jsf?c=columns&amp;tab=usage">LiveDemo</ulink>
+                    				for <emphasis role="bold">
+               <property>&lt;rich:columns&gt;</property>
+            </emphasis>.</para>                                                                                                                                                                                                                                                                                          
+         <para>You can customize the sorting's icon element using
+                              "rich-sort-icon" class.</para>
+                              <note>
+                                        <title>Note</title>
+                                        <para>
+                                                  In order to sort a column with the values not in English you can add the <code>org.richfaces.datatableUsesViewLocale</code> context parameter in your web.xml. 
+                                                  Its value should be "true". 
+                                        </para>
+                              </note>
+                             <!--  <para> The <emphasis>
+                                                  <property>&quot;sortPriority&quot;</property>
+                                        </emphasis> attribute defines a set of column
+                                        <property>ids</property> in the order the columns could be
+                                        set. </para>
+                              <para> If the columns sort order changed externally sort priorities
+                              could be used to define which columns will be sorted first. </para>  -->
+                              <!--para>
+                Note that  <emphasis><property>&quot;sortPriority&quot;</property></emphasis> attribute is defined in 
+                the <emphasis role="bold"><property>&lt;rich:dataTable&gt;</property></emphasis> component!
+                </para-->
+                             <note>
+                                 <title>Note:</title>
+                                           <para>
+                                                     The <emphasis>
+                  <property>"sortBy"</property>
+               </emphasis> and the <emphasis>
+                  <property>"selfSorted"</property>
+               </emphasis> attributes used with the <emphasis role="bold">
+                  <property>&lt;rich:dataTable&gt;</property>
+               </emphasis> component. 
+                                                     Also the <emphasis>
+                  <property>"selfSorted"</property>
+               </emphasis> can be used with the <emphasis role="bold">
+                  <property>&lt;rich:extendedDataTable&gt;</property>
+               </emphasis>.
+                                           </para>
+                                       <para> The <emphasis>
+                                                 <property>"sortable"</property>
+                                       </emphasis> and the <emphasis>
+                  <property>"sortExpression"</property>
+               </emphasis> attributes used with the <emphasis role="bold">
+                                                 <property>&lt;rich:scrollableDataTable&gt;</property>
+                                       </emphasis> component.</para>
+                             </note>
+                    </section>
+
+                    <section id="filter">
+                              <title>Filtering</title>
+
+                              <para> There are two ways to filter the column value: </para>
+                              <itemizedlist>
+                                        <listitem>
+                                                  <para> Using built-in filtering. It uses
+                                                  <code>startsWith()</code>
+                                                  function to make filtering. In this case
+                                                  you need to define <emphasis>
+                                                  <property>"filterBy"</property>
+                                                  </emphasis> attribute at column you want
+                                                  to be filterable. This attribute defines
+                                                  iterable object property which is used
+                                                  when filtering performed. </para>
+                                                  <para> The <emphasis>
+                                                  <property>"filterValue"</property>
+                                                  </emphasis> attribute is used to get or
+                                                  change current filtering value. It could
+                                                  be defined with initial filtering value
+                                                  on the page or as value binding to
+                                                  get/change it on server. If the <emphasis>
+                                                  <property>"filterValue"</property>
+                                                  </emphasis> attribute isn't
+                                                  empty from the beginning table is
+                                                  filtered on the first rendering. </para>
+                                                  <para> You can customize the input form using
+                                                  "rich-filter-input"
+                                                  CSS class. </para>
+                                                  <para> In order to change filter event you could
+                                                  use <emphasis>
+                                                  <property>"filterEvent"</property>
+                                                  </emphasis> attribute on column, e.g.
+                                                  "onblur"(default
+                                                  value). </para>
+                                                  <!--para>
+                        The <emphasis><property>&quot;filterDefaultLabel&quot;</property></emphasis> attribute defines the label that appears instead of input field. 
+                    </para-->
+                                                  <para>Below you can see the example:</para>
+                                                  <para>
+                                                  <emphasis role="bold">Example:</emphasis>
+                                                  </para>
+                                                  <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="500px"&gt;
+        &lt;rich:column filterBy="#{cap.state}" filterValue="#{filterName.filterBean}" filterEvent="onkeyup"&gt;
+                &lt;h:outputText value="#{cap.state}"/&gt;
+        &lt;/rich:column&gt; 
+        &lt;rich:column filterBy="#{cap.name}" filterEvent="onkeyup"&gt;
+                &lt;h:outputText value="#{cap.name}"/&gt; 
+        &lt;/rich:column&gt;
+&lt;/rich:dataTable&gt;
+...</programlisting>
+                                                  <para> This is the result: </para>
+                                                  <figure>
+                                                  <title>Built-in filtering feature usage</title>
+                                                  <mediaobject>
+                                                  <imageobject>
+                                                  <imagedata fileref="images/column8.png"/>
+                                                  </imageobject>
+                                                  </mediaobject>
+                                                  </figure>
+                                        </listitem>
+                                        <listitem>
+                                                  <para> Using external filtering. In this case you
+                                                  need to write your custom filtering
+                                                  function or expression and define
+                                                  controls. </para>
+                                                  <para> The <emphasis>
+                                                  <property>"filterExpression"</property>
+                                                  </emphasis> attribute is used to define
+                                                  expression evaluated to boolean value.
+                                                  This expression checks if the object
+                                                  satisfies filtering condition. </para>
+                                                  <para> The <emphasis>
+                                                  <property>"filterMethod"</property>
+                                                  </emphasis> attribute is defined with
+                                                  method binding. This method accepts on
+                                                  Object parameter and return boolean
+                                                  value. So, this method also could be
+                                                  used to check if the object satisfies
+                                                  filtering condition. The usage of this
+                                                  attribute is the best way for
+                                                  implementing your own complex business
+                                                  logic. </para>
+                                                  <para>See the following example:</para>
+                                                  <para>
+                                                  <emphasis role="bold">Example:</emphasis>
+                                                  </para>
+                                                  <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" id="table"&gt;
+        &lt;rich:column filterMethod="#{filteringBean.filterStates}"&gt;
+                &lt;f:facet name="header"&gt;
+                        &lt;h:inputText value="#{filteringBean.filterValue}" id="input"&gt;
+                                &lt;a4j:support event="onkeyup" reRender="table"
+                                                     ignoreDupResponses="true" requestDelay="700" focus="input" /&gt;
+                        &lt;/h:inputText&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="#{cap.state}" /&gt;
+        &lt;/rich:column&gt;
+        &lt;rich:column filterExpression="#{fn:containsIgnoreCase(cap.timeZone, filteringBean.filterZone)}"&gt;
+                &lt;f:facet name="header"&gt;
+                        &lt;h:selectOneMenu value="#{filteringBean.filterZone}"&gt;
+                                &lt;f:selectItems value="#{filteringBean.filterZones}" /&gt;
+                                &lt;a4j:support event="onchange" reRender="table" /&gt;
+                        &lt;/h:selectOneMenu&gt;
+                &lt;/f:facet&gt;
+                &lt;h:outputText value="#{cap.timeZone}" /&gt;
+        &lt;/rich:column&gt;
+&lt;/rich:dataTable&gt;
+...</programlisting>
+                                        </listitem>
+                              </itemizedlist>
+                    </section>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/column.html">Table of 
+							&lt;rich:column&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.Column</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlColumn</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.Column</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.ColumnRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.ColumnTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+                              <title>Facets</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Facet name</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                            <entry>header</entry>
+                                                            <entry>Defines the header content</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>footer</entry>
+                                                            <entry>Defines the footer content</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>Visit 
+					<ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=column">Column</ulink> page at 
+					RichFaces live demo for examples of component usage and their sources.</para>
+					<para>"
+					<ulink url="http://www.jboss.org/community/docs/DOC-9607">Using the "rendered" attribute of &lt;rich:column&gt;</ulink>" article 
+					in RichFaces cookbook at JBoss portal gives an example of code of the component usage case. 
+					</para>
+          </section>
+</section>

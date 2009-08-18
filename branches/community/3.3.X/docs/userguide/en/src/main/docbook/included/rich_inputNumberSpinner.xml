@@ -1,0 +1,284 @@
+<section role="NotInToc" id="rich_inputNumberSpinner">
+   <title>
+				&lt;
+				rich:inputNumberSpinner
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+                    <title>Description</title>
+                    <para>A single line input field that lets selecting a number using controls near
+                              a text field. It's possible to change a value using
+                              "Up/Down" keyboard keys. The keyboard input in a
+                              field is possible if it isn't locked by the <emphasis>
+                                        <property>"enableManualInput"</property>
+                              </emphasis> attribute. When arrow controls are pressed, the cursor can
+                              be moved in any way without losing a dragged state.</para>
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:inputNumberSpinner&gt;</property>
+                                        </emphasis> component</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/inputNumberSpinner_init.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+          </section>
+   <section>
+                    <title>Key Features</title>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>Fully skinnable control and input elements</para>
+                              </listitem>
+                              <listitem>
+                                        <para>3D look and feel with an easily customizable
+                                                  appearance</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Attribute-managed positions of the controls
+                                                  (inside/outside of the input field)</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Keyboard controls support</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Optional disablement of the component on a page</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Optional <emphasis>
+                                                  <property>"cycled"</property>
+                                                  </emphasis> mode of scrolling values</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Optional manual/controls-only input into a value text
+                                                  field</para>
+                              </listitem>
+                              <listitem>
+                                        <para>Validation of manual input</para>
+                              </listitem>
+                    </itemizedlist>
+          </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>
+                              <emphasis role="bold">
+                                        <property>&lt;rich:inputNumberSpinner&gt;</property>
+                              </emphasis> is used to facilitate your data input with rich UI
+                              Controls. </para>
+                    <para> Here is the simplest variant of <property>spinner</property> definition
+                              with <emphasis>
+                                        <property>"minValue"</property> , </emphasis>
+                              <emphasis>
+                                        <property>"maxValue"</property>
+                              </emphasis> and <emphasis>
+                                        <property>"step"</property>
+                              </emphasis> (on default is "1") attributes, which
+                              define the beginning and the end of numerical area and a
+                                        <property>spinner</property> step. </para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:inputNumberSpinner minValue="1" maxValue="100"/&gt;
+...
+</programlisting>
+                    <para>It generates on a page:</para>
+                    <figure>
+                              <title> Generated <emphasis role="bold">
+                                                  <property>&lt;rich:inputNumberSpinner&gt;</property>
+                                        </emphasis>
+                              </title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/inputNumberSpinner2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para> There are also several attributes to define functionality peculiarities: </para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"cycled"</property>
+                                                  </emphasis> if the attribute is
+                                                  "true" after the current value
+                                                  reaches the border value it's be reversed
+                                                  to another border value after next
+                                                  increasing/decreasing. In other case possibilities
+                                                  of next increasing/decreasing are locked </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"disabled"</property>
+                                                  </emphasis> is an attribute that defines whether a
+                                                  component is active on a page </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"enableManualInput"</property>
+                                                  </emphasis> is an attribute that defines whether a
+                                                  keyboard input is possible or only UI controls
+                                                  could be used </para>
+                              </listitem>
+                    </itemizedlist>
+                    <para> Moreover, to add e.g. some JavaScript effects, events defined on it are
+                              used </para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onchange"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseover"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onclick"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onfocus"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseout"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>etc.</para>
+                              </listitem>
+                    </itemizedlist>
+                    <para> The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute is a generic attribute. The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute provides an association between a component, and
+                              the message that the component (indirectly) produced. This attribute
+                              defines the parameters of localized error and informational messages
+                              that occur as a result of conversion, validation, or other application
+                              actions during the request processing lifecycle. With the help of this
+                              attribute you can replace the last parameter substitution token shown
+                              in the messages. For example, {1} for
+                                        <code>"DoubleRangeValidator.MAXIMUM"</code>
+                              , {2} for <code>"ShortConverter.SHORT"</code> .
+                    </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/inputNumberSpinner.html">Table of 
+							&lt;rich:inputNumberSpinner&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.inputNumberSpinner</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>
+                                                  org.richfaces.component.html.HtmlInputNumberSpinner
+                                                  </entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.inputNumberSpinner</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry> org.richfaces.InputNumberSpinnerRenderer
+                                                  </entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry> org.richfaces.taglib.InputNumberSpinnerTag
+                                                  </entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table id="tab_cn1">
+                              <title> Classes names that define a component appearance </title>
+
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-spinner-c</entry>
+                                                  <entry> Defines styles for a wrapper
+                                                  table element of a component
+                                                  </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-spinner-input-container</entry>
+                                                  <entry>Defines styles for a
+                                                  container</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-spinner-input</entry>
+                                                  <entry> Defines styles for a wrapper
+                                                  &lt;td&gt; element for
+                                                  input fields </entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-spinner-button</entry>
+                                                  <entry>Defines styles for a
+                                                  button</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-spinner-buttons</entry>
+                                                  <entry>Defines styles for all
+                                                  buttons</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/inputNumberSpinner.jsf?c=inputNumberSpinner"> On the component Live Demo page </ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:inputNumberSpinner&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>

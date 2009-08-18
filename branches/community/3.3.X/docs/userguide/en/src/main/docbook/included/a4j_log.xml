@@ -1,0 +1,111 @@
+<section role="NotInToc" id="a4j_log">
+   <title>
+				&lt;
+				a4j:log
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+         <keywordset>
+            <keyword>a4j:log</keyword>
+            <keyword>component</keyword>
+         </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;a4j:log &gt;</property>
+         </emphasis> component generates JavaScript that opens a debug window with useful debug information.</para>
+  </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:log &gt;</property>
+         </emphasis> component generates JavaScript that opens a log window with useful debug information, 
+                  which contains data on requests and responses, DOM tree changes et al. 
+                  The log could be generated not only in a new window, but also on the current page in a separate <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> element. 
+                  This feature is controlled with the component <emphasis>
+            <property>"popup"</property>
+         </emphasis> attribute. 
+                  The window is opened on pressing of "CTRL+SHIFT+L", which is default registered key.
+                  The hot key could be changed with the <emphasis>
+            <property>"hotkey"</property>
+         </emphasis> attribute, where it's necessary to define one letter that together with "CTRL+SHIFT" opens a window.
+            </para>
+            
+            
+      <para>
+          The <emphasis>
+            <property>"level"</property>
+         </emphasis> attribute has several possible values "FATAL", "ERROR", "WARN", "INFO", "ALL" and is used when it is necessary to change a logging level. 
+    </para>
+    
+      <para>
+          <emphasis role="bold">Example:</emphasis>
+      </para>
+            <programlisting role="XML">&lt;a4j:log level="ALL" popup="false" width="400" height="200"/&gt;</programlisting>
+            
+      <para>
+          The component defined this way is decoded on a page as <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> inside a page, where all the information beginning with informational message is generated.</para>
+      <note>
+         <title>Note:</title>
+         <para>
+            <emphasis role="bold">
+               <property>&lt;a4j:log&gt;</property>
+            </emphasis> is getting renewed automatically after execution of Ajax requests. Do not renew <emphasis role="bold">
+               <property>&lt;a4j:log&gt;</property>
+            </emphasis> by using reRender!</para>
+      </note>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/log.html">Table of 
+							&lt;a4j:log&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+         <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.Log</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.ajax4jsf.Log</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.AjaxLog</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.LogRenderer</entry>
+               </row>
+            </tbody>
+        </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+	     <para>
+	      Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/log.jsf?c=log">Log page</ulink> at RichFaces LiveDemo for example of component usage and their sources.
+	</para>
+  </section>
+</section>

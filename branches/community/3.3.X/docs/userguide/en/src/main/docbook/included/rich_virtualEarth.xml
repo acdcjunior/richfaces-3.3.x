@@ -1,0 +1,266 @@
+<section role="NotInToc" id="rich_virtualEarth">
+   <title>
+				&lt;
+				rich:virtualEarth
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component presents the Microsoft <property>Virtual Earth map</property> in the JSF applications.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:virtualEarth&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/virtualEarth_init.png"/>
+            </imageobject>
+         </mediaobject>
+	     </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Presents the Microsoft <property>Virtual Earth map</property> functionality</para>
+         </listitem>
+        <listitem>
+            <para>Highly customizable via attributes</para>
+         </listitem> 
+        <listitem>
+            <para>No developers JavaScript writing is needed to use it on a pages</para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section>
+		    <title>Details of Usage</title>
+
+		    <para>
+			Here are the main settings of initial rendering performed
+			with a component
+			<property>map</property>
+			that are accessible with the following attributes:
+		</para>
+		    <itemizedlist>
+			      <listitem>
+				        <para>
+					          <emphasis>
+						            <property>"zoom"</property>
+					          </emphasis>
+					defines an approximation size (boundary values 1-18)
+				</para>
+			      </listitem>
+			      <listitem>
+				        <para>
+					          <emphasis>
+						            <property>"lat"</property>
+					          </emphasis>
+					specifies an initial latitude coordinate in degrees,
+					as a number between -90 and +90
+				</para>
+			      </listitem>
+			      <listitem>
+				        <para>
+					          <emphasis>
+						            <property>"lng"</property>
+					          </emphasis>
+					specifies an initial longitude coordinate in
+					degrees, as a number between -180 and +180
+				</para>
+			      </listitem>
+			      <listitem>
+				        <para>
+					          <emphasis>
+						            <property>"dashboardSize"</property>
+					          </emphasis>
+					specifies a type of a rendered map (Normal, Small,
+					Tiny)
+				</para>
+			      </listitem>
+		    </itemizedlist>
+		    <para>
+			For example, the city of Paris is shown after rendering with
+			the following initial settings:
+			<code>lat = "48.833"</code>
+			,
+			<code>lng = "2.40"</code>
+			and
+			<code>zoom = "11"</code>
+			.
+		</para>
+		    <figure>
+			      <title>
+				        <emphasis role="bold">
+					          <property>&lt;rich:virtualEarth&gt;</property>
+				        </emphasis>
+				initial rendering
+			</title>
+			      <mediaobject>
+				        <imageobject>
+					          <imagedata fileref="images/virtualEarth2.png"/>
+				        </imageobject>
+			      </mediaobject>
+		    </figure>
+		    <para>Code for this example is placed below:</para>
+		    <para>
+			      <emphasis role="bold">Example:</emphasis>
+		    </para>
+		    <programlisting role="XML">...
+&lt;rich:virtualEarth  style="width:800px;" id="vm" lat="48.833" lng="2.40" 
+                                     dashboardSize="Normal"  zoom="11" mapStyle="Hybrid" var="map" /&gt;
+...
+</programlisting>
+
+		    <para>
+			To set all these parameters and perform some activity (Zoom
+			In/Out etc.) is possible with your JavaScript, i.e. declare
+			a name of an object on a
+			<property>map</property>
+			in the
+			<emphasis>
+				        <property>"var"</property>
+			      </emphasis>
+			attribute and then call the object directly with API
+			<emphasis>
+				        <property>Microsoft Virtual Earth map</property>
+				.
+			</emphasis>
+		    </para>
+		    <para>
+			For example, to approximate a map for
+			<code>var = "map"</code>
+			declared inside the component, call
+			<code>map.ZoomIn()</code>
+			on an event.
+		</para>
+		    <para>
+			Moreover, to add e.g. some JavaScript effects, events
+			defined on it are used.
+		</para>
+		    <itemizedlist>
+			      <listitem>
+				        <para>
+               <emphasis>
+                  <property>"onmouseover"</property>
+               </emphasis>
+            </para>
+			      </listitem>
+			      <listitem>
+				        <para>
+               <emphasis>
+                  <property>"onclick"</property>
+               </emphasis>
+            </para>
+			      </listitem>
+			      <listitem>
+				        <para>
+               <emphasis>
+                  <property>"onmouseout"</property>
+               </emphasis>
+            </para>
+			      </listitem>
+			      <listitem>
+				        <para>etc.</para>
+			      </listitem>
+		    </itemizedlist>
+
+		    <note>
+			      <para>
+				Virtual Earth does not support XHTML format of the page.
+				Thus, if you use Facelets and JSF 1.2, do not forget to
+				put the following tags somewhere on the page:
+			</para>
+			      <programlisting role="XML">...
+&lt;f:view contentType="text/html"&gt;...&lt;/f:view&gt;
+...
+</programlisting>
+		    </note>
+
+	  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/virtualEarth.html">Table of 
+							&lt;rich:virtualEarth&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+		       <title>Component Identification Parameters</title>
+		       <tgroup cols="2">
+			         <thead>
+				           <row>
+					             <entry>Name</entry>
+					             <entry>Value</entry>
+				           </row>
+			         </thead>
+			         <tbody>
+				           <row>
+					             <entry>component-type</entry>
+					             <entry>org.richfaces.VirtualEarth</entry>
+				           </row>
+				           <row>
+					             <entry>component-class</entry>
+					             <entry>
+						org.richfaces.component.html.HtmlVirtualEarth
+					</entry>
+				           </row>
+				           <row>
+					             <entry>component-family</entry>
+					             <entry>org.richfaces.VirtualEarth</entry>
+				           </row>
+				           <row>
+					             <entry>renderer-type</entry>
+					             <entry>org.richfaces.VirtualEarthRenderer</entry>
+				           </row>
+				           <row>
+					             <entry>tag-class</entry>
+					             <entry>org.richfaces.taglib.VirtualEarthTag</entry>
+				           </row>
+			         </tbody>
+		       </tgroup>
+	     </table>
+      <table>
+			      <title>
+				Classes names that define a component appearance
+			</title>
+			      <tgroup cols="2">
+				        <thead>
+					          <row>
+						            <entry>Class name</entry>
+						            <entry>Description</entry>
+					          </row>
+				        </thead>
+				        <tbody>
+					          <row>
+						            <entry>rich-virtualEarth</entry>
+						            <entry>
+							Defines styles for a wrapper &lt;div&gt;
+							element of a component
+						</entry>
+					          </row>
+				        </tbody>
+			      </tgroup>
+		    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+		    <title>Relevant Resources Links</title>
+		    <para>
+			      <ulink url="http://msdn2.microsoft.com/en-us/library/bb429619.aspx">
+				Here
+			</ulink>
+			you can found additional information about Microsoft
+			<property>Virtual Earth map</property>.
+		</para>
+                  <para>
+	  Some additional information about usage of component can be found 
+	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/virtualEarth.jsf?c=virtualEarth">on its LiveDemo page</ulink>.</para>
+	  </section>
+</section>

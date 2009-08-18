@@ -1,0 +1,549 @@
+<section role="NotInToc" id="rich_editor">
+   <title>
+				&lt;
+				rich:editor
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.3.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+     <title>Description</title>
+     <para>The <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> component is used for creating a  WYSIWYG editor on a page. 
+     </para>
+     <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:editor&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/editor1.png"/>
+            </imageobject>
+         </mediaobject>
+     </figure>
+    
+   </section>
+   <section>
+      <title>Key Features</title>                                                                                                                                                                                                                                                                
+      <itemizedlist>
+        
+        <listitem>
+            <para>Seam text support</para>
+         </listitem>
+        <listitem>
+            <para>Manageable global configurations</para>
+         </listitem>
+        <listitem>
+            <para>Possibility to use custom plug-ins</para>
+         </listitem>
+        <listitem>
+            <para>Support of all TinyMCE's parameters through  <emphasis role="bold">
+                  <property>&lt;f:param&gt;</property>
+               </emphasis>
+            </para>
+         </listitem>
+        
+      </itemizedlist>
+
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+			   <para>The <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> is fully based on TinyMCE web based Javascript HTML WYSIWYG editor control and supports all of the features it has.
+          The <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> adapts the TinyMCE editor for JSF environment and adds some functional capabilities.
+			</para>
+			   <para>
+				The easiest way to place the <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> on a page is as follows:
+			</para>
+            <para>
+				     <emphasis role="bold">Example:</emphasis>
+            </para>          
+      <programlisting role="XML">&lt;rich:editor value="#{bean.editorValue}" /&gt;</programlisting>  
+      <para>
+		Implementation of  <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> provides three ways to define the properties of the component:
+    </para>
+ 
+      <orderedlist>
+           <listitem>
+            <para>Using attributes</para>
+         </listitem>
+           <listitem>
+            <para>Using using <emphasis role="bold">
+                  <property>&lt;f:param&gt;</property>
+               </emphasis> JSF tag</para>
+         </listitem>
+           <listitem>
+            <para>Using configuration files that allow you to set up multiple configurations for all editors in your application and change them in the runtime</para>
+         </listitem>
+      </orderedlist>
+      
+      <para>The three methods are described in details in the chapter.</para>  
+      <para>
+		The most important properties are implemented as attributes and you can define them as any other attribute.
+        The attributes of the <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> component match the corresponding properties of TinyMCE editor.			
+	</para>   
+      <para>
+		For example, a theme for the editor can be defined using the <emphasis>
+            <property>"theme"</property>
+         </emphasis> attribute like this: 
+	</para>
+      <para>
+        <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">
+&lt;rich:editor value="#{bean.editorValue}" theme="advanced" /&gt;
+</programlisting>  
+                    <para>Setting a different skin for the editor can be done using the <emphasis>
+            <property>"skin"</property>
+         </emphasis> attribute.</para>
+                    <para>
+						Another useful property that is implemented at attribute level is <emphasis>
+            <property>"viewMode"</property>
+         </emphasis>. 
+						The attribute switches between "visual" and "source" modes, toggling between modes is performed setting the attribute to "visual" and "source" respectively. 
+                              Implementation of <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> also implies that you can change the modes dynamically setting the value of the <emphasis>
+            <property>"viewMode"</property>
+         </emphasis> attribute using EL-expression. 
+                    </para>
+                    
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+                    <programlisting role="XML">...  
+&lt;rich:editor value="#{editor.submit}" theme="advanced" viewMode="#{editor.viewMode}" &gt;
+	...
+	&lt;h:selectOneRadio value="#{editor.viewMode}" onchange="submit();"&gt;
+		&lt;f:selectItem itemValue="visual" itemLabel="visual" /&gt;
+		&lt;f:selectItem itemValue="source" itemLabel="source" /&gt;
+    &lt;/h:selectOneRadio&gt;
+    ...
+&lt;/rich:editor&gt;
+...</programlisting>  
+      <para>
+		Most configuration options that TinyMCE provides can be applied using <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> JSF tag. 
+        The syntax is quite simple: the <emphasis>
+            <property>"name"</property>
+         </emphasis> attribute should contain the option, 
+		the <emphasis>
+            <property>"value"</property>
+         </emphasis> attribute assigns some value to the option.
+	</para>
+	     <para>
+		For example, this code adds some buttons to the editor and positions the toolbar.  
+	</para>
+      <para>
+        <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:editor value="#{bean.editorValue}" theme="advanced" plugins="save,paste" &gt;
+          &lt;f:param name="theme_advanced_buttons1" value="bold,italic,underline, cut,copy,paste,pasteword"/&gt;
+          &lt;f:param name="theme_advanced_toolbar_location" value="top"/&gt;                               
+          &lt;f:param name="theme_advanced_toolbar_align" value="left"/&gt;
+&lt;/rich:editor&gt;
+...</programlisting> 
+                    <para>This is what you get as a result:</para>
+				  <figure>
+                              <title> Setting configuration options with &lt;f:param&gt;
+             
+                              </title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/editor2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+       </figure>
+                    
+                
+                    <para>The third way to configure the <emphasis role="bold"> 
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> is 
+                    to use configuration file (.properties)</para>
+                    
+                    <para>
+						This method eases your life if you need to configure multiple instances 
+						of the <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis>: you configure the editor once 
+						and in one spot and the configuration properties can be applied to any 
+						<emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> in your application.
+					</para>
+                    <para>To implement this type of configuration you need to take a few steps:</para>
+                    <itemizedlist>
+                            <listitem>
+								    <para>
+									Create a configuration file (.properties) in the classpath folder and add some properties to it. 
+									Use standard syntax for the .properties files: <code>parameter=value</code>.  
+									Here is an example of configuration file:
+								</para>
+                                <para>
+									      <emphasis role="bold">Example:</emphasis>
+                                </para>      
+                                <programlisting role="XML">theme="advanced"
+plugins="save,paste"
+theme_advanced_buttons1="bold,italic,underline, cut,copy,paste,pasteword"
+theme_advanced_toolbar_location="top"
+theme_advanced_toolbar_align="left"
+</programlisting>                                                                                                                                                                                                                                                                                        
+         </listitem>
+                            <listitem>
+								    <para>
+									The properties stored in configuration file are passed to the
+                                    <emphasis role="bold">
+                  <property>&lt;rich:editor&gt;</property>
+               </emphasis> via 
+                                    <emphasis>
+                  <property>"configuration"</property>
+               </emphasis> attribute which takes the name of the configuration file 
+									as a value (with out .properties extension).
+								</para>
+								    <para>
+									For example, if you named the configuration file "editorconfig", you would address it as follows:
+								</para>
+                                <para>
+									      <emphasis role="bold">Example:</emphasis>
+                                </para>
+                              <programlisting role="XML">...
+&lt;rich:editor value="#{bean.editorValue}" configuration="editorconfig"/&gt;
+...</programlisting>                                                                                                                                                                                                                                                                                
+         </listitem>    
+                    <listitem>
+						      <para>
+                             Alternately, you can use a  EL-expression to define a configuration file. 
+							  This way you can dynamically change the sets of configuration properties. 
+						</para>
+                 
+						      <para>
+							For example, you have two configuration files "configurationAdvanced" and  "configurationSimple" and you want them to be 
+             applied under some condition. 
+						</para>
+                        <para>
+							To do this you need to bind  <emphasis>
+                  <property>"configuration"</property>
+               </emphasis> 
+							attribute to  the appropriate bean property  like this.
+						</para>
+            
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>
+            <programlisting role="XML">...
+&lt;rich:editor value="#{bean.editorValue}" configuration="#{editor.configuration}" /&gt;
+...</programlisting> 
+                              <para>Your Java file should look like this.</para>
+                              
+                              <programlisting role="JAVA">...
+String configuration;
+
+if(some condition){//defines some condition
+		configuration = "configurationAdvanced"; //the name on the file with advanced properties	
+}
+else{
+	   	configuration= "configurationSimple"; //the name on the file with simplified properties	
+}
+...</programlisting>                                                                                                                                                                                                                                                                                
+                    </listitem>
+                    
+                    </itemizedlist>
+                    
+  
+                    <para>
+                              You also might want to add some custom plug-ins to your editor. 
+                              You can read about how to create a  plugin in <ulink url="http://wiki.moxiecode.com/index.php/TinyMCE:Creating_Plugin">TinyMCE Wiki article</ulink>.
+                    </para>
+                    
+                    <para>
+                              Adding a custom plugin also requires a few steps to take. Though, the procedure is very similar to adding a configuration file.
+                              
+                    </para>
+                    
+                    <para>This is what you need to add a plugin:</para>
+                    <itemizedlist>
+                              <listitem>
+								    <para>Create a .properties file and put the name of the plug-in and a path to it into the file.
+                                        The file can contain multiple plug-in declarations. Your .properties file should be like this. 
+								</para>
+                                <para>
+                                    <emphasis role="bold">Example:</emphasis>
+                                </para>
+                                <programlisting role="XML">...
+pluginName=/mytinymceplugins/plugin1Name/editor_plugin.js
+...</programlisting>                                                                                                                                                                                                                                                                                          
+         </listitem>
+                              <listitem>
+                                        <para>
+											Use the <emphasis>
+                  <property>"customPlugins"</property>
+               </emphasis> attribute to specify the .properties file with a plugin name and a path to it.
+										</para>
+                                        <para>
+											If your .properties file is named "myPlugins", then your will have this code on the page.
+										</para>
+                                        <para>
+                                                  <emphasis role="bold">Example:</emphasis>
+                                        </para>
+                                        <programlisting role="XML">...
+&lt;rich:editor theme="advanced" customPlugins="myPlugins" plugins="pluginName" /&gt; 
+...</programlisting>                                                                                                                                                                                                                                                                                          
+         </listitem>
+                    </itemizedlist>
+                              <note>
+								<title>Note:</title>
+									<para>
+Some plug-ins which available for download might have some dependencies on TinyMCE scripts.
+For example, dialog pop-ups require tiny_mce_popup.js script file. 
+Assuming that you will not plug  custom plugins to the RF jar with editor component
+(standard TinyMCE plugins creation implies that plugins are put into TinyMCE's corresponding directory)
+ you should manually add required TinyMCE scripts to some project folder and correct the js includes.
+                                        </para>
+                              </note>                   
+                    <para>
+                              The implementation of the <emphasis role="bold">
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> component has two  methods for handling
+                    events. 
+                    </para>  
+                    <para>The attributes take some function name as a value with is triggered on the appropriate event.  You need to use standard JavaScript function calling syntax. </para>
+                    
+                    <itemizedlist>                    
+                    <listitem>
+                              <para>Using  attributes (<emphasis>
+                  <property>"onchange"</property>
+               </emphasis>, 
+								  <emphasis>
+                  <property>"oninit"</property>
+               </emphasis>,
+								  <emphasis>
+                  <property>"onsave"</property>
+               </emphasis>,
+								  <emphasis>
+                  <property>"onsetup"</property>
+               </emphasis>)
+							  </para>
+                              <para>
+                                        <emphasis role="bold">Example:</emphasis>
+                              </para>                              
+               <programlisting role="XML">...
+&lt;rich:editor value="#{bean.editorValue}" onchange="myCustomOnChangeHandler()" /&gt;
+...</programlisting> 
+                    </listitem>
+                    <listitem>
+                        <para>
+							Using <emphasis role="bold">
+                  <property>&lt;f:param&gt;</property>
+               </emphasis> as a child element defining the <emphasis>
+                  <property>"name"</property>
+               </emphasis> attribute 
+							with one of the TinyMCE's callbacks and the 
+							<emphasis>
+                  <property>"value"</property>
+               </emphasis> attribute takes the function name you want to be called 
+							on the corresponding event as the value. Note, that the syntax in this case is a bit different: parentheses are not required. 
+						</para>
+	                    <para>
+	                        <emphasis role="bold">Example:</emphasis>
+	                    </para>
+	                    <programlisting role="XML">...
+&lt;rich:editor value="#{bean.editorValue}"&gt;
+		&lt;f:param name="onchange" value="myCustomOnChangeHandler" /&gt;
+&lt;/rich:editor&gt;
+...</programlisting> 
+					    </listitem>
+	     </itemizedlist>
+                    
+                    <para>The <emphasis role="bold"> 
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> 
+                              component has a build-in converter that renders HTML code generated by the editor 
+                              to Seam text (you can read more on Seam  in <ulink url="http://docs.jboss.org/seam/1.1.5.GA/reference/en/html/text.html">Seam guide</ulink>.), it also interprets Seam text
+                              passed to the <emphasis role="bold"> 
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> and renders it to HTML. 
+                              The converter can be enable with the <emphasis>
+            <property>"useSeamText"</property>
+         </emphasis> attribute.</para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    
+                    <para>This HTML code generated by editor</para>
+                    <programlisting role="XML">...
+&lt;p&gt;&lt;a href="http://mysite.com"&gt;Lorem ipsum&lt;/a&gt; &lt;i&gt;dolor sit&lt;/i&gt; amet, ea &lt;u&gt;commodo&lt;/u&gt; consequat.&lt;/p&gt;
+...</programlisting>   
+                   <para>will be parsed to the following Seam text:</para>
+                    
+                    <programlisting role="XML">...
+[Lorem ipsum=&gt;http://mysite.com] *dolor sit* amet, ea _commodo_ consequat.
+...</programlisting>
+                    <para>Accordingly, if the Seam text is passed to the component it will be parsed to HTML code.</para>
+
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/editor.html">Table of 
+							&lt;rich:editor&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.component.editor</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.Htmleditor</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.component.editor</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.renderkit.html.editorRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.editorTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+                  <title>CSS selectors for the layout of the editor</title>
+                  <tgroup cols="4">
+                        <thead>
+                              <row>
+                                    <entry>Class name (selector)</entry>
+                                    <entry>Description</entry>
+                                    <entry>Skin Parameter</entry>
+                                    <entry>CSS property</entry>
+                              </row>
+                        </thead>
+                        <tbody>                                                  
+                              <row>
+                                    <entry>.richfacesSkin .mceButton</entry>
+                                    <entry>Defines styles for the buttons</entry> 
+                                    <entry>n/a</entry>
+                                    <entry>background-image</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin .mceButtonDisabled .mceIcon </entry>
+                                    <entry>Defines styles for the icons</entry>
+                                    <entry>n/a</entry>
+                                    <entry>opacity</entry>
+                              </row>
+                              
+                              <row> 
+                                    <entry>.richfacesSkin .mceIframeContainer</entry>
+                                    <entry>Defines styles for the container</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-top-color, border-bottom-color</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry morerows="2">.richfacesSkin .mceListBox .mceText</entry>
+                                    <entry morerows="2">Defines styles for the list box</entry>
+                                    <entry>generalFamilyFont</entry>
+                                    <entry>font-family</entry>
+                              </row>
+                              <row>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
+                              </row>
+                              <row>
+                                    <entry>tableBackgroundColor</entry>
+                                    <entry>background</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin .mceExternalToolbar</entry>
+                                    <entry>Defines styles for the toolbar</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin .mceMenu</entry>
+                                    <entry>Defines styles for the menus</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin .mceMenu .mceMenuItemActive</entry>
+                                    <entry>Defines styles for the active menu items</entry>
+                                    <entry>additionalBackgroundColor</entry>
+                                    <entry>background-color</entry>
+                              </row>
+                             
+                              <row>
+                                    <entry>.richfacesSkin .mceSeparator</entry>
+                                    <entry>Defines styles for the buttons separator</entry>
+                                    <entry>n/a</entry>
+                                    <entry>background-image</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin table.mceLayout</entry>
+                                    <entry>Defines styles for the table layout</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-left-color, border-right-color</entry>
+                              </row>
+                              
+                              <row>
+                                    <entry>.richfacesSkin table.mceToolbar</entry>
+                                    <entry>Defines styles for the rows of icons within toolbar</entry>
+                                    <entry>n/a</entry>
+                                    <entry>padding</entry>
+                              </row>                             
+                        </tbody>
+                  </tgroup>
+            </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    
+                    <para>The <emphasis role="bold"> 
+            <property>&lt;rich:editor&gt;</property>
+         </emphasis> is based on TinyMCE editor and supports almost all its features and properties some of which are not described here since you can find more detailed documentation on them on the official <ulink url="http://wiki.moxiecode.com/index.php/TinyMCE:Index">web site.</ulink>
+      </para>
+                    
+                    
+                    <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/editor.jsf?c=editor">On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold">
+                                        <property>&lt;rich:editor&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>

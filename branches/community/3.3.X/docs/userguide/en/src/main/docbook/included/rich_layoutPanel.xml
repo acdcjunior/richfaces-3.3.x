@@ -1,0 +1,134 @@
+<section role="NotInToc" id="rich_layoutPanel">
+   <title>
+				&lt;
+				rich:layoutPanel
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.3.1</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:layouPanel&gt;</property>
+        </emphasis> is an auxiliary component used to create layout areas within the
+            <emphasis role="bold">
+            <property>&lt;rich:layout&gt;</property>
+         </emphasis> container.
+        </para>
+        
+    </section>
+   <section>
+        <title>Key Features</title> 
+        <itemizedlist>
+            
+            <listitem>
+            <para>Cross-browser compatibility</para>
+         </listitem>
+            <listitem>
+            <para>Provides possibility of an easy layout creation</para>
+         </listitem>
+         
+        </itemizedlist>  
+    </section>
+   <section>
+        <title>Details of Usage</title>
+        <para>The <emphasis role="bold">
+                <property>&lt;rich:layoutPanel&gt;</property>
+        </emphasis> component is  used to split the area inside the <emphasis role="bold">
+            <property>&lt;rich:layout&gt;</property>
+         </emphasis> into  up to 5 parts: top, left, center, right, bottom.
+            
+        </para>
+        <para>The <emphasis>
+            <property>"position"</property>
+         </emphasis> attribute defines the position of the <emphasis role="bold">
+            <property>&lt;rich:layoutPanel&gt;</property>
+         </emphasis> in the area created with <emphasis role="bold">
+            <property>&lt;rich:layout&gt;</property>
+         </emphasis> .</para>
+      <programlisting role="XML">...
+&lt;rich:layout&gt;
+		&lt;rich:layoutPanel position="top"&gt;
+				&lt;!--top--&gt;
+		&lt;/rich:layoutPanel&gt;
+		&lt;rich:layoutPanel position="left"&gt;
+				&lt;!--left--&gt;
+		&lt;/rich:layoutPanel&gt;
+		&lt;rich:layoutPanel position="center"&gt;
+				&lt;!--center--&gt;
+		&lt;/rich:layoutPanel&gt;
+		&lt;rich:layoutPanel position="right"&gt;
+				&lt;!--right--&gt;
+		&lt;/rich:layoutPanel&gt;
+		&lt;rich:layoutPanel position="bottom"&gt;
+				&lt;!--bottom--&gt;
+		&lt;/rich:layoutPanel&gt;
+&lt;/rich:layout&gt;
+...</programlisting>                                                                                                                                                                                                                                                                    
+      <para>You can specify the width of the layout area with the <emphasis>
+            <property>"width"</property>
+         </emphasis>attribute.</para>
+        
+        
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/layoutPanel.html">Table of 
+							&lt;rich:layoutPanel&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-type</entry>
+                    <entry>org.richfaces.LayoutPanel</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.HtmlLayoutPanel</entry>
+                </row>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.LayoutPanel</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.LayoutPanelRenderer</entry>
+                </row>
+                <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.LayoutPanelTag</entry>
+                </row>
+                
+            </tbody>
+           
+        </tgroup>
+       
+        
+      </table>
+   </section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/layouts.jsf">On RichFaces Live Demo page </ulink> you can see an example of <emphasis role="bold">
+                <property>&lt;rich:layoutPanel&gt;</property>
+                </emphasis> usage and sources for the given example. </para>
+        <para>The <link linkend="rich_layout">
+            <emphasis role="bold">
+               <property>&lt;rich:layout&gt;</property>
+            </emphasis>
+         </link> chapter of the guide.</para>
+        <para>The <ulink url="http://www.jboss.org/community/docs/DOC-13336">Layout components for RichFaces 3.3.1</ulink> on  the JBoss.org Wiki.</para>
+    </section>
+</section>

@@ -1,0 +1,113 @@
+<section role="NotInToc" id="rich_changeExpandListener">
+   <title>
+				&lt;
+				rich:changeExpandListener
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:changeExpandListener&gt;</property>
+         </emphasis>
+		represents an action listener method that is notified on an expand/collapse event on the node.
+		</para>	
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+			      <listitem>
+            <para>Allows to define some "changeExpand" listeners for the component</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+
+      <para>
+  The <emphasis role="bold">
+            <property>&lt;rich:changeExpandListener&gt;</property>
+         </emphasis> is used as a nested tag with <emphasis role="bold">
+            <property>&lt;rich:tree&gt;</property>
+         </emphasis>
+  and <emphasis role="bold">
+            <property>&lt;rich:treeNode&gt;</property>
+         </emphasis> components.
+</para>
+      <para>
+Attribute <emphasis>
+            <property>"type"</property>
+         </emphasis> defines the fully qualified Java class name for the listener.
+  This class should implement <ulink url="&apidoc_framework;org/richfaces/event/TreeListenerEventsProducer.html#addChangeExpandListener(org.richfaces.event.NodeExpandedListener)">
+            <code>org.richfaces.event.NodeExpandedListener</code>
+         </ulink>interface.
+</para>
+	
+      <para>
+         <emphasis role="bold">The typical variant of using:</emphasis>
+      </para>
+
+      <programlisting role="XML">...
+&lt;rich:tree switchType="server" value="#{project.data}" var="item" nodeFace="#{item.type}"&gt;
+	&lt;rich:changeExpandListener type="demo.ListenerBean"/&gt;
+	...
+	&lt;!-- Tree nodes --&gt;	
+	...
+&lt;/rich:tree&gt;
+...
+</programlisting> 
+
+      <para>
+         <emphasis role="bold">Java bean source:</emphasis>
+      </para>
+
+      <programlisting role="JAVA">package demo;
+import org.richfaces.event.NodeExpandedEvent;
+public class ListenerBean implements org.richfaces.event.NodeExpandedListener{
+    ...	
+	public void processExpansion(NodeExpandedEvent arg0){
+		//Custom Developer Code 
+	}
+    ...
+}
+...</programlisting> 
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/changeExpandListener.html">Table of 
+							&lt;rich:changeExpandListener&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+	        <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+		
+               <row>
+                  <entry>listener-class</entry>
+                  <entry>org.richfaces.event.NodeExpandedListener</entry>
+               </row>
+		             <row>
+                  <entry>event-class</entry>
+                  <entry>org.richfaces.event.NodeExpandedEvent</entry>
+               </row>
+          
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.ChangeExpandListenerTag</entry>
+               </row>                                                                                                                                                                                                                                                                    
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+</section>

@@ -1,0 +1,152 @@
+<section role="NotInToc" id="a4j_ajaxListener">
+   <title>
+				&lt;
+				a4j:ajaxListener
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+		    <title>Description</title>
+            <para>The component adds an action listener to a parent component to provide possibility of Ajax update. 
+                  It works like the <emphasis role="bold">
+            <property>&lt;f:actionListener&gt;</property>
+         </emphasis> or <emphasis role="bold">
+            <property>&lt;f:valueChangeListener&gt;</property>
+         </emphasis> JSF components 
+                  but for the whole Ajax container.
+            </para>
+	  </section>
+   <section>
+		    <title>Key Features</title>    
+			   <itemizedlist>
+                <listitem>
+            <para>The listener is invoked for Ajax requests only</para>
+         </listitem>
+                <listitem>
+            <para>The listener is always guaranteed to be invoked</para>
+         </listitem> 
+            </itemizedlist>
+    </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>The <emphasis role="bold">
+            <property>&lt;a4j:ajaxListener&gt;</property>
+         </emphasis> component adds an action listener to a parent component, which needs to be provided with Ajax support. 
+                  That listener is invoked on each Ajax request during the "Render Response" JSF phase. 
+                  In comparison with JSF <emphasis role="bold">
+            <property>&lt;f:actionListener&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;f:valueChangeListener&gt;</property>
+         </emphasis> 
+                  the invocation of the <emphasis role="bold">
+            <property>&lt;a4j:ajaxListener&gt;</property>
+         </emphasis> is not skipped in case when validation of Update Model fails. 
+                  The <emphasis role="bold">
+            <property>&lt;a4j:ajaxListener&gt;</property>
+         </emphasis> is guarantied to be invoked for each Ajax response.
+            </para>
+                  
+      <note>
+         <para>
+             Ajax listener is not invoked for non-Ajax requests and when RichFaces works in the "Ajax Request generates Non-Ajax Response" mode. 
+       </para>
+      </note>                 
+
+      <para>
+      As example of the <emphasis role="bold">
+            <property>&lt;a4j:ajaxListener&gt;</property>
+         </emphasis> component usage one can cite an updating the list of re-rendered components.
+</para>
+
+      <para>
+      The <emphasis>
+            <property>"type"</property>
+         </emphasis> attribute defines the fully qualified Java class name for the listener. 
+      This Java class implements <code>
+            <ulink url="&apidoc_framework;org/ajax4jsf/event/AjaxListener.html">
+               <property>org.ajax4jsf.event.AjaxListener</property>
+            </ulink>
+         </code>interface, which is base interface for all listeners, capable for receiving Ajax events. 
+      The source of the event could be accessed using the <code>
+            <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/EventObject.html">
+               <property>java.util.EventObject.getSource()</property>
+            </ulink>
+         </code> call. 
+</para>
+
+
+ 
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+
+      <programlisting role="XML">...
+&lt;a4j:commandLink id="cLink" value="Click it To Send Ajax Request"&gt;
+      &lt;a4j:ajaxListener type="demo.Bean"/&gt;
+&lt;/a4j:commandLink&gt;
+...</programlisting> 
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+
+      <programlisting role="JAVA">package demo;
+
+import org.ajax4jsf.event.AjaxEvent;
+
+public class Bean implements org.ajax4jsf.event.AjaxListener{
+     ...	
+     public void processAjax(AjaxEvent arg){
+          //Custom Developer Code 
+     }
+     ...
+}</programlisting> 
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/ajaxListener.html">Table of 
+							&lt;a4j:ajaxListener&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+	        <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+		
+               <row>
+                  <entry>listener-class</entry>
+                  <entry>org.ajax4jsf.event.AjaxListener</entry>
+               </row>
+		             <row>
+                  <entry>event-class</entry>
+                  <entry>org.ajax4jsf.event.AjaxEvent</entry>
+               </row>
+          
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.ajax4jsf.taglib.html.jsp.AjaxListenerTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+            Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/ajaxListener.jsf?c=ajaxListener">AjaxListener</ulink> page at RichFaces Livedemo for examples of component usage and their sources. 
+      </para>
+        <para>
+              Check Sun JSF TLD documentation for more information on <ulink url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/valueChangeListener.html">&lt;f:valueChangeListener&gt; tag</ulink>. 
+        </para>
+  </section>
+</section>

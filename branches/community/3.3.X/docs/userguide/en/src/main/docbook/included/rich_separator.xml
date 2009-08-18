@@ -1,0 +1,175 @@
+<section role="NotInToc" id="rich_separator">
+   <title>
+				&lt;
+				rich:separator
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A horizontal line to use as a <property>separator</property> in a layout. The line type 
+    can be customized with the <code>"lineType"</code> parameter.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:separator&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/separator_init.png"/>
+            </imageobject>
+         </mediaobject>
+     </figure>   
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Highly customizable look and feel </para>
+         </listitem>
+        <listitem>
+            <para>Leveraging layout elements creation</para>
+         </listitem>   
+      </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+        <para>
+         <emphasis role="bold">
+            <property>&lt;rich:separator&gt;</property>
+         </emphasis> is a simple layout component, 
+          which represents a <property>separator</property> stylized as a skin. 
+          Thus, the main attributes that define its style are <emphasis> 
+            <property>"style"</property>
+         </emphasis> and <emphasis>
+            <property>"styleClass".</property>
+         </emphasis> In addition there are <emphasis>
+            <property>"width"</property>
+         </emphasis> and <emphasis>
+            <property>"height"</property>
+         </emphasis> attributes that should be specified in pixels.
+          On the HTML page the component is transposed into HTML <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> tag.</para>
+    
+      <para>The line type can be customized with the <code>"lineType"</code> parameter. For example, different line types are shown after rendering with the
+      following initial settings <code>lineType="double"</code>and <code>lineType="solid"</code>.
+    </para>
+      <figure>
+         <title>Different line types of <emphasis role="bold">
+               <property>&lt;rich:separator&gt;</property>
+            </emphasis>
+         </title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/separator2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <para>Except style attributes, there are also event definition attributes:</para>
+      <itemizedlist>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onmouseover"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onclick"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> 
+               <emphasis>
+                  <property>"onmouseout"</property>
+               </emphasis> 
+            </para>
+         </listitem>
+         <listitem>
+            <para> etc. </para>
+         </listitem>
+      </itemizedlist>
+
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/separator.html">Table of 
+							&lt;rich:separator&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.separator</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlSeparator</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.separator</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.SeparatorRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.SeparatorTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="sepC">
+         <title>Classes names that define a component appearance</title>
+      
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+            
+                  <entry>Description</entry>
+               </row>
+            </thead>
+        
+            <tbody>
+               <row>
+                  <entry>rich-separator</entry>
+            
+                  <entry>Defines styles for a component appearance</entry>
+               </row>
+          
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/separator.jsf?c=separator">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:separator&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

@@ -1,0 +1,132 @@
+<section role="NotInToc" id="rich_dragListener">
+   <title>
+				&lt;
+				rich:dragListener
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:dragListener&gt;</property>
+         </emphasis>
+		represents an action listener method that is notified after a drag operation.
+		</para>	
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+			      <listitem>
+            <para>Allows to define some drag listeners for the components with "Drag and Drop" support</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+		    <title>Details of Usage</title>
+
+		    <para>
+			The
+			<emphasis role="bold">
+				        <property>&lt;rich:dragListener&gt;</property>
+			      </emphasis>
+			is used as a nested tag with components like
+			<emphasis role="bold">
+				        <property>&lt;rich:dragSupport&gt;</property>
+			      </emphasis>
+			,
+			<emphasis role="bold">
+				        <property>&lt;rich:tree&gt;</property>
+			      </emphasis>
+			and
+			<emphasis role="bold">
+				        <property>&lt;rich:treeNode&gt;</property>
+			      </emphasis>
+			.
+		</para>
+		    <para>
+			Attribute
+			<emphasis>
+				        <property>"type"</property>
+			      </emphasis>
+			defines the fully qualified Java class name for a listener.
+			This class should implement
+			
+			<ulink url="&apidoc_framework;org/richfaces/event/DropListener.html">
+				        <code>org.richfaces.event.DropListener</code>
+			      </ulink>
+			interface.
+		</para>
+
+		    <para>
+			      <emphasis role="bold">
+				The typical variant of using:
+			</emphasis>
+		    </para>
+
+		    <programlisting role="XML">...
+&lt;h:panelGrid id="dragPanel"&gt;
+	&lt;rich:dragSupport dragType="item"&gt;
+		&lt;rich:dragListener type="demo.ListenerBean"/&gt;	
+	&lt;/rich:dragSupport&gt;
+	&lt;!--Some content to be dragged--&gt;
+&lt;/h:panelGrid&gt;
+...
+</programlisting>
+
+		    <para>
+			      <emphasis role="bold">Java bean source:</emphasis>
+		    </para>
+
+		    <programlisting role="JAVA">package demo;
+
+import org.richfaces.event.DragEvent;
+
+public class ListenerBean implements org.richfaces.event.DragListener{
+...	
+	public void processDrag(DragEvent arg0){
+		//Custom Developer Code 
+	}
+...
+}
+</programlisting>
+	  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dragListener.html">Table of 
+							&lt;rich:dragListener&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+		       <title>Component Identification Parameters</title>
+		       <tgroup cols="2">
+			         <thead>
+				           <row>
+					             <entry>Name</entry>
+					             <entry>Value</entry>
+				           </row>
+			         </thead>
+			         <tbody>
+
+				           <row>
+					             <entry>listener-class</entry>
+					             <entry>org.richfaces.event.DragListener</entry>
+				           </row>
+				           <row>
+					             <entry>event-class</entry>
+					             <entry>org.richfaces.event.DragEvent</entry>
+				           </row>
+
+				           <row>
+					             <entry>tag-class</entry>
+					             <entry>org.richfaces.taglib.DragListenerTag</entry>
+				           </row>
+
+			         </tbody>
+		       </tgroup>
+	     </table>
+   </section>
+</section>

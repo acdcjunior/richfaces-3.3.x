@@ -1,0 +1,349 @@
+<section role="NotInToc" id="rich_panelMenuGroup">
+   <title>
+				&lt;
+				rich:panelMenuGroup
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The <emphasis role="bold">
+                <property>&lt;rich:panelMenuGroup&gt;</property>
+        </emphasis> component is used to define an expandable group of items inside the panel menu or other group.</para>
+        <figure>
+            <title>
+            <emphasis role="bold">
+               <property>&lt;rich:panelMenuGroup&gt;</property>
+            </emphasis> component</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="images/panelMenuGroup_init.png"/>
+            </imageobject>
+        </mediaobject>
+        </figure>
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+            <listitem>
+            <para>Highly customizable look-and-feel</para>
+         </listitem>
+            <listitem>
+            <para>Different submission modes inside every group</para>
+         </listitem>
+            <listitem>
+            <para>Optional submissions on expand collapse groups</para>
+         </listitem>
+            <listitem>
+            <para>Custom and predefined icons supported</para>
+         </listitem>
+            <listitem>
+            <para>Support for disabling</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+
+      <para>All attributes except <emphasis>
+            <property>"label"</property>
+         </emphasis> are optional. The <emphasis>
+            <property>"label"</property>
+         </emphasis> attribute defines text to be represented.</para>
+      <para>Switching mode could be chosen with the<emphasis>
+            <property> "expandMode"</property>
+         </emphasis> attribute for the concrete panelMenu group.</para>
+      <para>The <emphasis>
+            <property>"expandMode"</property>
+         </emphasis> attribute could be used with three possible parameters:</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>ServerM</code> (default)</para>
+         </listitem>
+      </itemizedlist>
+
+      <para>Regular form submission request is used.</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>Ajax</code>
+            </para>
+         </listitem>
+      </itemizedlist>
+
+      <para>Ajax submission is used for switching.</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>None</code>
+            </para>
+         </listitem>
+      </itemizedlist>
+
+      <para>
+         <emphasis>
+            <property>"Action"</property>
+         </emphasis> and <emphasis>
+            <property>"actionListener"</property>
+         </emphasis> attributes are ignored. Items don't fire any submits itself. Behavior is
+      fully defined by the components nested into items.</para>
+
+      <para>There are three icon-related attributes. The <emphasis>
+            <property>"iconExpanded"</property>
+         </emphasis> attribute defines an icon for an expanded state. The <emphasis>
+            <property>"iconCollapsed"</property>
+         </emphasis> attribute defines an icon for a collapsed state. The <emphasis>
+            <property>"iconDisabled"</property>
+         </emphasis> attribute defines an icon for a disabled state.</para>
+
+      <para>Default icons are shown on the picture below:</para>
+
+      <figure>
+         <title>Default icons</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/panelMenuGroup2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <para>Here is an example:</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:panelMenu&gt;
+		&lt;rich:panelMenuGroup label="Group1" iconExpanded="disc" iconCollapsed="chevron"&gt;
+       			&lt;!--Nested panelMenu components--&gt;
+       	&lt;/rich:panelMenuGroup&gt;
+&lt;/rich:panelMenu&gt;
+...</programlisting>
+      <para> As the result the pictures are shown below. The first one represents the collapsed state,
+      the second one - expanded state:</para>
+
+      <figure>
+         <title>Collapsed state</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/panelMenuGroup3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <figure>
+         <title>Expanded state</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/panelMenuGroup4.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <para>It's also possible to define a path to the icon. Simple code is placed below.</para>
+
+      <programlisting role="XML">...
+&lt;rich:panelMenu&gt;
+		&lt;rich:panelMenuGroup label="Group1" iconExpanded="\images\img1.png" iconCollapsed="\images\img2.png"&gt;
+       				&lt;!--Nested menu components--&gt;
+       	&lt;/rich:panelMenuGroup&gt;
+&lt;/rich:panelMenu&gt;
+...</programlisting>
+      <para>
+      Information about the <emphasis>
+            <property>"process"</property>
+         </emphasis> attribute usage you can find <link linkend="process">" Decide what to process " </link> guide section.
+    </para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/panelMenuGroup.html">Table of 
+							&lt;rich:panelMenuGroup&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+
+                  <entry>Value</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+
+                  <entry>org.richfaces.PanelMenuGroup</entry>
+               </row>
+
+               <row>
+                  <entry>component-class</entry>
+
+                  <entry>org.richfaces.component.html.HtmlPanelMenuGroup</entry>
+               </row>
+
+               <row>
+                  <entry>component-family</entry>
+
+                  <entry>org.richfaces.PanelMenuGroup</entry>
+               </row>
+
+               <row>
+                  <entry>renderer-type</entry>
+
+                  <entry>org.richfaces.PanelMenuGroupRenderer</entry>
+               </row>
+
+               <row>
+                  <entry>tag-class</entry>
+
+                  <entry>org.richfaces.taglib.PanelMenuGroupTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>JavaScript API</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Function</entry>
+
+                  <entry>Description</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>expand()</entry>
+
+                  <entry>Expand group element</entry>
+               </row>
+
+               <row>
+                  <entry>collapse()</entry>
+
+                  <entry>Collapse group element</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="panelMenuC">
+         <title>Classes names that define an upper level groups</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+
+                  <entry>Description</entry>
+               </row>
+            </thead>
+
+            <tbody>
+  
+               <row>
+                  <entry>rich-pmenu-top-group-self-icon</entry>
+
+                  <entry>Defines styles for a top group icon</entry>
+               </row>
+
+               <row>
+                  <entry>rich-pmenu-top-group-self-label</entry>
+
+                  <entry>Defines styles for a top group label</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define a second and lower level groups</title>
+      
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+            
+                  <entry>Description</entry>
+               </row>
+            </thead>
+        
+            <tbody>
+          
+               <row>
+                  <entry>rich-pmenu-group</entry>
+            
+                  <entry>Defines styles for a group</entry>
+               </row>
+          
+               <row>
+                  <entry>rich-pmenu-group-self-icon</entry>
+            
+                  <entry>Defines styles for a group icon</entry>
+               </row>
+          
+               <row>
+                  <entry>rich-pmenu-group-self-label</entry>
+            
+                  <entry>Defines styles for a group label</entry>
+               </row>
+            </tbody>
+        
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define a group state</title>
+      
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+            
+                  <entry>Description</entry>
+               </row>
+            </thead>
+        
+            <tbody>
+               <row>
+                  <entry>rich-pmenu-hovered-element</entry>
+            
+                  <entry>Defines styles for a hovered group element</entry>
+               </row>
+         
+               <row>
+                  <entry>rich-pmenu-disabled-element</entry>
+            
+                  <entry>Defines styles for a disabled group element</entry>
+               </row>
+            </tbody>
+        
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+      Some additional information about usage of component can be found 
+      <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenu&amp;tab=usage">on the component Live Demo page</ulink>.
+    </para>
+  </section>
+</section>

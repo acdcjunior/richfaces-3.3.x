@@ -1,0 +1,496 @@
+<section role="NotInToc" id="rich_scrollableDataTable">
+   <title>
+				&lt;
+				rich:scrollableDataTable
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>
+            The <emphasis role="bold">
+            <property>&lt;rich:scrollableDataTable&gt;</property>
+         </emphasis> component is used for the table-like component creation.
+		The component just adds the set of additional features described below in comparison with the standard table.
+		</para>
+		
+		    <figure>
+		       <title>
+            <emphasis role="bold">
+               <property>&lt;rich:scrollableDataTable&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/scrollableDataTable_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+		
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+			      <listitem>
+            <para>Highly customizable look and feel</para>
+         </listitem>
+			      <listitem>
+            <para>Variable content of the table cells</para>
+         </listitem>
+			      <listitem>
+            <para>Dynamically fetching the rows from the server when the table is scrolled up and down</para>
+         </listitem>
+			      <listitem>
+            <para>Resizing columns by mouse dragging the column bar</para>
+         </listitem>
+			      <listitem>
+            <para>Sorting column by clicking the header</para>
+         </listitem>
+			      <listitem>
+            <para>Fixed one or more left columns when table is scrolled horizontally</para>
+         </listitem>
+			      <listitem>
+            <para>One and multi-selection rows mode</para>
+         </listitem>
+			      <listitem>
+            <para>Built-it drag-n-drop support</para>
+         </listitem>
+                                            <listitem>
+            <para>
+               <link linkend="sort">Sorting column values</link>
+            </para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para> The component represents on a page as a scrollable table with some fixed
+                              (non-scrollable) rows ( with header and footer) and columns. Like
+                              other tables <emphasis role="bold">
+                                        <property>&lt;rich:scrollableDataTable&gt;</property>
+                              </emphasis> also has optional footer and header that could be
+                              implemented using the corresponding facets. Columns of the table are
+                              optionally resizable. Resizing is available using "drag and drop" of
+                              the column vertical borders. <!--There is possibility to expand or
+                              collapse the columns through JS API on the client side. -->You can define
+                              the number of the fixed columns from the left side using attribute <emphasis>
+                                        <property>"frozenColCount"</property>
+                              </emphasis> that is not scrolled via horizontal scroll. </para>
+                    <para> There is possibility to increase component performance using attribute <emphasis>
+                                        <property>"hideWhenScrolling"</property>
+                              </emphasis>. If attribute value is "true" data is
+                              hidden during scrolling. </para>
+
+                    <para> It's possible to select the whole row with onclick on the row or
+                              some set of rows. Selection is optional and availability of such
+                              feature is defined on the component. There are two ways to select a
+                              few rows: </para> 
+      <itemizedlist>
+                                        <listitem>
+                                                  <para>Just clicking the columns one by one.</para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para>Clicking some row with the SHIFT button
+                                                  hold. In this case all the rows starting
+                                                  from last selected up to clicked should
+                                                  be selected.</para>
+                                        </listitem>
+                              </itemizedlist>
+                    
+
+                    <!--para> The columns provides the possibility of expanding/collapsing on the
+                              client side through the next JS API:</para> <itemizedlist>
+                                        <listitem>
+                                                  <para><code>collapse(columnId)</code> - Performs
+                                                  the collapse action for the column with
+                                                  the corresponding id</para>
+                                        </listitem>
+                              </itemizedlist--> 
+                              <para> It's possible to sort the table content after
+                                        clicks on the header. The feature is optional (to disable it, use attribute sortable on rich:column ). Every column should be
+                              pointed to the comparator method that is used for sorting the table.
+                              In case the <emphasis role="bold">
+                                        <property>&lt;rich:scrollableDataTable&gt;</property>
+                              </emphasis> is already sorted by some column and the header of this
+                              column has been clicked again - the sorting is reversed. </para>
+                    <para>After sorting selection that was made before is reset</para>
+
+                    <para>
+                              <emphasis role="bold">The typical variant of using:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:scrollableDataTable value="#{modelBuilder.model}" var="issues"
+			frozenColCount="1"
+			first="0"
+			rows="40" 
+			width="300px"
+			height="396px"&gt;
+	&lt;rich:column width="100px"&gt;
+		&lt;f:facet name="header" &gt;
+			&lt;h:outputText value="State"/&gt;
+		&lt;/f:facet&gt;
+		&lt;h:outputText value="#{issues.cell1}"/&gt;
+		&lt;f:facet name="footer"&gt;
+			&lt;h:outputText value="State"/&gt;
+		&lt;/f:facet&gt;
+	&lt;/rich:column&gt;		
+	&lt;!--Set of columns and header/footer facets--&gt;
+&lt;/rich:scrollableDataTable&gt;
+...
+</programlisting>
+
+                    <para>The <emphasis>
+                                        <property>"selection"</property>
+                              </emphasis> attribute allows to get the row data when using
+                                        <property>one and multi-selection rows mode</property>.</para>
+                    <para>This attribute is a reference to object to the instance of
+                              
+                              <ulink url="&apidoc_framework;org/richfaces/model/selection/Selection.html">     
+            <code>org.richfaces.model.selection.Selection</code>
+         </ulink>.
+                              interface
+                    
+                                                                  
+                              interface, containing current collection of objects selected by you.</para>
+                    <para>In the following example when you submit the form, current collection of
+                              the selected objects is placed in the object's property. Then
+                              on complete action the <emphasis role="bold">
+                                        <property>&lt;rich:modalPanel&gt;</property>
+                              </emphasis> with selected data is shown.</para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+		&lt;rich:spacer height="30" /&gt;
+				&lt;rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="200px" 
+						width="300px" id="carList" rows="40" columnClasses="col"
+						value="#{dataTableScrollerBean.allCars}" var="category" sortMode="single"
+						selection="#{dataTableScrollerBean.selection}"&gt;
+						&lt;rich:column id="make"&gt;
+								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Make" /&gt;&lt;/f:facet&gt;
+								&lt;h:outputText value="#{category.make}" /&gt;
+						&lt;/rich:column&gt;
+						&lt;rich:column id="model"&gt;
+								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Model" /&gt;&lt;/f:facet&gt;
+								&lt;h:outputText value="#{category.model}" /&gt;
+						&lt;/rich:column&gt;
+						&lt;rich:column id="price"&gt;
+								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Price" /&gt;&lt;/f:facet&gt;
+								&lt;h:outputText value="#{category.price}" /&gt;
+						&lt;/rich:column&gt;
+				&lt;/rich:scrollableDataTable&gt;
+				&lt;rich:spacer height="20px"/&gt;
+				&lt;a4j:commandButton value="Show Current Selection" reRender="table" 
+						action="#{dataTableScrollerBean.takeSelection}" 
+						oncomplete="javascript:Richfaces.showModalPanel('panel');"/&gt;
+&lt;/h:form&gt;
+&lt;rich:modalPanel id="panel" autosized="true"&gt;
+		&lt;f:facet name="header"&gt;
+				&lt;h:outputText value="Selected Rows"/&gt;
+		&lt;/f:facet&gt;
+		&lt;f:facet name="controls"&gt;
+				&lt;span style="cursor:pointer" onclick="javascript:Richfaces.hideModalPanel('panel')"&gt;X&lt;/span&gt;
+		&lt;/f:facet&gt;
+		&lt;rich:dataTable value="#{dataTableScrollerBean.selectedCars}" var="sel" id="table"&gt;
+				&lt;rich:column&gt;
+						&lt;f:facet name="header"&gt;&lt;h:outputText value="Make" /&gt;&lt;/f:facet&gt;
+						&lt;h:outputText value="#{sel.make}" /&gt;
+				&lt;/rich:column&gt;
+				&lt;rich:column id="model"&gt;
+						&lt;f:facet name="header"&gt;&lt;h:outputText value="Model" /&gt;&lt;/f:facet&gt;
+				&lt;h:outputText value="#{sel.model}" /&gt;
+				&lt;/rich:column&gt;
+				&lt;rich:column id="price"&gt;
+						&lt;f:facet name="header"&gt;&lt;h:outputText value="Price" /&gt;&lt;/f:facet&gt;
+						&lt;h:outputText value="#{sel.price}" /&gt;
+				&lt;/rich:column&gt;
+		&lt;/rich:dataTable&gt;
+&lt;/rich:modalPanel&gt;
+...</programlisting>
+                    <para>This is a result:</para>
+                    <figure>
+                              <title>The <emphasis>
+                                                  <property>"selection"</property>
+                                        </emphasis> attribute usage</title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/scrollableDataTable2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>
+         <ulink url="http://wiki.jboss.org/wiki/RichFacesCookbook/ScrollableDataTableSelectionUsage">On RichFaces LiveDemo page </ulink> you can find fuller example of use of this
+                              attribute with example bean.</para>
+                    <para> The <emphasis role="bold">
+                                        <property>&lt;rich:scrollableDataTable&gt;</property>
+                              </emphasis> component has the following extra attributes for event
+                              processing on the client:</para> 
+      <itemizedlist>
+                                        <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>"onselectionchange"</property>
+                                                  </emphasis>
+                                                  </para>
+                                        </listitem>
+                                        <!-- <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>&quot;oncomplete&quot;</property>
+                                                  </emphasis>
+                                                  </para>
+                                                  </listitem>  -->
+                                        <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>"onRowClick"</property>
+                                                  </emphasis>
+                                                  </para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>"onRowDblClick"</property>
+                                                  </emphasis>
+                                                  </para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>"onRowMouseUp"</property>
+                                                  </emphasis>
+                                                  </para>
+                                        </listitem>
+                                        <listitem>
+                                                  <para>
+                                                  <emphasis>
+                                                  <property>"onRowMouseDown"</property>
+                                                  </emphasis>
+                                                  </para>
+                                        </listitem>
+                              </itemizedlist>
+                    
+                    <para>From version 3.3.1 it becomes possible to switch selection mode with selectionMode attribute</para>
+                   
+                    <para>Information about sorting and filtering you can find in RichFaces Developer guide section about<link linkend="sort">sorting</link>.</para>
+                    <para> Information about the <emphasis>
+                                        <property>"process"</property>
+                    </emphasis> attribute usage you can find in the 
+                              <link linkend="process"> "Decide what to process" </link> guide section. </para>
+                    <note>
+                    	<title>Note:</title>
+                    	<para>
+                    	If you want to use specific features such as pagination on database level you should pass to the 
+                    		<emphasis>
+               <property>"value"</property>
+            </emphasis> of the 
+                    		<emphasis role="bold">
+               <property>&lt;rich:scrollableDataTable&gt;</property>
+            </emphasis> component
+                    		an object which class extends <code>org.richfaces.model.ScrollableTableDataModel</code>.
+                    	</para>
+                    </note>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/scrollableDataTable.html">Table of 
+							&lt;rich:scrollableDataTable&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.component.ScrollableDataTable</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlScrollableDataTable</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.component.ScrollableDataTable</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.renderkit.html.ScrollableDataTableRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.ScrollableDataTableTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+                              <title>Facets</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                            <entry>Facet</entry>
+                                                            <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                            <entry>header</entry>
+                                                            <entry>Defines the header content</entry>
+                                                  </row>
+                                                  <row>
+                                                            <entry>footer</entry>
+                                                            <entry>Defines the footer content</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table id="scrdattableC">
+                              <title>Classes names that define a component appearance</title>
+
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-sdt</entry>
+
+                                                  <entry>Defines styles for a component
+                                                  appearance</entry>
+                                                  </row>
+
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define footer and header elements</title>
+
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+
+                                        <tbody>
+
+                                                  <row>
+                                                  <entry>rich-sdt-header-cell</entry>
+
+                                                  <entry>Defines styles for header
+                                                  cells</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-header-row</entry>
+
+                                                  <entry>Defines styles for a header
+                                                  raw</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-column-cell</entry>
+
+                                                  <entry>Defines styles for column
+                                                  cells</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-sdt-footer-cell</entry>
+
+                                                  <entry>Defines styles for footer
+                                                  cells</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-footer-row</entry>
+
+                                                  <entry>Defines styles for a footer
+                                                  raw</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-sdt-hsep</entry>
+
+                                                  <entry>Defines styles for header
+                                                  separators</entry>
+                                                  </row>
+
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define different states</title>
+
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+
+                                        <tbody>
+
+                                                  <row>
+                                                  <entry>rich-sdt-row-active</entry>
+
+                                                  <entry>Defines styles for an active
+                                                  row</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-row-selected</entry>
+
+                                                  <entry>Defines styles for a selected
+                                                  row</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-column-sort-up</entry>
+
+                                                  <entry>Defines styles for ascending
+                                                  sorted column</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-sdt-column-sort-down</entry>
+
+                                                  <entry>Defines styles for descending
+                                                  sorted column</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/scrollableDataTable.jsf?c=scrollableDataTable">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:scrollableDataTable&gt;</property>
+                                        </emphasis> usage. </para>
+                    <para>Cookbook article <ulink url="http://www.jboss.org/community/docs/DOC-11857">
+                              Scrollable dataTable Selection Usage
+                    </ulink> provides a simple example of how you can use the "selection" attribute in order to get row selection in rich:scrollableDataTable. </para>
+          </section>
+</section>

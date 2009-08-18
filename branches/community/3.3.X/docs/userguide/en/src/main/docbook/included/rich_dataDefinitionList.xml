@@ -1,0 +1,201 @@
+<section role="NotInToc" id="rich_dataDefinitionList">
+   <title>
+				&lt;
+				rich:dataDefinitionList
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component to render definition lists that allows choosing data from a model
+     and obtains built-in support of Ajax updates.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataDefinitionList&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/dataDefinitionList_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title> 
+      <itemizedlist>
+         <listitem>
+            <para>Completely skinned table rows and child elements</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to update a limited set of rows with Ajax</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to receive values dynamically from a model</para>
+         </listitem>
+      </itemizedlist>  
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:dataDefinitionList&gt;</property>
+         </emphasis> component allows to generate a definition list from a model.</para>
+      <para>The component has the <emphasis>
+            <property>"term"</property>
+         </emphasis> facet, which corresponds to the <emphasis>
+            <property>"type"</property>
+         </emphasis> parameter for the <emphasis role="bold">
+            <property>&lt;dt&gt;</property>
+         </emphasis> HTML element.</para>
+      <para>Here is an example:</para>
+  
+      <programlisting role="XML">...
+&lt;h:form&gt;
+		&lt;rich:dataDefinitionList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" first="4" title="Cars"&gt;
+       			&lt;f:facet name="term"&gt;
+               		&lt;h:outputText value="#{car.make} #{car.model}"&gt;&lt;/h:outputText&gt;
+            	&lt;/f:facet&gt;
+            	&lt;h:outputText value="Price:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.price}" /&gt;&lt;br/&gt;
+            	&lt;h:outputText value="Mileage:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.mileage}" /&gt;&lt;br/&gt;
+		&lt;/rich:dataDefinitionList&gt;
+&lt;/h:form&gt;
+...
+</programlisting>
+  
+      <para>This is a result:</para>
+  
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataDefinitionList&gt;</property>
+            </emphasis> component with <emphasis>
+               <property>"term"</property>
+            </emphasis> facet</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dataDefinitionList2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+  
+      <para>In the example the <emphasis>
+            <property>"rows"</property>
+         </emphasis> attribute limits a number of output elements of the list.</para>
+  
+      <para>The <emphasis>
+            <property>"first"</property>
+         </emphasis> attribute defines the first element for output. <emphasis>
+            <property>"title"</property>
+         </emphasis> is used for a popup title.</para>
+  
+      <para>The <emphasis role="bold">
+  	         <property>&lt;rich:dataDefinitionList&gt;</property>
+         </emphasis> component could be partially updated with Ajax. The <emphasis>
+            <property>"ajaxKeys"</property>
+         </emphasis> attribute allows to define row keys that are updated after an Ajax request, you need to pass an array with key (lines) of the list that you want to be updated after the Ajax request is executed.</para>
+      <para>Here is an example:</para>
+  
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:dataDefinitionList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+                        binding="#{listBean.dataList}" id="list"&gt;
+		...
+&lt;/rich:dataDefinitionList&gt;
+...
+&lt;a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/&gt;
+...
+</programlisting>
+  
+      <para> In the example the <emphasis>
+            <property>"reRender"</property>
+         </emphasis> attribute contains value of <emphasis>
+            <property>"id"</property>
+         </emphasis> attribute for <emphasis role="bold">
+            <property>&lt;rich:dataDefinitionList&gt;</property>
+         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+  
+   </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dataDefinitionList.html">Table of 
+							&lt;rich:dataDefinitionList&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.DataDefinitionList</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlDataDefinitionList</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.DataDefinitionList</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.DataDefinitionListRenderer</entry>
+               </row>          
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.DataDefinitionListTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="tab_dDL">
+		       <title>Classes names that define a list appearance</title>
+		       <tgroup cols="2">
+		          <thead>
+		             <row>
+		                <entry>Class name</entry>
+		                <entry>Description</entry>
+		             </row>
+		          </thead>
+		          <tbody>
+		             <row>
+		                <entry>rich-deflist</entry>
+		                <entry>Defines styles for an html &lt;dl&gt; element</entry>
+		             </row>
+		             <row>
+		                <entry>rich-definition</entry>
+		                <entry>Defines styles for an html &lt;dd&gt; element</entry>
+		             </row>
+		             <row>
+		                <entry>rich-definition-term</entry>
+		                <entry>Defines styles for an html &lt;dt&gt; element</entry>
+		             </row>
+		          </tbody>
+		       </tgroup>
+		   </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataLists.jsf?c=dataDefinitionList">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:dataDefinitionList&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

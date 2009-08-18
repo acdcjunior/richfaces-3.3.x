@@ -1,0 +1,237 @@
+<section role="NotInToc" id="a4j_region">
+   <title>
+				&lt;
+				a4j:region
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> component specifies the part of the component tree to be processed on server. 
+                  If no <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> is defined the whole View functions as a region. 
+            </para>
+      </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> component specifies the part of the component tree to be processed on server. 
+                  The processing includes data handling during decoding, conversion, validation and model update. 
+                  Note that the whole Form is still submitted but only part taken into region will be processed.  
+
+            </para>
+             
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML">&lt;h:form&gt;
+      ...
+      &lt;a4j:region&gt;
+            &lt;a4j:commandLink/&gt;
+      &lt;/a4j:region&gt;
+      ...
+&lt;h:form&gt;</programlisting>
+            
+            <para>The whole Form on the schematic listing above will be submitted by request invoked with the <emphasis role="bold">
+            <property>&lt;a4j:commandLink&gt;</property>
+         </emphasis>. 
+                  The only part that is going to be processed on the server is enclosed with <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;/a4j:region&gt;</property>
+         </emphasis> tags. 
+                  If no <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> is defined the whole View functions as a region. 
+            </para>
+                       
+            <!--            <para>The region is a component used for manipulation with components sent to the server. 
+                  It sets particular processing parameters for an area on the server, i.e. the region deals with data input on the server and has no direct impact on output. 
+                  To read more on the components responsible for out, see <ulink url="http://java.sun.com/javaee/javaserverfaces/reference/index.html">Sun official documentation</ulink>.
+            </para>
+            
+  <para>The region marks an area page that is decoded on the server. This component helps to reduce data quantity processed by the server, but the region doesn&apos;t influence on the standard submission rules. It means that:<itemizedlist>
+        <listitem><para>
+          The area that is to be submitted onto the server should be embedded in <emphasis role="bold">
+            <property>&lt;h:form&gt;</property>/<property>&lt;a4j:form&gt;</property>
+</emphasis> component. 
+        </para></listitem>
+        <listitem><para>
+          The whole form is submitted on Ajax response and not a region that request is performed from. 
+        </para></listitem>
+      </itemizedlist></para>
+    -->
+    
+    <para>The regions could be nested. Server picks out and decodes only the region, which contains the component that initiates the request.</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">&lt;h:form&gt;
+       ...
+      &lt;a4j:region&gt;
+            &lt;a4j:commandLink value="Link 1" id="link1"/&gt;
+            &lt;a4j:region&gt;
+                 &lt;a4j:commandLink value="Link 2" id="link2"/&gt;
+            &lt;/a4j:region &gt;
+      &lt;/a4j:region&gt;
+      ...
+&lt;h:form&gt;</programlisting>
+      <para>
+          The external region is decoded for <code>link1</code> and the internal one is decoded for <code>link2</code>.
+    </para>
+      
+      <para>
+            The <emphasis>
+            <property>"renderRegionOnly"</property>
+         </emphasis> attribute is used when it is necessary to exclude all the components from the outside of the region from updating on the page during Renderer Response phase.     
+            Such manipulation allows region to be passed straight into Encode and reduces performance time. 
+            This optimization should be implemented carefully because it doesn't allow data from the outside of active region to be updated.
+      </para>
+            
+      <para>
+            <emphasis role="bold">Example:</emphasis>
+      </para>
+            <programlisting role="XML">&lt;h:form&gt;
+       ...
+      &lt;a4j:region renderRegionOnly="true"&gt;
+            &lt;a4j:commandLink value="Link 1" id="link1"/&gt;
+      &lt;/a4j:region&gt;
+       ...
+      &lt;a4j:region renderRegionOnly="false"&gt;
+            &lt;a4j:commandLink value="Link 2" id="link2"/&gt;
+      &lt;/a4j:region&gt;
+       ...
+&lt;/h:form&gt;</programlisting>
+            <para>
+                  On the example above the first region only will be updated if <code>link1</code> initiates a request. 
+                  When a request is initiated by <code>link2</code> both regions will be updated. 
+                  In this case search for components to include them into Renderer Response will be performed on the whole component tree. 
+            </para>
+                        
+            
+            <para>
+                  <property>RichFaces</property> allows setting Ajax responses rendering basing on component tree nodes directly, without referring to the JSP (XHTML) code. 
+                  This speeds up a response output considerably and could be done by setting the <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> 
+         <emphasis>
+            <property>"selfRendered"</property>
+         </emphasis> attribute to "true". 
+                  However, this rapid processing could cause missing of transient components that present on view and don't come into a component tree as well as omitting of <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> usage described below. 
+</para>
+      <para>
+          <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">&lt;a4j:region selfRendered ="true"&gt;
+      &lt;a4j:commandLink value="Link" id="link"/&gt;
+      &lt;!--Some HTML content--&gt;
+&lt;/a4j:region&gt;</programlisting>
+      <para>In this case the processing is quicker and going on without referring to the page code. 
+          The HTML code is not saved in a component tree and could be lost. 
+          Thus, such optimization should be performed carefully and additional <property>RichFaces</property> components usage (e.g. <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis>) is required.</para>
+    
+    
+    
+      <para>
+          Starting from <property>RichFaces 3.2.0</property> the <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> can be used together with iterative components (e.g. <emphasis role="bold">
+            <property>&lt;rich:column&gt;</property>
+         </emphasis> or <emphasis role="bold">
+            <property>&lt;rich:scrollableDataTable&gt;</property>
+         </emphasis>, etc.). 
+          It became possible to re-render a particular row in a table without updating the whole table and without any additional listeners.
+    </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">&lt;rich:column&gt;
+      &lt;a4j:region&gt;
+            &lt;a4j:commandLink reRender="out"/&gt;
+      &lt;/a4j:region&gt;
+&lt;/rich:column&gt;
+&lt;rich:column&gt;
+      &lt;h:outputText id="out"&gt;
+&lt;/rich:column&gt;</programlisting>
+            
+            <para>
+                  In most cases there is no need to use the <emphasis role="bold">
+            <property>&lt;a4j:region&gt;</property>
+         </emphasis> as <code>ViewRoot</code> is a default one.                  
+            </para>
+            
+            
+      </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/region.html">Table of 
+							&lt;a4j:region&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+	        <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.AjaxRegion</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.ajax4jsf.AjaxRegion</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlAjaxRegion</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.components.AjaxRegionRenderer</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+	     <para>Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/region.jsf?c=region">&lt;a4j:region&gt; demo page</ulink> at 
+RichFaces live demo for examples of component usage and their sources. 
+	</para>
+	     <para>Useful articles and examples:</para>
+	     <itemizedlist>
+	        <listitem>
+	           <para>
+	              <ulink url="http://www.jboss.org/community/docs/DOC-11866">&lt;a4j:region&gt; and two &lt;h:inputTexts&gt;</ulink> in RichFaces cookbook at JBoss portal;
+		</para>
+	        </listitem>
+	        <listitem>
+	            <para>
+	                  "<ulink url="http://ishabalov.blogspot.com/2007/08/sad-story-about-uiinput.html">A sad story about UIInput</ulink>" at personal blog of I.Shabalov and <ulink url="http://livedemo.exadel.com/richfaces-local-value-demo/pages/local-value-demo.jsf">exhaustive example</ulink> of solving the problem with the help of <emphasis role="bold">
+                  <property>&lt;a4j:region&gt;</property>
+               </emphasis>. 
+	            </para>
+	        </listitem>
+	      
+	     </itemizedlist>
+  </section>
+</section>

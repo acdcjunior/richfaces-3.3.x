@@ -1,0 +1,516 @@
+<section role="NotInToc" id="rich_dropDownMenu">
+   <title>
+				&lt;
+				rich:dropDownMenu
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis> component is used for creating
+    multilevel drop-down menus.</para>
+
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dropDownMenu&gt;</property>
+            </emphasis> component</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dropDownMenu_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+  </section>
+   <section>
+      <title>Key Features</title>
+
+      <itemizedlist>
+         <listitem>
+            <para>Highly customizable look-and-feel</para>
+         </listitem>
+
+         <listitem>
+            <para>Pop-up appearance event customization</para>
+         </listitem>
+
+         <listitem>
+            <para>Different submission modes</para>
+         </listitem>
+
+         <listitem>
+            <para>Ability to define a complex representation for elements</para>
+         </listitem>
+
+         <listitem>
+            <para>Support for disabling</para>
+         </listitem>
+
+         <listitem>
+            <para>Smart user-defined positioning</para>
+         </listitem>
+      </itemizedlist>
+  </section>
+   <section>
+      <title>Details of Usage</title>
+
+      <para>All attributes except <emphasis>
+            <property>"value"</property>
+         </emphasis> are optional. The <emphasis>
+            <property>"value"</property>
+         </emphasis> attribute defines text to be represented. If you can use the <emphasis>
+            <property>"label"</property>
+         </emphasis> facet, you can even not use the <emphasis>
+            <property>"value"</property>
+         </emphasis> attribute.</para>
+
+      <para>Here is an example:</para>
+
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;f:facet name="label"&gt;
+    &lt;h:graphicImage value="/images/img1.png"/&gt;
+&lt;/f:facet&gt;
+...</programlisting>
+
+      <para>Use the <emphasis>
+            <property>"event"</property>
+         </emphasis> attribute to define an event for the represented element that triggers a menu
+      appearance. An example of a menu appearance on a click can be seen below.</para>
+
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+
+      <programlisting role="XML">...
+&lt;rich:dropDownMenu event="onclick" value="Item1"&gt;
+    &lt;!--Nested menu components--&gt;
+&lt;/rich:dropDownMenu&gt;
+...</programlisting>
+
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis>
+         <emphasis>
+            <property>"submitMode"</property>
+         </emphasis> attribute can be set to three possible parameters:</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>Server</code> (default)</para>
+         </listitem>
+      </itemizedlist>
+
+      <para>Regular form submission request is used.</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>Ajax</code>
+            </para>
+         </listitem>
+      </itemizedlist>
+
+      <para>Ajax submission is used for switching.</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>
+               <code>None</code>
+            </para>
+         </listitem>
+      </itemizedlist>
+
+      <para>The <emphasis>
+            <property>"action"</property>
+         </emphasis> and <emphasis>
+            <property>"actionListener"</property>
+         </emphasis> item's attributes are ignored. Menu items don't fire any submits themselves. The
+      behavior is fully defined by the components nested into items.</para>
+
+      <note>
+         <title>Note:</title>
+         <para> As the <emphasis role="bold">
+               <property>&lt;rich:dropDownMenu&gt;</property>
+            </emphasis> component doesn't provide its own form, use it between <emphasis role="bold">
+               <property>&lt;h:form&gt;</property>
+            </emphasis> and
+      <emphasis role="bold">
+               <property>&lt;/h:form&gt;</property>
+            </emphasis> tags.</para>
+      </note>
+
+      <para>The <emphasis>
+            <property>"direction"</property>
+         </emphasis> and <emphasis>
+            <property>"jointPoint"</property>
+         </emphasis> attributes are used for defining aspects of menu appearance.</para>
+
+      <para>Possible values for the <emphasis>
+            <property>"direction"</property>
+         </emphasis> attribute are:</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>"top-left" - a menu drops to the top and left</para>
+         </listitem>
+
+         <listitem>
+            <para>"top-right" - a menu drops to the top and right</para>
+         </listitem>
+
+         <listitem>
+            <para>"bottom-left" - a menu drops to the bottom and left</para>
+         </listitem>
+
+         <listitem>
+            <para>"bottom-right" - a menu drops to the bottom and right</para>
+         </listitem>
+
+         <listitem>
+            <para>"auto" - smart positioning activation</para>
+         </listitem>
+      </itemizedlist>
+
+      <para>Possible values for the <emphasis>
+            <property>"jointPoint"</property>
+         </emphasis> attribute are:</para>
+
+      <itemizedlist>
+         <listitem>
+            <para>"tr" - a menu is attached to the top-right point of the button element</para>
+         </listitem>
+
+         <listitem>
+            <para>"tl" - a menu is attached to the top-left point of the button element</para>
+         </listitem>
+
+         <listitem>
+            <para>"br" - a menu is attached to the bottom-right point of the button element</para>
+         </listitem>
+
+         <listitem>
+            <para>"bl" - a menu is attached to the bottom-left point of the button element</para>
+         </listitem>
+
+         <listitem>
+            <para>"auto" - smart positioning activation</para>
+         </listitem>
+      </itemizedlist>
+
+      <para>By default, the <emphasis>
+            <property>"direction"</property>
+         </emphasis> and <emphasis>
+            <property>"jointPoint"</property>
+         </emphasis> attributes are set to "auto".</para>
+
+      <para>Here is an example:</para>
+
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:dropDownMenu value="File" direction="bottom-right" jointPoint="bl"&gt;
+    &lt;rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/&gt;
+    &lt;rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/&gt;
+    &lt;rich:menuGroup value="Save As..."&gt;
+        &lt;rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/&gt;
+        &lt;rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/&gt;
+    &lt;/rich:menuGroup&gt;
+    &lt;rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/&gt;
+    &lt;rich:menuSeparator id="menuSeparator11"/&gt;
+    &lt;rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/&gt;
+&lt;/rich:dropDownMenu&gt;
+...</programlisting>
+
+      <para>This is the result:</para>
+
+      <figure>
+         <title>Using the <emphasis role="bold">
+               <property>"direction"</property>
+            </emphasis> and <emphasis>
+               <property>"joinPoint"</property>
+            </emphasis> attributes</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dropDownMenu2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <para>You can correct an offset of the pop-up list relative to the label using the following
+      attributes: <emphasis>
+            <property>"horizontalOffset"</property>
+         </emphasis> and <emphasis>
+            <property>"verticalOffset"</property>
+         </emphasis>.</para>
+
+      <para>Here is an example:</para>
+
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+
+      <programlisting role="XML">...
+&lt;rich:dropDownMenu value="File" direction="bottom-right" jointPoint="tr" horizontalOffset="-15" verticalOffset="0"&gt;
+    &lt;rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/&gt;
+    &lt;rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/&gt;
+    &lt;rich:menuGroup value="Save As..."&gt;
+        &lt;rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/&gt;
+        &lt;rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/&gt;
+    &lt;/rich:menuGroup&gt;
+    &lt;rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/&gt;
+    &lt;rich:menuSeparator id="menuSeparator11"/&gt;
+    &lt;rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/&gt;
+&lt;/rich:dropDownMenu&gt;
+...</programlisting>
+
+      <para>This is the result:</para>
+
+      <figure>
+         <title>Using the <emphasis>
+               <property>"horizontalOffset"</property>
+            </emphasis> and <emphasis>
+               <property>"verticalOffset"</property>
+            </emphasis> attributes</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dropDownMenu3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+
+      <!--para> The <emphasis>
+        <property>&quot;disabled&quot;</property>
+      </emphasis> attribute is used for disabling whole <emphasis role="bold">
+        <property>&lt;rich:dropDownMenu&gt;</property>
+      </emphasis>, <emphasis role="bold">
+        <property>&lt;rich:menuGroup&gt;</property>
+      </emphasis> or <emphasis role="bold">
+        <property>&lt;rich:menuItem&gt;</property>.
+      </emphasis>
+    </para>
+    <para>An example of a menu appearance with <emphasis>
+      <property>&quot;disabled&quot;</property>
+    </emphasis> attribute can be seen below.</para>
+    <para>
+      <emphasis role="bold">Example:</emphasis>
+    </para>
+    
+    <programlisting role="XML"><![CDATA[...
+    <rich:dropDownMenu value="Item1">
+       <rich:menuItem id="menuItem1" value="Active1"/>
+       <rich:menuItem id="menuItem2" value="Disabled1" disabled="true"/>
+       <rich:menuGroup id="menuGroup1" value="Group1">
+         <rich:menuItem id="menuGroup1Item1" value="Active"/>
+         <rich:menuItem id="menuGroup1Item2" value="Active"/>
+       </rich:menuGroup>
+        <rich:menuItem id="menuItem3" value="Active2"/>
+           <rich:menuGroup id="menuGroup1Dsbld" value="Group1 dsbld." disabled="true" />
+    </rich:dropDownMenu>
+...
+]]></programlisting-->
+
+<para>
+  The <emphasis>
+            <property>"disabled"</property>
+         </emphasis> attribute is used for disabling whole
+  <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis> component. In this case it is 
+  necessary to define <emphasis>
+            <property>"disabled"</property>
+         </emphasis> attribute as "true".
+  An example is placed below.  
+</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+    
+      <programlisting role="XML">...
+&lt;rich:dropDownMenu value="File"  disabled="true"&gt;
+    ...
+&lt;/rich:dropDownMenu&gt;
+...</programlisting>
+
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dropDownMenu.html">Table of 
+							&lt;rich:dropDownMenu&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.DropDownMenu</entry>
+               </row>
+
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlDropDownMenu</entry>
+               </row>
+
+               <row>
+                  <entry>component-family</entry>
+
+                  <entry>org.richfaces.DropDownMenu</entry>
+               </row>
+
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.DropDownMenuRenderer</entry>
+               </row>
+
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.DropDownMenuTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Facets</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Facet</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>label</entry>
+                  <entry>Redefines the content set of label</entry>
+               </row>
+               <row>
+                  <entry>labelDisabled</entry>
+                  <entry>Redefines the content set of disabled label</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="tab_cn4">
+         <title>Classes names that define a label</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+
+                  <entry>Description</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>rich-label-text-decor</entry>
+
+                  <entry>Defines text style for a representation element</entry>
+               </row>
+
+               <row>
+                  <entry>rich-ddmenu-label</entry>
+
+                  <entry>Defines styles for a wrapper &lt;div&gt; element of a representation
+              element</entry>
+               </row>
+
+               <row>
+                  <entry>rich-ddmenu-label-select</entry>
+
+                  <entry>Defines styles for a wrapper &lt;div&gt; element of a selected
+              representation element</entry>
+               </row>
+
+               <row>
+                  <entry>rich-ddmenu-label-unselect</entry>
+
+                  <entry>Defines styles for a wrapper &lt;div&gt; element of an unselected
+              representation element </entry>
+               </row>
+          
+               <row>
+                  <entry>rich-ddmenu-label-disabled</entry>
+            
+                  <entry>Defines styles for a wrapper &lt;div&gt; element of a disabled
+              representation element </entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define a popup element</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+
+                  <entry>Description</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>rich-menu-list-border</entry>
+
+                  <entry>Defines styles for borders</entry>
+               </row>
+
+               <row>
+                  <entry>rich-menu-list-bg</entry>
+
+                  <entry>Defines styles for a general background list</entry>
+               </row>
+
+               <row>
+                  <entry>rich-menu-list-strut</entry>
+
+                  <entry>Defines styles for a wrapper &lt;div&gt; element for a strut of a popup
+              list</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dropDownMenu.jsf?c=dropDownMenu">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:dropDownMenu&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

@@ -1,0 +1,241 @@
+<section role="NotInToc" id="rich_dragIndicator">
+   <title>
+				&lt;
+				rich:dragIndicator
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>This is a component for defining what appears under the mouse cursor during drag-and-drop
+      operations. The displayed drag indicator can show information about the dragged elements.</para>
+
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dragIndicator&gt;</property>
+            </emphasis> component</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dragIndicator_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+  </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+         <listitem>
+            <para>Customizable look and feel</para>
+         </listitem>
+         <listitem>
+            <para>Customizable marker according to the type of dragable elements</para>
+         </listitem>
+      </itemizedlist>
+  </section>
+   <section>
+      <title>Details of Usage</title>
+      <para> In the simplest way the component could be defined empty - in that case a default
+      indicator is shown like this: </para>
+      <figure>
+         <title>The simplest <emphasis role="bold">
+               <property>&lt;rich:dragIndicator&gt;</property>
+            </emphasis> 
+         </title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dragIndicator3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>For indicator customization you need to define one of the following facets:</para>
+      <itemizedlist>
+		       <listitem>
+			         <para>
+				           <emphasis>
+                  <property>"single"</property>
+               </emphasis> — indicator shown when dragging a single item;
+			</para>
+		       </listitem>
+		       <listitem>
+			         <para>
+				           <emphasis>
+                  <property>"multiple"</property>
+               </emphasis> — indicator shown when dragging several items.
+			</para>
+		       </listitem>
+      </itemizedlist>
+    	  
+	     <note>
+         <title>
+        Note:
+      </title>
+         <para>
+         The current implementation of the <emphasis role="bold">
+               <property>&lt;rich:dragIndicator&gt;</property>
+            </emphasis> component 
+		 does not support multiple items selection. The feature is described for future releases.
+	  </para>
+      </note>                                                                                                                                                                                                                                                                
+      <para>Thus for specify a look-and-feel you have to define one of these facets and include into
+      it a content that should be shown in indicator.</para>
+      <section>
+         <title>Macro definitions</title>
+         <para>To place some data from drag or drop zones into component you can use macro definitions.
+        They are being defining in the following way:</para>
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <emphasis role="bold">
+                     <property>&lt;rich:dndParam&gt;</property>
+                  </emphasis> component with a specific name and value is being included into a drag/drop
+          support component (an image can be defined as placed inside <emphasis role="bold">
+                     <property>&lt;rich:dndParam&gt;</property>
+                  </emphasis> without defining a value). </para>
+            </listitem>
+            <listitem>
+               <para> in needed place a parameter value is included into the marking of indicator using
+          syntax (name of parameter)</para>
+            </listitem>
+         </itemizedlist>
+         <para> For instance, this:</para>
+         <programlisting role="XML">...	
+&lt;rich:dropSupport...&gt;
+		&lt;rich:dndParam name="testDrop"&gt;
+       			&lt;h:graphicImage value="/images/file-manager.png" /&gt;
+       	&lt;/rich:dndParam&gt;
+&lt;/rich:dropSupport&gt;
+...
+</programlisting>
+         <para>Is placed into indicator as follows:</para>
+         <programlisting role="XML">...	
+&lt;f:facet name="single"&gt;
+		{testDrop}
+&lt;/f:facet&gt;
+...
+</programlisting>
+      </section>
+      <section>
+         <title>Predefined macro definitions</title>
+         <para> Indicator can accept two default macro definitions:</para>
+         <itemizedlist>
+            <listitem>
+               <para>marker</para>
+            </listitem>
+            <listitem>
+               <para>label</para>
+            </listitem>
+         </itemizedlist>
+         <para>Thus including one of these elements in the marking of indicator, in other words after
+        setting up appropriate parameters in DnD components and defining only default indicator -
+        without specifying facets - a developer gets these parameters values displayed in indicator
+        in the order "marker - label".</para>
+      </section>
+
+      <section>
+         <title>Marker customization</title>
+         <para>The macro definition <emphasis>
+               <property>"marker"</property>
+            </emphasis> can be customized depending on what a draggable element is located over. For
+        that you should define one of these three parameters (specify a parameter with one of three
+        names):</para>
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <code>accept</code> 
+               </para>
+            </listitem>
+         </itemizedlist>
+         <para>Parameter will be set instead of {marker} into indicator when a draggable element is
+        positioned over drop zone that accept this type of elements</para>
+
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <code>reject</code>
+               </para>
+            </listitem>
+         </itemizedlist>
+         <para>Parameter is set instead of {marker} into indicator when a draggable element is
+        positioned over drop zone that doesn't accept this type of elements </para>
+
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <code>default</code>
+               </para>
+            </listitem>
+         </itemizedlist>
+         <para>Parameter is set instead of {marker} into indicator when a draggable element is
+        positioned over all the rest of page elements</para>
+      </section>
+
+      <note>
+         <title>
+        Note:
+      </title>
+         <para>
+        If you use <emphasis role="bold">
+               <property>&lt;rich:dragIndicator&gt;</property>
+            </emphasis> inside a form 
+        do not forget to use id like <code>formId:indicatorID</code> 
+        defined in <emphasis role="bold">
+               <property>&lt;rich:dragSupport&gt;</property>
+            </emphasis> indicator attribute.
+      </para>
+      </note>
+    
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dragIndicator.html">Table of 
+							&lt;rich:dragIndicator&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.Draggable</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlDragIndicator</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.DragIndicator</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.DragIndicatorRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.DragIndicatorTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dragSupport.jsf?c=dragIndicator">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:dragIndicator&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>

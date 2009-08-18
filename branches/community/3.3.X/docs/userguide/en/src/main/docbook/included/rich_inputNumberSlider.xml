@@ -1,0 +1,413 @@
+<section role="NotInToc" id="rich_inputNumberSlider">
+   <title>
+				&lt;
+				rich:inputNumberSlider
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+         </emphasis> component is a slider component. A handler's position corresponds to a definite value on the slider track. In order to change the value you can slide a handler or set the necessary value into the input field.
+        You can dispose it horizontally or vertically on the page.</para>
+      <figure float="0">
+         <title>
+            <emphasis role="bold">
+               <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+            </emphasis> component, horizontal and vertical views</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/inputNumberSlider_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+   </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+         <listitem>
+            <para>Fully skinnable control and input elements</para>
+         </listitem>
+         <listitem>
+            <para>Optional value text field with an attribute-managed position</para>
+         </listitem>
+         <listitem>
+            <para>Optional disablement of the component on a page</para>
+         </listitem>
+         <listitem>
+            <para>Optional toolTip to display the current value while a handle is dragged</para>
+         </listitem>
+         <listitem>
+            <para>Dragged state is stable after the mouse moves</para>
+         </listitem>
+         <listitem>
+            <para>Optional manual input possible if a text input field is present</para>
+         </listitem>
+         <listitem>
+            <para>Validation of manual input</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to display 2 controls that increase/decrease the value by the defined step width, when they will be clicked.</para>
+         </listitem>
+         <listitem>
+            <para>Attribute "orientation" that can have the values "vertical" and "horizontal" to define in which direction the slider should be movable.
+        </para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>
+			      <emphasis role="bold">
+				        <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+			      </emphasis>
+			is used to facilitate your data input with rich UI Controls.
+		</para>
+      <para>
+			Here is the simplest variant of a slider definition with
+			<emphasis>
+				        <property moreinfo="none">"minValue"</property>
+				,
+			</emphasis>
+			      <emphasis>
+				        <property moreinfo="none">"maxValue"</property>
+			      </emphasis>
+			and
+			<emphasis>
+				        <property moreinfo="none">"step"</property>
+			      </emphasis>
+			(on default  is  "1") attributes, which define the
+			beginning and the end of a numerical area and a
+			<property moreinfo="none">slider</property>
+			property step.
+		</para>
+      <para>
+			      <emphasis role="bold">Example:</emphasis>
+		    </para>
+      <programlisting role="XML" format="linespecific">&lt;rich:inputNumberSlider&gt;&lt;/rich:inputNumberSlider&gt;</programlisting>
+      <para>It's generated on a page:</para>
+      <figure float="0">
+         <title>
+				Generated
+				<emphasis role="bold">
+					          <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+				        </emphasis>
+			      </title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/inputNumberSlider2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>
+			Using
+			<emphasis>
+				        <property moreinfo="none">"showInput"</property>
+			      </emphasis>
+			(default is "true") and
+			<emphasis>
+				        <property moreinfo="none">"enableManualInput"</property>
+			      </emphasis>
+			(default value is "true") attributes, it's possible to
+			output the input area near the slider, and make it read-only
+			or editable.
+		</para>
+      <para>
+			To remove input area use
+			<code>showInput = "false"</code>
+			:
+		</para>
+      <para>
+			      <emphasis role="bold">Example:</emphasis>
+		    </para>
+      <programlisting role="XML" format="linespecific">&lt;rich:inputNumberSlider minValue="1"  maxValue="100" showInput="false"/&gt;</programlisting>
+      <para>It's displayed at a page like:</para>
+      <figure float="0">
+         <title>
+				        <emphasis role="bold">
+					          <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+				        </emphasis>
+				without input field
+			</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/inputNumberSlider3.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>
+			It's also possible to switch off displaying of
+			"boundary values" and a toolTip showing on a
+			handle drawing. This could be performed with the help of the
+			component defined attributes:
+			<emphasis>
+				        <property moreinfo="none">"showBoundaryValues"</property>
+			      </emphasis>
+			which is responsible for "boundary values"
+			displaying (default is true) and
+			<emphasis>
+				        <property moreinfo="none">"showToolTip"</property>
+			      </emphasis>
+			which is responsible for tooltTip displaying (default is
+			"true").
+		</para>
+      <para>
+			Moreover, to add e.g. some JavaScript effects, events
+			defined on it are used.
+		</para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property moreinfo="none">"onchange"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property moreinfo="none">"onmouseover"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property moreinfo="none">"onclick"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property moreinfo="none">"onfocus"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <emphasis>
+                  <property moreinfo="none">"onmouseout"</property>
+               </emphasis>
+            </para>
+         </listitem>
+         <listitem>
+            <para>etc.</para>
+         </listitem>
+      </itemizedlist>
+      <para>
+			The
+			<emphasis>
+				        <property moreinfo="none">"label"</property>
+			      </emphasis>
+			attribute is a generic attribute. The
+			<emphasis>
+				        <property moreinfo="none">"label"</property>
+			      </emphasis>
+			attribute provides an association between a component, and
+			the message that the component (indirectly) produced. This
+			attribute defines the parameters of a  localized error and
+			informational messages that occur as a result of conversion,
+			validation, or other application actions during the request
+			processing lifecycle. With the help of this attribute you
+			can replace the last parameter substitution token shown in
+			the messages. For example, {1} for
+			<code>"DoubleRangeValidator.MAXIMUM"</code>
+			, {2} for
+			<code>"ShortConverter.SHORT"</code>.
+		</para>
+      <!-- <para>Using the
+            <emphasis>
+                <property>&quot;orientation&quot;</property>
+            </emphasis>
+            attribute (default is &quot;horizontal&quot;) is possible to change slider position.
+		</para>
+		<para>
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML"><![CDATA[<rich:inputNumberSlider minValue="0"  maxValue="100" value="84" orientation="vertical"/>]]></programlisting>
+        <para>It looks at page like:</para>
+        <figure>
+            <title>
+                <emphasis role="bold">
+                    <property>&lt;&slider;&gt;</property>
+                </emphasis>
+                in a vertical orientation.
+            </title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/inputNumberSlider_vertical.png" />
+                </imageobject>
+            </mediaobject>
+            </figure>--><para>The <emphasis>
+            <property moreinfo="none">"showArrows"</property>
+         </emphasis> boolean attribute when set to "true" enables additional controls for increasing and decreasing slider value. 
+	            The controls (arrows by default) are placed in the beginning and in the end of slider track:</para>
+      <figure float="0">
+         <title>
+            <emphasis role="bold">
+               <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+            </emphasis> with additional controls</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/inputNumberSlider4.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>Clicking an arrow changes the driven value on the amount defined with <emphasis>
+            <property moreinfo="none">"step"</property>
+         </emphasis> attribute. 
+	            Keepeng an arrow control pressed changes the value continuous. 
+	            Time that value takes to change from one step to another is definded with <emphasis>
+            <property moreinfo="none">"delay"</property>
+         </emphasis> attribute.    
+	      </para>
+   </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/inputNumberSlider.html">Table of 
+							&lt;rich:inputNumberSlider&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.inputNumberSlider</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>
+						org.richfaces.component.html.HtmlInputNumberSlider
+					</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.inputNumberSlider</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>
+						org.richfaces.InputNumberSliderRenderer
+					</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>
+						org.richfaces.taglib.InputNumberSliderTag
+					</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="tab_cn">
+         <title>
+				Classes names that define a component appearance
+			</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-slider</entry>
+                  <entry>
+							Defines styles for a wrapper table element
+							of a component
+						</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-track</entry>
+                  <entry>Defines styles for a bar</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-handler</entry>
+                  <entry>
+							Defines styles for a slider handler
+						</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-handler-selected</entry>
+                  <entry>
+							Defines styles for a selected handler
+						</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-field</entry>
+                  <entry>Defines styles for a text field</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-right-num</entry>
+                  <entry>
+							Defines styles for the right number
+						</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-left-num</entry>
+                  <entry>
+							Defines styles for the left number
+						</entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-track-border</entry>
+                  <entry>
+					       Defines styles for track border
+					    </entry>
+               </row>
+               <row>
+                  <entry>rich-inslider-tip</entry>
+                  <entry>Defines styles for a hint</entry>
+               </row>
+               <row>
+                  <entry>inputNumberSlider-increase-vertical</entry>
+                  <entry>Defines styles for the top arrow</entry>
+               </row>
+               <row>
+                  <entry>inputNumberSlider-decrease-vertical</entry>
+                  <entry>Defines styles for the bottom arrow</entry>
+               </row>
+               <row>
+                  <entry>inputNumberSlider-increase-horizontal</entry>
+                  <entry>Defines styles for the right arrow</entry>
+               </row>
+               <row>
+                  <entry>inputNumberSlider-decrease-horizontal</entry>
+                  <entry>Defines styles for the left arrow</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+			      <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/inputNumberSlider.jsf?c=inputNumberSlider">
+				On the component Live Demo page
+			</ulink>
+			you can see the example of
+			<emphasis role="bold">
+				        <property moreinfo="none">&lt;rich:inputNumberSlider&gt;</property>
+			      </emphasis>
+			usage and sources for the given example.
+		</para>
+   </section>
+</section>

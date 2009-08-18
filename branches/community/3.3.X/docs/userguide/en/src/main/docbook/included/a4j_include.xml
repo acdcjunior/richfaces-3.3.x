@@ -1,0 +1,108 @@
+<section role="NotInToc" id="a4j_include">
+   <title>
+				&lt;
+				a4j:include
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+            <sectioninfo>
+                  <keywordset>
+                        <keyword>a4j:include</keyword>
+                        <keyword>component</keyword>
+                  </keywordset>
+            </sectioninfo>
+            
+            <title>Description</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:include&gt;</property>
+         </emphasis> component is used to include one view as part of another and navigate there using standard JSF navigation.
+            </para>
+      </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>
+                  The component is used to include one view as part of another and may be put anywhere in the page code. 
+                  The <emphasis>
+            <property>'viewID'</property>
+         </emphasis> attribute is used to point at the part to be included and should present a full context-relative path of the resource in order to be used as from-view and to-view in the JSF navigation cases. 
+                  In general the component functions as Fecelets <emphasis role="bold">
+            <property>&lt;ui:include&gt;</property>
+         </emphasis> tag but with partial page navigation in Ajax mode as an advantage.
+            </para>
+                  <note>
+                        <title>Note:</title>
+                        <para>
+                              To make the RichFaces<emphasis role="bold">
+               <property>&lt;a4j:include&gt;</property>
+            </emphasis> component (as well as Facelets<emphasis role="bold">
+               <property>&lt;ui:include&gt;</property>
+            </emphasis> tag) work properly when including the part of the page check that included page does not generates extra HTML &lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;body&gt; tags.
+                        </para>
+                  </note>
+          
+          <para>
+                The navigation rules could look as following:
+          </para>
+            
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML">&lt;navigation-rule&gt;
+      &lt;from-view-id&gt;/pages/include/first.xhtml&lt;/from-view-id&gt;
+      &lt;navigation-case&gt;
+            &lt;from-outcome&gt;next&lt;/from-outcome&gt;
+            &lt;to-view-id&gt;/pages/include/second.xhtml&lt;/to-view-id&gt;
+      &lt;/navigation-case&gt;
+&lt;/navigation-rule&gt;</programlisting>
+            
+      </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/include.html">Table of 
+							&lt;a4j:include&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+         <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.Include</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>javax.faces.Output</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.Include</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.components.AjaxIncludeRenderer</entry>
+               </row>
+            </tbody>
+        </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+          Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/include.jsf?c=include">Include page</ulink> for examples of component usage and their sources. 
+    </para>
+        
+  </section>
+</section>

@@ -1,0 +1,224 @@
+<section role="NotInToc" id="rich_toolBar">
+   <title>
+				&lt;
+				rich:toolBar
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A horizontal bar with Action items on it that accepts any JSF components as children.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:toolBar&gt;</property>
+            </emphasis> with action items</title>
+    
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/toolBar_init.png" scalefit="1"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Skinnable menu panel and child items</para>
+         </listitem>
+        <listitem>
+            <para>Standard top menu bar that can be used in accordance with a menu component</para>
+         </listitem> 
+        <listitem>
+            <para>Grouping bar content</para>
+         </listitem>
+        <listitem>
+            <para>Easily place content on any side of a menu bar using predefined group layout</para>
+         </listitem>
+        <listitem>
+            <para>Predefined separators for menu items and groups</para>
+         </listitem>
+        <listitem>
+            <para>Any content inside</para>
+         </listitem>  
+      </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>A <property>toolBar</property> is a wrapper component that facilitates creation of menu
+      and <property>tool bars</property>. All components defined inside are located on a stylized
+      bar with possibility to group, arrange on the both bar sides, and place predefined separators
+      between them.</para>
+      <para>Grouping and an input side definition is described for <property>toolBarGroup</property>
+      that defines this functionality.</para>
+      <para>Separators are located between components with the help of the <emphasis>
+            <property>"itemSeparator"</property>
+         </emphasis> attribute with four predefined values:</para>
+      <itemizedlist>
+         <listitem>
+            <para> "none" </para>
+         </listitem>
+         <listitem>
+            <para> "line" </para>
+         </listitem>
+         <listitem>
+            <para> "square" </para>
+         </listitem>
+         <listitem>
+            <para> "disc" </para>
+         </listitem>
+      </itemizedlist>
+      <para>For example, when setting a separator of a disc type, the following result is produced:</para>
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:toolBar&gt;</property>
+            </emphasis> with a <emphasis>
+               <property>"disc"</property>
+            </emphasis> separator</title>
+
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/toolBar2.png" scalefit="1"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>Moreover, for <property>toolBar</property> style <emphasis>
+            <property>"width"</property>
+         </emphasis> and <emphasis>
+            <property>"height"</property>
+         </emphasis> attributes are placed above all.</para>
+      <para>A custom separator can be added with the help of <emphasis>
+            <property>"itemSeparator"</property>
+         </emphasis> facet.</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;f:facet name="itemSeparator"&gt; 
+    &lt;rich:separator width="2" height="14" /&gt; 
+&lt;/f:facet&gt;
+...
+</programlisting>
+      <para>Custom separator can be also specified by URL to the separator image in the attribute <emphasis>
+            <property>"itemSeparator"</property>
+         </emphasis> of the <emphasis role="bold">
+            <property>&lt;rich:toolBar&gt;</property>
+         </emphasis>. </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:toolBar id="toolBar" width="#{bean.width}" height="#{bean.height}" itemSeparator="/images/separator_img.jpg"/&gt;
+...
+</programlisting>
+      <para>This is a result:</para>
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:toolBar&gt;</property>
+            </emphasis> with <emphasis>
+               <property>"itemSeparator"</property>
+            </emphasis> attribute.</title>
+      
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/toolBar4.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/toolBar.html">Table of 
+							&lt;rich:toolBar&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.ToolBar</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlToolBar</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.ToolBar</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.ToolBarRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.ToolBarTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+			      <title>Facets</title>
+				     <tgroup cols="2">
+					       <thead>
+						         <row>
+							           <entry>Facet name</entry>
+							           <entry>Description</entry>
+						         </row>
+					       </thead>
+					       <tbody>
+						         <row>
+							           <entry>itemSeparator</entry>
+							           <entry>Defines the custom separator. Related attribute is "itemSeparator"</entry>
+						         </row>
+					       </tbody>
+				     </tgroup>
+		    </table>
+      <table id="toolBC">
+         <title>Classes names that define a component appearance</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-toolbar</entry>
+                  <entry>Defines styles for a toolbar element</entry>
+               </row>
+               <row>
+                  <entry>rich-toolbar-item</entry>
+                  <entry>Defines styles for a toolbar item</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/toolBar.jsf?c=toolBar">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:toolBar&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+  </section>
+</section>
