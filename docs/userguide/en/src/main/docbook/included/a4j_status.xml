@@ -1,0 +1,178 @@
+<section role="NotInToc" id="a4j_status">
+   <title>
+				&lt;
+				a4j:status
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+         <keywordset>
+            <keyword>a4j:status</keyword>
+            <keyword>component</keyword>
+         </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;a4j:status&gt;</property>
+         </emphasis> component generates elements for displaying of the current Ajax requests status. 
+          There are two status modes: Ajax request is in process or finished.</para>
+  </section>
+   <section>
+          
+          
+      <title>Details of Usage</title>
+      <para>There are  two ways for the components or containers definition, which Ajax requests status is tracked by a component.<itemizedlist>
+            <listitem>
+               <para>
+           Definition with the <emphasis>
+                     <property>"for"</property>
+                  </emphasis> 
+attribute on the <emphasis role="bold">
+                     <property>&lt;a4j:status&gt;</property>
+                  </emphasis> component. Here <emphasis>
+                     <property>"for"</property>
+                  </emphasis> 
+            attribute should point at an Ajax container (<emphasis role="bold">
+                     <property>&lt;a4j:region&gt;</property>
+                  </emphasis>) <property>id</property>, which requests are tracked by a component.
+          </para>
+            </listitem>
+        </itemizedlist>
+         <itemizedlist>
+            <listitem>
+               <para>
+            Definition with the <emphasis>
+                     <property>"status"</property>
+                  </emphasis> 
+attribute obtained by any RichFaces library action component. The attribute should point at the <emphasis role="bold">
+                     <property>&lt;a4j:status&gt;</property>
+                  </emphasis>  component <property>id</property>. Then this  <emphasis role="bold">
+                     <property>&lt;a4j:status&gt;</property>
+                  </emphasis> component   shows the status for the request fired from this action component.
+          </para>
+            </listitem>
+        </itemizedlist>
+      </para>
+      <para>The component creates two <emphasis role="bold">
+            <property>&lt;span&gt;</property>
+         </emphasis> or <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis>
+        elements depending on attribute <emphasis>
+            <property>"layout"</property>
+         </emphasis>
+	  with content defined for each status, one of the elements (start) is initially hidden. At the beginning of an Ajax request, elements state is inversed, hence the second element is shown and the first is hidden. At the end of a response processing, elements display states return to its initial values.</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+	     <programlisting role="XML">&lt;a4j:status startText="Started" stopText="stopped" /&gt;</programlisting>
+      <para>The code shown in the example above is decoded on a page as:</para>
+      <programlisting role="XML">&lt;span id="j_id20:status.start" style="display: none"&gt;
+     Started
+&lt;/span&gt;
+&lt;span id="j_id20:status.stop"&gt;
+     Stopped
+&lt;/span&gt;</programlisting>
+      <para>and after the generation of an Ajax response is changed to:</para>
+	     <programlisting role="XML">&lt;span id="j_id20:status.start"&gt;
+     Started
+&lt;/span&gt;
+&lt;span id="j_id20:status.stop" style="display: none"&gt;
+     Stopped
+&lt;/span&gt;</programlisting>
+      <para>There is a possibility to group a <emphasis role="bold">
+            <property>&lt;a4j:status&gt;</property>
+         </emphasis> elements content into <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> elements, instead of <emphasis role="bold">
+            <property>&lt;span&gt;</property>
+         </emphasis>. To use it, just redefine the <emphasis>
+            <property>"layout"</property>
+         </emphasis> 
+        attribute from "inline" (default) to "block".</para>
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/status.html">Table of 
+							&lt;a4j:status&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+         <title>Component Identification Parameters</title>
+        <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.Status</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>javax.faces.Panel</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlAjaxStatus</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.components.AjaxStatusRenderer</entry>
+               </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table>
+         <title>Facets</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Facet name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>start</entry>
+                  <entry>Redefines the content for display on starting request</entry>
+               </row>
+               <row>
+                  <entry>stop</entry>
+                  <entry>Redefines the content for display on request complete</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+          Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/status.jsf?c=status">Status page</ulink> at RichFaces Livedemo for examples of component usage and their sources.
+    </para>
+        <para>
+              Useful articles at JBoss portal:
+        </para>
+              <itemizedlist>
+                    <listitem>
+                          <para>
+                                <ulink url="http://wiki.jboss.org/wiki/RichFacesPleaseWaitBox">RichFacesPleaseWaitBox</ulink> describes how to show a "Please Wait" box and block the input while the Ajax request is processed using combination of <emphasis role="bold">
+                  <property>&lt;a4j:status&gt;</property>
+               </emphasis> and <emphasis role="bold">
+                  <property>&lt;rich:modalPanel&gt;</property>
+               </emphasis>.
+                          </para>
+                    </listitem>
+              </itemizedlist>
+              
+  </section>
+</section>

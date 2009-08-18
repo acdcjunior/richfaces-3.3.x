@@ -1,0 +1,576 @@
+<section role="NotInToc" id="rich_comboBox">
+   <title>
+				&lt;
+				rich:comboBox
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.2.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>
+              The <emphasis role="bold">
+            <property>&lt;rich:comboBox&gt;</property>
+         </emphasis> is a component creates combobox element with built-in Ajax capability.
+        </para>
+        <figure>
+            <title>
+            <emphasis role="bold">
+               <property>&lt;rich:comboBox&gt;</property>
+            </emphasis> component</title>
+            <mediaobject> 
+                <imageobject>
+                    <imagedata fileref="images/comboBox_init.png"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        
+    </section>
+   <section>
+        <title>Key Features</title>    
+        <itemizedlist>
+            <listitem>
+                <para>Client-side suggestions</para>
+            </listitem>
+            <listitem>
+                <para>Browser like selection</para>
+            </listitem>
+            <listitem>
+                <para>Smart user-defined positioning</para>
+            </listitem>
+            <!--listitem>Possible to set the popup appearance delay through <emphasis><property>&quot;showDelay&quot;</property></emphasis> 
+                or <emphasis><property>&quot;minChars&quot;</property></emphasis> attributes
+                </listitem-->
+            <listitem>
+                <para>Seam entity converter support</para>
+            </listitem>
+            <listitem>
+                <para>Highly customizable look and feel</para>
+            </listitem>
+            <listitem>
+                <para>Disablement support</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+        <title>Details of Usage</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:comboBox&gt;</property>
+        </emphasis> 
+            is a simplified suggestion box component, that provides input with client-side suggestions.
+            <!--
+            component consists of an <property>input field</property>, the <property>button</property> and the <property>popup list</property> of suggestions 
+            attached to input. If you want to see the popup list you can press the <property>button</property> or type the first letter of suggested word in the <property>input field</property>.
+            -->
+            
+            The component could be in two states:
+            
+            <!-- NEED DESCRIPTION "HOW TO MANAGE THIS"-->
+           
+            <itemizedlist>
+                <listitem>
+               <para>Default - only input and button is shown</para>
+            </listitem>
+                <listitem>
+               <para>Input, button and a popup list of suggestions attached to input is shown</para>
+            </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            There are two ways to get values for the popup list of suggestions:
+        </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Using the <emphasis>
+                  <property>"suggestionValues"</property>
+               </emphasis> attribute, that defines the suggestion collection</para>
+                    <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" /&gt;    
+...</programlisting>                        
+                </listitem>
+                <listitem>
+                <para>
+                Using the <emphasis role="bold">
+                  <property>&lt;f:selectItem /&gt;</property>
+               </emphasis> or <emphasis role="bold">
+                    <property>&lt;f:selectItems /&gt;</property>
+               </emphasis> JSF components.
+                </para>
+
+                <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" valueChangeListener="#{bean.selectionChanged}"&gt;
+        &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
+        &lt;f:selectItem itemValue="Oregon"/&gt;			  
+        &lt;f:selectItem itemValue="Pennsylvania"/&gt;
+        &lt;f:selectItem itemValue="Rhode Island"/&gt;
+        &lt;f:selectItem itemValue="South Carolina"/&gt;
+&lt;/rich:comboBox&gt;            
+...</programlisting> 
+                    <note>
+                        <title>Note:</title>
+                        <para>
+                            These JSF components consider only the <emphasis>
+                     <property>"value"</property>
+                  </emphasis> attribute for this component.
+                        </para>
+                    </note>
+             </listitem>
+            </itemizedlist>
+        <para> Popup list content loads at page render time. No additional requests could be performed on the popup calling.
+        </para>
+        <para>
+            The <emphasis>
+            <property> "value"</property>
+         </emphasis> attribute stores value from input after submit. 
+        </para>
+        <para>
+            The <emphasis>
+            <property> "directInputSuggestions"</property>
+         </emphasis> attribute defines, how the first value from the suggested one appears in an input field. 
+            If it's "true" the first value appears with the suggested part highlighted. 
+        </para>
+ 
+        <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" directInputSuggestions="true" /&gt;            
+...</programlisting>        
+        <para>This is a result:</para>
+            <figure>
+                <title>
+            <emphasis role="bold">
+                    <property>&lt;rich:comboBox&gt;</property>
+                </emphasis> with <emphasis>
+               <property> "directInputSuggestions"</property>
+            </emphasis> attribute.</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/comboBox3.png"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            
+        <para>
+        The <emphasis>
+            <property> "selectFirstOnUpdate"</property>
+         </emphasis> attribute defines if the first value from suggested is selected in a popup list. 
+        If it's "false" nothing is selected in the list before a user hovers some item with the mouse. 
+        </para>
+
+        <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" selectFirstOnUpdate="false" /&gt;           
+...</programlisting>     
+        <para>This is a result:</para>
+            <figure>
+                <title>
+            <emphasis role="bold">
+                    <property>&lt;rich:comboBox&gt;</property>
+                </emphasis> with <emphasis>
+               <property> "selectFirstOnUpdate"</property>
+            </emphasis> attribute.</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/comboBox4.png"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+       
+        <!--para>
+            The <emphasis><property> &quot;filterNewValues&quot;</property></emphasis> attribute defines the appearance of values in the list.
+            If it&apos;s &quot;true&quot; only the part of a list, which satisfies the prefix entered appears in a popup list.
+            If it&apos;s &quot;false&quot; all values appear in the popup list and the list is scrolled to the first value that satisfies the prefix.            
+            </para-->
+        <para>
+          The <emphasis>
+            <property>"defaultLabel"</property>
+         </emphasis> attribute defines the default label of the input element. Simple example is placed below.
+        </para>
+
+        <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." /&gt;            
+...</programlisting>     
+        <para>This is a result:</para>
+            <figure>
+                <title>
+            <emphasis role="bold">
+                    <property>&lt;rich:comboBox&gt;</property>
+                </emphasis> with <emphasis>
+               <property> "defaultLabel"</property>
+            </emphasis> attribute.</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/comboBox5.png"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>                                                                                                                                                                                                                                                                        
+      <para>
+                With the help of the <emphasis>
+            <property>"disabled"</property>
+         </emphasis> attribute you can disable the whole 
+                <emphasis role="bold">
+            <property>&lt;rich:comboBox&gt;</property>
+         </emphasis> component. See the following example.
+            </para>
+
+            <programlisting role="XML">...
+&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." disabled="true" /&gt;            
+...</programlisting>  
+        <para>This is a result:</para>
+                <figure>
+                    <title>
+            <emphasis role="bold">
+                        <property>&lt;rich:comboBox&gt;</property>
+                    </emphasis> with <emphasis>
+               <property> "disabled"</property>
+            </emphasis> attribute.</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/comboBox6.png"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>      
+        <para>
+              The <emphasis>
+            <property>"enableManualInput"</property>
+         </emphasis> attribute enables/disables input field, so when <code>enableManualInput = "false"</code>,
+      	user can only pick the value manually and has no possibility to type in the value (default value is "false").
+      </para>
+        <!--para>
+        The <emphasis role="bold"><property>&lt;rich:comboBox&gt;</property></emphasis> component provides the possibility to use 
+            specific event attribute <emphasis><property> &quot;onlistcall&quot;</property></emphasis> which is fired before the list opening.
+        </para-->
+        
+        <para>
+            The <emphasis role="bold">
+            <property>&lt;rich:comboBox&gt;</property>
+         </emphasis> component provides to use 
+            specific event attributes:
+            <itemizedlist>
+            <listitem>
+               <para>
+                  <emphasis>
+                     <property> "onlistcall"</property>
+                  </emphasis>which is fired before the list opening and gives you a possibility to cancel list popup/update 
+            </para>
+            </listitem>
+            <listitem>
+               <para>
+                  <emphasis>
+                     <property> "onselect"</property>
+                  </emphasis>which gives you a possibility to send Ajax request when item is selected 
+            </para>
+            </listitem>
+            </itemizedlist>   
+         </para>
+        
+        <para>
+            The <emphasis role="bold">
+            <property>&lt;rich:comboBox&gt;</property>
+         </emphasis> component allows to use sizes attributes:
+            <itemizedlist>
+                <listitem>
+               <para>
+                    <emphasis>
+                     <property> "listWidth"</property>
+                  </emphasis> and <emphasis>
+                     <property> "listHeight"</property>
+                  </emphasis> attributes
+                    specify popup list sizes with values in pixels
+                </para>
+            </listitem>
+                <listitem>
+               <para>
+                    <emphasis>
+                     <property> "width"</property>
+                  </emphasis> attribute customizes the size of input element with values in pixels.
+                </para>
+            </listitem>
+            </itemizedlist>  
+        </para>
+       <!-- <para>It&apos;s possible to handle events for comboBox from JavaScript code. A simplest example of usage JavaScript API is placed below:</para>
+        <para>
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML"><![CDATA[...
+    <rich:comboBox defaultLabel="Enter some value" id="comboBoxID">
+        ...
+    </rich:comboBox>
+...
+<h:commandButton value="Enable" onclick="#{rich:component('comboBoxID')}.enable(event)"/>     
+...]]></programlisting>  -->
+        
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/comboBox.html">Table of 
+							&lt;rich:comboBox&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters</title>
+        
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-type</entry>
+                    <entry>org.richfaces.ComboBox</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.HtmlComboBox</entry>
+                </row>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.ComboBox</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.renderkit.ComboBoxRenderer</entry>
+                </row>
+                <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.ComboBoxTag</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table>
+            <title>JavaScript API</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Function</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>showList()</entry>
+                        <entry>Shows the popup list</entry>
+                    </row>
+                    <row>
+                        <entry>hideList()</entry>
+                        <entry>Hides the popup list</entry>
+                    </row>
+                    <row>
+                        <entry>   enable()</entry>
+                        <entry> Enables the control for input</entry>
+                    </row>
+                    <row>
+                        <entry>  disable()</entry>
+                        <entry>Disables the control for input</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table id="comboBoxC">
+            <title>Classes names that define popup list representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+
+                    <row>
+                        <entry>rich-combobox-shell</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element of a list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-list-position</entry>
+                        <entry>Defines position of a list</entry>
+                    </row>              
+                    <row>
+                        <entry>rich-combobox-list-decoration</entry>
+                        <entry>Defines styles for a list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-list-scroll</entry>
+                        <entry>Defines styles for a list scrolling</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define font representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-combobox-font</entry>
+                        <entry>Defines styles for a font</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-font-inactive</entry>
+                        <entry>Defines styles for an inactive font</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-font-disabled</entry>
+                        <entry>Defines styles for a disabled font</entry>
+                    </row>
+                  </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define input field representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    
+                    <row>
+                        <entry>rich-combobox-input</entry>
+                        <entry>Defines styles for an input field</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-input-disabled</entry>
+                        <entry>Defines styles for an input field in disabled state</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-input-inactive</entry>
+                        <entry>Defines styles for an inactive input field</entry>
+                    </row>
+                    
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define item representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-combobox-item</entry>
+                        <entry>Defines styles for an item</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-item-selected</entry>
+                        <entry>Defines styles for a selected item</entry>
+                    </row>
+                 </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define button representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-combobox-button</entry>
+                        <entry>Defines styles for a button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-inactive</entry>
+                        <entry>Defines styles for an inactive button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-disabled</entry>
+                        <entry>Defines styles for a button in disabled state</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-hovered</entry>
+                        <entry>Defines styles for a hovered button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-background</entry>
+                        <entry>Defines styles for a button background</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-background-disabled</entry>
+                        <entry>Defines styles for a disabled button background</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-background-inactive</entry>
+                        <entry>Defines styles for an inactive button background</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-pressed-background</entry>
+                        <entry>Defines styles for a pressed button background</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-icon</entry>
+                        <entry>Defines styles for a button icon</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-icon-inactive</entry>
+                        <entry>Defines styles for an inactive button icon</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-button-icon-disabled</entry>
+                        <entry>Defines styles for a disabled button icon</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define shadow representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-combobox-shadow</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element of a shadow</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-shadow-tl</entry>
+                        <entry>Defines styles for a top-left element of a shadow</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-shadow-tr</entry>
+                        <entry>Defines styles for a top-right element of a shadow</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-shadow-bl</entry>
+                        <entry>Defines styles for a bottom-left element of a shadow</entry>
+                    </row>
+                    <row>
+                        <entry>rich-combobox-shadow-br</entry>
+                        <entry>Defines styles for a bottom-right element of a shadow</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/comboBox.jsf?c=comboBox">ComboBox page</ulink> at  RichFaces LiveDemo for examples of component usage and their sources.
+      </para>
+    </section>
+</section>

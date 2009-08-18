@@ -1,0 +1,599 @@
+<section role="NotInToc" id="rich_pickList">
+   <title>
+				&lt;
+				rich:pickList
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.2.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+     <title>Description</title>
+     <para>The <emphasis role="bold">
+            <property>&lt;rich:pickList&gt;</property>
+         </emphasis> component is used for moving selected item(s) from one list into another.
+     </para>
+     <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:pickList&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/pickList_init.png"/>
+            </imageobject>
+         </mediaobject>
+     </figure>
+     
+   </section>
+   <section>
+      <title>Key Features</title>    
+      <itemizedlist>
+        <listitem>
+            <para>Multiple selection of list items</para>
+        </listitem>
+        <listitem>
+            <para>Keyboard support</para>
+        </listitem>
+        <listitem>
+            <para>Supports standard JSF internationalization</para>
+        </listitem>
+        <listitem>
+            <para>Highly customizable look and feel</para>
+        </listitem>   
+        <!--listitem>
+            <para>Disablement support</para>
+        </listitem-->
+    </itemizedlist>
+   </section>
+   <section>
+        <title>Details of Usage</title>
+        <para>The <emphasis role="bold">
+                <property>&lt;rich:pickList&gt;</property>
+            </emphasis> component consists of <itemizedlist>
+                <listitem>
+               <para>2 <property>item lists</property>. Every item has three different representations: common, selected, active.
+                    Combination of these states is possible.</para>
+            </listitem>
+                <listitem>
+               <para>
+                    <property>Move controls set</property> is a set of controls, which performs moving items between lists.
+                </para>
+            </listitem>
+            </itemizedlist>
+        </para>
+
+        <para>
+            The <emphasis>
+            <property>"value"</property>
+         </emphasis> attribute is the initial value of this component.  
+        </para>
+        <para>
+            The <emphasis role="bold">
+            <property>&lt;f:selectItem /&gt;</property>
+         </emphasis> or <emphasis role="bold">
+                <property>&lt;f:selectItems /&gt;</property>
+         </emphasis> facets are used to define the values of a source list.
+          </para>
+        <para>
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML">...
+&lt;rich:pickList value="#{pickBean.listValues}"&gt;
+        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
+        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
+        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
+&lt;/rich:pickList&gt;
+...</programlisting>
+
+        <para>
+            The <emphasis> 
+            <property> "switchByClick"</property>
+         </emphasis> attribute provides an option to copy and remove items between lists by one click. 
+            Default value of this attribute is "false", so you need a double click to copy, remove items from one list to another.
+        </para> 
+        <para>
+            Lables of  the <property>move controls</property> can be defined with 
+            <emphasis>
+            <property> "copyAllControlLabel"</property>
+         </emphasis>, 
+            <emphasis>
+            <property> "copyControlLabel"</property>
+         </emphasis>,
+            <emphasis> 
+            <property> "removeControlLabel"</property>
+         </emphasis>, 
+            <emphasis> 
+            <property> "removeAllControlLabel"</property>
+         </emphasis> attributes.
+        </para> 
+        <para>
+              <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML">...
+&lt;rich:pickList copyAllControlLabel = "#{pickBean.copyAllLabel}" copyControlLabel = "#{pickBean.copyLabel}" 
+					removeControlLabel = "#{pickBean.removeLabel}" removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues}"&gt;
+        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
+        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
+        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
+&lt;/rich:pickList&gt;
+...</programlisting>
+         <para>
+             If you don't want to display labels on the buttons you need to set  
+             <emphasis>
+            <property> "showButtonsLabel"</property>
+         </emphasis> to "false".    
+         </para>
+             <figure>
+                 <title>Move control buttons without labels</title>
+                 <mediaobject>
+                     <imageobject>
+                         <imagedata fileref="images/pickList2.png"/>
+                     </imageobject>
+                 </mediaobject>
+             </figure>       
+      <para>
+      Alternative to the given attributes are the following facets: <emphasis>
+            <property>"copyAllControl"</property>
+         </emphasis>,
+      <emphasis>
+            <property>"removeAllControl"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"copyControl"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"removeControl"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"copyAllControlDisabled"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"removeAllControlDisabled"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"copyControlDisabled"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"removeControlDisabled"</property>
+         </emphasis>, 
+      <emphasis>
+            <property>"caption"</property>
+         </emphasis>.
+  </para>
+        <para>
+            It is an example of usage of the facets and it is identical to the previous example.
+        </para>
+        <programlisting role="XML">...
+&lt;rich:pickList value="#{pickBean.listValues}"&gt;
+    &lt;f:facet name="copyAllControl"&gt;
+        &lt;h:commandButton value="#{pickBean.copyAllLabel}" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="copyControl"&gt;
+        &lt;h:commandButton value="#{pickBean.copyLabel}" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="removeControl"&gt;
+        &lt;h:commandButton value="#{pickBean.removeLabel}" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="removeAllControl"&gt;
+        &lt;h:commandButton value="#{pickBean.removeAllLabel}" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
+    &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
+    &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
+&lt;/rich:pickList&gt;
+...</programlisting>
+        <para>
+            With the help of <emphasis>
+            <property>"moveControlsVerticalAlign"</property>
+         </emphasis> attribute 
+            you can align <property>move controls</property> vertically.
+        </para>
+        <para>The possible value for <emphasis>
+            <property>"moveControlsVerticalAlign"</property>
+         </emphasis> are "top", "bottom" and "center" (default value).</para>
+        
+        <para>
+            The <emphasis role="bold">
+                <property>&lt;rich:pickList&gt;</property>
+         </emphasis>
+            component provides resizing of lists by using such attributes as:
+            <itemizedlist>
+                <listitem>
+               <para> 
+                    <emphasis>
+                        <property> "listsHeight"</property>
+                  </emphasis> defines height of the lists.
+                    
+                </para>
+            </listitem>
+                <listitem>
+               <para> 
+                    <emphasis>
+                        <property> "sourceListWidth"</property>
+                  </emphasis> defines width of a source list.
+                    
+                </para>
+            </listitem>
+                <listitem>
+               <para> 
+                    <emphasis>
+                        <property> "targetListWidth"</property>
+                  </emphasis> defines width of a target list.
+                    
+                </para>
+            </listitem>
+            </itemizedlist>
+        </para> 
+        <para>
+            <emphasis role="bold">Example:</emphasis>
+        </para>
+        <programlisting role="XML">...
+&lt;rich:pickList listsHeight="#{pickBean.listsHeight}" sourceListWidth="#{pickBean.sourceListWidth}" targetListWidth="#{pickBean.targetListWidth}" value="#{pickBean.listValues}"&gt;
+        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
+        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
+        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
+&lt;/rich:pickList&gt;
+...</programlisting>
+             
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:pickList&gt;</property>
+         </emphasis> component allows to use internationalization method 
+            to redefine and localize the labels. You could use application resource bundle and define 
+            <code>RICH_PICK_LIST_COPY_ALL_LABEL</code>,  
+            <code>RICH_PICK_LIST_COPY_LABEL</code>, 
+            <code>RICH_PICK_LIST_REMOVE_ALL_LABEL</code>, 
+            <code>RICH_PICK_LIST_REMOVE_LABEL</code> there.
+        </para>
+        
+        <table>
+            <title>Keyboard usage for elements selection</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Keys and combinations </entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <!--Sorting API -->
+                    <row>
+                        <entry>CTRL+click</entry>
+                        <entry>Inverts selection for an item</entry>
+                    </row>
+                    <row>
+                        <entry>SHIFT+click</entry>
+                        <entry>Selects all rows from active one to a clicked row if they differ,
+                            else select the active row. All other selections are cleared</entry>
+                    </row>
+                    <row>
+                        <entry>CTRL+A</entry>
+                        <entry>Selects all elements inside the list if some active element is
+                            already present in a list</entry>
+                    </row>
+                    <row>
+                        <entry>Up, Down arrows</entry>
+                        <entry>Changes the active and selected elements to the next or previous in a list</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/pickList.html">Table of 
+							&lt;rich:pickList&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters</title>
+
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-type</entry>
+                    <entry>org.richfaces.PickList</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.HtmlPickList</entry>
+                </row>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.PickList</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.PickListRenderer</entry>
+                </row>
+                 <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.PickListTag</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table>
+            <title>Facets</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Facet</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>copyAllControl</entry>
+                        <entry>Redefines the "copyAll" label with the control set. Related attribute is "copyAllControlLabel"</entry>
+                    </row>
+                    <row>
+                        <entry>removeAllControl</entry>
+                        <entry>Redefines the "removeAll" label with the control set. Related attribute is "removeAllControlLabel"</entry>
+                    </row>
+                    <row>
+                        <entry>copyControl</entry>
+                        <entry>Redefines the "copy" label with the control set. Related attribute is "copyControlLabel"</entry>
+                    </row>
+                    <row>
+                        <entry>removeControl</entry>
+                        <entry>Redefines the "remove" label with the control set. Related attribute is "removeControlLabel"</entry>
+                    </row>
+                    <row>
+                        <entry>copyAllControlDisabled</entry>
+                        <entry>Redefines the disabled "copyAll" label with the control set.</entry>
+                    </row>
+                    <row>
+                        <entry>removeAllControlDisabled</entry>
+                        <entry>Redefines the disabled "removeAll" label with the control set.</entry>
+                    </row>
+                    <row>
+                        <entry>copyControlDisabled</entry>
+                        <entry>Redefines the disabled "copy" label with the control set.</entry>
+                    </row>
+                    <row>
+                        <entry>removeControlDisabled</entry>
+                        <entry>Redefines the disabled "remove" label with the control set.</entry>
+                    </row>
+                    <row>
+                        <entry>caption</entry>
+                        <entry>Defines the "caption" label with the control set.</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table id="pickListC">
+            <title>Classes names that define a list representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-list-picklist</entry>
+                        <entry>Defines styles for a wrapper &lt;table&gt; element of a pickList</entry>
+                    </row>                    
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define a source and target items representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-picklist-source-items</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element of a source list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-target-items</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element of a target list</entry>
+                    </row>
+                    
+                    <row>
+                        <entry>rich-picklist-body</entry>
+                        <entry>Defines styles for a wrapper &lt;table&gt; element of a list body (source and target)</entry>
+                    </row>
+                    
+                    <row>
+                        <entry>rich-picklist-list</entry>
+                        <entry>Defines styles for a (source and target) list</entry>
+                    </row>
+                    
+                    <row>
+                        <entry>rich-picklist-list-content</entry>
+                        <entry>Defines styles for a (source and target) list content</entry>
+                    </row>
+                    
+                    <row>
+                        <entry>rich-picklist-internal-tab</entry>
+                        <entry>Defines styles for a wrapper &lt;table&gt; element of list items (source and target)</entry>
+                    </row>
+                    
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define rows representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-picklist-source-row</entry>
+                        <entry>Defines styles for a source list row</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-source-row-selected</entry>
+                        <entry>Defines styles for a selected row in a source list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-target-row-selected</entry>
+                        <entry>Defines styles for a selected row in a target list</entry>
+                    </row>
+                    
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define a source cell representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-picklist-source-cell</entry>
+                        <entry>Defines styles for a cell in a source list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-source-cell-selected</entry>
+                        <entry>Defines styles for a selected cell in a source list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-source-cell-active</entry>
+                        <entry>Defines styles for an active cell in a source list</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define a target cell representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-picklist-target-cell</entry>
+                        <entry>Defines styles for a target list cell</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-target-cell-selected</entry>
+                        <entry>Defines styles for a selected cell in a target list</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-target-cell-active</entry>
+                        <entry>Defines styles for an active cell in a target list</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define a control representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-picklist-controls</entry>
+                        <entry>Defines styles for wrapper &lt;div&gt; element of a pickList controls</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-disabled</entry>
+                        <entry>Defines styles for a control in a disabled state</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-copyall</entry>
+                        <entry>Defines styles for a "copyAll" control</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-copy</entry>
+                        <entry>Defines styles for a "Copy" control</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-remove</entry>
+                        <entry>Defines styles for a "Remove" control</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-removeall</entry>
+                        <entry>Defines styles for a "removeAll" control</entry>
+                    </row>
+                    <row>
+                        <entry>rich-picklist-control-img</entry>
+                        <entry>Defines styles for a control image</entry>
+                    </row>
+                    
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Classes names that define a button representation</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-list-picklist-button</entry>
+                        <entry>Defines styles for a button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-list-picklist-button-disabled</entry>
+                        <entry>Defines styles for a disabled button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-list-picklist-button-press</entry>
+                        <entry>Defines styles for a pressed button</entry>
+                    </row>
+                    <row>
+                        <entry>rich-list-picklist-button-light</entry>
+                        <entry>Defines styles for a button highlight</entry>
+                    </row>
+                    <row>
+                        <entry>rich-list-picklist-button-selection</entry>
+                        <entry>Defines styles for a button selection</entry>
+                    </row>
+                    <row>
+                        <entry>rich-list-picklist-button-content</entry>
+                        <entry>Defines styles for a button content</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/pickList.jsf?c=pickList">On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold">
+                <property>&lt;rich:pickList&gt;</property>
+            </emphasis> usage and sources for the given example. </para>
+    </section>
+</section>

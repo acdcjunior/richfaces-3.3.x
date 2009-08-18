@@ -1,0 +1,164 @@
+<section role="NotInToc" id="rich_panelBar">
+   <title>
+				&lt;
+				rich:panelBar
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>
+         <property>panelBar</property> is used for grouping any content which is loaded on the client
+     side and appears as groups divided on child panels after the header is clicked.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:panelBar&gt;</property>
+            </emphasis> with content inside</title>
+        <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/panelBar_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Skinnable slide panel and child items</para>
+         </listitem>
+        <listitem>
+            <para>Groups any content inside each panel</para>
+         </listitem>
+     </itemizedlist>
+   </section>
+   <section>
+        <title>Details of Usage</title>
+        <para>As it was mentioned <link linkend="panelBar">above</link>,
+            <property>panelBar</property> is used for grouping any content on the client, thus its
+            customization deals only with specification of sizes and styles for rendering.</para>
+        <para>
+         <emphasis>
+                <property>"width"</property>
+            </emphasis> and <emphasis>
+                <property>"height"</property>
+            </emphasis> (both are 100% on default) attributes stand apart.</para>
+        <para>Style attributes are described further.</para>
+        <para>
+         <property>panelBar</property> could contain any number of child
+            <property>panelBarItem</property> components inside, which content is uploaded onto the
+            client and headers are controls to open the corresponding child element.</para>
+        <!--para>
+            The <emphasis>
+                <property>&quot;label&quot;</property>
+            </emphasis> attribute is a generic attribute.
+            The <emphasis>
+                <property>&quot;label&quot;</property>
+            </emphasis> attribute provides an association between a component, and the message that the component (indirectly) produced.  
+            This attribute defines the parameters of localized error and informational messages that
+            occur as a result of conversion, validation, or other application actions during the request
+            processing lifecycle. With the help of this attribute you can  replace the
+            last parameter substitution token shown in the messages. For example, {1} for <code>&quot;DoubleRangeValidator.MAXIMUM&quot;</code>, {2}
+            for <code>&quot;ShortConverter.SHORT&quot;</code>.
+        </para-->
+
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/panelBar.html">Table of 
+							&lt;rich:panelBar&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters </title>
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-type</entry>
+                    <entry>org.richfaces.PanelBar</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.HtmlPanelBar</entry>
+                </row>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.PanelBar</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.PanelBarRenderer</entry>
+                </row>
+                <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.PanelBarTag</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table id="tab_pB">
+            <title>Class name that define a component appearance</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry>
+                        <entry>Class description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-panelbar</entry>
+                        <entry>Defines styles for a wrapper &lt;div&gt; element of a
+                            component</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+      <table>
+            <title>Style component classes</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>A class attribute</entry>
+                        <entry>A component element defined by an attribute</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>styleClass</entry>
+                        <entry>Applicable to a whole component (together with headers)</entry>
+                    </row>
+                    <row>
+                        <entry>headerClass</entry>
+                        <entry>Applicable to a header element</entry>
+                    </row>
+                    <row>
+                        <entry>contentClass</entry>
+                        <entry>Applicable to a content </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+            <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelBar.jsf?c=panelBar">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                <property>&lt;rich:panelBar&gt;</property>
+            </emphasis> usage and sources for the given example. </para>
+    </section>
+</section>

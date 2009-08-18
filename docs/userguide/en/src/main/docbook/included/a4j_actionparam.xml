@@ -1,0 +1,147 @@
+<section role="NotInToc" id="a4j_actionparam">
+   <title>
+				&lt;
+				a4j:actionparam
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section role="NotInToc">
+      <sectioninfo>
+            <keywordset>
+                  <keyword>a4j:actionparam</keyword>
+            </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para>
+            The <emphasis role="bold">
+            <property>&lt;a4j:actionparam&gt;</property>
+         </emphasis> component combines the functionality of both JSF <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;f:actionListener&gt;</property>
+         </emphasis> 
+            and allows to assign the value to the property of the manager bean directly using the <emphasis>
+            <property>assignTo</property>
+         </emphasis> attribute.
+      </para>
+
+   </section>
+   <section>
+        <title>Details of Usage</title>
+       <para>
+             The component <emphasis role="bold">
+            <property>&lt;a4j:actionparam&gt;</property>
+         </emphasis> is a combination of the functionality of two JSF tags: 
+             <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;f:actionListener&gt;</property>
+         </emphasis>.
+       </para>
+        <para>At the render phase, it's decoded by parent component (<emphasis role="bold">
+            <property>&lt;h:commandLink&gt;</property>
+         </emphasis> or like) as usual. 
+              At the process request phase, if the parent component performs an action event, update the <emphasis>
+            <property>"value"</property>
+         </emphasis> specified in the 
+              <emphasis>
+            <property>"assignTo"</property>
+         </emphasis>attribute as its <emphasis>
+            <property>"value"</property>
+         </emphasis>. 
+              If a <emphasis>
+            <property>"converter"</property>
+         </emphasis> attribute is specified, use it to encode and decode the <emphasis>
+            <property>"value"</property>
+         </emphasis> to a string stored in the html parameter. 
+              To make the <emphasis>
+            <property>"assignTo"</property>
+         </emphasis> attribute usable add the <code>actionParam</code> instance to the parent component as an action listener.
+        </para>
+        <para>
+              <emphasis role="bold">
+            <property>&lt;a4j:actionparam&gt;</property>
+         </emphasis>has a <emphasis>
+            <property>"noEscape"</property>
+         </emphasis> attribute. 
+              If it is set to <property>"true"</property>, the <emphasis>
+            <property>"value"</property>
+         </emphasis> is evaluated as a JavaScript code. </para>
+        <para>
+              <emphasis role="bold">Example:</emphasis>
+        </para>
+            <programlisting role="XML">...
+&lt;script&gt;
+    ...
+    var foo = "bar";
+    ...
+&lt;/script&gt;
+...
+&lt;a4j:actionparam noEscape="true" name="param1" value="foo" assignTo="#{bean.prop1}" /&gt;
+...</programlisting>
+	     <para>
+	      The <emphasis role="bold">
+            <property>&lt;a4j:param&gt;</property>
+         </emphasis> extends <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis>, 
+	      so the <emphasis>
+            <property>"name"</property>
+         </emphasis> attribute is mandatory. 
+	      Otherwise, the <emphasis>
+            <property>"value"</property>
+         </emphasis> misses due missing the request parameter name for it.
+	</para>	
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/actionparam.html">Table of 
+							&lt;a4j:actionparam&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+            <title>Component Identification Parameters</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Name</entry>
+                        <entry>Value</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>component-type</entry>
+                        <entry>org.ajax4jsf.ActionParameter</entry>
+                    </row>
+                    
+                    <row>
+                        <entry>component-class</entry>
+                        <entry>org.ajax4jsf.component.html.HtmlActionParameter</entry>
+                    </row>
+                    
+                </tbody>
+            </tgroup>
+        </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+        <para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/actionparam.jsf?c=actionparam">ActionParamter page</ulink> at RichFaces LiveDemo for examples of component usage abd their sources. 
+        </para>
+        <para>
+              More information can be found on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4063764">Ajax4jsf Users Forum</ulink>.
+        </para>	
+        <para>
+              More information about <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;f:actionListener&gt;</property>
+         </emphasis>can be found <ulink url="http://java.sun.com/javaee/javaserverfaces/1.2/docs/tlddocs/index.html">in Sun JSF TLD documentation</ulink>.
+        </para>
+        
+  </section>
+</section>

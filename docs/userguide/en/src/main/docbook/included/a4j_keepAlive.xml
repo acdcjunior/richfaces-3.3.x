@@ -1,0 +1,106 @@
+<section role="NotInToc" id="a4j_keepAlive">
+   <title>
+				&lt;
+				a4j:keepAlive
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+                    <sectioninfo>
+                              <keywordset>
+                                        <keyword>a4j:keepAlive</keyword>
+                              </keywordset>
+                    </sectioninfo>
+
+                    <title>Description</title>
+                    <para>The <emphasis role="bold">
+                                        <property>&lt;a4j:keepAlive&gt;</property>
+                              </emphasis> tag allows to keep a state of a bean between
+                              requests.</para>
+
+          </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>
+                          If a managed bean is declared with <property>request</property> scope in the configuration file with the help of <emphasis role="bold">
+            <property>&lt;managed-bean-scope&gt;</property>
+         </emphasis> tag then the life-time of this bean instance is valid only for the current request. Any attempts to make a reference to the bean instance after the request end will throw in Illegal Argument Exception by the server. 
+                          To avoid these kinds of Exceptions component <emphasis role="bold">
+            <property>&lt;a4j:keepAlive&gt;</property>
+         </emphasis> is used to maintain the state of the whole bean object among subsequent request.
+                    </para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+
+                    <programlisting role="XML">&lt;a4j:keepAlive beanName = "#{myClass.testBean}"/&gt;</programlisting>
+
+                    <para> The <emphasis>
+            <property>"beanName"</property>
+         </emphasis> attribute defines the request scope bean name you'd like to re-use. Note that this attribute must point to a legal JSF EL expression which resolves to a managed mean instance.
+                              For example for the above code the class definition may look like this one:
+                    </para>
+                <programlisting role="JAVA">class MyClass{
+	...
+	private TestBean testBean;
+	// Getters and Setters for testBean.
+	...
+}
+</programlisting>
+                    
+                <para>
+                      The <emphasis>
+            <property>"ajaxOnly"</property>
+         </emphasis> attribute declares whether the value of the bean should be available during a non-Ajax request. 
+                      If the value of this attribute is "true" a request scope bean keeps the same value during Ajax requests from the given page. 
+                      If a non-Ajax request is sent from this page the bean is re-created as a regular request scope bean.
+                </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/keepAlive.html">Table of 
+							&lt;a4j:keepAlive&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.ajax4jsf.components.KeepAlive</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.ajax4jsf.components.AjaxKeepAlive</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.ajax4jsf.components.AjaxKeepAlive</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+   </section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                <para>
+                      Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/keepAlive.jsf?c=keepAlive">KeepAlive page</ulink> at RichFaces Livedemo for examples of component usage and their sources.
+                </para>
+                
+                <para>
+                      Search the <ulink url="http://www.jboss.org/index.html?module=bb&amp;op=viewforum&amp;f=261">RichFaces Users forum</ulink> for some additional information about usage of component.
+                </para>
+          </section>
+</section>

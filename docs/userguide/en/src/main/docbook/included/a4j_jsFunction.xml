@@ -1,0 +1,143 @@
+<section role="NotInToc" id="a4j_jsFunction">
+   <title>
+				&lt;
+				a4j:jsFunction
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+            <sectioninfo>
+                  <keywordset>
+                        <keyword>a4j:jsFunction</keyword>
+                  </keywordset>
+            </sectioninfo>
+            
+            <title>Description</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:jsFunction&gt;</property>
+         </emphasis> component allows to perform Ajax requests directly from JavaScript code, invoke server-side data and return it in a JSON format to use in a client JavaScript calls.
+            </para>
+      </section>
+   <section>
+      <title>Details of Usage</title>
+        
+        <para>
+              As the component uses Ajax request to get data from server it has all common Ajax Action attributes. 
+              Hence, <emphasis>
+            <property>"action"</property>
+         </emphasis> and<emphasis>
+            <property> "actionListener" </property>
+         </emphasis>can be invoked, and reRendering some parts of
+      the page fired after calling function. </para>
+      <para> When using the <emphasis role="bold">
+            <property>&lt;a4j:jsFunction&gt;</property>
+         </emphasis> it's possible to initiate the Ajax request from the JavaScript and
+      perform partial update of a page and/or invoke the JavaScript function with data returned by
+      Ajax response. </para>
+      <programlisting role="XML">&lt;body onload="callScript()"&gt;
+      &lt;h:form&gt;
+             ...
+            &lt;a4j:jsFunction name="callScript" data="#{bean.someProperty1}" reRender="someComponent" oncomplete="myScript(data.subProperty1, data.subProperty2)"&gt;
+                  &lt;a4j:actionparam name="param_name" assignTo="#{bean.someProperty2}"/&gt;
+            &lt;/a4j:jsFunction&gt;
+            ...
+      &lt;/h:form&gt;
+      ...
+      &lt;/body&gt;</programlisting>
+        
+      <para>
+          The <emphasis role="bold">
+            <property>&lt;a4j:jsFunction&gt;</property>
+         </emphasis> allows to use <emphasis role="bold">
+            <property>&lt;a4j:actionparam&gt;</property>
+         </emphasis> or pure <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> for passing any number of parameters of the JavaScript function into Ajax request. 
+          <emphasis role="bold">
+            <property>&lt;a4j:jsFunction&gt;</property>
+         </emphasis> is similar to <emphasis role="bold">
+            <property>&lt;a4j:commandButton&gt;</property>
+         </emphasis>, but it could be activated from the JavaScript code. 
+          It allows to invoke some server-side functionality and use the returned data in the JavaScript function invoked from <emphasis>
+            <property>"oncomplete"</property>
+         </emphasis> attribute. 
+          Hence it's possible to use <emphasis role="bold">
+            <property>&lt;a4j:jsFunction&gt;</property>
+         </emphasis> instead of <emphasis role="bold">
+            <property>&lt;a4j:commandButton&gt;</property>
+         </emphasis>. 
+          You can put it anywhere, just don't forget to use <emphasis role="bold">
+            <property>&lt;h:form&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;/h:form&gt;</property>
+         </emphasis> around it.
+    </para>
+      <para>
+          Information about the <emphasis>
+            <property>"process"</property>
+         </emphasis> attribute usage you can find "<link linkend="process">Decide what to process</link>" guide section.
+    </para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/jsFunction.html">Table of 
+							&lt;a4j:jsFunction&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.Function</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.ajax4jsf.components.ajaxFunction</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlajaxFunction</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.components.ajaxFunctionRenderer</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+          Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/jsFunction.jsf?c=jsFunction">jsFunction page</ulink> at RichFaces LiveDemo for component usage and sources for the given examples.
+    </para>
+        
+        <para>
+              Useful articles:
+        </para>
+                <itemizedlist>
+                      <listitem>
+                            <para>
+                                  "<ulink url="http://www.jboss.org/community/docs/DOC-11856">JsFunctionJson</ulink>" article in the RichFaces Cookbook describes how to use <emphasis role="bold">
+                  <property>"a4j:jsFunction"</property>
+               </emphasis> to call the jsonTest backing bean that generates some random data in a JSON String;
+                            </para>
+                      </listitem>
+               
+                </itemizedlist>
+        
+  </section>
+</section>

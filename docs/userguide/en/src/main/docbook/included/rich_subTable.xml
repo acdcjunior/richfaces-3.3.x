@@ -1,0 +1,276 @@
+<section role="NotInToc" id="rich_subTable">
+   <title>
+				&lt;
+				rich:subTable
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component is used for inserting <property>subtables</property> into tables with opportunity to choose data from a model 
+    and built-in Ajax updates support.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:subTable&gt;</property>
+            </emphasis> element</title>
+        <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/subTable_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Completely skinned table rows and child elements</para>
+         </listitem>
+        <listitem>
+            <para>Possibility to insert complex columnGroup subcomponents</para>
+         </listitem>
+        <listitem>
+            <para>Possibility to combine rows and columns inside</para>
+         </listitem>
+        <listitem>
+            <para>Possibility to update a limited set of rows with Ajax</para>
+         </listitem>
+     </itemizedlist>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:subTable&gt;</property>
+         </emphasis> component is similar to the <emphasis role="bold">
+            <property>&lt;h:dataTable&gt;</property>
+         </emphasis> one, except Ajax support and skinnability. One more difference is that the
+      component doesn't add the wrapping <emphasis role="bold">
+            <property>&lt;table&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;tbody&gt;</property>
+         </emphasis> tags. Ajax support is possible, because the component was created basing on the
+        <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> component and as a result it could be partially updated with Ajax. <emphasis>
+            <property>"ajaxKeys"</property>
+         </emphasis> attribute allows to define row keys that is updated after an Ajax request.</para>
+
+      <para>Here is an example:</para>
+    
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+    
+      <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="capitals"&gt;
+		&lt;rich:column&gt;
+       			...
+       	&lt;/rich:column&gt;
+       	&lt;rich:subTable value="#{capitals.details}" var="detail" ajaxKeys="#{bean.ajaxSet}" binding="#{bean.subtable}" id="subtable"&gt;
+       			&lt;rich:column&gt;
+               		...
+            	&lt;/rich:column&gt;
+      	&lt;/rich:subTable&gt;
+&lt;/rich:dataTable&gt;
+...
+&lt;a4j:commandButton action="#{tableBean.action}" reRender="subtable"/&gt;
+...
+</programlisting>
+      <para> In the example <emphasis>
+            <property>"reRender"</property>
+         </emphasis> attribute contains value of <emphasis>
+            <property>"id"</property>
+         </emphasis> attribute for <emphasis role="bold">
+            <property>&lt;rich:subTable&gt;</property>
+         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+
+      <para>The component allows to use <emphasis>
+            <property>"header"</property>
+         </emphasis> and <emphasis>
+            <property>"footer"</property>
+         </emphasis> facets for output. See an example for <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis>
+         <link linkend="table_ex">component</link>.</para>
+
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/subTable.html">Table of 
+							&lt;rich:subTable&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.SubTable</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlSubTable</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.SubTable</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.SubTableRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.SubTableTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Facets</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Facet name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>header</entry>
+                  <entry>Defines the header content</entry>
+               </row>
+               <row>
+                  <entry>footer</entry>
+                  <entry>Defines the footer content</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="tab_sT">
+         <title>Classes names that define a component appearance</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-subtable</entry>
+                  <entry>Defines styles for all subtable</entry>
+               </row>
+               <row>
+                  <entry>rich-subtable-caption</entry>
+                  <entry>Defines styles for a "caption" facet element</entry>
+               </row>
+
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define header and footer elements</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+
+               <row>
+                  <entry>rich-subtable-header</entry>
+                  <entry>Defines styles for a subtable header row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-header-continue</entry>
+                  <entry>Defines styles for all subtable header lines after the first</entry>
+               </row>
+               <row>
+                  <entry>rich-subtable-subheader</entry>
+                  <entry>Defines styles for a column header of subtable</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-subfooter</entry>
+                  <entry>Defines styles for a column footer of subtable</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-footer</entry>
+                  <entry>Defines styles for a subtable footer row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-footer-continue</entry>
+                  <entry>Defines styles for all subtable footer lines after the first</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define rows and cells</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-subtable-headercell</entry>
+                  <entry>Defines styles for a subtable header cell</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-subheadercell</entry>
+                  <entry>Defines styles for a column header cell of subtable</entry>
+               </row>
+               <row>
+                  <entry>rich-subtable-cell</entry>
+                  <entry>Defines styles for a subtable cell</entry>
+               </row>
+               <row>
+                  <entry>rich-subtable-row</entry>
+                  <entry>Defines styles for a subtable row</entry>
+               </row>
+               <row>
+                  <entry>rich-subtable-firstrow</entry>
+                  <entry>Defines styles for a subtable start row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-subfootercell</entry>
+                  <entry>Defines styles for a column footer cell of subtable</entry>
+               </row>
+
+               <row>
+                  <entry>rich-subtable-footercell</entry>
+                  <entry>Defines styles for a subtable footer cell</entry>
+               </row>
+
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+</section>

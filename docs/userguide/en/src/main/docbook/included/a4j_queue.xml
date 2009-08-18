@@ -1,0 +1,247 @@
+<section role="NotInToc" id="a4j_queue">
+   <title>
+				&lt;
+				a4j:queue
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.3.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+          <para>
+                The <emphasis role="bold">
+            <property>&lt;a4j:queue&gt;</property>
+         </emphasis> component enqueues set of Ajax requests sent from client. 
+                The RichFaces components with built-in Ajax can reference the queue to optimize Ajax requests.
+          </para>     
+    </section>
+   <section>
+        <title>Details of Usage</title>
+            
+            <para>
+                  The RichFaces Queue has four different types: global default, view scoped default, view scoped named and form-based default queue (general Queue principles are good documented in the "<link linkend="QueuePrinciples">Queue Principles</link>" section). 
+                  The current section will take closer to the form based queue. The usage of other types is similar.
+            </para>
+      
+        <para>
+              In order to disable or enable the <emphasis role="bold">
+            <property>&lt;a4j:queue&gt;</property>
+         </emphasis> component on the page you can use the <emphasis>
+            <property>"disabled"</property>
+         </emphasis> attribute.
+        </para>
+            
+            <para>
+                  The <emphasis>
+            <property>"requestDelay"</property>
+         </emphasis> attribute defines delay time for all the requests fired by the action components.
+            </para>
+            
+            <para>
+                  The <emphasis>
+            <property>"size"</property>
+         </emphasis> attribute specifies the number of requests that can be stored in the queue at a time. 
+                  The attribute helps to prevent server overloading. 
+                  It is also possible to determine queue's behaviour when it's size is exceeded. 
+                  Use the <emphasis>
+            <property>"sizeExceededBehavior"</property>
+         </emphasis> for this purpose. 
+                  There are four possible strategies of exceeded queue's behavior: 
+            </para>
+            <itemizedlist>
+                  <listitem>
+                        <para>"dropNext" drops next request that should be fired</para>
+                  </listitem>
+                  <listitem>
+                        <para>"dropNew" drops the incoming request</para>
+                  </listitem>
+                  <listitem>
+                        <para>"fireNext" immediately fires the next request in line to be fired</para>
+                  </listitem>
+                  <listitem>
+                        <para>"fireNew" immediately fires the incoming request.</para>
+                  </listitem>
+            </itemizedlist>
+        
+        <para>
+            <emphasis role="bold"> Example: </emphasis>
+        </para>
+        <programlisting role="XML">&lt;h:form&gt;
+	&lt;a4j:queue size="2" requestDelay="500" sizeExceededBehavior="dropNext" onsizeexceeded="alert('The size of the queue is exceeded')" /&gt;
+	&lt;h:inputText value="#{bean.a}"&gt;
+		&lt;a4j:support event="onkeyup" /&gt;
+	&lt;/h:inputText&gt;
+	&lt;h:inputText value="#{bean.b}"&gt;
+		&lt;a4j:support event="onblur" /&gt;
+	&lt;/h:inputText&gt;
+	&lt;h:selectBooleanCheckbox value="#{bean.check}" id="checkboxID"&gt;
+		&lt;a4j:support id="checkboxSupport" event="onchange" /&gt;
+	&lt;/h:selectBooleanCheckbox&gt;
+&lt;/h:form&gt;</programlisting>
+        <para>
+            In this example if the queue has more than 2 requests waiting to be processed the next event will be dropped and a message (the <emphasis>
+            <property>"onsizeexceeded"</property>
+         </emphasis> attribute fires a JavaScript function) saying that the queues is exceeded will be displayed.
+        </para>
+        
+        <para>
+            The <emphasis>
+            <property>"ignoreDupResponses"</property>
+         </emphasis> attribute that takes a boolean value can also help optimize your Ajax requests. 
+            If set to true, response processing for request will not occur if a similar request is already waiting in the queue. New request will be fired immediately when the response from the previous one returns.
+         
+        </para>
+        
+        <para>
+            <emphasis role="bold"> Example: </emphasis>
+        </para>
+        <programlisting role="XML">&lt;h:form&gt;
+      &lt;a4j:queue requestDelay="500" ignoreDupResponses="true" /&gt;
+      &lt;h:inputText value="#{bean.a}"&gt;
+            &lt;a4j:support event="onkeyup" /&gt;
+      &lt;/h:inputText&gt;
+&lt;/h:form&gt;</programlisting>
+        
+        <para>In this example, the requests are glued together and only the last one is submitted.</para>
+        
+        <para>
+              Another key attribute that easies server load is <emphasis>
+            <property>"timeout"</property>
+         </emphasis>. 
+              The attribute specifies the  amount of time an item can be in the queue before the sent event is be aborted and dropped from the queue. 
+        </para>
+            
+            <para>
+                  If the request is sent and response is not returned within the time frame defined in this attribute - the request is aborted, and the next one is sent. 
+            </para>
+          <para>
+                <emphasis role="bold"> Example: </emphasis>
+          </para>            
+        <programlisting role="XML">&lt;h:form&gt;
+      &lt;a4j:queue timeout="1000" /&gt;
+      &lt;h:inputText value="#{bean.a}"&gt;
+            &lt;a4j:support event="onkeyup" /&gt;
+      &lt;/h:inputText&gt;
+&lt;/h:form&gt;</programlisting>
+        
+        <para>
+            In this case if the sever doesn't respond within a second the request will be aborted.
+        </para>
+     
+        <para>
+            As you can see the implementation of the queue provides some custom event handlers that you may use to call JavaScript functions.</para>
+        <para>
+              The <emphasis>
+            <property>"oncomplete"</property>
+         </emphasis>is fired after request completed. 
+              In this event handler request object is be passed as a parameter. 
+              Thus queue is be accessible using <code>request.queue</code>. 
+              And the element which was a source of the request is available using <code>this</code>.                    
+        </para>
+            
+        <para>
+            <emphasis role="bold"> Example: </emphasis>
+        </para>
+        <programlisting role="XML">&lt;h:form&gt;
+      &lt;a4j:queue oncomplete="alert(request.queue.getSize())" requestDelay="1000" /&gt;
+      &lt;h:inputText value="#{bean.a}"&gt;
+            &lt;a4j:support event="onkeyup" /&gt;
+      &lt;/h:inputText&gt;
+      &lt;h:selectBooleanCheckbox value="#{bean.check}"&gt;
+            &lt;a4j:support event="onchange"/&gt;
+      &lt;/h:selectBooleanCheckbox&gt;
+&lt;/h:form&gt;</programlisting>                                                                                                                                                                                                                                                                    
+      <para>In this example you can see how the number of requests waiting  in the queue change. You will get a message with the number of the requests in the queue.</para>
+        
+        <para>The <emphasis>
+            <property>"onbeforedomupdate"</property>
+         </emphasis> event handler called before
+        updating DOM on a client side.</para>
+        
+        <para> The <emphasis>
+            <property>"onrequestqueue"</property>
+         </emphasis> event handler called after the new request has been added to queue.
+            And the <emphasis>
+            <property>"onrequestdequeue"</property>
+         </emphasis> event handler called after the request has been removed from queue. </para>
+        <para> The <emphasis>
+            <property>"onsubmit"</property>
+         </emphasis> event handler called
+            after request is completed. This attribute allows to invoke JavaScript code before an
+            Ajax request is sent. </para>
+
+    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/queue.html">Table of 
+							&lt;a4j:queue&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters </title>
+        <tgroup cols="2">
+            <thead>
+                <row>
+                    <entry>Name</entry>
+                    <entry>Value</entry>
+                </row>
+            </thead>
+            <tbody>
+                <row>
+                    <entry>component-family</entry>
+                    <entry>org.ajax4jsf.Queue</entry>
+                </row>
+                <row>
+                    <entry>component-class</entry>
+                    <entry>org.ajax4jsf.component.html.HtmlQueue</entry>
+                </row>
+                <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.ajax4jsf.QueueRenderer</entry>
+                </row>
+                <row>
+                    <entry>tag-class</entry>
+                    <entry>org.ajax4jsf.taglib.html.jsp.QueueTag</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table> 
+            <title>JavaScript API</title>
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Function</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <!--Sorting API -->
+                    <row>
+                        <entry>getSize()</entry>
+                        <entry>Returns the current size to the queue</entry>
+                        
+                    </row>
+                    <row>
+                        <entry>getMaximumSize()</entry>
+                        <entry>Returns the maximum size to the queue, specified in the "size" attribute</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+   </section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/queue.jsf?c=queue">Queue Page</ulink> at the RichFaces LiveDemo for examples of component usage and their sources. 
+        </para>
+        
+        <para>
+              Useful articles:
+        </para>
+          <para>"<link linkend="QueuePrinciples">Queue Principles</link>" section of the RichFaces developer guide describes general Queue principles.</para>
+    </section>
+</section>

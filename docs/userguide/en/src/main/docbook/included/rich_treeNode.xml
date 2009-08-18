@@ -1,0 +1,305 @@
+<section role="NotInToc" id="rich_treeNode">
+   <title>
+				&lt;
+				rich:treeNode
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:treeNode&gt;</property>
+         </emphasis> component is designed 
+        for creating sets of tree elements within a  <emphasis role="bold">
+            <property>&lt;rich:tree&gt;</property>
+         </emphasis>component.
+    
+    </para>
+      <figure> 
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:treeNode&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/treeNode_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section id="treeNodeKF">
+      <title>Key Features</title>
+        
+        <itemizedlist>
+            <listitem>
+            <para>Possibility to assign different icon images for each node within a tree</para>
+         </listitem>
+            <listitem>
+            <para>Drag and Drop support</para>
+         </listitem>
+            <listitem>
+            <para>Look-and-Feel customization</para>
+         </listitem>
+  
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+      <para> The <emphasis>
+            <property>"icon"</property>
+         </emphasis>, <emphasis>
+            <property>"iconCollapsed"</property>
+         </emphasis>, <emphasis>
+            <property>"iconExpanded"</property>
+         </emphasis>, <emphasis>
+            <property>"iconLeaf"</property>
+         </emphasis> attributes define icons for the component. Also you can define icons using facets
+      with the same names. If the facets are defined, the corresponding attributes are ignored and
+      facets contents are used as icons. The width of a rendered facet area is 16px. </para>                                                                                                                                                                                                                                                                
+      <programlisting role="XML">...
+&lt;rich:tree ...&gt;
+		...
+       	&lt;rich:treeNode ...&gt;
+       			&lt;f:facet name="icon"&gt;
+               		&lt;outputText value="A"/&gt;
+            	&lt;/f:facet&gt;
+            	&lt;f:facet name="iconCollapsed"&gt;
+               		&lt;outputText value="B"/&gt;
+            	&lt;/f:facet&gt;		
+            	&lt;f:facet name="iconExpanded"&gt;
+               		&lt;outputText value="C"/&gt;
+            	&lt;/f:facet&gt;
+            	&lt;f:facet name="iconLeaf"&gt;
+               		&lt;outputText value="D"/&gt;
+            	&lt;/f:facet&gt;
+		&lt;/rich:treeNode&gt;
+       	...
+&lt;/rich:tree&gt;
+...
+</programlisting>
+      <para>As it has been mentioned <link linkend="treeNode">above</link>, <emphasis role="bold">
+            <property>&lt;rich:treeNode&gt;</property>
+         </emphasis>  defines a template for nodes
+      rendering in a tree. Thus, during XML document rendering (a web.xml application) as a tree,
+      the following nodes output (passed via <code>var="data"</code> on a tree) happens:</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:tree ... faceNode="simpleNode" ... value="#{bean.data}" var="data"&gt;
+		&lt;rich:treeNode type="simpleNode"&gt;
+       			&lt;h:outputText value="context-param:"/&gt;
+      			&lt;h:inputText value="#{data.name}"/&gt;
+     	&lt;/rich:treeNode&gt;
+&lt;/rich:tree&gt;
+...
+</programlisting>
+      <figure>
+         <title>Nodes output</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/treeNode2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>Hence,<emphasis role="bold">
+            <property>&lt;h:outputText /&gt;</property>
+         </emphasis> tag outputs the <code>"context-param"</code> string and
+      then the <emphasis role="bold">
+            <property>&lt;h:inputText /&gt;</property>
+         </emphasis> outputs the <code>data.name</code> element of this node.  
+    </para>
+      <para>Different nodes for rendering could be defined depending on some conditions on the tree
+      level. Each condition represents some rendering template. To get more information on various
+        <property>treeNodesAdaptorAdaptor</property> definition for nodes, <link linkend="tree">see the tree
+        component chapter</link>.</para>
+      <para>Switching between expanded/collapsed modes is also managed on the tree level and defined
+      in <link linkend="tree">the corresponding section</link>.</para>
+      <para>Default nodes of the tree level as well as the ones defined with the
+      <property>treeNodesAdaptorAdaptor</property> component could send Ajax requests when selected with the
+      mouse, it's managed with the <emphasis>
+            <property>"ajaxSubmitSelection"</property>
+         </emphasis> attribute (true/false).</para>
+      <para>
+      Information about the <emphasis>
+            <property>"process"</property>
+         </emphasis> attribute usage you can find <link linkend="process">" Decide what to process " </link> guide section.
+    </para>
+  </section>
+   <section>
+      <title>Built-in Drag and Drop</title>
+      <para>The main information on Drag and Drop operations is given in <link linkend="tree">the
+        corresponding paragraph</link> of the <property>tree</property> component chapter.
+      It's only necessary to mention that each node could also be a Drag element as well as
+      a Drop container, i.e. the container and the element have all attributes, listeners and ways
+      of behavior similar to the ones of the <emphasis role="bold">
+            <property>&lt;rich:dragSupport &gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;rich:dropSupport &gt;</property>
+         </emphasis> components simultaneously.</para>
+  </section>
+   <section>
+      <title>Events Handling</title>
+      <para>Just as Drag and Drop operations it corresponds to the one described on <link linkend="tree">the tree component level</link> for a default Node.</para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/treeNode.html">Table of 
+							&lt;rich:treeNode&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.TreeNode</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlTreeNode</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.TreeNode</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.TreeNodeRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.TreeNodeTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+			      <title>Facets</title>
+				     <tgroup cols="2">
+					       <thead>
+						         <row>
+							           <entry>Facet name</entry>
+							           <entry>Description</entry>
+						         </row>
+					       </thead>
+					       <tbody>
+						         <row>
+							           <entry>icon</entry>
+							           <entry>Redefines the icon for node. Related attribute is "icon"</entry>
+						         </row>
+						         <row>
+							           <entry>iconCollapsed</entry>
+							           <entry>Redefines the icon for collapsed node. Related attribute is "iconCollapsed"</entry>
+						         </row>
+						         <row>
+							           <entry>iconExpanded</entry>
+							           <entry>Redefines the icon for expanded node. Related attribute is "iconExpanded"</entry>
+						         </row>
+						         <row>
+							           <entry>iconLeaf</entry>
+							           <entry>Redefines the icon for component leaves. Related attribute is "iconLeaf"</entry>
+						         </row>
+					       </tbody>
+				     </tgroup>
+		    </table>
+      <table>
+         <title>Classes names that define a node element</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-tree-node</entry>
+                  <entry>Defines styles for a tree node</entry>
+               </row>
+          
+               <row>
+                  <entry>rich-tree-node-handle</entry>
+                  <entry>Defines styles for a tree node handle</entry>
+               </row>
+
+               <row>
+                  <entry>rich-tree-node-handleicon</entry>
+                  <entry>Defines styles for a tree node handle icon</entry>
+               </row>
+     
+               <row>
+                  <entry>rich-tree-node-children</entry>
+                  <entry>Defines styles for all tree node subnodes</entry>
+               </row>
+               <row>
+                  <entry>rich-tree-node-text</entry>
+                  <entry>Defines styles for a tree node text</entry>
+               </row>
+               <row>
+                  <entry>rich-tree-node-icon</entry>
+                  <entry>Defines styles for a tree node icon</entry>
+               </row>
+        	      <row>
+        		        <entry>rich-tree-h-ic-img</entry>
+        		        <entry>Defines styles for an image of a tree node</entry>
+        	      </row>
+               <row>
+                  <entry>rich-tree-node-icon-leaf</entry>
+                  <entry>Defines styles for a tree node icon leaf</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define states for a node element</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+         
+               <row>
+                  <entry>rich-tree-node-selected</entry>
+                  <entry>Defines styles for a selected tree node </entry>
+               </row>
+               <row>
+                  <entry>rich-tree-node-highlighted</entry>
+                  <entry>Defines styles for a highlighted tree node </entry>
+               </row>
+          
+               <row>
+                  <entry>rich-tree-node-handleicon-collapsed</entry>
+                  <entry>Defines styles for a collapsed tree node handleicon </entry>
+               </row>
+               <row>
+                  <entry>rich-tree-node-handleicon-expanded</entry>
+                  <entry>Defines styles for a expanded tree node handleicon</entry>
+               </row>
+         
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>How to Expand/Collapse Tree Nodes from code see in this<ulink url="http://labs.jboss.com/wiki/ExpandCollapsetreeNodesAdaptor">wiki article</ulink>. </para>
+  </section>
+</section>

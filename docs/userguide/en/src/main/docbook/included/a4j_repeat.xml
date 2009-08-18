@@ -1,0 +1,138 @@
+<section role="NotInToc" id="a4j_repeat">
+   <title>
+				&lt;
+				a4j:repeat
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+        <keywordset>
+            <keyword>a4j:repeat</keyword>
+            <keyword>component</keyword>
+        </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+      <para>
+          The <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> component implements a basic iteration component that allows to update a set of its children with Ajax.
+    </para>
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>
+                          The <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> component is similar to Facelets <emphasis role="bold">
+            <property>&lt;ui:repeat&gt;</property>
+         </emphasis> tag, 
+                          which is used to iterate through a collection of objects binded with JSF page as EL expression. 
+                          The main difference of the <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> is a possibility to update particular components (it's children) instead of all using Ajax requests. 
+                          The feature that makes the component different is a special <emphasis>
+            <property>"ajaxKeys"</property>
+         </emphasis> attribute that defines row that are updated after an Ajax request. 
+                          As a result it becomes easier to update several child components separately without updating the whole page.
+                    </para>
+                
+     
+                    <programlisting role="XML">...
+&lt;table&gt;
+      &lt;tbody&gt;
+            &lt;a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}"&gt;
+                  &lt;tr&gt;
+                        &lt;td&gt;&lt;h:outputText value="#{item.code}" id="item1" /&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;h:outputText value="#{item.price}" id="item2" /&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+            &lt;/a4j:repeat&gt;
+      &lt;/tbody&gt;
+&lt;/table&gt;
+ ...</programlisting>
+                    
+                <para>
+                      The example above the <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> points to an method that contains row keys to be updated. 
+                </para>
+                <note>
+                      <title>Note:</title>
+                      <para>
+                            The <emphasis role="bold">
+               <property>&lt;a4j:repeat&gt;</property>
+            </emphasis> component is defined as fully updated, 
+                            but really updated there are only the row keys which defined in the <emphasis>
+               <property>"ajaxKeys"</property>
+            </emphasis> attribute. 
+                      </para>
+                </note>
+                
+                
+                    <para>
+                          One more benefit of this component is absence of strictly defined markup as JSF HTML DataTable and TOMAHAWK DataTable has. 
+                          Hence the components could be used more flexibly anywhere where it's necessary to output the results of selection from some collection.
+                    </para>
+                    
+                <para>The next example shows collection output as a plain HTML list:</para>
+                    <programlisting role="XML">&lt;ul&gt;
+      &lt;a4j:repeat ...&gt;
+	    &lt;li&gt;...&lt;li/&gt;
+	               ...
+	    &lt;li&gt;...&lt;li/&gt;
+      &lt;/a4j:repeat&gt;
+&lt;/ul&gt;</programlisting>
+                    <para>All other general attributes are defined according to the similar
+                              attributes of iterative components (<emphasis role="bold">
+                                        <property>&lt;h:dataTable&gt;</property>
+                              </emphasis> or <emphasis role="bold">
+                                        <property>&lt;ui:repeat&gt;</property>
+                              </emphasis>) and are used in the same way.</para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/repeat.html">Table of 
+							&lt;a4j:repeat&gt; 
+							 attributes</ulink>.
+						</para>
+      <table frame="all">
+                              <title>Component Identification Parameters</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.ajax4jsf.Repeat</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>javax.faces.Data</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.ajax4jsf.component.html.HtmlAjaxRepeat</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.ajax4jsf.components.RepeatRenderer</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+   </section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/repeat.jsf?c=repeat">Repeat page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+                    </para>
+          </section>
+</section>

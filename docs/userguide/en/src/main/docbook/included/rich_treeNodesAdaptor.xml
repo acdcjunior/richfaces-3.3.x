@@ -1,0 +1,146 @@
+<section role="NotInToc" id="rich_treeNodesAdaptor">
+   <title>
+				&lt;
+				rich:treeNodesAdaptor
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.1.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>
+            The <emphasis role="bold">
+            <property>&lt;rich:treeNodesAdaptor&gt;</property>
+         </emphasis> provides the possibility to define data models 
+            and create representations for them.
+        </para>
+        <figure>
+                <title>Expanded tree with <emphasis role="bold">
+               <property>&lt;rich:treeNodesAdaptor&gt;</property>
+            </emphasis>
+         </title>    
+	        <mediaobject> 
+		          <imageobject>
+			            <imagedata fileref="images/treeNodesAdaptor_init.png"/>
+		          </imageobject>
+	        </mediaobject>
+        </figure>
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+            <listitem>
+            <para>Allows to define combined data models</para>
+         </listitem>
+            <listitem>
+            <para>Possibility to define nodes for processing via attributes</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>
+      The <emphasis role="bold">
+            <property>&lt;rich:treeNodesAdaptor&gt;</property>
+         </emphasis> component 
+      has a <emphasis>
+            <property>"nodes"</property>
+         </emphasis> attribute that defines a collection of elements to iterate through.
+    </para>
+      <para>
+      Collections are allowed to include lists, arrays, maps, XML NodeList and NamedNodeMap either as a single object. 
+    </para>
+      <para>
+    The <emphasis>
+            <property>"var"</property>
+         </emphasis> attribute is used to access to the current collection element.
+    </para>
+      <para>
+      The <emphasis role="bold">
+            <property>&lt;rich:treeNodesAdaptor&gt;</property>
+         </emphasis> component can be nested without any limitations. 
+      See the following example.  
+    </para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:tree adviseNodeOpened="#{treeModelBean.adviseNodeOpened}" switchType="client"&gt;
+    &lt;rich:treeNodesAdaptor id="project" nodes="#{loaderBean.projects}" var="project"&gt;
+        &lt;rich:treeNode&gt;
+            &lt;h:commandLink action="#{project.click}" value="Project: #{project.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+    &lt;rich:treeNodesAdaptor id="srcDir" var="srcDir" nodes="#{project.srcDirs}"&gt;
+        &lt;rich:treeNode&gt;
+            &lt;h:commandLink action="#{srcDir.click}" value="Source directory: #{srcDir.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+    &lt;rich:treeNodesAdaptor id="pkg" var="pkg" nodes="#{srcDir.packages}"&gt;
+        &lt;rich:treeNode&gt;
+            &lt;h:commandLink action="#{pkg.click}" value="Package: #{pkg.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+    &lt;rich:treeNodesAdaptor id="class" var="class" nodes="#{pkg.classes}"&gt;
+        &lt;rich:treeNode&gt;
+            &lt;h:commandLink action="#{class.click}" value="Class: #{class.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+    &lt;/rich:treeNodesAdaptor&gt;	
+    &lt;/rich:treeNodesAdaptor&gt;
+    &lt;/rich:treeNodesAdaptor&gt;
+    &lt;/rich:treeNodesAdaptor&gt;
+&lt;/rich:tree&gt;
+...</programlisting>
+
+   </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/treeNodesAdaptor.html">Table of 
+							&lt;rich:treeNodesAdaptor&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.TreeNodesAdaptor</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlTreeNodesAdaptor</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.TreeNodesAdaptor</entry>
+               </row>
+               <!--
+		<row>
+          <entry>renderer-type</entry>
+          <entry>org.richfaces.EffectRenderer</entry>
+        </row>
+		-->
+        <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.TreeNodesAdaptorTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/treeNodesAdaptor.jsf?c=treeNodesAdaptor">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:treeNodesAdaptor &gt;</property>
+         </emphasis> 
+      usage and sources for the given example. </para>
+  </section>
+</section>

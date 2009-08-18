@@ -1,0 +1,140 @@
+<section role="NotInToc" id="a4j_form">
+   <title>
+				&lt;
+				a4j:form
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+         <keywordset>
+            <keyword>a4j:form</keyword>
+            <keyword>component</keyword>
+         </keywordset>
+      </sectioninfo>
+      <title>Description</title>
+        <para>
+              The <emphasis role="bold">
+            <property>&lt;a4j:form&gt;</property>
+         </emphasis> component is very similar to JSF <emphasis role="bold">
+            <property>&lt;h:form&gt;</property>
+         </emphasis> the only difference is in generation of links inside and possibility of default Ajax submission.
+        </para>
+  </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>
+                          The difference with the original component is that all hidden fields
+                              required for command links are always rendered and it doesn't depend
+                              on links rendering on the initial page. It solves the problem with
+                              invalid links that weren't rendered on a page immediately, but after
+                              some Ajax request.</para>
+                    <para>Beginning with release 1.0.5 additional attributes that make this form
+                              variant universal have appeared. </para>
+                    <para> If <emphasis>
+            <property>"ajaxSubmit"</property>
+                              </emphasis> attribute is true, it becomes possible to set Ajax
+                              submission way for any components inside with the help of the javascript
+                              <code>A4J.AJAX.Submit(...)</code>call. In this case, the <emphasis>
+                                        <property>"reRender"</property>
+                              </emphasis> attribute contains a list of Ids of components defined for
+                              re-rendering. If you have <emphasis role="bold">
+                                        <property>&lt;h:commandButton&gt;</property>
+                              </emphasis> or <emphasis role="bold">
+                                        <property>&lt;h:commandLink&gt;</property>
+                              </emphasis> inside the form, they work as <emphasis role="bold">
+                                        <property>&lt;a4j:commandButton&gt;</property>
+                              </emphasis>. </para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">&lt;a4j:form id="helloForm" ajaxSubmit="true" reRender="table"&gt;
+	...
+	&lt;t:dataTable id="table"... &gt;
+		...
+	&lt;/t:dataTable&gt;
+	...
+	&lt;t:datascroller for="table"... &gt;
+		...
+	&lt;/t:datascroller&gt;
+	...
+&lt;/a4j:form&gt;
+</programlisting>
+                    <para>
+                          This example shows that in order to make <emphasis role="bold">
+            <property>&lt;t:datascroller&gt;</property>
+         </emphasis> submissions to be Ajax ones it's required only to place this <emphasis role="bold">
+            <property>&lt;t:datascroller&gt;</property>
+         </emphasis> into <emphasis role="bold">
+            <property>&lt;a4j:form&gt;</property>
+         </emphasis>. 
+                          In the other case it is necessary to redefine renders for its child links elements that are defined as <emphasis role="bold">
+            <property>&lt;h:commandLink&gt;</property>
+         </emphasis> and can't be made Ajax ones with using e.g. <emphasis role="bold">
+            <property>&lt;a4j:support&gt;</property>
+         </emphasis>.
+                    </para>
+                    <para>
+                          With the help of <emphasis>
+            <property>"limitToList"</property>
+         </emphasis> attribute you can limit areas, which are updated after the responses. 
+                          If <emphasis>
+            <property>"limitToList"</property>
+         </emphasis> is true, only the reRender attribute is taken in account. 
+                          Therefore, if you use blocks of text wrapped with <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> and <code>ajaxRendered= "true"</code>, blocks of text are ignored. 
+                    </para>
+                    <para>
+                          Information about the <emphasis>
+            <property>"process"</property>
+         </emphasis> attribute usage you can find in the "<link linkend="process">Decide what to process</link>" guide section. 
+                    </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/form.html">Table of 
+							&lt;a4j:form&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters </title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.ajax4jsf.Form</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>javax.faces.Form</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.ajax4jsf.component.html.AjaxForm</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.ajax4jsf.FormRenderer</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+   </section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                          Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/form.jsf?c=form">AjaxForm</ulink> at RichFaces Livedemo for examples of component usage and their sources.
+                    a</para>
+          </section>
+</section>

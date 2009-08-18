@@ -1,0 +1,255 @@
+<section role="NotInToc" id="rich_dataOrderedList">
+   <title>
+				&lt;
+				rich:dataOrderedList
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>The component to render ordered lists that allows choosing data from a model
+    and obtains built-in support of Ajax updates.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataOderedList&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/dataOrderedList_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title> 
+      <itemizedlist>
+         <listitem>
+            <para>A completely skinned list and child elements</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to update a limited set of rows with Ajax</para>
+         </listitem>
+         <listitem>
+            <para>Possibility to receive values dynamically from a model</para>
+         </listitem>
+      </itemizedlist>  
+   </section>
+   <section>
+		    <title>Details of Usage</title>
+		    <para>
+			The
+			<emphasis role="bold">
+				        <property>&lt;rich:dataOrderedList&gt;</property>
+			      </emphasis>
+			component allows to generate an ordered list from a model.
+		</para>
+		    <para>
+			The component has the
+			<emphasis>
+				        <property>"type"</property>
+			      </emphasis>
+			attribute, which corresponds to the
+			<emphasis>
+				        <property>"type"</property>
+			      </emphasis>
+			parameter for the
+			<emphasis role="bold">
+				        <property>&lt;ol&gt;</property>
+			      </emphasis>
+			HTML element and defines a marker type. Possible values for
+			<emphasis>
+				        <property>"type"</property>
+			      </emphasis>
+			attribute are: "A", "a", "I", "i", 	"1".
+		</para>
+		    <para>Here is an example:</para>
+
+		    <programlisting role="XML">...
+&lt;h:form&gt;
+		&lt;rich:dataOrderedList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" type="1"  title="Car Store"&gt;
+       			&lt;h:outputText value="#{car.make} #{car.model}"/&gt;&lt;br/&gt;
+            	&lt;h:outputText value="Price:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.price}" /&gt;&lt;br/&gt;
+            	&lt;h:outputText value="Mileage:" styleClass="label"&gt;&lt;/h:outputText&gt;
+            	&lt;h:outputText value="#{car.mileage}" /&gt;&lt;br/&gt;
+		&lt;/rich:dataOrderedList&gt;
+&lt;/h:form&gt;
+...
+</programlisting>
+
+		    <para>This is a result:</para>
+
+		    <figure>
+			      <title>
+				        <emphasis role="bold">
+					          <property>&lt;rich:dataOrderedList&gt;</property>
+				        </emphasis>
+				component with the
+				<emphasis>
+					          <property>"type"</property>
+				        </emphasis>
+				attribute
+			</title>
+			      <mediaobject>
+				        <imageobject>
+					          <imagedata fileref="images/dataOrderedList2.png"/>
+				        </imageobject>
+			      </mediaobject>
+		    </figure>
+
+		    <para>
+			In the example the
+			<emphasis>
+				        <property>"rows"</property>
+			      </emphasis>
+			attribute limits a number of output elements of the list.
+		</para>
+
+		    <para>The
+			<emphasis>
+				        <property>"first"</property>
+			      </emphasis>
+			attribute defines the first element for output.
+			<emphasis>
+				        <property>"title"</property>
+			      </emphasis>
+			is used for a popup title.
+		</para>
+
+		    <para>
+			The 	<emphasis role="bold">
+				        <property>&lt;rich:dataOrderedList&gt;</property>
+			      </emphasis>
+			component could be partially updated with
+			Ajax. The
+			<emphasis>
+				        <property>"ajaxKeys"</property>
+			      </emphasis>
+			attribute allows to define row keys that are updated after
+			an Ajax request.
+		</para>
+		    <para>Here is an example:</para>
+
+		    <para>
+			      <emphasis role="bold">Example:</emphasis>
+		    </para>
+		    <programlisting role="XML">...
+&lt;rich:dataOrderedList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+                        binding="#{listBean.dataList}" id="list"&gt;
+		...
+&lt;/rich:dataOrderedList&gt;
+...
+&lt;a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/&gt;
+...
+</programlisting>
+
+		    <para>
+			In the example
+			<emphasis>
+				        <property>"reRender"</property>
+			      </emphasis>
+			attribute contains value of the 
+			<emphasis>
+				        <property>"id"</property>
+			      </emphasis>
+			attribute for the
+			<emphasis role="bold">
+				        <property>&lt;rich:dataOrderedList&gt;</property>
+			      </emphasis>
+			component. As a result the component is updated after an
+			Ajax request.
+		</para>
+	  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dataOrderedList.html">Table of 
+							&lt;rich:dataOrderedList&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+		       <title>Component Identification Parameters</title>
+		       <tgroup cols="2">
+			         <thead>
+				           <row>
+					             <entry>Name</entry>
+					             <entry>Value</entry>
+				           </row>
+			         </thead>
+			         <tbody>
+				           <row>
+					             <entry>component-type</entry>
+					             <entry>org.richfaces.DataOrderedList</entry>
+				           </row>
+				           <row>
+					             <entry>component-class</entry>
+					             <entry>
+						org.richfaces.component.html.HtmlDataOrderedList
+					</entry>
+				           </row>
+				           <row>
+					             <entry>component-family</entry>
+					             <entry>org.richfaces.DataOrderedList</entry>
+				           </row>
+				           <row>
+					             <entry>renderer-type</entry>
+					             <entry>org.richfaces.DataOrderedListRenderer</entry>
+				           </row>
+				           <row>
+					             <entry>tag-class</entry>
+					             <entry>
+						org.richfaces.taglib.DataOrderedListTag
+					</entry>
+				           </row>
+			         </tbody>
+		       </tgroup>
+	     </table>
+      <table id="tab_dOL">
+			      <title>Classes names that define a list appearance</title>
+			      <tgroup cols="2">
+				        <thead>
+					          <row>
+						            <entry>Class name</entry>
+						            <entry>Description</entry>
+					          </row>
+				        </thead>
+				        <tbody>
+					          <row>
+						            <entry>rich-orderedlist</entry>
+						            <entry>
+							Defines styles for an html &lt;ol&gt;
+							element
+						</entry>
+					          </row>
+					          <row>
+						            <entry>rich-list-item</entry>
+						            <entry>
+							Defines styles for an html &lt;li&gt;
+							element
+						</entry>
+					          </row>
+				        </tbody>
+			      </tgroup>
+		    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+		    <title>Relevant Resources Links</title>
+		    <para>
+			      <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataLists.jsf?c=dataOrderedList">
+				On the component LiveDemo page
+			</ulink>
+			you can see the example of
+			<emphasis role="bold">
+				        <property>&lt;rich:dataOrderedList &gt;</property>
+			      </emphasis>
+			usage and sources for the given example.
+		</para>
+	  </section>
+</section>

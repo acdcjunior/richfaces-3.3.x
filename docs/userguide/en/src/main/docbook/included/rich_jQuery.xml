@@ -1,0 +1,368 @@
+<section role="NotInToc" id="rich_jQuery">
+   <title>
+				&lt;
+				rich:jQuery
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+        </emphasis> allows to apply styles and behaviour to DOM objects.</para>
+
+        <!--mediaobject>
+            <imageobject>
+                <imagedata fileref="images/jQuery.png"/>
+            </imageobject>
+        </mediaobject-->
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+            <listitem>
+            <para>Presents jQuery JavaScript framework functionality</para>
+         </listitem>
+            <listitem>
+            <para>Able to apply onto JSF components and other DOM objects.</para>
+         </listitem>
+            <listitem>
+            <para>Works without conflicts with prototype.js library</para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>
+         <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> can be used in two main modes:</para>
+      <itemizedlist>
+         <listitem>
+            <para>as a one-time query applied immediately or on a document ready event</para>
+         </listitem>
+         <listitem>
+            <para>as a JavaScript function that can be invoked from the JavaScript code</para>
+         </listitem>
+      </itemizedlist>
+      <para>The mode is chosen with <emphasis>
+            <property>"timing"</property>
+         </emphasis> attribute that has the following options:</para>
+      <itemizedlist>
+         <listitem>
+            <para>"immediate" - applying a query immediately</para>
+         </listitem>
+         <listitem>
+            <para>"onload" - applying a query when a document is loaded</para>
+         </listitem>
+         <listitem>
+            <para>onJScall - applying a query by invoked JavaScript function defined with the <emphasis>
+                  <property>"name"</property>
+               </emphasis> attribute</para>
+         </listitem>
+      </itemizedlist>
+      <para>Definition of the <emphasis>
+            <property>"name"</property>
+         </emphasis> attribute is mandatory when the value of <emphasis>
+            <property>"timing"</property>
+         </emphasis> attribute is "onJScall". If the<emphasis>
+            <property>"name"</property>
+         </emphasis> attribute is defined when <emphasis>
+            <property>"timing"</property>
+         </emphasis> value equals to "immediate" or
+        "onload", the query is applied according to this
+      value, but you still have an opportunity to invoke it by a function name.</para>
+      <para>The <emphasis>
+            <property>"selector"</property>
+         </emphasis> attribute defines an object or a list of objects. The query is defined with the <emphasis>
+            <property>"query"</property>
+         </emphasis>attribute.</para>
+      <para>Here is an example of how to highlight odd rows in a table:</para>
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="CSS">...
+&lt;style&gt;
+    .odd {
+          background-color: #FFC;
+    }
+&lt;/style&gt;
+...</programlisting>
+    
+      <programlisting role="XML">...
+&lt;rich:table id="customList" ...&gt;
+		...
+&lt;/rich:table&gt;
+...
+&lt;rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" /&gt;
+...</programlisting>
+      <para>The <emphasis>
+            <property>"selector"</property>
+         </emphasis> attribute uses defined by w3c consortium syntax for CSS rule <ulink url="http://www.w3.org/TR/REC-CSS2/selector.html">selector</ulink> with some jQuery
+      extensions </para>
+      <para>Those are typical examples of using selector in the <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> component.</para>
+
+      <table>
+         <title>Examples of using selector</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Selector</entry>
+
+                  <entry>Comment</entry>
+               </row>
+            </thead>
+
+            <tbody>
+
+               <row>
+                  <entry>"p[a]"</entry>
+                  <entry>In a document all "p" tags with "a" tag
+              inside are selected</entry>
+               </row>
+
+               <row>
+                  <entry>"ul/li"</entry>
+                  <entry>All "li" elements of unordered "ul" lists are selected
+            </entry>
+               </row>
+
+               <row>
+                  <entry>"p.foo[a]"</entry>
+                  <entry>All "p" tags with "foo" class and inserted
+              "a" tag are selected</entry>
+               </row>
+
+               <row>
+                  <entry>"input[@name=bar]"</entry>
+                  <entry>All "input" tags with "name" attribute which
+              value is "bar" are selected</entry>
+               </row>
+
+               <row>
+                  <entry>"input[@type=radio][@checked]"</entry>
+                  <entry>All "input" tags with attribute
+              "type"="radio" and attribute value =
+              "chekced" are selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p,span,td"</entry>
+                  <entry>All tag elements "p" or"span" or
+              "td" are selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p#secret"</entry>
+                  <entry>"p" paragraph element with "id"
+              identification = "secret" is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p span"</entry>
+                  <entry>"span" tag is a (direct or non-direct) child of
+              "p" tag. If it's necessary, use "p &gt;
+              span" or "p/span" is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p[@foo^=bar]"</entry>
+                  <entry>"p" tag containing "foo" attribute with
+              textual value beginning with "bar" word is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p[@foo$=bar] "</entry>
+                  <entry>"p" tag containing "foo" attribute with
+              textual value ending with "bar" word is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p[@foo*=bar] "</entry>
+                  <entry>"p" tag with "foo" attribute containing
+              substring "bar" in any place is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p//span "</entry>
+                  <entry>"span" tag that is a (direct or non-direct) child of
+              "p" tag is selected</entry>
+               </row>
+
+               <row>
+                  <entry>"p/../span "</entry>
+                  <entry>"span" tag that is a grandchild of "p" tag is selected</entry>
+               </row>
+
+            </tbody>
+         </tgroup>
+      </table>
+
+      <para>In addition, RichFaces allows using either a component id or client id if you apply the
+      query to a JSF component. When you define a selector, RichFaces examines its content and
+      tries to replace the defined in the selector id with a component id if it's found.</para>
+      <para>For example, you have the following code:</para>
+
+      <programlisting role="XML">...
+&lt;h:form id="form"&gt;
+		...
+       &lt;h:panelGrid id="menu"&gt;
+       			&lt;h:graphicImage ... /&gt;
+            	&lt;h:graphicImage ... /&gt;
+       			...
+       	&lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+...</programlisting>
+
+      <para>The actual id of the <emphasis role="bold">
+            <property>&lt;h:panelGrid&gt;</property>
+         </emphasis> table in the browser DOM is <code>"form:menu"</code>. However, you still can
+      reference to images inside this table using the following selector: </para>
+
+      <programlisting role="XML">...
+&lt;rich:jQuery selector="#menu img" query="..." /&gt;
+...</programlisting>
+
+      <para>You can define the exact id in the selector if you want. The following code reference to
+      the same set of a DOM object:</para>
+
+      <programlisting role="XML">...
+&lt;rich:jQuery selector="#form\\:menu img" query="..." /&gt;
+...</programlisting>
+
+      <para>Pay attention to double slashes that escape a colon in the id.</para>
+
+      <para>In case when the <emphasis>
+            <property>"name"</property>
+         </emphasis> attribute is defined, <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> generates a JavaScript function that might be used from any place of JavaScript
+      code on a page.</para>
+
+      <para>There is an example of how to enlarge the picture smoothly on a mouse over event and return
+      back to the normal size on mouse out:</para>
+
+      <programlisting role="XML">...
+&lt;h:graphicImage width="50" value="/images/price.png"
+                onmouseover="enlargePic(this, {pwidth:'60px'})" onmouseout="releasePic(this)"  /&gt;
+&lt;h:graphicImage width="50" value="/images/discount.png"
+                onmouseover="enlargePic(this, {pwidth:'100px'})" onmouseout="releasePic(this)"  /&gt;
+...
+&lt;rich:jQuery name="enlargePic" timing="onJScall" query="animate({width:param.pwidth})" /&gt;
+&lt;rich:jQuery name="releasePic" timing="onJScall" query="animate({width:'50px'})"/&gt; 
+...</programlisting>
+
+      <para>The JavaScript could use two parameters. The first parameter is a replacement for the
+      selector attribute. Thus, you can share the same query, applying it to the different DOM
+      objects. You can use a literal value or a direct reference for an existing DOM object. The
+      second parameter can be used to path the specific value inside the query. The JSON syntax is
+      used for the second parameter. The "param." namespace is used for
+      referencing data inside the parameter value.</para>
+
+      <para>
+         <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> adds styles and behavior to the DOM object dynamically. This means if you replace
+      something on a page during an Ajax response, the applied artifacts  is overwritten. But you
+      are allowed to apply them again after the Ajax response is complete.</para>
+      <para>Usually, it could be done with reRendering the <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> components in the same Ajax interaction with the components these queries are
+      applied to. Note, that queries with <emphasis>
+            <property>"timing"</property>
+         </emphasis> attribute set to "onload" are not
+      invoked even if the query is reRendered, because a DOM document is not fully reloaded during
+      the Ajax interaction. If you need to re-applies query with
+        "onload" value of <emphasis>
+            <property>"timing"</property>
+         </emphasis> attribute, define the <emphasis>
+            <property>"name"</property>
+         </emphasis> attribute and invoke the query by name in the <emphasis>
+            <property>"oncomplete"</property>
+         </emphasis> attribute of the Ajax component.</para>
+
+      <para>RichFaces includes jQuery JavaScript framework. You can use the futures of jQuery directly
+      without defining the <emphasis role="bold">
+            <property>&lt;rich:jQuery&gt;</property>
+         </emphasis> component on a page if it is convenient for you. To start using the jQuery feature
+      on the page, include the library into a page with the following code:</para>
+
+      <programlisting role="XML">...
+&lt;a4j:loadScript src="resource://jquery.js"/&gt;
+...</programlisting>
+
+      <para>Refer to the <ulink url="http://docs.jquery.com/">jQuery documentation</ulink> for the
+      right syntax. Remember to use <code>jQuery()</code> function instead of <code>$()</code>, as soon as jQuery works
+      without conflicts with <code>prototype.js</code>.</para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/jQuery.html">Table of 
+							&lt;rich:jQuery&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters</title>
+
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+
+                  <entry>Value</entry>
+               </row>
+            </thead>
+
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+
+                  <entry>org.richfaces.JQuery</entry>
+               </row>
+
+               <row>
+                  <entry>component-class</entry>
+
+                  <entry>org.richfaces.component.html.HtmlJQuery</entry>
+               </row>
+
+               <row>
+                  <entry>component-family</entry>
+
+                  <entry>org.richfaces.JQuery</entry>
+               </row>
+
+               <row>
+                  <entry>renderer-type</entry>
+
+                  <entry>org.richfaces.JQueryRenderer</entry>
+               </row>
+
+               <row>
+                  <entry>tag-class</entry>
+
+                  <entry>org.richfaces.taglib.JQueryTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>More information about jQuery framework and its features you can read in<ulink url="http://jquery.com/">jQuery official documentation</ulink>.</para>
+      <para>How to use jQuery with other libraries see also in<ulink url="http://docs.jquery.com/Using_jQuery_with_Other_Libraries">jQuery official documentation</ulink>.</para>
+
+      <para>
+	  Some additional information about usage of component can be found 
+	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/jQuery.jsf?c=jQuery">on its LiveDemo</ulink>.
+    </para>
+       
+  </section>
+</section>

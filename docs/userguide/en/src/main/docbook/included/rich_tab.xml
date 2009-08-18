@@ -1,0 +1,314 @@
+<section role="NotInToc" id="rich_tab">
+   <title>
+				&lt;
+				rich:tab
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A <property>tab</property> section within a tab panel.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:tab&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/tab_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Fully skinnable <property>tabs</property> content</para>
+         </listitem>
+        <listitem>
+            <para>Disabled/enabled <property>tab</property> options</para>
+         </listitem>
+        <listitem>
+            <para>Groups any content inside a <property>tab</property>
+            </para>
+         </listitem> 
+        <listitem>
+            <para>Each <property>tab</property> has a unique name for a direct access (e.g. for
+         switching between tabs)</para>
+         </listitem>
+        <listitem>
+            <para>Switch methods can be easily customized for every <property>tab</property> 
+        separately with attribute to:</para>
+		          <itemizedlist>
+               <listitem>
+                  <para>
+                     <code>Server</code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>Client</code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>AJAX</code>
+                  </para>
+               </listitem>
+            </itemizedlist>
+		       </listitem>
+      </itemizedlist>
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>The main component function is to define a content group that is rendered
+                              and processed when the <property>tab</property> is active, i.e. click
+                              on a <property>tab</property> causes switching onto a
+                              <property>tab</property> containing content corresponded to this
+                                        <property>tab</property>.</para>
+                    <para>The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute defines text to be represented. If you can use
+                              the <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> facet, you can even not use the <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute.</para>
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:tab&gt;
+		&lt;f:facet name="label"&gt;  
+       			&lt;h:graphicImage value="/images/img1.png"/&gt;
+       	&lt;/f:facet&gt;
+       	...
+       	&lt;!--Any Content inside--&gt;
+       	...
+&lt;/rich:tab&gt;
+...
+</programlisting>
+
+                    <para>A marker on a <property>tab</property> header defined with the <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute. Moreover, each <property>tab</property> could
+                              be disabled (switching on this <property>tab</property> is impossible)
+                              with the <emphasis>
+                                        <property>"disable"</property>
+                              </emphasis> attribute.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:tabPanel width="20%"&gt; 
+		&lt;tabs:tab  label="Canon"&gt;
+	    		&lt;h:outputText value="Canon EOS Digital Rebel XT" /&gt;
+              	...
+	  	&lt;/tabs:tab&gt;
+	  	&lt;tabs:tab  label="Nikon"&gt;
+	    		&lt;h:outputText value="Nikon D70s" /&gt;
+		     	...
+		&lt;/tabs:tab&gt;
+		&lt;tabs:tab label="Olympus"&gt;
+				&lt;h:outputText value="Olympus EVOLT E-500" /&gt;
+		       	...
+		&lt;/tabs:tab&gt;
+		&lt;tabs:tab disabled="true" name="disabled" label="Disabled"/&gt;
+&lt;/rich:tabPanel&gt;
+...</programlisting>
+                    <para>With this example it's possible to generate the <property>tab
+                                        panel</property> with the last disabled and three active
+                                        <property>tabs</property> (see the picture).</para>
+                    <figure>
+                              <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:tabPanel&gt;</property>
+                                        </emphasis> with disabled <emphasis role="bold">
+                                                  <property>&lt;rich:tab&gt;</property>
+                                        </emphasis>
+         </title>
+                              <mediaobject>
+                                        <imageobject>
+                                                  <imagedata fileref="images/tab2.png"/>
+                                        </imageobject>
+                              </mediaobject>
+                    </figure>
+                    <para>Switching mode could be defined not only for the whole panel
+                              <property>tab</property>, but also for each particular
+                              <property>tab</property>, i.e. switching onto one
+                              <property>tab</property> could be performed right on the client with
+                              the corresponding JavaScript and onto another <property>tab</property>
+                              with an Ajax request on the server. <property>Tab</property> switching
+                              modes are the same as <property>tabPanel</property> ones.</para>
+                    <para>Each <property>tab</property> also has an attribute name (alias for <emphasis>
+                                        <property>"id"</property>
+                              </emphasis> attribute). Using this attribute value it's
+                              possible e.g. to set an active <property>tab</property> on a model
+                              level specifying this name in the corresponding attribute of the whole
+                                        <property>tab</property>.</para>
+                    <para>Except the specific component attributes it has all necessary attributes
+                              for JavaScript event definition.</para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseover"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <emphasis>
+                                                  <property>"onmouseout"</property>
+                                                  </emphasis>
+                                        </para>
+                              </listitem>
+                              <listitem>
+                                        <para> etc. </para>
+                              </listitem>
+                    </itemizedlist>
+                    <para> Some event could be performed on the tab which has been entered/left
+                              using <emphasis>
+                                        <property>"ontabenter"</property>
+                              </emphasis>/<emphasis>
+                                        <property>"ontableave"</property>
+                              </emphasis> attributes. See the example below.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:tabPanel&gt;
+		&lt;rich:tab label="Tab1" ontabenter="alert()"&gt;
+       			...
+      	&lt;/rich:tab&gt;
+       ...
+&lt;/rich:tabPanel&gt;
+...</programlisting>
+                    <para> The following example shows how on the client side to get the names of
+                                        <code>entered</code>/<code>left</code> tabs. </para>
+                    <programlisting role="JAVA">ontabenter="alert(leftTabName)"</programlisting>
+                    <para> Information about the <emphasis>
+                                        <property>"process"</property>
+                    </emphasis> attribute usage you can find in the 
+                              <link linkend="process"> "Decide what to process" </link> guide section. </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/tab.html">Table of 
+							&lt;rich:tab&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.Tab</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlTab</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.Tab</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.TabRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.taglib.TabTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table>
+			      <title>Facets</title>
+				     <tgroup cols="2">
+					       <thead>
+						         <row>
+							           <entry>Facet name</entry>
+							           <entry>Description</entry>
+						         </row>
+					       </thead>
+					       <tbody>
+						         <row>
+							           <entry>label</entry>
+							           <entry>Defines the text for the actual "tab" in a tab section</entry>
+						         </row>
+					       </tbody>
+				     </tgroup>
+		    </table>
+      <table id="tab_tab">
+                              <title>Classes names that define a tab</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-tab-header</entry>
+                                                  <entry>Defines styles for a tab
+                                                  header</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-tab-label</entry>
+                                                  <entry>Defines styles for a tab
+                                                  label</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+      <table>
+                              <title>Classes names that define a tab states</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-tab-active</entry>
+                                                  <entry>Defines styles for an active
+                                                  tab</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tab-inactive</entry>
+                                                  <entry>Defines styles for an inactive
+                                                  tab</entry>
+                                                  </row>
+                                                  <row>
+                                                  <entry>rich-tab-disabled</entry>
+                                                  <entry>Defines styles for a disabled
+                                                  tab</entry>
+                                                  </row>
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+</section>

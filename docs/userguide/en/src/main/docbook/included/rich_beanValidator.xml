@@ -1,0 +1,203 @@
+<section role="NotInToc" id="rich_beanValidator">
+   <title>
+				&lt;
+				rich:beanValidator
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.2.2</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>
+              The<emphasis role="bold">
+            <property>&lt;rich:beanValidator&gt;</property>
+         </emphasis> component designed to provide validation using Hibernate model-based constraints.
+        </para>
+    </section>
+   <section>
+          <title>Key Features</title>
+          <itemizedlist>
+                <listitem>
+            <para>Validation using Hibernate constraints</para>
+         </listitem>
+          </itemizedlist>
+    </section>
+   <section>
+                              <title>Details of Usage</title>
+
+                              <para>Starting from 3.2.2 GA version Rich Faces provides support for model-based constraints defined using Hibernate Validator. 
+                                    Thus it's possible to use Hibernate Validators the same as for Seam based applications.
+                              </para>
+                              <para>
+                                    The <emphasis role="bold">
+            <property>&lt;rich:beanValidator&gt;</property>
+         </emphasis> component is defined in the same way as any JSF validator. 
+                                    Look at the example below.
+                              </para>
+                          <programlisting role="XML">&lt;rich:panel&gt;
+      &lt;f:facet name="header"&gt;
+            &lt;h:outputText value="#{validationBean.progressString}" id="progress"/&gt;
+      &lt;/f:facet&gt;
+      &lt;h:panelGrid columns="3"&gt;
+            &lt;h:outputText value="Name:" /&gt;
+            &lt;h:inputText value="#{validationBean.name}" id="name"&gt;
+                  &lt;rich:beanValidator summary="Invalid name"/&gt;
+            &lt;/h:inputText&gt;
+            &lt;rich:message for="name" /&gt;
+
+            &lt;h:outputText value="Email:" /&gt;
+            &lt;h:inputText value="#{validationBean.email}" id="email"&gt;
+                  &lt;rich:beanValidator summary="Invalid email"/&gt;
+            &lt;/h:inputText&gt;
+            &lt;rich:message for="email" /&gt;
+            
+            &lt;h:outputText value="Age:" /&gt;
+            &lt;h:inputText value="#{validationBean.age}" id="age"&gt;
+                  &lt;rich:beanValidator summary="Wrong age"/&gt;
+            &lt;/h:inputText&gt;
+            &lt;rich:message for="age" /&gt;
+            &lt;f:facet name="footer"&gt;
+                  &lt;a4j:commandButton value="Submit" action="#{validationBean.success}" reRender="progress"/&gt;
+            &lt;/f:facet&gt;
+      &lt;/h:panelGrid&gt;
+&lt;/rich:panel&gt;</programlisting>
+
+                              <para>
+                                    Please play close attention on the bean code that contains the constraints defined with Hibernate annotation which perform validation of the input data.
+                              </para>
+
+                              <programlisting role="JAVA">
+
+package org.richfaces.demo.validation;
+
+import org.hibernate.validator.Email;
+import org.hibernate.validator.Length;
+import org.hibernate.validator.Max;
+import org.hibernate.validator.Min;
+import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Pattern;
+
+public class ValidationBean {
+
+    private String progressString="Fill the form please";
+    
+    @NotEmpty
+    @Pattern(regex=".*[^\\s].*", message="This string contain only spaces")
+    @Length(min=3,max=12)
+    private String name;
+    @Email
+    @NotEmpty
+    private String email;
+    
+    @NotNull
+    @Min(18)
+    @Max(100)
+    private Integer age;
+    
+    public ValidationBean() {
+    }
+
+    /* Corresponding Getters and Setters */
+    
+    public void success() {
+        setProgressString(getProgressString() + "(Strored successfully)");
+    }
+
+    public String getProgressString() {
+        return progressString;
+    }
+
+    public void setProgressString(String progressString) {
+        this.progressString = progressString;
+    }
+}</programlisting>
+
+                              <para>The following figure shows what happens if validation fails</para>
+
+                              <figure>
+                                        <title>
+            <emphasis role="bold">
+                                                  <property>&lt;rich:beanValidator&gt;</property>
+                                                  </emphasis> usage</title>
+                                        <mediaobject>
+                                                  <imageobject>
+                                                  <imagedata fileref="images/beanValidator1.png"/>
+                                                  </imageobject>
+                                        </mediaobject>
+                              </figure>
+                              <para>As you can see from the example that in order to validate the
+                                                  <emphasis role="bold">
+                                                  <property>&lt;rich:beanValidator&gt;</property>
+                                        </emphasis> should be nested into a input JSF or RichFaces
+                                        component. </para>
+
+                              <para>The component has the only attribute - <emphasis>
+                                                  <property>"summary"</property>
+                                        </emphasis>which displays validation messages about
+                                        validation errors.</para>
+                    </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/beanValidator.html">Table of 
+							&lt;rich:beanValidator&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+
+                                                  <entry>org.richfaces.beanValidator</entry>
+                                        </row>
+
+                                        <row>
+                                                  <entry>component-class</entry>
+
+                                                  <entry>org.richfaces.component.html.HtmlbeanValidator</entry>
+                                        </row>
+
+                                        <row>
+                                                  <entry>component-family</entry>
+
+                                                  <entry>org.richfaces.beanValidator</entry>
+                                        </row>
+
+                                        <row>
+                                                  <entry>renderer-type</entry>
+
+                                                  <entry>org.richfaces.beanValidatorRenderer</entry>
+                                        </row>
+
+                                        <row>
+                                                  <entry>tag-class</entry>
+
+                                                  <entry>org.richfaces.taglib.beanValidatorTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+   </section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/beanValidator.jsf?c=beanValidator">
+                              On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold">
+            <property>&lt;rich:beanValidator&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>

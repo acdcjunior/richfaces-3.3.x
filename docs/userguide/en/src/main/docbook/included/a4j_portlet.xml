@@ -1,0 +1,103 @@
+<section role="NotInToc" id="a4j_portlet">
+   <title>
+				&lt;
+				a4j:portlet
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+        <keywordset>
+            <keyword>a4j:portlet</keyword>
+        </keywordset>
+      </sectioninfo>
+    
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;a4j:portlet&gt;</property>
+         </emphasis> component is DEPRECATED as far as JSR-301 was defined a same functionality for a UIViewRoot component. Thus, it is implicitly defined by mandatory 
+	  <emphasis role="bold">
+            <property>&lt;f:view&gt;</property>
+         </emphasis> component.
+	  </para>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>
+          The main component purpose is realization of possibility to create several instances the same portlet on one page. 
+          But clientId of elements should be different for each window. In that case namespace is used for each portlet. 
+          The <emphasis role="bold">
+            <property>&lt;a4j:portlet&gt;</property>
+         </emphasis> 
+         <code>implemets NaimingContainer</code> interface and adds namespace to all componets on a page. 
+          All portlet content should be wrapped by <emphasis role="bold">
+            <property>&lt;a4j:portlet&gt;</property>
+         </emphasis> for resolving problems mentioned before. 
+    </para>
+
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/portlet.html">Table of 
+							&lt;a4j:portlet&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.Portlet</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.ajax4jsf.component.Portlet</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlPortlet</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+            <title>Relevant Resources Links</title>
+            <para>
+                  Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/portlet.jsf?c=portlet">Portlet page</ulink> at RichFaces LiveDemo for examples of component usage and their sources. 
+            </para>
+            
+            <para>
+                  Useful publications: 
+            </para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325">Ajax4Jsf Users Forum</ulink> — check the forum for additional information about component usage;
+                        </para>
+                  </listitem>
+                  <listitem>
+                        <para>
+                              <ulink url="http://anonsvn.jboss.org/repos/ajax4jsf/trunk/samples/portal-echo/">portal-echo application</ulink> — Portlet Sample, could be checked out from JBoss SVN;
+                        </para>
+                  </listitem>
+                  <listitem>
+                        <para>
+                              <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=107325">First snapshot with Portal environment support</ulink> contains usage instructions for the Portlet Sample demo.
+                        </para>
+                  </listitem>
+            </itemizedlist>
+
+  </section>
+</section>

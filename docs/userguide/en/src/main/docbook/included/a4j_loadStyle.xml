@@ -1,0 +1,92 @@
+<section role="NotInToc" id="a4j_loadStyle">
+   <title>
+				&lt;
+				a4j:loadStyle
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+            <sectioninfo>
+                  <keywordset>
+                        <keyword>loadStyle</keyword>
+                  </keywordset>
+            </sectioninfo>
+            <title>Description</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:loadStyle&gt;</property>
+         </emphasis> component allows to load a style sheet file from alternative sources like a jar file, etc. 
+                  It inserts stylesheet links to the head element. 
+            </para>
+      </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>
+                  The main attribute of the <emphasis role="bold">
+            <property>&lt;a4j:loadStylet&gt;</property>
+         </emphasis> is <emphasis>
+            <property>"src"</property>
+         </emphasis>, wich defines the context relative path to the script. 
+                  The value of the attribute does not require a prefix of an application. 
+                  Leading slash in the path means the root of the web context.
+                  It is also possible to use <code>resource:///</code> prefix to access the script file using RichFaces resource framework.
+            </para>
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML">&lt;a4j:loadStyle src="resource:///org/mycompany/assets/script/focus.js" /&gt;</programlisting>
+            <para>
+                  The <emphasis>
+            <property>"src"</property>
+         </emphasis> attribute passses value to the <code>getResourceURL()</code> method of the ViewHandler of the application, 
+                  The result is passed through the <code>encodeResourceURL()</code> method of the ExternalContext. 
+            </para>
+            
+      </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/loadStyle.html">Table of 
+							&lt;a4j:loadStyle&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+	        <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.ajax4jsf.LoadStyle</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.ajax4jsf.LoadStyle</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.ajax4jsf.component.html.HtmlLoadStyle</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.LoadStyleRenderer</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+            <title>Relevant Resources Links</title>
+            <para>
+                  Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/style.jsf?c=loadStyle">Script page at RichFaces LiveDemo</ulink> for examples of component usage abd their sources.
+            </para>
+      </section>
+</section>

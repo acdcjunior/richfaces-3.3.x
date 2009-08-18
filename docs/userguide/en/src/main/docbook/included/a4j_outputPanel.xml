@@ -1,0 +1,219 @@
+<section role="NotInToc" id="a4j_outputPanel">
+   <title>
+				&lt;
+				a4j:outputPanel
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+         <keywordset>
+            <keyword>CommandLink</keyword>
+         </keywordset>
+      </sectioninfo>
+  
+      <title>Description</title>
+      <para>The component is used for components grouping in the Ajax output area, which offers several additional output opportunities such as inserting of non-present in tree components, saving of transient elements after Ajax request and some others.</para>
+   </section>
+   <section>
+            <title>Details of Usage</title>
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> component is used when one or more components should be always updated. 
+                  The component job is similar to that the <emphasis>
+            <property>"reRender"</property>
+         </emphasis> attribute does, but instead of specifying a comma separated list of components it wraps the components to be updated. 
+                  This could be useful in cases when some components aren't rendered during the primary non-ajax response.
+            </para>
+            
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            
+            <programlisting role="XML">&lt;a4j:support reRender="mypanel"/&gt;
+...
+&lt;a4j:outputPanel id="mypanel"&gt;
+      &lt;h:panelGrid rendered="#{not empty foo.bar}"&gt;
+       ...
+      &lt;/h:panelGrid&gt;
+&lt;/a4j:outputPanel&gt;</programlisting>
+            
+            <para>
+                  By default the <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> is rendered as opening and closing HTML <emphasis role="bold">
+            <property>&lt;span&gt;</property>
+         </emphasis> tags and functions as container. 
+                  With the help of the <emphasis>
+            <property>"layout"</property>
+         </emphasis> attribute this output way could be set to any of three variants: 
+            </para>
+            <itemizedlist>
+                  <listitem>
+                        <para>"inline" (default)</para>
+                  </listitem>
+                  <listitem>
+                        <para>"block"</para>
+                  </listitem>
+                  <listitem>
+                        <para>"none"</para>
+                  </listitem>
+            </itemizedlist>
+            
+            <para>
+                  If <code>layout="block"</code> is set, the component is rendered as a pair of opening and closing <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> tags. 
+                  In this case it is possible to apply available for <emphasis role="bold">
+            <property>&lt;div&gt;</property>
+         </emphasis> elements style attributes.
+                  <code>layout ="none"</code> helps to avoid an unnecessary tag around a context that is rendered or not according to the <emphasis>
+            <property>"rendered"</property>
+         </emphasis> attribute value. 
+                  In case an inner context isn't rendered the <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> is rendered in a <emphasis role="bold">
+            <property>&lt;span&gt;</property>
+         </emphasis> tags with ID equal to ID of a child component and <code>display:none</code> style. 
+                  If a child component is rendered, <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> doesn't present at all in a final code.
+            </para>
+            
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML">&lt;a4j:support reRender="mypanel"/&gt;
+ ...
+&lt;a4j:outputPanel layout="none"&gt;
+      &lt;h:panelGrid id="mypanel" rendered="#{not empty foo.bar}"&gt;
+       ...
+      &lt;/h:panelGrid&gt;
+&lt;/a4j:outputPanel&gt;</programlisting>
+            
+            <para>
+                  As you see, the code is very similar to the one shown above, but <emphasis>
+            <property>"reRender "</property>
+         </emphasis> attribute refers directly to the updating panelGrid and not to the framing outputPanel, 
+                  and it's more semantically correct.
+            </para>
+            
+            <para>
+                  The <emphasis role="bold">
+            <property>&lt;a4j:outputPanel&gt;</property>
+         </emphasis> allows to update a part of a page basing on its own flag. 
+                  The flag is defined by the <emphasis>
+            <property>"ajaxRendered"</property>
+         </emphasis> attribute. 
+                  The flag is commonly used when a part of a page must be updated or can be updated on any response.
+            </para>
+            
+            <para>
+                  <emphasis role="bold">Example:</emphasis>
+            </para>
+            <programlisting role="XML">&lt;a4j:outputPanel ajaxRendered="true"&gt;
+      &lt;h:messages/&gt;
+&lt;/a4j:outputPanel&gt;</programlisting>
+		
+		    <para>
+		      The <emphasis role="bold">
+            <property>&lt;a4j:outPanel&gt;</property>
+         </emphasis> should be used for non-JSF component part framing, which is to be updated on Ajax response, as RichFaces specifies the list of updating areas as a list of an existing JSF component.
+		</para>
+		    <para> On default non-JSF context isn't saved in a component tree, but is rendered
+			anew every time. To accelerate the processing speed and Ajax response input speed,
+			RichFaces saves non-JSF context in a component tree on default. This option could be
+			canceled by <emphasis>
+				        <property>"keepTransient"</property>
+			      </emphasis> attribute that cancels transient flag forced setting for child components.
+			This flag setting keeps the current value set by child components. </para>
+		    <note>
+			      <title>Note:</title>
+			      <para> In JSF 1.1 implementation and lower, where non-JSF context should be framed with
+				the <emphasis role="bold">
+					          <property>&lt;f:verbatim&gt;</property>
+				        </emphasis> component, <emphasis role="bold">
+					          <property>&lt;a4j:outputPanel&gt;</property>
+				        </emphasis> doesn't improve this JSF implementation option in any way, so
+				you still have to use this tag where it's necessary without RichFaces
+				usage. </para>
+		    </note>
+		    <para> RichFaces allows setting Ajax responses rendering directly basing on component tree
+			nodes without referring to the JSP (XHTML) page code. It could be defined by <emphasis>
+				        <property>"selfRendered"</property>
+			      </emphasis> attribute setting to "true" on <emphasis role="bold">
+				        <property>&lt;a4j:region&gt;</property>
+			      </emphasis> and could help considerably speed up a response output. However, if a
+			transient flag is kept as it is, this rapid processing could cause missing of transient
+			components that present on view and don't come into a component tree. Hence,
+			for any particular case you could choose a way for you application optimization: speed
+			up processing or redundant memory for keeping tree part earlier defined a transient.
+		</para>
+	  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/outputPanel.html">Table of 
+							&lt;a4j:outputPanel&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+		       <title>Component Identification Parameters</title>
+		       <tgroup cols="2">
+			         <thead>
+				           <row>
+					             <entry>Name</entry>
+					             <entry>Value</entry>
+				           </row>
+			         </thead>
+			         <tbody>
+				           <row>
+					             <entry>component-type</entry>
+					             <entry>org.ajax4jsf.OutputPanel</entry>
+				           </row>
+				           <row>
+					             <entry>component-family</entry>
+					             <entry>javax.faces.Panel</entry>
+				           </row>
+				           <row>
+					             <entry>component-type</entry>
+					             <entry>org.ajax4jsf.ajax.OutputPanel</entry>
+				           </row>
+				           <row>
+					             <entry>component-class</entry>
+					             <entry> org.ajax4jsf.component.html.HtmlAjaxOutputPanel </entry>
+				           </row>
+				           <row>
+					             <entry>renderer-type</entry>
+					             <entry> org.ajax4jsf.components.AjaxOutputPanelRenderer </entry>
+				           </row>
+			         </tbody>
+		       </tgroup>
+	     </table>
+   </section>
+   <section>
+		    <title>Relevant Resources Links</title>
+	      <para>
+	            Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/outputPanel.jsf?c=outputPanel">OutputPanel page</ulink> at RichFaces Livedemo for examples of component usage and their sources.
+	      </para>
+	      
+	      <para>
+	            Useful articles:
+	      </para>
+                              <itemizedlist>
+                                    <listitem>
+                                          <para>
+                                                search the <ulink url="http://www.jboss.org/index.html?module=bb&amp;op=viewforum&amp;f=26">RichFaces Users Forum</ulink> for some additional information on component usage;
+                                          </para>
+                                    </listitem>
+                                   
+                              </itemizedlist>
+	      
+	      
+	      
+	  </section>
+</section>

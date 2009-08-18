@@ -1,0 +1,361 @@
+<section role="NotInToc" id="rich_dataTable">
+   <title>
+				&lt;
+				rich:dataTable
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+        <title>Description</title>
+        <para>The component for tables rendering that allows choosing data from a model and obtains
+            built-in support of Ajax updates.</para>
+        <figure>
+            <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataTable&gt;</property>
+            </emphasis> component</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/dataTable_init.png"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    </section>
+   <section>
+        <title>Key Features</title>
+        <itemizedlist>
+            <listitem>
+            <para>A completely skinned table and child elements</para>
+         </listitem>
+            <listitem>
+            <para>Possibility to insert the complex subcomponents
+                    <property>"colGroup"</property> and
+                    <property>"subTable"</property>
+            </para>
+         </listitem>
+            <listitem>
+            <para>Possibility to update a limited set of strings with Ajax</para>
+         </listitem>
+            <listitem>
+            <para>Possibility to sort and to filter of columns</para>
+         </listitem>
+            <listitem>
+            <para>
+               <link linkend="sort">Sorting column values</link>
+            </para>
+         </listitem>
+            <listitem>
+            <para>
+               <link linkend="filter">Filtering column values</link>
+            </para>
+         </listitem>
+        </itemizedlist>
+    </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> component is similar to the <emphasis role="bold">
+            <property>&lt;h:dataTable&gt;</property>
+         </emphasis> one, except Ajax support and skinnability. Ajax support is possible, because the
+      component was created basing on the <emphasis role="bold">
+            <property>&lt;a4j:repeat&gt;</property>
+         </emphasis> component and as a result it could be partially updated with Ajax. <emphasis>
+            <property>"ajaxKeys"</property>
+         </emphasis> attribute allows to define row keys that is updated after an Ajax request.</para>
+
+      <para>Here is an example:</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="capitals"
+                ajaxKeys="#{bean.ajaxSet}" binding="#{bean.table}" id="table"&gt;
+		...
+&lt;/rich:dataTable&gt;
+...
+&lt;a4j:commandButton action="#{tableBean.action}" reRender="table" value="Submit"/&gt;
+...
+</programlisting>
+
+      <para> In the example <emphasis>
+            <property>"reRender"</property>
+         </emphasis> attribute contains value of <emphasis>
+            <property>"id"</property>
+         </emphasis> attribute for <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+
+      <para id="table_ex">The component allows to use <emphasis>
+            <property>"header"</property>
+         </emphasis>, <emphasis>
+            <property>"footer"</property>
+         </emphasis> and <emphasis>
+            <property>"caption"</property>
+         </emphasis> facets for output. See an example below:</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt;
+		&lt;f:facet name="caption"&gt;
+				&lt;h:outputText value="United States Capitals" /&gt;
+		&lt;/f:facet&gt;
+       	&lt;f:facet name="header"&gt;
+       			&lt;h:outputText value="Capitals and States Table" /&gt;
+       	&lt;/f:facet&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
+            			&lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Flag&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;State Name&lt;/f:facet&gt;
+            			&lt;h:outputText value="#{cap.state}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Name&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;rich:column &gt;
+       			&lt;f:facet name="header"&gt;State Capital&lt;/f:facet&gt;
+            			&lt;h:outputText value="#{cap.name}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Capital&lt;/f:facet&gt;
+    	&lt;/rich:column&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;Time Zone&lt;/f:facet&gt;
+            		&lt;h:outputText value="#{cap.timeZone}"/&gt;
+            	&lt;f:facet name="footer"&gt;Time Zone&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;f:facet name="footer"&gt;
+       			&lt;h:outputText value="Capitals and States Table" /&gt;
+       	&lt;/f:facet&gt;
+&lt;/rich:dataTable&gt;
+...
+</programlisting>
+
+      <para>This is a result:</para>
+
+      <figure>
+         <title>
+            <emphasis role="bold">
+               <property>&lt;rich:dataTable&gt;</property>
+            </emphasis> component with facets</title>
+         <mediaobject>
+            <imageobject>
+               <imagedata fileref="images/dataTable2.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+      <para>Information about sorting and filtering you can find <link linkend="sortAndFilter">in the corresponding section</link>.</para>
+      <para>
+      You can find information how to remove header's gradient <ulink url="http://wiki.jboss.org/wiki/RichFacesDataTableBackgroundOut"> in the "How to remove rich:dataTable header background " article</ulink>.
+    </para>
+  </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/dataTable.html">Table of 
+							&lt;rich:dataTable&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+         <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>org.richfaces.DataTable</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>org.richfaces.component.html.HtmlDataTable</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>org.richfaces.DataTable</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.richfaces.DataTableRenderer</entry>
+               </row>
+               <row>
+                  <entry>tag-class</entry>
+                  <entry>org.richfaces.taglib.DataTableTag</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Facets</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Facet</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>header</entry>
+                  <entry>Redefines the header content</entry>
+               </row>
+               <row>
+                  <entry>footer</entry>
+                  <entry>Redefines the footer content</entry>
+               </row>
+               <row>
+                  <entry>caption</entry>
+                  <entry>Defines the caption content</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table id="dTC">
+         <title>Classes names that define a whole component appearance</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-table</entry>
+                  <entry>Defines styles for all table</entry>
+               </row>
+               <row>
+                  <entry>rich-table-caption</entry>
+                  <entry>Defines styles for a "caption" facet element</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define header and footer elements</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+
+               <row>
+                  <entry>rich-table-header</entry>
+                  <entry>Defines styles for a table header row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-header-continue</entry>
+                  <entry>Defines styles for all header lines after the first</entry>
+               </row>
+               <row>
+                  <entry>rich-table-subheader</entry>
+                  <entry>Defines styles for a column header</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-footer</entry>
+                  <entry>Defines styles for a footer row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-footer-continue</entry>
+                  <entry>Defines styles for all footer lines after the first</entry>
+               </row>
+               <row>
+                  <entry>rich-table-subfooter</entry>
+                  <entry>Defines styles for a column footer</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+      <table>
+         <title>Classes names that define rows and cells of a table</title>
+         <tgroup cols="2">
+            <thead>
+               <row>
+                  <entry>Class name</entry>
+                  <entry>Description</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>rich-table-headercell</entry>
+                  <entry>Defines styles for a header cell</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-subheadercell</entry>
+                  <entry>Defines styles for a column header cell</entry>
+               </row>
+               <row>
+                  <entry>rich-table-cell</entry>
+                  <entry>Defines styles for a table cell</entry>
+               </row>
+               <row>
+                  <entry>rich-table-row</entry>
+                  <entry>Defines styles for a table row</entry>
+               </row>
+               <row>
+                  <entry>rich-table-firstrow</entry>
+                  <entry>Defines styles for a table's first  row</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-footercell</entry>
+                  <entry>Defines styles for a footer cell</entry>
+               </row>
+
+               <row>
+                  <entry>rich-table-subfootercell</entry>
+                  <entry>Defines styles for a column footer cell</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+      <title>Relevant Resources Links</title>
+      <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=dataTable">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+      <para>The article about <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> flexibility can be found in the  <ulink url="http://www.jboss.org/community/docs/DOC-11847"> "rich:dataTable Flexibility " article </ulink>.</para>
+      <para>
+         <ulink url="http://www.jboss.org/community/docs/DOC-11848">Article on dataTable skinability</ulink>  provides you a simple example of skinnability.
+      
+    </para>
+      <para>More information about using <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;rich:subTable&gt;</property>
+         </emphasis> could be found on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4059044#4059044">RichFaces Users Forum</ulink>.
+    </para>
+      <para>How to use <emphasis role="bold">
+            <property>&lt;rich:dataTable&gt;</property>
+         </emphasis> and <emphasis role="bold">
+            <property>&lt;rich:datascroller&gt;</property>
+         </emphasis> in a context of Extended Data Model see on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=115636">RichFaces Users Forum</ulink>.</para>
+       
+      <para>From <ulink url="http://www.jboss.org/community/docs/DOC-11861">"rich:dataTable border to 0px "</ulink> article you'll figure out how to set rich:dataTable border to 0px </para>
+      <para>
+         <ulink url="http://www.jboss.org/community/docs/DOC-11860">dataTable Background Out </ulink> tells you how to remove rich:dataTable header background</para>
+  </section>
+</section>

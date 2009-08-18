@@ -1,0 +1,96 @@
+<section role="NotInToc" id="rich_menuSeparator">
+   <title>
+				&lt;
+				rich:menuSeparator
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+        <para>The <emphasis role="bold">
+            <property>&lt;rich:menuSeparator&gt;</property>
+         </emphasis> component is used for the  definition of a horizontal separator that can be placed between groups or items.</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:menuSeparator&gt;</property>
+            </emphasis> component</title> 
+         <mediaobject>
+             <imageobject>
+                <imagedata fileref="images/menuSeparator_init.png"/> 
+            </imageobject>
+        </mediaobject>
+      </figure>
+   </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/menuSeparator.html">Table of 
+							&lt;rich:menuSeparator&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+        <title>Component Identification Parameters</title> 
+         <tgroup cols="2">
+             <thead>
+                 <row>
+                    <entry>Name</entry> 
+                    <entry>Value</entry> 
+                </row>
+            </thead>
+             <tbody>
+                <row>
+                    <entry>component-type</entry> 
+                    <entry>org.richfaces.MenuSeparator</entry> 
+                </row>
+                 <row>
+                    <entry>component-class</entry>
+                    <entry>org.richfaces.component.html.HtmlMenuSeparator</entry>
+                </row>
+                 <row>
+                    <entry>component-family</entry>
+                    <entry>org.richfaces.DropDownMenu</entry>
+                </row>
+                 <row>
+                    <entry>renderer-type</entry>
+                    <entry>org.richfaces.MenuSeparatorRenderer</entry>
+                </row>
+                 <row>
+                    <entry>tag-class</entry>
+                    <entry>org.richfaces.taglib.MenuSeparatorTag</entry>
+                </row>
+            </tbody>
+        </tgroup>
+      </table>
+      <table id="tab_mS">
+            <title>Classes names that define separator element appearance.</title> 
+            <tgroup cols="2">
+                <thead>
+                    <row>
+                        <entry>Class name</entry> 
+                        <entry>Description</entry> 
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>rich-menu-separator</entry> 
+                        <entry>Defines styles for a wrapper &lt;div&gt; element for a separator</entry> 
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+        <title>Relevant Resources Links</title>
+        <para>
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dropDownMenu.jsf?c=menuSeparator">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+            <property>&lt;rich:menuSeparator&gt;</property>
+         </emphasis> usage and sources for the given example. </para>
+    </section>
+</section>

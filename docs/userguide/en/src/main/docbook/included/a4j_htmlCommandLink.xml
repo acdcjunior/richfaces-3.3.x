@@ -1,0 +1,96 @@
+<section role="NotInToc" id="a4j_htmlCommandLink">
+   <title>
+				&lt;
+				a4j:htmlCommandLink
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <sectioninfo>
+        <keywordset>
+            <keyword>a4j:htmlCommandLink</keyword>
+        </keywordset>
+      </sectioninfo>
+    
+      <title>Description</title>
+      <para>The <emphasis role="bold">
+            <property>&lt;a4j:htmlCommandLink&gt;</property>
+         </emphasis> component is very similar to the same component from the JSF HTML library, the only slight difference is in links generation and problem solving that occurs when an original component is used.</para>
+   </section>
+   <section>
+      <title>Details of Usage</title>
+      <para>The difference with the original component is that all hidden fields required for command links with the child <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> elements are always rendered and it doesn't depend on links rendering on the initial page. It solves the problem with invalid links that weren't rendered on a page immediately, but after some Ajax request.</para>
+
+      <para>
+         <emphasis role="bold">Example:</emphasis>
+      </para>
+      <programlisting role="XML">&lt;a4j:form&gt;
+	...
+	&lt;a4j:htmlComandLink action="action" value="link" rendered="#{bean.rendered}"&gt;
+		&lt;f:param .../&gt;
+	&lt;a4j:htmlComandLink&gt;
+	...
+&lt;/a4j:form&gt;
+</programlisting>
+      <para>In this example <emphasis role="bold">
+            <property>&lt;a4j:htmlCommandLink&gt;</property>
+         </emphasis>works as standard <emphasis role="bold">
+            <property>&lt;h:commandLink&gt;</property>
+         </emphasis>, but here hidden fields required for correct functionality are rendered before the first downloading of a page, though it doesn't happen if its attribute isn't set to "false".</para>
+      </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;a4j/htmlCommandLink.html">Table of 
+							&lt;a4j:htmlCommandLink&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+	        <title>Component Identification Parameters </title>
+         <tgroup cols="2">
+	           <thead>
+               <row>
+                  <entry>Name</entry>
+                  <entry>Value</entry>
+               </row>
+            </thead>
+            <tbody>
+               <row>
+                  <entry>component-type</entry>
+                  <entry>javax.faces.HtmlCommandLink</entry>
+               </row>
+               <row>
+                  <entry>component-family</entry>
+                  <entry>javax.faces.Command</entry>
+               </row>
+               <row>
+                  <entry>component-class</entry>
+                  <entry>javax.faces.component.html.HtmlCommandLink</entry>
+               </row>
+               <row>
+                  <entry>renderer-type</entry>
+                  <entry>org.ajax4jsf.HtmlCommandLinkRenderer</entry>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </section>
+   <section>
+      <title>Relevant Resources Links</title>
+	     <para>
+	        <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/htmlCommandLink.jsf?c=htmlCommandLink">On RichFaces LiveDemo page </ulink> you can found some additional information for <emphasis role="bold">
+            <property>&lt;a4j:htmlCommandLink&gt;</property>
+         </emphasis> component usage.  
+	</para>
+      <para>
+         <ulink url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/param.html">On RichFaces LiveDemo page </ulink> you can found some additional information about <emphasis role="bold">
+            <property>&lt;f:param&gt;</property>
+         </emphasis> component.
+    </para>
+  </section>
+</section>

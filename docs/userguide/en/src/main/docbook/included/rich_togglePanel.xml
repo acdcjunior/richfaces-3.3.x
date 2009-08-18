@@ -1,0 +1,232 @@
+<section role="NotInToc" id="rich_togglePanel">
+   <title>
+				&lt;
+				rich:togglePanel
+				&gt;
+				<emphasis role="since">
+         <superscript> available since <emphasis role="version">3.0.0</emphasis>
+         </superscript>
+      </emphasis>
+   </title>
+   <section>
+      <title>Description</title>
+      <para>A wrapper component with named facets, where every facet is shown after activation of
+    the corresponding <property>toggleControl</property>
+    (the other is hidden).</para>
+      <figure>
+        <title>
+            <emphasis role="bold">
+               <property>&lt;rich:togglePanel&gt;</property>
+            </emphasis> component</title>
+         <mediaobject> 
+            <imageobject>
+               <imagedata fileref="images/togglePanel_init.png"/>
+            </imageobject>
+         </mediaobject>
+      </figure>
+    </section>
+   <section>
+      <title>Key Features</title>
+      <itemizedlist>
+        <listitem>
+            <para>Support for any content inside</para>
+         </listitem>
+        <listitem>
+            <para>Three modes of facets switching</para>
+            <itemizedlist>
+               <listitem>
+                  <para>
+                     <code>Server</code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>Client</code>
+                  </para>
+               </listitem>
+               <listitem>
+                  <para>
+                     <code>Ajax</code>
+                  </para>
+               </listitem>
+            </itemizedlist>
+        </listitem>   
+        <listitem>
+            <para>Controls for <property>togglePanel</property> can be everywhere in layout</para>
+         </listitem>
+      </itemizedlist>
+   </section>
+   <section>
+                    <title>Details of Usage</title>
+                    <para>As it was mentioned <link linkend="togglePanel">above</link>,
+                                        <property>togglePanel</property> splits content into named
+                              facets that become rendered and processed when a click performed on
+                              controls linked to this <property>togglePanel</property> (either
+                              switched on the client or send requests on the server for switching).</para>
+                    <para>The initial component state is defined with <emphasis>
+                                        <property>"initialState"</property>
+                              </emphasis> attribute, where a facet name that is shown at first is
+                              defined.</para>
+                    <note>
+                              <title>Note:</title>
+                              <para> It's also possible to define an <emphasis>
+                                                  <property>"empty"</property>
+                                        </emphasis> facet to implement the functionality as
+                                        drop-down panels have and make the facet active when no
+                                        content is required to be rendered.</para>
+                    </note>
+                    <para>Switching mode could be defined with the <emphasis>
+                                        <property>"switchType"</property>
+                              </emphasis> attribute with three possible parameters:</para>
+                    <itemizedlist>
+                              <listitem>
+                                        <para>
+                                                  <code>Server</code> (DEFAULT)</para>
+                                        <para>The common submission is performed around
+                                                  <property>togglePanel</property> and a
+                                                  page is completely rendered on a called panel.
+                                                  Only one at a time the panel is uploaded onto the
+                                                  client side.</para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <code>Ajax</code>
+                                        </para>
+                                        <para>AJAX form submission is performed around the panel,
+                                                  content of the called panel is uploaded on an Ajax
+                                                  request . Only one at a
+                                                  time the panel is uploaded on the client
+                                        side.</para>
+                              </listitem>
+                              <listitem>
+                                        <para>
+                                                  <code>Client</code>
+                                        </para>
+                                        <para> All panels are uploaded on the client side. The
+                                                  switching from the active to the hidden panel is
+                                                  performed with client JavaScript.</para>
+                              </listitem>
+                    </itemizedlist>
+                    <para>"Facets" switching order could be defined on the side of
+                                        <emphasis role="bold">
+                                        <property>&lt;rich:toggleControl&gt;</property>
+                              </emphasis> component or on the panel. On the side of the togglePanel
+                              it's possible to define facets switching order with the <emphasis>
+                                        <property>"stateOrder"</property>
+                              </emphasis> attribute. The facets names are enumerated in such an
+                              order that they are rendered when a control is clicked, as
+                              it's not defined where to switch beforehand.</para>
+
+                    <para>
+                              <emphasis role="bold">Example:</emphasis>
+                    </para>
+                    <programlisting role="XML">...
+&lt;rich:togglePanel id="panel" initialState="panelB" switchType="client"
+                        stateOrder="panelA,panelB,panelC"&gt;
+		&lt;f:facet name="panelA"&gt;
+       			...
+        &lt;/f:facet&gt;
+        &lt;f:facet name="panelB"&gt;
+        		...
+        &lt;/f:facet&gt;
+        &lt;f:facet name="panelC"&gt;
+        		...
+        &lt;/f:facet&gt;
+&lt;/rich:togglePanel&gt; 
+&lt;rich:toggleControl for="panel" value="Switch"/&gt;
+...
+</programlisting>
+                    <para>The example shows a <property>togglePanel</property> initial state when
+                              the second facet (<code>panelB</code>) is rendered and successive
+                              switching from the first to the second happens.</para>
+                    <para> The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute is a generic attribute. The <emphasis>
+                                        <property>"label"</property>
+                              </emphasis> attribute provides an association between a component, and
+                              the message that the component (indirectly) produced. This attribute
+                              defines the parameters of localized error and informational messages
+                              that occur as a result of conversion, validation, or other application
+                              actions during the request processing lifecycle. With the help of this
+                              attribute you can replace the last parameter substitution token shown
+                              in the messages. For example, {1} for
+                                        <code>"DoubleRangeValidator.MAXIMUM"</code>,
+                              {2} for <code>"ShortConverter.SHORT"</code>. </para>
+          </section>
+   <section>
+      <title>Reference Data</title>
+      <para>
+         <ulink url="&tlddoc;rich/togglePanel.html">Table of 
+							&lt;rich:togglePanel&gt; 
+							 attributes</ulink>.
+						</para>
+      <table>
+                    <title>Component Identification Parameters</title>
+                    <tgroup cols="2">
+                              <thead>
+                                        <row>
+                                                  <entry>Name</entry>
+                                                  <entry>Value</entry>
+                                        </row>
+                              </thead>
+                              <tbody>
+                                        <row>
+                                                  <entry>component-type</entry>
+                                                  <entry>org.richfaces.TogglePanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-class</entry>
+                                                  <entry>org.richfaces.component.html.HtmlTogglePanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>component-family</entry>
+                                                  <entry>org.richfaces.TogglePanel</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>renderer-type</entry>
+                                                  <entry>org.richfaces.TogglePanelRenderer</entry>
+                                        </row>
+                                        <row>
+                                                  <entry>tag-class</entry>
+                                                  <entry>org.richfaces.Taglib.togglePanelTag</entry>
+                                        </row>
+                              </tbody>
+                    </tgroup>
+          </table>
+      <table id="togglePC">
+                              <title>Classes names that define a component appearance</title>
+                              <tgroup cols="2">
+                                        <thead>
+                                                  <row>
+                                                  <entry>Class name</entry>
+                                                  <entry>Description</entry>
+                                                  </row>
+                                        </thead>
+                                        <tbody>
+                                                  <row>
+                                                  <entry>rich-toggle-panel</entry>
+                                                  <entry>Defines styles for all
+                                                  component</entry>
+                                                  </row>
+
+                                                  <row>
+                                                  <entry>rich-tglctrl</entry>
+                                                  <entry>Defines styles for a toggle
+                                                  control</entry>
+                                                  </row>
+
+                                        </tbody>
+                              </tgroup>
+                    </table>
+							You can find all necessary information about style classes redefinition in 
+						<link linkend="customstyles">Definition of Custom Style Classes</link> 
+							section.
+						</section>
+   <section>
+                    <title>Relevant Resources Links</title>
+                    <para>
+                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/togglePanel.jsf?c=togglePanel">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+                                        <property>&lt;rich:togglePanel&gt;</property>
+                              </emphasis> usage and sources for the given example. </para>
+          </section>
+</section>
