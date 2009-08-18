@@ -88,7 +88,6 @@ SimpleTogglePanel.prototype = {
 			{
 				result = eventFunction.call(element, eventObj);
 			}
-			catch (e) { LOG.warn("Exception: "+e.Message + "\n[on"+eventName + "]"); }
 
 		}
 		
@@ -142,9 +141,13 @@ SimpleTogglePanelManager.toggleOnAjax = function(event,panelId) {
 	
 	var thePanel = this.panels.get(panelId);
 	if (thePanel.status == "true") {
-		return thePanel.invokeEvent("collapse",event,"true",element);
+		var res = thePanel.invokeEvent("collapse",event,"true",element);
+		Element.hide(panelId+"_body");
+		return res
 	} else {
-		return thePanel.invokeEvent("expand",event,"false",element);
+		var res = thePanel.invokeEvent("expand",event,"false",element); 
+		Element.show(panelId+"_body");
+		return res
 	}
 }
 
