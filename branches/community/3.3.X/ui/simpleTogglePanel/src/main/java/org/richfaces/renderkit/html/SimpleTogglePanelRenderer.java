@@ -39,6 +39,7 @@ import org.ajax4jsf.javascript.JSReference;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils;
 import org.richfaces.component.UISimpleTogglePanel;
+import org.richfaces.component.util.HtmlUtil;
 import org.richfaces.event.SimpleToggleEvent;
 import org.richfaces.event.SimpleTogglePanelSwitchEvent;
 
@@ -182,8 +183,8 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
 
     public void encodeChildren(FacesContext context, UIComponent component) throws IOException {
         UISimpleTogglePanel comp = (UISimpleTogglePanel) component;
-        if (!(((comp.getSwitchType() == null) || (comp.getSwitchType().equals(UISimpleTogglePanel.CLIENT_SWITCH_TYPE) != true)) && (!comp.isOpened())))
-        {
+        String switchType = comp.getSwitchType();
+        if (UISimpleTogglePanel.CLIENT_SWITCH_TYPE.equals(switchType) || comp.isOpened()) {
             super.encodeChildren(context, component);
         }
     }
@@ -199,8 +200,9 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
         String width = convertToString(component.getAttributes().get("width"));
         if (!isEmpty(width)) {
             width = "width: " + convertToString(width);
-            style = width + (isEmpty(style) ? ";" : "; " + style + ";");
         }
+        
+        style = HtmlUtil.concatStyles(style, width);
         if (!isEmpty(style)) {
             getUtils().writeAttribute(writer, "style",  style); 
         }
@@ -230,17 +232,17 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
         getUtils().writeAttribute(writer, "class", "rich-stglpanel-body " + convertToString(component.getAttributes().get("bodyClass")) );
         getUtils().writeAttribute(writer, "id", convertToString(clientId) + "_body" );
         
-        String display = convertToString(component.getAttributes().get("display"));
-        if (!isEmpty(display)) {
-            display = "display: " + convertToString(display) + "; ";
+        String display = "";
+        if (!component.isOpened()) {
+            display = "display: none";
         }
 
         String height = convertToString(component.getAttributes().get("height"));
         if (!isEmpty(height)) {
-            height = "height: " + convertToString(component.getAttributes().get("height")) + ";";
+            height = "height: " + height;
         }
         
-        String style = display + height;
+        String style = HtmlUtil.concatStyles(display, height);
         if (!isEmpty(style)) {
             getUtils().writeAttribute(writer, "style", style);
         }
