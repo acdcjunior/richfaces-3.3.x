@@ -3637,6 +3637,10 @@ button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&qu
 			</section>
 		</section>
 	</section>
+	<section id="customstyles">
+		<title>Definition of Custom Style Classes</title>
+		<para></para>
+	</section>
 	<section id="statemanagerapi">
 		<title>State Manager API</title>
 		<para> JSF has an advanced navigation mechanism that allows you to define navigation from
