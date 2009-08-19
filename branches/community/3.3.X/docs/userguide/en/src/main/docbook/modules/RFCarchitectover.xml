@@ -3639,7 +3639,7 @@ button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&qu
 	</section>
 	<section id="customstyles">
 		<title>Definition of Custom Style Classes</title>
-		<para>In the &quot;Reference Data&quot; section for most of the components (see &quot;The RichFaces Components&quot; chapter) 
+		<para>In the &quot;Reference Data&quot; section for most of the visual components (see &quot;The RichFaces Components&quot; chapter) 
 			there are the tables with <code>rich-*</code> classes definitions. These classes allow to redefine styles for a specific component by means of CSS.
 			Actually, you should create classes with the same names and define new properties in them.</para>
 		
