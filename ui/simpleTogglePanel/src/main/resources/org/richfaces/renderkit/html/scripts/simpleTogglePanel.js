@@ -84,7 +84,11 @@ SimpleTogglePanel.prototype = {
 			eventObj.rich = {component:this};
 			eventObj.rich.value = value;
 
+			try {
 				result = eventFunction.call(element, eventObj);
+			} catch (e) { 
+				LOG.warn("Exception: "+e.Message + "\n[on"+eventName + "]"); 
+			}
 
 		}
 		
