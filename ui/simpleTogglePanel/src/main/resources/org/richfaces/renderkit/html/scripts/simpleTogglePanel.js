@@ -84,10 +84,7 @@ SimpleTogglePanel.prototype = {
 			eventObj.rich = {component:this};
 			eventObj.rich.value = value;
 
-			try
-			{
 				result = eventFunction.call(element, eventObj);
-			}
 
 		}
 		
