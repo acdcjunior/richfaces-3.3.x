@@ -3639,7 +3639,66 @@ button[type=&quot;button&quot;], button[type=&quot;reset&quot;], button[type=&qu
 	</section>
 	<section id="customstyles">
 		<title>Definition of Custom Style Classes</title>
-		<para></para>
+		<para>In the &quot;Reference Data&quot; section for most of the components (see &quot;The RichFaces Components&quot; chapter) 
+			there are the tables with <code>rich-*</code> classes definitions. These classes allow to redefine styles for a specific component by means of CSS.
+			Actually, you should create classes with the same names and define new properties in them.</para>
+		
+		<para>Let&apos;s consider the <link linkend="rich_modalPanel"><emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis></link> component. 
+			To change the background color for the mask, it&apos;s enough to redefine the <code>.rich-mpnl-mask-div</code> class.</para>
+		
+		<para>
+			<emphasis role="bold">Example:</emphasis>
+		</para>
+		<programlisting role="CSS"><![CDATA[...
+.rich-mpnl-mask-div{
+    background-color:#fae6b0;
+}
+...]]></programlisting>
+		
+		<para>This is a result:</para>
+		
+		<figure>
+			<title>Style redefinition with predefined class</title>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="images/modalPanel_pc.png"/>
+				</imageobject>
+			</mediaobject>
+		</figure>
+		
+		<para>If you have multiple components on the page, the redefined styles will be applied to all of them. To change styles for a 
+			particular component on the page, create your own style classes and use them in corresponding style class attributes. An example on how to 
+			change the font style for the header of a particular modal panel is placed below:</para>
+		
+		<para>
+			<emphasis role="bold">Example:</emphasis>
+		</para>
+		<programlisting role="CSS"><![CDATA[...
+.myClass{
+    font-style:italic;
+}
+...]]></programlisting>
+		<para>Next specify <emphasis>
+			<property>myClass</property></emphasis> as the value of the <emphasis>
+			<property>&quot;headerClass&quot;</property>
+		</emphasis> attribute for <emphasis role="bold">
+			<property>&lt;rich:modalPanel&gt;</property>
+		</emphasis>:</para>
+	
+		<programlisting role="XML"><![CDATA[<rich:modalPanel ... headerClass="myClass"/>
+]]></programlisting>
+		
+		<para>This is a result:</para>
+		
+		<figure>
+			<title>Style redefinition with own class</title>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="images/modalPanel_oc.png"/>
+				</imageobject>
+			</mediaobject>
+		</figure>
+		
 	</section>
 	<section id="statemanagerapi">
 		<title>State Manager API</title>
