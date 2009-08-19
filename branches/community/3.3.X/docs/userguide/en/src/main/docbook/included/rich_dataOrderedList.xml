@@ -120,49 +120,23 @@
 			is used for a popup title.
 		</para>
 
-		    <para>
-			The 	<emphasis role="bold">
-				        <property>&lt;rich:dataOrderedList&gt;</property>
-			      </emphasis>
-			component could be partially updated with
-			Ajax. The
-			<emphasis>
-				        <property>"ajaxKeys"</property>
-			      </emphasis>
-			attribute allows to define row keys that are updated after
-			an Ajax request.
-		</para>
-		    <para>Here is an example:</para>
-
-		    <para>
-			      <emphasis role="bold">Example:</emphasis>
-		    </para>
-		    <programlisting role="XML">...
-&lt;rich:dataOrderedList value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
-                        binding="#{listBean.dataList}" id="list"&gt;
-		...
-&lt;/rich:dataOrderedList&gt;
-...
-&lt;a4j:commandButton action="#{listBean.action}" reRender="list" value="Submit"/&gt;
-...
-</programlisting>
-
-		    <para>
-			In the example
-			<emphasis>
-				        <property>"reRender"</property>
-			      </emphasis>
-			attribute contains value of the 
-			<emphasis>
-				        <property>"id"</property>
-			      </emphasis>
-			attribute for the
-			<emphasis role="bold">
-				        <property>&lt;rich:dataOrderedList&gt;</property>
-			      </emphasis>
-			component. As a result the component is updated after an
-			Ajax request.
-		</para>
+   	<para>
+   		The 	<emphasis role="bold">
+   			<property>&lt;rich:dataOrderedList&gt;</property>
+   		</emphasis>
+   		component could be partially updated with
+   		Ajax. The
+   		<emphasis>
+   			<property>&quot;ajaxKeys&quot;</property>
+   		</emphasis>
+   		attribute points to an Object (java.util.Set) that should contain row keys to be updated after
+   		an Ajax request. See an example of usage the 
+   		<emphasis>
+   			<property>&quot;ajaxKeys&quot;</property>
+   		</emphasis> attribute for the <emphasis role="bold">
+   			<property>&lt;rich:dataList&gt;</property>
+   		</emphasis> component in the <ulink url="http://www.jboss.org/community/wiki/UsingtheajaxKeysattributeforrichdataList">RichFacs Cookbook article</ulink>.
+   	</para>
 	  </section>
    <section>
       <title>Reference Data</title>
