@@ -10,7 +10,7 @@
    </title>
    <section>
         <title>Description</title>
-        <para>The component for tables rendering that allows choosing data from a model and obtains
+   	<para>The component is meant for rendering tables. It allows choosing data from a model and obtains
             built-in support of Ajax updates.</para>
         <figure>
             <title>
@@ -40,17 +40,7 @@
             <para>Possibility to update a limited set of strings with Ajax</para>
          </listitem>
             <listitem>
-            <para>Possibility to sort and to filter of columns</para>
-         </listitem>
-            <listitem>
-            <para>
-               <link linkend="sort">Sorting column values</link>
-            </para>
-         </listitem>
-            <listitem>
-            <para>
-               <link linkend="filter">Filtering column values</link>
-            </para>
+            	<para><link linkend="sort">Sorting</link> and <link linkend="filter">filtering</link> functionalities for a table columns</para>
          </listitem>
         </itemizedlist>
     </section>
@@ -63,32 +53,13 @@
          </emphasis> one, except Ajax support and skinnability. Ajax support is possible, because the
       component was created basing on the <emphasis role="bold">
             <property>&lt;a4j:repeat&gt;</property>
-         </emphasis> component and as a result it could be partially updated with Ajax. <emphasis>
+         </emphasis> component and as a result it could be partially updated with Ajax. The <emphasis>
             <property>"ajaxKeys"</property>
-         </emphasis> attribute allows to define row keys that is updated after an Ajax request.</para>
-
-      <para>Here is an example:</para>
-
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
-      <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="capitals"
-                ajaxKeys="#{bean.ajaxSet}" binding="#{bean.table}" id="table"&gt;
-		...
-&lt;/rich:dataTable&gt;
-...
-&lt;a4j:commandButton action="#{tableBean.action}" reRender="table" value="Submit"/&gt;
-...
-</programlisting>
-
-      <para> In the example <emphasis>
-            <property>"reRender"</property>
-         </emphasis> attribute contains value of <emphasis>
-            <property>"id"</property>
-         </emphasis> attribute for <emphasis role="bold">
-            <property>&lt;rich:dataTable&gt;</property>
-         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+         </emphasis> attribute allows to define row keys which are updated after an Ajax request. You can find an example which demonstrate the usage of the 
+      	<emphasis>
+      		<property>"ajaxKeys"</property>
+      	</emphasis> attributes for data iteration components in the 
+      	<ulink url="http://www.jboss.org/community/wiki/UsingtheajaxKeysattributeforrichdataList">RichFaces Cookbook article</ulink>.</para>
 
       <para id="table_ex">The component allows to use <emphasis>
             <property>"header"</property>
