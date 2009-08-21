@@ -2,18 +2,12 @@ package util.parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 public class TLDParser {
 
-	protected String component;
-	protected JarEntry tld;
-	protected JarFile richfacesUI;
+	protected String component;	
 	protected AttributesList allAttributes;	
 
 	public TLDParser(String str) {
@@ -22,13 +16,8 @@ public class TLDParser {
 	}
 
 	public AttributesList getAllAttributes() {
-
-//		tld = getRichfacesUI().getJarEntry("META-INF/richfaces.tld");
-//		InputStream input = null;
 		try {
-//			input = richfacesUI.getInputStream(tld);
-
-			//InputStreamReader isr = new InputStreamReader(input);
+			
 			Reader isr = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResource("META-INF/richfaces.tld").openStream());
 			BufferedReader reader = new BufferedReader(isr);
 			String line, attr;
@@ -96,46 +85,12 @@ public class TLDParser {
 		}
 		return allAttributes;
 	}
-
-	public String getExtPath() {
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		String resource = "META-INF/richfaces.tld";		
-		String temp = loader.getResource(resource).toString();		
-		//in case you put project war on server
-		if(temp.startsWith("vfszip")){
-			temp = temp.substring("vfszip:/".length(),temp.length()-"/META-INF/richfaces.tld".length());
-			System.out.println("TEMP:"+temp);
-		}else {
-		//in case you run project from eclipse IDE
-			temp = temp.substring("jar:file:/".length(),temp.length()-"!/META-INF/richfaces.tld".length());
-			System.out.println("TEMP:"+temp);
-		}
-		return temp;
-	}
-
+	
 	public String getComponent() {
 		return component;
 	}
 
 	public void setComponent(String component) {
 		this.component = component;
-	}
-
-	public JarFile getRichfacesUI() {		
-		try {
-			/*if ((position = getExtPath().indexOf('!')) != -1) {
-				if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {				
-					temp = getExtPath().substring("jar:file:\\".length(), position);
-				System.out.println("windows path 2:" + temp);
-				} else {
-					temp = "/"	+ getExtPath().substring("jar:file:/".length(),	position);
-					System.out.println("linux path:" + temp);
-				}
-			}*/
-			richfacesUI = new JarFile("/WEB-INF/lib/richfaces-ui-3.3.2-20090820.123703-70.jar");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return richfacesUI;
-	}
+	}	
 }
