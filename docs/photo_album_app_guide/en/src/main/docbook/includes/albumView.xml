@@ -2,11 +2,13 @@
 <section id="albumView">
 	<title>Album View</title>
 	<para>
-	      Album view allows you to observe album items as thumbnails, scale the size of the thumbnails with the slider control, as well as to switch to slideshow mode. By clicking on an image in the Album View the Image View is opened.
+	      <property>Album</property> view allows you to observe album items as thumbnails, 
+	      scale the size of the thumbnails with the slider control, as well as to switch to slideshow mode.
+	      By clicking on an image in the <property>Album</property> view the <property>Image</property> View is opened.
 	</para>
 	
 	<figure>
-	      <title>Some title</title>
+	      <title>Album view</title>
 	      <mediaobject>
 	            <imageobject>
 	                  <imagedata fileref="images/albumView.png"/>
@@ -16,9 +18,9 @@
       <section>
 		<title>Image Size Control with &lt;rich:inputNumberSlider&gt;</title>
             <para>
-                  The <emphasis role="bold"><property>rich:inputNumberSlider</property></emphasis> component in the Photo Album Demo is used as a control that helps a user to change photos size while previewing an album. 
+                  The <emphasis role="bold"><property>&lt;rich:inputNumberSlider/&gt;</property></emphasis> component in the Photo Album Demo is used as a control that helps a user to change photos size while previewing an album. 
                   A handler position on the slider track corresponds to a particular value of an image size. 
-                  The component is included into the page with the help of <emphasis role="bold"><property>ui:include</property></emphasis>:
+                  The component is included into the page with the help of <emphasis role="bold"><property>&lt;ui:include/&gt;</property></emphasis>:
             </para>
                   <programlisting role="XML"><![CDATA[...
 <ui:include src="src/main/webapp/includes/image/inputNumberSlider.xhtml"/>
@@ -45,7 +47,7 @@
 ...]]></programlisting> 
               <para>
                     There is special Enumeration type that contains four predefined values for image size. Each type has a set of image related attributes such as CSS class for new photo size, postfix for a new file name, image background.
-                    The <code>setValue</code> method of the <code>ImageSizeHelper.java</code> class is triggered on each slider's position change. This method sets one of four predefined values for image size and due to slider's position.  
+                    The <code>setValue</code> method of the <code>ImageSizeHelper.java</code> class is triggered on each slider's position change. This method sets one of four predefined values for image size and corresponds to slider&apos;s position.  
               </para>
 	      <programlisting role="JAVA"><![CDATA[public void setValue(int value) {
             currentDimension = ImageDimension.getInstance(value);
@@ -88,9 +90,9 @@
       ...]]></programlisting>
                   	      	      
 	      <para>
-	          After the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> is worked out user photos 
+	          After the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> finished its job user photos 
                         (more exactly, the <emphasis role="bold"><property>h:panelGroup</property></emphasis> with <code>userAlbumImages</code> id  that contains user photos) 
-                        are rendered correspondingly to a new set value. Here is <code>web/src/main/webapp/includes/image/imageList.xhtml</code>:
+                        are rendered correspondingly to the new  value. Here is <code>web/src/main/webapp/includes/image/imageList.xhtml</code>:
                   </para>
                   <programlisting role="XML"><![CDATA[...
 <h:panelGroup id="userAlbumImages">		
@@ -133,7 +135,7 @@
 ...]]></programlisting>
               
               <para>
-                    When the <emphasis role="bold"><property>&lt;rich:inputNumberSlider&gt;</property></emphasis> is rendered, at first its default value for image size is 120 px.  
+                    When the <emphasis role="bold"><property>&lt;rich:inputNumberSlider&gt;</property></emphasis> is rendered, initially its default value for image size is 120 px.  
               </para>
                   
                   <figure>
@@ -172,7 +174,7 @@
             <title>Slideshow</title>
             
                   <para>The slideshow feature in the Photo Album Demo can be enabled by clicking on <emphasis role="bold">&quot;Start Slideshow&quot;</emphasis> link from two different places in the application: 
-                  1) from user's album preview (<code>/web/src/main/webapp/image/albumInfo.xhtml</code>) and 2) from a particular photo preview (<code>src/main/webapp/image/imageInfo.xhtml</code>). 
+                  1) from user&apos;s album preview (<code>/web/src/main/webapp/image/albumInfo.xhtml</code>) and 2) from a particular photo preview (<code>src/main/webapp/image/imageInfo.xhtml</code>). 
                   Both of  two mentioned XHTML files include slideshow with the help of Facelets &lt;<emphasis role="bold"><property>ui:include</property></emphasis> tag 
                   (for more information about &lt;<emphasis role="bold"><property>ui:include</property></emphasis> see Facelets Reference Guide — 
                   <ulink url="http://www.jsftoolbox.com/documentation/facelets/01-Introduction/index.jsf">http://www.jsftoolbox.com/documentation/facelets/01-Introduction/index.jsf</ulink>).
@@ -181,7 +183,7 @@
                   The components that implement the slideshow functionality are:
             </para>
                   <itemizedlist>
-                        <listitem><para><emphasis role="bold"><property>&lt;rich:modalPanelgt;</property></emphasis> located in  <code>web/src/main/webapp/includes/image/slideshow.xhtml</code> that is hidden by default as the  attribute <code>showWhenRendered=&quot;#{slideshow.active}&quot;</code> and the active property of  SlideshowManager.java is set to &quot;false&quot; by default.</para></listitem>
+                        <listitem><para><emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis> located in  <code>web/src/main/webapp/includes/image/slideshow.xhtml</code> that is hidden by default as the  attribute <code>showWhenRendered=&quot;#{slideshow.active}&quot;</code> and the active property of  <code>SlideshowManager.java</code> is set to &quot;false&quot; by default.</para></listitem>
                         <listitem><para><emphasis role="bold"><property>&lt;a4j:poll&gt;</property></emphasis> located in  <code>includes/misc/slideShowPooler.xhtml</code> which is also inactive due to the mentioned active property ( <code>active=#{slideshow.active}</code>)</para></listitem>
                   </itemizedlist>
                   
