@@ -128,7 +128,7 @@ mvn clean install -Plivedemo
                   </tip>
       </section>
       <section>
-            <title>Running Functional(Selenium) Tests TBR</title>
+            <title>Running Functional(Selenium) Tests </title>
             <para>
                   Before starting Selenium test please make sure that you have Firefox browser installed on your local machine, as
                   the Photo Album application is designed to be deployed and run on JBoss Application server,
