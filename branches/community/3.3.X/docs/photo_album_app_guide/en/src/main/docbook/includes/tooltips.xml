@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section id="tooltips">
-	<title>ToolTips TBR</title>
+	<title>ToolTips </title>
 	<para>
 		When using RichFaces components library you&apos;ve got nealy everything to build UI, making a tooltip is not an exception. RichFaces provides a separate component to make a bubble appeare when the user hovers a UI element or layout area. 
 		The component is <emphasis role="bold"><property>&lt;rich:toolTip&gt;</property></emphasis>.
