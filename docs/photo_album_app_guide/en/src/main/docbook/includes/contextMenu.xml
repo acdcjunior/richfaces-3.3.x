@@ -1,5 +1,5 @@
 <section id="contextMenu">
-	<title>Context Menus TBR</title>
+	<title>Context Menus </title>
     <para>Context menus are called when you right-click on a UI element. RichFaces library provides a special component <emphasis role="bold"><property>&lt;rich:contextMenu &gt;</property></emphasis> to implement this type of functionality. </para>	
     
 	
