@@ -56,38 +56,13 @@
          </emphasis> tags. Ajax support is possible, because the component was created basing on the
         <emphasis role="bold">
             <property>&lt;a4j:repeat&gt;</property>
-         </emphasis> component and as a result it could be partially updated with Ajax. <emphasis>
+         </emphasis> component and as a result it could be partially updated with Ajax. The <emphasis>
             <property>"ajaxKeys"</property>
-         </emphasis> attribute allows to define row keys that is updated after an Ajax request.</para>
-
-      <para>Here is an example:</para>
-    
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
-    
-      <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="capitals"&gt;
-		&lt;rich:column&gt;
-       			...
-       	&lt;/rich:column&gt;
-       	&lt;rich:subTable value="#{capitals.details}" var="detail" ajaxKeys="#{bean.ajaxSet}" binding="#{bean.subtable}" id="subtable"&gt;
-       			&lt;rich:column&gt;
-               		...
-            	&lt;/rich:column&gt;
-      	&lt;/rich:subTable&gt;
-&lt;/rich:dataTable&gt;
-...
-&lt;a4j:commandButton action="#{tableBean.action}" reRender="subtable"/&gt;
-...
-</programlisting>
-      <para> In the example <emphasis>
-            <property>"reRender"</property>
-         </emphasis> attribute contains value of <emphasis>
-            <property>"id"</property>
-         </emphasis> attribute for <emphasis role="bold">
-            <property>&lt;rich:subTable&gt;</property>
-         </emphasis> component. As a result the component is updated after an Ajax request.</para>
+         </emphasis> attribute allows to define row keys which are updated after an Ajax request. You can find an example which demonstrate the usage of the 
+      	<emphasis>
+      		<property>"ajaxKeys"</property>
+      	</emphasis> attributes for data iteration components in the 
+      	<ulink url="http://www.jboss.org/community/wiki/UsingtheajaxKeysattributeforrichdataList">RichFaces Cookbook article</ulink>.</para>
 
       <para>The component allows to use <emphasis>
             <property>"header"</property>
