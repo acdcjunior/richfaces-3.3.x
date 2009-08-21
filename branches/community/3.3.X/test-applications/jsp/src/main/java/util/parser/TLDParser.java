@@ -2,16 +2,12 @@ package util.parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.io.Reader;
 
 public class TLDParser {
 
-	protected String component;
-	protected JarEntry tld;
-	protected JarFile richfacesUI;
+	protected String component;	
 	protected AttributesList allAttributes;
 
 	public TLDParser(String str) {
@@ -21,12 +17,9 @@ public class TLDParser {
 
 	public AttributesList getAllAttributes() {
 
-		tld = getRichfacesUI().getJarEntry("META-INF/richfaces.tld");
-		InputStream input = null;
 		try {
-			input = richfacesUI.getInputStream(tld);
 
-			InputStreamReader isr = new InputStreamReader(input);
+			Reader isr = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResource("META-INF/richfaces.tld").openStream());
 			BufferedReader reader = new BufferedReader(isr);
 			String line, attr;
 			Attribute attribute = new Attribute();
@@ -113,12 +106,7 @@ public class TLDParser {
 		}
 		return allAttributes;
 	}
-
-	public String getExtPath() {
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		String resource = "META-INF/richfaces.tld";
-		return loader.getResource(resource).toString();
-	}
+	
 
 	public String getComponent() {
 		return component;
@@ -127,23 +115,5 @@ public class TLDParser {
 	public void setComponent(String component) {
 		this.component = component;
 	}
-
-	public JarFile getRichfacesUI() {
-		String temp = null;
-		int position;
-		try {
-			if ((position = getExtPath().indexOf('!')) != -1) {
-				if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
-					temp = getExtPath().substring("jar:file:\\".length(), position);
-				} else {
-					temp = "/"	+ getExtPath().substring("jar:file:/".length(),	position);
-				}
-
-			}
-			richfacesUI = new JarFile(temp);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return richfacesUI;
-	}
+	
 }
