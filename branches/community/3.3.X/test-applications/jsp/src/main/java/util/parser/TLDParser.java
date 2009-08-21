@@ -16,7 +16,7 @@ public class TLDParser {
 	}
 
 	public AttributesList getAllAttributes() {
-
+		allAttributes.clear();
 		try {
 
 			Reader isr = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResource("META-INF/richfaces.tld").openStream());
