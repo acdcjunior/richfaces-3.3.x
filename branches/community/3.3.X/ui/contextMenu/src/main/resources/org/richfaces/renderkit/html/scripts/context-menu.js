@@ -109,9 +109,19 @@ Richfaces.ContextMenu.prototype = {
 		this.element.appendChild(div);
 		
 		var html = this.evaluator.invoke('getContent', context||{}).join('');
+		html = this.interpolate(html, context); 
 		new Insertion.Top(div, html);
 		
 		this.menuContent = div;
+	},
+	
+	interpolate: function (placeholders, context) {
+		for(var k in context) {
+			var v = context[k];
+			var regexp = new RegExp("\\{" + k + "\\}", "g");
+			placeholders = placeholders.replace(regexp, v);
+		}
+		return placeholders;
 	},
 	
 	destroyMenu: function() {

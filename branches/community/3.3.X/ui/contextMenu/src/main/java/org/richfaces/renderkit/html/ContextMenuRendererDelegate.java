@@ -46,7 +46,7 @@ public class ContextMenuRendererDelegate extends AbstractMenuRenderer {
 	/* (non-Javadoc)
 	 * @see org.ajax4jsf.renderkit.RendererBase#getComponentClass()
 	 */
-	protected Class getComponentClass() {
+	protected Class<UIContextMenu> getComponentClass() {
 		return UIContextMenu.class;
 	}
 
@@ -66,18 +66,11 @@ public class ContextMenuRendererDelegate extends AbstractMenuRenderer {
 			styleClass = "";
 		}
 
-        writeAttr(writer, HTML.onmousemove_ATTRIBUTE, layer.getAttributes().get("onmousemove"));
-        writeAttr(writer, HTML.onmouseout_ATTRIBUTE, layer.getAttributes().get("onmouseout"));
-        writeAttr(writer, HTML.onmouseover_ATTRIBUTE, layer.getAttributes().get("onmouseover"));
-
+        getUtils().writeAttribute(writer, HTML.onmousemove_ATTRIBUTE, layer.getAttributes().get("onmousemove"));
+        getUtils().writeAttribute(writer, HTML.onmouseout_ATTRIBUTE, layer.getAttributes().get("onmouseout"));
+        getUtils().writeAttribute(writer, HTML.onmouseover_ATTRIBUTE, layer.getAttributes().get("onmouseover"));
+        
 		writer.writeAttribute(HTML.class_ATTRIBUTE, "rich-menu-list-border " + styleClass, null);
 		writer.writeAttribute(HTML.style_ATTRIBUTE, "display: none; z-index: 2; " + style, null);
 	}
-
-    private void writeAttr(ResponseWriter writer, final String name, final Object value) throws IOException {
-        if (value != null) {
-            writer.writeAttribute(name, value, null);
-        }
-        
-    }
 }
