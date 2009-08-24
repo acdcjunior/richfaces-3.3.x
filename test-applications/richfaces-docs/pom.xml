@@ -20,6 +20,61 @@
 		</plugins>
 	</build>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<id>repository.jboss.com</id>
+			<name>Jboss Repository for Maven</name>
+			<url>http://repository.jboss.com/maven2/</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>snapshots.jboss.org</id>
+			<name>Jboss Snapshots Repository for Maven</name>
+			<url>http://snapshots.jboss.org/maven2/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
+	  <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>snapshots.jboss.org</id>
+            <name>Snapshot Jboss Repository for Maven</name>
+            <url>http://snapshots.jboss.org/maven2/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>repository.jboss.com</id>
+            <name>Jboss Repository for Maven</name>
+            <url>http://repository.jboss.com/maven2/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 <dependencies>
 
     <dependency>
