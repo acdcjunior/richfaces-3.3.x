@@ -361,23 +361,23 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 
 	}
 
-	public JSFunction getIsDayEnabled(FacesContext context, UIComponent component) {
+	public JSReference getIsDayEnabled(FacesContext context, UIComponent component) {
 		UICalendar calendar = (UICalendar) component;
 		String isDayEnabled = (String) calendar.getAttributes().get(
 				"isDayEnabled");
 		if (isDayEnabled != null && isDayEnabled.length() != 0) {
-			return new JSFunction(isDayEnabled);
+			return new JSReference(isDayEnabled); //new JSFunction(isDayEnabled);
 		}
 		
 		return null;
 	}
 	
-	public JSFunction getDayStyleClass(FacesContext context, UIComponent component) {
+	public JSReference getDayStyleClass(FacesContext context, UIComponent component) {
 		UICalendar calendar = (UICalendar) component;
 		String dayStyleClass = (String) calendar.getAttributes().get(
 				"dayStyleClass");
 		if (dayStyleClass != null && dayStyleClass.length() != 0) {
-			return new JSFunction(dayStyleClass);
+			return new JSReference(dayStyleClass);
 		}
 		
 		return null;
