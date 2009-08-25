@@ -44,21 +44,26 @@
                         <para>as a JavaScript function that can be invoked from the JavaScript code</para>
                   </listitem>
             </itemizedlist>
+            
             <para>The mode is chosen with <emphasis>
-                        <property>"timing"</property>
-                  </emphasis> attribute that has the following options:</para>
+                  <property>&quot;timing&quot;</property></emphasis> attribute that has the following options:</para>
             <itemizedlist>
                   <listitem>
-                        <para>"immediate" - applying a query immediately</para>
+                        <para>
+                              <code>immediate</code> — applying a query immediately;
+                        </para>
                   </listitem>
                   <listitem>
-                        <para>"onload" - applying a query when a document is loaded</para>
+                        <para>
+                              <code>onload</code> — applying a query when a document is loaded;
+                        </para>
                   </listitem>
                   <listitem>
-                        <para>onJScall - applying a query by invoked JavaScript function defined with the <emphasis>
-                                    <property>"name"</property>
-                              </emphasis> attribute</para>
+                        <para>
+                              <code>onJScall</code> — applying a query by invoked JavaScript function defined with the <emphasis><property>&quot;name&quot;</property></emphasis> attribute.
+                        </para>
                   </listitem>
+                        
             </itemizedlist>
             <para>Definition of the <emphasis>
                         <property>"name"</property>
@@ -75,9 +80,7 @@
                         <property>"query"</property>
                   </emphasis>attribute.</para>
             <para>Here is an example of how to highlight odd rows in a table:</para>
-            <para>
-                  <emphasis role="bold">Example:</emphasis>
-            </para>
+            
             <programlisting role="CSS">&lt;style&gt;
       .odd {background-color: #FFC;}
 &lt;/style&gt;</programlisting>
