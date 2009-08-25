@@ -109,72 +109,59 @@
                         </thead>
 
                         <tbody>
-
                               <row>
-                                    <entry>"p[a]"</entry>
+                                    <entry>p[a]</entry>
                                     <entry>In a document all "p" tags with "a" tag inside are selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"ul/li"</entry>
+                                    <entry>ul/li</entry>
                                     <entry>All "li" elements of unordered "ul" lists are selected </entry>
                               </row>
-
                               <row>
-                                    <entry>"p.foo[a]"</entry>
+                                    <entry>p.foo[a]</entry>
                                     <entry>All "p" tags with "foo" class and inserted "a" tag are selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"input[@name=bar]"</entry>
+                                    <entry>input[@name=bar]</entry>
                                     <entry>All "input" tags with "name" attribute which value is "bar" are selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"input[@type=radio][@checked]"</entry>
+                                    <entry>input[@type=radio][@checked]</entry>
                                     <entry>All "input" tags with attribute "type"="radio" and attribute value = "chekced" are selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p,span,td"</entry>
+                                    <entry>p,span,td</entry>
                                     <entry>All tag elements "p" or"span" or "td" are selected</entry>
                               </row>
 
                               <row>
-                                    <entry>"p#secret"</entry>
+                                    <entry>p#secret</entry>
                                     <entry>"p" paragraph element with "id" identification = "secret" is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p span"</entry>
+                                    <entry>p span</entry>
                                     <entry>"span" tag is a (direct or non-direct) child of "p" tag. If it's necessary, use "p &gt; span" or "p/span" is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p[@foo^=bar]"</entry>
+                                    <entry>p[@foo^=bar]</entry>
                                     <entry>"p" tag containing "foo" attribute with textual value beginning with "bar" word is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p[@foo$=bar] "</entry>
+                                    <entry>p[@foo$=bar]</entry>
                                     <entry>"p" tag containing "foo" attribute with textual value ending with "bar" word is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p[@foo*=bar] "</entry>
+                                    <entry>p[@foo*=bar]</entry>
                                     <entry>"p" tag with "foo" attribute containing substring "bar" in any place is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p//span "</entry>
+                                    <entry>p//span</entry>
                                     <entry>"span" tag that is a (direct or non-direct) child of "p" tag is selected</entry>
                               </row>
-
                               <row>
-                                    <entry>"p/../span "</entry>
+                                    <entry>p/../span</entry>
                                     <entry>"span" tag that is a grandchild of "p" tag is selected</entry>
                               </row>
-
                         </tbody>
                   </tgroup>
             </table>
@@ -307,10 +294,17 @@
       </section>
       <section>
             <title>Relevant Resources Links</title>
-            <para>More information about jQuery framework and its features you can read in<ulink url="http://jquery.com/">jQuery official documentation</ulink>.</para>
-            <para>How to use jQuery with other libraries see also in<ulink url="http://docs.jquery.com/Using_jQuery_with_Other_Libraries">jQuery official documentation</ulink>.</para>
-
-            <para> Some additional information about usage of component can be found <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/jQuery.jsf?c=jQuery">on its LiveDemo</ulink>. </para>
-
+            <para>
+                  Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/jQuery.jsf?c=jQuery">jQuery page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+            </para>
+            <para>More information about jQuery framework you can find in<ulink url="http://jquery.com/">jQuery official documentation</ulink>.</para>
+            <para>See also:</para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              &quot;<ulink url="http://docs.jquery.com/Using_jQuery_with_Other_Libraries">Using jQuery with Other Libraries</ulink>&quot; in jQuery official documentation.       
+                        </para>
+                  </listitem>
+            </itemizedlist>
       </section>
 </section>
