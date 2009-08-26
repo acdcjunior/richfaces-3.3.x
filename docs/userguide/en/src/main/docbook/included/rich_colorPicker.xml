@@ -285,11 +285,11 @@
             </thead>
             <tbody>
                <row>
-                  <entry>.rich-colorpicker-submit</entry>
+                  <entry>.rich-color-picker-submit</entry>
                   <entry>Defines styles for the "Apply" button</entry>
                </row>
                <row>
-                  <entry>.rich-colorpicker-cancel</entry>
+                  <entry>.rich-color-picker-cancel</entry>
                   <entry>Defines styles for the "Cancel" button</entry>
                </row>
             </tbody>
