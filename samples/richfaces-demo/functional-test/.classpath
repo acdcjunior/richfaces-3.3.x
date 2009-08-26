@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry including="**/*.js|**/*.properties" kind="src" path="src/test/resources"/>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/client-drivers/selenium-java-client-driver/1.0.1/selenium-java-client-driver-1.0.1.jar" sourcepath="/M2_REPO/org/seleniumhq/selenium/client-drivers/selenium-java-client-driver/1.0.1/selenium-java-client-driver-1.0.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/testng/testng/5.8/testng-5.8-jdk15.jar" sourcepath="/M2_REPO/org/testng/testng/5.8/testng-5.8-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar" sourcepath="/M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jboss/test/selenium/1.0-SNAPSHOT/selenium-1.0-SNAPSHOT.jar" sourcepath="/M2_REPO/org/jboss/test/selenium/1.0-SNAPSHOT/selenium-1.0-SNAPSHOT-sources.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
