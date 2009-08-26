@@ -1,6 +1,0 @@
-org.jboss.test.selenium
-org.jboss.test.selenium.actions
-org.jboss.test.selenium.dom
-org.jboss.test.selenium.utils
-org.jboss.test.selenium.utils.array
-org.jboss.test.selenium.waiting
