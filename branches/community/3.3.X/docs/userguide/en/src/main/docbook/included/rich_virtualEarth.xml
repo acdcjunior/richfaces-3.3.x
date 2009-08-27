@@ -60,7 +60,7 @@
                         <para>
                               <emphasis>
                                     <property>"dashboardSize"</property>
-                              </emphasis> specifies a type of a rendered map (Normal, Small, Tiny) </para>
+                              </emphasis> specifies a type of a rendered map (<code>Normal</code>, <code>Small</code>, <code>Tiny</code>) </para>
                   </listitem>
             </itemizedlist>
             <para> For example, the city of Paris is shown after rendering with the following initial settings: <code>lat = "48.833"</code> , <code>lng = "2.40"</code> and <code>zoom = "11"</code> . </para>
@@ -89,21 +89,21 @@
                   <listitem>
                         <para>
                               <emphasis>
-                                    <property>"onmouseover"</property>
+                                    <code>onmouseover</code>
                               </emphasis>
                         </para>
                   </listitem>
                   <listitem>
                         <para>
                               <emphasis>
-                                    <property>"onclick"</property>
+                                    <code>onclick</code>
                               </emphasis>
                         </para>
                   </listitem>
                   <listitem>
                         <para>
                               <emphasis>
-                                    <property>"onmouseout"</property>
+                                    <code>onmouseout</code>
                               </emphasis>
                         </para>
                   </listitem>
