@@ -166,7 +166,7 @@
                   </tgroup>
             </table>
             <table>
-                  <title> Classes names that define a component appearance </title>
+                  <title>Classes names that define a component appearance </title>
                   <tgroup cols="2">
                         <thead>
                               <row>
@@ -189,7 +189,15 @@
       <section>
             <title>Relevant Resources Links</title>
             <para>
-                  <ulink url="http://msdn2.microsoft.com/en-us/library/bb429619.aspx"> Here </ulink> you can found additional information about Microsoft <property>Virtual Earth map</property>. </para>
-            <para> Some additional information about usage of component can be found <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/virtualEarth.jsf?c=virtualEarth">on its LiveDemo page</ulink>.</para>
+                  Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/virtualEarth.jsf?c=virtualEarth">VirtualEarth page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+            </para>
+            
+            <para>Useful articles:</para>
+            <itemizedlist>
+                  <listitem>
+                        <para><ulink url="http://msdn2.microsoft.com/en-us/library/bb429619.aspx">Bing Map Control SDK 6.2</ulink> provides invormation about Microsoft interactive Earth map.</para>
+                  </listitem>
+            </itemizedlist>
+
       </section>
 </section>
