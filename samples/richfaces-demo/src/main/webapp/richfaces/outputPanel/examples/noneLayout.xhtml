@@ -44,7 +44,7 @@
 					</h:form>
 				</a4j:outputPanel>
 				
-				<h:outputText id="out1" rendered="#{not empty rsBean.text1}" value="Approved Text: #{rsBean.text2}" />
+				<h:outputText id="out1" rendered="#{not empty rsBean.text1}" value="Approved Text: #{rsBean.text1}" />
 
 			</a4j:outputPanel>
 
@@ -59,7 +59,7 @@
 				<a4j:outputPanel layout="block">
 					<h:form>
 						<h:outputText style="font-weight: bold;" value="Enter Text: "/>
-						<h:inputText id="text2" label="text1" value="#{rsBean.text2}">
+						<h:inputText id="text2" label="text2" value="#{rsBean.text2}">
 							<f:validateLength maximum="10"/>
 							<a4j:support event="onkeyup" reRender="out2" />
 						</h:inputText>
