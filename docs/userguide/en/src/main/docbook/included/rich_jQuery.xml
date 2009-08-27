@@ -87,7 +87,7 @@
 
             <programlisting role="XML">&lt;rich:dataTable id="customList" ...&gt;
        ...
-      &lt;/rich:table&gt;
+&lt;/rich:dataTable&gt;
 &lt;rich:jQuery selector="#customList tr:odd" timing="onload" query="addClass(odd)" /&gt;</programlisting>
             <para>The <emphasis>
                         <property>"selector"</property>
