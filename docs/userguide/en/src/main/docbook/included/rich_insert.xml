@@ -49,8 +49,8 @@
                   to your names, which are used by the <ulink url="https://jhighlight.dev.java.net/">JHighlight</ulink> library.
             </para>
             <para>
-                  The <property>&quot;errorContent&quot;</property> attribute defines the alternative content that will be shown in case the <emphasis role="bold"><property>&lt;rich:insert&gt;</property></emphasis> cannot read the resource defined with <property>&quot;src&quot;</property> attribute. 
-                  If <property>&quot;errorContent&quot;</property> attribute is not defined, the component shown the actual error message in the place where the content is expected. 
+                  The <emphasis><property>&quot;errorContent&quot;</property></emphasis> attribute defines the alternative content that will be shown in case the <emphasis role="bold"><property>&lt;rich:insert&gt;</property></emphasis> cannot read the resource defined with <emphasis><property>&quot;src&quot;</property></emphasis> attribute. 
+                  If <emphasis><property>&quot;errorContent&quot;</property></emphasis> attribute is not defined, the component shown the actual error message in the place where the content is expected. 
             </para>
       </section>
       <section>
