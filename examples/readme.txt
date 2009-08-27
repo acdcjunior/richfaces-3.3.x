@@ -28,7 +28,7 @@ To run the application you need to deploy it on the server by copying the photoa
 To explore the application start your favorite browser and point it to http://localhost:8080/photoalbum.
 In order to explore, run and deploy the application in Eclipse IDE build it with the
 
- mvn clean install eclipse:clean eclipse:eclipse eclipse:eclipse command 
+ mvn clean install eclipse:clean eclipse:eclipse command 
  
 and import the project to the IDE.  More details you can find  in the JBoss Server Manager Reference Guide (http://download.jboss.org/jbosstools/nightly-docs/en/as/html/index.html)
 
