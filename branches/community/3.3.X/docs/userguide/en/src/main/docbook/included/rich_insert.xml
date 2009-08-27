@@ -31,19 +31,12 @@
             <para>If <emphasis>
                         <property>"highlight"</property>
                   </emphasis> attribute is defined and <ulink url="https://jhighlight.dev.java.net/"> JHighlight</ulink> open source library is in the classpath, the text from the file is formated and colorized.</para>
-            <para>An example is placed below.</para>
-            <para>
-                  <emphasis role="bold">Example:</emphasis>
-            </para>
-            <programlisting role="XML">...
-&lt;rich:insert  src="/pages/sourcePage.xhtml" highlight="xhtml"/&gt;
-...</programlisting>
+            <para>An example is placed below:</para>
+            <programlisting role="XML">&lt;rich:insert  src="/pages/sourcePage.xhtml" highlight="xhtml"/&gt;</programlisting>
 
-            <para>The result of using <emphasis role="bold">
-                        <property>&lt;rich:insert&gt;</property>
-                  </emphasis> component is shown on the picture:</para>
+            <para>The result of using <emphasis role="bold"><property>&lt;rich:insert&gt;</property></emphasis> component is shown on the picture:</para>
             <figure>
-                  <title>Source code highlighting</title>
+                  <title>Source code highlighting with the help of &lt;rich:Insert&gt;></title>
                   <mediaobject>
                         <imageobject>
                               <imagedata fileref="images/insert_init.png"/>
@@ -53,7 +46,12 @@
             <para>The <emphasis role="bold">
                         <property>&lt;rich:insert&gt;</property>
                   </emphasis> component provides the same functionality as <ulink url="https://jhighlight.dev.java.net/">JHighlight</ulink>. Thus, all names of highlight style classes for source code of particular language could be changed
-                  to your names, which are used by the <ulink url="https://jhighlight.dev.java.net/">JHighlight</ulink> library.</para>
+                  to your names, which are used by the <ulink url="https://jhighlight.dev.java.net/">JHighlight</ulink> library.
+            </para>
+            <para>
+                  The <property>&quot;errorContent&quot;</property> attribute defines the alternative content that will be shown in case the <emphasis role="bold"><property>&lt;rich:insert&gt;</property></emphasis> cannot read the resource defined with <property>&quot;src&quot;</property> attribute. 
+                  If <property>&quot;errorContent&quot;</property> attribute is not defined, the component shown the actual error message in the place where the content is expected. 
+            </para>
       </section>
       <section>
             <title>Reference Data</title>
