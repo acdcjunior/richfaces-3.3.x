@@ -237,6 +237,7 @@
 	<section id="ajaxMiscellaneous" xreflabel="ajaxMiscellaneous">
 		<?dbhtml filename="ajaxMiscellaneous.html"?>
 		<title>Ajax Miscellaneous</title>
+		<para>A collection of Ajax Miscellaneous components</para>
 		<?forseChanks?>
 		&a4j_page;
 		&a4j_portlet;
@@ -379,6 +380,7 @@
 	<section id="richMiscellaneous" xreflabel="richMiscellaneous">
 		<?dbhtml filename="richMiscellaneous.html"?>
 		<title>Rich Miscellaneous</title>
+		<para>A collection of Ajax Miscellaneous components</para>
 		<?forseChanks?>
 		&rich_componentControl;
 		&rich_effect;
