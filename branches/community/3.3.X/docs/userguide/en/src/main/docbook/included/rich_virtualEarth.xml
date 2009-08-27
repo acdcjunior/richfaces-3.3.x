@@ -88,23 +88,17 @@
             <itemizedlist>
                   <listitem>
                         <para>
-                              <emphasis>
-                                    <code>onmouseover</code>
-                              </emphasis>
+                              <code>onmouseover</code>
                         </para>
                   </listitem>
                   <listitem>
                         <para>
-                              <emphasis>
-                                    <code>onclick</code>
-                              </emphasis>
+                              <code>onclick</code>
                         </para>
                   </listitem>
                   <listitem>
                         <para>
-                              <emphasis>
-                                    <code>onmouseout</code>
-                              </emphasis>
+                              <code>onmouseout</code>
                         </para>
                   </listitem>
                   <listitem>
@@ -163,7 +157,7 @@
                               <row>
                                     <entry>Class name</entry>
                                     <entry>Description</entry>
-                                    <entrty>Skin parameter</entrty>
+                                    <entry>Skin parameter</entry>
                                     <entry>CSS property</entry>
                               </row>
                         </thead>
@@ -186,7 +180,7 @@
             <para>Useful articles:</para>
             <itemizedlist>
                   <listitem>
-                        <para><ulink url="http://msdn2.microsoft.com/en-us/library/bb429619.aspx">Bing Map Control SDK 6.2</ulink> provides invormation about Microsoft interactive Earth map.</para>
+                        <para><ulink url="http://msdn2.microsoft.com/en-us/library/bb429619.aspx">Bing Map Control SDK 6.2</ulink> at MSDN portal provides invormation about Microsoft interactive Earth map.</para>
                   </listitem>
             </itemizedlist>
 
