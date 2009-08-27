@@ -91,7 +91,7 @@ public List<Shelf> getPredefinedShelves() {
                         for the <emphasis role="bold"><property>&lt;rich:tree&gt;</property></emphasis>. 
                         The values for nodes to render are passed directly into the corresponding adaptor 
                         and the component performs all the necessary iterative work 
-                        (vizit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/treeNodesAdaptor.jsf?c=treeNodesAdaptor">&lt;rich:treeNodesAdaptor&gt; page</ulink> on the RichFacesLiveDemo for more details).
+                        (Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/treeNodesAdaptor.jsf?c=treeNodesAdaptor">&lt;rich:treeNodesAdaptor&gt; page</ulink> on the RichFacesLiveDemo for more details).
                   </para>
                   
                   <para>
@@ -367,7 +367,7 @@ public void processDrop(DropEvent dropEvent) {
                         </mediaobject>
                   </figure>
                   <para>
-                        vizit following pages at RichFaces Live Demo for more information, examples and sources on the components used in the application and described in this chapter:
+                        Visit following pages at RichFaces Live Demo for more information, examples and sources on the components used in the application and described in this chapter:
                   </para>
                   
                   <itemizedlist>
