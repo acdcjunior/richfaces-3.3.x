@@ -6,10 +6,44 @@
 	<para>Context menu is made for the following UI controls:</para>
  
 	<itemizedlist>
-        <listitem><para>Album</para></listitem>
-        <listitem><para>Image</para></listitem>
-        <listitem><para>Self</para></listitem>
-        <listitem><para>User</para></listitem>
+		<listitem>
+			<para><property>Album</property> menu item in navigation menu/Album thumbnail</para>
+<figure>
+	<title>Context Menu for </title>
+	<mediaobject>
+		<imageobject>
+			<imagedata fileref="images/cm_album.png"/>
+		</imageobject>
+	</mediaobject>
+</figure>
+			
+
+		</listitem>
+        <listitem><para>Image thumbnail</para>
+        
+        
+        <figure>
+        	<title>Image thumbnail context menu</title>
+        	<mediaobject>
+        		<imageobject>
+        			<imagedata fileref="images/cm_image.png"/>
+        		</imageobject>
+        	</mediaobject>
+        </figure>
+        	
+        </listitem>
+		
+		<listitem><para><property>Shelf</property> menu item in navigation menu</para>
+        	<figure>
+        		<title>Context Menu for Shelf menu item </title>
+        		<mediaobject>
+        			<imageobject>
+        				<imagedata fileref="images/cm_shelf.png"/>
+        			</imageobject>
+        		</mediaobject>
+        	</figure>   
+        </listitem>
+   
      </itemizedlist> 
         <para>   
             Let's have a look at the context menu for single image is constructed.
@@ -87,7 +121,7 @@
 	
 	...]]></programlisting> 
 	
-        <para>The key attribute of <emphasis role="bold"><property>&lt;contextMenu&gt;</property></emphasis> is <emphasis><property>&quot;attachTo&quot;</property></emphasis> that specifies for which control the context menu is displayed. As you can see this attribute has <code>#{mediaOutput}</code> as its value(<code> attachTo="#{mediaOutput}"</code> so this way the id of the current image is passed to <emphasis role="bold"><property>&lt;rich:contexMenu&gt;</property></emphasis> and this is how it know what photo is affected by user actions. </para>
+        <para>The key attribute of <emphasis role="bold"><property>&lt;contextMenu&gt;</property></emphasis> is <emphasis><property>&quot;attachTo&quot;</property></emphasis> that specifies for which control the context menu is displayed. As you can see this attribute has <code>#{mediaOutput}</code> as its value(<code> attachTo="#{mediaOutput}"</code> so this way the id of the current image is passed to <emphasis role="bold"><property>&lt;rich:contexMenu&gt;</property></emphasis> and this is how it knows what photo is affected by user actions. </para>
        
 
 </section>
