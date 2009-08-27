@@ -76,14 +76,7 @@
                   </mediaobject>
             </figure>
             <para>Code for this example is placed below:</para>
-            <para>
-                  <emphasis role="bold">Example:</emphasis>
-            </para>
-            <programlisting role="XML">...
-&lt;rich:virtualEarth  style="width:800px;" id="vm" lat="48.833" lng="2.40" 
-                                     dashboardSize="Normal"  zoom="11" mapStyle="Hybrid" var="map" /&gt;
-...
-</programlisting>
+            <programlisting role="XML">&lt;rich:virtualEarth  style="width:800px;" id="vm" lat="48.833" lng="2.40" dashboardSize="Normal"  zoom="11" mapStyle="Hybrid" var="map" /&gt;</programlisting>
 
             <para> To set all these parameters and perform some activity (Zoom In/Out etc.) is possible with your JavaScript, i.e. declare a name of an object on a <property>map</property> in the <emphasis>
                         <property>"var"</property>
@@ -121,17 +114,15 @@
 
             <note>
                   <para> Virtual Earth does not support XHTML format of the page. Thus, if you use Facelets and JSF 1.2, do not forget to put the following tags somewhere on the page: </para>
-                  <programlisting role="XML">...
-&lt;f:view contentType="text/html"&gt;...&lt;/f:view&gt;
-...
-</programlisting>
+                  <programlisting role="XML">&lt;f:view contentType="text/html"&gt;...&lt;/f:view&gt;</programlisting>
             </note>
 
       </section>
       <section>
             <title>Reference Data</title>
             <para>
-                  <ulink url="&tlddoc;rich/virtualEarth.html">Table of &lt;rich:virtualEarth&gt; attributes</ulink>. </para>
+                  <ulink url="&tlddoc;rich/virtualEarth.html">Table of &lt;rich:virtualEarth&gt; attributes</ulink>.
+            </para>
             <table>
                   <title>Component Identification Parameters</title>
                   <tgroup cols="2">
