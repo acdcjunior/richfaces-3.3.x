@@ -73,7 +73,7 @@
 &lt;/rich:dataTable&gt;
 ...
 </programlisting>
-      <para>And representation without a grouping:</para>
+      <para>And here is a representation without a grouping:</para>
 
       <para>
          <emphasis role="bold">Example:</emphasis>
@@ -87,10 +87,10 @@
 		&lt;rich:column breakBefore="true"&gt;
 				&lt;h:outputText value="#{cap.state}"/&gt;
 		&lt;/rich:column&gt;
-		&lt;rich:column breakBefore="true"&gt;
+		&lt;rich:column&gt;
        			&lt;h:outputText value="#{cap.name}"/&gt;
 		&lt;/rich:column&gt;
-		&lt;rich:column &gt;
+		&lt;rich:column&gt;
 				&lt;h:outputText value="#{cap.timeZone}"/&gt;
 		&lt;/rich:column&gt;
 &lt;/rich:dataTable&gt;
@@ -110,35 +110,48 @@
             </imageobject>
          </mediaobject>
       </figure>
-      <para>It's also possible to use the component for output of complex headers in a table. For example adding
+      <para>It&apos;s also possible to use the component for output of complex headers in a table. For example, adding
      of a complex header to a facet for the whole table looks the following way:</para>
 
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-     <programlisting role="XML">...
-&lt;f:facet name="header"&gt;
-		&lt;rich:columnGroup&gt;
-				&lt;rich:column rowspan="2"&gt;
-               		&lt;h:outputText value="State Flag"/&gt;
-				&lt;/rich:column&gt;
-				&lt;rich:column colspan="3"&gt;
-		       			&lt;h:outputText value="State Info"/&gt;
-				&lt;/rich:column&gt;
-		       	&lt;rich:column breakBefore="true"&gt;
-						&lt;h:outputText value="State Name"/&gt;
-		       	&lt;/rich:column&gt;
-		       	&lt;rich:column&gt;
-		       			&lt;h:outputText value="State Capital"/&gt;
-		       	&lt;/rich:column&gt;
-		       	&lt;rich:column&gt;
-		       			&lt;h:outputText value="Time Zone"/&gt;
-		        &lt;/rich:column&gt;
-		&lt;/rich:columnGroup&gt;
-&lt;/f:facet&gt;
-...
-</programlisting>
-      <para>Generated on a page as:</para>
+   	<programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
+		<f:facet name="header">
+	        <rich:columnGroup>
+	        	<rich:column rowspan="2">
+	            	<h:outputText value="State Flag"/>
+	            </rich:column>
+	            <rich:column colspan="3">
+	            	<h:outputText value="State Info"/>
+	            </rich:column>
+	            <rich:column breakBefore="true">
+	            	<h:outputText value="State Name"/>
+	            </rich:column>
+	            <rich:column>
+	            	<h:outputText value="State Capital"/>
+	            </rich:column>
+	            <rich:column>
+	            	<h:outputText value="Time Zone"/>
+				</rich:column>
+	        </rich:columnGroup>
+		</f:facet>
+        <rich:column>
+                <h:graphicImage value="#{cap.stateFlag}"/>
+        </rich:column>
+        <rich:column>
+                <h:outputText value="#{cap.state}"/>
+        </rich:column>
+        <rich:column>
+                <h:outputText value="#{cap.name}"/>
+        </rich:column>
+        <rich:column>
+                <h:outputText value="#{cap.timeZone}"/>
+        </rich:column>
+</rich:dataTable>
+...]]></programlisting>
+      <para>The generated table on a page looks as follows:</para>
       <figure>
          <title>
             <emphasis role="bold">
@@ -191,15 +204,18 @@
             </tbody>
          </tgroup>
       </table>
-							You can find all necessary information about style classes redefinition in 
+   	<para>Custom style classes as well as skin parameters for  <emphasis role="bold">
+   		<property>&lt;rich:columnGroup&gt;</property></emphasis> are the same as for the  <link linkend="dataTableRefData"><emphasis role="bold">
+   			<property>&lt;rich:dataTable&gt;</property></emphasis> component.</link></para>
+    <para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
         <title>Relevant Resources Links</title>
-        <para>
-         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=columnGroup">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+   	<para>On the
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=columnGroup">component LiveDemo page</ulink> you can find the example of the <emphasis role="bold">
             <property>&lt;rich:columnGroup&gt;</property>
-         </emphasis> usage and sources for the given example. </para>
+         </emphasis> usage and sources as well.</para>
         </section>
 </section>
