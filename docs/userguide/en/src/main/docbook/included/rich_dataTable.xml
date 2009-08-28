@@ -125,7 +125,7 @@
       You can find information how to remove header's gradient <ulink url="http://wiki.jboss.org/wiki/RichFacesDataTableBackgroundOut"> in the "How to remove rich:dataTable header background " article</ulink>.
     </para>
   </section>
-   <section>
+   <section id="dataTableRefData">
       <title>Reference Data</title>
       <para>
          <ulink url="&tlddoc;rich/dataTable.html">Table of 
