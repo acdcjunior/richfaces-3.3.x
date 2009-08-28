@@ -46,7 +46,7 @@
    
      </itemizedlist> 
         <para>   
-            Let's have a look at the context menu for single image is constructed.
+            Let's have a look at how the context menu for a single image is constructed.
         </para>
         
         <programlisting role="XML"><![CDATA[...

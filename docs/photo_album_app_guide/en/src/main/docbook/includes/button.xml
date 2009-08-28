@@ -51,7 +51,7 @@
 		The button consists of several parts: 
 	</para>
 	<itemizedlist>
-		<listitem><para>2 images (pressed and not pressed)</para></listitem>
+		<listitem><para>2 images (pressed and not pressed states)</para></listitem>
 		<listitem><para>&lt;div&gt; element that displays the button&apos;s text </para></listitem>
 		<listitem><para><emphasis role="bold"><property>&lt;a4j:commandButton&gt;</property></emphasis> that sends Ajax request to the server</para></listitem>
 		
@@ -66,11 +66,11 @@
 <richx:commandButton actionListener="#{authenticator.register(user)}" reRender="mainform, headerPanel" value="#{messages['user.register']}" />
 ...]]></programlisting> 
 	<para>
-		We can pass to the <emphasis role="bold"><property>&lt;richx:commandButton&gt;</property></emphasis>  all  required attributes, in the example only  actionListener,  reRender and  value are passed.
+		We can pass to the <emphasis role="bold"><property>&lt;richx:commandButton&gt;</property></emphasis>  all  required attributes, in the example only  <property>actionListener</property>,  <property>reRender</property> and  value are passed.
 	</para>
 	<para>
 		<emphasis role="bold"><property>&lt;richx:commandButton&gt;</property></emphasis>
-		 is a custom tag that is declared in the photoalbum-taglib.xml tag library:
+		is a custom tag that is declared in the <code>photoalbum-taglib.xml</code> tag library:
 	</para>
 	<programlisting role="XML"><![CDATA[...
 <?xml version="1.0"?>
@@ -179,6 +179,6 @@ xmlns:richx="http://richfaces.org/richx">
 
 ...]]></programlisting> 
 	<para>
-		You can find more infromation about Facelets, custom tags, taglibs, Facelets tag handlers and Facelets templates here.
+		You can find more infromation about Facelets, custom tags, taglibs, Facelets tag handlers and Facelets templates <ulink url="http://java.sun.com/javaee/6/docs/tutorial/doc/giepx.html" ></ulink> here.
 	</para>
 </section>
