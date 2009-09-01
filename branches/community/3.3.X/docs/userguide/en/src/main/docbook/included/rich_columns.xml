@@ -67,7 +67,7 @@
                     <para> The <emphasis role="bold">
                                         <property>&lt;rich:columns&gt;</property>
                               </emphasis> component gets a list from data model and outputs
-                              corresponding set of columns inside <emphasis role="bold">
+                              a corresponding set of columns inside <emphasis role="bold">
                                         <property>&lt;rich:dataTable&gt;</property>
                               </emphasis> on a page. It is possible to use <emphasis>
                                         <property>"header"</property>
@@ -85,22 +85,23 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap"&gt;
-        &lt;rich:columns value="#{capitalsBean.labels}" var="col" index="index"&gt;
-                &lt;f:facet name="header"&gt;
-                        &lt;h:outputText value="#{col.text}" /&gt;
-                &lt;/f:facet&gt;
-	     &lt;h:outputText value="#{cap[index]}" /&gt;
-	     &lt;f:facet name="footer"&gt;
-	             &lt;h:outputText value="#{col.text}" /&gt;
-	     &lt;/f:facet&gt;
-        &lt;/rich:columns&gt;	
-&lt;/rich:dataTable&gt;
-...</programlisting>
+                    <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{dataTableScrollerBean.model}" var="model" width="750">
+			<rich:columns value="#{dataTableScrollerBean.columns}" var="columns"
+				index="ind" id="column#{ind}"> 
+				<f:facet name="header">
+					<h:outputText value="#{columns.header}" />
+				</f:facet>
+			
+				<h:outputText value="#{model[ind].model} " />
+				<h:outputText value="#{model[ind].mileage} miles " />
+				<h:outputText value="#{model[ind].price}$" />		
+			</rich:columns>	
+</rich:dataTable>                    	
+...]]></programlisting>
                     <para> The <emphasis>
                                         <property>"columns"</property>
-                              </emphasis> attribute defines the count of columns. </para>
+                              </emphasis> attribute defines the count of columns.</para>
                     <para> The <emphasis>
                                  <property>"rowspan"</property>
                               </emphasis> attribute defines the number of rows to be displayed. If
@@ -113,68 +114,19 @@
                     <para> The <emphasis>
                                         <property>"end"</property>
                               </emphasis> attribute contains the last iteration item. </para>
-                    <para> With the help of the attributes described below you can customize the
+                    <para> With the help of the attributes described above you can customize the
                               output, i.e. define which columns and how many rows appear on a page. </para>
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap"&gt;
-        &lt;rich:columns value="#{capitalsBean.labels}" var="col" index="index" rowspan="0" columns="3" begin="1" end="2"&gt;
-                &lt;f:facet name="header"&gt;
-                        &lt;h:outputText value="#{col.text}" /&gt;
-                &lt;/f:facet&gt;
-                &lt;h:outputText value="#{cap[index]}" /&gt;
-        &lt;/rich:columns&gt;	
-&lt;/rich:dataTable&gt;
-...</programlisting>
-                    <para> In the example below, columns from first to second and all rows are shown
-                              in the <emphasis role="bold">
-                                        <property>&lt;rich:dataTable&gt;</property>
-                              </emphasis> . </para>
-                    <para>The result is:</para>
-                    <figure>
-                              <title> Generated <emphasis role="bold">
-                                                  <property>&lt;rich:columns&gt;</property>
-                                        </emphasis> with columns from first to second and all rows </title>
-                              <mediaobject>
-                                        <imageobject>
-                                                  <imagedata fileref="images/columns2.png"/>
-                                        </imageobject>
-                              </mediaobject>
-                    </figure>
+               
                     <para> The <emphasis role="bold">
                                         <property>&lt;rich:columns&gt;</property>
                               </emphasis> component does not prevent to use <emphasis role="bold">
                                         <property>&lt;rich:column&gt;</property>
-                              </emphasis> . In the following example one column renders in any way
-                              and another columns could be picked from the model. </para>
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{rowBean.rows}" var="row"&gt;
-        &lt;rich:column&gt;
-                &lt;h:outputText value ="#{row.columnValue}"/&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:columns value="#{colBean.columns}" var="col"&gt;
-                &lt;f:facet name="header"&gt;
-                        &lt;h:outputText value="#{col.header}"/&gt;
-                &lt;/f:facet&gt;
-                &lt;h:outputText value="#{row.columnValue}"/&gt;
-                &lt;f:facet name="footer"&gt;
-                        &lt;h:outputText value="#{col.footer}"/&gt;
-                &lt;/f:facet&gt;
-        &lt;/rich:columns&gt;
-&lt;/rich:dataTable&gt;	
-...</programlisting>
-                    <para>
-                              Now, you can use a few <emphasis role="bold">
-            <property>&lt;rich:columns&gt;</property>
-         </emphasis> together with <emphasis role="bold">
-            <property>&lt;rich:column&gt;</property>
-         </emphasis> within the one table:
-                    </para>
+                              </emphasis>. In the following example one column renders in any way
+                              and another columns are picked from the model.</para>
+                   
+   	<para>
+   		<emphasis role="bold">Example:</emphasis>
+   	</para>
                     <programlisting role="XML">...
 &lt;rich:dataTable value="#{dataTableScrollerBean.model}" var="model" width="500px" rows="5"&gt;
 		&lt;f:facet name="header"&gt;
@@ -201,79 +153,17 @@
 &lt;/rich:dataTable&gt;
 ...                              
                     </programlisting>
-
-                    <para> In order to group columns with text information into one row, use the <emphasis>
-                                        <property>"colspan"</property>
-                              </emphasis> attribute, which is similar to an HTML one. In the
-                              following example the third column contains 3 columns. In addition,
-                              it's necessary to specify that the next column begins from
-                              the first row with the help of the <code>breakBefore =
-                                        "true"</code> . </para>
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{columns.data1}" var="data"&gt;
-        &lt;rich:column&gt;
-                &lt;h:outputText value="#{column.Item1}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:column&gt;
-                &lt;h:outputText value="#{column.Item2}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:column&gt;
-                &lt;h:outputText value="#{column.Item3}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:columns columns="3" colspan="3" breakBefore="true"&gt;	
-                &lt;h:outputText value="#{data.str0}" /&gt;
-        &lt;/rich:columns&gt;
-&lt;/rich:dataTable&gt;
-...</programlisting>
-
-                    <!--para>As a result the following structure is rendered:</para>
-			<figure>
-			<title>&lt;rich:column&gt; modified with colspan and breakbefore attributes</title>
-			<mediaobject> 
-			<imageobject>
-			<imagedata fileref="images/column3.png"/>
-			</imageobject>
-			</mediaobject>
-			</figure-->
-
-                    <para> The same way is used for <property>columns</property> grouping with the <emphasis>
-                                        <property>"rowspan"</property>
-                              </emphasis> attribute that is similar to an HTML. The only thing to
-                              add in the example is an instruction to move onto the next row for
-                              each next after the second column. </para>
-                    <para>
-                              <emphasis role="bold">Example:</emphasis>
-                    </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{columns.data1}" var="data"&gt;
-        &lt;rich:columns columns="2" rowspan="3"&gt;	
-                &lt;h:outputText value="#{data.str0}" /&gt;
-        &lt;/rich:columns&gt;
-        &lt;rich:column&gt;
-                &lt;h:outputText value="#{column.Item1}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:column  breakBefore="true"&gt;
-                &lt;h:outputText value="#{column.Item2}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:column  breakBefore="true"&gt;
-                &lt;h:outputText value="#{column.Item3}" /&gt;
-        &lt;/rich:column&gt;
-&lt;/rich:dataTable&gt;
-...
-</programlisting>
-
-                    <!--para>As a result:</para>
-			<figure>
-			<title>&lt;rich:column&gt; generated with rowspan attribute</title>
-			<mediaobject> 
-			<imageobject>
-			<imagedata fileref="images/column4.png"/>
-			</imageobject>
-			</mediaobject>
-			</figure-->
+   	
+   	<para>The grouping some columns into one column or one row with the help of 
+   						the <emphasis>
+   							<property>&quot;colspan&quot;</property>,
+   						</emphasis> <emphasis>
+   							<property>&quot;rowspan&quot;</property>
+   						</emphasis> and <emphasis>
+   							<property>&quot;breakBefore&quot;</property></emphasis> attributes can be perform for <emphasis role="bold">
+   								<property>&lt;rich:columns&gt;</property></emphasis> the same way as for the
+   						<link linkend="col_grouping"><emphasis role="bold">
+   								<property>&lt;rich:columnt&gt;</property></emphasis> component</link>.</para>
                     <note>
                               <title>Note:</title>
                               <para> The <emphasis role="bold">
@@ -407,17 +297,20 @@
                                                   </row>
                                         </tbody>
                               </tgroup>
-                    </table>
-							You can find all necessary information about style classes redefinition in 
+      </table>
+   	<para>Custom style classes as well as skin parameters for  <emphasis role="bold">
+   		<property>&lt;rich:columns&gt;</property></emphasis> are the same as for the  <link linkend="dataTableRefData"><emphasis role="bold">
+   			<property>&lt;rich:dataTable&gt;</property></emphasis> component.</link></para>
+	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
                     <title>Relevant Resources Links</title>
-                    <para>
-                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=columns"> On the component LiveDemo page </ulink> you can found some additional information
-                              for <emphasis role="bold">
+                    <para>On the  
+                    	<ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/dataTable.jsf?c=columns">component LiveDemo page </ulink> 
+                    	you can find an additional information on the <emphasis role="bold">
                                         <property>&lt;rich:columns&gt;</property>
-                              </emphasis> component usage. </para>
+                              </emphasis> component usage.</para>
           </section>
 </section>
