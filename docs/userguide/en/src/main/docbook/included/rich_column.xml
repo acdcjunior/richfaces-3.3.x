@@ -98,7 +98,7 @@
                                         </imageobject>
                               </mediaobject>
                     </figure>
-                    <para>Now, in order to group columns with text information into one row in one
+                    <para id="col_grouping">Now, in order to group columns with text information into one row in one
                               column with a flag, use the <emphasis>
                                         <property>"colspan"</property>
                               </emphasis> attribute, which is similar to an HTML one, specifying
