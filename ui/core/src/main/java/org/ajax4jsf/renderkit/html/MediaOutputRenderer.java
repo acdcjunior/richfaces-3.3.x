@@ -128,6 +128,8 @@ public class MediaOutputRenderer extends RendererBase {
         }
 		writer.writeURIAttribute(uriAttribute,uri,"uri");
         getUtils().encodeAttributesFromArray(context,component,HTML.PASS_THRU_STYLES);
+        getUtils().encodeAttribute(context, component, HTML.TYPE_ATTR);
+        getUtils().encodeAttribute(context, component, "classid");
 		getUtils().encodePassThru(context,mmedia);
 	}
 
