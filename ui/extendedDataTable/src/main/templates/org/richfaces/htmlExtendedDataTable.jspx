@@ -54,17 +54,16 @@
 		>
 
 	<div id="#{clientId}:od" class="extdt-outerdiv"
-		style="width:100%; height:100%;overflow-y:hidden;overflow-x:auto;"
+		style="width:100%; height:100%;overflow: hidden;"
 		>
 		<div id="#{clientId}:dataTable_indicator" class="drgind_fly drgind_default drag_indicator" style="display: none;" >
 	        <f:call name="encodeNamespace" />
-	        
-	        <script type="text/javascript">
-	            //<![CDATA[
-	            #{this:encodeDragDropChildScripts(context, component)};
-	            //]]>
-	        </script>
 	    </div>
+        <script type="text/javascript">
+            //<![CDATA[
+            #{this:encodeDragDropChildScripts(context, component)};
+            //]]>
+        </script>
 	    <span id="#{clientId}:dataTable_indicator_span" />
 		<div id="#{clientId}:innerd" class="extdt-innerdiv" style="height:100%;width:100%;">
 		<div id="#{clientId}:cs" class="extdt-hsplit" style="display: none;"/>
@@ -82,7 +81,7 @@
 			<tbody>
 				<tr>
 					<td colspan="#{columnsCount}" style="padding: 0px;">
-						<div id="#{clientId}:sd" class="extdt-content" style="height:50px;width:100%;">
+						<div id="#{clientId}:sd" class="extdt-content" style="height:50px;width:100%;overflow:hidden;">
 							<jsp:scriptlet>
 				     		<![CDATA[
 								if (component.getRowCount() <= 0) {
@@ -103,7 +102,7 @@
 								}
 							]]>	
 							</jsp:scriptlet>
-							<table id="#{clientId}:n" width="100%"
+							<table id="#{clientId}:n" style="width:100%; height:100%;overflow: hidden;"
 					    				class="extdt-table-layout rich-table #{component.attributes['styleClass']}"
 			  						>
 								<f:call name="utils.encodePassThruWithExclusions">

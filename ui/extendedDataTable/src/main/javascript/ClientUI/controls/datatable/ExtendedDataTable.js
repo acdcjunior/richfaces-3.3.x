@@ -298,9 +298,7 @@ ExtendedDataTable.DataTable = Class.create({
         this.footer = $(this.id +":footer");
 		if (ClientUILib.isOpera) {
 			//no overflow-x nor overflow-y in Opera
-			this.scrollingDiv.setStyle({overflow: 'scroll',
-				width: this.mainDiv.getWidth()
-			});
+			this.scrollingDiv.setStyle({width: this.mainDiv.getWidth()});
 			this.table.setStyle({width: this.mainDiv.getWidth()});
 		};
 		
@@ -401,7 +399,10 @@ ExtendedDataTable.DataTable = Class.create({
         cols[columnsNumber-1].width = null;
         cols[cols.length-1].width = null;
 		var newHeight = mainDivHeight - header.getHeight() - footerHeight - 2;
-		newHeight -= this.header.getCaptionHeight();
+		var caption = header.getCaption()
+		if (caption && caption.tagName == "caption") {
+			newHeight -= this.header.getCaptionHeight();
+		}
 		scrollingDiv.setStyle('height:'+ newHeight +'px;');
 		this._redrawTable(table);
 		header.adjustSeparators();
