@@ -1,12 +1,32 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.ajaxRegion;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
-import org.jboss.test.selenium.waiting.Condition;
-import org.jboss.test.selenium.waiting.Not;
-import org.jboss.test.selenium.waiting.Wait;
+import org.jboss.test.selenium.dom.Event;
+import org.jboss.test.selenium.waiting.*;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -14,142 +34,198 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class AjaxRegionTestCase extends AbstractSeleniumRichfacesTestCase {
+	private final String LOC_INPUT_RELATIVE = getLoc("INPUT_RELATIVE");
+	private final String LOC_INPUT_TEST1_NAME1 = format(LOC_INPUT_RELATIVE, 1, 1, 1);
+	private final String LOC_INPUT_TEST1_JOB1 = format(LOC_INPUT_RELATIVE, 1, 1, 2);
+	private final String LOC_INPUT_TEST1_NAME2 = format(LOC_INPUT_RELATIVE, 1, 2, 1);
+	private final String LOC_INPUT_TEST2_NAME1 = format(LOC_INPUT_RELATIVE, 2, 1, 1);
+	private final String LOC_INPUT_TEST2_NAME2 = format(LOC_INPUT_RELATIVE, 2, 2, 1);
+	private final String LOC_OUTPUT_VALIDATION_MESSAGE = getLoc("OUTPUT_VALIDATION_MESSAGE");
+	private final String LOC_OUTPUT_TEST1_TYPED_NAME = getLoc("OUTPUT_TEST1_TYPED_NAME");
+	private final String LOC_OUTPUT_TEST2_TYPED_NAME = getLoc("OUTPUT_TEST2_TYPED_NAME");
+	private final String LOC_OUTPUT_TEST2_INFLUENCED_TEXT_PREFORMATTED = getLoc("OUTPUT_TEST2_INFLUENCED_TEXT_PREFORMATTED");
+	private final String LOC_OUTPUT_TEXT_DISAPPEAR = format(LOC_OUTPUT_TEST2_INFLUENCED_TEXT_PREFORMATTED, 3);
+	private final String LOC_OUTPUT_TEXT_NOT_DISAPPER = format(LOC_OUTPUT_TEST2_INFLUENCED_TEXT_PREFORMATTED, 4);
+
+	private final String MSG_INPUT_SAMPLE = getMsg("INPUT_SAMPLE");
+	private final String MSG_OUTPUT_TYPED_NAME_PREFORMATTED = getMsg("OUTPUT_TYPED_NAME_PREFORMATTED");
+	private final String MSG_MESSAGE_VALUE_REQUIRED = getMsg("MESSAGE_VALUE_REQUIRED");
+
 	/**
-	 * Opens specified page
+	 * Test1 (group of 4 inputs) - When only first Name input will be changed,
+	 * check that validation message appears and Typed name contains no output.
 	 */
-	private void openPage() {
-		selenium.open(contextPath + "/richfaces/region.jsf?c=region&tab=usage");
-	}
-	
-	private String input = getMess("ajax-region--input");
-	private String firedEvent = getMess("ajax-region--fired-event");
-	private String name1 = formatLoc("ajax-region--input", 1, 1, 1);
-	private String job1 = formatLoc("ajax-region--input", 1, 1, 2);
-	private String name2 = formatLoc("ajax-region--input", 1, 2, 1);
-	private String name3 = formatLoc("ajax-region--input", 2, 1, 1);
-	private String name4 = formatLoc("ajax-region--input", 2, 2, 1);
-	private String messages = getLoc("ajax-region--messages");
-	private String outname = formatLoc("ajax-region--typed-name", "");
-	private String outname2 = formatLoc("ajax-region--typed-name", "2");
-	private String textDisappears = formatLoc("ajax-region--influenced-text", 3);
-	private String textNotDisappears = formatLoc("ajax-region--influenced-text", 4);
-	
 	@Test
-	public void testName1DontPassValidation() {
-		openPage();
-		name1DontPassValidation();
+	public void testName1AloneDontPassValidation() {
+		name1AloneDontPassValidation();
 	}
-	
+
+	/**
+	 * Test1 (group of 4 inputs) - When name was changed, validation message
+	 * appears and typed name wasn't changed, try to input first Job input -
+	 * validation message should disappear and typed name should be changed
+	 * right.
+	 */
 	@Test
 	public void testJob1ChangeDontInfluenceName1ValidationError() {
-		testName1DontPassValidation();
+		name1AloneDontPassValidation();
 		job1ChangeInfluenceName1Validation();
 	}
-	
+
+	/**
+	 * Test1 (group of 4 inputs) - When job input is not blank, we can change
+	 * name input as needed and no validation message should appear and typed
+	 * name will change right.
+	 */
 	@Test
 	public void testName1CanBeChangedAnywayIfJob1IsNotBlank() {
-		testJob1ChangeDontInfluenceName1ValidationError();
+		name1AloneDontPassValidation();
+		job1ChangeInfluenceName1Validation();
 		name1CanBeChangedAnywayIfJob1IsNotBlank();
 	}
-	
+
+	/**
+	 * Test1 (group of 4 inputs) - Second column can be changed as needed and no
+	 * validation message will appear and typed name will change right.
+	 */
 	@Test
-	public void test2CanBeChangedAnyway() {
-		openPage();
-		trySomeInputs(name2);
+	public void testSecondInputsCanBeChangedAnyway() {
+		tryTypingToInput(LOC_INPUT_TEST1_NAME2);
 	}
-	
+
+	/**
+	 * Test types sample into input and checks that text under input will
+	 * disappear when region will rerender.
+	 */
 	@Test
-	public void textWillDisappear() {
-		openPage();
+	public void testTextWillDisappear() {
+		scrollIntoView(LOC_INPUT_TEST2_NAME1, true);
 		
-		Assert.assertTrue(StringUtils.isNotBlank(selenium.getText(textDisappears)));
-		
-		selenium.type(name3, input);
-		selenium.fireEvent(name3, "keyup");
-		
-		Wait.until(new Condition() {
+		assertTrue(StringUtils.isNotBlank(selenium.getText(LOC_OUTPUT_TEXT_DISAPPEAR)),
+				"Text under first input should not be blank");
+
+		selenium.type(LOC_INPUT_TEST2_NAME1, MSG_INPUT_SAMPLE);
+		selenium.fireEvent(LOC_INPUT_TEST2_NAME1, Event.KEYUP);
+
+		Wait.failWith("Typed name never changes after firing event on input").until(new Condition() {
 			public boolean isTrue() {
-				return formatMess("ajax-region--typed-name", input(input)).equals(selenium.getText(outname2));
+				String expectedText = format(MSG_OUTPUT_TYPED_NAME_PREFORMATTED, input(MSG_INPUT_SAMPLE));
+				return expectedText.equals(selenium.getText(LOC_OUTPUT_TEST2_TYPED_NAME));
 			}
 		});
-		
-		Assert.assertTrue(StringUtils.isBlank(selenium.getText(textDisappears)));
+
+		assertTrue(StringUtils.isBlank(selenium.getText(LOC_OUTPUT_TEXT_DISAPPEAR)),
+				"Text didn't disappear as expected when input changed");
 	}
-	
+
+	/**
+	 * Test types sample into input and checks that text under input will not
+	 * disappear when region rendered.
+	 */
 	@Test
-	public void textWillNotDisappear() {
-		openPage();
+	public void testTextWillNotDisappear() {
+		scrollIntoView(LOC_INPUT_TEST2_NAME2, true);
+
+		assertTrue(StringUtils.isNotBlank(selenium.getText(LOC_OUTPUT_TEXT_NOT_DISAPPER)),
+				"Text under second input should not be blank");
 		
-		Assert.assertTrue(StringUtils.isNotBlank(selenium.getText(textNotDisappears)));
-		
-		selenium.type(name4, input);
-		selenium.fireEvent(name4, "keyup");
-		
-		Wait.until(new Condition() {
+		selenium.type(LOC_INPUT_TEST2_NAME2, MSG_INPUT_SAMPLE);
+		selenium.fireEvent(LOC_INPUT_TEST2_NAME2, Event.KEYUP);
+
+		Wait.failWith("Typed name never changes after firing event on input").until(new Condition() {
 			public boolean isTrue() {
-				return formatMess("ajax-region--typed-name", input(input)).equals(selenium.getText(outname2));
+				String expectedText = format(MSG_OUTPUT_TYPED_NAME_PREFORMATTED, input(MSG_INPUT_SAMPLE));
+				return expectedText.equals(selenium.getText(LOC_OUTPUT_TEST2_TYPED_NAME));
 			}
 		});
-		
-		Assert.assertTrue(StringUtils.isNotBlank(selenium.getText(textNotDisappears)));
+
+		assertTrue(StringUtils.isNotBlank(selenium.getText(LOC_OUTPUT_TEXT_NOT_DISAPPER)),
+				"Text disappeared even it wasn't expected when input changed");
 	}
-	
-	public void name1DontPassValidation() {
-		selenium.type(name1, input);
-		selenium.fireEvent(name1, firedEvent);
+
+	private void name1AloneDontPassValidation() {
+		final String expectedTypedName = format(MSG_OUTPUT_TYPED_NAME_PREFORMATTED, "");
+
+		scrollIntoView(LOC_INPUT_TEST1_NAME1, true);
 		
-		Wait.until(new Condition() {
+		selenium.type(LOC_INPUT_TEST1_NAME1, MSG_INPUT_SAMPLE);
+		selenium.fireEvent(LOC_INPUT_TEST1_NAME1, Event.KEYUP);
+
+		Wait.failWith(format("Validation message never appears or doesn't contain '{0}'", MSG_MESSAGE_VALUE_REQUIRED))
+				.until(new Condition() {
+					public boolean isTrue() {
+						if (!selenium.isElementPresent(LOC_OUTPUT_VALIDATION_MESSAGE))
+							return false;
+						return selenium.getText(LOC_OUTPUT_VALIDATION_MESSAGE).contains(MSG_MESSAGE_VALUE_REQUIRED);
+					}
+				});
+
+		assertEquals(selenium.getText(LOC_OUTPUT_TEST1_TYPED_NAME), expectedTypedName,
+				"Typed name should isn't blank as expected");
+	}
+
+	private void job1ChangeInfluenceName1Validation() {
+		final String expectedTypedName = format(MSG_OUTPUT_TYPED_NAME_PREFORMATTED, input(MSG_INPUT_SAMPLE));
+
+		assertTrue(selenium.getText(LOC_OUTPUT_VALIDATION_MESSAGE).contains(MSG_MESSAGE_VALUE_REQUIRED), format(
+				"Validation message doesn't contain '{0}'", MSG_MESSAGE_VALUE_REQUIRED));
+
+		selenium.type(LOC_INPUT_TEST1_JOB1, MSG_INPUT_SAMPLE);
+		selenium.fireEvent(LOC_INPUT_TEST1_NAME1, Event.KEYUP);
+
+		Wait.failWith("Validation message did not disappear").until(new Condition() {
 			public boolean isTrue() {
-				if (!selenium.isElementPresent(messages)) return false;
-				return selenium.getText(messages).contains(getMess("ajax-region--value-is-required"));
+				return !selenium.isElementPresent(LOC_OUTPUT_VALIDATION_MESSAGE);
 			}
 		});
-		
-		Assert.assertEquals(selenium.getText(outname), formatMess("ajax-region--typed-name", ""));
+
+		assertEquals(selenium.getText(LOC_OUTPUT_TEST1_TYPED_NAME), expectedTypedName, format(
+				"Typed name does not contain value '{0}'", expectedTypedName));
 	}
-	
-	public void job1ChangeInfluenceName1Validation() {
-		Assert.assertTrue(selenium.getText(messages).contains(getMess("ajax-region--value-is-required")));
-		
-		selenium.type(job1, input);
-		selenium.fireEvent(name1, "keyup");
-		
-		Wait.until(new Not() {
-			public boolean not() {
-				return selenium.isElementPresent(messages);
-			}
-		});
-		
-		Assert.assertEquals(selenium.getText(outname), formatMess("ajax-region--typed-name", input(input)));
+
+	private void name1CanBeChangedAnywayIfJob1IsNotBlank() {
+		assertFalse(selenium.isElementPresent(LOC_OUTPUT_VALIDATION_MESSAGE),
+				"Validation message should not be present");
+		assertTrue(StringUtils.isNotBlank(selenium.getValue(LOC_INPUT_TEST1_JOB1)),
+				"First Job input should not be blank");
+
+		tryTypingToInput(LOC_INPUT_TEST1_NAME1);
 	}
-	
-	public void name1CanBeChangedAnywayIfJob1IsNotBlank() {
-		Assert.assertFalse(selenium.isElementPresent(messages));
-		Assert.assertTrue(StringUtils.isNotBlank(selenium.getValue(job1)));
+
+	private void tryTypingToInput(String locator) {
+		scrollIntoView(locator, true);
 		
-		trySomeInputs(name1);
-	}
-	
-	public void trySomeInputs(String locator) {
-		for (final String enter : new String[]{"", input}) {
-			selenium.type(locator, enter);
-			selenium.fireEvent(locator, "keyup");
-			
-			Wait.until(new Condition() {
+		for (final String enterValue : new String[] { "", MSG_INPUT_SAMPLE, "" }) {
+			final String expectedTypedName = format(MSG_OUTPUT_TYPED_NAME_PREFORMATTED, input(enterValue));
+
+			selenium.type(locator, enterValue);
+			selenium.fireEvent(locator, Event.KEYUP);
+
+			Wait.failWith(format("Typed name did not changed to '{0}'", expectedTypedName)).until(new Condition() {
 				public boolean isTrue() {
-					return formatMess("ajax-region--typed-name", input(enter)).equals(selenium.getText(outname));
+					return expectedTypedName.equals(selenium.getText(LOC_OUTPUT_TEST1_TYPED_NAME));
 				}
 			});
-			
-			Assert.assertFalse(selenium.isElementPresent(messages));
+
+			assertFalse(selenium.isElementPresent(LOC_OUTPUT_VALIDATION_MESSAGE),
+					"Validation message should not appear");
 		}
 	}
-	
-	public String input(String input) {
+
+	private String input(String input) {
 		if (StringUtils.isBlank(input)) {
 			return "";
 		} else {
 			return " " + input;
 		}
+	}
+
+	/**
+	 * Opens specific component's page
+	 */
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Ajax Region");
 	}
 }
