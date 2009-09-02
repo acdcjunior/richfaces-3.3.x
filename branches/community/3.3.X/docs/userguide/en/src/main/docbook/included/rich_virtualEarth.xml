@@ -152,7 +152,7 @@
             </table>
             <table>
                   <title>Classes names that define a component appearance </title>
-                  <tgroup cols="2">
+                  <tgroup cols="4">
                         <thead>
                               <row>
                                     <entry>Class name</entry>
