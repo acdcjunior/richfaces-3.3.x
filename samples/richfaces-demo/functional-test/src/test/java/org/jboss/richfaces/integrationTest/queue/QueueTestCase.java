@@ -1,8 +1,29 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.queue;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -10,30 +31,38 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class QueueTestCase extends AbstractSeleniumRichfacesTestCase {
+	private String LOC_BUTTON_IMAGE_PREFORMATTED = getLoc("BUTTON_IMAGE_PREFORMATTED");
+	private String LOC_OUTPUT_QUEUE_ITEM = getLoc("OUTPUT_QUEUE_ITEM");
+
 	/**
-	 * Opens specified page
+	 * Enqueues several numbers (by clicking to numbered images) and waits for
+	 * it it appears in the queue bottom.
 	 */
-	private void openPage() {
-		selenium.open(contextPath + "/richfaces/queue.jsf?c=queue&tab=usage");
-	}
-
-	private String tableHeader = getLoc("queue--table-header");
-
 	@Test
-	public void simpleQueueImagesTest() {
-		openPage();
-
-		scrollIntoView(tableHeader, true);
-
+	public void testSimpleQueueImages() {
 		int[] order = new int[] { 3, 7, 15, 3, 15 };
 
 		for (int i = 0; i < order.length; i++) {
-			selenium.click(formatLoc("queue--image-button", order[i]));
+			final String locButtonImage = format(LOC_BUTTON_IMAGE_PREFORMATTED, order[i]);
+			final String locQueueItem = format(LOC_OUTPUT_QUEUE_ITEM, order[i]);
+			
+			selenium.click(locButtonImage);
+			
+			scrollIntoView(locButtonImage, true);
 
 			waitFor(1000);
 
-			Assert.assertTrue(selenium.isElementPresent(formatLoc(
-					"queue--item", order[i])));
+			scrollIntoView(locQueueItem, false);
+			
+			assertTrue(selenium.isElementPresent(locQueueItem), format("The enqueued item isn't present '{0}'",
+					locQueueItem));
 		}
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Queue");
+		openTab("Usage");
 	}
 }
