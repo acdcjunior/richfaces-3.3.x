@@ -88,14 +88,15 @@ DragIndicator = {
 		}
 	},
 
-	position: function(x, y) {
+	position: function(x,y) {
 		if (!this.offsets) {
 			Element.show(this);
 			this.style.position = 'absolute';
-		}		
+		}
+		
 		Element.setStyle(this, {"left": x + "px", "top": y + "px"});
 		
-		this.moveIFrame(x, y);
+		this.moveIFrame(x,y);
 	},
 
 	accept: function() {

@@ -50,9 +50,10 @@ var DnD = {
 		var drag = window.drag;
 	    
 	    if (!drag.source.onupdatedrag || (drag.source.onupdatedrag(event) != false)) {
-		    var x = Event.pointerX(event);
-		    var y = Event.pointerY(event);
-			drag.indicator.position(x + 5, y + 14);
+	    	var cursorRect = Richfaces.jQuery.getPointerRectangle(event);
+	    	cursorRect.left += 5;
+	    	cursorRect.top  += 14;
+			drag.indicator.position(cursorRect.left, cursorRect.top);
 			Event.stop(event);
 	    }
 	},
