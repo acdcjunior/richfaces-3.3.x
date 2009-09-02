@@ -1,13 +1,8 @@
 <section role="NotInToc" id="rich_message">
    <title>
-				&lt;
-				rich:message
-				&gt;
-				<emphasis role="since">
-         <superscript> available since <emphasis role="version">3.1.0</emphasis>
-         </superscript>
-      </emphasis>
+         &lt;rich:message&gt; <emphasis role="since"><superscript> available since <emphasis role="version">3.1.0</emphasis></superscript></emphasis>
    </title>
+      
    <section>
         <title>Description</title>
         <para>The component is used for rendering a single message for a specific component. </para>
@@ -62,44 +57,8 @@
             </listitem>
          </itemizedlist>
       </para>
-      <para> A set of facets which can be used for marker defining: <itemizedlist>
-            <listitem>
-               <para>
-                  <emphasis>
-                     <property>"passedMarker"</property>
-                  </emphasis>. This facet is provided to allow setting a marker to display if
-          there is no message</para>
-            </listitem>
-            <listitem>
-               <para>
-                  <emphasis>
-                     <property>"errorMarker"</property>
-                  </emphasis>. This facet is provided to allow setting a marker to display if there
-          is a message with a severity class of "ERROR"</para>
-            </listitem>
-            <listitem>
-               <para>
-                  <emphasis>
-                     <property>"fatalMarker"</property>
-                  </emphasis>. This facet is provided to allow setting a marker to display if there
-          is a message with a severity class of "FATAL"</para>
-            </listitem>
-            <listitem>
-               <para>
-                  <emphasis>
-                     <property>"infoMarker"</property>
-                  </emphasis>. This facet is provided to allow setting a marker to display if there
-          is a message with a severity class of "INFO"</para>
-            </listitem>
-            <listitem>
-               <para>
-                  <emphasis>
-                     <property>"warnMarker"</property>
-                  </emphasis>. This facet is provided to allow setting a marker to display if there
-          is a message with a severity class of "WARN"</para>
-            </listitem>
-         </itemizedlist>
-      </para>
+      
+
 
       <para> The following example shows different variants for component customization. The
       attribute <emphasis>
@@ -173,38 +132,42 @@
          </tgroup>
       </table>
       <table>
-         <title>Facets</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Facet</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>errorMarker</entry>
-                  <entry>Redefines the content for the marker if there is message with a severity class of "ERROR"</entry>
-               </row>
-               <row>
-                  <entry>fatalError</entry>
-                  <entry>Redefines the content for the marker if there is message with a severity class of "FATAL"</entry>
-               </row>
-               <row>
-                  <entry>infoError</entry>
-                  <entry>Redefines the content for the marker if there is message with a severity class of "INFO"</entry>
-               </row>
-               <row>
-                  <entry>warnError</entry>
-                  <entry>Redefines the content for the marker if there is message with a severity class of "WARN"</entry>
-               </row>
-               <row>
-                  <entry>passedError</entry>
-                  <entry>Redefines the content for the marker if there is no message</entry>
-               </row>
-            </tbody>
-         </tgroup>
+         
+            <title>Facets</title>
+            <tgroup cols="2">
+                  <thead>
+                        <row>
+                              <entry>Facet</entry>
+                              <entry>Description</entry>
+                        </row>
+                  </thead>
+                  <tbody>
+                        <row>
+                              <entry>errorMarker</entry>
+                              <entry>Defines pictogram for message with <property>error</property> severity class</entry>
+                        </row>
+                        <row> 
+                              <entry>fatalMarker</entry>
+                              <entry>Defines pictogram for message with <property>fatal</property> severity class</entry>
+                        </row>
+                        <row>
+                              <entry>infoMarker</entry>
+                              <entry>Defines pictogram for message with <property>info</property> severity class</entry>
+                        </row>
+                        <row>
+                              <entry>passedMarker</entry>
+                              <entry>Defines pictogram if there is no <property>fatal</property>, <property>error</property>, <property>warn</property> or <property>info</property> message</entry>
+                        </row>
+                        <row>
+                              <entry>warnMarker</entry>
+                              <entry>Defines pictogram for message with <property>warn</property> severity class</entry>
+                        </row>
+                  </tbody>
+            </tgroup>
       </table>
+         
+         
+         
       <table id="mC">
          <title>Classes names that define a component appearance</title>
 
