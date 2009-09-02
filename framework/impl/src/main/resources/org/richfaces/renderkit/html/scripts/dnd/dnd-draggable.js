@@ -188,10 +188,9 @@ DnD.Draggable.prototype = {
 
 	moveDrag: function(event) {
 		//TODO handle mouseover to update coords
-		var x = Event.pointerX(event);
-		var y = Event.pointerY(event);
+		var cursorRect = Richfaces.jQuery.getPointerRectangle(event);
 		
-		if (!window.drag && (Math.abs(this.lastDragX - x) + Math.abs(this.lastDragY - y)) > 2) {
+		if (!window.drag && (Math.abs(this.lastDragX - cursorRect.left) + Math.abs(this.lastDragY - cursorRect.top)) > 2) {
 			this.updateDrag(event);
 		}
 	},
@@ -223,8 +222,9 @@ DnD.Draggable.prototype = {
 			this.endDragListener.activate(event);
 			Event.observe(document, "mousemove", this.dragTrigger);
 
-			this.lastDragX = Event.pointerX(event);
-			this.lastDragY = Event.pointerY(event);		
+			var cursorRect = Richfaces.jQuery.getPointerRectangle(event);
+			this.lastDragX = cursorRect.left;
+			this.lastDragY = cursorRect.top;		
 		}
     },
 
@@ -232,15 +232,16 @@ DnD.Draggable.prototype = {
 		var type = this.getContentType();
 		var indicator = this.getIndicator();
 		var drag = new DnD.Drag(this, indicator, type);
-			
+		
 		if (indicator.id.indexOf("_rfDefaultDragIndicator") != -1) {			
 			var target = drag.source.getElement();
-			var offSets = Position.cumulativeOffset(target);
 			indicator.indicatorWidth = Element.getWidth(target);
 		    indicator.indicatorHeight = Element.getHeight(target);
-			indicator.position(offSets[0], offSets[1]);
-			indicator.removalX = Event.pointerX(event) - offSets[0];
-			indicator.removalY = Event.pointerY(event) - offSets[1];			
+		    var rect = Richfaces.jQuery.getElementRectangle(target);
+		    var cursorRect = Richfaces.jQuery.getPointerRectangle(event);
+			indicator.position(rect.left, rect.top);
+			indicator.removalX = cursorRect.left - rect.left;
+			indicator.removalY = cursorRect.top - rect.top;
 		}
 		
 		DnD.startDrag(drag);

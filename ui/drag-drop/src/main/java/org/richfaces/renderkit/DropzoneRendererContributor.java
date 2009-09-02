@@ -302,6 +302,8 @@ public class DropzoneRendererContributor implements RendererContributor {
 	public String[] getScriptDependencies() {
 		return new String[] {
 			PrototypeScript.class.getName(),
+			"/org/richfaces/renderkit/html/scripts/jquery/jquery.js",
+			"/org/richfaces/renderkit/html/scripts/jquery.utils.js",
 			"/org/richfaces/renderkit/html/scripts/json/json-mini.js",
 			DnDScript.class.getName(),
 			"/org/richfaces/renderkit/html/scripts/utils.js",

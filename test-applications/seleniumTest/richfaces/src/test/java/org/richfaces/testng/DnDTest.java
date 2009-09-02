@@ -69,12 +69,6 @@ public class DnDTest extends SeleniumTestBase {
 		resetButtonId = parentId + FORMID + DATAID + "reset";
 	}
 	
-	@Override
-	protected String getFirefoxTemplate() {
-		return "c:/FFProfile";
-	}
-	
-	
 	
 	@Test
 	public void testExternalValidationFailure(Template template) {
@@ -110,7 +104,6 @@ public class DnDTest extends SeleniumTestBase {
 		
 		tester.testAjaxSingleWithInternalValidationFailed();
 	}
-	
 
 		
 	

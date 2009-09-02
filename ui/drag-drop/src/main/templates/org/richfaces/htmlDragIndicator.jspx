@@ -13,6 +13,8 @@
 
 	<h:scripts>
 		new org.ajax4jsf.javascript.PrototypeScript(),
+		/org/richfaces/renderkit/html/scripts/jquery/jquery.js,
+		/org/richfaces/renderkit/html/scripts/jquery.utils.js,
 		new org.ajax4jsf.javascript.AjaxScript(),
 		new org.ajax4jsf.javascript.DnDScript(),
 		/org/richfaces/renderkit/html/scripts/utils.js,

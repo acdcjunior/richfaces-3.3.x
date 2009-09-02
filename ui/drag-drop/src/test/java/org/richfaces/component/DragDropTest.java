@@ -71,6 +71,8 @@ public class DragDropTest extends AbstractAjax4JsfTestCase {
 	private static Set javaScripts = new HashSet();
 	static {
 		javaScripts.add("org.ajax4jsf.javascript.PrototypeScript");
+		javaScripts.add("scripts/jquery/jquery.js");
+		javaScripts.add("scripts/jquery.utils.js");
 		javaScripts.add("org.ajax4jsf.javascript.AjaxScript");
 		javaScripts.add("scripts/browser_info.js");
 		javaScripts.add("org.ajax4jsf.javascript.DnDScript");
