@@ -1,10 +1,30 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.script;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
-import org.jboss.test.selenium.waiting.Condition;
-import org.jboss.test.selenium.waiting.Wait;
+import org.jboss.test.selenium.waiting.*;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -12,56 +32,59 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class ScriptTestCase extends AbstractSeleniumRichfacesTestCase {
+
+	private String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+	private String LOC_BUTTON_HIDE = getLoc("BUTTON_HIDE");
+	private String LOC_BUTTON_SHOW = getLoc("BUTTON_SHOW");
+	private String LOC_INPUT_NAME = getLoc("INPUT_NAME");
+	private String LOC_INPUT_JOB = getLoc("INPUT_JOB");
+	private String LOC_BUTTON_SUBMIT = getLoc("BUTTON_SUBMIT");
+	private String LOC_OUTPUT_NAME = getLoc("OUTPUT_NAME");
+	private String LOC_OUTPUT_JOB = getLoc("OUTPUT_JOB");
+	private String LOC_PANEL_HIDABLE = getLoc("PANEL_HIDABLE");
+
+	private String MSG_INPUT_NAME = getMsg("INPUT_NAME");
+	private String MSG_INPUT_JOB = getMsg("INPUT_JOB");
+	private String MSG_REGEXP_PREFIX_NAME = getMsg("REGEXP_PREFIX_NAME");
+	private String MSG_REGEXP_PREFIX_JOB = getMsg("REGEXP_PREFIX_JOB");
+
 	/**
-	 * Opens specified page
+	 * Simply click to hide button and checks that panel disappears
 	 */
-	private void openPage() {
-		selenium.open(contextPath
-				+ "/richfaces/script.jsf?c=loadScript&tab=usage");
-		scrollIntoView(header, true);
-	}
-
-	private String header = getLoc("script--header");
-	private String buttonHide = getLoc("script--button--hide");
-	private String buttonShow = getLoc("script--button--show");
-	private String inputName = getLoc("script--input--name");
-	private String inputJob = getLoc("script--input--job");
-	private String buttonSubmit = getLoc("script--button--submit");
-	private String outputName = getLoc("script--output--name");
-	private String outputJob = getLoc("script--output--job");
-	private String panelMyPanel = getLoc("script--panel--mypanel");
-	private String messName = getMess("script--input--name");
-	private String messJob = getMess("script--input--job");
-	private String prefixName = getMess("script--regexp--name-prefix");
-	private String prefixJob = getMess("script--regexp--job-prefix");
-
 	@Test
 	public void testHide() {
-		openPage();
-
 		hide();
 	}
 
+	/**
+	 * Simply hide panel and next click to show button and checks that panel
+	 * appears again
+	 */
 	@Test
 	public void testHideAndShow() {
-		openPage();
-
 		hide();
 		show();
 	}
 
+	/**
+	 * Fill name and job in and checks that after submit the output will be
+	 * changed right.
+	 */
 	@Test
 	public void testFillIn() {
-		openPage();
-
 		fillIn();
 		submit();
 		validateOutput();
 	}
 
+	/**
+	 * Fill name and job in, submit, hide and show the panel again and next
+	 * checks, that output is valid. Then submit again and again check output.
+	 */
 	@Test
 	public void testFillInHideAndShow() {
-		testFillIn();
+		fillIn();
+		submit();
 		hide();
 		show();
 		validateOutput();
@@ -70,8 +93,8 @@ public class ScriptTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private void fillIn() {
-		selenium.type(inputName, messName);
-		selenium.type(inputJob, messJob);
+		selenium.type(LOC_INPUT_NAME, MSG_INPUT_NAME);
+		selenium.type(LOC_INPUT_JOB, MSG_INPUT_JOB);
 	}
 
 	private void submit() {
@@ -80,7 +103,7 @@ public class ScriptTestCase extends AbstractSeleniumRichfacesTestCase {
 		final String job = getJob();
 
 		// click on Submit
-		selenium.click(buttonSubmit);
+		selenium.click(LOC_BUTTON_SUBMIT);
 
 		// wait until output changes or 5 sec
 		Wait.dontFail().timeout(5000).until(new Condition() {
@@ -92,35 +115,43 @@ public class ScriptTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private void validateOutput() {
-		Assert.assertEquals(messName, getName());
-		Assert.assertEquals(messJob, getJob());
+		assertEquals(MSG_INPUT_NAME, getName(), "Output name isn't right");
+		assertEquals(MSG_INPUT_JOB, getJob(), "Output job isn't right");
 	}
 
 	private String getName() {
-		return selenium.getText(outputName).replaceFirst(prefixName, "");
+		return selenium.getText(LOC_OUTPUT_NAME).replaceFirst(MSG_REGEXP_PREFIX_NAME, "");
 	}
 
 	private String getJob() {
-		return selenium.getText(outputJob).replaceFirst(prefixJob, "");
+		return selenium.getText(LOC_OUTPUT_JOB).replaceFirst(MSG_REGEXP_PREFIX_JOB, "");
 	}
 
 	private void hide() {
-		selenium.click(buttonHide);
+		selenium.click(LOC_BUTTON_HIDE);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Hidable panel never hides").until(new Condition() {
 			public boolean isTrue() {
-				return "none".equals(getStyle(panelMyPanel, "display"));
+				return "none".equals(getStyle(LOC_PANEL_HIDABLE, "display"));
 			}
 		});
 	}
 
 	private void show() {
-		selenium.click(buttonShow);
+		selenium.click(LOC_BUTTON_SHOW);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Hidable panel never shows again").until(new Condition() {
 			public boolean isTrue() {
-				return "block".equals(getStyle(panelMyPanel, "display"));
+				return "block".equals(getStyle(LOC_PANEL_HIDABLE, "display"));
 			}
 		});
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Script");
+
+		scrollIntoView(LOC_FIELDSET_HEADER, true);
 	}
 }
