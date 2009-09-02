@@ -1,8 +1,29 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.commandButton;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
-import org.jboss.test.selenium.waiting.Wait;
-import org.testng.Assert;
+import org.jboss.test.selenium.waiting.*;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -10,57 +31,66 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class CommandButtonTestCase extends AbstractSeleniumRichfacesTestCase {
+	private final String LOC_INPUT_TEXT = getLoc("INPUT_TEXT");
+	private final String LOC_OUTPUT_TEXT = getLoc("OUTPUT_TEXT");
+	private final String LOC_BUTTON_SAY_HELLO = getLoc("BUTTON_SAY_HELLO");
+
+	private final String MSG_INPUT_NON_EMPTY = getMsg("INPUT_NON_EMPTY");
+	private final String MSG_OUTPUT_TEXT_PREFORMATTED = getMsg("OUTPUT_TEXT_PREFORMATTED");
+
 	/**
-	 * Opens specified page
+	 * Test that after non-empty input will be shown hello message.
 	 */
-	private void openPage() {
-		selenium.open(contextPath
-				+ "/richfaces/commandButton.jsf?c=commandButton&tab=usage");
-	}
-
-	private String textInput = getLoc("ajax-support--input");
-	private String textOutput = formatLoc("command-button--text", 2);
-	private String helloOutput = formatLoc("command-button--text", 1);
-	private String exclamationOutput = formatLoc("command-button--text", 3);
-	private String hello = formatMess("command-button--hello");
-	private String exclamation = formatMess("command-button--exclamation");
-	private String commandButton = getLoc("command-button--button");
-	private String nonEmpty = getMess("ajax-support--non-empty");
-
 	@Test
 	public void testNonEmpty() {
-		openPage();
 		nonEmpty();
 	}
 
+	/**
+	 * Test that after empty input will not shown any message.
+	 */
 	@Test
 	public void testEmpty() {
-		openPage();
 		empty();
 	}
 
+	/**
+	 * Test that after switching between empty and non-empty input is hello
+	 * message shown only if input is non-empty.
+	 */
 	@Test
 	public void testInterleaving() {
-		openPage();
 		nonEmpty();
 		empty();
 		nonEmpty();
 		empty();
 	}
 
-	public void nonEmpty() {
-		selenium.type(textInput, nonEmpty);
-		selenium.click(commandButton);
+	private void nonEmpty() {
+		final String expectedOutputText = format(MSG_OUTPUT_TEXT_PREFORMATTED, MSG_INPUT_NON_EMPTY);
+
+		selenium.type(LOC_INPUT_TEXT, MSG_INPUT_NON_EMPTY);
+		selenium.click(LOC_BUTTON_SAY_HELLO);
+
 		waitFor(Wait.DEFAULT_INTERVAL);
-		waitForTextEquals(textOutput, nonEmpty);
-		Assert.assertEquals(selenium.getText(helloOutput), hello);
-		Assert.assertEquals(selenium.getText(exclamationOutput), exclamation);
+		waitForTextEquals(LOC_OUTPUT_TEXT, expectedOutputText);
 	}
 
-	public void empty() {
-		selenium.type(textInput, "");
-		selenium.click(commandButton);
+	private void empty() {
+		final String expectedOutputText = "";
+
+		selenium.type(LOC_INPUT_TEXT, "");
+		selenium.click(LOC_BUTTON_SAY_HELLO);
+
 		waitFor(Wait.DEFAULT_INTERVAL);
-		Assert.assertFalse(selenium.isElementPresent(textOutput));
+		waitForTextEquals(LOC_OUTPUT_TEXT, expectedOutputText);
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Command Button");
+
+		scrollIntoView(LOC_BUTTON_SAY_HELLO, true);
 	}
 }
