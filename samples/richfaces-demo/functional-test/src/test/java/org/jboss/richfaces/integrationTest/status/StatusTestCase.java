@@ -27,6 +27,8 @@ import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.dom.Event;
 import org.jboss.test.selenium.waiting.Condition;
 import static org.testng.Assert.*;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -34,15 +36,6 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
-	/**
-	 * Opens specified page
-	 */
-	private void openPage() {
-		selenium.allowNativeXpath("true");
-
-		openComponent("Status");
-		openTab("Usage");
-	}
 
 	private final String LOC_FIELDSET_PAGE_PART_PREFORMATTED = getLoc("FIELDSET_PAGE_PART_PREFORMATTED");
 	private final String LOC_OUTPUT_STATUS_MESSAGE_PREFORMATTED = getLoc("OUTPUT_STATUS_MESSAGE_PREFORMATTED");
@@ -93,7 +86,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 *            version of test (1 or 2)
 	 */
 	private void doStatusTesting(final int testNumber) {
-		openPage();
 		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, testNumber), true);
 
 		// PAGE COMPONENTS
@@ -138,7 +130,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testInputsStatus() {
-		openPage();
 		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, 3), true);
 
 		// PAGE CONTROLS
@@ -210,5 +201,14 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 				return !shouldEqualOldValue ^ initialStyle.equals(actualStyle);
 			}
 		});
+	}
+	
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Status");
+		openTab("Usage");
+		
+		selenium.allowNativeXpath("true");
 	}
 }
