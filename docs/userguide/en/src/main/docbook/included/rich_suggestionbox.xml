@@ -582,7 +582,7 @@
 		</table>
 		<table id="suggBoxC">
 			<title>Classes names with the corresponding skin parameters</title>
-			<tgroup cols="2">
+			<tgroup cols="4">
 				<thead>
 					<row>
 						<entry>Class name</entry>
@@ -631,8 +631,8 @@
 						<entry>color</entry>
 					</row>
 					<row>
-						<entry morerows="1">.rich-sb-ext-decor-2</entry>
-						<entry morerows="1">Defines styles for the second
+						<entry>.rich-sb-ext-decor-2</entry>
+						<entry>Defines styles for the second
 							wrapper
 							&lt;div&gt;
 							element of
