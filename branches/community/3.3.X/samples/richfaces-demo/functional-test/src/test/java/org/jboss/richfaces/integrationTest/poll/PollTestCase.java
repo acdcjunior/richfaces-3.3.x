@@ -39,6 +39,10 @@ public class PollTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String MSG_POLLING_ACTIVE = getMsg("POLLING_ACTIVE");
 	private final String MSG_POLLING_INACTIVE = getMsg("POLLING_INACTIVE");
 
+	/**
+	 * Set polling state to active and checks that status is showing as active
+	 * and server date is really polled.
+	 */
 	@Test
 	public void testPollingProgress() {
 		setPollingStatus(true);
@@ -46,6 +50,10 @@ public class PollTestCase extends AbstractSeleniumRichfacesTestCase {
 		checkPollingProgress();
 	}
 
+	/**
+	 * Set polling state to inactive and checks that status is showing as
+	 * inactive and server date isn't polled.
+	 */
 	@Test
 	public void testPollingStop() {
 		setPollingStatus(false);
@@ -53,8 +61,20 @@ public class PollTestCase extends AbstractSeleniumRichfacesTestCase {
 		checkPollingStopped();
 	}
 
+	/**
+	 * Switch between polling state active/inactive and checks that status is
+	 * right and server date is/isn't polled.
+	 */
 	@Test
 	public void testPollingStopAndStart() {
+		setPollingStatus(false);
+
+		checkPollingStopped();
+
+		setPollingStatus(true);
+
+		checkPollingProgress();
+
 		setPollingStatus(false);
 
 		checkPollingStopped();
