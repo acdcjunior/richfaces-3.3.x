@@ -1,9 +1,30 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.poll;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
-import org.jboss.test.selenium.waiting.Condition;
-import org.jboss.test.selenium.waiting.Wait;
-import org.testng.Assert;
+import org.jboss.test.selenium.waiting.*;
+import static org.testng.Assert.*;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -11,83 +32,83 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class PollTestCase extends AbstractSeleniumRichfacesTestCase {
-	/**
-	 * Opens specified page
-	 */
-	private void openPage() {
-		selenium.open(contextPath + "/richfaces/poll.jsf?c=poll&tab=usage");
-	}
+	private final String LOC_BUTTON_POLL_CONTROL = getLoc("BUTTON_POLL_CONTROL");
+	private final String LOC_OUTPUT_POLL_STATUS = getLoc("OUTPUT_POLL_STATUS");
+	private final String LOC_OUTPUT_SERVER_DATE = getLoc("OUTPUT_SERVER_DATE");
 
-	private String status = getLoc("poll--status");
-	private String control = getLoc("poll--control");
-	private String serverDate = getLoc("poll--server-date");
+	private final String MSG_POLLING_ACTIVE = getMsg("POLLING_ACTIVE");
+	private final String MSG_POLLING_INACTIVE = getMsg("POLLING_INACTIVE");
 
 	@Test
 	public void testPollingProgress() {
-		openPage();
-		
 		setPollingStatus(true);
 
-		pollingProgress();
+		checkPollingProgress();
 	}
 
 	@Test
 	public void testPollingStop() {
-		openPage();
-
 		setPollingStatus(false);
 
-		pollingStopped();
+		checkPollingStopped();
 	}
 
 	@Test
 	public void testPollingStopAndStart() {
-		openPage();
-
 		setPollingStatus(false);
 
-		pollingStopped();
+		checkPollingStopped();
 
 		setPollingStatus(true);
 
-		pollingProgress();
+		checkPollingProgress();
 	}
 
-	public void pollingProgress() {
-		final String old = selenium.getText(serverDate);
+	private void checkPollingProgress() {
+		assertEquals(selenium.getText(LOC_OUTPUT_POLL_STATUS), MSG_POLLING_ACTIVE, "Polling status should be active");
 
-		Wait.timeout(3000).until(new Condition() {
+		final String oldServerDate = selenium.getText(LOC_OUTPUT_SERVER_DATE);
+
+		Wait.failWith("Server date didn't changed before timeout").timeout(3000).until(new Condition() {
 			public boolean isTrue() {
-				String actual = selenium.getText(serverDate);
+				String currentServerDate = selenium.getText(LOC_OUTPUT_SERVER_DATE);
 
-				return !old.equals(actual);
+				return !oldServerDate.equals(currentServerDate);
 			}
 		});
 	}
 
-	public void pollingStopped() {
-		Assert.assertEquals(selenium.getText(status),
-				getMess("poll--polling-inactive"));
+	private void checkPollingStopped() {
+		assertEquals(selenium.getText(LOC_OUTPUT_POLL_STATUS), MSG_POLLING_INACTIVE,
+				"Polling status should be inactive");
 
-		String expected = selenium.getText(serverDate);
+		String expected = selenium.getText(LOC_OUTPUT_SERVER_DATE);
 		waitFor(2000);
-		String actual = selenium.getText(serverDate);
+		String actual = selenium.getText(LOC_OUTPUT_SERVER_DATE);
 
-		Assert.assertEquals(actual, expected);
+		assertEquals(actual, expected, format("Actual server date '{0}' should equal '{1}' when polling is inactive",
+				actual, expected));
 	}
 
-	public void setPollingStatus(final boolean pollingActive) {
-		if (pollingActive != getMess("poll--polling-active").equals(
-				selenium.getText(status))) {
+	private void setPollingStatus(final boolean requiredPollingStatus) {
+		// if polling status don't match required polling status, change it
+		if (requiredPollingStatus != MSG_POLLING_ACTIVE.equals(selenium.getText(LOC_OUTPUT_POLL_STATUS))) {
 
-			selenium.click(control);
+			selenium.click(LOC_BUTTON_POLL_CONTROL);
 
-			Wait.until(new Condition() {
+			Wait.failWith("Polling status didn't change").until(new Condition() {
 				public boolean isTrue() {
-					return pollingActive == getMess("poll--polling-active")
-							.equals(selenium.getText(status));
+					return requiredPollingStatus == MSG_POLLING_ACTIVE.equals(selenium.getText(LOC_OUTPUT_POLL_STATUS));
 				}
 			});
 		}
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Poll");
+
+		scrollIntoView(LOC_OUTPUT_POLL_STATUS, true);
 	}
 }
