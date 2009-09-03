@@ -17,121 +17,104 @@
                 </imageobject>
             </mediaobject>
         </figure>
-    </section>
-   <section>
-        <title>Key Features</title>
-        <itemizedlist>
-            <listitem>
-            <para>Highly customizable look and feel </para>
-         </listitem>
-            <listitem>
-            <para>Tracking both traditional and Ajax based requests</para>
-         </listitem>
-            <listitem>
-            <para>Optional toolTip to display the detail portion of the message</para>
-         </listitem>
-            <listitem>
-            <para>Additionally customizable with attributes and facets</para>
-         </listitem>
-            <listitem>
-            <para>Additionally provides two parts to be optionally defined: marker and
-            label</para>
-         </listitem>
-        </itemizedlist>
-    </section>
-   <section>
+   </section>
+      
+      <section>
+            <title>Key Features</title>
+            <itemizedlist>
+                  <listitem>
+                        <para>Consists of two parts to be defined optionally: marker (pictogram) and label (text message)</para>
+                  </listitem>
+                  <listitem>
+                        <para>Provides set of facets for marker customization</para>
+                  </listitem>
+                  <listitem>
+                        <para>Supports tooltip to display extra portion of message</para>
+                  </listitem>
+                  <listitem>
+                        <para>Tracks both traditional and Ajax requests</para>
+                  </listitem>
+                  <listitem>
+                        <para>Customizable look and feel </para>
+                  </listitem>
+            </itemizedlist>
+      </section>
+      
+      <section>
       <title>Details of Usage</title>
-      <para> The component has the same behavior as standard <emphasis role="bold">
-            <property>&lt;h:message&gt;</property>
-         </emphasis>component except next two features: <itemizedlist>
-            <listitem>
-               <para>It's ajaxRendered. It means that the component is reRendered after Ajax request
-          automatically without outputPanel usage</para>
+      <para>
+            The component has the same behavior as standard <emphasis role="bold"><property>&lt;h:message&gt;</property></emphasis> component. 
+            Besides some extra features:
+            <itemizedlist>
+                  <listitem>
+                        <para>auto rerendering after Ajax request without help of <emphasis role="bold"><property>&lt;h:outputPanel&gt;</property></emphasis>;</para>
+                  </listitem>
+                  <listitem>
+                        <para>providing <code>passed</code> message after validation has been passed (optional);</para>
             </listitem>
             <listitem>
-               <para>The component optionally provides "passed" state which will be shown if no message is displayed</para>
-            </listitem>
-            <listitem>
-               <para>Provides possibility to add some marker to message. By default  a marker element
-          isn't shown</para>
+                  <para>possibility to add marker to a message.</para>
             </listitem>
          </itemizedlist>
       </para>
-      
-
-
-      <para> The following example shows different variants for component customization. The
-      attribute <emphasis>
-            <property>"passedLabel"</property>
-         </emphasis> is used for definition of the label to display when no message
-      appears. But the message component doesn't appear before the form submission even when 
-      state is defined as passed (on initial rendering). Boolean attribute<emphasis>
-            <property> "showSummary" </property>
-         </emphasis>defines possibility to
-      display summary portion of displayed messages. The facets <emphasis>
-            <property>"errorMarker"</property>
-         </emphasis> and <emphasis>
-            <property>"passedMarker"</property>
-         </emphasis> set
-      corresponding images for markers. </para>
-
       <para>
-         <emphasis role="bold">Example:</emphasis>
+            The <emphasis role="bold"><property>&lt;rich:message&gt;</property></emphasis> appears on page after form is submitted. 
+            Even for &quot;passed&quot; state.
+            The <emphasis><property>&quot;passedLabel&quot;</property></emphasis> attribute is used for definition of the label when validation is passed.
+            Boolean attribute<emphasis><property> "showSummary" </property></emphasis>defines possibility to display summary portion of displayed messages.
       </para>
-      <programlisting role="XML">...
-&lt;rich:message for="id" passedLabel="No errors" showSummary="true"&gt;
+
+            <programlisting role="XML">&lt;rich:message for="id" passedLabel="No errors" showSummary="true"&gt;
       &lt;f:facet name="errorMarker"&gt;
             &lt;h:graphicImage url="/image/error.png"/&gt;
       &lt;/f:facet&gt;
       &lt;f:facet name="passedMarker"&gt;
             &lt;h:graphicImage url="/image/passed.png"/&gt;
       &lt;/f:facet&gt;  	
-&lt;/rich:message&gt; 	
-...
-</programlisting>
+&lt;/rich:message&gt;</programlisting>
 
   </section>
-   <section>
-      <title>Reference Data</title>
-      <para>
-         <ulink url="&tlddoc;rich/message.html">Table of 
-							&lt;rich:message&gt; 
-							 attributes</ulink>.
-						</para>
-      <table>
-         <title>Component Identification Parameters </title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Name</entry>
-                  <entry>Value</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>component-type</entry>
-                  <entry>org.richfaces.component.RichMessage</entry>
-               </row>
-               <row>
-                  <entry>component-class</entry>
-                  <entry>org.richfaces.component.html.HtmlRichMessage</entry>
-               </row>
-               <row>
-                  <entry>component-family</entry>
-                  <entry>org.richfaces.component.RichMessage</entry>
-               </row>
-               <row>
-                  <entry>renderer-type</entry>
-                  <entry>org.richfaces.renderkit.html.RichMessagesHtmlBaseRenderer</entry>
-               </row>
-               <row>
-                  <entry>tag-class</entry>
-                  <entry>org.richfaces.taglib.RichMessageTag</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
+   
+      <section>
+            <title>Reference Data</title>
+            <para>
+                  <ulink url="&tlddoc;rich/message.html">Table of &lt;rich:message&gt; attributes</ulink>.
+            </para>
+            
+            <table>
+                  <title>Component Identification Parameters </title>
+                  <tgroup cols="2">
+                        <thead>
+                              <row>
+                                    <entry>Name</entry>
+                                    <entry>Value</entry>
+                              </row>
+                        </thead>
+                        <tbody>
+                              <row>
+                                    <entry>component-type</entry>
+                                    <entry>org.richfaces.component.RichMessage</entry>
+                              </row>
+                              <row>
+                                    <entry>component-class</entry>
+                                    <entry>org.richfaces.component.html.HtmlRichMessage</entry>
+                              </row>
+                              <row>
+                                    <entry>component-family</entry>
+                                    <entry>org.richfaces.component.RichMessage</entry>
+                              </row>
+                              <row>
+                                    <entry>renderer-type</entry>
+                                    <entry>org.richfaces.RichMessageRenderer</entry>
+                              </row>
+                              <row>
+                                    <entry>tag-class</entry>
+                                    <entry>org.richfaces.taglib.RichMessageTag</entry>
+                              </row>
+                        </tbody>
+                  </tgroup>
+            </table>
+            <table>
          
             <title>Facets</title>
             <tgroup cols="2">
@@ -169,48 +152,38 @@
          
          
       <table id="mC">
-         <title>Classes names that define a component appearance</title>
-
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-
-                  <entry>Description</entry>
-               </row>
-            </thead>
-
-            <tbody>
-               <row>
-                  <entry>rich-message</entry>
-
-                  <entry>Defines styles for a wrapper element</entry>
-               </row>
-
-               <row>
-                  <entry>rich-message-marker</entry>
-
-                  <entry>Defines styles for a marker</entry>
-               </row>
-
-               <row>
-                  <entry>rich-message-label</entry>
-
-                  <entry>Defines styles for a label</entry>
-               </row>
-
-            </tbody>
-         </tgroup>
+            <title>Classes names that define a component appearance</title>
+            <tgroup cols="2">
+                  <thead>
+                        <row>
+                              <entry>Class name</entry>
+                              <entry>Description</entry>
+                        </row>
+                  </thead>
+                  <tbody>
+                        <row>
+                              <entry>rich-message</entry>
+                              <entry>Defines styles for a wrapper element</entry>
+                        </row>
+                        <row>
+                              <entry>rich-message-marker</entry>
+                              <entry>Defines styles for a marker</entry>
+                        </row>
+                        <row>
+                              <entry>rich-message-label</entry>
+                              <entry>Defines styles for a label</entry>
+                        </row>
+                  </tbody>
+            </tgroup>
       </table>
-							You can find all necessary information about style classes redefinition in 
-						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
-						</section>
+            
+            <para>You can find all necessary information about style classes redefinition in <link linkend="customstyles">Definition of Custom Style Classes</link> section.</para>
+      </section>
+      
    <section>
       <title>Relevant Resources Links</title>
       <para>
-         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/message.jsf?c=message">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
-            <property>&lt;rich:message&gt;</property>
-         </emphasis> usage and sources for the given example. </para>
+            Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/message.jsf?c=message">Message page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+      </para>
   </section>
 </section>
