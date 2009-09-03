@@ -83,10 +83,10 @@
           
           <para>
               The title of the page can be set with the <emphasis>
-            <property>"pageTile"</property>
+            <property>"pageTitle"</property>
          </emphasis> attribute. 
-              To place some other page parameters (like meta information, links to CSS style sheets etc.) in the &lt;head&gt; element of an HTML page use "pageHeader" facet. 
-             
+              To place some other page parameters (like meta information, links to CSS style sheets etc.) in the &lt;head&gt; element of an HTML page use 
+          	&quot;pageHeader&quot; facet.        
           </para>
       <para>
          <emphasis role="bold">Example:</emphasis>
@@ -152,7 +152,7 @@
        
         <para>The theme defines the way the <emphasis role="bold">
             <property>&lt;rich:page&gt;</property>
-         </emphasis> is rendered. Default renderer(default theme) of the <emphasis role="bold">
+         </emphasis> is rendered. Default renderer (default theme) of the <emphasis role="bold">
             <property>&lt;rich:page&gt;</property>
          </emphasis> has no mappings to skin parameters and just provides CSS classes for the page part. However, the <property>simple</property> theme, which is an extension of the default theme, has mappings to skin parameters and adds the RichFaces skinning for the page elements. </para>
         
@@ -182,7 +182,7 @@
             <tbody>
                 <row>
                     <entry>component-type</entry>
-                    <entry>org.richfaces.component.html.HtmlPage</entry>
+                	<entry>org.richfaces.Page</entry>
                 </row>
                 <row>
                     <entry>component-class</entry>

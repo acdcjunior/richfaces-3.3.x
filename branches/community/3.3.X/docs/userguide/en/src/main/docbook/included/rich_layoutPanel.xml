@@ -124,7 +124,7 @@
          <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/layouts.jsf">On RichFaces Live Demo page </ulink> you can see an example of <emphasis role="bold">
                 <property>&lt;rich:layoutPanel&gt;</property>
                 </emphasis> usage and sources for the given example. </para>
-        <para>The <link linkend="rich_layout">
+        <para>See also the <link linkend="rich_layout">
             <emphasis role="bold">
                <property>&lt;rich:layout&gt;</property>
             </emphasis>

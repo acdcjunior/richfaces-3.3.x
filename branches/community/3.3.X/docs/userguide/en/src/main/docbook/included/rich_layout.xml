@@ -90,7 +90,7 @@
                               <tbody>
                                         <row>
                                                   <entry>component-type</entry>
-                                                  <entry>org.richfaces.layout</entry>
+                                                  <entry>org.richfaces.Layout</entry>
                                         </row>
                                         <row>
                                                   <entry>component-class</entry>
