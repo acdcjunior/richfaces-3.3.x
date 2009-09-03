@@ -1,84 +1,99 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.graphValidator;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
  * @version $Revision$
  */
-public class GraphValidatorAfterModelUpdateTestCase extends
-		AbstractSeleniumRichfacesTestCase {
+public class GraphValidatorAfterModelUpdateTestCase extends AbstractSeleniumRichfacesTestCase {
+	private final String LOC_FIELDSET_HEADER_ACTIVITIES = getLoc("LOC_FIELDSET_HEADER_ACTIVITIES");
+	private final String LOC_BUTTON_SUBMIT_ACTIVITIES = getLoc("BUTTON_SUBMIT_ACTIVITIES");
+	private final String LOC_OUTPUT_VALIDATION_MESSAGE = getLoc("OUTPUT_VALIDATION_MESSAGE");
+	private final String LOC_CLASS_VALIDATION_MESSAGE = getLoc("CLASS_VALIDATION_MESSAGE");
+	private final String LOC_INPUT_ACTIVITY_HOURS_PREFORMATTED = getLoc("INPUT_ACTIVITY_HOURS_PREFORMATTED");
+
+	private final String MSG_CLASS_VALID = getMsg("CLASS_VALID");
+	private final String MSG_CLASS_INVALID = getMsg("CLASS_INVALID");
+	private final String MSG_INPUT_VALID = getMsg("INPUT_VALID");
+	private final String MSG_INPUT_INVALID_TOO_GREAT = getMsg("INPUT_INVALID_TOO_GREAT");
+	private final String MSG_INPUT_INVALID_SUM_TOO_GREAT = getMsg("INPUT_INVALID_SUM_TOO_GREAT");
+	private final String MSG_OUTPUT_PLEASE_FILL_AT_LEAST_ONE_ENTRY = getMsg("OUTPUT_PLEASE_FILL_AT_LEAST_ONE_ENTRY");
+	private final String MSG_OUTPUT_CHANGES_STORED_SUCCESSFULLY = getMsg("OUTPUT_CHANGES_STORED_SUCCESSFULLY");
+	private final String MSG_OUTPUT_INVALID_VALUES = getMsg("OUTPUT_INVALID_VALUES");
+	private final String MSG_OUTPUT_INVALID_SUM_TOO_GREAT = getMsg("OUTPUT_INVALID_SUM_TOO_GREAT");
+
 	/**
-	 * Opens specified page
+	 * Do no changes to form and checks that validate message 'Please fill at
+	 * least one entry' appear
 	 */
-	public void openPage() {
-		selenium.open(contextPath
-				+ "/richfaces/graphValidator.jsf?c=graphValidator&tab=usage");
-		scrollIntoView(header, true);
-	}
-
-	private String header = getLoc("graph-validator--header2");
-	private String buttonSubmit = getLoc("graph-validator--button--submit2");
-	private String validationMessage = getLoc("graph-validator--output--validation-message");
-	private String validationMessageClass = getLoc("graph-validator--attribute--validation-message-class");
-	private String activityTimes = getLoc("graph-validator--input--activity-times");
-	private String validMessageClass = getMess("graph-validator--attribute--class-valid");
-	private String invalidMessageClass = getMess("graph-validator--attribute--class-invalid");
-
 	@Test
-	public void noChangeIntoFormTest() {
-		openPage();
-
+	public void testNoChangeIntoForm() {
 		submitAndWaitForMessageAppears();
 
-		validateMessages(
-				invalidMessageClass,
-				getMess("graph-validator--message--please-fill-at-least-one-entry"));
+		validateMessages(MSG_CLASS_INVALID, MSG_OUTPUT_PLEASE_FILL_AT_LEAST_ONE_ENTRY);
 	}
 
+	/**
+	 * Enter first input and checks that changes will store successfully
+	 */
 	@Test
-	public void changeStoredSuccessfullyTest() {
-		openPage();
+	public void testChangeStoredSuccessfully() {
+		typeAndSubmit(format(LOC_INPUT_ACTIVITY_HOURS_PREFORMATTED, 1), MSG_INPUT_VALID);
 
-		typeAndSubmit(format(activityTimes, 1),
-				getMess("graph-validator--input--ok"));
-
-		validateMessages(
-				validMessageClass,
-				getMess("graph-validator--message--changes-stored-successfully"));
+		validateMessages(MSG_CLASS_VALID, MSG_OUTPUT_CHANGES_STORED_SUCCESSFULLY);
 	}
 
+	/**
+	 * Enter only one value that is too great and checks that validation message
+	 * appear
+	 */
 	@Test
-	public void oneValueTooGreatTest() {
-		openPage();
+	public void testOneValueTooGreat() {
+		typeAndSubmit(format(LOC_INPUT_ACTIVITY_HOURS_PREFORMATTED, 1), MSG_INPUT_INVALID_TOO_GREAT);
 
-		typeAndSubmit(format(activityTimes, 1),
-				getMess("graph-validator--input--too-great"));
-
-		validateMessages(invalidMessageClass,
-				getMess("graph-validator--message--invalid-values"));
+		validateMessages(MSG_CLASS_INVALID, MSG_OUTPUT_INVALID_VALUES);
 	}
 
+	/**
+	 * Enter several values, which is in sum greater than allow maximum and
+	 * checks that validation message appear.
+	 */
 	@Test
-	public void sumOfValuesTooGreatTest() {
-		openPage();
-
+	public void testSumOfValuesTooGreat() {
 		for (int i = 1; i <= 3; i++) {
-			selenium.type(format(activityTimes, i),
-					getMess("graph-validator--input--sum-too-great"));
+			selenium.type(format(LOC_INPUT_ACTIVITY_HOURS_PREFORMATTED, i), MSG_INPUT_INVALID_SUM_TOO_GREAT);
 		}
 		submitAndWaitForMessageAppears();
 
-		validateMessages(invalidMessageClass,
-				getMess("graph-validator--message--sum-too-great"));
+		validateMessages(MSG_CLASS_INVALID, MSG_OUTPUT_INVALID_SUM_TOO_GREAT);
 	}
-
-	/* HELP METHODS */
 
 	private void typeAndSubmit(String locator, String text) {
 		selenium.type(locator, text);
@@ -86,18 +101,26 @@ public class GraphValidatorAfterModelUpdateTestCase extends
 	}
 
 	private void submitAndWaitForMessageAppears() {
-		selenium.click(buttonSubmit);
+		selenium.click(LOC_BUTTON_SUBMIT_ACTIVITIES);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Validation message never appeared").until(new Condition() {
 			public boolean isTrue() {
-				return selenium.isElementPresent(validationMessage);
+				return selenium.isElementPresent(LOC_OUTPUT_VALIDATION_MESSAGE);
 			}
 		});
 	}
 
 	private void validateMessages(String className, String text) {
-		Assert.assertEquals(className, selenium
-				.getAttribute(validationMessageClass));
-		Assert.assertEquals(text, selenium.getText(validationMessage));
+		assertEquals(selenium.getAttribute(LOC_CLASS_VALIDATION_MESSAGE), className,
+				"Validation message's class is invalid");
+		assertEquals(selenium.getText(LOC_OUTPUT_VALIDATION_MESSAGE), text, "Given validation message isn't expected");
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Graph Validator");
+
+		scrollIntoView(LOC_FIELDSET_HEADER_ACTIVITIES, true);
 	}
 }
