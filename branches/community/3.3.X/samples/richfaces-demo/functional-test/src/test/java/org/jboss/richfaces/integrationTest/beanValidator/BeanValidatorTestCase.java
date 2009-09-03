@@ -33,9 +33,9 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	private String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
 	private String LOC_BUTTON_SUBMIT = getLoc("BUTTON_SUBMIT");
 	private String LOC_VALIDATION_MESSAGE_RELATIVE = getLoc("VALIDATION_MESSAGE_RELATIVE");
-	private String LOC_INPUT_HIBERNATE_NAME = getLoc("INPUT_HIBERNATE_NAME");
-	private String LOC_INPUT_HIBERNATE_AGE = getLoc("INPUT_HIBERNATE_AGE");
-	private String LOC_INPUT_HIBERNATE_EMAIL = getLoc("INPUT_HIBERNATE_EMAIL");
+	private String LOC_INPUT_NAME = getLoc("INPUT_NAME");
+	private String LOC_INPUT_AGE = getLoc("INPUT_AGE");
+	private String LOC_INPUT_EMAIL = getLoc("INPUT_EMAIL");
 
 	private final String MSG_INPUT_VALUE_IS_LESS_THAN_MINIMUM = getMsg("INPUT_VALUE_IS_LESS_THAN_MINIMUM");
 	private final String MSG_INPUT_VALUE_IS_GREATER_THAN_MAXIMUM = getMsg("INPUT_VALUE_IS_GREATER_THAN_MAXIMUM");
@@ -62,9 +62,9 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testNameValueRequired() {
-		final String validationMessage = format(MSG_OUTPUT_MAY_NOT_BE_NULL_OR_EMPTY, LOC_INPUT_HIBERNATE_NAME);
-		typeAndSubmit(LOC_INPUT_HIBERNATE_NAME, "");
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_NAME), validationMessage);
+		final String validationMessage = format(MSG_OUTPUT_MAY_NOT_BE_NULL_OR_EMPTY, LOC_INPUT_NAME);
+		typeAndSubmit(LOC_INPUT_NAME, "");
+		waitForTextEquals(getMessageFor(LOC_INPUT_NAME), validationMessage);
 	}
 
 	/**
@@ -73,8 +73,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testNameMinimumLength() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_NAME, MSG_INPUT_VALUE_IS_LESS_THAN_MINIMUM);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_NAME), MSG_OUTPUT_LENGTH_MUST_BE_BETWEEN);
+		typeAndSubmit(LOC_INPUT_NAME, MSG_INPUT_VALUE_IS_LESS_THAN_MINIMUM);
+		waitForTextEquals(getMessageFor(LOC_INPUT_NAME), MSG_OUTPUT_LENGTH_MUST_BE_BETWEEN);
 	}
 
 	/**
@@ -83,8 +83,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testNameMaximumLength() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_NAME, MSG_INPUT_VALUE_IS_GREATER_THAN_MAXIMUM);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_NAME), MSG_OUTPUT_LENGTH_MUST_BE_BETWEEN);
+		typeAndSubmit(LOC_INPUT_NAME, MSG_INPUT_VALUE_IS_GREATER_THAN_MAXIMUM);
+		waitForTextEquals(getMessageFor(LOC_INPUT_NAME), MSG_OUTPUT_LENGTH_MUST_BE_BETWEEN);
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testNameOnlySpacesPattern() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_NAME, " ");
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_NAME), MSG_OUTPUT_STRING_CONTAIN_ONLY_SPACES);
+		typeAndSubmit(LOC_INPUT_NAME, " ");
+		waitForTextEquals(getMessageFor(LOC_INPUT_NAME), MSG_OUTPUT_STRING_CONTAIN_ONLY_SPACES);
 	}
 
 	/**
@@ -106,8 +106,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 		// first violate validation error
 		testNameValueRequired();
 		// then try valid input
-		typeAndSubmit(LOC_INPUT_HIBERNATE_NAME, MSG_INPUT_VALID_NAME);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_NAME), "");
+		typeAndSubmit(LOC_INPUT_NAME, MSG_INPUT_VALID_NAME);
+		waitForTextEquals(getMessageFor(LOC_INPUT_NAME), "");
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testAgeValueRequired() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_AGE, "");
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_AGE), MSG_OUTPUT_MAY_NOT_BE_NULL);
+		typeAndSubmit(LOC_INPUT_AGE, "");
+		waitForTextEquals(getMessageFor(LOC_INPUT_AGE), MSG_OUTPUT_MAY_NOT_BE_NULL);
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testAgeMinimumValue() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_AGE, MSG_INPUT_MUST_BE_LESS_THAN_OR_EQUAL);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_AGE), MSG_OUTPUT_MUST_BE_LESS_THAN_OR_EQUAL);
+		typeAndSubmit(LOC_INPUT_AGE, MSG_INPUT_MUST_BE_LESS_THAN_OR_EQUAL);
+		waitForTextEquals(getMessageFor(LOC_INPUT_AGE), MSG_OUTPUT_MUST_BE_LESS_THAN_OR_EQUAL);
 	}
 
 	/**
@@ -136,8 +136,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testAgeMaximumValue() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_AGE, MSG_INPUT_MUST_BE_GREATER_THAN_OR_EQUAL);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_AGE), MSG_OUTPUT_MUST_BE_GREATER_THAN_OR_EQUAL);
+		typeAndSubmit(LOC_INPUT_AGE, MSG_INPUT_MUST_BE_GREATER_THAN_OR_EQUAL);
+		waitForTextEquals(getMessageFor(LOC_INPUT_AGE), MSG_OUTPUT_MUST_BE_GREATER_THAN_OR_EQUAL);
 	}
 
 	/**
@@ -146,9 +146,9 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testAgeIntegerOnly() {
-		final String validationMessage = format(MSG_OUTPUT_MUST_BE_A_NUMBER, LOC_INPUT_HIBERNATE_AGE);
-		typeAndSubmit(LOC_INPUT_HIBERNATE_AGE, MSG_INPUT_IS_NOT_NUMBER);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_AGE), validationMessage);
+		final String validationMessage = format(MSG_OUTPUT_MUST_BE_A_NUMBER, LOC_INPUT_AGE);
+		typeAndSubmit(LOC_INPUT_AGE, MSG_INPUT_IS_NOT_NUMBER);
+		waitForTextEquals(getMessageFor(LOC_INPUT_AGE), validationMessage);
 	}
 
 	/**
@@ -160,8 +160,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 		// first violate validation error
 		testAgeValueRequired();
 		// then try valid input
-		typeAndSubmit(LOC_INPUT_HIBERNATE_AGE, MSG_INPUT_VALID_AGE);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_AGE), "");
+		typeAndSubmit(LOC_INPUT_AGE, MSG_INPUT_VALID_AGE);
+		waitForTextEquals(getMessageFor(LOC_INPUT_AGE), "");
 	}
 
 	/**
@@ -170,8 +170,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testEmailMayNotBeNullOrEmpty() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_EMAIL, "");
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_EMAIL), MSG_OUTPUT_MAY_NOT_BE_NULL_OR_EMPTY);
+		typeAndSubmit(LOC_INPUT_EMAIL, "");
+		waitForTextEquals(getMessageFor(LOC_INPUT_EMAIL), MSG_OUTPUT_MAY_NOT_BE_NULL_OR_EMPTY);
 	}
 
 	/**
@@ -180,8 +180,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testEmailOnlySpaces() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_EMAIL, " ");
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
+		typeAndSubmit(LOC_INPUT_EMAIL, " ");
+		waitForTextEquals(getMessageFor(LOC_INPUT_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
 	}
 
 	/**
@@ -190,8 +190,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testEmailBad1() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_EMAIL, MSG_INPUT_NOT_WELL_FORMED_EMAIL_1);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
+		typeAndSubmit(LOC_INPUT_EMAIL, MSG_INPUT_NOT_WELL_FORMED_EMAIL_1);
+		waitForTextEquals(getMessageFor(LOC_INPUT_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testEmailBad2() {
-		typeAndSubmit(LOC_INPUT_HIBERNATE_EMAIL, MSG_INPUT_NOT_WELL_FORMED_EMAIL_2);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
+		typeAndSubmit(LOC_INPUT_EMAIL, MSG_INPUT_NOT_WELL_FORMED_EMAIL_2);
+		waitForTextEquals(getMessageFor(LOC_INPUT_EMAIL), MSG_OUTPUT_NOT_WELL_FORMED_EMAIL);
 	}
 
 	/**
@@ -213,8 +213,8 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 		// first violate validation error
 		testEmailMayNotBeNullOrEmpty();
 		// then try valid input
-		typeAndSubmit(LOC_INPUT_HIBERNATE_EMAIL, MSG_INPUT_WELL_FORMED_EMAIL);
-		waitForTextEquals(getMessageFor(LOC_INPUT_HIBERNATE_EMAIL), "");
+		typeAndSubmit(LOC_INPUT_EMAIL, MSG_INPUT_WELL_FORMED_EMAIL);
+		waitForTextEquals(getMessageFor(LOC_INPUT_EMAIL), "");
 	}
 	
 	private void typeAndSubmit(String locator, String value) {
