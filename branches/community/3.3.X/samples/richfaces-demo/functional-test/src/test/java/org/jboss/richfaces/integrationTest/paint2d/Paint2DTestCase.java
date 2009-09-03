@@ -259,9 +259,6 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
 
         try {
             tmp = URLUtils.resourceMd5Digest(tmp);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            fail(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.getMessage());
