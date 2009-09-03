@@ -1,10 +1,31 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.outputPanel;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.dom.Event;
 import org.jboss.test.selenium.waiting.Condition;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -12,72 +33,80 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class OutputPanelTestCase extends AbstractSeleniumRichfacesTestCase {
+
+	private String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+	private String LOC_INPUT_WRONG = getLoc("INPUT_WRONG");
+	private String LOC_INPUT_CORRECT = getLoc("INPUT_CORRECT");
+	private String LOC_OUTPUT_MESSAGE = getLoc("OUTPUT_MESSAGE");
+
+	private String MSG_INPUT_CORRECT = getMsg("INPUT_CORRECT");
+	private String MSG_INPUT_WRONG = getMsg("INPUT_WRONG");
+	private String MSG_OUTPUT_VALIDATOR_ERROR = getMsg("OUTPUT_VALIDATOR_ERROR");
+
 	/**
-	 * Opens specified page
+	 * Add correct text into wrong input, checks that no text and no error
+	 * message appear.
 	 */
-	public void openPage() {
-		selenium.open(contextPath
-				+ "/richfaces/outputPanel.jsf?c=outputPanel&tab=usage");
-		scrollIntoView(header, true);
-	}
-
-	private String header = getLoc("output-panel--header");
-	private String inputFail = getLoc("output-panel--input--fail");
-	private String inputSuccess = getLoc("output-panel--input--success");
-	private String textCorrect = getMess("output-panel--input--correct");
-	private String textWrong = getMess("output-panel--input--wrong");
-	private String textValidationError = getMess("output-panel--output--validation-error");
-	private String formatMessage = getLoc("output-panel--output--message");
-
-	Condition isApprovedTextPresent = new Condition() {
-		public boolean isTrue() {
-			return true;
-		}
-	};
-
 	@Test
-	public void correctTextIntoFailInputTest() {
-		textIntoInput(inputFail, textCorrect, false, false);
+	public void testCorrectTextIntoWrongInput() {
+		enterTextAndCheckOutputAndErrorMessage(LOC_INPUT_WRONG, MSG_INPUT_CORRECT, false, false);
 	}
 
+	/**
+	 * Enter wrong text into wrong input, checks that no text and no error
+	 * message appear.
+	 */
 	@Test
-	public void wrongTextIntoFailInputTest() {
-		textIntoInput(inputFail, textWrong, false, false);
+	public void testWrongTextIntoWrongInput() {
+		enterTextAndCheckOutputAndErrorMessage(LOC_INPUT_WRONG, MSG_INPUT_WRONG, false, false);
 	}
 
+	/**
+	 * Enter correct text into correct input, checks that text but no error
+	 * message appear.
+	 */
 	@Test
-	public void correctTextIntoSuccessInputTest() {
-		textIntoInput(inputSuccess, textCorrect, true, false);
+	public void testCorrectTextIntoSuccessInput() {
+		enterTextAndCheckOutputAndErrorMessage(LOC_INPUT_CORRECT, MSG_INPUT_CORRECT, true, false);
 	}
 
+	/**
+	 * Enter wrong text into correct input, checks that no text but only error
+	 * message appear.
+	 */
 	@Test
-	public void wrongTextIntoSuccessInputTest() {
-		textIntoInput(inputSuccess, textWrong, false, true);
+	public void testWrongTextIntoSuccessInput() {
+		enterTextAndCheckOutputAndErrorMessage(LOC_INPUT_CORRECT, MSG_INPUT_WRONG, false, true);
 	}
 
-	public void textIntoInput(String input, final String text,
-			final boolean textAppears, final boolean errorAppears) {
-		openPage();
-
-		selenium.type(input, text);
-		selenium.fireEvent(input, Event.KEYUP);
+	private void enterTextAndCheckOutputAndErrorMessage(String locInput, final String msgText,
+			final boolean textShouldAppear, final boolean errorMessageShouldAppear) {
+		selenium.type(locInput, msgText);
+		selenium.fireEvent(locInput, Event.KEYUP);
 
 		waitModelUpdate.dontFail().until(new Condition() {
 			public boolean isTrue() {
-				if (errorAppears || textAppears) {
-					return selenium.getXpathCount(format(formatMessage, text))
-							.intValue() > 0
-							|| selenium.getXpathCount(
-									format(formatMessage, textValidationError))
+				if (errorMessageShouldAppear || textShouldAppear) {
+					return selenium.getXpathCount(format(LOC_OUTPUT_MESSAGE, msgText)).intValue() > 0
+							|| selenium.getXpathCount(format(LOC_OUTPUT_MESSAGE, MSG_OUTPUT_VALIDATOR_ERROR))
 									.intValue() > 0;
 				}
 				return false;
 			}
 		});
 
-		Assert.assertEquals(textAppears ? 1 : 0, selenium.getXpathCount(format(
-				formatMessage, text)));
-		Assert.assertEquals(errorAppears ? 1 : 0, selenium
-				.getXpathCount(format(formatMessage, textValidationError)));
+		assertEquals(selenium.getXpathCount(format(LOC_OUTPUT_MESSAGE, msgText)), textShouldAppear ? 1 : 0,
+				textShouldAppear ? "Text output should appear" : "No text output should appear");
+		assertEquals(selenium.getXpathCount(format(LOC_OUTPUT_MESSAGE, MSG_OUTPUT_VALIDATOR_ERROR)),
+				errorMessageShouldAppear ? 1 : 0, errorMessageShouldAppear ? "Error message should appear"
+						: "No error message should appear");
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Output Panel");
+
+		scrollIntoView(LOC_FIELDSET_HEADER, true);
 	}
 }
