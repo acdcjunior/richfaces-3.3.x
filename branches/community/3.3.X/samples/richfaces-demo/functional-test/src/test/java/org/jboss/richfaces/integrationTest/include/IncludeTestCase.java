@@ -1,10 +1,31 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.include;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -12,165 +33,160 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class IncludeTestCase extends AbstractSeleniumRichfacesTestCase {
+
+	private String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+	private String LOC_BUTTON_PREVIOUS = getLoc("BUTTON_PREVIOUS");
+	private String LOC_BUTTON_NEXT = getLoc("BUTTON_NEXT");
+	private String LOC_INPUT_FIRSTNAME = getLoc("INPUT_FIRSTNAME");
+	private String LOC_INPUT_LASTNAME = getLoc("INPUT_LASTNAME");
+	private String LOC_INPUT_COMPANY = getLoc("INPUT_COMPANY");
+	private String LOC_INPUT_NOTES = getLoc("INPUT_NOTES");
+	private String LOC_OUTPUT_FIRSTNAME = getLoc("OUTPUT_FIRSTNAME");
+	private String LOC_OUTPUT_LASTNAME = getLoc("OUTPUT_LASTNAME");
+	private String LOC_OUTPUT_COMPANY = getLoc("OUTPUT_COMPANY");
+	private String LOC_OUTPUT_NOTES = getLoc("OUTPUT_NOTES");
+
+	private String MSG_INPUT_SAMPLE_PREFORMATTED = getMsg("INPUT_SAMPLE_PREFORMATTED");
+	private String MSG_MESSAGE_COMPANY_REQUIRED = getMsg("MESSAGE_COMPANY_REQUIRED");
+	private String MSG_MESSAGE_LASTNAME_REQUIRED = getMsg("MESSAGE_LASTNAME_REQUIRED");
+	private String MSG_MESSAGE_NOTES_REQUIRED = getMsg("MESSAGE_NOTES_REQUIRED");
+
 	/**
-	 * Opens specified page
+	 * Simply fill in all inputs and checks that they will be output well on
+	 * following pages.
 	 */
-	public void openPage() {
-		selenium.open(contextPath
-				+ "/richfaces/include.jsf?c=include&tab=usage");
-		scrollIntoView(header, true);
-	}
-
-	private String header = getLoc("include--header");
-	private String buttonNext = getLoc("include--button--next");
-	private String buttonPrevious = getLoc("include--button--previous");
-	private String inputFirstName = getLoc("include--input--first-name");
-	private String inputLastName = getLoc("include--input--last-name");
-	private String inputCompany = getLoc("include--input--company");
-	private String inputNotes = getLoc("include--input--notes");
-	private String outputFirstName = getLoc("include--output--first-name");
-	private String outputLastName = getLoc("include--output--last-name");
-	private String outputCompany = getLoc("include--output--company");
-	private String outputNotes = getLoc("include--output--notes");
-	private String sample = getMess("include--input--sample");
-
 	@Test
-	public void goThroughStepsTest() {
-		openPage();
-
+	public void testGoThroughSteps() {
 		goThroughSteps();
 	}
 
-	@Test(dependsOnMethods = { "goThroughStepsTest" })
-	public void goThroughStepsBackTest() {
-		openPage();
-
+	/**
+	 * Fill in all inputs, checks that they are output well on following pages
+	 * and then go through previous pages and check that all stay still without
+	 * change.
+	 */
+	@Test(dependsOnMethods = { "testGoThroughSteps" })
+	public void testGoThroughStepsBack() {
 		goThroughSteps();
 		goThroughStepsBack();
 	}
 
+	/**
+	 * Go through pages and on every page try to don't fill some input - checks
+	 * that message 'value required' will appear. On the last page checks that
+	 * every output is filled-in right.
+	 */
 	@Test
-	public void tryFailedValidationTest() {
-		openPage();
+	public void testTryFailedValidation() {
+		assertTrue(isFirstPage());
 
-		Assert.assertTrue(isFirstPage());
+		selenium.type(LOC_INPUT_FIRSTNAME, format(MSG_INPUT_SAMPLE_PREFORMATTED, 1));
+		selenium.type(LOC_INPUT_LASTNAME, format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		selenium.type(inputFirstName, format(sample, 1));
-		selenium.type(inputLastName, format(sample, 2));
-		selenium.click(buttonNext);
+		waitForText(MSG_MESSAGE_COMPANY_REQUIRED);
 
-		waitForText(getMess("include--message--company-required"));
+		selenium.type(LOC_INPUT_COMPANY, format(MSG_INPUT_SAMPLE_PREFORMATTED, 3));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		selenium.type(inputCompany, format(sample, 3));
-		selenium.click(buttonNext);
-
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to second page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isSecondPage();
 			}
 		});
 
-		selenium.click(buttonPrevious);
+		selenium.click(LOC_BUTTON_PREVIOUS);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to first page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isFirstPage();
 			}
 		});
 
-		selenium.type(inputLastName, "");
-		selenium.click(buttonNext);
+		selenium.type(LOC_INPUT_LASTNAME, "");
+		selenium.click(LOC_BUTTON_NEXT);
 
-		waitForText(getMess("include--message--last-name-required"));
+		waitForText(MSG_MESSAGE_LASTNAME_REQUIRED);
 
-		selenium.type(inputLastName, format(sample, 2));
-		selenium.click(buttonNext);
+		selenium.type(LOC_INPUT_LASTNAME, format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to second page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isSecondPage();
 			}
 		});
 
-		selenium.click(buttonNext);
+		selenium.click(LOC_BUTTON_NEXT);
 
-		waitForText(getMess("include--message--notes-required"));
+		waitForText(MSG_MESSAGE_NOTES_REQUIRED);
 
-		selenium.type(inputNotes, format(sample, 4));
-		selenium.click(buttonNext);
+		selenium.type(LOC_INPUT_NOTES, format(MSG_INPUT_SAMPLE_PREFORMATTED, 4));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to last page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isLastPage();
 			}
 		});
 
-		Assert.assertEquals(format(sample, 1), selenium
-				.getText(outputFirstName));
-		Assert
-				.assertEquals(format(sample, 2), selenium
-						.getText(outputLastName));
-		Assert.assertEquals(format(sample, 3), selenium.getText(outputCompany));
-		Assert.assertEquals(format(sample, 4), selenium.getText(outputNotes));
+		assertEquals(selenium.getText(LOC_OUTPUT_FIRSTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 1));
+		assertEquals(selenium.getText(LOC_OUTPUT_LASTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		assertEquals(selenium.getText(LOC_OUTPUT_COMPANY), format(MSG_INPUT_SAMPLE_PREFORMATTED, 3));
+		assertEquals(selenium.getText(LOC_OUTPUT_NOTES), format(MSG_INPUT_SAMPLE_PREFORMATTED, 4));
 	}
 
-	public void goThroughSteps() {
-		Assert.assertTrue(isFirstPage());
+	private void goThroughSteps() {
+		assertTrue(isFirstPage());
 
-		selenium.type(inputFirstName, format(sample, 1));
-		selenium.type(inputLastName, format(sample, 2));
-		selenium.type(inputCompany, format(sample, 3));
-		selenium.click(buttonNext);
+		selenium.type(LOC_INPUT_FIRSTNAME, format(MSG_INPUT_SAMPLE_PREFORMATTED, 1));
+		selenium.type(LOC_INPUT_LASTNAME, format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		selenium.type(LOC_INPUT_COMPANY, format(MSG_INPUT_SAMPLE_PREFORMATTED, 3));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to second page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isSecondPage();
 			}
 		});
 
-		selenium.type(inputNotes, format(sample, 4));
-		selenium.click(buttonNext);
+		selenium.type(LOC_INPUT_NOTES, format(MSG_INPUT_SAMPLE_PREFORMATTED, 4));
+		selenium.click(LOC_BUTTON_NEXT);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to last page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isLastPage();
 			}
 		});
 
-		Assert.assertEquals(format(sample, 1), selenium
-				.getText(outputFirstName));
-		Assert
-				.assertEquals(format(sample, 2), selenium
-						.getText(outputLastName));
-		Assert.assertEquals(format(sample, 3), selenium.getText(outputCompany));
-		Assert.assertEquals(format(sample, 4), selenium.getText(outputNotes));
+		assertEquals(selenium.getText(LOC_OUTPUT_FIRSTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 1));
+		assertEquals(selenium.getText(LOC_OUTPUT_LASTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		assertEquals(selenium.getText(LOC_OUTPUT_COMPANY), format(MSG_INPUT_SAMPLE_PREFORMATTED, 3));
+		assertEquals(selenium.getText(LOC_OUTPUT_NOTES), format(MSG_INPUT_SAMPLE_PREFORMATTED, 4));
 	}
 
 	private void goThroughStepsBack() {
-		selenium.click(buttonPrevious);
+		selenium.click(LOC_BUTTON_PREVIOUS);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to second page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isSecondPage();
 			}
 		});
 
-		Assert.assertEquals(format(sample, 4), selenium.getValue(inputNotes));
+		assertEquals(selenium.getValue(LOC_INPUT_NOTES), format(MSG_INPUT_SAMPLE_PREFORMATTED, 4));
 
-		selenium.click(buttonPrevious);
+		selenium.click(LOC_BUTTON_PREVIOUS);
 
-		Wait.until(new Condition() {
+		Wait.failWith("Switching to first page failed").until(new Condition() {
 			public boolean isTrue() {
 				return isFirstPage();
 			}
 		});
 
-		Assert.assertEquals(format(sample, 1), selenium
-				.getValue(inputFirstName));
-		Assert
-				.assertEquals(format(sample, 2), selenium
-						.getValue(inputLastName));
-		Assert.assertEquals(format(sample, 3), selenium.getValue(inputCompany));
+		assertEquals(selenium.getValue(LOC_INPUT_FIRSTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 1));
+		assertEquals(selenium.getValue(LOC_INPUT_LASTNAME), format(MSG_INPUT_SAMPLE_PREFORMATTED, 2));
+		assertEquals(selenium.getValue(LOC_INPUT_COMPANY), format(MSG_INPUT_SAMPLE_PREFORMATTED, 3));
 	}
 
 	private boolean isFirstPage() {
@@ -185,9 +201,16 @@ public class IncludeTestCase extends AbstractSeleniumRichfacesTestCase {
 		return isButtonsPresent(true, false);
 	}
 
-	private boolean isButtonsPresent(boolean previousPresent,
-			boolean nextPresent) {
-		return (previousPresent == selenium.isElementPresent(buttonPrevious))
-				&& (nextPresent == selenium.isElementPresent(buttonNext));
+	private boolean isButtonsPresent(boolean previousPresent, boolean nextPresent) {
+		return (previousPresent == selenium.isElementPresent(LOC_BUTTON_PREVIOUS))
+				&& (nextPresent == selenium.isElementPresent(LOC_BUTTON_NEXT));
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Include");
+
+		scrollIntoView(LOC_FIELDSET_HEADER, true);
 	}
 }
