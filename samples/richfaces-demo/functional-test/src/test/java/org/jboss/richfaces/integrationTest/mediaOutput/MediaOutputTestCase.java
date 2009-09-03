@@ -1,13 +1,32 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.mediaOutput;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.utils.URLUtils;
-import org.jboss.test.selenium.waiting.Wait;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -15,49 +34,61 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class MediaOutputTestCase extends AbstractSeleniumRichfacesTestCase {
+
+	private String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+	private String LOC_ATTRIBUTE_IMAGE_SRC = getLoc("ATTRIBUTE_IMAGE_SRC");
+	private String LOC_ATTRIBUTE_FLASH_HREF = getLoc("ATTRIBUTE_FLASH_HREF");
+
+	private String MSG_MD5DIGEST_IMAGE = getMsg("MD5DIGEST_IMAGE");
+	private String MSG_MD5DIGEST_FLASH = getMsg("MD5DIGEST_FLASH");
+
 	/**
-	 * Opens specified page
+	 * Gets a image's source URL and obtains it's MD5 digest - checks that the
+	 * digest is same as expected.
 	 */
-	public void openPage() {
-		selenium.open(format("{0}/{1}", contextPath, PAGE));
-		scrollIntoView(header, true);
+	@Test
+	public void testImageMd5Digest() {
+		String imageSrc = selenium.getAttribute(LOC_ATTRIBUTE_IMAGE_SRC);
+
+		try {
+			String url = URLUtils.buildUrl(selenium.getLocation(), imageSrc);
+
+			try {
+				assertEquals(URLUtils.resourceMd5Digest(url), MSG_MD5DIGEST_IMAGE);
+			} catch (IOException e) {
+				fail("Getting resources from URL failed");
+			}
+		} catch (IOException e) {
+			fail(format("Building of URL failed: '{0}', '{1}'", selenium.getLocation(), imageSrc));
+		}
 	}
 
-	private final String PAGE = "richfaces/mediaOutput.jsf?c=mediaOutput&tab=usage";
-
-	private String header = getLoc("media-output--header");
-
+	/**
+	 * Gets a flash object's data URL and obtains it's MD5 digest - checks that
+	 * the digest is same as expected.
+	 */
 	@Test
-	public void imageMd5DigestTest() throws IOException,
-			NoSuchAlgorithmException {
-		openPage();
+	public void testFlashMd5Digest() {
+		String flashHref = selenium.getAttribute(LOC_ATTRIBUTE_FLASH_HREF);
 
-		waitForElement(getLoc("media-output--attribute--image-src"), Wait.DEFAULT_TIMEOUT);
-		
-		String imageSrc = selenium
-				.getAttribute(getLoc("media-output--attribute--image-src"));
+		try {
+			String url = URLUtils.buildUrl(selenium.getLocation(), flashHref);
 
-		String url = URLUtils
-				.buildUrl(contextRoot, contextPath, PAGE, imageSrc);
-
-		Assert.assertEquals(getMess("media-output--md5-digest--image"),
-				URLUtils.resourceMd5Digest(url));
+			try {
+				assertEquals(URLUtils.resourceMd5Digest(url), MSG_MD5DIGEST_FLASH);
+			} catch (IOException e) {
+				fail("Getting resources from URL failed");
+			}
+		} catch (IOException e) {
+			fail(format("Building of URL failed: '{0}', '{1}'", selenium.getLocation(), flashHref));
+		}
 	}
 
-	@Test
-	public void flashMd5DigestTest() throws IOException,
-			NoSuchAlgorithmException {
-		openPage();
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Media Output");
 
-		waitForElement(getLoc("media-output--attribute--flash-object-data"), Wait.DEFAULT_TIMEOUT);
-		
-		String flashData = selenium
-				.getAttribute(getLoc("media-output--attribute--flash-object-data"));
-
-		String url = URLUtils.buildUrl(contextRoot, contextPath, PAGE,
-				flashData);
-
-		Assert.assertEquals(getMess("media-output--md5-digest--flash"),
-				URLUtils.resourceMd5Digest(url));
+		scrollIntoView(LOC_FIELDSET_HEADER, true);
 	}
 }
