@@ -155,9 +155,6 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
 
 		try {
 			tmp = URLUtils.resourceMd5Digest(url);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
