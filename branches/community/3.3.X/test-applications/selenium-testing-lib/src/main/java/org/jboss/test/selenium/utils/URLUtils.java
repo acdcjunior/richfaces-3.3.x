@@ -64,8 +64,7 @@ public class URLUtils {
 	 * @return MD5 message digest of resource
 	 * @throws IOException when connection to URL fails
 	 */
-	public static String resourceMd5Digest(String url) throws IOException,
-			NoSuchAlgorithmException {
+	public static String resourceMd5Digest(String url) throws IOException {
 		URLConnection connection = new URL(url).openConnection();
 
 		InputStream in = connection.getInputStream();
