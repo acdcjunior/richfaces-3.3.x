@@ -286,17 +286,21 @@ Utils.DOM.copyAttributes = function() {
 };
 */
 Utils.execOnLoad = function(func, condition, timeout) {
-	
 	if (condition()) {
 		func();		
 	} else {
-		window.setTimeout(
+		var intervalId = setInterval(
 			function() {
-				Utils.execOnLoad(func, condition, timeout);
+				if (condition()) {
+					func();
+					clearInterval(intervalId);
+				}
 			},
 			timeout
 		);
 	}
+	
+	return intervalId;
 };
 Utils.Condition = {
 	ElementPresent : function(element) {

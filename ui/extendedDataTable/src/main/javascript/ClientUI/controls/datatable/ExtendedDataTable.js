@@ -32,10 +32,7 @@ ExtendedDataTable.DataTable = Class.create({
 		
 		var grid = this;
 
-		Utils.execOnLoad(
-			function(){
-				grid.update(true);
-			},
+		this.updateTimerId = Utils.execOnLoad( function(){ grid.update(true); },
 			Utils.Condition.ElementPresent(id+':od'), 100);
 	},
 	
@@ -52,6 +49,11 @@ ExtendedDataTable.DataTable = Class.create({
 	            Utils.DOM.Event.removeListeners(this.groupRows[i]);
 	        }
         } 
+        
+        if (this.updateTimerId) {
+        	clearInterval(this.updateTimerId)
+        }
+        
         //null all references to DOM elements
         delete this.selectionManager;
         delete this.header;
