@@ -248,6 +248,36 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
         }
     }
     
+    public void encodeSwitchOnDivStart(ResponseWriter writer,
+            FacesContext context, UISimpleTogglePanel component) throws IOException {
+        encodeSwitchDivStart(writer, context, component, true);
+    }
+
+    public void encodeSwitchOffDivStart(ResponseWriter writer,
+            FacesContext context, UISimpleTogglePanel component) throws IOException {
+        encodeSwitchDivStart(writer, context, component, false);
+    }
+
+    private void encodeSwitchDivStart(ResponseWriter writer,
+            FacesContext context, UISimpleTogglePanel component, boolean isSwitchOn)
+            throws IOException {
+        String clientId = component.getClientId(context);
+        writer.startElement("div", component);
+        
+        getUtils().writeAttribute(writer, "class", "rich-stglpnl-marker" );
+        getUtils().writeAttribute(writer, "id", convertToString(clientId) + "_switch_" + (isSwitchOn ? "on" : "off"));
+        
+        String display = convertToString(getSwitchStatus(context, component, isSwitchOn)).trim();
+        if (!isEmpty(display)) {
+            display = "display: " + display;
+        }
+        getUtils().writeAttribute(writer, "style", display);
+    }
+    
+    public String getSwitchStatus(FacesContext context, UIComponent component, boolean isSwitchOn) {
+        return ((UISimpleTogglePanel) component).isOpened() ^ isSwitchOn ? EMPTY : NONE;
+    }
+    
     private boolean isEmpty(String str) {
         return str == null || str.length() == 0;
     }
@@ -259,25 +289,4 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
     public void encodeDivEnd(ResponseWriter writer) throws IOException {
         writer.endElement("div");
     }
-    
-    public String getSwitchOnStatus(FacesContext context, UIComponent component) {
-    	UISimpleTogglePanel simpleTogglePanel = (UISimpleTogglePanel) component;
-    	return simpleTogglePanel.isOpened() ? EMPTY : NONE;
-//        String sw = Boolean.toString(((UISimpleTogglePanel) component).isOpened());
-//        if (sw == null || sw.equals(Boolean.toString(UISimpleTogglePanel.EXPANDED)))
-//            return EMPTY; 
-//        else return NONE;
-    }
-
-    public String getSwitchOffStatus(FacesContext context, UIComponent component) {
-    	UISimpleTogglePanel simpleTogglePanel = (UISimpleTogglePanel) component;
-    	return simpleTogglePanel.isOpened() ?  NONE : EMPTY ;
-   	
-//    	String sw = Boolean.toString(((UISimpleTogglePanel) component).isOpened());
-//        if (sw == null || sw.equals(Boolean.toString(UISimpleTogglePanel.EXPANDED)))
-//            return NONE; 
-//        else return EMPTY;
-        
-    }
-
 }
