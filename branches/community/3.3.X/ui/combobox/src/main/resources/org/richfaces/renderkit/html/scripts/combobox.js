@@ -86,12 +86,17 @@ Richfaces.ComboBox.prototype = {
 		this.field = null;
 		this.classes = null;
 		
+		this.comboList.hide()
 		delete this.comboList;
 		this.combobox.component = null;
 		this.combobox = null;
 	},
 	
 	initHandlers : function() {
+		if (this.onselect) {
+			Event.observe(this.combobox, "rich:onselect", this.onselect.bindAsEventListener(this));
+		}
+		
 		Event.observe(this.button, "click", this.buttonClickHandler.bindAsEventListener(this));
 		Event.observe(this.button, "mouseup", this.buttonMouseUpHandler.bindAsEventListener(this));
 		Event.observe(this.button, "mousedown", this.buttonMousedownHandler.bindAsEventListener(this));
@@ -401,9 +406,9 @@ Richfaces.ComboBox.prototype = {
 //			this.field.prevValue = value;
 //			this.field.value = value;
 //			this.comboValue.value = value;
-				this.comboValue.value = value;
-				this.comboList.doSelectItem(this.comboList.activeItem);
-				this.combobox.fire("rich:onselect", {});
+			this.comboValue.value = value;
+			this.comboList.doSelectItem(this.comboList.activeItem);
+			this.combobox.fire("rich:onselect", {});
 		}
 //			else if (this.directInputSuggestions) {
 //					var startInd = this.field.value.length; 
