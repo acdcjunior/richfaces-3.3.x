@@ -560,6 +560,8 @@
       you can see the example of <emphasis role="bold">
             <property>&lt;rich:progressBar&gt;</property>
          </emphasis> usage and sources for the given example. </para>
+         <para>Read <ulink url="http://www.jboss.org/community/wiki/SimplePingApplicationwithrichprogressBar">"Simple Ping Application with &lt;rich:progressBar&gt;"</ulink> article to find out how to show the progress of server ping process.</para>
+         
    
   </section>
 </section>

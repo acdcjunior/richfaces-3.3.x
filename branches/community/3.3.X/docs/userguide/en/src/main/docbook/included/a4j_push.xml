@@ -171,5 +171,8 @@ public void addListener(EventListener listener) {
                                         <emphasis role="bold">
                                         <property>&lt;a4j:push&gt;</property>
                               </emphasis> component usage. </para>
+                    <para>
+                    	Refer to <ulink url="http://www.jboss.org/community/wiki/SimpleIRCWidgetwitha4jpush"> Simple IRC Widget with &lt;a4j:push&gt;</ulink> article to find out real-world usage of the <emphasis role="bold"><property>&lt;a4j:push&gt;</property></emphasis> component.</para>
+                    
           </section>
 </section>
