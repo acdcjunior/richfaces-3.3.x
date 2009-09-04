@@ -47,14 +47,17 @@
             Besides some extra features:
             <itemizedlist>
                   <listitem>
-                        <para>auto rerendering after Ajax request without help of <emphasis role="bold"><property>&lt;h:outputPanel&gt;</property></emphasis>;</para>
+                        <para>auto rerendering after Ajax request without help of <emphasis role="bold"><property>&lt;a4j:outputPanel&gt;</property></emphasis>;</para>
                   </listitem>
                   <listitem>
                         <para>providing <code>passed</code> message after validation has been passed (optional);</para>
             </listitem>
             <listitem>
-                  <para>possibility to add marker to a message.</para>
+                  <para>possibility to add marker to a message;</para>
             </listitem>
+                  <listitem>
+                        <para>set of predefined CSS classes for customizing messages appearance.</para>
+                  </listitem>   
          </itemizedlist>
       </para>
       <para>
@@ -127,23 +130,23 @@
                   <tbody>
                         <row>
                               <entry>errorMarker</entry>
-                              <entry>Defines pictogram for message with <property>error</property> severity class</entry>
+                              <entry>Defines pictogram for message with <emphasis>error</emphasis> severity class</entry>
                         </row>
                         <row> 
                               <entry>fatalMarker</entry>
-                              <entry>Defines pictogram for message with <property>fatal</property> severity class</entry>
+                              <entry>Defines pictogram for message with <emphasis>fatal</emphasis> severity class</entry>
                         </row>
                         <row>
                               <entry>infoMarker</entry>
-                              <entry>Defines pictogram for message with <property>info</property> severity class</entry>
+                              <entry>Defines pictogram for message with <emphasis>info</emphasis> severity class</entry>
                         </row>
                         <row>
                               <entry>passedMarker</entry>
-                              <entry>Defines pictogram if there is no <property>fatal</property>, <property>error</property>, <property>warn</property> or <property>info</property> message</entry>
+                              <entry>Defines pictogram if there is no <emphasis>fatal</emphasis>, <emphasis>error</emphasis>, <emphasis>warn</emphasis> or <emphasis>info</emphasis> message</entry>
                         </row>
                         <row>
                               <entry>warnMarker</entry>
-                              <entry>Defines pictogram for message with <property>warn</property> severity class</entry>
+                              <entry>Defines pictogram for message with <emphasis>warn</emphasis> severity class</entry>
                         </row>
                   </tbody>
             </tgroup>
