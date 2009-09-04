@@ -55,7 +55,7 @@
     <para>
         
         <emphasis role="bold"><property>&lt;rich:graphValidator&gt;</property></emphasis> validates the  entity User object, in which restrictions are set with the help of Hibernate annotations.     
-        When the    <emphasis role="bold" >Register</emphasis> button is clicked on the <property>name, password, sex</property> etc. fields  are validated sequentially. In case of an error (for example, if a <property>loginName</property> contains only on character and the annotation restricts it to  at least 3 characters to be typed in) a error message in red color is displayed next to the input  field  and the request is aborted. If all values are valid the <code>authenticator.register(user)</code> method will be invoked and the user will be saved to the database. 
+        When the    <emphasis role="bold" >Register</emphasis> button is clicked on the <property>name, password, sex</property> etc. fields  are validated sequentially. In case of an error (for example, if a <property>loginName</property> contains only one character and the annotation restricts it to  at least 3 characters to be typed in) a error message in red color is displayed next to the input  field  and the request is aborted. If all values are valid the <code>authenticator.register(user)</code> method will be invoked and the user will be saved to the database. 
     
     </para>
     <para>
