@@ -8,7 +8,11 @@ Richfaces.mergeStyles =  function(userStyles,commonStyles) {
 		if (typeof userStyles[i] == "object") {
 			this.mergeStyles(userStyles[i],commonStyles[i]);	
 		} else {
-			commonStyles[i] += " " + userStyles[i];
+			if (commonStyles[i]) {
+				commonStyles[i] += " " + userStyles[i];
+			} else {
+				commonStyles[i] = userStyles[i];
+			}
 		}			
 	}
 	return commonStyles;				
