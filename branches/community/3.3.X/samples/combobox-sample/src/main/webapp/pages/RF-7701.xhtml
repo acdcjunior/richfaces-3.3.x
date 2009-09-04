@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:cmb="http://labs.jboss.com/jbossrichfaces/ui/combobox"
+      xmlns:p="http://labs.jboss.com/jbossrichfaces/ui/panel"
+      xmlns:a4j="http://richfaces.org/a4j"
+      >
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <f:view>
+            <h:form>
+                <cmb:comboBox 
+                    onchange="#{bean.onchangeScript}"
+                    onlistcall="#{bean.onlistcallScript}"
+                    onselect="alert('Hi Alex!');"
+                    buttonIcon="/pics/info.gif"
+                    >
+                    
+                    <f:selectItem itemValue="Oregon" />            
+                    <f:selectItem itemValue="Pennsylvania Oregonfdsf fdsfdsfds dsffdsfdsfdsf fdsfdsfwdsfsfsd fdsfdsfdsfds dfsfdsfdsfds"/>
+                    <f:selectItem itemValue="Rhode Island"/>
+                    <f:selectItem itemValue="South Carolina"/>
+                    <f:selectItem itemValue="J'uneau"/>
+                </cmb:comboBox>
+            </h:form>
+        </f:view>
+    </body> 
+</html>  
