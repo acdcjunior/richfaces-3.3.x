@@ -1036,5 +1036,8 @@
          <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/fileUpload.jsf?c=fileUpload">On RichFaces LiveDemo page </ulink> you can see an example of <emphasis role="bold">
                 <property>&lt;rich:fileUpload&gt;</property>
             </emphasis> usage and sources for the given example. </para>
+            <para>
+            <ulink url="">&lt;rich:fileUpload&gt; with MyFaces</ulink> article describes how to avoid problems with <emphasis role="bold"><property>&lt;rich:fileUpload&gt;</property></emphasis> compenent caused by wrong application configuration.
+            </para>
     </section>
 </section>
