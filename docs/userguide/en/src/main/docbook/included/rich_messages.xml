@@ -119,6 +119,7 @@
                     </tgroup>
           </table>
          
+         <table>
          <title>Facets</title>
          <tgroup cols="2">
                <thead>
@@ -150,7 +151,7 @@
                      </row>
                </tbody>
          </tgroup>
-         </table>
+        </table>
          
       <table id="tab_msC">
                               <title>Classes names that define a component appearance</title>
