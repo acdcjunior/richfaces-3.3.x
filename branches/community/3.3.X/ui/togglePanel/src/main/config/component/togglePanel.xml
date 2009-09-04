@@ -351,7 +351,7 @@
 			<name>ajaxSingle</name>
 			<classname>boolean</classname>
 			<description>
-				Boolean attribute which provides possibility to limit JSF tree processing(decoding, conversion/validation, value applying) to the component which send the request only.
+				Boolean attribute which provides possibility to limit JSF tree processing(decoding, conversion/validation, value applying) to the component which send the request only. Default value is "false".
 			</description>
 		</property>
 
