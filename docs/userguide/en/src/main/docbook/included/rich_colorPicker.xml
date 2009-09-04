@@ -219,90 +219,253 @@
                                         </tbody>
                               </tgroup>
                     </table>
-      <table id="colorPicker_cn_inline">
-         <title> Classes names for the representation of the input field and icon containing selected
-        color </title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Selector name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>.rich-colorpicker-span input</entry>
-                  <entry>Defines styles for the input field that contains selected color</entry>
-               </row>
-               <row>
-                  <entry>.rich-colorpicker-icon</entry>
-                  <entry>Defines styles for the icon</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table id="colorPicker_cn_widget">
-         <title>Classes names for the widget</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>.rich-colorpicker-ext</entry>
-                  <entry>Defines styles for the wrapper &lt;div&gt; element of a widget</entry>
-               </row>
-               <row>
-                  <entry>.rich-colorpicker-color</entry>
-                  <entry>Defines styles for the color palette</entry>
-               </row>
-               <row>
-                  <entry>.rich-colorpicker-current-color</entry>
-                  <entry>Defines styles for the currently selected color</entry>
-               </row>
-               <row>
-                  <entry>.rich-colorpicker-new-color</entry>
-                  <entry>Defines styles for the already selected color</entry>
-               </row>
-               <row>
-                  <entry>.rich-colorpicker-colors-input</entry>
-                  <entry>Defines styles for the hex, RGB, and HSB input fileds</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table id="colorPicker_cn_buttons">
-         <title>Classes names for the buttons representation</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>.rich-color-picker-submit</entry>
-                  <entry>Defines styles for the "Apply" button</entry>
-               </row>
-               <row>
-                  <entry>.rich-color-picker-cancel</entry>
-                  <entry>Defines styles for the "Cancel" button</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameter</entry>
+   					<entry>CSS properties mapped</entry>
+   				</row>
+   			</thead>
+   			<tbody>         
+   				<row>
+   					<entry morerows="2">.rich-colorpicker-ext</entry>
+   					<entry morerows="2">Defines styles for the component widget</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-color-picker-span input</entry>
+   					<entry morerows="2">Defines styles for the input field that contains selected color</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-color-picker-ext input</entry>
+   					<entry morerows="1">Defines styles for the input field within  the component widget</entry>
+   					<entry>controlTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>controlBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-color-picker-ext label</entry>
+   					<entry morerows="2">Defines styles for the label within the component widget</entry>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-color-picker-icon</entry>
+   					<entry>Defines styles for the component icon</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-color-picker-color</entry>
+   					<entry>Defines styles for the color palette</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-color-picker-new-color</entry>
+   					<entry>Defines styles for the already selected color</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-color-picker-current-color</entry>
+   					<entry>Defines styles for the currently selected color</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-color-picker-cancel</entry>
+   					<entry morerows="4">Defines styles for the &quot;Cancel&quot; button</entry>
+   					<entry>buttonFontSize</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>buttonFamilyFont, generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerBackgroundColor, panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-color-picker-submit</entry>
+   					<entry morerows="4">Defines styles for the &quot;Apply&quot; button</entry>
+   					<entry>buttonFontSize, panelBorderColor</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>buttonFamilyFont, generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerBackgroundColor, panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-color-picker-colors-input</entry>
+   					<entry morerows="4">Defines styles for the hex, RGB, and HSB input fileds</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>controlBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   			</tbody>
+   		</tgroup>
+   </table>
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Selector name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>	
+   				<row>
+   					<entry>.rich-color-picker-span</entry>
+   					<entry>Defines styles for the wrapper &lt;span&gt; element of the component</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-wrapper</entry>
+   					<entry>Defines styles for the wrapper &lt;div&gt; element of a widget</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-color div div</entry>
+   					<entry>Defines styles for the color picker icon within the color palette</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rainbow</entry>
+   					<entry>Defines styles for the widget rainbow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rainbow div</entry>
+   					<entry>Defines styles for the slider of the widget rainbow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-hex-wrapper</entry>
+   					<entry>Defines styles for the wrapper of the region for selecting a color in the hex model</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rgb-wrapper</entry>
+   					<entry>Defines styles for the wrapper of the region for selecting a color in the RGB model</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rgb-r</entry>
+   					<entry>Defines styles for the region for setting red color intensity in the RGB model</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rgb-g</entry>
+   					<entry>Defines styles for the region for setting green color intensity in the RGB model</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-rgb-b</entry>
+   					<entry>Defines styles for the region for setting blue color intensity in the RGB model</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-hsb-wrapper</entry>
+   					<entry>Defines styles for the wrapper of the region for selecting a color in the HSB color scheme</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-hsb-h</entry>
+   					<entry>Defines styles for the region for setting the H value in the HSB color scheme</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-hsb-s</entry>
+   					<entry>Defines styles for the region for setting the S value in the HSB color scheme</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-color-picker-hsb-b</entry>
+   					<entry>Defines styles for the region for setting the B value in the HSB color scheme</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+		
+   	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
       <para>
-         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/colorPicker.jsf?c=colorPicker">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
+         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/colorPicker.jsf?c=colorPicker">On the component LiveDemo page</ulink> you can see the example of the <emphasis role="bold">
             <property>&lt;rich:colorPicker&gt;</property>
          </emphasis> component usage and sources for the given example. </para>
   </section>
