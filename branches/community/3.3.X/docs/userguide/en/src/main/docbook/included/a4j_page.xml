@@ -56,26 +56,26 @@
                   <para>
                         According to the described above, the component defined at page as following
                   </para>
-                  <programlisting role="XML">&lt;a4j:page format="xhtml" pageTitle="myPage"&gt;
-      &lt;f:facet name="head"&gt;
-            &lt;!--Head Content here--&gt;
-      &lt;/f:facet&gt;
-      &lt;!--Page Content Here--&gt;
-&lt;/a4j:page&gt;</programlisting>
+                  <programlisting role="XML"><![CDATA[<a4j:page format="xhtml" pageTitle="myPage">
+      <f:facet name="head">
+            <!--Head Content here-->
+      </f:facet>
+      <!--Page Content Here-->
+</a4j:page>]]></programlisting>
       
       <para id="exampl">
           will be rendered on a page as
     </para>
-      <programlisting role="XML">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
-&lt;html&gt;
-    &lt;head&gt; 
-        &lt;title&gt;myPage&lt;/title&gt;
-        &lt;!--Head Content here--&gt;
-    &lt;/head&gt; 
-    &lt;body&gt;
-        &lt;!--Page Content Here--&gt;
-    &lt;/body&gt; 
-&lt;/html&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head> 
+        <title>myPage</title>
+        <!--Head Content here-->
+    </head> 
+    <body>
+        <!--Page Content Here-->
+    </body> 
+</html>]]></programlisting>
   </section>
    <section>
       <title>Reference Data</title>

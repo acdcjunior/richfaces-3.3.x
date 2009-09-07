@@ -68,18 +68,18 @@
         <para>
             <emphasis role="bold"> Example: </emphasis>
         </para>
-        <programlisting role="XML">&lt;h:form&gt;
-	&lt;a4j:queue size="2" requestDelay="500" sizeExceededBehavior="dropNext" onsizeexceeded="alert('The size of the queue is exceeded')" /&gt;
-	&lt;h:inputText value="#{bean.a}"&gt;
-		&lt;a4j:support event="onkeyup" /&gt;
-	&lt;/h:inputText&gt;
-	&lt;h:inputText value="#{bean.b}"&gt;
-		&lt;a4j:support event="onblur" /&gt;
-	&lt;/h:inputText&gt;
-	&lt;h:selectBooleanCheckbox value="#{bean.check}" id="checkboxID"&gt;
-		&lt;a4j:support id="checkboxSupport" event="onchange" /&gt;
-	&lt;/h:selectBooleanCheckbox&gt;
-&lt;/h:form&gt;</programlisting>
+        <programlisting role="XML"><![CDATA[<h:form>
+	<a4j:queue size="2" requestDelay="500" sizeExceededBehavior="dropNext" onsizeexceeded="alert('The size of the queue is exceeded')" />
+	<h:inputText value="#{bean.a}">
+		<a4j:support event="onkeyup" />
+	</h:inputText>
+	<h:inputText value="#{bean.b}">
+		<a4j:support event="onblur" />
+	</h:inputText>
+	<h:selectBooleanCheckbox value="#{bean.check}" id="checkboxID">
+		<a4j:support id="checkboxSupport" event="onchange" />
+	</h:selectBooleanCheckbox>
+</h:form>]]></programlisting>
         <para>
             In this example if the queue has more than 2 requests waiting to be processed the next event will be dropped and a message (the <emphasis>
             <property>"onsizeexceeded"</property>
@@ -97,12 +97,12 @@
         <para>
             <emphasis role="bold"> Example: </emphasis>
         </para>
-        <programlisting role="XML">&lt;h:form&gt;
-      &lt;a4j:queue requestDelay="500" ignoreDupResponses="true" /&gt;
-      &lt;h:inputText value="#{bean.a}"&gt;
-            &lt;a4j:support event="onkeyup" /&gt;
-      &lt;/h:inputText&gt;
-&lt;/h:form&gt;</programlisting>
+        <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:queue requestDelay="500" ignoreDupResponses="true" />
+      <h:inputText value="#{bean.a}">
+            <a4j:support event="onkeyup" />
+      </h:inputText>
+</h:form>]]></programlisting>
         
         <para>In this example, the requests are glued together and only the last one is submitted.</para>
         
@@ -119,12 +119,12 @@
           <para>
                 <emphasis role="bold"> Example: </emphasis>
           </para>            
-        <programlisting role="XML">&lt;h:form&gt;
-      &lt;a4j:queue timeout="1000" /&gt;
-      &lt;h:inputText value="#{bean.a}"&gt;
-            &lt;a4j:support event="onkeyup" /&gt;
-      &lt;/h:inputText&gt;
-&lt;/h:form&gt;</programlisting>
+        <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:queue timeout="1000" />
+      <h:inputText value="#{bean.a}">
+            <a4j:support event="onkeyup" />
+      </h:inputText>
+</h:form>]]></programlisting>
         
         <para>
             In this case if the sever doesn't respond within a second the request will be aborted.
@@ -144,15 +144,15 @@
         <para>
             <emphasis role="bold"> Example: </emphasis>
         </para>
-        <programlisting role="XML">&lt;h:form&gt;
-      &lt;a4j:queue oncomplete="alert(request.queue.getSize())" requestDelay="1000" /&gt;
-      &lt;h:inputText value="#{bean.a}"&gt;
-            &lt;a4j:support event="onkeyup" /&gt;
-      &lt;/h:inputText&gt;
-      &lt;h:selectBooleanCheckbox value="#{bean.check}"&gt;
-            &lt;a4j:support event="onchange"/&gt;
-      &lt;/h:selectBooleanCheckbox&gt;
-&lt;/h:form&gt;</programlisting>                                                                                                                                                                                                                                                                    
+        <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:queue oncomplete="alert(request.queue.getSize())" requestDelay="1000" />
+      <h:inputText value="#{bean.a}">
+            <a4j:support event="onkeyup" />
+      </h:inputText>
+      <h:selectBooleanCheckbox value="#{bean.check}">
+            <a4j:support event="onchange"/>
+      </h:selectBooleanCheckbox>
+</h:form>]]></programlisting>                                                                                                                                                                                                                                                                    
       <para>In this example you can see how the number of requests waiting  in the queue change. You will get a message with the number of the requests in the queue.</para>
         
         <para>The <emphasis>

@@ -37,20 +37,20 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML">&lt;a4j:keepAlive beanName = "#{myClass.testBean}"/&gt;</programlisting>
+                    <programlisting role="XML"><![CDATA[<a4j:keepAlive beanName = "#{myClass.testBean}"/>]]></programlisting>
 
                     <para> The <emphasis>
             <property>"beanName"</property>
          </emphasis> attribute defines the request scope bean name you'd like to re-use. Note that this attribute must point to a legal JSF EL expression which resolves to a managed mean instance.
                               For example for the above code the class definition may look like this one:
                     </para>
-                <programlisting role="JAVA">class MyClass{
+                <programlisting role="JAVA"><![CDATA[class MyClass{
 	...
 	private TestBean testBean;
 	// Getters and Setters for testBean.
 	...
 }
-</programlisting>
+]]></programlisting>
                     
                 <para>
                       The <emphasis>

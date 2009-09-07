@@ -54,7 +54,7 @@
                   The example <link linkend="CB_example">above</link> generates the following HTML code:
             </para>
             
-            <programlisting role="XML">&lt;input type="submit" onclick="A4J.AJAX.Submit(request parameters);return false;" value="Button"/&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<input type="submit" onclick="A4J.AJAX.Submit(request parameters);return false;" value="Button"/>]]></programlisting>
             
             <para>      
                   Сlicking the generated anchor fires the utility method <code>A4J.AJAX.Submit()</code> that perfroms Ajax request.                  
@@ -81,9 +81,9 @@
             <property>&lt;a4j:commandButton&gt;</property>
          </emphasis> is situated outside the re-rendered region it is possible to use keyword <property>'this'</property> as in the following example:  
       </para>
-            <programlisting role="XML">&lt;h:form&gt;
-      &lt;a4j:commandButton action="director.rollCamera" onclick="this.disabled=true" oncomplete="this.disabled=false" /&gt; 
-&lt;/h:form&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:commandButton action="director.rollCamera" onclick="this.disabled=true" oncomplete="this.disabled=false" /> 
+</h:form>]]></programlisting>
             
             <para>
                   Otherwise, if the <emphasis role="bold">
@@ -98,9 +98,9 @@
          </emphasis> attribute as in the following example:
             </para>
             
-            <programlisting role="XML">&lt;h:form id="form"&gt;
-      &lt;a4j:commandButton id="cbutton" action="director.rollCamera" onclick="this.disabled=true" oncomplete="document.getElementById('form:cbutton').disabled=false" /&gt; 
-&lt;/h:form&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<h:form id="form">
+      <a4j:commandButton id="cbutton" action="director.rollCamera" onclick="this.disabled=true" oncomplete="document.getElementById('form:cbutton').disabled=false" /> 
+</h:form>]]></programlisting>
             
             <para>
                   Common JSF navigation could be performed after an Ajax submit and partial rendering, but Navigation Case must be defined as <emphasis role="bold">
@@ -129,16 +129,16 @@
             </emphasis> has no such event. 
                         The example below will not work:
                   </para>
-                        <programlisting role="XML">&lt;a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button"&gt;
-      &lt;rich:componentControl attachTo="button" for="panel" event="oncomplete" operation="show" /&gt;
-&lt;/a4j:commandButton&gt;</programlisting>
+                        <programlisting role="XML"><![CDATA[<a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button">
+      <rich:componentControl attachTo="button" for="panel" event="oncomplete" operation="show" />
+</a4j:commandButton>]]></programlisting>
                         
                         <para>
                               This one should work properly:
                         </para>
-                  <programlisting role="XML">&lt;a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button"&gt;
-      &lt;rich:componentControl for="panel" event="oncomplete" operation="show" /&gt;
-&lt;/a4j:commandButton&gt;</programlisting>
+                  <programlisting role="XML"><![CDATA[<a4j:commandButton value="Show Current Selection" reRender="table" action="#{dataTableScrollerBean.takeSelection}" id="button">
+      <rich:componentControl for="panel" event="oncomplete" operation="show" />
+</a4j:commandButton>]]></programlisting>
             </note>
             
             <para>

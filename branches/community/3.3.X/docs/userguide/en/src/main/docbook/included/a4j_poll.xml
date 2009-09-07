@@ -72,25 +72,25 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
 
-      <programlisting role="XML">...
-&lt;a4j:region&gt;
-      &lt;h:form&gt;
-            &lt;a4j:poll id="poll" interval="1000" enabled="#{userBean.pollEnabled}" reRender="poll,grid"/&gt;
-      &lt;/h:form&gt;
-&lt;/a4j:region&gt;
-&lt;h:form&gt;
-      &lt;h:panelGrid columns="2" width="80%" id="grid"&gt;
-           &lt;h:panelGrid columns="1"&gt;
-                &lt;h:outputText value="Polling Inactive" rendered="#{not userBean.pollEnabled}" /&gt;
-                &lt;h:outputText value="Polling Active" rendered="#{userBean.pollEnabled}" /&gt;
-                &lt;a4j:commandButton style="width:120px" id="control" value="#{userBean.pollEnabled?'Stop':'Start'} Polling" reRender="poll, grid"&gt;
-                     &lt;a4j:actionparam name="polling" value="#{!userBean.pollEnabled}" assignTo="#{userBean.pollEnabled}"/&gt;
-                &lt;/a4j:commandButton&gt;
-          &lt;/h:panelGrid&gt;
-          &lt;h:outputText id="serverDate" style="font-size:16px" value="Server Date: #{userBean.date}"/&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<a4j:region>
+      <h:form>
+            <a4j:poll id="poll" interval="1000" enabled="#{userBean.pollEnabled}" reRender="poll,grid"/>
+      </h:form>
+</a4j:region>
+<h:form>
+      <h:panelGrid columns="2" width="80%" id="grid">
+           <h:panelGrid columns="1">
+                <h:outputText value="Polling Inactive" rendered="#{not userBean.pollEnabled}" />
+                <h:outputText value="Polling Active" rendered="#{userBean.pollEnabled}" />
+                <a4j:commandButton style="width:120px" id="control" value="#{userBean.pollEnabled?'Stop':'Start'} Polling" reRender="poll, grid">
+                     <a4j:actionparam name="polling" value="#{!userBean.pollEnabled}" assignTo="#{userBean.pollEnabled}"/>
+                </a4j:commandButton>
+          </h:panelGrid>
+          <h:outputText id="serverDate" style="font-size:16px" value="Server Date: #{userBean.date}"/>
+    </h:panelGrid>
+</h:form>
+...]]></programlisting>
 
       <para>
           The example shows how date and time are updated on a page in compliance with data taken from a server. 
@@ -138,8 +138,8 @@
       component with the <emphasis>
         <property>"enabled"</property>
       </emphasis> attribute: </para>
-    <programlisting role="XML"><![CDATA[<a4j:poll interval="1000" enabled="#{bean.boolProperty}"/>
-]]></programlisting>
+    <programlisting role="XML"><![CDATA[<![CDATA[<a4j:poll interval="1000" enabled="#{bean.boolProperty}"/>
+]]>]]></programlisting>
     <para>As any RichFaces Action component, <emphasis role="bold">
         <property>&lt;a4j:poll&gt;</property>
       </emphasis> has all described in the <emphasis role="bold">

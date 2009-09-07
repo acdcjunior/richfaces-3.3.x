@@ -69,21 +69,21 @@ attribute obtained by any RichFaces library action component. The attribute shou
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-	     <programlisting role="XML">&lt;a4j:status startText="Started" stopText="stopped" /&gt;</programlisting>
+	     <programlisting role="XML"><![CDATA[<a4j:status startText="Started" stopText="stopped" />]]></programlisting>
       <para>The code shown in the example above is decoded on a page as:</para>
-      <programlisting role="XML">&lt;span id="j_id20:status.start" style="display: none"&gt;
+      <programlisting role="XML"><![CDATA[<span id="j_id20:status.start" style="display: none">
      Started
-&lt;/span&gt;
-&lt;span id="j_id20:status.stop"&gt;
+</span>
+<span id="j_id20:status.stop">
      Stopped
-&lt;/span&gt;</programlisting>
+</span>]]></programlisting>
       <para>and after the generation of an Ajax response is changed to:</para>
-	     <programlisting role="XML">&lt;span id="j_id20:status.start"&gt;
+	     <programlisting role="XML"><![CDATA[<span id="j_id20:status.start">
      Started
-&lt;/span&gt;
-&lt;span id="j_id20:status.stop" style="display: none"&gt;
+</span>
+<span id="j_id20:status.stop" style="display: none">
      Stopped
-&lt;/span&gt;</programlisting>
+</span>]]></programlisting>
       <para>There is a possibility to group a <emphasis role="bold">
             <property>&lt;a4j:status&gt;</property>
          </emphasis> elements content into <emphasis role="bold">

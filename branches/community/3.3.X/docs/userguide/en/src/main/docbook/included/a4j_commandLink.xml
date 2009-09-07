@@ -39,9 +39,9 @@
          </emphasis>:
       </para>
           
-          <programlisting role="XML">...
-&lt;a4j:commandLink value="Get greeting" reRender="greeting" /&gt;
-...</programlisting>
+          <programlisting role="XML"><![CDATA[...
+<a4j:commandLink value="Get greeting" reRender="greeting" />
+...]]></programlisting>
           
           <para>
                 It's not necessary to add nested <emphasis role="bold">
@@ -69,7 +69,7 @@
                 The example <link linkend="CL_example">above</link> generates the following HTML code:
           </para>
           
-          <programlisting role="XML">&lt;a href="#" onclick="A4J.AJAX.Submit(?"request parameters"); return false;"&gt;&lt;span&gt;Get greeting&lt;/span&gt;&lt;/a&gt;</programlisting>
+          <programlisting role="XML"><![CDATA[<a href="#" onclick="A4J.AJAX.Submit(?"request parameters"); return false;"><span>Get greeting</span></a>]]></programlisting>
           
           <para>
                 If you click on the generated anchor the utility method <code>A4J.AJAX.Submit()</code> will be fired. 

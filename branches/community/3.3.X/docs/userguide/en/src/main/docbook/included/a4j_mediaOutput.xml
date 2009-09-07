@@ -33,7 +33,7 @@
             <para>
                   Write the following line on the page:
             </para>
-                   <programlisting role="XML">&lt;a4j:mediaOutput element="img" cacheable="false" session="false" createContent="#{mediaBean.paint}" value="#{mediaData}" mimeType="image/jpeg"/&gt;</programlisting>
+                   <programlisting role="XML"><![CDATA[<a4j:mediaOutput element="img" cacheable="false" session="false" createContent="#{mediaBean.paint}" value="#{mediaData}" mimeType="image/jpeg"/>]]></programlisting>
                   
                   <para>
                         As You see from the example above, first it is necessary to specify the kind of media data You want to generate. 
@@ -90,7 +90,7 @@
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="JAVA">package demo;
+            <programlisting role="JAVA"><![CDATA[package demo;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -117,7 +117,7 @@ public class MediaBean {
             ImageIO.write(img,"png",out);
         }
     }
-}</programlisting>
+}]]></programlisting>
             
       <para>
       Now it is necessary to create a class that will keep transmissional data that will be used as input data for a content creation method. 
@@ -132,7 +132,7 @@ public class MediaBean {
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="JAVA">package demo;
+            <programlisting role="JAVA"><![CDATA[package demo;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -149,7 +149,7 @@ public class MediaData implements Serializable{
     
     /* Corresponding getters and setters */
     
-}</programlisting>                                                                                                                                                                                                                                                                    
+}]]></programlisting>                                                                                                                                                                                                                                                                    
       <para>
               As a result the <emphasis role="bold">
             <property>&lt;a4j:mediaOutput&gt;</property>

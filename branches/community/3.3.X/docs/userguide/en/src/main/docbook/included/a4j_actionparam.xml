@@ -73,15 +73,15 @@
         <para>
               <emphasis role="bold">Example:</emphasis>
         </para>
-            <programlisting role="XML">...
-&lt;script&gt;
+            <programlisting role="XML"><![CDATA[...
+<script>
     ...
     var foo = "bar";
     ...
-&lt;/script&gt;
+</script>
 ...
-&lt;a4j:actionparam noEscape="true" name="param1" value="foo" assignTo="#{bean.prop1}" /&gt;
-...</programlisting>
+<a4j:actionparam noEscape="true" name="param1" value="foo" assignTo="#{bean.prop1}" />
+...]]></programlisting>
 	     <para>
 	      The <emphasis role="bold">
             <property>&lt;a4j:param&gt;</property>
