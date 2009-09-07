@@ -19,7 +19,7 @@ Richfaces.Spinner.prototype = {
 
 		initialize: function(id, options) {
 		this.content	= $(id +"Edit");
-		var buttonsId = id +"Buttons";
+		var buttonsId   = id +"Buttons";
 		this.controls	= $(buttonsId);
 		this.fie		= $(id +"For");
 		this.items		= new Array();
@@ -31,9 +31,11 @@ Richfaces.Spinner.prototype = {
 		}
 		Object.extend(this, options);
 		if (!this.disabled){
-				this.buttonUp = null;
-				this.buttonDown = null;
+			this.buttonUp = null;
+			this.buttonDown = null;
 		}
+		this.min = Number(this.min);
+		this.max = Number(this.max);
 		
 		this.cycled		= this.cycled;
 		this.enableManualInput		= this.enableManualInput;
@@ -290,9 +292,9 @@ Richfaces.Spinner.Controls.prototype = {
 		if ((this.edit.value == "" && this.spinner.required) || isNaN(Number(this.edit.value))){
 			this.edit.value = this.prevEditValue;
 		} else if ("" != this.edit.value) {
-			if (this.edit.value > this.spinner.max){
+			if (Number(this.edit.value) > this.spinner.max){
 				this.edit.value = this.spinner.max;
-			} else if (this.edit.value < this.spinner.min) {
+			} else if (Number(this.edit.value) < this.spinner.min) {
 				this.edit.value = this.spinner.min;
 			}
 		}
