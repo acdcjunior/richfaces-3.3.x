@@ -1,9 +1,30 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest.dataScroller;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractDataIterationTestCase;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -11,136 +32,186 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class DataScrollerTestCase extends AbstractDataIterationTestCase {
+	
+	private final String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+
+	private final String[] MSG_LIST_OF_PAGES = StringUtils.split(getMsg("LIST_OF_PAGES"), ',');
+	private final String MSG_CLASS_SCROLLER_BUTTON_DISABLED = getMsg("CLASS_SCROLLER_BUTTON_DISABLED");
+	private final String MSG_CLASS_SCROLLER_BUTTON_ENABLED = getMsg("CLASS_SCROLLER_BUTTON_ENABLED");
+
 	/**
-	 * Opens specified page
+	 * Go through predefined set of numbered pages. Checks that after each
+	 * movement are table text changed.
 	 */
-	public void openPage() {
-		selenium.open(format("{0}/{1}", contextPath, PAGE));
-
-		scrollIntoView(header, true);
-	}
-
-	private final String PAGE = "richfaces/dataTableScroller.jsf?c=dataTableScroller&tab=usage";
-	private final String header = getLoc("data-scroller--header");
-	private final String[] numberedPages = StringUtils.split(getMess("data-scroller--numbered-pages"), ',');
-
 	@Test
-	public void numberedPageTest() {
-		openPage();
+	public void testNumberedPage() {
 		String tableText = getTableText();
-		for (String page : numberedPages) {
-			gotoPage(format(buttonPagePreformatted, Integer.valueOf(page)));
+
+		for (String page : MSG_LIST_OF_PAGES) {
+			gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, Integer.valueOf(page)));
+
 			tableText = checkThatTextDiffersAndReturn(tableText);
 		}
+
 		gotoFirstPage();
+
 		checkThatTextDiffersAndReturn(tableText);
+
 		checkFirstPage();
 	}
-	
-	@Test(dependsOnMethods = "numberedPageTest")
-	public void remembersActivePage() {
-		openPage();
+
+	/**
+	 * Go to second page and try refresh page. Checks that active page is still
+	 * the second page.
+	 */
+	@Test(dependsOnMethods = "testNumberedPage")
+	public void testRemembersActivePage() {
 		gotoFirstPage();
+
 		Integer page = 2;
-		gotoPage(format(buttonPagePreformatted, page));
+
+		gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, page));
+
 		selenium.refresh();
-		Assert.assertTrue(page.equals(getActivePage()));
-		openPage();
-		Assert.assertTrue(page.equals(getActivePage()));
+
+		assertTrue(page.equals(getActivePage()));
+
+		// TODO cannot just do openPage
+		// openPage();
+		// assertTrue(page.equals(getActivePage()));
 	}
-	
-	@Test(dependsOnMethods = "numberedPageTest")
-	public void lastPageTest() {
-		openPage();
+
+	/**
+	 * Click on the last page button and checks that page is really last page
+	 * (last page and next page buttons are disabled, ...)
+	 */
+	@Test(dependsOnMethods = "testNumberedPage")
+	public void testLastPage() {
 		gotoFirstPage();
+
 		String tableText = getTableText();
-		gotoPage(buttonLastPage);
+
+		gotoPage(LOC_BUTTON_LAST_PAGE);
+
 		checkThatTextDiffersAndReturn(tableText);
+
 		checkLastPage();
 	}
 
-	@Test(dependsOnMethods = "lastPageTest")
-	public void firstPageTest() {
-		openPage();
+	/**
+	 * Go to last page and then use first page button and checks that the first
+	 * page is really active and the text changed when moving to first page.
+	 */
+	@Test(dependsOnMethods = "testLastPage")
+	public void testFirstPage() {
 		gotoFirstPage();
-		gotoPage(buttonLastPage);
+
+		gotoPage(LOC_BUTTON_LAST_PAGE);
+
 		String tableText = getTableText();
-		gotoPage(buttonFirstPage);
+
+		gotoPage(LOC_BUTTON_FIRST_PAGE);
+
 		checkThatTextDiffersAndReturn(tableText);
+
 		checkFirstPage();
 	}
 
-	@Test(dependsOnMethods = "numberedPageTest")
-	public void nextPageTest() {
-		openPage();
+	/**
+	 * Go through all pages using next button and checks that all buttons are in
+	 * right state (enabled/disabled) and that text differs between all moving
+	 * actions.
+	 */
+	@Test(dependsOnMethods = "testNumberedPage")
+	public void testNextPage() {
 		gotoFirstPage();
+
 		String tableText = getTableText();
+
 		for (int page = 2; page < getLastVisiblePage(); page++) {
-			gotoPage(buttonNextPage);
+			gotoPage(LOC_BUTTON_NEXT_PAGE);
+
 			checkNonExtremePage();
+
 			tableText = checkThatTextDiffersAndReturn(tableText);
 		}
-		gotoPage(buttonNextPage);
+
+		gotoPage(LOC_BUTTON_NEXT_PAGE);
+
 		checkThatTextDiffersAndReturn(tableText);
+
 		checkLastPage();
 	}
 
-	@Test(dependsOnMethods = "lastPageTest")
-	public void previousPageTest() {
-		openPage();
+	/**
+	 * Go through all pages in reverse order using previous button and checks
+	 * that all buttons are in right state (enabled/disabled) and that text
+	 * differs between all moving actions.
+	 */
+	@Test(dependsOnMethods = "testLastPage")
+	public void testPreviousPage() {
 		gotoFirstPage();
-		gotoPage(buttonLastPage);
+
+		gotoPage(LOC_BUTTON_LAST_PAGE);
+
 		String tableText = getTableText();
+
 		for (int page = getActivePage() - 1; page > 1; page--) {
-			gotoPage(buttonPreviousPage);
+			gotoPage(LOC_BUTTON_PREVIOUS_PAGE);
+
 			checkNonExtremePage();
+
 			tableText = checkThatTextDiffersAndReturn(tableText);
 		}
-		gotoPage(buttonPreviousPage);
+
+		gotoPage(LOC_BUTTON_PREVIOUS_PAGE);
+
 		checkThatTextDiffersAndReturn(tableText);
+
 		checkFirstPage();
 	}
 
 	private void checkFirstPage() {
-		Assert.assertTrue(belongsClass("rich-datascr-button-dsbld",
-				buttonFirstPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button-dsbld",
-				buttonPreviousPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonNextPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonLastPage));
-		Assert.assertTrue("1".equals(selenium.getText(outputActivePage)));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_DISABLED, LOC_BUTTON_FIRST_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_DISABLED, LOC_BUTTON_PREVIOUS_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_NEXT_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_LAST_PAGE));
+		assertTrue("1".equals(selenium.getText(LOC_OUTPUT_ACTIVE_PAGE)));
 	}
 
 	private void checkNonExtremePage() {
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonFirstPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button",
-				buttonPreviousPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonNextPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonLastPage));
-		String activePage = selenium.getText(outputActivePage);
-		Assert.assertFalse("1".equals(activePage));
-		Assert.assertFalse(getLastVisiblePage().toString().equals(activePage));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_FIRST_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_PREVIOUS_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_NEXT_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_LAST_PAGE));
+		String activePage = selenium.getText(LOC_OUTPUT_ACTIVE_PAGE);
+		assertFalse("1".equals(activePage));
+		assertFalse(getLastVisiblePage().toString().equals(activePage));
 	}
 
 	private void checkLastPage() {
-		Assert.assertTrue(belongsClass("rich-datascr-button", buttonFirstPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button",
-				buttonPreviousPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button-dsbld",
-				buttonNextPage));
-		Assert.assertTrue(belongsClass("rich-datascr-button-dsbld",
-				buttonLastPage));
-		Assert.assertTrue(getLastVisiblePage().toString().equals(
-				selenium.getText(outputActivePage)));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_FIRST_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_ENABLED, LOC_BUTTON_PREVIOUS_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_DISABLED, LOC_BUTTON_NEXT_PAGE));
+		assertTrue(belongsClass(MSG_CLASS_SCROLLER_BUTTON_DISABLED, LOC_BUTTON_LAST_PAGE));
+		assertTrue(getLastVisiblePage().toString().equals(selenium.getText(LOC_OUTPUT_ACTIVE_PAGE)));
 	}
 
 	private void gotoFirstPage() {
-		gotoPage(buttonFirstPage);
+		gotoPage(LOC_BUTTON_FIRST_PAGE);
 	}
-	
+
 	private String checkThatTextDiffersAndReturn(String lastTableText) {
 		String tableText = getTableText();
-		Assert.assertFalse(lastTableText.equals(tableText));
+		assertFalse(lastTableText.equals(tableText));
 		return tableText;
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("Data Scroller");
+		scrollIntoView(LOC_FIELDSET_HEADER, true);
+		selenium.allowNativeXpath("true");
 	}
 }

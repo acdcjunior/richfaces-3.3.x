@@ -1,93 +1,170 @@
+/**
+ * License Agreement.
+ *
+ *  JBoss RichFaces
+ *
+ * Copyright (C) 2009  Red Hat, Inc.
+ *
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this test suite; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package org.jboss.richfaces.integrationTest;
 
 import java.util.Properties;
 
-import org.jboss.test.selenium.waiting.Condition;
-import org.jboss.test.selenium.waiting.Wait;
-import org.testng.Assert;
+import org.jboss.test.selenium.waiting.*;
+import static org.testng.Assert.*;
 
 /**
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
  * @version $Revision$
  */
-public class AbstractDataIterationTestCase extends
-		AbstractSeleniumRichfacesTestCase {
+public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTestCase {
 
+	protected final String LOC_TABLE_COMMON = getLoc("data-table-common--table");
+	protected final String LOC_BUTTON_FIRST_PAGE = getLoc("data-scroller--button--first-page");
+	protected final String LOC_BUTTON_LAST_PAGE = getLoc("data-scroller--button--last-page");
+	protected final String LOC_BUTTON_NEXT_PAGE = getLoc("data-scroller--button--next-page");
+	protected final String LOC_BUTTON_PREVIOUS_PAGE = getLoc("data-scroller--button--previous-page");
+	protected final String LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED = getLoc("data-scroller--button--numbered-page-preformatted");
+	protected final String LOC_OUTPUT_ACTIVE_PAGE = getLoc("data-scroller--output--active-page");
+
+	/**
+	 * Overwritten loading of locator properties from files bounded to test
+	 * cases
+	 */
 	protected Properties getMessagesProperties() {
-		Properties childProperties = super.getMessagesProperties();
-		Properties dataIterationCommonProperties = getNamedPropertiesForClass(
-				AbstractSeleniumRichfacesTestCase.class,
+		Properties packageProperties = super.getMessagesProperties();
+
+		Properties dataIterationCommonProperties = getNamedPropertiesForClass(AbstractSeleniumRichfacesTestCase.class,
 				"data-iteration--messages");
-		dataIterationCommonProperties.putAll(childProperties);
-		return dataIterationCommonProperties;
+
+		Properties classSpecificProperties = getNamedPropertiesForClass(this.getClass(), format("messages-{0}", this
+				.getClass().getSimpleName()));
+
+		Properties result = new Properties();
+		result.putAll(dataIterationCommonProperties);
+		result.putAll(packageProperties);
+		result.putAll(classSpecificProperties);
+
+		return result;
 	}
 
+	/**
+	 * Overwritten loading of message properties from files bounded to test
+	 * cases
+	 */
 	protected Properties getLocatorsProperties() {
-		Properties childProperties = super.getLocatorsProperties();
-		Properties dataIterationCommonProperties = getNamedPropertiesForClass(
-				AbstractSeleniumRichfacesTestCase.class,
-				"data-iteration--locators");
-		dataIterationCommonProperties.putAll(childProperties);
-		return dataIterationCommonProperties;
-	}
-	
-	protected final String table = getLoc("data-table-common--table");
-	protected final String buttonFirstPage = getLoc("data-scroller--button--first-page");
-	protected final String buttonLastPage = getLoc("data-scroller--button--last-page");
-	protected final String buttonNextPage = getLoc("data-scroller--button--next-page");
-	protected final String buttonPreviousPage = getLoc("data-scroller--button--previous-page");
-	protected final String buttonPagePreformatted = getLoc("data-scroller--button--numbered-page-preformatted");
-	protected final String outputActivePage = getLoc("data-scroller--output--active-page");
+		Properties packageProperties = super.getLocatorsProperties();
 
+		Properties dataIterationCommonProperties = getNamedPropertiesForClass(AbstractSeleniumRichfacesTestCase.class,
+				"data-iteration--locators");
+
+		Properties classSpecificProperties = getNamedPropertiesForClass(this.getClass(), format("locators-{0}", this
+				.getClass().getSimpleName()));
+
+		Properties result = new Properties();
+		result.putAll(dataIterationCommonProperties);
+		result.putAll(packageProperties);
+		result.putAll(classSpecificProperties);
+
+		return result;
+	}
+
+	/**
+	 * Use specified button to load required page
+	 * 
+	 * @param button
+	 *            one of the defined buttons to control page movement
+	 */
 	protected void gotoPage(String button) {
 		final String previousPage = getActivePage().toString();
+
 		if (previousPage.equals(selenium.getText(button))) {
 			return;
 		}
+
 		if (previousPage.equals("1")
-				&& (buttonFirstPage.equals(button) || buttonPreviousPage
-						.equals(button))) {
+				&& (LOC_BUTTON_FIRST_PAGE.equals(button) || LOC_BUTTON_PREVIOUS_PAGE.equals(button))) {
 			return;
 		}
+
 		if (previousPage.equals(getLastVisiblePage().toString())
-				&& (buttonLastPage.equals(button) || buttonNextPage
-						.equals(button))) {
+				&& (LOC_BUTTON_LAST_PAGE.equals(button) || LOC_BUTTON_NEXT_PAGE.equals(button))) {
 			return;
 		}
+
+		// move to specified page
 		selenium.click(button);
-		Wait.until(new Condition() {
+
+		Wait.failWith("The page never changed as required").until(new Condition() {
 			public boolean isTrue() {
 				return !previousPage.equals(getActivePage().toString());
 			}
 		});
 	}
 
+	/**
+	 * Get a active page number
+	 * 
+	 * @return number of active page
+	 */
 	protected Integer getActivePage() {
-		return Integer.valueOf(selenium.getText(outputActivePage));
+		return Integer.valueOf(selenium.getText(LOC_OUTPUT_ACTIVE_PAGE));
 	}
 
+	/**
+	 * Get a number of last page visible on page control
+	 * 
+	 * @return number of last page visible on page control
+	 */
 	protected Integer getLastVisiblePage() {
-		Number pages = selenium
-				.getXpathCount(format(buttonPagePreformatted, 0));
-		String lastVisiblePage = selenium.getText(format(
-				buttonPagePreformatted, pages));
+		Number pages = selenium.getXpathCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0));
+		String lastVisiblePage = selenium.getText(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, pages));
 		return Integer.valueOf(lastVisiblePage);
 	}
 
+	/**
+	 * Get text content of common table
+	 * 
+	 * @return text content of common table
+	 */
 	protected String getTableText() {
-		return selenium.getText(table);
+		return selenium.getText(LOC_TABLE_COMMON);
 	}
 
+	/**
+	 * Checks sorting behaviour of specified column
+	 * 
+	 * @param columnPreformatted
+	 *            column which should be used to sorting table
+	 */
 	protected void checkSorting(String columnPreformatted) {
 		checkSortingForColumnOrder(columnPreformatted);
 	}
 
+	/**
+	 * Checks sorting behaviour of specified columns in order of precedence
+	 * 
+	 * @param columnsPreformatted
+	 *            columns in order of precedence which should be used to sorting
+	 *            table
+	 */
 	protected void checkSortingForColumnOrder(String... columnsPreformatted) {
-		final boolean navigationEnabled = selenium
-				.isElementPresent(buttonFirstPage);
+		final boolean navigationEnabled = selenium.isElementPresent(LOC_BUTTON_FIRST_PAGE);
 
 		if (navigationEnabled)
-			gotoPage(buttonFirstPage);
+			gotoPage(LOC_BUTTON_FIRST_PAGE);
 
 		final int columns = columnsPreformatted.length;
 
@@ -97,22 +174,19 @@ public class AbstractDataIterationTestCase extends
 		while ((!navigationEnabled && lastText[0] == null)
 				|| (navigationEnabled && getActivePage() < getLastVisiblePage())) {
 			if (navigationEnabled && lastText[0] != null) {
-				gotoPage(buttonNextPage);
+				gotoPage(LOC_BUTTON_NEXT_PAGE);
 			}
-			
-			final int rows = selenium.getXpathCount(
-					format(columnsPreformatted[0], 0)).intValue();
+
+			final int rows = selenium.getXpathCount(format(columnsPreformatted[0], 0)).intValue();
 
 			for (int row = 1; row <= rows; row++) {
 				for (int column = 0; column < columns; column++) {
-					String text = selenium.getText(format(
-							columnsPreformatted[column], row));
+					String text = selenium.getText(format(columnsPreformatted[column], row));
 					if (lastText[column] != null) {
 						int comparison = text.compareTo(lastText[column]);
 						try {
 							Double number = Double.parseDouble(text);
-							Double lastNumber = Double
-									.parseDouble(lastText[column]);
+							Double lastNumber = Double.parseDouble(lastText[column]);
 							comparison = number.compareTo(lastNumber);
 						} catch (NumberFormatException e) {
 						}
@@ -127,12 +201,12 @@ public class AbstractDataIterationTestCase extends
 						} else {
 							if (sortedAscending[column]) {
 								if (comparison < 0) {
-									Assert.fail();
+									fail();
 								}
 								break;
 							} else {
 								if (comparison > 0) {
-									Assert.fail();
+									fail();
 								}
 								break;
 							}
