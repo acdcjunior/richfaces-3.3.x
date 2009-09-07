@@ -36,7 +36,7 @@
         <para>
               <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">&lt;a4j:loadScript src="resource:///org/mycompany/assets/script/focus.js" /&gt;</programlisting>
+        <programlisting role="XML"><![CDATA[<a4j:loadScript src="resource:///org/mycompany/assets/script/focus.js" />]]></programlisting>
           <para>
                 The <emphasis>
             <property>"src"</property>

@@ -33,13 +33,13 @@
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">&lt;h:form&gt;
+            <programlisting role="XML"><![CDATA[<h:form>
       ...
-      &lt;a4j:region&gt;
-            &lt;a4j:commandLink/&gt;
-      &lt;/a4j:region&gt;
+      <a4j:region>
+            <a4j:commandLink/>
+      </a4j:region>
       ...
-&lt;h:form&gt;</programlisting>
+<h:form>]]></programlisting>
             
             <para>The whole Form on the schematic listing above will be submitted by request invoked with the <emphasis role="bold">
             <property>&lt;a4j:commandLink&gt;</property>
@@ -75,16 +75,16 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;h:form&gt;
+      <programlisting role="XML"><![CDATA[<h:form>
        ...
-      &lt;a4j:region&gt;
-            &lt;a4j:commandLink value="Link 1" id="link1"/&gt;
-            &lt;a4j:region&gt;
-                 &lt;a4j:commandLink value="Link 2" id="link2"/&gt;
-            &lt;/a4j:region &gt;
-      &lt;/a4j:region&gt;
+      <a4j:region>
+            <a4j:commandLink value="Link 1" id="link1"/>
+            <a4j:region>
+                 <a4j:commandLink value="Link 2" id="link2"/>
+            </a4j:region >
+      </a4j:region>
       ...
-&lt;h:form&gt;</programlisting>
+<h:form>]]></programlisting>
       <para>
           The external region is decoded for <code>link1</code> and the internal one is decoded for <code>link2</code>.
     </para>
@@ -100,17 +100,17 @@
       <para>
             <emphasis role="bold">Example:</emphasis>
       </para>
-            <programlisting role="XML">&lt;h:form&gt;
+            <programlisting role="XML"><![CDATA[<h:form>
        ...
-      &lt;a4j:region renderRegionOnly="true"&gt;
-            &lt;a4j:commandLink value="Link 1" id="link1"/&gt;
-      &lt;/a4j:region&gt;
+      <a4j:region renderRegionOnly="true">
+            <a4j:commandLink value="Link 1" id="link1"/>
+      </a4j:region>
        ...
-      &lt;a4j:region renderRegionOnly="false"&gt;
-            &lt;a4j:commandLink value="Link 2" id="link2"/&gt;
-      &lt;/a4j:region&gt;
+      <a4j:region renderRegionOnly="false">
+            <a4j:commandLink value="Link 2" id="link2"/>
+      </a4j:region>
        ...
-&lt;/h:form&gt;</programlisting>
+</h:form>]]></programlisting>
             <para>
                   On the example above the first region only will be updated if <code>link1</code> initiates a request. 
                   When a request is initiated by <code>link2</code> both regions will be updated. 
@@ -133,10 +133,10 @@
       <para>
           <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;a4j:region selfRendered ="true"&gt;
-      &lt;a4j:commandLink value="Link" id="link"/&gt;
-      &lt;!--Some HTML content--&gt;
-&lt;/a4j:region&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<a4j:region selfRendered ="true">
+      <a4j:commandLink value="Link" id="link"/>
+      <!--Some HTML content-->
+</a4j:region>]]></programlisting>
       <para>In this case the processing is quicker and going on without referring to the page code. 
           The HTML code is not saved in a component tree and could be lost. 
           Thus, such optimization should be performed carefully and additional <property>RichFaces</property> components usage (e.g. <emphasis role="bold">
@@ -158,14 +158,14 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;rich:column&gt;
-      &lt;a4j:region&gt;
-            &lt;a4j:commandLink reRender="out"/&gt;
-      &lt;/a4j:region&gt;
-&lt;/rich:column&gt;
-&lt;rich:column&gt;
-      &lt;h:outputText id="out"&gt;
-&lt;/rich:column&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<rich:column>
+      <a4j:region>
+            <a4j:commandLink reRender="out"/>
+      </a4j:region>
+</rich:column>
+<rich:column>
+      <h:outputText id="out">
+</rich:column>]]></programlisting>
             
             <para>
                   In most cases there is no need to use the <emphasis role="bold">

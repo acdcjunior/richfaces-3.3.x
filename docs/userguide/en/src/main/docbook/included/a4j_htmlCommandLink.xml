@@ -29,14 +29,14 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;a4j:form&gt;
+      <programlisting role="XML"><![CDATA[<a4j:form>
 	...
-	&lt;a4j:htmlComandLink action="action" value="link" rendered="#{bean.rendered}"&gt;
-		&lt;f:param .../&gt;
-	&lt;a4j:htmlComandLink&gt;
+	<a4j:htmlComandLink action="action" value="link" rendered="#{bean.rendered}">
+		<f:param .../>
+	<a4j:htmlComandLink>
 	...
-&lt;/a4j:form&gt;
-</programlisting>
+</a4j:form>
+]]></programlisting>
       <para>In this example <emphasis role="bold">
             <property>&lt;a4j:htmlCommandLink&gt;</property>
          </emphasis>works as standard <emphasis role="bold">

@@ -51,18 +51,18 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">&lt;a4j:form id="helloForm" ajaxSubmit="true" reRender="table"&gt;
+                    <programlisting role="XML"><![CDATA[<a4j:form id="helloForm" ajaxSubmit="true" reRender="table">
 	...
-	&lt;t:dataTable id="table"... &gt;
+	<t:dataTable id="table"... >
 		...
-	&lt;/t:dataTable&gt;
+	</t:dataTable>
 	...
-	&lt;t:datascroller for="table"... &gt;
+	<t:datascroller for="table"... >
 		...
-	&lt;/t:datascroller&gt;
+	</t:datascroller>
 	...
-&lt;/a4j:form&gt;
-</programlisting>
+</a4j:form>
+]]></programlisting>
                     <para>
                           This example shows that in order to make <emphasis role="bold">
             <property>&lt;t:datascroller&gt;</property>

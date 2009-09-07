@@ -34,13 +34,13 @@
                   <emphasis role="bold">Example:</emphasis>
             </para>
             
-            <programlisting role="XML">&lt;a4j:support reRender="mypanel"/&gt;
+            <programlisting role="XML"><![CDATA[<a4j:support reRender="mypanel"/>
 ...
-&lt;a4j:outputPanel id="mypanel"&gt;
-      &lt;h:panelGrid rendered="#{not empty foo.bar}"&gt;
+<a4j:outputPanel id="mypanel">
+      <h:panelGrid rendered="#{not empty foo.bar}">
        ...
-      &lt;/h:panelGrid&gt;
-&lt;/a4j:outputPanel&gt;</programlisting>
+      </h:panelGrid>
+</a4j:outputPanel>]]></programlisting>
             
             <para>
                   By default the <emphasis role="bold">
@@ -87,13 +87,13 @@
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">&lt;a4j:support reRender="mypanel"/&gt;
+            <programlisting role="XML"><![CDATA[<a4j:support reRender="mypanel"/>
  ...
-&lt;a4j:outputPanel layout="none"&gt;
-      &lt;h:panelGrid id="mypanel" rendered="#{not empty foo.bar}"&gt;
+<a4j:outputPanel layout="none">
+      <h:panelGrid id="mypanel" rendered="#{not empty foo.bar}">
        ...
-      &lt;/h:panelGrid&gt;
-&lt;/a4j:outputPanel&gt;</programlisting>
+      </h:panelGrid>
+</a4j:outputPanel>]]></programlisting>
             
             <para>
                   As you see, the code is very similar to the one shown above, but <emphasis>
@@ -115,9 +115,9 @@
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">&lt;a4j:outputPanel ajaxRendered="true"&gt;
-      &lt;h:messages/&gt;
-&lt;/a4j:outputPanel&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<a4j:outputPanel ajaxRendered="true">
+      <h:messages/>
+</a4j:outputPanel>]]></programlisting>
 		
 		    <para>
 		      The <emphasis role="bold">

@@ -52,13 +52,15 @@
             <para>
                   <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">&lt;navigation-rule&gt;
-      &lt;from-view-id&gt;/pages/include/first.xhtml&lt;/from-view-id&gt;
-      &lt;navigation-case&gt;
-            &lt;from-outcome&gt;next&lt;/from-outcome&gt;
-            &lt;to-view-id&gt;/pages/include/second.xhtml&lt;/to-view-id&gt;
-      &lt;/navigation-case&gt;
-&lt;/navigation-rule&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[...
+<navigation-rule>
+      <from-view-id>/pages/include/first.xhtml</from-view-id>
+      <navigation-case>
+            <from-outcome>next</from-outcome>
+            <to-view-id>/pages/include/second.xhtml</to-view-id>
+      </navigation-case>
+</navigation-rule>
+...]]></programlisting>
             
       </section>
    <section>

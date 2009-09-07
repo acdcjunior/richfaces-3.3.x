@@ -92,24 +92,24 @@
          </emphasis>
 			is re-rendered on the server side and updated on the client.			
 		</para>
-		    <programlisting role="XML">...
-&lt;h:form id="planetsForm"&gt;
-	&lt;h:outputLabel value="Select the planet:" for="planets" /&gt;
-	&lt;h:selectOneMenu id="planets" value="#{planetsMoons.currentPlanet}" valueChangeListener="#{planetsMoons.planetChanged}"&gt;
-		&lt;f:selectItems value="#{planetsMoons.planetsList}" /&gt;
-		&lt;a4j:support event="onchange" reRender="moons" /&gt;
-	&lt;/h:selectOneMenu&gt;
-	&lt;h:dataTable id="moons" value="#{planetsMoons.moonsList}" var="item"&gt;
-		&lt;h:column&gt;
-			&lt;h:outputText value="#{item}"/&gt;
-		&lt;/h:column&gt;
-	&lt;/h:dataTable&gt;
-&lt;/h:form&gt;
-...</programlisting>
+		    <programlisting role="XML"><![CDATA[...
+<h:form id="planetsForm">
+	<h:outputLabel value="Select the planet:" for="planets" />
+	<h:selectOneMenu id="planets" value="#{planetsMoons.currentPlanet}" valueChangeListener="#{planetsMoons.planetChanged}">
+		<f:selectItems value="#{planetsMoons.planetsList}" />
+		<a4j:support event="onchange" reRender="moons" />
+	</h:selectOneMenu>
+	<h:dataTable id="moons" value="#{planetsMoons.moonsList}" var="item">
+		<h:column>
+			<h:outputText value="#{item}"/>
+		</h:column>
+	</h:dataTable>
+</h:form>
+...]]></programlisting>
 		    <para>
 			Finally we need a backing bean:
 		</para>
-		    <programlisting role="JAVA">...
+		    <programlisting role="JAVA"><![CDATA[...
 public class PlanetsMoons {
 	private String currentPlanet="";
 	public List&lt;SelectItem&gt; planetsList = new ArrayList&lt;SelectItem&gt;();
@@ -145,7 +145,7 @@ public class PlanetsMoons {
 	//Getters and Setters
 	...   
 }
-</programlisting>
+]]></programlisting>
 		    <para>
 			There are two properties <code>planetsList</code> and <code>moonsList</code>. 
 			The <code>planetsList</code> is filled with planets names in the constructor.   
@@ -178,22 +178,22 @@ public class PlanetsMoons {
             <property>&lt;h:dataTable&gt;</property>
          </emphasis> after the Ajax response:
 		</para>
-		    <programlisting role="XML">...
-&lt;h:form id="planetsForm"&gt;
-	&lt;h:outputLabel value="Select the planet:" for="planets" /&gt;
-	&lt;h:selectOneMenu id="planets" value="#{planetsMoons.currentPlanet}" valueChangeListener="#{planetsMoons.planetChanged}"&gt;
-		&lt;f:selectItems value="#{planetsMoons.planetsList}" /&gt;
-		&lt;a4j:support event="onchange" reRender="moons" 
+		    <programlisting role="XML"><![CDATA[...
+<h:form id="planetsForm">
+	<h:outputLabel value="Select the planet:" for="planets" />
+	<h:selectOneMenu id="planets" value="#{planetsMoons.currentPlanet}" valueChangeListener="#{planetsMoons.planetChanged}">
+		<f:selectItems value="#{planetsMoons.planetsList}" />
+		<a4j:support event="onchange" reRender="moons" 
 					onsubmit="if(!confirm('Are you sure to change the planet?')) {form.reset(); return false;}" 
-					oncomplete="document.getElementById('planetsForm:moonsPanel').style.backgroundColor='#c8dcf9';" /&gt;
-	&lt;/h:selectOneMenu&gt;
-	&lt;h:dataTable id="moons" value="#{planetsMoons.moonsList}" var="item"&gt;
-		&lt;h:column&gt;
-			&lt;h:outputText value="#{item}"/&gt;
-		&lt;/h:column&gt;
-	&lt;/h:dataTable&gt;
-&lt;/h:form&gt;
-...</programlisting>
+					oncomplete="document.getElementById('planetsForm:moonsPanel').style.backgroundColor='#c8dcf9';" />
+	</h:selectOneMenu>
+	<h:dataTable id="moons" value="#{planetsMoons.moonsList}" var="item">
+		<h:column>
+			<h:outputText value="#{item}"/>
+		</h:column>
+	</h:dataTable>
+</h:form>
+...]]></programlisting>
 	     <para>
 		There is the result:
 	</para>
@@ -226,11 +226,11 @@ public class PlanetsMoons {
 				        </emphasis>
 				component created on a page as following
 			</para>
-			      <programlisting role="XML">&lt;h:inputText value="#{bean.text}"&gt;
-      &lt;a4j:support event="onkeyup" reRender="output" action="#{bean.action}"/&gt;
-&lt;/h:inputText&gt;</programlisting>
+			      <programlisting role="XML"><![CDATA[<h:inputText value="#{bean.text}">
+      <a4j:support event="onkeyup" reRender="output" action="#{bean.action}"/>
+</h:inputText>]]></programlisting>
 			      <para>is decoded in HTML as</para>
-			      <programlisting role="XML">&lt;input  onkeyup="A4J.AJAX.Submit( Some request parameters )"/&gt;</programlisting>
+			      <programlisting role="XML"><![CDATA[<input  onkeyup="A4J.AJAX.Submit( Some request parameters )"/>]]></programlisting>
 		    </note>
 	  </section>
    <section>

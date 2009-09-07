@@ -72,15 +72,15 @@
             <para>
                   <emphasis role="bold">Registering resource bundles in the Faces configuration file:</emphasis>
             </para>
-            <programlisting role="XML">&lt;application&gt;
-      &lt;locale-config&gt;
-            &lt;default-locale&gt;en&lt;/default-locale&gt;
-            &lt;supported-locale&gt;en&lt;/supported-locale&gt;
-            &lt;supported-locale&gt;de&lt;/supported-locale&gt;
-            &lt;supported-locale&gt;it&lt;/supported-locale&gt;
-      &lt;/locale-config&gt;
-      &lt;message-bundle&gt;demo.message&lt;/message-bundle&gt;
-&lt;/application&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<application>
+      <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>de</supported-locale>
+            <supported-locale>it</supported-locale>
+      </locale-config>
+      <message-bundle>demo.message</message-bundle>
+</application>]]></programlisting>
             
             <para>
                   For the application we will use JSF <code>javax.faces.component.UIViewRoot.setLocale</code> method that will set a needed Locale 
@@ -90,7 +90,7 @@
                   <emphasis role="bold">
             <code>ChangeLocale</code> Java class with three methods for setting the correponding Locale:</emphasis>
             </para>
-            <programlisting role="JAVA">package demo;
+            <programlisting role="JAVA"><![CDATA[package demo;
 
  import java.util.Locale;
  import javax.faces.context.FacesContext;
@@ -113,19 +113,19 @@
         context.getViewRoot().setLocale(Locale.ITALIAN);
         return null;
      }
-}</programlisting>
+}]]></programlisting>
                   
                   <para>
                         Recently, the JSP page will look as following:
                   </para>
             
-            <programlisting role="XML">&lt;h:form&gt;
-      &lt;a4j:loadBundle var="msg" basename="demo.message"/&gt;
-      &lt;h:outputText id="messageBundle" value="#{msg.greeting}"/&gt;
-      &lt;a4j:commandLink value="De" action="#{changeLocale.germanAction}" reRender="messageBundle" /&gt;
-      &lt;a4j:commandLink value="Eng" action="#{changeLocale.englishAction}" reRender="messageBundle" /&gt;
-      &lt;a4j:commandLink value="It" action="#{changeLocale.italianAction}" reRender="messageBundle" /&gt;
-&lt;/h:form&gt; </programlisting>
+            <programlisting role="XML"><![CDATA[<h:form>
+      <a4j:loadBundle var="msg" basename="demo.message"/>
+      <h:outputText id="messageBundle" value="#{msg.greeting}"/>
+      <a4j:commandLink value="De" action="#{changeLocale.germanAction}" reRender="messageBundle" />
+      <a4j:commandLink value="Eng" action="#{changeLocale.englishAction}" reRender="messageBundle" />
+      <a4j:commandLink value="It" action="#{changeLocale.italianAction}" reRender="messageBundle" />
+</h:form> ]]></programlisting>
       
       <para>
             As an output we will get a simple application with English "Hello!" by default. 

@@ -41,18 +41,18 @@
                     </para>
                 
      
-                    <programlisting role="XML">...
-&lt;table&gt;
-      &lt;tbody&gt;
-            &lt;a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}"&gt;
-                  &lt;tr&gt;
-                        &lt;td&gt;&lt;h:outputText value="#{item.code}" id="item1" /&gt;&lt;/td&gt;
-                        &lt;td&gt;&lt;h:outputText value="#{item.price}" id="item2" /&gt;&lt;/td&gt;
-                  &lt;/tr&gt;
-            &lt;/a4j:repeat&gt;
-      &lt;/tbody&gt;
-&lt;/table&gt;
- ...</programlisting>
+                    <programlisting role="XML"><![CDATA[...
+<table>
+      <tbody>
+            <a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}">
+                  <tr>
+                        <td><h:outputText value="#{item.code}" id="item1" /></td>
+                        <td><h:outputText value="#{item.price}" id="item2" /></td>
+                  </tr>
+            </a4j:repeat>
+      </tbody>
+</table>
+ ...]]></programlisting>
                     
                 <para>
                       The example above the <emphasis role="bold">
@@ -78,13 +78,13 @@
                     </para>
                     
                 <para>The next example shows collection output as a plain HTML list:</para>
-                    <programlisting role="XML">&lt;ul&gt;
-      &lt;a4j:repeat ...&gt;
-	    &lt;li&gt;...&lt;li/&gt;
+                    <programlisting role="XML"><![CDATA[<ul>
+      <a4j:repeat ...>
+	    <li>...<li/>
 	               ...
-	    &lt;li&gt;...&lt;li/&gt;
-      &lt;/a4j:repeat&gt;
-&lt;/ul&gt;</programlisting>
+	    <li>...<li/>
+      </a4j:repeat>
+</ul>]]></programlisting>
                     <para>All other general attributes are defined according to the similar
                               attributes of iterative components (<emphasis role="bold">
                                         <property>&lt;h:dataTable&gt;</property>
