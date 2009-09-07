@@ -13,7 +13,7 @@
         <para>
               The <emphasis role="bold">
             <property>&lt;rich:comboBox&gt;</property>
-         </emphasis> is a component creates combobox element with built-in Ajax capability.
+         </emphasis> component allows to create a combobox element with the built-in Ajax capability.
         </para>
         <figure>
             <title>
@@ -86,9 +86,9 @@
                     <para>Using the <emphasis>
                   <property>"suggestionValues"</property>
                </emphasis> attribute, that defines the suggestion collection</para>
-                    <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" /&gt;    
-...</programlisting>                        
+                    <programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" />
+...]]></programlisting>                        
                 </listitem>
                 <listitem>
                 <para>
@@ -99,15 +99,15 @@
                </emphasis> JSF components.
                 </para>
 
-                <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" valueChangeListener="#{bean.selectionChanged}"&gt;
-        &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-        &lt;f:selectItem itemValue="Oregon"/&gt;			  
-        &lt;f:selectItem itemValue="Pennsylvania"/&gt;
-        &lt;f:selectItem itemValue="Rhode Island"/&gt;
-        &lt;f:selectItem itemValue="South Carolina"/&gt;
-&lt;/rich:comboBox&gt;            
-...</programlisting> 
+                	<programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" valueChangeListener="#{bean.selectionChanged}">
+        <f:selectItems  value="#{bean.selectItems}"/>
+        <f:selectItem itemValue="Oregon"/>			  
+        <f:selectItem itemValue="Pennsylvania"/>
+        <f:selectItem itemValue="Rhode Island"/>
+        <f:selectItem itemValue="South Carolina"/>
+</rich:comboBox>            
+...]]></programlisting> 
                     <note>
                         <title>Note:</title>
                         <para>
@@ -132,9 +132,9 @@
             If it's "true" the first value appears with the suggested part highlighted. 
         </para>
  
-        <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" directInputSuggestions="true" /&gt;            
-...</programlisting>        
+   	<programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" directInputSuggestions="true" />   
+...]]></programlisting>        
         <para>This is a result:</para>
             <figure>
                 <title>
@@ -157,9 +157,9 @@
         If it's "false" nothing is selected in the list before a user hovers some item with the mouse. 
         </para>
 
-        <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" selectFirstOnUpdate="false" /&gt;           
-...</programlisting>     
+   	<programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" selectFirstOnUpdate="false" />           
+...]]></programlisting>     
         <para>This is a result:</para>
             <figure>
                 <title>
@@ -186,9 +186,9 @@
          </emphasis> attribute defines the default label of the input element. Simple example is placed below.
         </para>
 
-        <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." /&gt;            
-...</programlisting>     
+   	<programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." />     
+...]]></programlisting>     
         <para>This is a result:</para>
             <figure>
                 <title>
@@ -212,9 +212,9 @@
          </emphasis> component. See the following example.
             </para>
 
-            <programlisting role="XML">...
-&lt;rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." disabled="true" /&gt;            
-...</programlisting>  
+   	<programlisting role="XML"><![CDATA[...
+<rich:comboBox value="#{bean.state}" suggestionValues="#{bean.suggestions}" defaultLabel="Select a city..." disabled="true" />       
+...]]></programlisting>  
         <para>This is a result:</para>
                 <figure>
                     <title>
@@ -369,203 +369,209 @@
                     </row>
                 </tbody>
             </tgroup>
-        </table>
-      <table id="comboBoxC">
-            <title>Classes names that define popup list representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-
-                    <row>
-                        <entry>rich-combobox-shell</entry>
-                        <entry>Defines styles for a wrapper &lt;div&gt; element of a list</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-list-position</entry>
-                        <entry>Defines position of a list</entry>
-                    </row>              
-                    <row>
-                        <entry>rich-combobox-list-decoration</entry>
-                        <entry>Defines styles for a list</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-list-scroll</entry>
-                        <entry>Defines styles for a list scrolling</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define font representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-combobox-font</entry>
-                        <entry>Defines styles for a font</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-font-inactive</entry>
-                        <entry>Defines styles for an inactive font</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-font-disabled</entry>
-                        <entry>Defines styles for a disabled font</entry>
-                    </row>
-                  </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define input field representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    
-                    <row>
-                        <entry>rich-combobox-input</entry>
-                        <entry>Defines styles for an input field</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-input-disabled</entry>
-                        <entry>Defines styles for an input field in disabled state</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-input-inactive</entry>
-                        <entry>Defines styles for an inactive input field</entry>
-                    </row>
-                    
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define item representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-combobox-item</entry>
-                        <entry>Defines styles for an item</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-item-selected</entry>
-                        <entry>Defines styles for a selected item</entry>
-                    </row>
-                 </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define button representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-combobox-button</entry>
-                        <entry>Defines styles for a button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-inactive</entry>
-                        <entry>Defines styles for an inactive button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-disabled</entry>
-                        <entry>Defines styles for a button in disabled state</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-hovered</entry>
-                        <entry>Defines styles for a hovered button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-background</entry>
-                        <entry>Defines styles for a button background</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-background-disabled</entry>
-                        <entry>Defines styles for a disabled button background</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-background-inactive</entry>
-                        <entry>Defines styles for an inactive button background</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-pressed-background</entry>
-                        <entry>Defines styles for a pressed button background</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-icon</entry>
-                        <entry>Defines styles for a button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-icon-inactive</entry>
-                        <entry>Defines styles for an inactive button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-button-icon-disabled</entry>
-                        <entry>Defines styles for a disabled button icon</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define shadow representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-combobox-shadow</entry>
-                        <entry>Defines styles for a wrapper &lt;div&gt; element of a shadow</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-shadow-tl</entry>
-                        <entry>Defines styles for a top-left element of a shadow</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-shadow-tr</entry>
-                        <entry>Defines styles for a top-right element of a shadow</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-shadow-bl</entry>
-                        <entry>Defines styles for a bottom-left element of a shadow</entry>
-                    </row>
-                    <row>
-                        <entry>rich-combobox-shadow-br</entry>
-                        <entry>Defines styles for a bottom-right element of a shadow</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-							You can find all necessary information about style classes redefinition in 
+      </table>
+		
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameter</entry>
+   					<entry>CSS properties mapped</entry>
+   				</row>
+   			</thead>
+   			<tbody>         
+   				<row>
+   					<entry>input.rich-combobox-button-background, input.rich-combobox-button-background-disabled, input.rich-combobox-button-background-inactive</entry>
+   					<entry>Define styles for a background of the combobox button, disabled button and inactive button respectively</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>input.rich-combobox-button-pressed-background</entry>
+   					<entry>Define styles for a background of the pressed button</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">input.rich-combobox-button, input.rich-combobox-button-inactive, input.rich-combobox-button-disabled</entry>
+   					<entry morerows="1">Define styles for the combobox button, disabled button and inactive button respectively</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-top-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-left-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-combobox-font, input.rich-combobox-font</entry>
+   					<entry morerows="2">Define styles for a font</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">input.rich-combobox-font-disabled, .rich-combobox-font-disabled</entry>
+   					<entry morerows="1">Defines styles for a disabled font</entry>
+   					<entry>headerFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>headerSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">input.rich-combobox-font-inactive, .rich-combobox-font-inactive</entry>
+   					<entry morerows="2">Defines styles for an inactive font</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-combobox-item</entry>
+   					<entry morerows="2">Defines styles for an item</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-combobox-input, .rich-combobox-input-disabled, .rich-combobox-input-inactive</entry>
+   					<entry morerows="2">Define styles for an input field, a disabled input field, an inactive input field respectively</entry>
+   					<entry>controlBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-combobox-item-selected</entry>
+   					<entry morerows="1">Defines styles for a selected item</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color, border-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-combobox-list-decoration</entry>
+   					<entry morerows="1">Defines styles for a list decoration</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>input.rich-combobox-button-hovered</entry>
+   					<entry>Defines styles for a hovered button</entry>
+   					<entry>selectControlColor</entry>
+   					<entry>border-color</entry>
+   				</row>   	
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table id="comboBoxC">
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-combobox-shell</entry>
+   					<entry>Defines styles for a wrapper &lt;div&gt; element of a list</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-list-position</entry>
+   					<entry>Defines position of a list</entry>
+   				</row>              
+   				<row>
+   					<entry>.rich-combobox-list-scroll</entry>
+   					<entry>Defines styles for a list scrolling</entry>
+   				</row>
+   				<row>
+   					<entry>input.rich-combobox-button-icon</entry>
+   					<entry>Defines styles for a button icon</entry>
+   				</row>
+   				<row>
+   					<entry>input.rich-combobox-button-icon-inactive</entry>
+   					<entry>Defines styles for an inactive button icon</entry>
+   				</row>
+   				<row>
+   					<entry>input.rich-combobox-button-icon-disabled</entry>
+   					<entry>Defines styles for a disabled button icon</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-shadow</entry>
+   					<entry>Defines styles for a wrapper &lt;div&gt; element of a shadow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-shadow-tl</entry>
+   					<entry>Defines styles for a top-left element of a shadow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-shadow-tr</entry>
+   					<entry>Defines styles for a top-right element of a shadow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-shadow-bl</entry>
+   					<entry>Defines styles for a bottom-left element of a shadow</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-combobox-shadow-br</entry>
+   					<entry>Defines styles for a bottom-right element of a shadow</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
         <title>Relevant Resources Links</title>
