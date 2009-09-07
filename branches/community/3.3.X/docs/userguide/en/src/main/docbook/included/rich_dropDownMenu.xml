@@ -77,11 +77,11 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;f:facet name="label"&gt;
-    &lt;h:graphicImage value="/images/img1.png"/&gt;
-&lt;/f:facet&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<f:facet name="label">
+    <h:graphicImage value="/images/img1.png"/>
+</f:facet>
+...]]></programlisting>
 
       <para>Use the <emphasis>
             <property>"event"</property>
@@ -93,11 +93,11 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
 
-      <programlisting role="XML">...
-&lt;rich:dropDownMenu event="onclick" value="Item1"&gt;
-    &lt;!--Nested menu components--&gt;
-&lt;/rich:dropDownMenu&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu event="onclick" value="Item1">
+    <!--Nested menu components-->
+</rich:dropDownMenu>
+...]]></programlisting>
 
       <para>The <emphasis role="bold">
             <property>&lt;rich:dropDownMenu&gt;</property>
@@ -222,19 +222,19 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:dropDownMenu value="File" direction="bottom-right" jointPoint="bl"&gt;
-    &lt;rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/&gt;
-    &lt;rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/&gt;
-    &lt;rich:menuGroup value="Save As..."&gt;
-        &lt;rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/&gt;
-        &lt;rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/&gt;
-    &lt;/rich:menuGroup&gt;
-    &lt;rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/&gt;
-    &lt;rich:menuSeparator id="menuSeparator11"/&gt;
-    &lt;rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/&gt;
-&lt;/rich:dropDownMenu&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu value="File" direction="bottom-right" jointPoint="bl">
+    <rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/>
+    <rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/>
+    <rich:menuGroup value="Save As...">
+        <rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/>
+        <rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/>
+    </rich:menuGroup>
+    <rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/>
+    <rich:menuSeparator id="menuSeparator11"/>
+    <rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/>
+</rich:dropDownMenu>
+...]]></programlisting>
 
       <para>This is the result:</para>
 
@@ -266,19 +266,19 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
 
-      <programlisting role="XML">...
-&lt;rich:dropDownMenu value="File" direction="bottom-right" jointPoint="tr" horizontalOffset="-15" verticalOffset="0"&gt;
-    &lt;rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/&gt;
-    &lt;rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/&gt;
-    &lt;rich:menuGroup value="Save As..."&gt;
-        &lt;rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/&gt;
-        &lt;rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/&gt;
-    &lt;/rich:menuGroup&gt;
-    &lt;rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/&gt;
-    &lt;rich:menuSeparator id="menuSeparator11"/&gt;
-    &lt;rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/&gt;
-&lt;/rich:dropDownMenu&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu value="File" direction="bottom-right" jointPoint="tr" horizontalOffset="-15" verticalOffset="0">
+    <rich:menuItem submitMode="ajax" value="New" action="#{ddmenu.doNew}"/>
+    <rich:menuItem   submitMode="ajax"  value="Open" action="#{ddmenu.doOpen}"/>
+    <rich:menuGroup value="Save As...">
+        <rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/>
+        <rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/>
+    </rich:menuGroup>
+    <rich:menuItem  submitMode="ajax" value="Close" action="#{ddmenu.doClose}"/>
+    <rich:menuSeparator id="menuSeparator11"/>
+    <rich:menuItem  submitMode="ajax" value="Exit"  action="#{ddmenu.doExit}"/>
+</rich:dropDownMenu>
+...]]></programlisting>
 
       <para>This is the result:</para>
 
@@ -313,7 +313,7 @@
       <emphasis role="bold">Example:</emphasis>
     </para>
     
-    <programlisting role="XML"><![CDATA[...
+    <programlisting role="XML"><![CDATA[<![CDATA[...
     <rich:dropDownMenu value="Item1">
        <rich:menuItem id="menuItem1" value="Active1"/>
        <rich:menuItem id="menuItem2" value="Disabled1" disabled="true"/>
@@ -344,11 +344,11 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
     
-      <programlisting role="XML">...
-&lt;rich:dropDownMenu value="File"  disabled="true"&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu value="File"  disabled="true">
     ...
-&lt;/rich:dropDownMenu&gt;
-...</programlisting>
+</rich:dropDownMenu>
+...]]></programlisting>
 
   </section>
    <section>

@@ -53,49 +53,49 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-     <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"&gt; 
-		&lt;rich:column colspan="3"&gt;
-				&lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
-				&lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-		&lt;/rich:column&gt;
-       &lt;rich:columnGroup&gt;
-       			&lt;rich:column&gt; 
-               		&lt;h:outputText value="#{cap.state}"/&gt;
-				&lt;/rich:column&gt;
-               &lt;rich:column &gt;
-               		&lt;h:outputText value="#{cap.name}"/&gt;
-               &lt;/rich:column&gt;
-               &lt;rich:column &gt;
-               		&lt;h:outputText value="#{cap.timeZone}"/&gt;
-               &lt;/rich:column&gt;
-		&lt;/rich:columnGroup&gt;	
-&lt;/rich:dataTable&gt;
+     <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
+		<rich:column colspan="3">
+				<f:facet name="header">State Flag</f:facet>
+				<h:graphicImage value="#{cap.stateFlag}"/>
+		</rich:column>
+       <rich:columnGroup>
+       			<rich:column> 
+               		<h:outputText value="#{cap.state}"/>
+				</rich:column>
+               <rich:column >
+               		<h:outputText value="#{cap.name}"/>
+               </rich:column>
+               <rich:column >
+               		<h:outputText value="#{cap.timeZone}"/>
+               </rich:column>
+		</rich:columnGroup>	
+</rich:dataTable>
 ...
-</programlisting>
+]]></programlisting>
       <para>And here is a representation without a grouping:</para>
 
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"&gt; 
-		&lt;rich:column colspan="3"&gt;
-       			&lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
-            	&lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:column breakBefore="true"&gt;
-				&lt;h:outputText value="#{cap.state}"/&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:column&gt;
-       			&lt;h:outputText value="#{cap.name}"/&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:column&gt;
-				&lt;h:outputText value="#{cap.timeZone}"/&gt;
-		&lt;/rich:column&gt;
-&lt;/rich:dataTable&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5" id="sublist"> 
+		<rich:column colspan="3">
+       			<f:facet name="header">State Flag</f:facet>
+            	<h:graphicImage value="#{cap.stateFlag}"/>
+		</rich:column>
+		<rich:column breakBefore="true">
+				<h:outputText value="#{cap.state}"/>
+		</rich:column>
+		<rich:column>
+       			<h:outputText value="#{cap.name}"/>
+		</rich:column>
+		<rich:column>
+				<h:outputText value="#{cap.timeZone}"/>
+		</rich:column>
+</rich:dataTable>
 ....
-</programlisting>
+]]></programlisting>
       <para>The result is:</para>
       <figure>
          <title>Generated <emphasis role="bold">

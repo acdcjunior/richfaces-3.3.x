@@ -59,27 +59,27 @@
          </emphasis> attributes define icons for the component. Also you can define icons using facets
       with the same names. If the facets are defined, the corresponding attributes are ignored and
       facets contents are used as icons. The width of a rendered facet area is 16px. </para>                                                                                                                                                                                                                                                                
-      <programlisting role="XML">...
-&lt;rich:tree ...&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:tree ...>
 		...
-       	&lt;rich:treeNode ...&gt;
-       			&lt;f:facet name="icon"&gt;
-               		&lt;outputText value="A"/&gt;
-            	&lt;/f:facet&gt;
-            	&lt;f:facet name="iconCollapsed"&gt;
-               		&lt;outputText value="B"/&gt;
-            	&lt;/f:facet&gt;		
-            	&lt;f:facet name="iconExpanded"&gt;
-               		&lt;outputText value="C"/&gt;
-            	&lt;/f:facet&gt;
-            	&lt;f:facet name="iconLeaf"&gt;
-               		&lt;outputText value="D"/&gt;
-            	&lt;/f:facet&gt;
-		&lt;/rich:treeNode&gt;
+       	<rich:treeNode>
+       			<f:facet name="icon">
+               		<outputText value="A"/>
+            	</f:facet>
+            	<f:facet name="iconCollapsed">
+               		<outputText value="B"/>
+            	</f:facet>		
+            	<f:facet name="iconExpanded">
+               		<outputText value="C"/>
+            	</f:facet>
+            	<f:facet name="iconLeaf">
+               		<outputText value="D"/>
+            	</f:facet>
+		</rich:treeNode>
        	...
-&lt;/rich:tree&gt;
+</rich:tree>
 ...
-</programlisting>
+]]></programlisting>
       <para>As it has been mentioned <link linkend="treeNode">above</link>, <emphasis role="bold">
             <property>&lt;rich:treeNode&gt;</property>
          </emphasis>  defines a template for nodes
@@ -88,15 +88,15 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:tree ... faceNode="simpleNode" ... value="#{bean.data}" var="data"&gt;
-		&lt;rich:treeNode type="simpleNode"&gt;
-       			&lt;h:outputText value="context-param:"/&gt;
-      			&lt;h:inputText value="#{data.name}"/&gt;
-     	&lt;/rich:treeNode&gt;
-&lt;/rich:tree&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:tree faceNode="simpleNode" value="#{bean.data}" var="data">
+		<rich:treeNode type="simpleNode">
+       			<h:outputText value="context-param:"/>
+      			<h:inputText value="#{data.name}"/>
+     	</rich:treeNode>
+</rich:tree>
 ...
-</programlisting>
+]]></programlisting>
       <figure>
          <title>Nodes output</title>
          <mediaobject>

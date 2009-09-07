@@ -54,29 +54,29 @@
 
 
 
-                    <programlisting role="XML">...
-&lt;rich:panel&gt;
-      &lt;f:facet name="header"&gt;
-            &lt;h:outputText value="User Info:" /&gt;
-      &lt;/f:facet&gt;
-      &lt;h:panelGrid columns="3"&gt;
-            &lt;h:outputText value="Name:" /&gt;
-            &lt;h:inputText value="#{userBean.name}" id="name" required="true"&gt;
-                  &lt;f:validateLength minimum="3" maximum="12"/&gt;
-                  &lt;rich:ajaxValidator event="onblur"/&gt;
-            &lt;/h:inputText&gt;
-            &lt;rich:message for="name" /&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:panel>
+      <f:facet name="header">
+            <h:outputText value="User Info:" />
+      </f:facet>
+      <h:panelGrid columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{userBean.name}" id="name" required="true">
+                  <f:validateLength minimum="3" maximum="12"/>
+                  <rich:ajaxValidator event="onblur"/>
+            </h:inputText>
+            <rich:message for="name" />
                 
-            &lt;h:outputText value="Age:" /&gt;
-                  &lt;h:inputText value="#{userBean.age}" id="age" required="true"&gt;
-                        &lt;f:convertNumber integerOnly="true"/&gt;
-                        &lt;f:validateLongRange minimum="18" maximum="99"/&gt;
-                        &lt;rich:ajaxValidator event="onblur"/&gt;
-                  &lt;/h:inputText&gt;
-                  &lt;rich:message for="age"/&gt;
-      &lt;/h:panelGrid&gt;
-&lt;/rich:panel&gt;
-...</programlisting>
+            <h:outputText value="Age:" />
+                  <h:inputText value="#{userBean.age}" id="age" required="true">
+                        <f:convertNumber integerOnly="true"/>
+                        <f:validateLongRange minimum="18" maximum="99"/>
+                        <rich:ajaxValidator event="onblur"/>
+                  </h:inputText>
+                  <rich:message for="age"/>
+      </h:panelGrid>
+</rich:panel>
+...]]></programlisting>
 
                     <para>This is the result of the snippet. </para>
 
@@ -117,38 +117,38 @@
                     <para> The following example shows how the data entered by user can be validated
                               using Hibernate Validator. </para>
 
-                    <programlisting role="XML">...
-&lt;rich:panel&gt;
-      &lt;f:facet name="header"&gt;
-            &lt;h:outputText value="User Info:" /&gt;
-      &lt;/f:facet&gt;
-      &lt;h:panelGrid  columns="3"&gt;
-            &lt;h:outputText value="Name:" /&gt;
-            &lt;h:inputText value="#{validationBean.name}" id="name" required="true"&gt;
-                  &lt;rich:ajaxValidator event="onblur" /&gt;
-            &lt;/h:inputText&gt;
-            &lt;rich:message for="name" /&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:panel>
+      <f:facet name="header">
+            <h:outputText value="User Info:" />
+      </f:facet>
+      <h:panelGrid  columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{validationBean.name}" id="name" required="true">
+                  <rich:ajaxValidator event="onblur" />
+            </h:inputText>
+            <rich:message for="name" />
             
-            &lt;h:outputText value="Email:" /&gt;
-                  &lt;h:inputText value="#{validationBean.email}" id="email"&gt;
-                        &lt;rich:ajaxValidator event="onblur" /&gt;
-                  &lt;/h:inputText&gt;
-                  &lt;rich:message for="email" /&gt;
+            <h:outputText value="Email:" />
+                  <h:inputText value="#{validationBean.email}" id="email">
+                        <rich:ajaxValidator event="onblur" />
+                  </h:inputText>
+                  <rich:message for="email" />
                   
-                  &lt;h:outputText value="Age:" /&gt;
-                  &lt;h:inputText value="#{validationBean.age}" id="age"&gt;
-                        &lt;rich:ajaxValidator event="onblur" /&gt;
-                  &lt;/h:inputText&gt;
-                  &lt;rich:message for="age" /&gt;
-      &lt;/h:panelGrid&gt;
-&lt;/rich:panel&gt;
-...</programlisting>
+                  <h:outputText value="Age:" />
+                  <h:inputText value="#{validationBean.age}" id="age">
+                        <rich:ajaxValidator event="onblur" />
+                  </h:inputText>
+                  <rich:message for="age" />
+      </h:panelGrid>
+</rich:panel>
+...]]></programlisting>
 
 
                     <para>Here is the source code of the managed bean.</para>
 
 
-                <programlisting role="JAVA">package org.richfaces.demo.validation;
+                <programlisting role="JAVA"><![CDATA[package org.richfaces.demo.validation;
 
 import org.hibernate.validator.Email;
 import org.hibernate.validator.Length;
@@ -180,7 +180,7 @@ public class ValidationBean {
 
     /* Corresponding Getters and Setters */
     
-}</programlisting>
+}]]></programlisting>
 
                     <para>By default the Hibernate Validator generates an error message in 10
                               language, though you can redefine the messages that are displayed to a

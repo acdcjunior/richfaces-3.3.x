@@ -120,22 +120,22 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:togglePanel id="panel" initialState="panelB" switchType="client"
-                        stateOrder="panelA,panelB,panelC"&gt;
-		&lt;f:facet name="panelA"&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:togglePanel id="panel" initialState="panelB" switchType="client"
+                        stateOrder="panelA,panelB,panelC">
+		<f:facet name="panelA">
        			...
-        &lt;/f:facet&gt;
-        &lt;f:facet name="panelB"&gt;
+        </f:facet>
+        <f:facet name="panelB">
         		...
-        &lt;/f:facet&gt;
-        &lt;f:facet name="panelC"&gt;
+        </f:facet>
+        <f:facet name="panelC">
         		...
-        &lt;/f:facet&gt;
-&lt;/rich:togglePanel&gt; 
-&lt;rich:toggleControl for="panel" value="Switch"/&gt;
+        </f:facet>
+</rich:togglePanel> 
+<rich:toggleControl for="panel" value="Switch"/>
 ...
-</programlisting>
+]]></programlisting>
                     <para>The example shows a <property>togglePanel</property> initial state when
                               the second facet (<code>panelB</code>) is rendered and successive
                               switching from the first to the second happens.</para>

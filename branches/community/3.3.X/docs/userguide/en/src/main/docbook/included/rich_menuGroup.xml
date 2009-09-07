@@ -67,12 +67,12 @@
             </emphasis> attributes are ignored and the facets' contents are used as icons.
             This could be used for an item check box implementation. </para>
         <para> Here is an example: </para>
-        <programlisting role="XML">...
-&lt;f:facet name="icon"&gt;
-		&lt;h:selectBooleanCheckbox value="#{bean.property}"/&gt;
-&lt;/f:facet&gt;
+        <programlisting role="XML"><![CDATA[...
+<f:facet name="icon">
+		<h:selectBooleanCheckbox value="#{bean.property}"/>
+</f:facet>
 ...
-</programlisting>
+]]></programlisting>
         <para> The <emphasis>
                 <property>"iconFolder"</property>
             </emphasis> and <emphasis>
@@ -113,13 +113,13 @@
                 <property>"direction"</property>
             </emphasis> attribute is set to "auto". </para>
         <para> Here is an example: </para>
-        <programlisting role="XML">...
-&lt;rich:menuGroup value="Save As..." direction="left-down"&gt;
-		&lt;rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/&gt;
-      	&lt;rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/&gt;
-&lt;/rich:menuGroup&gt;
+        <programlisting role="XML"><![CDATA[...
+<rich:menuGroup value="Save As..." direction="left-down">
+		<rich:menuItem   submitMode="ajax" value="Text File"  action="#{ddmenu.doSaveText}"/>
+      	<rich:menuItem   submitMode="ajax" value="PDF File"  action="#{ddmenu.doSavePDF}"/>
+</rich:menuGroup>
 ...
-</programlisting>
+]]></programlisting>
         <para> This would be the result: </para>
         <figure>
             <title>Using the <emphasis>

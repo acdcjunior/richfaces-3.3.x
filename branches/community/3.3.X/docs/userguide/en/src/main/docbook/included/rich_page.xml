@@ -92,17 +92,17 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
         
-      <programlisting role="XML">...
-&lt;rich:page pageTitle="The title of the page" markupType="xhtml"&gt;
-	&lt;f:facet name="pageHeader"&gt;
-		&lt;meta content="The rich:page component" name="keywords" /&gt;
-		&lt;link rel="shortcut icon" href="/images/favicon.ico" /&gt;
-		&lt;link href="/css/style.css" rel="stylesheet" type="text/css" /&gt;
-		&lt;script type="text/javascript" src="/js/menu.js"&gt;&lt;/script&gt;
-	&lt;/f:facet&gt;
-	&lt;!-- page content --&gt;
-&lt;/rich:page&gt;
-...</programlisting>                                                                                                                                                                                                                                                                    
+      <programlisting role="XML"><![CDATA[...
+<rich:page pageTitle="The title of the page" markupType="xhtml">
+	<f:facet name="pageHeader">
+		<meta content="The rich:page component" name="keywords" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/js/menu.js"></script>
+	</f:facet>
+	<!-- page content -->
+</rich:page>
+...]]></programlisting>                                                                                                                                                                                                                                                                    
       <note>
             <title>Note:</title>
             <para>Note, the <emphasis role="bold">
@@ -125,20 +125,20 @@
         
         
         
-        <programlisting role="XML">...
-&lt;rich:page sidebarPosition="left" sidebarWidth="300"&gt;
-	&lt;f:facet name="header"&gt;
-		&lt;!-- header  content --&gt;
-	&lt;/f:facet&gt;
-	&lt;f:facet name="sidebar"&gt;
-		&lt;!-- side panel content --&gt;
-	&lt;/f:facet&gt;
-	&lt;!-- body content --&gt;
-	&lt;f:facet name="footer"&gt;
-		&lt;!-- footer  content --&gt;
-	&lt;/f:facet&gt;
-&lt;/rich:page&gt;
-...</programlisting>                                                                                                                                                                                                                                                                    
+        <programlisting role="XML"><![CDATA[...
+<rich:page sidebarPosition="left" sidebarWidth="300">
+	<f:facet name="header">
+		<!-- header  content -->
+	</f:facet>
+	<f:facet name="sidebar">
+		<!-- side panel content -->
+	</f:facet>
+	<!-- body content -->
+	<f:facet name="footer">
+		<!-- footer  content -->
+	</f:facet>
+</rich:page>
+...]]></programlisting>                                                                                                                                                                                                                                                                    
         <para>The <emphasis role="bold">
             <property>&lt;rich:page&gt;</property>
          </emphasis> component also provides attributes  to define CSS classes for each nested facet as well as a body part of the page created with the component.</para>

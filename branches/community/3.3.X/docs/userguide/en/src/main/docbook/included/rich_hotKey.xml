@@ -63,24 +63,24 @@
             <para>
                   After the hot key has been registered and defined you could set the <emphasis><property>"handler"</property></emphasis> attribute which determines a JavaScript function to be called every time when corresponding keys are pressed.
             </para>
-            <programlisting role="XML">&lt;rich:listShuttle var="cap" sourceValue="#{capitalsBean.capitals}" id="ls"&gt;
-	&lt;rich:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="State flag"/&gt;
-		&lt;/f:facet&gt;
-		&lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-	&lt;/rich:column&gt;
-	&lt;rich:column&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="State name"/&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="#{cap.name}"/&gt;
-	&lt;/rich:column&gt;
-&lt;/rich:listShuttle&gt;
-&lt;rich:hotKey selector="#ls" key="right"    handler="#{rich:component('ls')}.copy()"/&gt;
-&lt;rich:hotKey selector="#ls" key="left"       handler="#{rich:component('ls')}.remove()"/&gt;
-&lt;rich:hotKey selector="#ls" key="end"     handler="#{rich:component('ls')}.copyAll()"/&gt;
-&lt;rich:hotKey selector="#ls" key="home" handler="#{rich:component('ls')}.removeAll()"/&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<rich:listShuttle var="cap" sourceValue="#{capitalsBean.capitals}" id="ls">
+	<rich:column>
+		<f:facet name="header">
+			<h:outputText value="State flag"/>
+		</f:facet>
+		<h:graphicImage value="#{cap.stateFlag}"/>
+	</rich:column>
+	<rich:column>
+		<f:facet name="header">
+			<h:outputText value="State name"/>
+		</f:facet>
+		<h:outputText value="#{cap.name}"/>
+	</rich:column>
+</rich:listShuttle>
+<rich:hotKey selector="#ls" key="right"    handler="#{rich:component('ls')}.copy()"/>
+<rich:hotKey selector="#ls" key="left"       handler="#{rich:component('ls')}.remove()"/>
+<rich:hotKey selector="#ls" key="end"     handler="#{rich:component('ls')}.copyAll()"/>
+<rich:hotKey selector="#ls" key="home" handler="#{rich:component('ls')}.removeAll()"/>]]></programlisting>
             <para> In the example above the <emphasis>
                         <property>"selector"</property>
                   </emphasis> attribute is used. So the keys work only if <emphasis role="bold">
@@ -126,11 +126,11 @@
             <para> The <emphasis role="bold">
                         <property>&lt;rich:hotKey&gt;</property>
                   </emphasis> component also provides a number of JavaScript API functions. There is an example below. </para>
-            <programlisting role="XML">&lt;h:form id="myForm"&gt;
-	&lt;rich:hotKey id="myKey" key="ctrl+g" handler="alert('Ctrl+G is pressed')" /&gt;
-	&lt;button onclick="${rich:component('myKey')}.enable(); return false;"&gt;Turn Ctrl+G On&lt;/button&gt;
-	&lt;button onclick="${rich:component('myKey')}.disable(); return false;"&gt;Turn Ctrl+G Off&lt;/button&gt;
-&lt;/h:form&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<h:form id="myForm">
+	<rich:hotKey id="myKey" key="ctrl+g" handler="alert('Ctrl+G is pressed')" />
+	<button onclick="${rich:component('myKey')}.enable(); return false;">Turn Ctrl+G On</button>
+	<button onclick="${rich:component('myKey')}.disable(); return false;">Turn Ctrl+G Off</button>
+</h:form>]]></programlisting>
             <para>
                   In the example above the <code>Ctrl+G</code> is registered as a global hotkey, so if you press this key combination the alert window with the <code>"Ctrl+G is pressed"</code> text appears. 
                   With the help of <code>enable()</code>, <code>disable()</code> JavaScript API fucntions you could enable or disable registered hotkey.

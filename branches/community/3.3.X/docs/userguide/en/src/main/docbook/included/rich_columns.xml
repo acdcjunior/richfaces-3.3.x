@@ -127,32 +127,32 @@
    	<para>
    		<emphasis role="bold">Example:</emphasis>
    	</para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{dataTableScrollerBean.model}" var="model" width="500px" rows="5"&gt;
-		&lt;f:facet name="header"&gt;
-	    		&lt;h:outputText value="Cars Available"&gt;&lt;/h:outputText&gt;
-		&lt;/f:facet&gt;
-		&lt;rich:columns value="#{dataTableScrollerBean.columns}" var="columns" index="ind"&gt;
-	    		&lt;f:facet name="header"&gt;
-		       			&lt;h:outputText value="#{columns.header}" /&gt;
-				&lt;/f:facet&gt;
-				&lt;h:outputText value="#{model[ind].model} " /&gt;
-		&lt;/rich:columns&gt;
-		&lt;rich:column&gt;
-				&lt;f:facet name="header"&gt;
-		       			&lt;h:outputText value="Price" /&gt;
-				&lt;/f:facet&gt;
-               &lt;h:outputText value="Price" /&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:columns value="#{dataTableScrollerBean.columns}" var="columns" index="ind"&gt;
-	    		&lt;f:facet name="header"&gt;
-		       			&lt;h:outputText value="#{columns.header}" /&gt;
-				&lt;/f:facet&gt;
-				&lt;h:outputText value="#{model[ind].mileage}$" /&gt;
-		&lt;/rich:columns&gt;
-&lt;/rich:dataTable&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{dataTableScrollerBean.model}" var="model" width="500px" rows="5">
+		<f:facet name="header">
+	    		<h:outputText value="Cars Available"></h:outputText>
+		</f:facet>
+		<rich:columns value="#{dataTableScrollerBean.columns}" var="columns" index="ind">
+	    		<f:facet name="header">
+		       			<h:outputText value="#{columns.header}" />
+				</f:facet>
+				<h:outputText value="#{model[ind].model} " />
+		</rich:columns>
+		<rich:column>
+				<f:facet name="header">
+		       			<h:outputText value="Price" />
+				</f:facet>
+               <h:outputText value="Price" />
+		</rich:column>
+		<rich:columns value="#{dataTableScrollerBean.columns}" var="columns" index="ind">
+	    		<f:facet name="header">
+		       			<h:outputText value="#{columns.header}" />
+				</f:facet>
+				<h:outputText value="#{model[ind].mileage}$" />
+		</rich:columns>
+</rich:dataTable>
 ...                              
-                    </programlisting>
+                    ]]></programlisting>
    	
    	<para>The grouping some columns into one column or one row with the help of 
    						the <emphasis>
@@ -184,21 +184,21 @@
                                         exist. Use <property>&lt;c:forEach&gt;</property>
                                         JSP standard tag as workaround. Compare two examples below. </para>
                               <para> This code calls the exception: </para>
-                              <programlisting role="XML">...
-&lt;rich:dataTable value="#{bean.data}" var="var"&gt;
-		&lt;rich:columns value="#{var.columns}"&gt;
+                              <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{bean.data}" var="var">
+		<rich:columns value="#{var.columns}">
        			...
-       	&lt;/rich:columns&gt;
-&lt;/rich:dataTable&gt;
-...</programlisting>
+       	</rich:columns>
+</rich:dataTable>
+...]]></programlisting>
                               <para> This code works properly: </para>
-                              <programlisting role="XML">...
-&lt;c:forEach items="#{bean.data}" var="var"&gt;
-		&lt;rich:columns value="#{var.columns}"&gt;
+                              <programlisting role="XML"><![CDATA[...
+<c:forEach items="#{bean.data}" var="var">
+		<rich:columns value="#{var.columns}">
         		...
-       	&lt;/rich:columns&gt;
-&lt;/c:forEach&gt;
-...</programlisting>
+       	</rich:columns>
+</c:forEach>
+...]]></programlisting>
                     </note>
 
 
@@ -212,13 +212,13 @@
                     The  example of how you can define unique <emphasis>
                <property>"id"</property>
             </emphasis> for children component: </para>
-           <programlisting role="XML">...
-&lt;rich:columns value="#{bean.columns}" var="col" index="ind" ... &gt;
-		&lt;h:inputText id="input#{ind}" value=""&gt;
-				&lt;a4j:support id="support#{ind}" event="onchange" reRender="someId" /&gt;
-		&lt;/h:inputText&gt;
-&lt;/rich:columns&gt; 
-...</programlisting> 
+           <programlisting role="XML"><![CDATA[...
+<rich:columns value="#{bean.columns}" var="col" index="ind" ... >
+		<h:inputText id="input#{ind}" value="">
+				<a4j:support id="support#{ind}" event="onchange" reRender="someId" />
+		</h:inputText>
+</rich:columns> 
+...]]></programlisting> 
           <para>Only if <emphasis>
                <property>"id"</property>
             </emphasis> defined as shown above Ajax after onchange event will be processed as expected. </para>      

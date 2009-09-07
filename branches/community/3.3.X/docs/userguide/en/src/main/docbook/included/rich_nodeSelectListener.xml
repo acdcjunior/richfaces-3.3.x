@@ -50,21 +50,21 @@ Attribute <emphasis>
          <emphasis role="bold">The typical variant of using:</emphasis>
       </para>
 
-      <programlisting role="XML">...
-&lt;rich:tree switchType="server" value="#{project.data}" var="item" nodeFace="#{item.type}"&gt;
-	&lt;rich:nodeSelectListener type="demo.ListenerBean"/&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:tree switchType="server" value="#{project.data}" var="item" nodeFace="#{item.type}">
+	<rich:nodeSelectListener type="demo.ListenerBean"/>
 	...
-	&lt;!-- Tree nodes --&gt;	
+	<!-- Tree nodes -->	
 	...
-&lt;/rich:tree&gt;
+</rich:tree>
 ...
-</programlisting> 
+]]></programlisting> 
 
       <para>
          <emphasis role="bold">Java bean source:</emphasis>
       </para>
 
-      <programlisting role="JAVA">package demo;
+      <programlisting role="JAVA"><![CDATA[package demo;
 import org.richfaces.event.NodeSelectedEvent;
 public class ListenerBean implements org.richfaces.event.NodeSelectedListener{
     ...	
@@ -73,7 +73,7 @@ public class ListenerBean implements org.richfaces.event.NodeSelectedListener{
 	}
 	...
 }
-</programlisting> 
+]]></programlisting> 
   </section>
    <section>
       <title>Reference Data</title>

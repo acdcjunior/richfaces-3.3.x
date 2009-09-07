@@ -98,12 +98,12 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;f:facet name="itemSeparator"&gt; 
-    &lt;rich:separator width="2" height="14" /&gt; 
-&lt;/f:facet&gt;
+      <programlisting role="XML"><![CDATA[...
+<f:facet name="itemSeparator"> 
+    <rich:separator width="2" height="14" /> 
+</f:facet>
 ...
-</programlisting>
+]]></programlisting>
       <para>Custom separator can be also specified by URL to the separator image in the attribute <emphasis>
             <property>"itemSeparator"</property>
          </emphasis> of the <emphasis role="bold">
@@ -112,10 +112,10 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:toolBar id="toolBar" width="#{bean.width}" height="#{bean.height}" itemSeparator="/images/separator_img.jpg"/&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:toolBar id="toolBar" width="#{bean.width}" height="#{bean.height}" itemSeparator="/images/separator_img.jpg"/>
 ...
-</programlisting>
+]]></programlisting>
       <para>This is a result:</para>
       <figure>
          <title>

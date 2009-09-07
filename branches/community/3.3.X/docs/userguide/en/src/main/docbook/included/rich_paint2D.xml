@@ -100,7 +100,7 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="JAVA">paintBean.java:
+      <programlisting role="JAVA"><![CDATA[paintBean.java:
       
 public void paint(Graphics2D g2, Object obj) {
 		// code that gets data from the data Bean (PaintData)
@@ -126,7 +126,7 @@ page.xhtml:
 ...
 &lt;rich:paint2D paint="#{paint2D.paint}" data="#{paint2DModel.data}"/&gt;
 ... 
-</programlisting>
+]]></programlisting>
 
   </section>
    <section>

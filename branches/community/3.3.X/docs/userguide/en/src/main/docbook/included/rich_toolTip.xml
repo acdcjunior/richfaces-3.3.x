@@ -86,10 +86,10 @@
       <para>
                 <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;rich:panel id="panelId"&gt;
+      <programlisting role="XML"><![CDATA[<rich:panel id="panelId">
 ...
-&lt;/rich:panel&gt;
-&lt;rich:toolTip value="This is a tooltip." for="panelId"/&gt;</programlisting>
+</rich:panel>
+<rich:toolTip value="This is a tooltip." for="panelId"/>]]></programlisting>
    
        <para>These two ways are also applicable for HTML elements that are not presented in components tree built by facelets.  
              Use <emphasis>
@@ -101,17 +101,17 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">&lt;!-- The &lt;rich:toolTip&gt; is nested into the parent HTML element --&gt;
-&lt;div id="para1"&gt;
-      &lt;p&gt;This paragraph and tooltip are nested into the same &lt;div&gt; element.&lt;/p&gt;
-      &lt;rich:toolTip for="para1"&gt;This is a tooltip.&lt;/rich:toolTip&gt;
-&lt;/div&gt;
+      <programlisting role="XML"><![CDATA[<!-- The <rich:toolTip> is nested into the parent HTML element -->
+<div id="para1">
+      <p>This paragraph and tooltip are nested into the same <div> element.</p>
+      <rich:toolTip for="para1">This is a tooltip.</rich:toolTip>
+</div>
 
-&lt;!-- The &lt;rich:toolTip&gt; is defined separately --&gt;
-&lt;div id="para2"&gt;
-      &lt;p&gt;The tooltip for this paragraph is defined separately.&lt;/p&gt;
-&lt;/div&gt;
-&lt;rich:toolTip for="para2"&gt;This is a tooltip.&lt;/rich:toolTip&gt;</programlisting>
+<!-- The <rich:toolTip> is defined separately -->
+<div id="para2">
+      <p>The tooltip for this paragraph is defined separately.</p>
+</div>
+<rich:toolTip for="para2">This is a tooltip.</rich:toolTip>]]></programlisting>
        
       <para>The third way to invoke the <emphasis role="bold">
             <property>&lt;rich:toolTip&gt;</property>
@@ -132,10 +132,10 @@
        <para>
              <emphasis role="bold">Example:</emphasis>
        </para>
-      <programlisting role="XML">&lt;rich:panel id="panelId" onclick="#{rich:component("tooltipId")}.show(event);" /&gt;
-&lt;a4j:form&gt;
-      &lt;rich:toolTip id="tooltipId" attached="false" value="This is a tooltip."/&gt;
-&lt;/a4j:form&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<rich:panel id="panelId" onclick="#{rich:component("tooltipId")}.show(event);" />
+<a4j:form>
+      <rich:toolTip id="tooltipId" attached="false" value="This is a tooltip."/>
+</a4j:form>]]></programlisting>
      
        <note>
              <title>Notes:</title>
@@ -192,17 +192,17 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;h:commandLink value="Simple Link" id="link"&gt;
-	&lt;rich:toolTip followMouse="true" direction="top-right" mode="ajax" value="#{bean.toolTipContent}" horizontalOffset="5" 
-		verticalOffset="5" layout="block"&gt;
-		&lt;f:facet name="defaultContent"&gt;
-			&lt;f:verbatim&gt;DEFAULT TOOLTIP CONTENT&lt;/f:verbatim&gt;
-		&lt;/f:facet&gt;
-	&lt;/rich:toolTip&gt;
-&lt;/h:commandLink&gt;
+      <programlisting role="XML"><![CDATA[...
+<h:commandLink value="Simple Link" id="link">
+	<rich:toolTip followMouse="true" direction="top-right" mode="ajax" value="#{bean.toolTipContent}" horizontalOffset="5" 
+		verticalOffset="5" layout="block">
+		<f:facet name="defaultContent">
+			<f:verbatim>DEFAULT TOOLTIP CONTENT</f:verbatim>
+		</f:facet>
+	</rich:toolTip>
+</h:commandLink>
 ...
-</programlisting>
+]]></programlisting>
       <para>
      This is the result:
    </para>

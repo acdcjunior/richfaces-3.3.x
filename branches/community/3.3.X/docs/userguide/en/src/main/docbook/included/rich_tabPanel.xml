@@ -140,20 +140,20 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:tabPanel width="40%" headerAlignment="right"&gt;
-		&lt;rich:tab label="Canon"&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:tabPanel width="40%" headerAlignment="right">
+		<rich:tab label="Canon">
        			...
-       	&lt;/rich:tab&gt;
-      	&lt;rich:tab label="Nikon"&gt;
+       	</rich:tab>
+      	<rich:tab label="Nikon">
        			...
-      	&lt;/rich:tab&gt;
-       	&lt;rich:tab label="Olympus"&gt;
+      	</rich:tab>
+       	<rich:tab label="Olympus">
        			...
-      	&lt;/rich:tab&gt;
-&lt;/rich:tabPanel&gt;
+      	</rich:tab>
+</rich:tabPanel>
 ...
-</programlisting>
+]]></programlisting>
 
                     <figure>
                               <title>

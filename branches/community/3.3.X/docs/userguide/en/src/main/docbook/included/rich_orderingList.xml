@@ -106,24 +106,24 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;h:form&gt;
-        &lt;rich:orderingList value="#{bean.simpleItems}" var="item" selection="#{bean.selection}" controlsType="button"&gt;
-                &lt;rich:column&gt;
-                    &lt;f:facet name="header"&gt;
-                            &lt;h:outputText value="Cars" /&gt;
-                    &lt;/f:facet&gt;
-                    &lt;h:outputText value="#{item}" /&gt;
-                &lt;/rich:column&gt;
-        &lt;/rich:orderingList&gt;
-        &lt;rich:dataTable id="infoPanelID" value="#{bean.info}" var="info" rendered="true"&gt;
-                &lt;rich:column&gt;
-                            &lt;h:outputText value="#{info}" /&gt;
-                &lt;/rich:column&gt;
-        &lt;/rich:dataTable&gt;
-        &lt;a4j:commandButton value="reRender" reRender="infoPanelID" /&gt;
-&lt;/h:form&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<h:form>
+        <rich:orderingList value="#{bean.simpleItems}" var="item" selection="#{bean.selection}" controlsType="button">
+                <rich:column>
+                    <f:facet name="header">
+                            <h:outputText value="Cars" />
+                    </f:facet>
+                    <h:outputText value="#{item}" />
+                </rich:column>
+        </rich:orderingList>
+        <rich:dataTable id="infoPanelID" value="#{bean.info}" var="info" rendered="true">
+                <rich:column>
+                            <h:outputText value="#{info}" />
+                </rich:column>
+        </rich:dataTable>
+        <a4j:commandButton value="reRender" reRender="infoPanelID" />
+</h:form>
+...]]></programlisting>
         <para> The <emphasis role="bold">
                 <property>&lt;rich:orderingList&gt;</property>
             </emphasis> component allows to use <emphasis>
@@ -144,25 +144,25 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:orderingList value="#{bean.simpleItems}" var="item" controlsType="button" selection="#{bean.selection}"&gt;
-        &lt;f:facet name="caption"&gt;
-                &lt;h:outputText value="Caption Facet" /&gt;
-        &lt;/f:facet&gt;
-        &lt;rich:column&gt;
-                &lt;f:facet name="header"&gt;
-	            &lt;h:outputText value="Cars" /&gt;
-                &lt;/f:facet&gt;
-                &lt;h:outputText value="#{item.name}" /&gt;
-        &lt;/rich:column&gt;
-        &lt;rich:column&gt;
-                &lt;f:facet name="header"&gt;
-	            &lt;h:outputText value="Price" /&gt;
-                &lt;/f:facet&gt;
-                &lt;h:outputText value="#{item.price}" /&gt;
-        &lt;/rich:column&gt;
-&lt;/rich:orderingList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:orderingList value="#{bean.simpleItems}" var="item" controlsType="button" selection="#{bean.selection}">
+        <f:facet name="caption">
+                <h:outputText value="Caption Facet" />
+        </f:facet>
+        <rich:column>
+                <f:facet name="header">
+	            <h:outputText value="Cars" />
+                </f:facet>
+                <h:outputText value="#{item.name}" />
+        </rich:column>
+        <rich:column>
+                <f:facet name="header">
+	            <h:outputText value="Price" />
+                </f:facet>
+                <h:outputText value="#{item.price}" />
+        </rich:column>
+</rich:orderingList>
+...]]></programlisting>
 
         <!-- ordering control set-->
         <para>The <emphasis role="bold">
@@ -202,22 +202,22 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:orderingList value="#{bean.simpleItems}" var="item" controlsType="button" selection="#{bean.selection}"&gt;
-        &lt;f:facet name="topControl"&gt;
-                &lt;h:outputText value="Move to top" /&gt;
-        &lt;/f:facet&gt;
-        &lt;f:facet name="upControl"&gt;
-                &lt;h:outputText value="Move up" /&gt;
-        &lt;/f:facet&gt;
-        &lt;f:facet name="downControl"&gt;
-                &lt;h:outputText value="Move down" /&gt;
-        &lt;/f:facet&gt;
-        &lt;f:facet name="bottomControl"&gt;
-                &lt;h:outputText value="Move to bottom" /&gt;
-        &lt;/f:facet&gt;
-&lt;rich:orderingList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:orderingList value="#{bean.simpleItems}" var="item" controlsType="button" selection="#{bean.selection}">
+        <f:facet name="topControl">
+                <h:outputText value="Move to top" />
+        </f:facet>
+        <f:facet name="upControl">
+                <h:outputText value="Move up" />
+        </f:facet>
+        <f:facet name="downControl">
+                <h:outputText value="Move down" />
+        </f:facet>
+        <f:facet name="bottomControl">
+                <h:outputText value="Move to bottom" />
+        </f:facet>
+<rich:orderingList>
+...]]></programlisting>
 
         <para>The position of the controls relatively to a list could be customized with: <itemizedlist>
                 <!--listitem>
@@ -318,7 +318,7 @@
             {bottomControl}, {downCotrol}, {upControl}. <para>The example is placed below.</para>
         </para>
         <para>Example:</para>
-        <programlisting role="XML"><![CDATA[...
+        <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:orderingList>
         <h:panelGrid columns="2" columnClasses="class1 class2">
             <h:outputText value="{list}"/>

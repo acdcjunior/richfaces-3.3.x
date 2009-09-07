@@ -67,7 +67,7 @@
             <para>
 				     <emphasis role="bold">Example:</emphasis>
             </para>          
-      <programlisting role="XML">&lt;rich:editor value="#{bean.editorValue}" /&gt;</programlisting>  
+      <programlisting role="XML"><![CDATA[<rich:editor value="#{bean.editorValue}" />]]></programlisting>  
       <para>
 		Implementation of  <emphasis role="bold">
             <property>&lt;rich:editor&gt;</property>
@@ -103,9 +103,9 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">
-&lt;rich:editor value="#{bean.editorValue}" theme="advanced" /&gt;
-</programlisting>  
+      <programlisting role="XML"><![CDATA[
+<rich:editor value="#{bean.editorValue}" theme="advanced" />
+]]></programlisting>  
                     <para>Setting a different skin for the editor can be done using the <emphasis>
             <property>"skin"</property>
          </emphasis> attribute.</para>
@@ -124,16 +124,16 @@
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-                    <programlisting role="XML">...  
-&lt;rich:editor value="#{editor.submit}" theme="advanced" viewMode="#{editor.viewMode}" &gt;
+                    <programlisting role="XML"><![CDATA[...  
+<rich:editor value="#{editor.submit}" theme="advanced" viewMode="#{editor.viewMode}" >
 	...
-	&lt;h:selectOneRadio value="#{editor.viewMode}" onchange="submit();"&gt;
-		&lt;f:selectItem itemValue="visual" itemLabel="visual" /&gt;
-		&lt;f:selectItem itemValue="source" itemLabel="source" /&gt;
-    &lt;/h:selectOneRadio&gt;
+	<h:selectOneRadio value="#{editor.viewMode}" onchange="submit();">
+		<f:selectItem itemValue="visual" itemLabel="visual" />
+		<f:selectItem itemValue="source" itemLabel="source" />
+    </h:selectOneRadio>
     ...
-&lt;/rich:editor&gt;
-...</programlisting>  
+</rich:editor>
+...]]></programlisting>  
       <para>
 		Most configuration options that TinyMCE provides can be applied using <emphasis role="bold">
             <property>&lt;f:param&gt;</property>
@@ -151,13 +151,13 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:editor value="#{bean.editorValue}" theme="advanced" plugins="save,paste" &gt;
-          &lt;f:param name="theme_advanced_buttons1" value="bold,italic,underline, cut,copy,paste,pasteword"/&gt;
-          &lt;f:param name="theme_advanced_toolbar_location" value="top"/&gt;                               
-          &lt;f:param name="theme_advanced_toolbar_align" value="left"/&gt;
-&lt;/rich:editor&gt;
-...</programlisting> 
+      <programlisting role="XML"><![CDATA[...
+<rich:editor value="#{bean.editorValue}" theme="advanced" plugins="save,paste" >
+          <f:param name="theme_advanced_buttons1" value="bold,italic,underline, cut,copy,paste,pasteword"/>
+          <f:param name="theme_advanced_toolbar_location" value="top"/>                               
+          <f:param name="theme_advanced_toolbar_align" value="left"/>
+</rich:editor>
+...]]></programlisting> 
                     <para>This is what you get as a result:</para>
 				  <figure>
                               <title> Setting configuration options with &lt;f:param&gt;
@@ -197,12 +197,12 @@
                                 <para>
 									      <emphasis role="bold">Example:</emphasis>
                                 </para>      
-                                <programlisting role="XML">theme="advanced"
+                                <programlisting role="XML"><![CDATA[theme="advanced"
 plugins="save,paste"
 theme_advanced_buttons1="bold,italic,underline, cut,copy,paste,pasteword"
 theme_advanced_toolbar_location="top"
 theme_advanced_toolbar_align="left"
-</programlisting>                                                                                                                                                                                                                                                                                        
+]]></programlisting>                                                                                                                                                                                                                                                                                        
          </listitem>
                             <listitem>
 								    <para>
@@ -221,9 +221,9 @@ theme_advanced_toolbar_align="left"
                                 <para>
 									      <emphasis role="bold">Example:</emphasis>
                                 </para>
-                              <programlisting role="XML">...
-&lt;rich:editor value="#{bean.editorValue}" configuration="editorconfig"/&gt;
-...</programlisting>                                                                                                                                                                                                                                                                                
+                              <programlisting role="XML"><![CDATA[...
+<rich:editor value="#{bean.editorValue}" configuration="editorconfig"/>
+...]]></programlisting>                                                                                                                                                                                                                                                                                
          </listitem>    
                     <listitem>
 						      <para>
@@ -245,12 +245,12 @@ theme_advanced_toolbar_align="left"
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-            <programlisting role="XML">...
-&lt;rich:editor value="#{bean.editorValue}" configuration="#{editor.configuration}" /&gt;
-...</programlisting> 
+            <programlisting role="XML"><![CDATA[...
+<rich:editor value="#{bean.editorValue}" configuration="#{editor.configuration}" />
+...]]></programlisting> 
                               <para>Your Java file should look like this.</para>
                               
-                              <programlisting role="JAVA">...
+                              <programlisting role="JAVA"><![CDATA[...
 String configuration;
 
 if(some condition){//defines some condition
@@ -259,7 +259,7 @@ if(some condition){//defines some condition
 else{
 	   	configuration= "configurationSimple"; //the name on the file with simplified properties	
 }
-...</programlisting>                                                                                                                                                                                                                                                                                
+...]]></programlisting>                                                                                                                                                                                                                                                                                
                     </listitem>
                     
                     </itemizedlist>
@@ -284,9 +284,9 @@ else{
                                 <para>
                                     <emphasis role="bold">Example:</emphasis>
                                 </para>
-                                <programlisting role="XML">...
+                                <programlisting role="XML"><![CDATA[...
 pluginName=/mytinymceplugins/plugin1Name/editor_plugin.js
-...</programlisting>                                                                                                                                                                                                                                                                                          
+...]]></programlisting>                                                                                                                                                                                                                                                                                          
          </listitem>
                               <listitem>
                                         <para>
@@ -300,9 +300,9 @@ pluginName=/mytinymceplugins/plugin1Name/editor_plugin.js
                                         <para>
                                                   <emphasis role="bold">Example:</emphasis>
                                         </para>
-                                        <programlisting role="XML">...
-&lt;rich:editor theme="advanced" customPlugins="myPlugins" plugins="pluginName" /&gt; 
-...</programlisting>                                                                                                                                                                                                                                                                                          
+                                        <programlisting role="XML"><![CDATA[...
+<rich:editor theme="advanced" customPlugins="myPlugins" plugins="pluginName" /> 
+...]]></programlisting>                                                                                                                                                                                                                                                                                          
          </listitem>
                     </itemizedlist>
                               <note>
@@ -341,9 +341,9 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>                              
-               <programlisting role="XML">...
-&lt;rich:editor value="#{bean.editorValue}" onchange="myCustomOnChangeHandler()" /&gt;
-...</programlisting> 
+               <programlisting role="XML"><![CDATA[...
+<rich:editor value="#{bean.editorValue}" onchange="myCustomOnChangeHandler()" />
+...]]></programlisting> 
                     </listitem>
                     <listitem>
                         <para>
@@ -361,11 +361,11 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
 	                    <para>
 	                        <emphasis role="bold">Example:</emphasis>
 	                    </para>
-	                    <programlisting role="XML">...
-&lt;rich:editor value="#{bean.editorValue}"&gt;
-		&lt;f:param name="onchange" value="myCustomOnChangeHandler" /&gt;
-&lt;/rich:editor&gt;
-...</programlisting> 
+	                    <programlisting role="XML"><![CDATA[...
+<rich:editor value="#{bean.editorValue}">
+		<f:param name="onchange" value="myCustomOnChangeHandler" />
+</rich:editor>
+...]]></programlisting> 
 					    </listitem>
 	     </itemizedlist>
                     
@@ -385,14 +385,14 @@ Assuming that you will not plug  custom plugins to the RF jar with editor compon
                     </para>
                     
                     <para>This HTML code generated by editor</para>
-                    <programlisting role="XML">...
-&lt;p&gt;&lt;a href="http://mysite.com"&gt;Lorem ipsum&lt;/a&gt; &lt;i&gt;dolor sit&lt;/i&gt; amet, ea &lt;u&gt;commodo&lt;/u&gt; consequat.&lt;/p&gt;
-...</programlisting>   
+                    <programlisting role="XML"><![CDATA[...
+<p><a href="http://mysite.com">Lorem ipsum</a> <i>dolor sit</i> amet, ea <u>commodo</u> consequat.</p>
+...]]></programlisting>   
                    <para>will be parsed to the following Seam text:</para>
                     
-                    <programlisting role="XML">...
-[Lorem ipsum=&gt;http://mysite.com] *dolor sit* amet, ea _commodo_ consequat.
-...</programlisting>
+                    <programlisting role="XML"><![CDATA[...
+[Lorem ipsum=>http://mysite.com] *dolor sit* amet, ea _commodo_ consequat.
+...]]></programlisting>
                     <para>Accordingly, if the Seam text is passed to the component it will be parsed to HTML code.</para>
 
           </section>

@@ -100,16 +100,16 @@
             <para>
               <emphasis role="bold">Example:</emphasis>
             </para>  
-            <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" defaultLabel="click to edit"/&gt;
-... </programlisting>
+            <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" defaultLabel="click to edit"/>
+... ]]></programlisting>
             
             <!--            <para>
                 The managed bean code: 
             </para>-->
-<!--            <programlisting role="JAVA"><![CDATA[...
+<!--            <programlisting role="JAVA"><![CDATA[<![CDATA[...
 private String value = null;
-...]]> </programlisting>-->
+...]]> ]]></programlisting>-->
             <para>
               In the example above the <emphasis>
                   <property>"value"</property>
@@ -168,9 +168,9 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>  
-      <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" editEvent="ondblclick"/&gt; 
-... </programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" editEvent="ondblclick"/> 
+... ]]></programlisting>
       
       <!--note>
         <title>Note:</title> 
@@ -220,9 +220,9 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>      
-      <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" oneditactivation="if (!confirm('Are you sure you want to change the value?')){return false;}" /&gt;
-... </programlisting>  
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" oneditactivation="if (!confirm('Are you sure you want to change the value?')){return false;}" />
+... ]]></programlisting>  
       <para>
         The given code illustrates how <emphasis>
             <property>"oneditactivation"</property>
@@ -270,9 +270,9 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>                                                                                                                                                                                                                                                                  
-      <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" showControls="true"/&gt;
-... </programlisting>                                                                                                                                                                                                                                                                  
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" showControls="true"/>
+... ]]></programlisting>                                                                                                                                                                                                                                                                  
       <figure>
         <title>Usage <emphasis>
                <property>"showControls"</property>
@@ -307,9 +307,9 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>     
-        <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" showControls="true" controlsVerticalPosition="bottom" controlsHorizontalPosition="left"/&gt;
-... </programlisting>  
+        <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" showControls="true" controlsVerticalPosition="bottom" controlsHorizontalPosition="left"/>
+... ]]></programlisting>  
       <para>
         This is the result:
       </para>
@@ -330,14 +330,14 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:inplaceInput defaultLabel="Click here to edit" showControls="true" controlsHorizontalPosition="left" controlsVerticalPosition="bottom" id="inplaceInput"&gt;
-    &lt;f:facet name="controls"&gt;
-        &lt;h:commandButton value="Save" onclick="#{rich:component('inplaceInput')}.save();" type="button" /&gt;
-        &lt;h:commandButton value="Cancel" onclick="#{rich:component('inplaceInput')}.cancel();" type="button" /&gt;
-    &lt;/f:facet&gt;
-&lt;/rich:inplaceInput&gt;
-... </programlisting>   
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput defaultLabel="Click here to edit" showControls="true" controlsHorizontalPosition="left" controlsVerticalPosition="bottom" id="inplaceInput">
+    <f:facet name="controls">
+        <h:commandButton value="Save" onclick="#{rich:component('inplaceInput')}.save();" type="button" />
+        <h:commandButton value="Cancel" onclick="#{rich:component('inplaceInput')}.cancel();" type="button" />
+    </f:facet>
+</rich:inplaceInput>
+... ]]></programlisting>   
       <para>
         This is the result:
       </para>
@@ -380,14 +380,14 @@ private String value = null;
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>                                                                                                                                                                                                                                                                  
-      <programlisting role="XML">...
-&lt;rich:inplaceInput value="#{bean.value}" defaultLabel='click to edit'
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceInput value="#{bean.value}" defaultLabel='click to edit'
     showControls="true"
     controlsHorizontalPosition="left"
     controlsVerticalPosition="top"
     saveControlIcon="/images/cancel.gif"
-    cancelControlIcon="/images/save.gif"/&gt; 
-    ... </programlisting>   
+    cancelControlIcon="/images/save.gif"/> 
+    ... ]]></programlisting>   
       <figure>
         <title>Redefining of "save" and "cancel" buttons</title>  
         <mediaobject>

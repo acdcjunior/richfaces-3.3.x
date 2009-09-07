@@ -76,35 +76,35 @@
       <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-      <programlisting role="XML" format="linespecific">...
-&lt;rich:extendedDataTable id="edt" value="#{extendedDT.dataModel}" var="edt" width="500px" height="500px" selectedClass="dataTableSelectedRow" sortMode="single" selectionMode="multi" selection="#{extendedDT.selection}" rowKeyVar="rkvar" tableState="#{extendedDT.tableState}"&gt;
-       &lt;rich:column id="id" headerClass="dataTableHeader" width="50" label="Id" sortable="true" sortBy="#{edt.id}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon"&gt;
-              &lt;f:facet name="header"&gt;
-                     &lt;h:outputText value="Id" /&gt;
-              &lt;/f:facet&gt;
-              &lt;h:outputText value="#{edt.id}" /&gt;
-       &lt;/rich:column&gt;
-       &lt;rich:column id="name" width="300" headerClass="dataTableHeader" label="Name" sortable="true" sortBy="#{edt.name}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon" filterBy="#{edt.name}" filterEvent="onkeyup" visible="false"&gt; 
-              &lt;f:facet name="header"&gt; 
-                     &lt;h:outputText value="Name" /&gt;
-              &lt;/f:facet&gt;
-              &lt;h:outputText value="#{edt.name}" /&gt;
-       &lt;/rich:column&gt;
-       &lt;rich:column id="date" width="100" headerClass="dataTableHeader" label="Date" sortable="true" comparator="#{extendedDT.dateComparator}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon"&gt;
-              &lt;f:facet name="header"&gt;
-                     &lt;h:outputText value="Date" /&gt;
-              &lt;/f:facet&gt;
-              &lt;h:outputText value="#{edt.date}"&gt;&lt;f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" /&gt;
-              &lt;/h:outputText&gt;
-       &lt;/rich:column&gt;
-       &lt;rich:column id="group" width="50" headerClass="dataTableHeader" label="Group" sortable="true" sortBy="#{edt.group}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon"&gt;
-              &lt;f:facet name="header"&gt;
-                     &lt;h:outputText value="Group" /&gt;
-              &lt;/f:facet&gt;
-              &lt;h:outputText value="#{edt.group}" /&gt;
-       &lt;/rich:column&gt;
-&lt;/rich:extendedDataTable&gt;
-...</programlisting>
+      <programlisting role="XML" format="linespecific"><![CDATA[...
+<rich:extendedDataTable id="edt" value="#{extendedDT.dataModel}" var="edt" width="500px" height="500px" selectedClass="dataTableSelectedRow" sortMode="single" selectionMode="multi" selection="#{extendedDT.selection}" rowKeyVar="rkvar" tableState="#{extendedDT.tableState}">
+       <rich:column id="id" headerClass="dataTableHeader" width="50" label="Id" sortable="true" sortBy="#{edt.id}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon">
+              <f:facet name="header">
+                     <h:outputText value="Id" />
+              </f:facet>
+              <h:outputText value="#{edt.id}" />
+       </rich:column>
+       <rich:column id="name" width="300" headerClass="dataTableHeader" label="Name" sortable="true" sortBy="#{edt.name}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon" filterBy="#{edt.name}" filterEvent="onkeyup" visible="false"> 
+              <f:facet name="header"> 
+                     <h:outputText value="Name" />
+              </f:facet>
+              <h:outputText value="#{edt.name}" />
+       </rich:column>
+       <rich:column id="date" width="100" headerClass="dataTableHeader" label="Date" sortable="true" comparator="#{extendedDT.dateComparator}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon">
+              <f:facet name="header">
+                     <h:outputText value="Date" />
+              </f:facet>
+              <h:outputText value="#{edt.date}"><f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+              </h:outputText>
+       </rich:column>
+       <rich:column id="group" width="50" headerClass="dataTableHeader" label="Group" sortable="true" sortBy="#{edt.group}" sortIconAscending="dataTableAscIcon" sortIconDescending="dataTableDescIcon">
+              <f:facet name="header">
+                     <h:outputText value="Group" />
+              </f:facet>
+              <h:outputText value="#{edt.group}" />
+       </rich:column>
+</rich:extendedDataTable>
+...]]></programlisting>
       <figure float="0">
          <title>
             <emphasis role="bold">
@@ -178,9 +178,9 @@
       <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-      <programlisting role="XML" format="linespecific">...
-&lt;rich:column id="name" label="#{msg['name']}"
-...</programlisting>
+      <programlisting role="XML" format="linespecific"><![CDATA[...
+<rich:column id="name" label="#{msg['name']}"
+...]]></programlisting>
       <figure float="0">
          <title>
             <emphasis role="bold">
@@ -213,11 +213,11 @@
   <para>
   <emphasis role="bold">Example:</emphasis>
   </para>
-  <programlisting role="XML"><![CDATA[...
+  <programlisting role="XML"><![CDATA[<![CDATA[...
   <rich:column id="name"
   filterBy="#{entity.name}" filterEvent="onkeyup">
 ...
-]]></programlisting>
+]]>]]></programlisting>
   
   <figure>
   <title><emphasis role="bold">
@@ -240,10 +240,10 @@
       <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-      <programlisting role="XML" format="linespecific">...
-&lt;rich:extendedDataTable tableState="#{extendedDT.tableState}"&gt;
+      <programlisting role="XML" format="linespecific"><![CDATA[...
+<rich:extendedDataTable tableState="#{extendedDT.tableState}">
 ...
-</programlisting>
+]]></programlisting>
    </section>
    <section>
       <title>Reference Data</title>

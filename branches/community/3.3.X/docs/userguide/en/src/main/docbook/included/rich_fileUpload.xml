@@ -87,12 +87,12 @@
                 <para> In the temporary folder (depends on OS) if the value of the
                         <code>createTempFile</code> parameter in <property>Ajax4jsf
                         Filter</property> (in web.xml) section is "true" (by Default) </para>
-                <programlisting role="XML">...
-&lt;init-param&gt;
-        &lt;param-name&gt;createTempFiles&lt;/param-name&gt;
-        &lt;param-value&gt;true&lt;/param-value&gt;
-&lt;/init-param&gt;
-...</programlisting>
+                <programlisting role="XML"><![CDATA[...
+<init-param>
+        <param-name>createTempFiles</param-name>
+        <param-value>true</param-value>
+</init-param>
+...]]></programlisting>
             </listitem>
             <listitem>
                 <para> In the RAM if the value of the <code>createTempFile</code> parameter in
@@ -107,9 +107,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload uploadData="#{bean.data}"/&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload uploadData="#{bean.data}"/>
+...]]></programlisting>
 
         <para>The <emphasis>
                 <property>"fileUploadedListener"</property>
@@ -118,9 +118,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}"/&gt;
- ...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}"/>
+ ...]]></programlisting>
         <para> The following methods for processing the uploaded files are available: </para>
         <itemizedlist>
             <listitem>
@@ -151,9 +151,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}" immediateUpload="true"/&gt;
- ...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}" immediateUpload="true"/>
+ ...]]></programlisting>
 
         <para> The <emphasis>
                 <property> "autoclear"</property>
@@ -162,9 +162,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload uploadData="#{bean.data}" autoclear="true"/&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload uploadData="#{bean.data}" autoclear="true"/>
+...]]></programlisting>
         <para> Each file in list waiting for upload has link "Cancel" opposite its name. 
             Clicking this link invokes JS API <code>remove()</code> function, which gets <code>$('id').component.entries[i]</code> as a parameter 
             and removes the particular file from list and from the queue for upload. 
@@ -188,20 +188,20 @@
                 <para>
                     <emphasis role="bold">Example:</emphasis>
                 </para>
-                <programlisting role="XML">...
-&lt;rich:fileUpload acceptedTypes="html, jpg"/&gt;
-...</programlisting>
+                <programlisting role="XML"><![CDATA[...
+<rich:fileUpload acceptedTypes="html, jpg"/>
+...]]></programlisting>
             </listitem>
             <listitem>
                 <para> On <property> file size</property>, use the <code>maxRequestSize</code>
                     parameter(value in bytes) inside <property>Ajax4jsf Filter</property> section in
                         <property>web.xml</property>: </para>
-                <programlisting role="XML">...
-&lt;init-param&gt;
-        &lt;param-name&gt;maxRequestSize&lt;/param-name&gt;
-        &lt;param-value&gt;1000000&lt;/param-value&gt;
-&lt;/init-param&gt;
-...</programlisting>
+                <programlisting role="XML"><![CDATA[...
+<init-param>
+        <param-name>maxRequestSize</param-name>
+        <param-value>1000000</param-value>
+</init-param>
+...]]></programlisting>
             </listitem>
             <listitem>
                 <para> On <property>max files quantity</property>, use the <emphasis>
@@ -216,9 +216,9 @@
                 <para>
                     <emphasis role="bold">Example:</emphasis>
                 </para>
-                <programlisting role="XML">...
-&lt;rich:fileUpload maxFilesQuantity="2"/&gt;
-...</programlisting>
+                <programlisting role="XML"><![CDATA[...
+<rich:fileUpload maxFilesQuantity="2"/>
+...]]></programlisting>
                 <para> This is the result: </para>
                 <figure>
                     <title>
@@ -329,12 +329,12 @@
         </itemizedlist>
         <para>The given bellow code sample demonstrates how the properties can be used. Please study
             it carefully. </para>
-        <programlisting role="XML">...
-&lt;head&gt;
-		&lt;script&gt;
+        <programlisting role="XML"><![CDATA[...
+<head>
+		<script>
        			function _onaddHandler (e) {
                		var i = 0;
-                 		for (; i &lt; e.memo.entries.lenght; i++) {
+                 		for (; i < e.memo.entries.lenght; i++) {
                   				alert(e.memo.entries[i].creator);  //Shows creators of the added files
                   		}
 				}
@@ -342,9 +342,9 @@
 				function _onerrorhandle(e) {
               			alert(e.memo.entry.fileName + "file was not uploaded due  transfer error");
 				}
-		&lt;/script&gt;
-&lt;/head&gt;
- ...</programlisting>
+		</script>
+</head>
+ ...]]></programlisting>
 
 
 
@@ -408,13 +408,13 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}"&gt;
-        &lt;f:facet name="label"&gt;
-                &lt;h:outputText value="{_KB}KB from {KB}KB uploaded --- {mm}:{ss}" /&gt;
-        &lt;/f:facet&gt;
-&lt;/rich:fileUpload&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload uploadData="#{bean.data}" fileUploadListener="#{bean.listener}">
+        <f:facet name="label">
+                <h:outputText value="{_KB}KB from {KB}KB uploaded --- {mm}:{ss}" />
+        </f:facet>
+</rich:fileUpload>
+...]]></programlisting>
         <para>This is the result:</para>
         <figure>
             <title>
@@ -445,10 +445,10 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload addControlLabel="Add file..." clearAllControlLabel="Clear all" clearControlLabel="Clear"
-                        stopEntryControlLabel="Stop process" uploadControlLabel="Upload file"/&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload addControlLabel="Add file..." clearAllControlLabel="Clear all" clearControlLabel="Clear"
+                        stopEntryControlLabel="Stop process" uploadControlLabel="Upload file"/>
+...]]></programlisting>
         <para> This is the result: </para>
         <figure>
             <title>
@@ -485,9 +485,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload disabled="true"/&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload disabled="true"/>
+...]]></programlisting>
         <para>This is the result:</para>
         <figure>
             <title>
@@ -507,10 +507,10 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:fileUpload  id="upload" disabled="false"/&gt;
-&lt;h:commandButton onclick="${rich:component('upload')}.disable();" value="Disable" /&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload  id="upload" disabled="false"/>
+<h:commandButton onclick="${rich:component('upload')}.disable();" value="Disable" />
+...]]></programlisting>
 
         <para>
             <emphasis role="bold">
@@ -521,16 +521,16 @@
             Full list of JavaScript properties can be found <link linkend="objectProperties">below</link>. </para>
 
 
-        <programlisting role="XML">...
-&lt;rich:fileUpload fileUploadListener="#{fileUploadBean.listener}"
+        <programlisting role="XML"><![CDATA[...
+<rich:fileUpload fileUploadListener="#{fileUploadBean.listener}"
         		maxFilesQuantity="#{fileUploadBean.uploadsAvailable}"
         		id="upload"
         		immediateUpload="#{fileUploadBean.autoUpload}"
-        		acceptedTypes="jpg, gif, png, bmp"/&gt;
-		&lt;a4j:support event="onuploadcomplete" reRender="info"  /&gt;
-&lt;/rich:fileUpload&gt;
-&lt;h:commandButton onclick="if($('j_id232:upload').component.entries[0].state == FileUploadEntry.UPLOAD_SUCCESS) alert ('DONE');" value="Check file state"/&gt;
-...</programlisting>
+        		acceptedTypes="jpg, gif, png, bmp"/>
+		<a4j:support event="onuploadcomplete" reRender="info"  />
+</rich:fileUpload>
+<h:commandButton onclick="if($('j_id232:upload').component.entries[0].state == FileUploadEntry.UPLOAD_SUCCESS) alert ('DONE');" value="Check file state"/>
+...]]></programlisting>
 
 
         <para>The <emphasis role="bold">

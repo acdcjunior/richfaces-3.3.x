@@ -79,13 +79,13 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:pickList value="#{pickBean.listValues}"&gt;
-        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
-        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
-        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
-&lt;/rich:pickList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:pickList value="#{pickBean.listValues}">
+        <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
+        <f:selectItem itemValue="Audi" itemLabel="Audi"/>
+        <f:selectItems value="#{pickBean.sourceList}"/>
+</rich:pickList>
+...]]></programlisting>
 
         <para>
             The <emphasis> 
@@ -111,14 +111,14 @@
         <para>
               <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:pickList copyAllControlLabel = "#{pickBean.copyAllLabel}" copyControlLabel = "#{pickBean.copyLabel}" 
-					removeControlLabel = "#{pickBean.removeLabel}" removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues}"&gt;
-        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
-        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
-        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
-&lt;/rich:pickList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:pickList copyAllControlLabel = "#{pickBean.copyAllLabel}" copyControlLabel = "#{pickBean.copyLabel}" 
+					removeControlLabel = "#{pickBean.removeLabel}" removeAllControlLabel ="#{pickBean.removeAllLabel}" value="#{pickBean.listValues}">
+        <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
+        <f:selectItem itemValue="Audi" itemLabel="Audi"/>
+        <f:selectItems value="#{pickBean.sourceList}"/>
+</rich:pickList>
+...]]></programlisting>
          <para>
              If you don't want to display labels on the buttons you need to set  
              <emphasis>
@@ -165,25 +165,25 @@
         <para>
             It is an example of usage of the facets and it is identical to the previous example.
         </para>
-        <programlisting role="XML">...
-&lt;rich:pickList value="#{pickBean.listValues}"&gt;
-    &lt;f:facet name="copyAllControl"&gt;
-        &lt;h:commandButton value="#{pickBean.copyAllLabel}" /&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="copyControl"&gt;
-        &lt;h:commandButton value="#{pickBean.copyLabel}" /&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="removeControl"&gt;
-        &lt;h:commandButton value="#{pickBean.removeLabel}" /&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="removeAllControl"&gt;
-        &lt;h:commandButton value="#{pickBean.removeAllLabel}" /&gt;
-    &lt;/f:facet&gt;
-    &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
-    &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
-    &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
-&lt;/rich:pickList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:pickList value="#{pickBean.listValues}">
+    <f:facet name="copyAllControl">
+        <h:commandButton value="#{pickBean.copyAllLabel}" />
+    </f:facet>
+    <f:facet name="copyControl">
+        <h:commandButton value="#{pickBean.copyLabel}" />
+    </f:facet>
+    <f:facet name="removeControl">
+        <h:commandButton value="#{pickBean.removeLabel}" />
+    </f:facet>
+    <f:facet name="removeAllControl">
+        <h:commandButton value="#{pickBean.removeAllLabel}" />
+    </f:facet>
+    <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
+    <f:selectItem itemValue="Audi" itemLabel="Audi"/>
+    <f:selectItems value="#{pickBean.sourceList}"/>
+</rich:pickList>
+...]]></programlisting>
         <para>
             With the help of <emphasis>
             <property>"moveControlsVerticalAlign"</property>
@@ -229,13 +229,13 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:pickList listsHeight="#{pickBean.listsHeight}" sourceListWidth="#{pickBean.sourceListWidth}" targetListWidth="#{pickBean.targetListWidth}" value="#{pickBean.listValues}"&gt;
-        &lt;f:selectItem itemValue="Bentley" itemLabel="Bentley"/&gt;
-        &lt;f:selectItem itemValue="Audi" itemLabel="Audi"/&gt;
-        &lt;f:selectItems value="#{pickBean.sourceList}"/&gt;
-&lt;/rich:pickList&gt;
-...</programlisting>
+        <programlisting role="XML"><![CDATA[...
+<rich:pickList listsHeight="#{pickBean.listsHeight}" sourceListWidth="#{pickBean.sourceListWidth}" targetListWidth="#{pickBean.targetListWidth}" value="#{pickBean.listValues}">
+        <f:selectItem itemValue="Bentley" itemLabel="Bentley"/>
+        <f:selectItem itemValue="Audi" itemLabel="Audi"/>
+        <f:selectItems value="#{pickBean.sourceList}"/>
+</rich:pickList>
+...]]></programlisting>
              
         <para>The <emphasis role="bold">
             <property>&lt;rich:pickList&gt;</property>

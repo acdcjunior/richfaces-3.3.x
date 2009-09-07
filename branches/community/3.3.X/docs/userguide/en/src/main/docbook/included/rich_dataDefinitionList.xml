@@ -52,20 +52,20 @@
          </emphasis> HTML element.</para>
       <para>Here is an example:</para>
   
-      <programlisting role="XML">...
-&lt;h:form&gt;
-		&lt;rich:dataDefinitionList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" first="4" title="Cars"&gt;
-       			&lt;f:facet name="term"&gt;
-               		&lt;h:outputText value="#{car.make} #{car.model}"&gt;&lt;/h:outputText&gt;
-            	&lt;/f:facet&gt;
-            	&lt;h:outputText value="Price:" styleClass="label"&gt;&lt;/h:outputText&gt;
-            	&lt;h:outputText value="#{car.price}" /&gt;&lt;br/&gt;
-            	&lt;h:outputText value="Mileage:" styleClass="label"&gt;&lt;/h:outputText&gt;
-            	&lt;h:outputText value="#{car.mileage}" /&gt;&lt;br/&gt;
-		&lt;/rich:dataDefinitionList&gt;
-&lt;/h:form&gt;
+      <programlisting role="XML"><![CDATA[...
+<h:form>
+		<rich:dataDefinitionList var="car" value="#{dataTableScrollerBean.allCars}" rows="5" first="4" title="Cars">
+       			<f:facet name="term">
+               		<h:outputText value="#{car.make} #{car.model}"></h:outputText>
+            	</f:facet>
+            	<h:outputText value="Price:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.price}" /><br/>
+            	<h:outputText value="Mileage:" styleClass="label"></h:outputText>
+            	<h:outputText value="#{car.mileage}" /><br/>
+		</rich:dataDefinitionList>
+</h:form>
 ...
-</programlisting>
+]]></programlisting>
   
       <para>This is a result:</para>
   
