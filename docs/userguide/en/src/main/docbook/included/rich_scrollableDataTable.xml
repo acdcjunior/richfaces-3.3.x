@@ -120,26 +120,26 @@
                     <para>
                               <emphasis role="bold">The typical variant of using:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:scrollableDataTable value="#{modelBuilder.model}" var="issues"
+                    <programlisting role="XML"><![CDATA[...
+<rich:scrollableDataTable value="#{modelBuilder.model}" var="issues"
 			frozenColCount="1"
 			first="0"
 			rows="40" 
 			width="300px"
-			height="396px"&gt;
-	&lt;rich:column width="100px"&gt;
-		&lt;f:facet name="header" &gt;
-			&lt;h:outputText value="State"/&gt;
-		&lt;/f:facet&gt;
-		&lt;h:outputText value="#{issues.cell1}"/&gt;
-		&lt;f:facet name="footer"&gt;
-			&lt;h:outputText value="State"/&gt;
-		&lt;/f:facet&gt;
-	&lt;/rich:column&gt;		
-	&lt;!--Set of columns and header/footer facets--&gt;
-&lt;/rich:scrollableDataTable&gt;
+			height="396px">
+	<rich:column width="100px">
+		<f:facet name="header" >
+			<h:outputText value="State"/>
+		</f:facet>
+		<h:outputText value="#{issues.cell1}"/>
+		<f:facet name="footer">
+			<h:outputText value="State"/>
+		</f:facet>
+	</rich:column>		
+	<!--Set of columns and header/footer facets-->
+</rich:scrollableDataTable>
 ...
-</programlisting>
+]]></programlisting>
 
                     <para>The <emphasis>
                                         <property>"selection"</property>
@@ -162,54 +162,54 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;h:form&gt;
-		&lt;rich:spacer height="30" /&gt;
-				&lt;rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="200px" 
+                    <programlisting role="XML"><![CDATA[...
+<h:form>
+		<rich:spacer height="30" />
+				<rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="200px" 
 						width="300px" id="carList" rows="40" columnClasses="col"
 						value="#{dataTableScrollerBean.allCars}" var="category" sortMode="single"
-						selection="#{dataTableScrollerBean.selection}"&gt;
-						&lt;rich:column id="make"&gt;
-								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Make" /&gt;&lt;/f:facet&gt;
-								&lt;h:outputText value="#{category.make}" /&gt;
-						&lt;/rich:column&gt;
-						&lt;rich:column id="model"&gt;
-								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Model" /&gt;&lt;/f:facet&gt;
-								&lt;h:outputText value="#{category.model}" /&gt;
-						&lt;/rich:column&gt;
-						&lt;rich:column id="price"&gt;
-								&lt;f:facet name="header"&gt;&lt;h:outputText styleClass="headerText" value="Price" /&gt;&lt;/f:facet&gt;
-								&lt;h:outputText value="#{category.price}" /&gt;
-						&lt;/rich:column&gt;
-				&lt;/rich:scrollableDataTable&gt;
-				&lt;rich:spacer height="20px"/&gt;
-				&lt;a4j:commandButton value="Show Current Selection" reRender="table" 
+						selection="#{dataTableScrollerBean.selection}">
+						<rich:column id="make">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Make" /></f:facet>
+								<h:outputText value="#{category.make}" />
+						</rich:column>
+						<rich:column id="model">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Model" /></f:facet>
+								<h:outputText value="#{category.model}" />
+						</rich:column>
+						<rich:column id="price">
+								<f:facet name="header"><h:outputText styleClass="headerText" value="Price" /></f:facet>
+								<h:outputText value="#{category.price}" />
+						</rich:column>
+				</rich:scrollableDataTable>
+				<rich:spacer height="20px"/>
+				<a4j:commandButton value="Show Current Selection" reRender="table" 
 						action="#{dataTableScrollerBean.takeSelection}" 
-						oncomplete="javascript:Richfaces.showModalPanel('panel');"/&gt;
-&lt;/h:form&gt;
-&lt;rich:modalPanel id="panel" autosized="true"&gt;
-		&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Selected Rows"/&gt;
-		&lt;/f:facet&gt;
-		&lt;f:facet name="controls"&gt;
-				&lt;span style="cursor:pointer" onclick="javascript:Richfaces.hideModalPanel('panel')"&gt;X&lt;/span&gt;
-		&lt;/f:facet&gt;
-		&lt;rich:dataTable value="#{dataTableScrollerBean.selectedCars}" var="sel" id="table"&gt;
-				&lt;rich:column&gt;
-						&lt;f:facet name="header"&gt;&lt;h:outputText value="Make" /&gt;&lt;/f:facet&gt;
-						&lt;h:outputText value="#{sel.make}" /&gt;
-				&lt;/rich:column&gt;
-				&lt;rich:column id="model"&gt;
-						&lt;f:facet name="header"&gt;&lt;h:outputText value="Model" /&gt;&lt;/f:facet&gt;
-				&lt;h:outputText value="#{sel.model}" /&gt;
-				&lt;/rich:column&gt;
-				&lt;rich:column id="price"&gt;
-						&lt;f:facet name="header"&gt;&lt;h:outputText value="Price" /&gt;&lt;/f:facet&gt;
-						&lt;h:outputText value="#{sel.price}" /&gt;
-				&lt;/rich:column&gt;
-		&lt;/rich:dataTable&gt;
-&lt;/rich:modalPanel&gt;
-...</programlisting>
+						oncomplete="javascript:Richfaces.showModalPanel('panel');"/>
+</h:form>
+<rich:modalPanel id="panel" autosized="true">
+		<f:facet name="header">
+				<h:outputText value="Selected Rows"/>
+		</f:facet>
+		<f:facet name="controls">
+				<span style="cursor:pointer" onclick="javascript:Richfaces.hideModalPanel('panel')">X</span>
+		</f:facet>
+		<rich:dataTable value="#{dataTableScrollerBean.selectedCars}" var="sel" id="table">
+				<rich:column>
+						<f:facet name="header"><h:outputText value="Make" /></f:facet>
+						<h:outputText value="#{sel.make}" />
+				</rich:column>
+				<rich:column id="model">
+						<f:facet name="header"><h:outputText value="Model" /></f:facet>
+				<h:outputText value="#{sel.model}" />
+				</rich:column>
+				<rich:column id="price">
+						<f:facet name="header"><h:outputText value="Price" /></f:facet>
+						<h:outputText value="#{sel.price}" />
+				</rich:column>
+		</rich:dataTable>
+</rich:modalPanel>
+...]]></programlisting>
                     <para>This is a result:</para>
                     <figure>
                               <title>The <emphasis>

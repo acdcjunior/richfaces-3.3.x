@@ -47,10 +47,10 @@
          </emphasis> is a command component, that allows to call JavaScript API function on some defined event. 
           Look at the example:
     </para>
-        <programlisting role="XML">...
-&lt;rich:componentControl attachTo="doExpandCalendarID" event="onclick" operation="Expand" for="ccCalendarID" /&gt;
+        <programlisting role="XML"><![CDATA[...
+<rich:componentControl attachTo="doExpandCalendarID" event="onclick" operation="Expand" for="ccCalendarID" />
 ...
-</programlisting>
+]]></programlisting>
       <para>
           In other words it means "clicking on the component with ID <code>doExpandCalendarID</code> expands the component with ID <code>ccCalendarID</code>". 
           It can be said, that <emphasis role="bold">
@@ -68,10 +68,10 @@
          </emphasis> is supposed to be attached to it's parent.
     </para>
     
-      <programlisting role="XML">&lt;h:commandButton value="Show Modal Panel"&gt;
-      &lt;!--componentControl is attached to the commandButton--&gt;
-      &lt;rich:componentControl for="ccModalPanelID" event="onclick" operation="show"/&gt; 
-&lt;/h:commandButton&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<h:commandButton value="Show Modal Panel">
+      <!--componentControl is attached to the commandButton-->
+      <rich:componentControl for="ccModalPanelID" event="onclick" operation="show"/> 
+</h:commandButton>]]></programlisting>
       <para>
           It is possible to invoke the <emphasis role="bold">
             <property>&lt;rich:componentControl&gt;</property>
@@ -83,9 +83,9 @@
         <para>
               <emphasis role="bold">Example:</emphasis>
         </para>     
-        <programlisting role="text/javascript">function func (event) {
-}</programlisting>
-        <programlisting role="XML">&lt;rich:componentControl name="func" event="onRowClick" for="menu" operation="show" /&gt;</programlisting>
+        <programlisting role="text/javascript"><![CDATA[function func (event) {
+}]]></programlisting>
+        <programlisting role="XML"><![CDATA[<rich:componentControl name="func" event="onRowClick" for="menu" operation="show" />]]></programlisting>
    
       <para>
             An important <emphasis role="bold">
@@ -95,9 +95,9 @@
          </emphasis>:
       </para>
    
-      <programlisting role="XML">...
-&lt;rich:componentControl name="func" event="onRowClick" for="menu" operation="show" params="#{car.model}"/&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:componentControl name="func" event="onRowClick" for="menu" operation="show" params="#{car.model}"/>
+...]]></programlisting>
       <para>
       The alternative way for parameters transferring uses <emphasis role="bold">
             <property>&lt;f:param&gt;</property>
@@ -105,11 +105,11 @@
       As the code above, the following code will represent the same functionality:
     </para>
    
-      <programlisting role="XML">...
-&lt;rich:componentControl event="onRowClick" for="menu" operation="show"&gt;
-      &lt;f:param value="#{car.model}" name="model"/&gt;
-&lt;/rich:componentControl&gt;
-...</programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:componentControl event="onRowClick" for="menu" operation="show">
+      <f:param value="#{car.model}" name="model"/>
+</rich:componentControl>
+...]]></programlisting>
     
       
       
@@ -131,17 +131,17 @@
         </emphasis>). An &quot;<code>event</code>&quot; argument is passed to this function.</para></listitem>
     </itemizedlist>
     <para>An example is placed below:</para>
-    <programlisting role="XML"><![CDATA[...
+    <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:componentControl name="ffunction" for="comp_ID" operation="show"/>
 ...
-]]></programlisting>
+]]>]]></programlisting>
     <para>According to this code a function with name <code>ffunction</code>
       is generated. It is used in JavaScript code to trigger an operation on the target component
       with defined <code>id=&quot;comp_ID&quot;</code>.</para>
     <para>The generated function is shown below:</para>
-    <programlisting role="JAVA"><![CDATA[function ffunction (event) {
+    <programlisting role="JAVA"><![CDATA[<![CDATA[function ffunction (event) {
 }
-]]></programlisting>
+]]>]]></programlisting>
     <itemizedlist>
       <listitem><para>Attach to a parent component (usage is similar to <emphasis role="bold">
           <property>&lt;a4j:support&gt;</property>
@@ -149,7 +149,7 @@
     </itemizedlist>
     <para>An example is placed below:</para>
 
-    <programlisting role="XML"><![CDATA[...
+    <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:modalPanel id="ccModalPanelID" onshow="alert(event.parameters.show)" onhide="alert(event.parameters.hide)">
     <h:outputText value="#{bean.text}"/>
 </rich:modalPanel>
@@ -159,7 +159,7 @@
     <rich:componentControl/>
 </h:commandButton>
 ...
-]]></programlisting>
+]]>]]></programlisting>
     <para>In the example the <emphasis>
         <property>&quot;for&quot;</property>
     </emphasis> attribute contains value of an <property>id</property> of <emphasis role="bold">
@@ -189,7 +189,7 @@
     </itemizedlist>
     <para>An example is placed below:</para>
 
-    <programlisting role="XML"><![CDATA[...
+    <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:calendar popup="#{componentControl.calendarPopup}" id="ccCalendarID" />
     ...
 <f:verbatim>
@@ -197,7 +197,7 @@
 </f:verbatim>
 <rich:componentControl attachTo="doExpandCalendarID" for="ccCalendarID" event="onclick" disableDefault="true" operation="nextYear" />
 ...
-]]></programlisting>
+]]>]]></programlisting>
     <para>In the example the <emphasis>
         <property>&quot;attachTo&quot;</property>
     </emphasis> attribute contais a value of an <property>id</property> of <emphasis role="bold"><property>&lt;a&gt;</property></emphasis> element.
@@ -270,12 +270,12 @@
           All operations with defined component you can find in the JavaScript API section of defined component.
     </para>
     
-      <programlisting role="XML">&lt;h:form&gt;
-      &lt;rich:toolTip id="toolTip" mode="ajax" value="and then just touch me." direction="top-right" /&gt;
-&lt;/h:form&gt;
-&lt;h:commandButton id="ButtonID" value="Push me"&gt;
-      &lt;rich:componentControl attachTo="ButtonID" event="onmouseover" operation="show" for="toolTip" /&gt;
-&lt;/h:commandButton&gt;</programlisting>
+      <programlisting role="XML"><![CDATA[<h:form>
+      <rich:toolTip id="toolTip" mode="ajax" value="and then just touch me." direction="top-right" />
+</h:form>
+<h:commandButton id="ButtonID" value="Push me">
+      <rich:componentControl attachTo="ButtonID" event="onmouseover" operation="show" for="toolTip" />
+</h:commandButton>]]></programlisting>
       <para>This is a result:</para>
       <figure>
          <title>
@@ -295,7 +295,7 @@
       <!--para>One more example of <emphasis role="bold">
         <property>&lt;rich:componentControl&gt;</property>
       </emphasis> usage is placed below:</para>
-    <programlisting role="XML"><![CDATA[...
+    <programlisting role="XML"><![CDATA[<![CDATA[...
     <rich:panelMenu id="ccContextMenuPanelMenuID">
         <h:outputText value="click text" />
     </rich:panelMenu>

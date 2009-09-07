@@ -66,11 +66,11 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">
+      <programlisting role="XML"><![CDATA[
 ...
-&lt;rich:colorPicker value="#{bean.color}" colorMode="rgb" /&gt;
+<rich:colorPicker value="#{bean.color}" colorMode="rgb" />
 ...
-		</programlisting>
+		]]></programlisting>
       <para>This is the result:</para>
       <figure>
          <title> Usage of the <property>
@@ -90,11 +90,11 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">
+      <programlisting role="XML"><![CDATA[
 ...
-&lt;rich:colorPicker value="#{bean.color}" flat="true" /&gt;
+<rich:colorPicker value="#{bean.color}" flat="true" />
 ...
-		</programlisting>
+		]]></programlisting>
 
       <para>The component specific event handler <property>
             <emphasis>"onbeforeshow"</emphasis>
@@ -105,11 +105,11 @@
             <emphasis>"onbeforeshow"</emphasis>
          </property> attribute could be used in order to cancel this
       event. See the example below:</para>
-      <programlisting role="XML">
+      <programlisting role="XML"><![CDATA[
 ...
-&lt;rich:colorPicker value="#{bean.color}" onbeforeshow="if (!confirm('Are you sure you want to change a color?')){return false;}" /&gt;
+<rich:colorPicker value="#{bean.color}" onbeforeshow="if (!confirm('Are you sure you want to change a color?')){return false;}" />
 ...
-     </programlisting>
+     ]]></programlisting>
     
       <para> The <property>
             <emphasis>"showEvent"</emphasis>
@@ -130,20 +130,20 @@
          </inlinemediaobject> ) with the help of the <property>
             <emphasis>"arrows"</emphasis>
          </property> facet. </para>
-      <programlisting role="XML">
+      <programlisting role="XML"><![CDATA[
 ...
-&lt;rich:colorPicker value="#{bean.color}"&gt;
-	&lt;f:facet name="icon"&gt;
-		&lt;h:graphicImage value="/pages/colorPicker_ico.png" /&gt;
-	&lt;/f:facet&gt;
-	&lt;f:facet name="arrows"&gt;
-		&lt;f:verbatim&gt;		
-			&lt;div style="width: 33px; height: 5px; border: 1px solid #bed6f8; background:none;" /&gt;
-		&lt;/f:verbatim&gt;
-	&lt;/f:facet&gt;
-&lt;/rich:colorPicker&gt;
+<rich:colorPicker value="#{bean.color}">
+	<f:facet name="icon">
+		<h:graphicImage value="/pages/colorPicker_ico.png" />
+	</f:facet>
+	<f:facet name="arrows">
+		<f:verbatim>		
+			<div style="width: 33px; height: 5px; border: 1px solid #bed6f8; background:none;" />
+		</f:verbatim>
+	</f:facet>
+</rich:colorPicker>
 ...
-		</programlisting>
+		]]></programlisting>
       <para>This is the result:</para>
       <figure>
          <title> Usage of the <emphasis>

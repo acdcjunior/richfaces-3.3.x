@@ -36,39 +36,39 @@
          </emphasis> component is defined in the same way as any JSF validator. 
                                     Look at the example below.
                               </para>
-                          <programlisting role="XML">&lt;rich:panel&gt;
-      &lt;f:facet name="header"&gt;
-            &lt;h:outputText value="#{validationBean.progressString}" id="progress"/&gt;
-      &lt;/f:facet&gt;
-      &lt;h:panelGrid columns="3"&gt;
-            &lt;h:outputText value="Name:" /&gt;
-            &lt;h:inputText value="#{validationBean.name}" id="name"&gt;
-                  &lt;rich:beanValidator summary="Invalid name"/&gt;
-            &lt;/h:inputText&gt;
-            &lt;rich:message for="name" /&gt;
+                          <programlisting role="XML"><![CDATA[<rich:panel>
+      <f:facet name="header">
+            <h:outputText value="#{validationBean.progressString}" id="progress"/>
+      </f:facet>
+      <h:panelGrid columns="3">
+            <h:outputText value="Name:" />
+            <h:inputText value="#{validationBean.name}" id="name">
+                  <rich:beanValidator summary="Invalid name"/>
+            </h:inputText>
+            <rich:message for="name" />
 
-            &lt;h:outputText value="Email:" /&gt;
-            &lt;h:inputText value="#{validationBean.email}" id="email"&gt;
-                  &lt;rich:beanValidator summary="Invalid email"/&gt;
-            &lt;/h:inputText&gt;
-            &lt;rich:message for="email" /&gt;
+            <h:outputText value="Email:" />
+            <h:inputText value="#{validationBean.email}" id="email">
+                  <rich:beanValidator summary="Invalid email"/>
+            </h:inputText>
+            <rich:message for="email" />
             
-            &lt;h:outputText value="Age:" /&gt;
-            &lt;h:inputText value="#{validationBean.age}" id="age"&gt;
-                  &lt;rich:beanValidator summary="Wrong age"/&gt;
-            &lt;/h:inputText&gt;
-            &lt;rich:message for="age" /&gt;
-            &lt;f:facet name="footer"&gt;
-                  &lt;a4j:commandButton value="Submit" action="#{validationBean.success}" reRender="progress"/&gt;
-            &lt;/f:facet&gt;
-      &lt;/h:panelGrid&gt;
-&lt;/rich:panel&gt;</programlisting>
+            <h:outputText value="Age:" />
+            <h:inputText value="#{validationBean.age}" id="age">
+                  <rich:beanValidator summary="Wrong age"/>
+            </h:inputText>
+            <rich:message for="age" />
+            <f:facet name="footer">
+                  <a4j:commandButton value="Submit" action="#{validationBean.success}" reRender="progress"/>
+            </f:facet>
+      </h:panelGrid>
+</rich:panel>]]></programlisting>
 
                               <para>
                                     Please play close attention on the bean code that contains the constraints defined with Hibernate annotation which perform validation of the input data.
                               </para>
 
-                              <programlisting role="JAVA">
+                              <programlisting role="JAVA"><![CDATA[
 
 package org.richfaces.demo.validation;
 
@@ -113,7 +113,7 @@ public class ValidationBean {
     public void setProgressString(String progressString) {
         this.progressString = progressString;
     }
-}</programlisting>
+}]]></programlisting>
 
                               <para>The following figure shows what happens if validation fails</para>
 

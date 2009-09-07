@@ -90,9 +90,9 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para> 
-      <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue}" id="progrs" interval="900" enabled="true"/&gt;
-... </programlisting>                                                                                                                                                                                                                                                                  
+      <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue}" id="progrs" interval="900" enabled="true"/>
+... ]]></programlisting>                                                                                                                                                                                                                                                                  
       <para>
         With the help of <emphasis>
             <property>"timeout"</property>
@@ -132,9 +132,9 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>                                                                                                                                                                                                                                                                    
-      <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue}"  minValue="50"  maxValue="400"/&gt;
-... </programlisting>   
+      <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue}"  minValue="50"  maxValue="400"/>
+... ]]></programlisting>   
       <para>This is the result</para>
       <figure>
         <title>Progress bar</title>  
@@ -154,9 +154,9 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML"><![CDATA[...	
+      <programlisting role="XML"><![CDATA[<![CDATA[...	
 <rich:progressBar value="#{bean.incValue}" id="progrs" label="{value}%"/>
-...]]></programlisting>
+...]]>]]></programlisting>
 
  <para>
   Displaying information on a progress bar can be also performed using
@@ -168,7 +168,7 @@
 <emphasis role="bold">Example:</emphasis>
 </para>
 
-<programlisting role="XML"><![CDATA[...
+<programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:progressBar value="#{bean.incValue1}">
 <h:outputText value="#{bean.incValue1}"/>
 </rich:progressBar>
@@ -183,9 +183,9 @@
             <para>
                <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">...	
-&lt;rich:progressBar value="#{bean.incValue}" id="progrs" label="#{bean.incValue}"/&gt;
-...</programlisting>      
+            <programlisting role="XML"><![CDATA[...	
+<rich:progressBar value="#{bean.incValue}" id="progrs" label="#{bean.incValue}"/>
+...]]></programlisting>      
         </listitem>
      
         <listitem>
@@ -196,11 +196,11 @@
             <para>
                <emphasis role="bold">Example:</emphasis>
             </para>
-            <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue}"&gt;
-    &lt;h:outputText value="#{bean.incValue} %"/&gt;
-&lt;/rich:progressBar&gt;
-... </programlisting>
+            <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue}">
+    <h:outputText value="#{bean.incValue} %"/>
+</rich:progressBar>
+... ]]></programlisting>
         </listitem>
 
       </itemizedlist>
@@ -233,11 +233,11 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue1}" minValue="400" maxValue="900"&gt;
-        &lt;h:outputText value="Min value is {minValue}, current value is {value}, max value is {maxValue}"/&gt;
-&lt;/rich:progressBar&gt; 
-... </programlisting>    
+      <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue1}" minValue="400" maxValue="900">
+        <h:outputText value="Min value is {minValue}, current value is {value}, max value is {maxValue}"/>
+</rich:progressBar> 
+... ]]></programlisting>    
       <para>This is the result:</para>
       <figure>
         <title>Macrosubstitution</title>  
@@ -269,11 +269,11 @@
         <emphasis role="bold">Example:</emphasis>
       </para>
         
-        <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue}" parameters="param:'#{bean.dwnlSpeed}'"&gt;
-    &lt;h:outputText value="download speed {param} KB/s"/&gt;
-&lt;/rich:progressBar&gt;
-... </programlisting>     
+        <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue}" parameters="param:'#{bean.dwnlSpeed}'">
+    <h:outputText value="download speed {param} KB/s"/>
+</rich:progressBar>
+... ]]></programlisting>     
       <para>This is the result:</para>
       <figure>
         <title>Usage of parameters</title>  
@@ -300,11 +300,11 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue1}" enabled="#{bean.enabled1}" id="progrs1" progressVar="progress"&gt;
-    &lt;h:outputText value="{progress}%"/&gt;
-&lt;/rich:progressBar&gt;
-... </programlisting>                                                                                                                                                                                                                                                                  
+      <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue1}" enabled="#{bean.enabled1}" id="progrs1" progressVar="progress">
+    <h:outputText value="{progress}%"/>
+</rich:progressBar>
+... ]]></programlisting>                                                                                                                                                                                                                                                                  
       <para>In the shown example <emphasis>
             <property> "progressVar"</property>
          </emphasis> attribute
@@ -335,11 +335,11 @@
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue1}" enabled="#{bean.enabled1}" id="progrs1"&gt;
-    &lt;h:outputText value="{value}%"/&gt;
-&lt;/rich:progressBar&gt;
-... </programlisting>
+      <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue1}" enabled="#{bean.enabled1}" id="progrs1">
+    <h:outputText value="{value}%"/>
+</rich:progressBar>
+... ]]></programlisting>
       
         <para>
           The component can also employ  <emphasis>
@@ -360,16 +360,16 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">...
-&lt;rich:progressBar value="#{bean.incValue1}"&gt;
-    &lt;f:facet name="initial"&gt;
-        &lt;h:outputText value="Process not started"/&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="complete"&gt;
-        &lt;h:outputText value="Process completed"/&gt;
-    &lt;/f:facet&gt;
-&lt;/rich:progressBar&gt; 
- ... </programlisting>       
+        <programlisting role="XML"><![CDATA[...
+<rich:progressBar value="#{bean.incValue1}">
+    <f:facet name="initial">
+        <h:outputText value="Process not started"/>
+    </f:facet>
+    <f:facet name="complete">
+        <h:outputText value="Process completed"/>
+    </f:facet>
+</rich:progressBar> 
+ ... ]]></programlisting>       
       <para>
         Information about the <emphasis>
             <property>"process"</property>

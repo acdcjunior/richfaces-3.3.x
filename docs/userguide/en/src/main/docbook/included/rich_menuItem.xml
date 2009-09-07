@@ -73,12 +73,12 @@
                               </emphasis> attributes are ignored and the facets content is shown as
                               an icon. It could be used for an item check box implementation. </para>
                     <para> Here is an example: </para>
-                    <programlisting role="XML">...
-&lt;f:facet name="icon"&gt;
-		&lt;h:selectBooleanCheckbox value="#{bean.property}"/&gt;
-&lt;/f:facet&gt;
+                    <programlisting role="XML"><![CDATA[...
+<f:facet name="icon">
+		<h:selectBooleanCheckbox value="#{bean.property}"/>
+</f:facet>
 ...
-</programlisting>
+]]></programlisting>
 
                     <para>The <emphasis role="bold">
                                         <property>&lt;rich:menuItem&gt;</property>
@@ -128,26 +128,26 @@
                                         <property>"none"</property>
                               </emphasis>.</para>
                     <para> Here is an example: </para>
-                    <programlisting role="XML">...
-&lt;rich:dropDownMenu&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu>
 		...
-       &lt;rich:menuItem submitMode="none"&gt;
-       			&lt;h:outputLink value="www.jboss.org"/&gt;
-       	&lt;/rich:menuItem&gt;
+       <rich:menuItem submitMode="none">
+       			<h:outputLink value="www.jboss.org"/>
+       	</rich:menuItem>
        	...
-&lt;rich:dropDownMenu&gt;
+<rich:dropDownMenu>
 ...
-</programlisting>
+]]></programlisting>
                     <para> You can use the <emphasis>
                                         <property>"disabled"</property>
                               </emphasis> attribute to set the item state. </para>
                     <para> Here is an example: </para>
-                    <programlisting role="XML">...
-&lt;rich:dropDownMenu&gt;
-		&lt;rich:menuItem value="Disable" disabled="true"/&gt;
-&lt;rich:dropDownMenu&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dropDownMenu>
+		<rich:menuItem value="Disable" disabled="true"/>
+<rich:dropDownMenu>
 ...
-</programlisting>
+]]></programlisting>
                     <note>
                               <title>Note:</title>
                               <para> The <emphasis role="bold">

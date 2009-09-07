@@ -115,18 +115,18 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">&lt;a onclick="Richfaces.showModalPanel('pnl');" href="#"&gt;Show ModalPanel&lt;/a&gt;
-&lt;a4j:form&gt;
-	&lt;rich:modalPanel id="pnl"&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="This is a panel header" /&gt;
-		&lt;/f:facet&gt; 
-		&lt;p&gt;The &amp;lt;rich:modalPanel&amp;gt; accepts different types of information: 
+                    <programlisting role="XML"><![CDATA[<a onclick="Richfaces.showModalPanel('pnl');" href="#">Show ModalPanel</a>
+<a4j:form>
+	<rich:modalPanel id="pnl">
+		<f:facet name="header">
+			<h:outputText value="This is a panel header" />
+		</f:facet> 
+		<p>The &amp;lt;rich:modalPanel&amp;gt; accepts different types of information: 
 		from simple text to iterative components such as &amp;lt;rich:dataTable&amp;gt;, etc.
-		&lt;/p&gt;
-		&lt;a onclick="Richfaces.hideModalPanel('pnl');" href="#"&gt;Hide&lt;/a&gt;
-	&lt;/rich:modalPanel&gt;
-&lt;/a4j:form&gt;</programlisting>
+		</p>
+		<a onclick="Richfaces.hideModalPanel('pnl');" href="#">Hide</a>
+	</rich:modalPanel>
+</a4j:form>]]></programlisting>
 
                     <para>Here is what happening on the page:</para>
 
@@ -152,20 +152,20 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">&lt;a onclick="Richfaces.showModalPanel('pnl');" href="#"&gt;Show ModalPanel&lt;/a&gt;
-&lt;a4j:form&gt;
-	&lt;rich:modalPanel id="pnl"&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;h:outputText value="This is a panel header" /&gt;
-		&lt;/f:facet&gt; 
-		&lt;f:facet name="controls"&gt;
-			&lt;h:graphicImage value="/pages/close.png" style="cursor:pointer" onclick="Richfaces.hideModalPanel('pnl')" /&gt;
-		&lt;/f:facet&gt;
-		&lt;p&gt;The &amp;lt;rich:modalPanel&amp;gt; accepts different types of information: 
+                    <programlisting role="XML"><![CDATA[<a onclick="Richfaces.showModalPanel('pnl');" href="#">Show ModalPanel</a>
+<a4j:form>
+	<rich:modalPanel id="pnl">
+		<f:facet name="header">
+			<h:outputText value="This is a panel header" />
+		</f:facet> 
+		<f:facet name="controls">
+			<h:graphicImage value="/pages/close.png" style="cursor:pointer" onclick="Richfaces.hideModalPanel('pnl')" />
+		</f:facet>
+		<p>The &amp;lt;rich:modalPanel&amp;gt; accepts different types of information: 
 		from simple text to iterative components such as &amp;lt;rich:dataTable&amp;gt;, etc.
-		&lt;/p&gt;
-	&lt;/rich:modalPanel&gt;
-&lt;/a4j:form&gt;</programlisting>
+		</p>
+	</rich:modalPanel>
+</a4j:form>]]></programlisting>
 
                     <para>The result:</para>
 
@@ -250,7 +250,7 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">Richfaces.showModalPanel('panelId', {left: auto, param1: value1});</programlisting>
+                    <programlisting role="XML"><![CDATA[Richfaces.showModalPanel('panelId', {left: auto, param1: value1});]]></programlisting>
                     <para> Thus, except the standard modalPanel parameters you can pass any of your
                               own parameters. </para>
                     <para> Also modalPanel allows to handle its own opening and closing events on
@@ -265,7 +265,7 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML">onshow="alert(event.parameters.param1)"</programlisting>
+                    <programlisting role="XML"><![CDATA[onshow="alert(event.parameters.param1)"]]></programlisting>
 
                     <para> Here, during modalPanel opening the value of a passing parameter is
                               output. </para>
@@ -294,7 +294,7 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML">&lt;a href="javascript:Richfaces.showModalPanel('pnl', {top:'10px', left:'10px', height:'400'});"&gt;Show&lt;/a&gt;</programlisting>
+                    <programlisting role="XML"><![CDATA[<a href="javascript:Richfaces.showModalPanel('pnl', {top:'10px', left:'10px', height:'400'});">Show</a>]]></programlisting>
 
                     <para> Here, if you open modal dialog window using current link and after
                               submits data then modalPanel destination and height on new loaded page
@@ -318,18 +318,18 @@
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML">&lt;a4j:form&gt;
-&lt;rich:modalPanel&gt;
-		&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Test" /&gt;
-		&lt;/f:facet&gt;
-		&lt;f:facet name="controls"&gt;
-				&lt;h:commandLink value="Close" style="cursor:pointer" onclick="Richfaces.hideModalPanel('mp')" /&gt;
-		&lt;/f:facet&gt;
-		&lt;h:form&gt;
-				&lt;h:commandButton value="Test" action="#{TESTCONTROLLER.test}" /&gt;
-		&lt;/h:form&gt;
-&lt;/rich:modalPanel&gt;</programlisting>
+                    <programlisting role="XML"><![CDATA[<a4j:form>
+<rich:modalPanel>
+		<f:facet name="header">
+				<h:outputText value="Test" />
+		</f:facet>
+		<f:facet name="controls">
+				<h:commandLink value="Close" style="cursor:pointer" onclick="Richfaces.hideModalPanel('mp')" />
+		</f:facet>
+		<h:form>
+				<h:commandButton value="Test" action="#{TESTCONTROLLER.test}" />
+		</h:form>
+</rich:modalPanel>]]></programlisting>
 
 
 

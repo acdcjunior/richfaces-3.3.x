@@ -113,20 +113,20 @@
 			</itemizedlist>
 			<para>To create the simplest variant on a page use the following
 				syntax:</para>
-			<programlisting role="XML">...
-				&lt;h:inputText id="city" value="#{capitalsBean.capital}" /&gt;
-				&lt;rich:suggestionbox for="city" var="result"
-				suggestionAction="#{capitalsBean.autocomplete}"&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
+			<programlisting role="XML"><![CDATA[...
+				<h:inputText id="city" value="#{capitalsBean.capital}" />
+				<rich:suggestionbox for="city" var="result"
+				suggestionAction="#{capitalsBean.autocomplete}">
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				</rich:suggestionbox>
 				...
-</programlisting>
+]]></programlisting>
 			<para>
 				There is a managed bean:
 			</para>
-			<programlisting role="JAVA">...
+			<programlisting role="JAVA"><![CDATA[...
 				public class SBbean {
 
 				private ArrayList&lt;Capital&gt; capitals = new ArrayList&lt;Capital&gt;();
@@ -178,7 +178,7 @@
 				return null;
 				}
 				}	
-</programlisting>
+]]></programlisting>
 			<para>
 				In the example above when suggestion item (city) is selected it is
 				set as a value of
@@ -220,20 +220,20 @@
 				Therefore when some string is chosen input
 				receives the proper value.
 			</para>
-			<programlisting role="XML">...
-				&lt;h:inputText id="city" value="#{capitalsBean.capital}" /&gt;
-				&lt;rich:suggestionbox for="city" var="result"
+			<programlisting role="XML"><![CDATA[...
+				<h:inputText id="city" value="#{capitalsBean.capital}" />
+				<rich:suggestionbox for="city" var="result"
 				fetchValue="#{result.state}"
-				suggestionAction="#{capitalsBean.autocomplete}"&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.state}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
+				suggestionAction="#{capitalsBean.autocomplete}">
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				<h:column>
+				<h:outputText value="#{result.state}" />
+				</h:column>
+				</rich:suggestionbox>
 				...
-</programlisting>
+]]></programlisting>
 			<para>
 				In the example above if you choose any string input will receive the
 				corresponding value
@@ -269,17 +269,17 @@
 			<para>
 				<emphasis role="bold">Example:</emphasis>
 			</para>
-			<programlisting role="XML">...
-				&lt;h:inputText id="city" value="#{capitalsBean.capital}" /&gt;
-				&lt;rich:suggestionbox for="city" var="result"
+			<programlisting role="XML"><![CDATA[...
+				<h:inputText id="city" value="#{capitalsBean.capital}" />
+				<rich:suggestionbox for="city" var="result"
 				suggestionAction="#{capitalsBean.autocomplete}"
-				tokens=","&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
+				tokens=",">
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				</rich:suggestionbox>
 				...
-</programlisting>
+]]></programlisting>
 			<para>This example shows that when a city is chosen and a comma and
 				first letter
 				character are input, Ajax request is called again, but
@@ -340,34 +340,34 @@
 				<code>suggestion</code>
 				object as a parameter:
 			</para>
-			<programlisting role="XML">...
-				&lt;h:inputText id="city" value="#{capitalsBean.capital}" /&gt;
-				&lt;rich:suggestionbox for="city" var="result"
+			<programlisting role="XML"><![CDATA[...
+				<h:inputText id="city" value="#{capitalsBean.capital}" />
+				<rich:suggestionbox for="city" var="result"
 				suggestionAction="#{capitalsBean.autocomplete}"
 				onobjectchange="processObjects(suggestion)"
-				usingSuggestObjects="true"&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
-				&lt;h:panelGroup&gt;
-				&lt;div id="state"&gt;&lt;/div&gt;
-				&lt;/h:panelGroup&gt;
+				usingSuggestObjects="true">
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				</rich:suggestionbox>
+				<h:panelGroup>
+				<div id="state"></div>
+				</h:panelGroup>
 				...
-</programlisting>
+]]></programlisting>
 			<para>
 				When the item is selected you can get it as an object on the client
 				side and use
 				<code>getSelectedItems()</code>
 				method to access any object properties:
 			</para>
-			<programlisting role="XML">&lt;script
-				type="text/javascript"&gt;
+			<programlisting role="XML"><![CDATA[<script
+				type="text/javascript">
 				function processObjects(suggestionBox) {
 				var items = suggestionBox.getSelectedItems();
 				var state;
-				if (items &amp;&amp; items.length &gt; 0) {
-				for ( var i = 0; i &lt; items.length; i++) {
+				if (items &amp;&amp; items.length > 0) {
+				for ( var i = 0; i < items.length; i++) {
 				state = items[i].state;
 				}
 				document.getElementById('state').innerHTML = "State: "+state;
@@ -375,7 +375,7 @@
 				document.getElementById('state').innerHTML = '';
 				}
 				}
-				&lt;/script&gt; </programlisting>
+				</script> ]]></programlisting>
 			<para>
 				Here is a result:
 			</para>
@@ -425,16 +425,16 @@
 			<para>
 				<emphasis role="bold">Example:</emphasis>
 			</para>
-			<programlisting role="XML">...
-				&lt;rich:suggestionbox for="city" var="result"
+			<programlisting role="XML"><![CDATA[...
+				<rich:suggestionbox for="city" var="result"
 				suggestionAction="#{capitalsBean.autocomplete}"
-				nothingLabel="No cities found"&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
+				nothingLabel="No cities found">
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				</rich:suggestionbox>
 				...
-</programlisting>
+]]></programlisting>
 			<para>Here is a result:</para>
 			<figure>
 				<title>
@@ -456,22 +456,22 @@
 				</emphasis>
 				customization:
 			</para>
-			<programlisting role="XML">...
-				&lt;h:inputText id="city" value="#{capitalsBean.capital}" /&gt;
-				&lt;rich:suggestionbox for="city" var="result"
-				suggestionAction="#{capitalsBean.autocomplete}"&gt;
-				&lt;f:facet name="nothingLabel"&gt;
-				&lt;h:outputText value="No cities found" /&gt;
-				&lt;/f:facet&gt;
-				&lt;f:facet name="header"&gt;
-				&lt;h:outputText value="Select your city" /&gt;
-				&lt;/f:facet&gt;
-				&lt;h:column&gt;
-				&lt;h:outputText value="#{result.name}" /&gt;
-				&lt;/h:column&gt;
-				&lt;/rich:suggestionbox&gt;
+			<programlisting role="XML"><![CDATA[...
+				<h:inputText id="city" value="#{capitalsBean.capital}" />
+				<rich:suggestionbox for="city" var="result"
+				suggestionAction="#{capitalsBean.autocomplete}">
+				<f:facet name="nothingLabel">
+				<h:outputText value="No cities found" />
+				</f:facet>
+				<f:facet name="header">
+				<h:outputText value="Select your city" />
+				</f:facet>
+				<h:column>
+				<h:outputText value="#{result.name}" />
+				</h:column>
+				</rich:suggestionbox>
 				...
-</programlisting>
+]]></programlisting>
 			<para>
 				Here is a result:
 			</para>

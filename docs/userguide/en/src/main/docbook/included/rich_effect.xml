@@ -48,21 +48,21 @@
             <para>
                   <emphasis role="bold">Those a the typical variants of using:</emphasis>
             </para>
-            <programlisting role="XML">&lt;!-- triggered by an event  --&gt;
-&lt;rich:panel&gt;
-	&lt;rich:effect event="onmouseout" type="Opacity" params="duration:0.8,from:1.0,to:0.3" /&gt;
+            <programlisting role="XML"><![CDATA[<!-- triggered by an event  -->
+<rich:panel>
+	<rich:effect event="onmouseout" type="Opacity" params="duration:0.8,from:1.0,to:0.3" />
     ...
-&lt;/rich:panel&gt;
+</rich:panel>
 
-&lt;!--  invoking by JavaScript --&gt;
-&lt;div id="contentDiv"&gt;...&lt;/div&gt;
-&lt;input type="button" onclick="hideDiv({duration:0.7})" value="Hide" /&gt;
-&lt;input type="button" onclick="showDiv()" value="Show" /&gt;
-&lt;rich:effect  name="hideDiv"  for="contentDiv" type="Fade" /&gt;
-&lt;rich:effect  name="showDiv"  for="contentDiv" type="Appear" /&gt;
+<!--  invoking by JavaScript -->
+<div id="contentDiv">...</div>
+<input type="button" onclick="hideDiv({duration:0.7})" value="Hide" />
+<input type="button" onclick="showDiv()" value="Show" />
+<rich:effect  name="hideDiv"  for="contentDiv" type="Fade" />
+<rich:effect  name="showDiv"  for="contentDiv" type="Appear" />
 
-&lt;!-- attached to a window onload event and applied to a particular page element --&gt;
-&lt;rich:effect for="window" event="onload" type="Appear" params="targetId:'contentDiv',duration:0.8,from:0.3,to:1.0" /&gt;</programlisting>
+<!-- attached to a window onload event and applied to a particular page element -->
+<rich:effect for="window" event="onload" type="Appear" params="targetId:'contentDiv',duration:0.8,from:0.3,to:1.0" />]]></programlisting>
 
       <figure>
             <title>Initial</title>
@@ -123,7 +123,7 @@
       <para>
             Besides all you can load the Scriptaculous library to the page and use it directly without <emphasis role="bold"><property>&lt;rich:effect&gt;</property></emphasis>:
       </para>
-            <programlisting role="XML">&lt;a4j:loadScript src="resource://scriptaculous/effect.js" /&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<a4j:loadScript src="resource://scriptaculous/effect.js" />]]></programlisting>
       <para>
             But if you use the <emphasis role="bold"><property>&lt;rich:effect&gt;</property></emphasis> there is no need to include this library because it's already there.
       </para>

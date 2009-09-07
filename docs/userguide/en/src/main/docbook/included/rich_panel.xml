@@ -51,17 +51,17 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:panel&gt;
-		&lt;f:facet name="header"&gt;  
-       			&lt;h:graphicImage value="/images/img1.png"/&gt;
-       	&lt;/f:facet&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:panel>
+		<f:facet name="header">  
+       			<h:graphicImage value="/images/img1.png"/>
+       	</f:facet>
        	...
-       	&lt;!--Any Content inside--&gt;
+       	<!--Any Content inside-->
       	...
-&lt;/rich:panel&gt;
+</rich:panel>
 ...
-</programlisting>
+]]></programlisting>
     
       <para>
          <emphasis role="bold">
@@ -71,12 +71,12 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:panel&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:panel>
 		...
-&lt;/rich:panel&gt;
+</rich:panel>
 ...
-</programlisting>
+]]></programlisting>
       <para>It's generating on a page in the following way:</para>
       <figure>
          <title>
@@ -98,15 +98,15 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:panel&gt;
-		&lt;f:facet name="header"&gt;
-       			&lt;h:outputText value="Olympus EVOLT E-500 "/&gt;
-      	&lt;/f:facet&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:panel>
+		<f:facet name="header">
+       			<h:outputText value="Olympus EVOLT E-500 "/>
+      	</f:facet>
       	...
-&lt;/rich:panel&gt;
+</rich:panel>
 ...
-</programlisting>
+]]></programlisting>
       <para>It's displayed on a page in the following way:</para>
       <figure>
          <title>

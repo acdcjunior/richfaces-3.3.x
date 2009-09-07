@@ -83,10 +83,10 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:inputNumberSpinner minValue="1" maxValue="100"/&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:inputNumberSpinner minValue="1" maxValue="100"/>
 ...
-</programlisting>
+]]></programlisting>
                     <para>It generates on a page:</para>
                     <figure>
                               <title> Generated <emphasis role="bold">

@@ -43,20 +43,20 @@
           <para>The following example demonstrates a pattern of how the <emphasis role="bold">
                               <property>&lt;rich:graphValidator&gt;</property>
                     </emphasis> can be used:</para>
-          <programlisting role="XML">...
-&lt;rich:graphValidator&gt;
-     &lt;h:panelGrid columns="3"&gt;
-          &lt;h:outputText value="Name:" /&gt;
-          &lt;h:inputText value="#{validationBean.name}" id="name"&gt;
-               &lt;f:validateLength minimum="2" /&gt;
-          &lt;/h:inputText&gt;
-          &lt;rich:message for="name" /&gt;
-          &lt;h:outputText value="Email:" /&gt;
-          &lt;h:inputText value="#{validationBean.email}" id="email" /&gt;
-          &lt;rich:message for="email" /&gt;
-     &lt;/h:panelGrid&gt;
-&lt;/rich:graphValidator&gt;
-...</programlisting>
+          <programlisting role="XML"><![CDATA[...
+<rich:graphValidator>
+     <h:panelGrid columns="3">
+          <h:outputText value="Name:" />
+          <h:inputText value="#{validationBean.name}" id="name">
+               <f:validateLength minimum="2" />
+          </h:inputText>
+          <rich:message for="name" />
+          <h:outputText value="Email:" />
+          <h:inputText value="#{validationBean.email}" id="email" />
+          <rich:message for="email" />
+     </h:panelGrid>
+</rich:graphValidator>
+...]]></programlisting>
 
           <para>The data validation can be also performed using Hibernate Validator, the same way as
                     it is done with <emphasis role="bold">
@@ -73,15 +73,15 @@
           <para>Please look at the example below.</para>
 
 
-          <programlisting role="XML">...
-&lt;rich:graphValidator summary="Invalid values: " value="#{dayStatistics}"&gt;
-     &lt;a4j:repeat value="#{dayStatistics.dayPasstimes}" var="pt" id="table"&gt;
-          &lt;h:outputText value="#{pt.title}" /&gt;
-          &lt;rich:inputNumberSpinner minValue="0" maxValue="24" value="#{pt.time}" id="time" /&gt;
-          &lt;rich:message for="time" /&gt;
-     &lt;/a4j:repeat&gt;
-&lt;/rich:graphValidator&gt;
-...</programlisting>
+          <programlisting role="XML"><![CDATA[...
+<rich:graphValidator summary="Invalid values: " value="#{dayStatistics}">
+     <a4j:repeat value="#{dayStatistics.dayPasstimes}" var="pt" id="table">
+          <h:outputText value="#{pt.title}" />
+          <rich:inputNumberSpinner minValue="0" maxValue="24" value="#{pt.time}" id="time" />
+          <rich:message for="time" />
+     </a4j:repeat>
+</rich:graphValidator>
+...]]></programlisting>
 
 
       <para>Hence, the given above code will provide the functionality that is illustrated on the images below.</para>

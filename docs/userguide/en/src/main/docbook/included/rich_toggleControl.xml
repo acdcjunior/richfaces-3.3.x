@@ -87,31 +87,31 @@ in <emphasis>
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:togglePanel id="panel" initialState="empty" switchType="client"&gt;
-		&lt;f:facet name="first"&gt;
-       			&lt;h:panelGroup&gt;
-               		&lt;rich:toggleControl for="helloForm:panel" value="Empty" switchToState="empty"/&gt;
-                		&lt;rich:toggleControl for="helloForm:panel" value=" Second" switchToState="second"/&gt;
-                		&lt;!--Some content--&gt;
-            	&lt;/h:panelGroup&gt;
-   		&lt;/f:facet&gt;
-		&lt;f:facet name="second"&gt;
-       			&lt;h:panelGroup&gt;
-       					&lt;rich:toggleControl for="helloForm:panel" value="Empty" switchToState="empty"/&gt;
-                		&lt;rich:toggleControl for="helloForm:panel" value=" first" switchToState="first"/&gt;
-                		&lt;!--Some content--&gt;
-            	&lt;/h:panelGroup&gt;
-		&lt;/f:facet&gt;
-       	&lt;f:facet name="empty"&gt;
-      			&lt;h:panelGroup&gt;
-               		&lt;rich:toggleControl for="helloForm:panel" value="first" switchToState="first"/&gt;
-                		&lt;rich:toggleControl for="helloForm:panel" value=" second" switchToState="second"/&gt;
-            	&lt;/h:panelGroup&gt;
-		&lt;/f:facet&gt;
-&lt;/rich:togglePanel&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:togglePanel id="panel" initialState="empty" switchType="client">
+		<f:facet name="first">
+       			<h:panelGroup>
+               		<rich:toggleControl for="helloForm:panel" value="Empty" switchToState="empty"/>
+                		<rich:toggleControl for="helloForm:panel" value=" Second" switchToState="second"/>
+                		<!--Some content-->
+            	</h:panelGroup>
+   		</f:facet>
+		<f:facet name="second">
+       			<h:panelGroup>
+       					<rich:toggleControl for="helloForm:panel" value="Empty" switchToState="empty"/>
+                		<rich:toggleControl for="helloForm:panel" value=" first" switchToState="first"/>
+                		<!--Some content-->
+            	</h:panelGroup>
+		</f:facet>
+       	<f:facet name="empty">
+      			<h:panelGroup>
+               		<rich:toggleControl for="helloForm:panel" value="first" switchToState="first"/>
+                		<rich:toggleControl for="helloForm:panel" value=" second" switchToState="second"/>
+            	</h:panelGroup>
+		</f:facet>
+</rich:togglePanel>
 ...
-</programlisting>
+]]></programlisting>
       <para>In this example the switching is performed on facets specified in the <emphasis>
             <property>"switchToState"</property>
          </emphasis> attribute.</para>

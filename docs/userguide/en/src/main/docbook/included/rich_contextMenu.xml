@@ -106,24 +106,24 @@
          </emphasis> attribute:
           </para>
 
-          <programlisting role="XML">&lt;rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none"&gt;
-      &lt;rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/&gt;
-      &lt;rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/&gt;
-&lt;/rich:contextMenu&gt;
-&lt;h:panelGrid columns="1" columnClasses="cent"&gt;
-      &lt;h:panelGroup id="picture"&gt;
-            &lt;h:graphicImage value="/richfaces/jQuery/images/pic1.png" id="pic"/&gt;
-      &lt;/h:panelGroup&gt;
-&lt;/h:panelGrid&gt;
-&lt;h:panelGrid columns="1" columnClasses="cent"&gt;
-      &lt;h:panelGroup id="picture1"&gt;
-            &lt;h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/&gt;
-       &lt;/h:panelGroup&gt;
-&lt;/h:panelGrid&gt;</programlisting>
+          <programlisting role="XML"><![CDATA[<rich:contextMenu event="oncontextmenu" attachTo="pic1" submitMode="none">
+      <rich:menuItem value="Zoom In" onclick="enlarge();" id="zin"/>
+      <rich:menuItem value="Zoom Out" onclick="decrease();" id="zout"/>
+</rich:contextMenu>
+<h:panelGrid columns="1" columnClasses="cent">
+      <h:panelGroup id="picture">
+            <h:graphicImage value="/richfaces/jQuery/images/pic1.png" id="pic"/>
+      </h:panelGroup>
+</h:panelGrid>
+<h:panelGrid columns="1" columnClasses="cent">
+      <h:panelGroup id="picture1">
+            <h:graphicImage value="/richfaces/jQuery/images/pic2.png" id="pic1"/>
+       </h:panelGroup>
+</h:panelGrid>]]></programlisting>
         <para>The <code>"enlarge()"</code> and
                 <code>"decrease()"</code> functions definition is placed
             below.</para>
-        <programlisting role="JAVA">&lt;script type="text/javascript"&gt;
+        <programlisting role="JAVA"><![CDATA[&lt;script type="text/javascript"&gt;
 		function enlarge(){
        			document.getElementById('pic').width=document.getElementById('pic').width*1.1;
                document.getElementById('pic').height=document.getElementById('pic').height*1.1;
@@ -132,7 +132,7 @@
        			document.getElementById('pic').width=document.getElementById('pic').width*0.9;
                document.getElementById('pic').height=document.getElementById('pic').height*0.9;
       	}
-&lt;/script&gt;</programlisting>
+</script>]]></programlisting>
 
         <para>In the example a picture zooming possibility with <emphasis role="bold">
                 <property>&lt;rich:contextMenu&gt;</property>
@@ -177,54 +177,54 @@
         <para id="ex">
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML">&lt;h:form id="form"&gt;
-      &lt;rich:contextMenu attached="false" id="menu" submitMode="ajax"&gt;
-            &lt;rich:menuItem ajaxSingle="true"&gt;
-                  &lt;b&gt;{car} {model}&lt;/b&gt; details
-                  &lt;a4j:actionparam name="det" assignTo="#{ddmenu.current}" value="{car} {model} details"/&gt;
-            &lt;/rich:menuItem&gt;
-            &lt;rich:menuGroup value="Actions"&gt;
-                  &lt;rich:menuItem ajaxSingle="true"&gt;
-                        Put &lt;b&gt;{car} {model}&lt;/b&gt; To Basket
-                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Put {car} {model} To Basket"/&gt;
-                  &lt;/rich:menuItem&gt;
-                  &lt;rich:menuItem value="Read Comments" ajaxSingle="true"&gt;
-                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Read Comments"/&gt;
-                  &lt;/rich:menuItem&gt;
-                  &lt;rich:menuItem ajaxSingle="true"&gt;
-                        Go to &lt;b&gt;{car}&lt;/b&gt; site
-                        &lt;a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Go to {car} site"/&gt;
-                  &lt;/rich:menuItem&gt;
-            &lt;/rich:menuGroup&gt;
-      &lt;/rich:contextMenu&gt; 
+        <programlisting role="XML"><![CDATA[<h:form id="form">
+      <rich:contextMenu attached="false" id="menu" submitMode="ajax">
+            <rich:menuItem ajaxSingle="true">
+                  <b>{car} {model}</b> details
+                  <a4j:actionparam name="det" assignTo="#{ddmenu.current}" value="{car} {model} details"/>
+            </rich:menuItem>
+            <rich:menuGroup value="Actions">
+                  <rich:menuItem ajaxSingle="true">
+                        Put <b>{car} {model}</b> To Basket
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Put {car} {model} To Basket"/>
+                  </rich:menuItem>
+                  <rich:menuItem value="Read Comments" ajaxSingle="true">
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Read Comments"/>
+                  </rich:menuItem>
+                  <rich:menuItem ajaxSingle="true">
+                        Go to <b>{car}</b> site
+                        <a4j:actionparam name="bask" assignTo="#{ddmenu.current}" value="Go to {car} site"/>
+                  </rich:menuItem>
+            </rich:menuGroup>
+      </rich:contextMenu> 
 
-      &lt;h:panelGrid columns="2"&gt;
-            &lt;rich:dataTable value="#{dataTableScrollerBean.tenRandomCars}" var="car" id="table" onRowMouseOver="this.style.backgroundColor='#F8F8F8'" onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" rowClasses="cur"&gt;
-                  &lt;rich:column&gt;
-                        &lt;f:facet name="header"&gt;Make&lt;/f:facet&gt;
-                        &lt;h:outputText value="#{car.make}"/&gt;
-                  &lt;/rich:column&gt;
-                  &lt;rich:column&gt;
-                        &lt;f:facet name="header"&gt;Model&lt;/f:facet&gt;
-                        &lt;h:outputText value="#{car.model}"/&gt;
-                  &lt;/rich:column&gt;
-                  &lt;rich:column&gt;
-                        &lt;f:facet name="header"&gt;Price&lt;/f:facet&gt;
-                        &lt;h:outputText value="#{car.price}" /&gt;
-                  &lt;/rich:column&gt;
-                  &lt;rich:componentControl event="onRowClick" for="menu" operation="show"&gt;
-                        &lt;f:param value="#{car.model}" name="model"/&gt;
-                        &lt;f:param value="#{car.make}" name="car"/&gt;
-                  &lt;/rich:componentControl&gt;
-            &lt;/rich:dataTable&gt;
-            &lt;a4j:outputPanel ajaxRendered="true"&gt;
-                  &lt;rich:panel&gt;
-                        &lt;f:facet name="header"&gt;Last Menu Action&lt;/f:facet&gt;
-                        &lt;h:outputText value="#{ddmenu.current}"&gt;&lt;/h:outputText&gt;
-                  &lt;/rich:panel&gt;
-            &lt;/a4j:outputPanel&gt;
-      &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;</programlisting>
+      <h:panelGrid columns="2">
+            <rich:dataTable value="#{dataTableScrollerBean.tenRandomCars}" var="car" id="table" onRowMouseOver="this.style.backgroundColor='#F8F8F8'" onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" rowClasses="cur">
+                  <rich:column>
+                        <f:facet name="header">Make</f:facet>
+                        <h:outputText value="#{car.make}"/>
+                  </rich:column>
+                  <rich:column>
+                        <f:facet name="header">Model</f:facet>
+                        <h:outputText value="#{car.model}"/>
+                  </rich:column>
+                  <rich:column>
+                        <f:facet name="header">Price</f:facet>
+                        <h:outputText value="#{car.price}" />
+                  </rich:column>
+                  <rich:componentControl event="onRowClick" for="menu" operation="show">
+                        <f:param value="#{car.model}" name="model"/>
+                        <f:param value="#{car.make}" name="car"/>
+                  </rich:componentControl>
+            </rich:dataTable>
+            <a4j:outputPanel ajaxRendered="true">
+                  <rich:panel>
+                        <f:facet name="header">Last Menu Action</f:facet>
+                        <h:outputText value="#{ddmenu.current}"></h:outputText>
+                  </rich:panel>
+            </a4j:outputPanel>
+      </h:panelGrid>
+</h:form>]]></programlisting>
         <para>This is a result:</para>
         <figure>
             <title>The <emphasis>
@@ -338,13 +338,13 @@
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
-        <programlisting role="XML"><![CDATA[...
+        <programlisting role="XML"><![CDATA[<![CDATA[...
     <rich:contextMenu ... id="cmID">
         ...
     </rich:contextMenu>
     ...
 <h:commandButton value="Show" onclick="#{rich:component('cmID')}.show(event)"/>
-...]]></programlisting>  -->
+...]]>]]></programlisting>  -->
 
         <!-- Will be done for latest version -->
         <!--para> It&apos;s possible to define the direction for list appear in the <emphasis>

@@ -66,27 +66,27 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
-     &lt;rich:column&gt;
-          &lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
-          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column&gt;
-           &lt;f:facet name="header"&gt;State Name&lt;/f:facet&gt;
-           &lt;h:outputText value="#{cap.state}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column &gt;
-          &lt;f:facet name="header"&gt;State Capital&lt;/f:facet&gt;
-          &lt;h:outputText value="#{cap.name}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column&gt;
-          &lt;f:facet name="header"&gt;Time Zone&lt;/f:facet&gt;
-          &lt;h:outputText value="#{cap.timeZone}"/&gt;
-     &lt;/rich:column&gt;
-&lt;/rich:dataTable&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"> 
+     <rich:column>
+          <f:facet name="header">State Flag</f:facet>
+          <h:graphicImage value="#{cap.stateFlag}"/>
+     </rich:column>
+     <rich:column>
+           <f:facet name="header">State Name</f:facet>
+           <h:outputText value="#{cap.state}"/>
+     </rich:column>
+     <rich:column >
+          <f:facet name="header">State Capital</f:facet>
+          <h:outputText value="#{cap.name}"/>
+     </rich:column>
+     <rich:column>
+          <f:facet name="header">Time Zone</f:facet>
+          <h:outputText value="#{cap.timeZone}"/>
+     </rich:column>
+</rich:dataTable>
 ...
-</programlisting>
+]]></programlisting>
                     <para>The result is:</para>
                     <figure>
                               <title>Generated <emphasis role="bold">
@@ -110,23 +110,23 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
-     &lt;rich:column colspan="3"&gt;
-          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column breakBefore="true"&gt; 
-          &lt;h:outputText value="#{cap.state}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column &gt;
-          &lt;h:outputText value="#{cap.name}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column&gt;
-          &lt;h:outputText value="#{cap.timeZone}"/&gt;
-     &lt;/rich:column&gt;
-&lt;/rich:dataTable&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"> 
+     <rich:column colspan="3">
+          <h:graphicImage value="#{cap.stateFlag}"/>
+     </rich:column>
+     <rich:column breakBefore="true"> 
+          <h:outputText value="#{cap.state}"/>
+     </rich:column>
+     <rich:column >
+          <h:outputText value="#{cap.name}"/>
+     </rich:column>
+     <rich:column>
+          <h:outputText value="#{cap.timeZone}"/>
+     </rich:column>
+</rich:dataTable>
 ...
-</programlisting>
+]]></programlisting>
                     <para>As a result the following structure is rendered:</para>
                     <figure>
                               <title>
@@ -153,25 +153,25 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt; 
-     &lt;rich:column rowspan="3"&gt;
-          &lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
-          &lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column&gt; 
-          &lt;f:facet name="header"&gt;State Info&lt;/f:facet&gt;
-          &lt;h:outputText value="#{cap.state}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column breakBefore="true"&gt;
-          &lt;h:outputText value="#{cap.name}"/&gt;
-     &lt;/rich:column&gt;
-     &lt;rich:column breakBefore="true"&gt;
-          &lt;h:outputText value="#{cap.timeZone}"/&gt;
-     &lt;/rich:column&gt;
-&lt;/rich:dataTable&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"> 
+     <rich:column rowspan="3">
+          <f:facet name="header">State Flag</f:facet>
+          <h:graphicImage value="#{cap.stateFlag}"/>
+     </rich:column>
+     <rich:column> 
+          <f:facet name="header">State Info</f:facet>
+          <h:outputText value="#{cap.state}"/>
+     </rich:column>
+     <rich:column breakBefore="true">
+          <h:outputText value="#{cap.name}"/>
+     </rich:column>
+     <rich:column breakBefore="true">
+          <h:outputText value="#{cap.timeZone}"/>
+     </rich:column>
+</rich:dataTable>
 ...
-</programlisting>
+]]></programlisting>
                     <para>As a result:</para>
                     <figure>
                               <title>
@@ -214,27 +214,27 @@
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-                              <programlisting role="XML">...
-&lt;h:form&gt;
-    &lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px"&gt;
-        &lt;f:facet name="header"&gt;
-            &lt;h:outputText value="Sorting Example"/&gt;
-        &lt;/f:facet&gt;
-        &lt;rich:column sortBy="#{cap.state}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="State Name"/&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{cap.state}"/&gt;
-        &lt;/rich:column&gt; 
-        &lt;rich:column sortBy="#{cap.name}"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="State Capital"/&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{cap.name}"/&gt; 
-        &lt;/rich:column&gt;
-    &lt;/rich:dataTable&gt;
-&lt;/h:form&gt;
-...</programlisting>
+                              <programlisting role="XML"><![CDATA[...
+<h:form>
+    <rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px">
+        <f:facet name="header">
+            <h:outputText value="Sorting Example"/>
+        </f:facet>
+        <rich:column sortBy="#{cap.state}">
+            <f:facet name="header">
+                <h:outputText value="State Name"/>
+            </f:facet>
+            <h:outputText value="#{cap.state}"/>
+        </rich:column> 
+        <rich:column sortBy="#{cap.name}">
+            <f:facet name="header">
+                <h:outputText value="State Capital"/>
+            </f:facet>
+            <h:outputText value="#{cap.name}"/> 
+        </rich:column>
+    </rich:dataTable>
+</h:form>
+...]]></programlisting>
                               <para>This is result:</para>
                               <figure>
                                         <title>
@@ -260,30 +260,30 @@
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-                              <programlisting role="XML">...
-&lt;rich:scrollableDataTable
+                              <programlisting role="XML"><![CDATA[...
+<rich:scrollableDataTable
 		value="#{dataTableScrollerBean.allCars}" sortMode="single"
-		var="category"&gt;
-		&lt;rich:column sortExpression="#{category.make}"&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText styleClass="headerText" value="Make" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="#{category.make}" /&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:column&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText styleClass="headerText" value="Model" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="#{category.model}" /&gt;
-		&lt;/rich:column&gt;
-		&lt;rich:column&gt;
-			&lt;f:facet name="header"&gt;
-				&lt;h:outputText styleClass="headerText" value="Price" /&gt;
-			&lt;/f:facet&gt;
-			&lt;h:outputText value="#{category.price}" /&gt;
-		&lt;/rich:column&gt;
-&lt;/rich:scrollableDataTable&gt;
-...</programlisting>
+		var="category">
+		<rich:column sortExpression="#{category.make}">
+			<f:facet name="header">
+				<h:outputText styleClass="headerText" value="Make" />
+			</f:facet>
+			<h:outputText value="#{category.make}" />
+		</rich:column>
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText styleClass="headerText" value="Model" />
+			</f:facet>
+			<h:outputText value="#{category.model}" />
+		</rich:column>
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText styleClass="headerText" value="Price" />
+			</f:facet>
+			<h:outputText value="#{category.price}" />
+		</rich:column>
+</rich:scrollableDataTable>
+...]]></programlisting>
                             <!--  <figure>
                                         <title>The <emphasis>
                                                   <property>&quot;sortExpression&quot;</property>
@@ -304,22 +304,22 @@
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-                              <programlisting role="XML">...
-&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap"&gt;
-        &lt;rich:column&gt;
-                &lt;f:facet name="header"&gt;
-                        &lt;h:outputText value="State Flag"/&gt;
-                &lt;/f:facet&gt;
-                &lt;h:graphicImage value="#{cap.stateFlag}"/&gt; 
-        &lt;/rich:column&gt;
-        &lt;rich:column sortBy="#{cap.state}" selfSorted="false"&gt; 
-                &lt;f:facet name="header"&gt;
-                        &lt;h:outputText value="State Name"/&gt;
-                &lt;/f:facet&gt;
-                &lt;h:outputText value="#{cap.state}"/&gt;
-        &lt;/rich:column&gt; 
-&lt;/rich:dataTable&gt;
-...</programlisting>
+                              <programlisting role="XML"><![CDATA[...
+<rich:dataTable value="#{capitalsBean.capitals}" var="cap">
+        <rich:column>
+                <f:facet name="header">
+                        <h:outputText value="State Flag"/>
+                </f:facet>
+                <h:graphicImage value="#{cap.stateFlag}"/> 
+        </rich:column>
+        <rich:column sortBy="#{cap.state}" selfSorted="false"> 
+                <f:facet name="header">
+                        <h:outputText value="State Name"/>
+                </f:facet>
+                <h:outputText value="#{cap.state}"/>
+        </rich:column> 
+</rich:dataTable>
+...]]></programlisting>
                               <para>The 
                                         <emphasis>
                                                   <property>&quot;sortOrder&quot;</property>
@@ -343,27 +343,27 @@
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
-                              <programlisting role="XML">...
-&lt;h:form&gt;
-    &lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px"&gt;
-        &lt;f:facet name="header"&gt;
-            &lt;h:outputText value="Sorting Example"/&gt;
-        &lt;/f:facet&gt;
-        &lt;rich:column sortBy="#{cap.state}" sortOrder="ASCENDING"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="State Name"/&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{cap.state}"/&gt;
-        &lt;/rich:column&gt; 
-        &lt;rich:column sortBy="#{cap.name}" sortOrder="DESCENDING"&gt;
-            &lt;f:facet name="header"&gt;
-                &lt;h:outputText value="State Capital"/&gt;
-            &lt;/f:facet&gt;
-            &lt;h:outputText value="#{cap.name}"/&gt; 
-        &lt;/rich:column&gt;
-    &lt;/rich:dataTable&gt;
-&lt;/h:form&gt;
-...</programlisting>
+                              <programlisting role="XML"><![CDATA[...
+<h:form>
+    <rich:dataTable value="#{capitalsBean.capitals}" var="cap" width="300px">
+        <f:facet name="header">
+            <h:outputText value="Sorting Example"/>
+        </f:facet>
+        <rich:column sortBy="#{cap.state}" sortOrder="ASCENDING">
+            <f:facet name="header">
+                <h:outputText value="State Name"/>
+            </f:facet>
+            <h:outputText value="#{cap.state}"/>
+        </rich:column> 
+        <rich:column sortBy="#{cap.name}" sortOrder="DESCENDING">
+            <f:facet name="header">
+                <h:outputText value="State Capital"/>
+            </f:facet>
+            <h:outputText value="#{cap.name}"/> 
+        </rich:column>
+    </rich:dataTable>
+</h:form>
+...]]></programlisting>
                               <para>Below you can see the result:</para>
                               <figure>
                                         <title>

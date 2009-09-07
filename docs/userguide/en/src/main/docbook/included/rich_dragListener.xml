@@ -66,21 +66,21 @@
 			</emphasis>
 		    </para>
 
-		    <programlisting role="XML">...
-&lt;h:panelGrid id="dragPanel"&gt;
-	&lt;rich:dragSupport dragType="item"&gt;
-		&lt;rich:dragListener type="demo.ListenerBean"/&gt;	
-	&lt;/rich:dragSupport&gt;
-	&lt;!--Some content to be dragged--&gt;
-&lt;/h:panelGrid&gt;
+		    <programlisting role="XML"><![CDATA[...
+<h:panelGrid id="dragPanel">
+	<rich:dragSupport dragType="item">
+		<rich:dragListener type="demo.ListenerBean"/>	
+	</rich:dragSupport>
+	<!--Some content to be dragged-->
+</h:panelGrid>
 ...
-</programlisting>
+]]></programlisting>
 
 		    <para>
 			      <emphasis role="bold">Java bean source:</emphasis>
 		    </para>
 
-		    <programlisting role="JAVA">package demo;
+		    <programlisting role="JAVA"><![CDATA[package demo;
 
 import org.richfaces.event.DragEvent;
 
@@ -91,7 +91,7 @@ public class ListenerBean implements org.richfaces.event.DragListener{
 	}
 ...
 }
-</programlisting>
+]]></programlisting>
 	  </section>
    <section>
       <title>Reference Data</title>

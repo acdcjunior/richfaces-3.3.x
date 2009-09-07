@@ -98,17 +98,17 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:panelMenu&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:panelMenu>
 		...
-       &lt;rich:panelMenuItem mode="none" onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/"&gt;
-       			&lt;h:outputLink value="http://labs.jboss.com/jbossrichfaces/"&gt;
-               		&lt;h:outputText value="RichFaces Home Page"&gt;&lt;/h:outputText&gt;
-            	&lt;/h:outputLink&gt;
-      	&lt;/rich:panelMenuItem&gt;
+       <rich:panelMenuItem mode="none" onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/">
+       			<h:outputLink value="http://labs.jboss.com/jbossrichfaces/">
+               		<h:outputText value="RichFaces Home Page"></h:outputText>
+            	</h:outputLink>
+      	</rich:panelMenuItem>
       	...
-&lt;/rich:panelMenu&gt;
-...</programlisting>
+</rich:panelMenu>
+...]]></programlisting>
 
                     <para>There are two icon-related attributes. The <emphasis>
                                         <property>"icon"</property>
@@ -133,13 +133,13 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-      &lt;rich:panelMenu&gt;
+                    <programlisting role="XML"><![CDATA[...
+      <rich:panelMenu>
             ...
-            &lt;rich:panelMenuItem value="Item 1.1" icon="chevronUp" /&gt;
+            <rich:panelMenuItem value="Item 1.1" icon="chevronUp" />
             ...	
-      &lt;/rich:panelMenu&gt;
-...</programlisting>
+      </rich:panelMenu>
+...]]></programlisting>
                     <para> As the result the picture is shown below:</para>
 
                     <figure>
@@ -157,13 +157,13 @@
                     <para>It's also possible to define a path to the icon. Simple code is
                               placed below.</para>
 
-                    <programlisting role="XML">...
-&lt;rich:panelMenu&gt;
+                    <programlisting role="XML"><![CDATA[...
+<rich:panelMenu>
 		...
-		&lt;rich:panelMenuItem value="Item 1.1" icon="\images\img1.png" /&gt;
+		<rich:panelMenuItem value="Item 1.1" icon="\images\img1.png" />
       	...	
-&lt;/rich:panelMenu&gt;
-...</programlisting>
+</rich:panelMenu>
+...]]></programlisting>
                     <para> Information about the <emphasis>
                                         <property>"process"</property>
                     </emphasis> attribute usage you can find in the 

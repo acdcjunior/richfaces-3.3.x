@@ -87,17 +87,17 @@
             <para>
               <emphasis role="bold">Example:</emphasis>
             </para>  
-            <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.value}" defaultLabel="click to edit"&gt;
-    &lt;f:selectItems value="#{bean.selectItems}" /&gt;
-&lt;/rich:inplaceSelect&gt;
-... </programlisting>
+            <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.value}" defaultLabel="click to edit">
+    <f:selectItems value="#{bean.selectItems}" />
+</rich:inplaceSelect>
+... ]]></programlisting>
             <!--    <para>
               The managed bean code: 
             </para>
-            <programlisting role="JAVA"><![CDATA[...
+            <programlisting role="JAVA"><![CDATA[<![CDATA[...
 private String value = "";
-...]]> </programlisting>-->
+...]]> ]]></programlisting>-->
             
             
             <para>
@@ -163,13 +163,13 @@ private String value = "";
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>  
-      <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" defaultLabel="click to edit"&gt;
-    &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-    &lt;f:selectItem itemValue="1" itemLabel="factory"/&gt;
-    &lt;f:selectItem itemValue="2" itemLabel="newspaper"/&gt;
-&lt;/rich:inplaceSelect&gt;
-...</programlisting>      
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" defaultLabel="click to edit">
+    <f:selectItems  value="#{bean.selectItems}"/>
+    <f:selectItem itemValue="1" itemLabel="factory"/>
+    <f:selectItem itemValue="2" itemLabel="newspaper"/>
+</rich:inplaceSelect>
+...]]></programlisting>      
       
       <para>
  In the example above the value of the selected item is available via <emphasis>
@@ -186,11 +186,11 @@ private String value = "";
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>  
-      <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" defaultLabel="Double Click to edit" editEvent="ondblclick"&gt;
-    &lt;f:selectItems value="#{demo.selectItems}" /&gt;
-&lt;/rich:inplaceSelect&gt;
-...</programlisting>      
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" defaultLabel="Double Click to edit" editEvent="ondblclick">
+    <f:selectItems value="#{demo.selectItems}" />
+</rich:inplaceSelect>
+...]]></programlisting>      
       <para>
         The <emphasis role="bold">
             <property>&lt;rich:inplaceSelect&gt;</property>
@@ -231,11 +231,11 @@ private String value = "";
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>      
-      <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" oneditactivation="if (!confirm('Are you sure you want to change the value?')){return false;}"&gt;
-    &lt;f:selectItems value="#{demo.selectItems}" /&gt;
-&lt;/rich:inplaceSelect&gt;
-... </programlisting>  
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" oneditactivation="if (!confirm('Are you sure you want to change the value?')){return false;}">
+    <f:selectItems value="#{demo.selectItems}" />
+</rich:inplaceSelect>
+... ]]></programlisting>  
       <para>
         The given code illustrates how <emphasis>
             <property>"oneditactivation"</property>
@@ -248,11 +248,11 @@ private String value = "";
         The <emphasis><property>&quot;selectOnEdit&quot;</property></emphasis> (with possible values &quot;true&quot;, &quot;false&quot;) gives you an 
         option to make the text in the input field selected right after the change from <property>view</property> state to <property>edit</property> occurs. 
       </para>
-        <programlisting role="XML"><![CDATA[...
+        <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:inplaceSelect value="#{bean.inputValue}" selectOnEdit="true">
     <f:selectItems  value="#{bean.selectItems}"/>
 </rich:inplaceSelect>
-...]]></programlisting>  -->
+...]]>]]></programlisting>  -->
       
       
 
@@ -267,11 +267,11 @@ private String value = "";
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para> 
-      <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" showControls="true" openOnEdit="false"&gt;
-    &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-&lt;/rich:inplaceSelect&gt;
-...</programlisting> 
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" showControls="true" openOnEdit="false">
+    <f:selectItems  value="#{bean.selectItems}"/>
+</rich:inplaceSelect>
+...]]></programlisting> 
 
 
       <para>
@@ -300,11 +300,11 @@ private String value = "";
       <para>
             <emphasis role="bold">Example:</emphasis>
       </para>      
-          <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" showControls="true"&gt;
-    &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-&lt;/rich:inplaceSelect&gt;
-...</programlisting>  
+          <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" showControls="true">
+    <f:selectItems  value="#{bean.selectItems}"/>
+</rich:inplaceSelect>
+...]]></programlisting>  
       <para>
         This is the result:
       </para>
@@ -342,11 +342,11 @@ private String value = "";
       <para>
         <emphasis role="bold">Example:</emphasis>
       </para>      
-      <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" controlsHorizontalPosition="left" controlsVerticalPosition="center" showControls="true"&gt;
-    &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-&lt;/rich:inplaceSelect&gt;
-... </programlisting>  
+      <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" controlsHorizontalPosition="left" controlsVerticalPosition="center" showControls="true">
+    <f:selectItems  value="#{bean.selectItems}"/>
+</rich:inplaceSelect>
+... ]]></programlisting>  
       <para>
         This is the result:
       </para>
@@ -367,15 +367,15 @@ private String value = "";
           <para>
             <emphasis role="bold">Example:</emphasis>
           </para>      
-          <programlisting role="XML">...
-&lt;rich:inplaceSelect value="#{bean.inputValue}" showControls="true"&gt;
-    &lt;f:facet name="controls"&gt;
-        &lt;button onclick="#{rich:component('inplaceSelect')}.save();" type="button"&gt;Save&lt;/button&gt;
-        &lt;button onclick="#{rich:component('inplaceSelect')}.cancel();" type="button"&gt;Cancel&lt;/button&gt; 
-    &lt;/f:facet&gt;  
-    &lt;f:selectItems  value="#{bean.selectItems}"/&gt;
-&lt;/rich:inplaceSelect&gt;
-... </programlisting>  
+          <programlisting role="XML"><![CDATA[...
+<rich:inplaceSelect value="#{bean.inputValue}" showControls="true">
+    <f:facet name="controls">
+        <button onclick="#{rich:component('inplaceSelect')}.save();" type="button">Save</button>
+        <button onclick="#{rich:component('inplaceSelect')}.cancel();" type="button">Cancel</button> 
+    </f:facet>  
+    <f:selectItems  value="#{bean.selectItems}"/>
+</rich:inplaceSelect>
+... ]]></programlisting>  
       <para>
         This is the result:
       </para>
@@ -417,7 +417,7 @@ private String value = "";
         <emphasis role="bold">Example:</emphasis>
       </para>      
       
-      <programlisting role="XML"><![CDATA[...
+      <programlisting role="XML"><![CDATA[<![CDATA[...
 <rich:inplaceSelect 
    value="#{inplaceComponentsBean.inputValue}" defaultLabel="Click to edit" showControls="true"
     showControls="true"

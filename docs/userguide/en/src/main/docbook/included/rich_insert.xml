@@ -32,7 +32,7 @@
                         <property>"highlight"</property>
                   </emphasis> attribute is defined and <ulink url="https://jhighlight.dev.java.net/"> JHighlight</ulink> open source library is in the classpath, the text from the file is formated and colorized.</para>
             <para>An example is placed below:</para>
-            <programlisting role="XML">&lt;rich:insert  src="/pages/sourcePage.xhtml" highlight="xhtml"/&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<rich:insert  src="/pages/sourcePage.xhtml" highlight="xhtml"/>]]></programlisting>
 
             <para>The result of using <emphasis role="bold"><property>&lt;rich:insert&gt;</property></emphasis> component is shown on the picture:</para>
             <figure>

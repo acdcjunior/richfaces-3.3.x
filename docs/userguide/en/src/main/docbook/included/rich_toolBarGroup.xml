@@ -70,19 +70,19 @@
 	     <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:toolBar itemSeparator="disc" width="500"&gt;
-		&lt;rich:toolBarGroup itemSeparator="line"&gt;
-       			&lt;h:commandLink value="Command 1.1"/&gt;
-            	&lt;h:commandLink value="Command 2.1"/&gt;
-      	&lt;/rich:toolBarGroup&gt;
-       	&lt;rich:toolBarGroup itemSeparator="line" location="right"&gt;
-       			&lt;h:commandLink value="Command 1.2"/&gt;
-            	&lt;h:commandLink value="Command 2.2"/&gt;
-      	&lt;/rich:toolBarGroup&gt;
-&lt;/rich:toolBar&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:toolBar itemSeparator="disc" width="500">
+		<rich:toolBarGroup itemSeparator="line">
+       			<h:commandLink value="Command 1.1"/>
+            	<h:commandLink value="Command 2.1"/>
+      	</rich:toolBarGroup>
+       	<rich:toolBarGroup itemSeparator="line" location="right">
+       			<h:commandLink value="Command 1.2"/>
+            	<h:commandLink value="Command 2.2"/>
+      	</rich:toolBarGroup>
+</rich:toolBar>
 ...
-</programlisting>
+]]></programlisting>
       <para>The code result is the following:</para>
       <figure>
          <title>Stylized <emphasis role="bold">

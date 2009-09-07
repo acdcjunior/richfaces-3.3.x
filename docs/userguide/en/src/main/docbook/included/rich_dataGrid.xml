@@ -75,32 +75,32 @@
          <emphasis role="bold">Example:</emphasis>
       </para>
 
-      <programlisting role="XML">...
-&lt;rich:panel style="width:150px;height:200px;"&gt;
-		&lt;h:form&gt;
-       			&lt;rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" columns="2" elements="4" first="1"&gt;
-               		&lt;f:facet name="header"&gt;
-                      		&lt;h:outputText value="Car Store"&gt;&lt;/h:outputText&gt;
-             			&lt;/f:facet&gt;
-                  		&lt;rich:panel&gt;
-                      		&lt;f:facet name="header"&gt;
-                          			&lt;h:outputText value="#{car.make} #{car.model}"&gt;&lt;/h:outputText&gt;
-                      		&lt;/f:facet&gt;
-                      		&lt;h:panelGrid columns="2"&gt;
-                           			&lt;h:outputText value="Price:" styleClass="label"&gt;&lt;/h:outputText&gt;
-                           			&lt;h:outputText value="#{car.price}"/&gt;
-                           			&lt;h:outputText value="Mileage:" styleClass="label"&gt;&lt;/h:outputText&gt;
-                           			&lt;h:outputText value="#{car.mileage}"/&gt;
-                      		&lt;/h:panelGrid&gt;
-                  		&lt;/rich:panel&gt;
-                  		&lt;f:facet name="footer"&gt;
-                      		&lt;rich:datascroller&gt;&lt;/rich:datascroller&gt;
-                  		&lt;/f:facet&gt;
-              	&lt;/rich:dataGrid&gt;
-		&lt;/h:form&gt;
-&lt;/rich:panel&gt;		
+      <programlisting role="XML"><![CDATA[...
+<rich:panel style="width:150px;height:200px;">
+		<h:form>
+       			<rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" columns="2" elements="4" first="1">
+               		<f:facet name="header">
+                      		<h:outputText value="Car Store"></h:outputText>
+             			</f:facet>
+                  		<rich:panel>
+                      		<f:facet name="header">
+                          			<h:outputText value="#{car.make} #{car.model}"></h:outputText>
+                      		</f:facet>
+                      		<h:panelGrid columns="2">
+                           			<h:outputText value="Price:" styleClass="label"></h:outputText>
+                           			<h:outputText value="#{car.price}"/>
+                           			<h:outputText value="Mileage:" styleClass="label"></h:outputText>
+                           			<h:outputText value="#{car.mileage}"/>
+                      		</h:panelGrid>
+                  		</rich:panel>
+                  		<f:facet name="footer">
+                      		<rich:datascroller></rich:datascroller>
+                  		</f:facet>
+              	</rich:dataGrid>
+		</h:form>
+</rich:panel>		
 ...
-</programlisting>
+]]></programlisting>
       <para>This is a result:</para>
 
       <figure>
@@ -122,14 +122,14 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML">...
-&lt;rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
-                        binding="#{listBean.dataGrid}" id="grid" elements="4" columns="2"&gt;
+      <programlisting role="XML"><![CDATA[...
+<rich:dataGrid value="#{dataTableScrollerBean.allCars}" var="car" ajaxKeys="#{listBean.list}" 
+                        binding="#{listBean.dataGrid}" id="grid" elements="4" columns="2">
 		...
-&lt;/rich:dataGrid&gt;
+</rich:dataGrid>
 ...
-&lt;a4j:commandButton action="#{listBean.action}" reRender="grid" value="Submit"/&gt;
-...</programlisting>
+<a4j:commandButton action="#{listBean.action}" reRender="grid" value="Submit"/>
+...]]></programlisting>
 
       <para> In the example <emphasis>
             <property>"reRender"</property>

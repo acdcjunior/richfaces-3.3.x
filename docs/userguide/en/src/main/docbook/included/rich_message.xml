@@ -67,14 +67,14 @@
             Boolean attribute<emphasis><property> "showSummary" </property></emphasis>defines possibility to display summary portion of displayed messages.
       </para>
 
-            <programlisting role="XML">&lt;rich:message for="id" passedLabel="No errors" showSummary="true"&gt;
-      &lt;f:facet name="errorMarker"&gt;
-            &lt;h:graphicImage url="/image/error.png"/&gt;
-      &lt;/f:facet&gt;
-      &lt;f:facet name="passedMarker"&gt;
-            &lt;h:graphicImage url="/image/passed.png"/&gt;
-      &lt;/f:facet&gt;  	
-&lt;/rich:message&gt;</programlisting>
+            <programlisting role="XML"><![CDATA[<rich:message for="id" passedLabel="No errors" showSummary="true">
+      <f:facet name="errorMarker">
+            <h:graphicImage url="/image/error.png"/>
+      </f:facet>
+      <f:facet name="passedMarker">
+            <h:graphicImage url="/image/passed.png"/>
+      </f:facet>  	
+</rich:message>]]></programlisting>
 
   </section>
    
