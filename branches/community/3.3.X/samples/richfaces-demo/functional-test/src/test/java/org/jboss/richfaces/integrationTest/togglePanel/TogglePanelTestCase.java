@@ -1,3 +1,21 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.togglePanel;
 
 import static org.testng.Assert.assertFalse;
@@ -16,20 +34,19 @@ import org.testng.annotations.Test;
 public class TogglePanelTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	// messages
-	private final String MSG_COMPONENT_DESCRIPTION = getMess("COMPONENT_DESCRIPTION");
-	private final String MSG_CLICK_ME_BUTTON_VISIBLE = getMess("CLICK_ME_BUTTON_VISIBLE");
-	private final String MSG_CLICK_ME_BUTTON_NOT_VISIBLE = getMess("CLICK_ME_BUTTON_NOT_VISIBLE");
-	private final String MSG_PANEL_N_VISIBLE = getMess("PANEL_N_VISIBLE");
-	private final String MSG_PANEL_N_NOT_VISIBLE = getMess("PANEL_N_NOT_VISIBLE");
+	private final String MSG_CLICK_ME_BUTTON_VISIBLE = getMsg("CLICK_ME_BUTTON_VISIBLE");
+	private final String MSG_CLICK_ME_BUTTON_NOT_VISIBLE = getMsg("CLICK_ME_BUTTON_NOT_VISIBLE");
+	private final String MSG_PANEL_VISIBLE_PREFORMATTED = getMsg("PANEL_VISIBLE_PREFORMATTED");
+	private final String MSG_PANEL_NOT_VISIBLE_PREFORMATTED = getMsg("PANEL_NOT_VISIBLE_PREFORMATTED");
 
 	// locators
 	private final String LOC_EXAMPLE_HEADER = getLoc("EXAMPLE_HEADER");
 	private final String LOC_CLICK_ME_BUTTON = getLoc("CLICK_ME_BUTTON");
-	private final String LOC_CLICK_ME_BUTTON_A = formatLoc("CLICK_ME_BUTTON_A_RELATIVE", LOC_CLICK_ME_BUTTON);
+	private final String LOC_CLICK_ME_BUTTON_A = getLoc("CLICK_ME_BUTTON_A");
 	private final String LOC_CLOSE_BUTTON = getLoc("CLOSE_BUTTON");
-	private final String LOC_PANEL_N = getLoc("PANEL_N");
-	private final String LOC_PREVIOUS_BUTTON_N = getLoc("PREVIOUS_BUTTON_N");
-	private final String LOC_NEXT_BUTTON_N = getLoc("NEXT_BUTTON_N");
+	private final String LOC_PANEL_PREFORMATTED = getLoc("PANEL_PREFORMATTED");
+	private final String LOC_PREVIOUS_BUTTON_PREFORMATTED = getLoc("PREVIOUS_BUTTON_PREFORMATTED");
+	private final String LOC_NEXT_BUTTON_PREFORMATTED = getLoc("NEXT_BUTTON_PREFORMATTED");
 
 	/**
 	 * Tests opening and closing the panel. It verifies that the "Click Me"
@@ -37,36 +54,24 @@ public class TogglePanelTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testOpenClosePanel() {
-		assertTrue(isDisplayed(LOC_CLICK_ME_BUTTON),
-				MSG_CLICK_ME_BUTTON_VISIBLE);
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+	    assertTrue(isDisplayed(LOC_CLICK_ME_BUTTON), MSG_CLICK_ME_BUTTON_VISIBLE);
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 
 		// open the panel
 		selenium.click(LOC_CLICK_ME_BUTTON_A);
-		assertFalse(isDisplayed(LOC_CLICK_ME_BUTTON),
-				MSG_CLICK_ME_BUTTON_NOT_VISIBLE);
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		assertFalse(isDisplayed(LOC_CLICK_ME_BUTTON), MSG_CLICK_ME_BUTTON_NOT_VISIBLE);
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 
 		// close the panel
 		selenium.click(LOC_CLOSE_BUTTON);
-		assertTrue(isDisplayed(LOC_CLICK_ME_BUTTON),
-				MSG_CLICK_ME_BUTTON_VISIBLE);
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		assertTrue(isDisplayed(LOC_CLICK_ME_BUTTON), MSG_CLICK_ME_BUTTON_VISIBLE);
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 	}
 
 	/**
@@ -80,48 +85,33 @@ public class TogglePanelTestCase extends AbstractSeleniumRichfacesTestCase {
 		selenium.click(LOC_CLICK_ME_BUTTON_A);
 
 		// 1st panel is open
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 
 		// click next -- move to the 2nd panel
-		selenium.click(String.format(LOC_NEXT_BUTTON_N, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 1));
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		selenium.click(format(LOC_NEXT_BUTTON_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 1));
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 
 		// click next -- move to the 3rd panel
-		selenium.click(String.format(LOC_NEXT_BUTTON_N, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_VISIBLE, 3));
+		selenium.click(format(LOC_NEXT_BUTTON_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 3));
 
 		// click previous -- move to the 2nd panel
-		selenium.click(String.format(LOC_PREVIOUS_BUTTON_N, 3));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 1));
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		selenium.click(format(LOC_PREVIOUS_BUTTON_PREFORMATTED, 3));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 1));
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 
 		// click previous -- move to the 1st panel
-		selenium.click(String.format(LOC_PREVIOUS_BUTTON_N, 2));
-		assertTrue(isDisplayed(String.format(LOC_PANEL_N, 1)), String.format(
-				MSG_PANEL_N_VISIBLE, 1));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 2)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 2));
-		assertFalse(isDisplayed(String.format(LOC_PANEL_N, 3)), String.format(
-				MSG_PANEL_N_NOT_VISIBLE, 3));
+		selenium.click(format(LOC_PREVIOUS_BUTTON_PREFORMATTED, 2));
+		assertTrue(isDisplayed(format(LOC_PANEL_PREFORMATTED, 1)), format(MSG_PANEL_VISIBLE_PREFORMATTED, 1));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 2)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 2));
+		assertFalse(isDisplayed(format(LOC_PANEL_PREFORMATTED, 3)), format(MSG_PANEL_NOT_VISIBLE_PREFORMATTED, 3));
 	}
 
 	/**
@@ -164,9 +154,10 @@ public class TogglePanelTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
 	 * Loads the page containing the component.
 	 */
+	@SuppressWarnings("unused")
 	@BeforeMethod
 	private void loadPage() {
-		super.loadPage("richOutputs", 11, 1, MSG_COMPONENT_DESCRIPTION);
+	    openComponent("Toggle Panel");
 		scrollIntoView(LOC_EXAMPLE_HEADER, true);
 	}
 }
