@@ -1,9 +1,27 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
 package org.jboss.richfaces.integrationTest.tooltip;
 
-import junit.framework.Assert;
+import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.Condition;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -11,65 +29,47 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class TooltipDataTableTestCase extends AbstractSeleniumRichfacesTestCase {
-	/**
-	 * Opens specified page
-	 */
-	public void openPage() {
-		selenium.allowNativeXpath("true");
 
-		selenium.open(format("{0}/{1}", contextPath, PAGE));
+	private final String LOC_FIELDSET_HEADER_2 = getLoc("FIELDSET_HEADER_2");
+	private final String LOC_TD_PREFORMATTED = getLoc("TD_PREFORMATTED");
+	private final String LOC_DIV_TOOLTIP_ITEM_PREFORMATTED = getLoc("DIV_TOOLTIP_ITEM_PREFORMATTED");
+	private final String LOC_OUTPUT_TOOLTIP_MAKE = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.MAKE);
+	private final String LOC_OUTPUT_TOOLTIP_MODEL = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.MODEL);
+	private final String LOC_OUTPUT_TOOLTIP_YEAR = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.YEAR);
+	private final String LOC_TD_MAKE_RELATIVE_TO_LABEL = getLoc("TD_MAKE_RELATIVE_TO_LABEL");
+	private final String LOC_TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA = getLoc("TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA");
 
-		scrollIntoView(table, true);
+	private final String MSG_EVENT_COORDS_FOR_TABLE = getMsg("EVENT_COORDS_FOR_TABLE");
+
+	@Test
+	public void testIterateThroughTable() {
+		int rows = selenium.getXpathCount(format(LOC_TD_PREFORMATTED, 0, Column.MAKE)).intValue();
+
+		for (int row = 1; row <= rows; row++) {
+			final String locCellMake = format(LOC_TD_PREFORMATTED, row, Column.MAKE);
+			final String locCellModel = format(LOC_TD_PREFORMATTED, row, Column.MODEL);
+			final String locCellYear = format(LOC_TD_PREFORMATTED, row, Column.YEAR);
+			final String locActiveTooltipArea = format(LOC_TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA, locCellMake);
+
+			if (row == 1)
+				selenium.mouseMoveAt(locActiveTooltipArea, MSG_EVENT_COORDS_FOR_TABLE);
+			mouseOverAt(locActiveTooltipArea, MSG_EVENT_COORDS_FOR_TABLE);
+			waitForElementAppears(LOC_OUTPUT_TOOLTIP_MAKE);
+
+			assertEquals(selenium.getText(LOC_OUTPUT_TOOLTIP_MAKE), selenium.getText(format(
+					LOC_TD_MAKE_RELATIVE_TO_LABEL, locCellMake)));
+			assertEquals(selenium.getText(LOC_OUTPUT_TOOLTIP_MODEL), selenium.getText(locCellModel));
+			assertEquals(selenium.getText(LOC_OUTPUT_TOOLTIP_YEAR), selenium.getText(locCellYear));
+
+			selenium.mouseOut(locActiveTooltipArea);
+			waitForElementDisappears(LOC_OUTPUT_TOOLTIP_MAKE);
+		}
 	}
 
 	private static class Column {
 		public static final int MAKE = 0;
 		public static final int MODEL = 1;
 		public static final int YEAR = 2;
-	}
-
-	private final String PAGE = "richfaces/toolTip.jsf?c=toolTip&tab=table";
-	private final String table = getLoc("data-table--table");
-	private final String cells = getLoc("data-table--cells-preformatted");
-	private final String coords = getMess("data-table--coords--event-at-cell");
-	private final String itemsOnTooltip = getLoc("data-table--items-on-tooltip");
-	private final String outputTooltipMake = format(itemsOnTooltip, Column.MAKE);
-	private final String outputTooltipModel = format(itemsOnTooltip,
-			Column.MODEL);
-	private final String outputTooltipYear = format(itemsOnTooltip, Column.YEAR);
-
-	@Test
-	public void iterateThroughTableTest() {
-		openPage();
-
-		int rows = selenium.getXpathCount(format(cells, 0, Column.MAKE))
-				.intValue();
-
-		for (int row = 1; row <= rows; row++) {
-			final String cellMake = format(cells, row, Column.MAKE);
-			final String cellModel = format(cells, row, Column.MODEL);
-			final String cellYear = format(cells, row, Column.YEAR);
-			final String activeTooltipArea = formatLoc(
-					"data-table--relative--cell-make-to-its-active-tooltip-area",
-					cellMake);
-
-			if (row == 1)
-				selenium.mouseMoveAt(activeTooltipArea, coords);
-			mouseOverAt(activeTooltipArea, coords);
-			waitForElementAppears(outputTooltipMake);
-
-			Assert.assertEquals(selenium.getText(outputTooltipMake), selenium
-					.getText(formatLoc(
-							"data-table--relative--cell-make-to-its-label",
-							cellMake)));
-			Assert.assertEquals(selenium.getText(outputTooltipModel), selenium
-					.getText(cellModel));
-			Assert.assertEquals(selenium.getText(outputTooltipYear), selenium
-					.getText(cellYear));
-
-			selenium.mouseOut(activeTooltipArea);
-			waitForElementDisappears(outputTooltipMake);
-		}
 	}
 
 	private void waitForElementAppears(final String locator) {
@@ -86,5 +86,14 @@ public class TooltipDataTableTestCase extends AbstractSeleniumRichfacesTestCase 
 				return !selenium.isElementPresent(locator);
 			}
 		});
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("ToolTip");
+		openTab("Use ToolTip with DataTable");
+		scrollIntoView(LOC_FIELDSET_HEADER_2, true);
+		selenium.allowNativeXpath("true");
 	}
 }
