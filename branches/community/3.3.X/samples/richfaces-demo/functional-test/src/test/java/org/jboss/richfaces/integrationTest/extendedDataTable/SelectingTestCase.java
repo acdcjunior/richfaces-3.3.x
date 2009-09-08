@@ -29,19 +29,19 @@ import org.testng.annotations.Test;
  */
 public class SelectingTestCase extends AbstractExtendedDataTableTestCase {
 
-	private final String LOC_TR_SELECTED = getLoc("extended-data-table--selected-row");
-	private final String LOC_SELECT_SELECTION_MODE = getLoc("extended-data-table--select--selection");
+	private final String LOC_TR_SELECTED = getLoc("TR_SELECTED");
+	private final String LOC_SELECT_SELECTION_MODE = getLoc("SELECT_SELECTION_MODE");
 
-	private final String MSG_OPTION_SELECTION_NONE = getMsg("extended-data-table--option--selection-none");
-	private final String MSG_OPTION_SELECTION_SINGLE = getMsg("extended-data-table--option--selection-single");
-	private final String MSG_OPTION_SELECTION_MULTI = getMsg("extended-data-table--option--selection-multi");
-	private final String MSG_INPUT_SINGLE_ROW = getMsg("extended-data-table--input--single-row");
-	private final String MSG_INPUT_MULTIPLE_ROWS = getMsg("extended-data-table--input--multiple-rows");
-	private final String MSG_OUTPUT_MODE_NONE = getMsg("extended-data-table--output--mode-none");
-	private final String MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE = getMsg("extended-data-table--output--mode-single--single-row");
-	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE = getMsg("extended-data-table--output--mode-single--multiple-rows");
-	private final String MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE = getMsg("extended-data-table--output--mode-multi--single-row");
-	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE = getMsg("extended-data-table--output--mode-multi--multiple-rows");
+	private final String MSG_OPTION_SELECTION_NONE = getMsg("OPTION_SELECTION_NONE");
+	private final String MSG_OPTION_SELECTION_SINGLE = getMsg("OPTION_SELECTION_SINGLE");
+	private final String MSG_OPTION_SELECTION_MULTI = getMsg("OPTION_SELECTION_MULTI");
+	private final String MSG_INPUT_SINGLE_ROW = getMsg("INPUT_SINGLE_ROW");
+	private final String MSG_INPUT_MULTIPLE_ROWS = getMsg("INPUT_MULTIPLE_ROWS");
+	private final String MSG_OUTPUT_MODE_NONE = getMsg("OUTPUT_MODE_NONE");
+	private final String MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_SINGLE_MODE");
+	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE");
+	private final String MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_MULTI_MODE");
+	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE");
 
 	/**
 	 * Checks single and multiple selection in selection-mode "none". Checks

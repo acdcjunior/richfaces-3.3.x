@@ -30,9 +30,9 @@ import org.testng.annotations.Test;
 public class FilteringTestCase extends AbstractExtendedDataTableTestCase {
 
 	private final String[] MSG_LIST_OF_STATE_PREFIXES = StringUtils.splitPreserveAllTokens(
-			getMsg("extended-data-table--input--state-prefixes"), ',');
+			getMsg("LIST_OF_STATE_PREFIXES"), ',');
 	private final String[] MSG_LIST_OF_CAPITAL_PREFIXES = StringUtils.splitPreserveAllTokens(
-			getMsg("extended-data-table--input--capital-prefixes"), ',');
+			getMsg("LIST_OF_CAPITAL_PREFIXES"), ',');
 
 	/**
 	 * Alternate between state and capital input by entering predefined prefixes
