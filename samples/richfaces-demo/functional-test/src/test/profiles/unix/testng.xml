@@ -221,10 +221,42 @@
 	</test>
 
 	<test
-		name="org.jboss.richfaces.integrationTest.extendedDataTable.ExtendedDataTableTestCase">
+		name="org.jboss.richfaces.integrationTest.extendedDataTable.DraggingTestCase">
 		<classes>
 			<class
-				name="org.jboss.richfaces.integrationTest.extendedDataTable.ExtendedDataTableTestCase" />
+				name="org.jboss.richfaces.integrationTest.extendedDataTable.DraggingTestCase" />
+		</classes>
+	</test>
+	
+	<test
+		name="org.jboss.richfaces.integrationTest.extendedDataTable.FilteringTestCase">
+		<classes>
+			<class
+				name="org.jboss.richfaces.integrationTest.extendedDataTable.FilteringTestCase" />
+		</classes>
+	</test>
+	
+	<test
+		name="org.jboss.richfaces.integrationTest.extendedDataTable.GroupingTestCase">
+		<classes>
+			<class
+				name="org.jboss.richfaces.integrationTest.extendedDataTable.GroupingTestCase" />
+		</classes>
+	</test>
+	
+	<test
+		name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase">
+		<classes>
+			<class
+				name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase" />
+		</classes>
+	</test>
+	
+	<test
+		name="org.jboss.richfaces.integrationTest.extendedDataTable.SortingTestCase">
+		<classes>
+			<class
+				name="org.jboss.richfaces.integrationTest.extendedDataTable.SortingTestCase" />
 		</classes>
 	</test>
 
