@@ -1,22 +1,19 @@
-/**
- * License Agreement.
- *
- *  JBoss RichFaces
- *
- * Copyright (C) 2009  Red Hat, Inc.
- *
- * This code is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this code; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
  */
 
 package org.jboss.richfaces.integrationTest.tree;
@@ -188,25 +185,23 @@ public class TreeTestCase extends AbstractSeleniumRichfacesTestCase {
         String label = null;
         for (int i = 0; i < numberOfNodes; i++) {
             label = selenium.getText(format(LOC_NODE_1_1_N_LABEL_PREFORMATTED, index, i + 1));
-            assertEquals(label, MSG_NODE_1_1_N_LABEL[i], format("Node 1.1.{0} should have name {1}.", i + 1,
-                    MSG_NODE_1_1_N_LABEL[0]));
+            assertEquals(label, MSG_NODE_1_1_N_LABEL[i], format("Node 1.1.{0} should have name {1}.", i + 1, MSG_NODE_1_1_N_LABEL[0]));
         }
 
         // check the number of expanded nodes on first level
         numberOfNodes = selenium.getXpathCount(format(LOC_CHILDREN_1_PREFORMATTED, index)).intValue();
-        assertEquals(numberOfNodes, MSG_CHILDREN_COUNT_TOP, format("There should be {0} top nodes.",
-                MSG_CHILDREN_COUNT_TOP));
+        assertEquals(numberOfNodes, MSG_CHILDREN_COUNT_TOP, format("There should be {0} top nodes.", MSG_CHILDREN_COUNT_TOP));
 
         // check that only the first node is expanded
         for (int i = 2; i < 5; i++) {
-            assertFalse(isDisplayed(format(LOC_NODE_N_PREFORMATTED, index, i)), format(
-                    "Node nr. {0} should be collapsed.", i));
+            assertFalse(isDisplayed(format(LOC_NODE_N_PREFORMATTED, index, i)), format("Node nr. {0} should be collapsed.", i));
         }
     }
 
     /**
      * Loads the needed page.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("Tree");
