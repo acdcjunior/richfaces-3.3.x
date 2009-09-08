@@ -28,17 +28,17 @@ import org.testng.annotations.BeforeMethod;
  */
 public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTestCase {
 
-	protected final String LOC_TH_STATE = getLoc("extended-data-table--column-header--state");
-	protected final String LOC_TH_CAPITAL = getLoc("extended-data-table--column-header--capital");
-	protected final String LOC_TH_TIME_ZONE = getLoc("extended-data-table--column-header--time-zone");
-	protected final String LOC_TH_FLAG = getLoc("extended-data-table--column-header--flag");
-	protected final String LOC_TH_RELATIVE = getLoc("extended-data-table--relative-column-header--from-label");
-	protected final String LOC_TD_PREFORMATTED = getLoc("extended-data-table--cells");
-	private final String LOC_TABLE_EXTENDED = getLoc("extended-data-table--table");
-	private final String LOC_DIV_SPLASH_SCREEN = getLoc("extended-data-table--splash-screen");
-	private final String LOC_INPUT_COLUMN_FILTER = getLoc("extended-data-table--input--filter-column");
+	protected final String LOC_TH_STATE = getLoc("TH_STATE");
+	protected final String LOC_TH_CAPITAL = getLoc("TH_CAPITAL");
+	protected final String LOC_TH_TIME_ZONE = getLoc("TH_TIME_ZONE");
+	protected final String LOC_TH_FLAG = getLoc("TH_FLAG");
+	protected final String LOC_TH_RELATIVE = getLoc("TH_RELATIVE");
+	protected final String LOC_TD_PREFORMATTED = getLoc("TD_PREFORMATTED");
+	private final String LOC_TABLE_EXTENDED = getLoc("TABLE_EXTENDED");
+	private final String LOC_DIV_SPLASH_SCREEN = getLoc("DIV_SPLASH_SCREEN");
+	private final String LOC_INPUT_COLUMN_FILTER = getLoc("INPUT_COLUMN_FILTER");
 
-	private final String MSG_OPTION_SELECTION_MODE_PREFORMATTED = getMsg("extended-data-table--option-value--selection-mode-preformatted");
+	private final String MSG_OPTION_SELECTION_MODE_PREFORMATTED = getMsg("OPTION_SELECTION_MODE_PREFORMATTED");
 
 	@BeforeMethod
 	protected void loadPage() {

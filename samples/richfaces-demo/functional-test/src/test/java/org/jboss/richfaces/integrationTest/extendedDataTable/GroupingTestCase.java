@@ -27,14 +27,14 @@ import org.testng.annotations.Test;
  */
 public class GroupingTestCase extends AbstractExtendedDataTableTestCase {
 
-	private final String LOC_DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE = getLoc("extended-data-table--relative-div--context-menu-button");
-	private final String LOC_MENU_ITEM_GROUP_BY_COLUMN = getLoc("extended-data-table--menu-item--group-by-column");
-	private final String LOC_TD_GROUP_PREFORMATTED = getLoc("extended-data-table--table-row--group-text-preformatted");
-	private final String LOC_TR_PREFORMATTED = getLoc("extended-data-table--table-row--regular-row-preformatted");
+	private final String LOC_DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE = getLoc("DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE");
+	private final String LOC_MENU_ITEM_GROUP_BY_COLUMN = getLoc("MENU_ITEM_GROUP_BY_COLUMN");
+	private final String LOC_TD_GROUP_PREFORMATTED = getLoc("TD_GROUP_PREFORMATTED");
+	private final String LOC_TR_PREFORMATTED = getLoc("TR_PREFORMATTED");
 	private final String LOC_COLUMN_HEADER = format(LOC_TH_RELATIVE, LOC_TH_STATE);
 	private final String LOC_BUTTON_MENU = format(LOC_DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE, LOC_COLUMN_HEADER);
 
-	private final String MSG_TR_CLASS = getMsg("extended-data-table--class--group-row");
+	private final String MSG_TR_CLASS = getMsg("TR_CLASS");
 
 	/**
 	 * Group by state column and checks that each regular row is under group

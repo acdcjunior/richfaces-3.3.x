@@ -33,16 +33,16 @@ import org.testng.annotations.Test;
  */
 public class DraggingTestCase extends AbstractExtendedDataTableTestCase {
 
-	private final String LOC_DIV_DROP_ZONE_LEFT_RELATIVE = getLoc("extended-data-table--relative-div--drop-zone-left");
+	private final String LOC_DIV_DROP_ZONE_LEFT_RELATIVE = getLoc("DIV_DROP_ZONE_LEFT_RELATIVE");
 	private final String LOC_DIV_DROP_ZONE_STATE = format(LOC_DIV_DROP_ZONE_LEFT_RELATIVE, LOC_TH_STATE);
-	private final String LOC_DIV_DROP_ZONE_RIGHT_RELATIVE = getLoc("extended-data-table--relative-div--drop-zone-right");
+	private final String LOC_DIV_DROP_ZONE_RIGHT_RELATIVE = getLoc("DIV_DROP_ZONE_RIGHT_RELATIVE");
 	private final String LOC_DIV_DROP_ZONE_CAPITAL = format(LOC_DIV_DROP_ZONE_RIGHT_RELATIVE, LOC_TH_CAPITAL);
-	private final String LOC_COLUMN_TO_ITS_CONTENT_RELATIVE = getLoc("extended-data-table--relative-div--column-to-its-content");
-	private final String LOC_IMAGE_SRC_FLAG_PREFORMATTED = getLoc("extended-data-table--relative-image-src--flag");
+	private final String LOC_COLUMN_TO_ITS_CONTENT_RELATIVE = getLoc("COLUMN_TO_ITS_CONTENT_RELATIVE");
+	private final String LOC_IMAGE_SRC_FLAG_PREFORMATTED = getLoc("IMAGE_SRC_FLAG_PREFORMATTED");
 	private final String[] LOC_TH_DRAGGING_TESTS = new String[] { LOC_TH_STATE, LOC_TH_CAPITAL, LOC_TH_FLAG,
 			LOC_TH_TIME_ZONE };
 
-	private final String MSG_INPUT_LETTER_FILTER = getMsg("extended-data-table--input--sorting-letter-in-dragging");
+	private final String MSG_INPUT_LETTER_FILTER = getMsg("INPUT_LETTER_FILTER");
 
 	/**
 	 * Apply filtering and sorting to two different columns and next drag two

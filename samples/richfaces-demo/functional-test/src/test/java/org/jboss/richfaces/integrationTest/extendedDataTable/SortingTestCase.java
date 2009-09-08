@@ -27,10 +27,10 @@ import org.testng.annotations.Test;
 public class SortingTestCase extends AbstractExtendedDataTableTestCase {
 
 	private final String[] LOC_TH_SORTING_TESTS = new String[] { LOC_TH_STATE, LOC_TH_CAPITAL };
-	private final String LOC_SELECT_SORT_MODE = getLoc("extended-data-table--select--sort");
+	private final String LOC_SELECT_SORT_MODE = getLoc("SELECT_SORT_MODE");
 	
-	private final String MSG_OPTION_SORT_SINGLE = getMsg("extended-data-table--option--sort-single");
-	private final String MSG_OPTION_SORT_MULTI = getMsg("extended-data-table--option--sort-multi");
+	private final String MSG_OPTION_SORT_SINGLE = getMsg("OPTION_SORT_SINGLE");
+	private final String MSG_OPTION_SORT_MULTI = getMsg("OPTION_SORT_MULTI");
 
 	/**
 	 * Switch to single sorting mode and try sort by each column. Checks that
