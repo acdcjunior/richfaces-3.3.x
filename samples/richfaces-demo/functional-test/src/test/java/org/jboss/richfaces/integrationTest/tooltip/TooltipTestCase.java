@@ -1,3 +1,20 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
 package org.jboss.richfaces.integrationTest.tooltip;
 
 import java.util.regex.Matcher;
@@ -5,7 +22,8 @@ import java.util.regex.Pattern;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.*;
-import org.testng.Assert;
+import static org.testng.Assert.*;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -13,152 +31,164 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
+
+	private final String LOC_FIELDSET_HEADER_1 = getLoc("FIELDSET_HEADER_1");
+	private final String LOC_PANEL_SAMPLE_1 = getLoc("PANEL_SAMPLE_1");
+	private final String LOC_PANEL_SAMPLE_2 = getLoc("PANEL_SAMPLE_2");
+	private final String LOC_PANEL_SAMPLE_3 = getLoc("PANEL_SAMPLE_3");
+	private final String LOC_PANEL_SAMPLE_4 = getLoc("PANEL_SAMPLE_4");
+	private final String LOC_SPAN_TOOLTIPS_REQUESTED = getLoc("SPAN_TOOLTIPS_REQUESTED");
+
+	private final String MSG_EVENT_COORDS_AT_PANEL = getMsg("EVENT_COORDS_AT_PANEL");
+	private final String MSG_OUTPUT_TOOLTIP_1 = getMsg("OUTPUT_TOOLTIP_1");
+	private final String MSG_OUTPUT_TOOLTIP_2 = getMsg("OUTPUT_TOOLTIP_2");
+	private final String MSG_OUTPUT_TOOLTIP_3_4_WAITING = getMsg("OUTPUT_TOOLTIP_3_4_WAITING");
+	private final String MSG_OUTPUT_TOOLTIP_3_4_TEXT = getMsg("OUTPUT_TOOLTIP_3_4_TEXT");
+	private final Pattern MSG_REGEXP_TOOLTIPS_REQUESTED = Pattern.compile(getMsg("REGEXP_TOOLTIPS_REQUESTED"));
+
 	/**
-	 * Opens specified page
+	 * Hover mouse at first panel and so invokes tooltip displaying. Checks that
+	 * the tooltip text will display and next hover mouse out of panel to close
+	 * tooltip. Do this all above three times.
 	 */
-	public void openPage() {
-		selenium.allowNativeXpath("true");
-
-		selenium.open(format("{0}/{1}", contextPath, PAGE));
-
-		scrollIntoView(header, true);
-	}
-
-	private final String PAGE = "richfaces/toolTip.jsf?c=toolTip&tab=usage";
-	private final String header = getLoc("header");
-
-	private final String coords = getMess("coords--event-at-panel");
-	private final String tooltip = getLoc("tooltip--text-part--tooltips-requested");
-	private final String toolTipWait = getMess("output--tooltip3-4-wait");
-	private final String toolTipText = getMess("output--tooltip3-4-text-part");
-	private final Pattern pattern = Pattern.compile(getMess("regexp--tooltips-requested"));
-
 	@Test
-	public void defaultToolTipTest() {
-		openPage();
-
-		final String panel = getLoc("panel--sample1");
-		final String toolTipText = getMess("output--tooltip1-text-part");
+	public void testDefaultToolTip() {
 
 		for (int i = 0; i < 3; i++) {
-			Assert.assertFalse(selenium.isTextPresent(toolTipText));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_1));
 
 			if (i == 0) /*
 						 * satisfies that mouseOverAt will work as expected -
 						 * without this mouseOverAt do nothing
 						 */
-				selenium.mouseMoveAt(panel, coords);
-			mouseOverAt(panel, coords);
+				selenium.mouseMoveAt(LOC_PANEL_SAMPLE_1, MSG_EVENT_COORDS_AT_PANEL);
+			mouseOverAt(LOC_PANEL_SAMPLE_1, MSG_EVENT_COORDS_AT_PANEL);
 
-			waitForText(toolTipText);
+			waitForText(MSG_OUTPUT_TOOLTIP_1);
 
-			selenium.mouseOut(panel);
-			waitForTextDisappears(toolTipText);
+			selenium.mouseOut(LOC_PANEL_SAMPLE_1);
+			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_1);
 		}
 	}
 
+	/**
+	 * Hover mouse at second panel (top right) and so invokes deplayed tooltip
+	 * displaying. Checks that expected text will display and then hover mouse
+	 * out of panel to close tooltip. Do this all above three times.
+	 */
 	@Test
-	public void followMouseDelayedTest() {
-		openPage();
-
-		final String panel = getLoc("panel--sample2");
-		final String toolTipText = getMess("output--tooltip2-text-part");
+	public void testFollowMouseDelayed() {
 
 		for (int i = 0; i < 3; i++) {
-			Assert.assertFalse(selenium.isTextPresent(toolTipText));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_2));
 
 			if (i == 0)
-				selenium.mouseMoveAt(panel, coords);
-			mouseOverAt(panel, coords);
+				selenium.mouseMoveAt(LOC_PANEL_SAMPLE_2, MSG_EVENT_COORDS_AT_PANEL);
+			mouseOverAt(LOC_PANEL_SAMPLE_2, MSG_EVENT_COORDS_AT_PANEL);
 
-			waitForText(toolTipText);
+			waitForText(MSG_OUTPUT_TOOLTIP_2);
 
-			selenium.mouseOut(panel);
-			waitForTextDisappears(toolTipText);
+			selenium.mouseOut(LOC_PANEL_SAMPLE_2);
+			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_2);
 		}
 	}
 
+	/**
+	 * Hover mouse at third (bottom left) panel and so invokes server rendered
+	 * tooltip diplaying. Checks that expected text will display and then hover
+	 * mouse out to close tooltip. Do all above three times and checks that
+	 * tooltips requested counter is counting right.
+	 */
 	@Test
-	public void separateServerRequestsTest() {
-		openPage();
-
-		final String panel = getLoc("panel--sample3");
+	public void testSeparateServerRequests() {
 		Integer tooltipsRequested = null;
 
 		for (int i = 0; i < 3; i++) {
-			Assert.assertFalse(selenium.isTextPresent(toolTipWait));
-			Assert.assertFalse(selenium.isTextPresent(toolTipText));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_WAITING));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_TEXT));
 
 			if (i == 0)
-				selenium.mouseMoveAt(panel, coords);
-			mouseOverAt(panel, coords);
+				selenium.mouseMoveAt(LOC_PANEL_SAMPLE_3, MSG_EVENT_COORDS_AT_PANEL);
+			mouseOverAt(LOC_PANEL_SAMPLE_3, MSG_EVENT_COORDS_AT_PANEL);
 
 			tooltipsRequested = waitForTooltipChanges(tooltipsRequested, i == 0);
-			 
-			selenium.mouseOut(panel);
-			waitForTextDisappears(toolTipText);
+
+			selenium.mouseOut(LOC_PANEL_SAMPLE_3);
+			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
 		}
 	}
-	
-	@Test
-	public void mouseClickActivationTest() {
-		openPage();
 
-		final String panel = getLoc("panel--sample4");
+	/**
+	 * Click at third (bottom left) panel and so invokes server rendered
+	 * tooltip diplaying. Checks that expected text will display and then hover
+	 * mouse out to close tooltip. Do all above three times and checks that
+	 * tooltips requested counter is counting right.
+	 */
+	@Test
+	public void testMouseClickActivation() {
 		Integer tooltipsRequested = null;
 
 		for (int i = 0; i < 3; i++) {
-			Assert.assertFalse(selenium.isTextPresent(toolTipWait));
-			Assert.assertFalse(selenium.isTextPresent(toolTipText));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_WAITING));
+			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_TEXT));
 
-			selenium.clickAt(panel, coords);
+			selenium.clickAt(LOC_PANEL_SAMPLE_4, MSG_EVENT_COORDS_AT_PANEL);
 
 			tooltipsRequested = waitForTooltipChanges(tooltipsRequested, i == 0);
 
-			selenium.mouseOut(panel);
-			waitForTextDisappears(toolTipText);
+			selenium.mouseOut(LOC_PANEL_SAMPLE_4);
+			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
 		}
 	}
-	
+
 	private Integer waitForTooltipChanges(Integer tooltipsRequestedOld, boolean firstLoop) {
 		Integer tooltipsRequested = null;
-		
+
 		if (firstLoop) {
-			waitForText(toolTipWait);
-			waitForText(toolTipText);
+			waitForText(MSG_OUTPUT_TOOLTIP_3_4_WAITING);
+			waitForText(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
 			tooltipsRequested = retrieveRequestedTooltips.retrieve();
 		} else {
-			waitForText(toolTipText);
+			waitForText(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
 			tooltipsRequested = Wait.waitForChangeAndReturn(tooltipsRequestedOld, retrieveRequestedTooltips);
-			
+
 			if (tooltipsRequestedOld != null) {
-				Assert.assertEquals(tooltipsRequested, Integer.valueOf(tooltipsRequestedOld + 1));
+				assertEquals(tooltipsRequested, Integer.valueOf(tooltipsRequestedOld + 1));
 			}
 		}
-		
+
 		return tooltipsRequested;
 	}
-	
+
 	private Retrieve<Integer> retrieveRequestedTooltips = new Retrieve<Integer>() {
 		public Integer retrieve() {
 			String text = Wait.interval(20).timeout(2000).waitForChangeAndReturn(null, new Retrieve<String>() {
 				public String retrieve() {
-					return getTextOrNull(tooltip);
+					return getTextOrNull(LOC_SPAN_TOOLTIPS_REQUESTED);
 				}
 			});
-			Matcher matcher = pattern.matcher(text);
+			Matcher matcher = MSG_REGEXP_TOOLTIPS_REQUESTED.matcher(text);
 			if (!matcher.matches()) {
-				Assert.fail();
+				fail();
 			}
 			return Integer.valueOf(matcher.group(1));
 		}
 	};
-	
+
 	private void waitForTextDisappears(final String text) {
 		waitModelUpdate.until(new Condition() {
 			public boolean isTrue() {
 				return !selenium.isElementPresent(text);
 			}
 		});
+	}
+
+	@SuppressWarnings("unused")
+	@BeforeMethod
+	private void loadPage() {
+		openComponent("ToolTip");
+		openTab("Usage");
+		scrollIntoView(LOC_FIELDSET_HEADER_1, true);
+		selenium.allowNativeXpath("true");
 	}
 }
