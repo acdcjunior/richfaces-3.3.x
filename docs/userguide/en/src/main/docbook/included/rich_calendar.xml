@@ -283,11 +283,11 @@
                               </emphasis>. And it should be bound to <emphasis>
                                         <property>"ondateselected"</property>
                               </emphasis> event as it's shown in the example below:</para>
-                    <programlisting role="XML">...
-&lt;rich:calendar id="date" value="#{bean.dateTest}"&gt;
-          &lt;a4j:support event="ondateselected" reRender="mainTable"/&gt;
-&lt;/rich:calendar&gt;
-...</programlisting>
+   	<programlisting role="XML"><![CDATA[...
+<rich:calendar id="date" value="#{bean.dateTest}">
+          <a4j:support event="ondateselected" reRender="mainTable"/>
+</rich:calendar>
+...]]></programlisting>
                     <note>
                               <title>Note:</title>
                               <para>
@@ -302,9 +302,9 @@
                                         <property>"ondateselect"</property>
                               </emphasis> could be used for possibility of date selection canceling.
                               See an example below:</para>
-                    <programlisting role="XML">...
-&lt;rich:calendar id="date" value="#{bean.dateTest}" ondateselect="if (!confirm('Are you sure to change date?')){return false;}"/&gt;
-...</programlisting>
+   	<programlisting role="XML"><![CDATA[...
+<rich:calendar id="date" value="#{bean.dateTest}" ondateselect="if (!confirm('Are you sure to change date?')){return false;}"/>
+...]]></programlisting>
                     <para>
                               <emphasis>
                                         <property>"oncurrentdateselected"</property>
@@ -321,10 +321,10 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:calendar id="date" value="#{bean.dateTest}" oncurrentdateselect="if (!confirm('Are you sure to change month(year)?')){return false;}"
-          oncurrentdateselected="alert('month(year) select:'+event.rich.date.toString());"/&gt;
-...</programlisting>
+   	<programlisting role="XML"><![CDATA[...
+<rich:calendar id="date" value="#{bean.dateTest}" oncurrentdateselect="if (!confirm('Are you sure to change month(year)?')){return false;}"
+          oncurrentdateselected="alert('month(year) select:'+event.rich.date.toString());"/>
+...]]></programlisting>
                     <para>How to use these attributes see also on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4092275#4092275">RichFaces Users Forum</ulink>.</para>
                     <para> Information about the <emphasis>
                                         <property>"process"</property>
@@ -417,49 +417,49 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="CSS">...
-&lt;!-- Styles for cells --&gt;
-&lt;style&gt;
+   	<programlisting role="CSS"><![CDATA[...
+<!-- Styles for cells -->
+<style>
     .width100{
         width:100%;
     }
     .talign{
         text-align:center;
     }
-&lt;/style&gt;
-...</programlisting>
+</style>
+...]]></programlisting>
 
-                    <programlisting role="XML">...
-&lt;rich:calendar id="myCalendar" popup="true" locale="#{calendarBean.locale}" value="#{bean.date}"
-                            preloadRangeBegin="#{bean.date}" preloadRangeEnd="#{bean.date}" cellWidth="40px" cellHeight="40px"&gt;
+   	<programlisting role="XML"><![CDATA[...
+<rich:calendar id="myCalendar" popup="true" locale="#{calendarBean.locale}" value="#{bean.date}"
+                            preloadRangeBegin="#{bean.date}" preloadRangeEnd="#{bean.date}" cellWidth="40px" cellHeight="40px">
 
-	&lt;!-- Customization with usage of facets and accessible elements --&gt;
-    &lt;f:facet name="header"&gt;
-        &lt;h:panelGrid columns="2" width="100%" columnClasses="width100, fake"&gt;
-            &lt;h:outputText value="{selectedDateControl}" /&gt;
-            &lt;h:outputText value="{todayControl}"  style="font-weight:bold; text-align:left"/&gt;
-        &lt;/h:panelGrid&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="weekDay"&gt;
-        &lt;h:panelGroup style="width:60px; overflow:hidden;" layout="block"&gt;
-            &lt;h:outputText value="{weekDayLabelShort}"/&gt;
-        &lt;/h:panelGroup&gt;
-    &lt;/f:facet&gt;
-    &lt;f:facet name="weekNumber"&gt;
-         &lt;h:panelGroup&gt;
-            &lt;h:outputText value="{weekNumber}" style="color:red"/&gt;
-        &lt;/h:panelGroup&gt;
-     &lt;/f:facet&gt;
-     &lt;f:facet name="footer"&gt;
-        &lt;h:panelGrid columns="3" width="100%" columnClasses="fake, width100 talign"&gt;
-            &lt;h:outputText value="{previousMonthControl}" style="font-weight:bold;"/&gt;
-            &lt;h:outputText value="{currentMonthControl}" style="font-weight:bold;"/&gt;
-            &lt;h:outputText value="{nextMonthControl}" style="font-weight:bold;"/&gt;
-        &lt;/h:panelGrid&gt;
-    &lt;/f:facet&gt;
-    &lt;h:outputText value="{day}"&gt;&lt;/h:outputText&gt;
-&lt;/rich:calendar&gt;
-...</programlisting>
+	<!-- Customization with usage of facets and accessible elements -->
+    <f:facet name="header">
+        <h:panelGrid columns="2" width="100%" columnClasses="width100, fake">
+            <h:outputText value="{selectedDateControl}" />
+            <h:outputText value="{todayControl}"  style="font-weight:bold; text-align:left"/>
+        </h:panelGrid>
+    </f:facet>
+    <f:facet name="weekDay">
+        <h:panelGroup style="width:60px; overflow:hidden;" layout="block">
+            <h:outputText value="{weekDayLabelShort}"/>
+        </h:panelGroup>
+    </f:facet>
+    <f:facet name="weekNumber">
+         <h:panelGroup>
+            <h:outputText value="{weekNumber}" style="color:red"/>
+        </h:panelGroup>
+     </f:facet>
+     <f:facet name="footer">
+        <h:panelGrid columns="3" width="100%" columnClasses="fake, width100 talign">
+            <h:outputText value="{previousMonthControl}" style="font-weight:bold;"/>
+            <h:outputText value="{currentMonthControl}" style="font-weight:bold;"/>
+            <h:outputText value="{nextMonthControl}" style="font-weight:bold;"/>
+        </h:panelGrid>
+    </f:facet>
+    <h:outputText value="{day}"></h:outputText>
+</rich:calendar>
+...]]></programlisting>
 
                     <para>This is a result:</para>
                     <figure>
@@ -524,14 +524,14 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;rich:calendar value="#{calendarBean.selectedDate}" id="calendarID"
+                    <programlisting role="XML"><![CDATA[...
+<rich:calendar value="#{calendarBean.selectedDate}" id="calendarID"
 						locale="#{calendarBean.locale}"
 						popup="#{calendarBean.popup}"
 						datePattern="#{calendarBean.pattern}"
-					 	showApplyButton="#{calendarBean.showApply}" style="width:200px"/&gt;
-&lt;a4j:commandLink onclick="$('formID:calendarID').component.doExpand(event)" value="Expand"/&gt;
-...</programlisting>
+					 	showApplyButton="#{calendarBean.showApply}" style="width:200px"/>
+<a4j:commandLink onclick="$('formID:calendarID').component.doExpand(event)" value="Expand"/>
+...]]></programlisting>
 
                     <para>Also the discussion about this problem can be found on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4078301#4078301">RichFaces Users Forum</ulink>.</para>
                     
@@ -886,357 +886,602 @@
                                                   </row>
                                         </tbody>
                               </tgroup>
-                    </table>
-      <table id="tab_cn3">
-                              <title>Classes names that define an input field and a button
-                                        appearance</title>
-
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-calendar-input </entry>
-
-                                                  <entry>Defines styles for an input
-                                                  field</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-button</entry>
-
-                                                  <entry>Defines styles for a popup
-                                                  button</entry>
-                                                  </row>
-
-                                        </tbody>
-                              </tgroup>
-                    </table>
-      <table>
-                              <title>Classes names that define a days appearance</title>
-
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-
-                                        <tbody>
-
-                                                  <row>
-                                                  <entry>rich-calendar-days</entry>
-
-                                                  <entry>Defines styles for names of
-                                                  working days in a
-                                                  header</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-weekends</entry>
-
-                                                  <entry>Defines styles for names of
-                                                  weekend in a header</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-week</entry>
-
-                                                  <entry>Defines styles for weeks
-                                                  numbers</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-today</entry>
-
-                                                  <entry>Defines styles for cell with a
-                                                  current date</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-cell</entry>
-
-                                                  <entry>Defines styles for cells with
-                                                  days</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-holly</entry>
-
-                                                  <entry>Defines styles for
-                                                  holiday</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-select</entry>
-
-                                                  <entry>Defines styles for a selected
-                                                  day</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-hover</entry>
-
-                                                  <entry>Defines styles for a hovered
-                                                  day</entry>
-                                                  </row>
-
-                                        </tbody>
-                              </tgroup>
-                    </table>
-      <table>
-                              <title>Classes names that define a popup element</title>
-
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-calendar-popup</entry>
-
-                                                  <entry>Defines styles for a popup
-                                                  element</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-exterior</entry>
-
-                                                  <entry>Defines styles for a popup
-                                                  element exterior</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-tool</entry>
-
-                                                  <entry>Defines styles for
-                                                  toolbars</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-month</entry>
-
-                                                  <entry>Defines styles for names of
-                                                  months</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-header-optional</entry>
-
-                                                  <entry>Defines styles for an optional
-                                                  header</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-footer-optional</entry>
-
-                                                  <entry>Defines styles for an optional
-                                                  footer</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-header</entry>
-
-                                                  <entry>Defines styles for a
-                                                  header</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-footer</entry>
-
-                                                  <entry>Defines styles for a
-                                                  footer</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-boundary-dates</entry>
-
-                                                  <entry>Defines styles for an active
-                                                  boundary button</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-btn</entry>
-
-                                                  <entry>Defines styles for an inactive
-                                                  boundary date</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-toolfooter</entry>
-
-                                                  <entry>Defines styles for a today
-                                                  control date</entry>
-                                                  </row>
-
-                                        </tbody>
-                              </tgroup>
-                    </table>
-      <table>
-                              <title>Classes names that define a popup element during quick month
-                                        and year selection</title>
-
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-calendar-date-layout</entry>
-                                                  <entry>Defines styles for a popup
-                                                  element during quick year
-                                                  selection</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-editor-layout-shadow</entry>
-                                                  <entry>Defines styles for a
-                                                  shadow</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-editor-btn</entry>
-                                                  <entry>Defines styles for an inactive
-                                                  boundary date</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-date-layout-split</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  &lt;td&gt; element for
-                                                  month items near split
-                                                  line</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-editor-btn-selected</entry>
-                                                  <entry>Defines styles for an selected
-                                                  boundary date</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-editor-btn-over</entry>
-                                                  <entry>Defines styles for a boundary
-                                                  date when pointer was moved
-                                                  onto</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-editor-tool-over</entry>
-                                                  <entry>Defines styles for a hovered
-                                                  toolbar items</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-editor-tool-press</entry>
-                                                  <entry>Defines styles for a pressed
-                                                  toolbar items</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-calendar-date-layout-ok</entry>
-                                                  <entry>Defines styles for a
-                                                  "ok"
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-date-layout-cancel</entry>
-                                                  <entry>Defines styles for a
-                                                  "cancel"
-                                                  button</entry>
-                                                  </row>
-
-                                        </tbody>
-                              </tgroup>
-                    </table>
-      <table>
-                              <title>Classes names that define a popup element during time selection</title>
-
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-calendar-time-layout</entry>
-                                                  <entry>Defines styles for a popup
-                                                  element during time
-                                                  selection</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-editor-layout-shadow</entry>
-                                                  <entry>Defines styles for a
-                                                  shadow</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-time-layout-fields</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  &lt;td&gt; element for
-                                                  input fields and
-                                                  buttons</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-spinner-input-container</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  &lt;td&gt; element for
-                                                  an input field</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-spinner-input</entry>
-                                                  <entry>Defines styles for an input
-                                                  field</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-spinner-buttons</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  &lt;td&gt; element for
-                                                  spinner buttons</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-spinner-up</entry>
-                                                  <entry>Defines styles for a
-                                                  "up"
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-spinner-down</entry>
-                                                  <entry>Defines styles for a
-                                                  "down"
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-time-layout-ok</entry>
-                                                  <entry>Defines styles for a
-                                                  "ok"
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-calendar-time-layout-cancel</entry>
-                                                  <entry>Defines styles for a
-                                                  "cancel"
-                                                  button</entry>
-                                                  </row>
-                                        </tbody>
-                              </tgroup>
-                    </table>
-							You can find all necessary information about style classes redefinition in 
+      </table>
+  
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameter</entry>
+   					<entry>CSS properties mapped</entry>
+   				</row>
+   			</thead>
+   			<tbody>         
+   				<row>
+   					<entry>.rich-calendar-exterior</entry>
+   					<entry>Defines styles for a popup element exterior</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-header-optional</entry>
+   					<entry morerows="3">Defines styles for a header</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-header</entry>
+   					<entry morerows="3">Defines styles for an optional header</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-cell</entry>
+   					<entry morerows="3">Defines styles for cells with days</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color, border-right-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-calendar-tool</entry>
+   					<entry morerows="4">Defines styles for toolbars</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>headerFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-calendar-month</entry>
+   					<entry morerows="4">Defines styles for names of months</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>headerFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-days</entry>
+   					<entry morerows="3">Defines styles for names of working days in a header</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color, border-right-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-calendar-week</entry>
+   					<entry morerows="4">Defines styles for weeks numbers</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-bottom-color, border-right-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>calendarWeekBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-holly</entry>
+   					<entry morerows="1">Defines styles for holiday</entry>
+   					<entry>calendarHolidaysBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarHolidaysTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+  
+   				<row>
+   					<entry morerows="1">.rich-calendar-today</entry>
+   					<entry morerows="1">Defines styles for cell with a current date</entry>
+   					<entry>calendarCurrentBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarCurrentTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-select</entry>
+   					<entry morerows="1">Defines styles for a selected day</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-hover</entry>
+   					<entry morerows="1">Defines styles for a hovered day</entry>
+   					<entry>calendarSpecBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarSpecTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-calendar-toolfooter</entry>
+   					<entry morerows="2">Defines styles for a tollbar items in the footer</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-tool-btn-hover</entry>
+   					<entry morerows="3">Defines styles for a toolbar button hovered</entry>
+   					<entry>calendarWeekBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-tool-btn-press</entry>
+   					<entry morerows="1">Defines styles for a toolbar button pressed</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-footer</entry>
+   					<entry morerows="3">Defines styles for a footer</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color, border-top-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-footer-optional</entry>
+   					<entry morerows="3">Defines styles for an optional footer</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color, border-top-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-editor-shadow</entry>
+   					<entry>Defines styles for the calendar editor shadow</entry>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-time-layout</entry>
+   					<entry morerows="3">Defines styles for a popup element during time selection</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-calendar-date-layout</entry>
+   					<entry morerows="3">Defines styles for a popup element during quick month/year selection</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-time-layout input</entry>
+   					<entry morerows="1">Defines styles for the input fields in the popup element during time selection</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-date-layout-cancel</entry>
+   					<entry morerows="1">Defines styles for the &quot;Cancel&quot; button</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-top-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-date-layout-ok</entry>
+   					<entry morerows="1">Defines styles for the &quot;Ok&quot; button</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-top-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-date-layout-split</entry>
+   					<entry>Defines styles for a wrapper &lt;td&gt; element for month items near split line</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-time-btn</entry>
+   					<entry morerows="1">Defines styles for a button in the popup element for time section</entry>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-calendar-time-btn-press</entry>
+   					<entry morerows="2">Defines styles for a pressed button in the popup element for time section</entry>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarWeekBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-spinner-buttons</entry>
+   					<entry>Defines styles for a wrapper &lt;td&gt; element for spinner buttons in the popup element for time selection</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color, border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-calendar-spinner-input-container</entry>
+   					<entry morerows="2">Defines styles for a wrapper &lt;td&gt; element of a spinner input field in the popup element for time selection</entry>
+   					<entry>controlBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>subBorderColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-spinner-input</entry>
+   					<entry morerows="1">Defines styles for a spinner input field in the popup element for time section</entry>
+   					<entry>buttonSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>buttonFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-editor-layout-shadow</entry>
+   					<entry>Defines styles for the layout shadow of the calendar editor</entry>
+   					<entry>shadowBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-editor-btn-over</entry>
+   					<entry morerows="1">Defines styles for the calendar editor button when the pointer is moved
+   						onto</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarSpecBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-calendar-editor-btn-selected</entry>
+   					<entry morerows="1">Defines styles for the calendar editor button selected</entry>
+   					<entry>calendarCurrentBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>calendarCurrentTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-calendar-editor-tool-over</entry>
+   					<entry morerows="2">Defines styles for a hovered toolbar items in the calendar editor</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-calendar-editor-tool-press</entry>
+   					<entry morerows="2">Defines styles for a pressed toolbar items in the calendar editor</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-right-color, border-bottom-color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-calendar-input </entry>
+   					<entry>Defines styles for an input field</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-button</entry>
+   					<entry>Defines styles for a popup button</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-weekends</entry>	
+   					<entry>Defines styles for names of weekend in a header</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-popup</entry>
+   					<entry>Defines styles for a popup element</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-tool-btn</entry>			
+   					<entry>Defines styles for a toolbar buttons</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-tool-btn-disabled</entry>			
+   					<entry>Defines styles for a toolbar buttons disabled</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-tool-close</entry>			
+   					<entry>Defines styles for a toolbar &quot;Close&quot; button</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-boundary-dates</entry>			
+   					<entry>Defines styles for an active boundary button</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-btn</entry>
+   					<entry>Defines styles for a date button</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-editor-btn</entry>
+   					<entry>Defines styles for a button in the calendar editor</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-time-layout-fields</entry>
+   					<entry>Defines styles for a wrapper &lt;td&gt; element for input fields and
+   						buttons</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-spinner-up</entry>
+   					<entry>Defines styles for the &quot;Up&quot; spinner button in the popup element for time section</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-spinner-down</entry>
+   					<entry>Defines styles for the &quot;Down&quot; spinner button in the popup element for time section</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-spinner-pressed</entry>
+   					<entry>Defines styles for a pressed spinner button in the popup element for time section</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-calendar-time-layout-ok</entry>
+   					<entry>Defines styles for the &quot;Ok&quot; button in the popup element for time section</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-calendar-time-layout-cancel</entry>
+   					<entry>Defines styles for the &quot;Cancel&quot; button in the popup element for time section</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
                     <title>Relevant Resources Links</title>
