@@ -109,12 +109,17 @@
 							<!-- Skip the normal tests, we'll run them in the integration-test phase -->
 							<skip>true</skip>
 							<suiteXmlFiles>
+							<suiteXmlFile>
+									src/test/testng/hudson/testng-def-def-none-parser.xml
+							</suiteXmlFile>
+							<!--  
 								<suiteXmlFile>
 									src/test/testng/hudson/testng-failures.xml
 								</suiteXmlFile>
 								<suiteXmlFile>
 									src/test/testng/hudson/testng.xml
 								</suiteXmlFile>
+					        -->
 							</suiteXmlFiles>
 						    <properties>
 						    	<property>
