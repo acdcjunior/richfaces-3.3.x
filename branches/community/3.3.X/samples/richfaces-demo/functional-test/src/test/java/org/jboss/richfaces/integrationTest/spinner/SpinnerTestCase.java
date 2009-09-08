@@ -1,3 +1,21 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.spinner;
 
 import static org.testng.Assert.assertEquals;
@@ -13,244 +31,277 @@ import org.testng.annotations.Test;
  * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>
  * @version $Revision$
  */
-public class SpinnerTestCase extends
-		AbstractSeleniumRichfacesTestCase {
+public class SpinnerTestCase extends AbstractSeleniumRichfacesTestCase {
 
-	// upper spinner
-	private final String upperInput = "//fieldset[1]/div/form/table[1]/tbody/tr/td[1]/input";
-	private final String upperUpArrow = "//fieldset[1]/div/form/table[1]/tbody/tr/td[2]/table/tbody/tr[1]/td/input";
-	private final String upperDownArrow = "//fieldset[1]/div/form/table[1]/tbody/tr/td[2]/table/tbody/tr[2]/td/input";
+    // locators
+    private final String LOC_EXAMPLE_HEADER = getLoc("EXAMPLE_HEADER");
+    private final String LOC_UPPER_SPINNER_INPUT = getLoc("UPPER_SPINNER_INPUT");
+    private final String LOC_UPPER_SPINNER_UP = getLoc("UPPER_SPINNER_UP");
+    private final String LOC_UPPER_SPINNER_DOWN = getLoc("UPPER_SPINNER_DOWN");
+    private final String LOC_LOWER_SPINNER_INPUT = getLoc("LOWER_SPINNER_INPUT");
+    private final String LOC_LOWER_SPINNER_UP = getLoc("LOWER_SPINNER_UP");
+    private final String LOC_LOWER_SPINNER_DOWN = getLoc("LOWER_SPINNER_DOWN");
 
-	// lower spinner
-	private final String lowerInput = "//fieldset[1]/div/form/table[2]/tbody/tr/td[1]/input";
-	private final String lowerUpArrow = "//fieldset[1]/div/form/table[2]/tbody/tr/td[2]/table/tbody/tr[1]/td/input";
-	private final String lowerDownArrow = "//fieldset[1]/div/form/table[2]/tbody/tr/td[2]/table/tbody/tr[2]/td/input";
+    // messages
+    private final int MSG_INITIAL_STATE_UPPER = Integer.parseInt(getMsg("INITIAL_STATE_UPPER"));
+    private final int MSG_INITIAL_STATE_LOWER = Integer.parseInt(getMsg("INITIAL_STATE_LOWER"));
 
-	/**
-	 * Tests the initial state of both spinners. Both should be set to 50.
-	 */
-	@Test
-	public void testInitialState() {
-		assertTrue(selenium.isElementPresent(upperInput),
-				"Upper input field is not present.");
-		assertTrue(selenium.isElementPresent(upperUpArrow),
-				"Upper arrow up is not present.");
-		assertTrue(selenium.isElementPresent(upperDownArrow),
-				"Upper arrow down is not present.");
-		assertTrue(selenium.isElementPresent(lowerInput),
-				"Lower input field is not present.");
-		assertTrue(selenium.isElementPresent(lowerUpArrow),
-				"Lower arrow up is not present.");
-		assertTrue(selenium.isElementPresent(lowerDownArrow),
-				"Lower arrow down is not present.");
+    private final String MSG_TYPE_TO_UPPER_FIRST_TYPED = getMsg("TYPE_TO_UPPER_FIRST_TYPED");
+    private final int MSG_TYPE_TO_UPPER_FIRST_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_UPPER_FIRST_EXPECTED"));
+    private final String MSG_TYPE_TO_UPPER_SECOND_TYPED = getMsg("TYPE_TO_UPPER_SECOND_TYPED");
+    private final int MSG_TYPE_TO_UPPER_SECOND_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_UPPER_SECOND_EXPECTED"));
+    private final String MSG_TYPE_TO_UPPER_THIRD_TYPED = getMsg("TYPE_TO_UPPER_THIRD_TYPED");
+    private final int MSG_TYPE_TO_UPPER_THIRD_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_UPPER_THIRD_EXPECTED"));
+    private final String MSG_TYPE_TO_UPPER_FOURTH_TYPED = getMsg("TYPE_TO_UPPER_FOURTH_TYPED");
+    private final double MSG_TYPE_TO_UPPER_FOURTH_EXPECTED = Double
+            .parseDouble(getMsg("TYPE_TO_UPPER_FOURTH_EXPECTED"));
+    private final String MSG_TYPE_TO_UPPER_FIFTH_TYPED = getMsg("TYPE_TO_UPPER_FIFTH_TYPED");
+    private final double MSG_TYPE_TO_UPPER_FIFTH_EXPECTED = Double.parseDouble(getMsg("TYPE_TO_UPPER_FIFTH_EXPECTED"));
 
-		int number = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(number, 50, "Content of upper spinner.");
+    private final String MSG_TYPE_TO_LOWER_FIRST_TYPED = getMsg("TYPE_TO_LOWER_FIRST_TYPED");
+    private final int MSG_TYPE_TO_LOWER_FIRST_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_LOWER_FIRST_EXPECTED"));
+    private final String MSG_TYPE_TO_LOWER_SECOND_TYPED = getMsg("TYPE_TO_LOWER_SECOND_TYPED");
+    private final int MSG_TYPE_TO_LOWER_SECOND_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_LOWER_SECOND_EXPECTED"));
+    private final String MSG_TYPE_TO_LOWER_THIRD_TYPED = getMsg("TYPE_TO_LOWER_THIRD_TYPED");
+    private final int MSG_TYPE_TO_LOWER_THIRD_EXPECTED = Integer.parseInt(getMsg("TYPE_TO_LOWER_THIRD_EXPECTED"));
+    private final String MSG_TYPE_TO_LOWER_FOURTH_TYPED = getMsg("TYPE_TO_LOWER_FOURTH_TYPED");
+    private final double MSG_TYPE_TO_LOWER_FOURTH_EXPECTED = Double
+            .parseDouble(getMsg("TYPE_TO_LOWER_FOURTH_EXPECTED"));
+    private final String MSG_TYPE_TO_LOWER_FIFTH_TYPED = getMsg("TYPE_TO_LOWER_FIFTH_TYPED");
+    private final double MSG_TYPE_TO_LOWER_FIFTH_EXPECTED = Double.parseDouble(getMsg("TYPE_TO_LOWER_FIFTH_EXPECTED"));
 
-		number = Integer.parseInt(selenium.getValue(lowerInput));
-		assertEquals(number, 50, "Content of lower spinner.");
-	}
+    private final int MSG_OVERFLOW_UPPER = Integer.parseInt(getMsg("OVERFLOW_UPPER"));
+    private final int MSG_OVERFLOW_LOWER = Integer.parseInt(getMsg("OVERFLOW_LOWER"));
+    private final int MSG_UNDERFLOW_UPPER = Integer.parseInt(getMsg("UNDERFLOW_UPPER"));
+    private final int MSG_UNDERFLOW_LOWER = Integer.parseInt(getMsg("UNDERFLOW_LOWER"));
 
-	/**
-	 * Tests clicking on the up arrow of the upper spinner.
-	 */
-	@Test
-	public void testUpperClickUp() {
-		int oldValue = Integer.parseInt(selenium.getValue(upperInput));
+    /**
+     * Tests the initial state of both spinners. Both should be set to 50.
+     */
+    @Test
+    public void testInitialState() {
+        assertTrue(selenium.isElementPresent(LOC_UPPER_SPINNER_INPUT), "Upper input field is not present.");
+        assertTrue(selenium.isElementPresent(LOC_UPPER_SPINNER_UP), "Upper arrow up is not present.");
+        assertTrue(selenium.isElementPresent(LOC_UPPER_SPINNER_DOWN), "Upper arrow down is not present.");
+        assertTrue(selenium.isElementPresent(LOC_LOWER_SPINNER_INPUT), "Lower input field is not present.");
+        assertTrue(selenium.isElementPresent(LOC_LOWER_SPINNER_UP), "Lower arrow up is not present.");
+        assertTrue(selenium.isElementPresent(LOC_LOWER_SPINNER_DOWN), "Lower arrow down is not present.");
 
-		selenium.clickAt(upperUpArrow, "0,0");
+        int number = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(number, MSG_INITIAL_STATE_UPPER, "Content of upper spinner.");
 
-		int newValue = Integer.parseInt(selenium.getValue(upperInput));
+        number = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(number, MSG_INITIAL_STATE_LOWER, "Content of lower spinner.");
+    }
 
-		assertEquals(newValue, oldValue + 1,
-				"The value should increase by 1 after clicking on up arrow.");
-	}
+    /**
+     * Tests clicking on the up arrow of the upper spinner.
+     */
+    @Test
+    public void testUpperClickUp() {
+        int oldValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
 
-	/**
-	 * Tests clicking on the down arrow of the upper spinner.
-	 */
-	@Test
-	public void testUpperClickDown() {
-		int oldValue = Integer.parseInt(selenium.getValue(upperInput));
+        selenium.clickAt(LOC_UPPER_SPINNER_UP, "0,0");
 
-		selenium.clickAt(upperDownArrow, "0,0");
+        int newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, oldValue + 1, "The value should increase by 1 after clicking on up arrow.");
+    }
 
-		int newValue = Integer.parseInt(selenium.getValue(upperInput));
+    /**
+     * Tests clicking on the down arrow of the upper spinner.
+     */
+    @Test
+    public void testUpperClickDown() {
+        int oldValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
 
-		assertEquals(newValue, oldValue - 1,
-				"The value should decrease by 1 after clicking on down arrow.");
+        selenium.clickAt(LOC_UPPER_SPINNER_DOWN, "0,0");
 
-	}
+        int newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, oldValue - 1, "The value should decrease by 1 after clicking on down arrow.");
 
-	/**
-	 * Tests clicking on the up arrow of the lower spinner.
-	 */
-	@Test
-	public void testLowerClickUp() {
-		int oldValue = Integer.parseInt(selenium.getValue(lowerInput));
+    }
 
-		selenium.clickAt(lowerUpArrow, "0,0");
+    /**
+     * Tests clicking on the up arrow of the lower spinner.
+     */
+    @Test
+    public void testLowerClickUp() {
+        int oldValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
 
-		int newValue = Integer.parseInt(selenium.getValue(lowerInput));
+        selenium.clickAt(LOC_LOWER_SPINNER_UP, "0,0");
 
-		assertEquals(newValue, oldValue + 10,
-				"The value should increase by 10 after clicking on up arrow.");
-	}
+        int newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, oldValue + 10, "The value should increase by 10 after clicking on up arrow.");
+    }
 
-	/**
-	 * Tests clicking on the down arrow of the lower spinner.
-	 */
-	@Test
-	public void testLowerClickDown() {
-		int oldValue = Integer.parseInt(selenium.getValue(lowerInput));
+    /**
+     * Tests clicking on the down arrow of the lower spinner.
+     */
+    @Test
+    public void testLowerClickDown() {
+        int oldValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
 
-		selenium.clickAt(lowerDownArrow, "0,0");
+        selenium.clickAt(LOC_LOWER_SPINNER_DOWN, "0,0");
 
-		int newValue = Integer.parseInt(selenium.getValue(lowerInput));
+        int newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, oldValue - 10, "The value should decrease by 10 after clicking on down arrow.");
+    }
 
-		assertEquals(newValue, oldValue - 10,
-				"The value should decrease by 10 after clicking on down arrow.");
-	}
+    /**
+     * Tests typing into the upper spinner. In the beginning it tries valid
+     * value (20), then a value bigger than maximum (2000), a value lower than
+     * minimum (-23), a decimal value (34.5), and a string ("aaa").
+     */
+    @Test
+    public void testTypeToUpper() {
+        selenium.type(LOC_UPPER_SPINNER_INPUT, MSG_TYPE_TO_UPPER_FIRST_TYPED);
+        Number newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_FIRST_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_UPPER_FIRST_EXPECTED,
+                MSG_TYPE_TO_UPPER_FIRST_TYPED));
 
-	/**
-	 * Tests typing into the upper spinner. In the beginning it tries valid
-	 * value (20), then a value bigger than maximum (2000), a value lower than
-	 * minimum (-23), a decimal value (34.5), and a string ("aaa").
-	 */
-	@Test
-	public void testTypeToUpper() {
-		selenium.type(upperInput, "20");
-		Number newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 20, "Value in the input field did not change.");
+        selenium.type(LOC_UPPER_SPINNER_INPUT, MSG_TYPE_TO_UPPER_SECOND_TYPED);
+        newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_UPPER_SECOND_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_UPPER_SECOND_EXPECTED,
+                MSG_TYPE_TO_UPPER_SECOND_TYPED));
 
-		selenium.type(upperInput, "2000");
-		newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 100,
-				"Input field should contain 100 after 2000 was typed.");
+        selenium.type(LOC_UPPER_SPINNER_INPUT, MSG_TYPE_TO_UPPER_THIRD_TYPED);
+        newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_UPPER_THIRD_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_UPPER_THIRD_EXPECTED,
+                MSG_TYPE_TO_UPPER_THIRD_TYPED));
 
-		selenium.type(upperInput, "-23");
-		newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 0,
-				"Input field should contain 0 after -23 was typed.");
+        selenium.type(LOC_UPPER_SPINNER_INPUT, MSG_TYPE_TO_UPPER_FOURTH_TYPED);
+        newValue = Double.parseDouble(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_UPPER_FOURTH_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_UPPER_FOURTH_EXPECTED,
+                MSG_TYPE_TO_UPPER_FOURTH_TYPED));
 
-		selenium.type(upperInput, "34.5");
-		newValue = Double.parseDouble(selenium.getValue(upperInput));
-		assertEquals(newValue, 34.5,
-				"Input field should contain 34.5 after 34.5 was typed.");
+        selenium.type(LOC_UPPER_SPINNER_INPUT, MSG_TYPE_TO_UPPER_FIFTH_TYPED);
+        newValue = Double.parseDouble(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_UPPER_FIFTH_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_UPPER_FIFTH_EXPECTED,
+                MSG_TYPE_TO_UPPER_FIFTH_TYPED));
+    }
 
-		Number oldValue = Double.parseDouble(selenium.getValue(upperInput));
-		selenium.type(upperInput, "aaa");
-		newValue = Double.parseDouble(selenium.getValue(upperInput));
-		assertEquals(newValue, oldValue, "Input field should contain "
-				+ oldValue + " after 'aaa' was typed.");
-	}
+    /**
+     * Tests typing into the lower spinner. In the beginning it tries valid
+     * value (20), then a value bigger than maximum (2000), a value lower than
+     * minimum (-23), a decimal value (34.5), and a string ("aaa").
+     */
+    @Test
+    public void testTypeToLower() {
+        selenium.type(LOC_LOWER_SPINNER_INPUT, MSG_TYPE_TO_LOWER_FIRST_TYPED);
+        Number newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_FIRST_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_LOWER_FIRST_EXPECTED,
+                MSG_TYPE_TO_LOWER_FIRST_TYPED));
 
-	/**
-	 * Tests typing into the lower spinner. In the beginning it tries valid
-	 * value (20), then a value bigger than maximum (2000), a value lower than
-	 * minimum (-23), a decimal value (34.5), and a string ("aaa").
-	 */
-	@Test
-	public void testTypeToLower() {
-		selenium.type(upperInput, "20");
-		Number newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 20, "Value in the input field did not change.");
+        selenium.type(LOC_LOWER_SPINNER_INPUT, MSG_TYPE_TO_LOWER_SECOND_TYPED);
+        newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_SECOND_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_LOWER_SECOND_EXPECTED,
+                MSG_TYPE_TO_LOWER_SECOND_TYPED));
 
-		selenium.type(upperInput, "2000");
-		newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 100,
-				"Input field should contain 100 after 2000 was typed.");
+        selenium.type(LOC_LOWER_SPINNER_INPUT, MSG_TYPE_TO_LOWER_THIRD_TYPED);
+        newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_THIRD_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_LOWER_THIRD_EXPECTED,
+                MSG_TYPE_TO_LOWER_THIRD_TYPED));
 
-		selenium.type(upperInput, "-23");
-		newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 0,
-				"Input field should contain 0 after -23 was typed.");
+        selenium.type(LOC_LOWER_SPINNER_INPUT, MSG_TYPE_TO_LOWER_FOURTH_TYPED);
+        newValue = Double.parseDouble(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_FOURTH_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_LOWER_FOURTH_EXPECTED,
+                MSG_TYPE_TO_LOWER_FOURTH_TYPED));
 
-		selenium.type(upperInput, "34.5");
-		newValue = Double.parseDouble(selenium.getValue(upperInput));
-		assertEquals(newValue, 34.5,
-				"Input field should contain 34.5 after 34.5 was typed.");
+        selenium.type(LOC_LOWER_SPINNER_INPUT, MSG_TYPE_TO_LOWER_FIFTH_TYPED);
+        newValue = Double.parseDouble(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_TYPE_TO_LOWER_FIFTH_EXPECTED, format(
+                "Input field should contain {0} after {1} was typed.", MSG_TYPE_TO_LOWER_FIFTH_EXPECTED,
+                MSG_TYPE_TO_LOWER_FIFTH_TYPED));
+    }
 
-		Number oldValue = Double.parseDouble(selenium.getValue(upperInput));
-		selenium.type(upperInput, "aaa");
-		newValue = Double.parseDouble(selenium.getValue(upperInput));
-		assertEquals(newValue, oldValue, "Input field should contain "
-				+ oldValue + " after 'aaa' was typed.");
-	}
+    /**
+     * Tests value overflow. It clicks 51 times on the up button of the upper
+     * spinner and verifies that the value changed to 0. Then it clicks 6 times
+     * on the up button of the lower spinner and checks that the value changed
+     * to 0.
+     */
+    @Test
+    public void testOverflow() {
+        // it starts at 50, maximum is 100, increment 1, it will try to click 51
+        // times
+        for (int i = 0; i < 51; i++) {
+            selenium.clickAt(LOC_UPPER_SPINNER_UP, "0,0");
+        }
 
-	/**
-	 * Tests value overflow. It clicks 51 times on the up button of the upper
-	 * spinner and verifies that the value changed to 0. Then it clicks 6 times
-	 * on the up button of the lower spinner and checks that the value changed
-	 * to 0.
-	 */
-	@Test
-	public void testOverflow() {
-		// it starts at 50, maximum is 100, increment 1, it will try to click 51
-		// times
-		for (int i = 0; i < 51; i++) {
-			selenium.clickAt(upperUpArrow, "0,0");
-		}
+        int newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_OVERFLOW_UPPER, format("The value should change to {0} at overflow.",
+                MSG_OVERFLOW_UPPER));
 
-		int newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 0, "The value should change to 0 at overflow.");
+        // it starts at 50, maximum is 100, increment 10, it will try to click 6
+        // times
+        for (int i = 0; i < 6; i++) {
+            selenium.clickAt(LOC_LOWER_SPINNER_UP, "0,0");
+        }
 
-		// it starts at 50, maximum is 100, increment 10, it will try to click 6
-		// times
-		for (int i = 0; i < 6; i++) {
-			selenium.clickAt(lowerUpArrow, "0,0");
-		}
+        newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_OVERFLOW_LOWER, format("The value should change to {0} at overflow.",
+                MSG_OVERFLOW_LOWER));
+    }
 
-		newValue = Integer.parseInt(selenium.getValue(lowerInput));
-		assertEquals(newValue, 0, "The value should change to 0 at overflow.");
-	}
+    /**
+     * Tests value underflow. It clicks 51 times on the down button of the lower
+     * spinner and verifies that the value changed to 100. Then it clicks 6
+     * times on the down button of the lower spinner and checks that the value
+     * changed to 100.
+     */
+    @Test
+    public void testUnderflow() {
+        // it starts at 50, minimum is 0, increment 1, it will try to click 51
+        // times
+        for (int i = 0; i < 51; i++) {
+            selenium.clickAt(LOC_UPPER_SPINNER_DOWN, "0,0");
+        }
 
-	/**
-	 * Tests value underflow. It clicks 51 times on the down button of the lower
-	 * spinner and verifies that the value changed to 100. Then it clicks 6
-	 * times on the down button of the lower spinner and checks that the value
-	 * changed to 100.
-	 */
-	@Test
-	public void testUnderflow() {
-		// it starts at 50, minimum is 0, increment 1, it will try to click 51
-		// times
-		for (int i = 0; i < 51; i++) {
-			selenium.clickAt(upperDownArrow, "0,0");
-		}
+        int newValue = Integer.parseInt(selenium.getValue(LOC_UPPER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_UNDERFLOW_UPPER, format("The value should change to {0} at underflow.",
+                MSG_UNDERFLOW_UPPER));
 
-		int newValue = Integer.parseInt(selenium.getValue(upperInput));
-		assertEquals(newValue, 100,
-				"The value should change to 100 at underflow.");
+        // it starts at 50, minimum is 0, increment 10, it will try to click 6
+        // times
+        for (int i = 0; i < 6; i++) {
+            selenium.clickAt(LOC_LOWER_SPINNER_DOWN, "0,0");
+        }
 
-		// it starts at 50, minimum is 0, increment 10, it will try to click 6
-		// times
-		for (int i = 0; i < 6; i++) {
-			selenium.clickAt(lowerDownArrow, "0,0");
-		}
+        newValue = Integer.parseInt(selenium.getValue(LOC_LOWER_SPINNER_INPUT));
+        assertEquals(newValue, MSG_UNDERFLOW_LOWER, format("The value should change to {0} at underflow.",
+                MSG_UNDERFLOW_LOWER));
+    }
 
-		newValue = Integer.parseInt(selenium.getValue(lowerInput));
-		assertEquals(newValue, 100,
-				"The value should change to 100 at underflow.");
-	}
+    /**
+     * Tests the "View Source". It checks that the source code is not visible,
+     * clicks on the link, and checks 5 lines of source code.
+     */
+    @Test
+    public void testSpinnerSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<a4j:form ajaxSubmit=\"true\">", "Here is an example of default inputNumberSpinner:",
+                "<rich:inputNumberSpinner value=\"50\"/>", "<rich:inputNumberSpinner value=\"50\" step=\"10\"/>", };
 
-	/**
-	 * Tests the "View Source". It checks that the source code is not visible,
-	 * clicks on the link, and checks the first 2 components of source code,
-	 * i.e. that the source code begins with "&lt;ui:composition".
-	 */
-	@Test
-	public void testSpinnerSource() {
-		abstractTestSource(1, 1, "<", "ui:composition");
-	}
+        abstractTestSource(1, "View Source", strings);
+    }
 
-	/**
-	 * Loads the page containing the calendar component.
-	 */
-	@BeforeMethod
-	private void loadPage() {
-		super.loadPage("richInputs", 9,
-				"InputNumberSpinner is a highly customizable component");
-	}
+    /**
+     * Loads the page containing the calendar component.
+     */
+    @SuppressWarnings("unused")
+    @BeforeMethod
+    private void loadPage() {
+        openComponent("Input Number Spinner");
+        scrollIntoView(LOC_EXAMPLE_HEADER, true);
+    }
 
 }
