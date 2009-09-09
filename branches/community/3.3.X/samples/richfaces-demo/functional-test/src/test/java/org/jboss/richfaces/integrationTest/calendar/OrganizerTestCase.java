@@ -38,22 +38,13 @@ import org.testng.annotations.Test;
  */
 public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
 
-    // messages
-    private final String MSG_COMPONENT_DESCRIPTION = getMsg("COMPONENT_DESCRIPTION");
-    private final String MSG_CLASS_ATTRIBUTE_TODAY = getMsg("CLASS_ATTRIBUTE_TODAY");
-    private final String MSG_CLASS_ATTRIBUTE_GREY = getMsg("CLASS_ATTRIBUTE_GREY");
-    private final String MSG_DIALOG_VISIBLE = getMsg("DIALOG_VISIBLE");
-    private final String MSG_DIALOG_NOT_VISIBLE = getMsg("DIALOG_NOT_VISIBLE");
-    private final String MSG_CELL_X_Y_NOTE = getMsg("CELL_X_Y_NOTE");
-    private final String MSG_CELL_X_Y_DESC = getMsg("CELL_X_Y_DESC");
-
     // locators
     private final String LOC_FIELDSET = getLoc("FIELDSET");
 
-    private final String LOC_CELL_X_Y = getLoc("CELL_X_Y");
-    private final String LOC_CELL_X_Y_DATE = getLoc("CELL_X_Y_DATE");
-    private final String LOC_CELL_X_Y_DESC = getLoc("CELL_X_Y_DESC");
-    private final String LOC_CELL_X_Y_NOTE = getLoc("CELL_X_Y_NOTE");
+    private final String LOC_CELL_PREFORMATTED = getLoc("CELL_PREFORMATTED");
+    private final String LOC_CELL_DATE_PREFORMATTED = getLoc("CELL_DATE_PREFORMATTED");
+    private final String LOC_CELL_DESC_PREFORMATTED = getLoc("CELL_DESC_PREFORMATTED");
+    private final String LOC_CELL_NOTE_PREFORMATTED = getLoc("CELL_NOTE_PREFORMATTED");
 
     private final String LOC_DIALOG = getLoc("DIALOG");
     private final String LOC_DIALOG_DESCRIPTION = getLoc("DIALOG_DESCRIPTION");
@@ -70,18 +61,18 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testTodayIsHighlighted() {
         String today = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         String text = null;
-        
+
         int fromLine = 3;
         if (Integer.parseInt(today) > 15) {
             fromLine = 5;
         }
-        
+
         for (int i = fromLine; i < 9; i++) {
             for (int j = 1; j < 8; j++) {
-                text = selenium.getText(String.format(LOC_CELL_X_Y_DATE, i, j));
+                text = selenium.getText(format(LOC_CELL_DATE_PREFORMATTED, i, j));
                 if (today.equals(text)) {
-                    text = selenium.getAttribute(String.format(LOC_CELL_X_Y, i, j) + "@class");
-                    assertTrue(text.contains("rich-calendar-today"), MSG_CLASS_ATTRIBUTE_TODAY);
+                    assertTrue(belongsClass("rich-calendar-today", format(LOC_CELL_PREFORMATTED, i, j)),
+                            "Class attribute of the cell with today's date should contain \"rich-calendar-today\".");
                     return;
                 }
             }
@@ -94,8 +85,8 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testLastDayIsGrey() {
-        String attr = selenium.getAttribute(String.format(LOC_CELL_X_Y, 8, 7) + "@class");
-        assertTrue(attr.contains("rich-calendar-boundary-dates"), MSG_CLASS_ATTRIBUTE_GREY);
+        assertTrue(belongsClass("rich-calendar-boundary-dates", format(LOC_CELL_PREFORMATTED, 8, 7)),
+                "Class attribute of the last cell should contain \"rich-calendar-boundary-dates\".");
     }
 
     /**
@@ -107,12 +98,12 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testSaveNote() {
-        String text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 4, 3));
-        assertEquals(text, "Nothing planned", String.format(MSG_CELL_X_Y_DESC, 4, 3));
+        String text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 2, day 3).");
 
-        assertFalse(isDisplayed(LOC_DIALOG), MSG_DIALOG_NOT_VISIBLE);
+        assertFalse(isDisplayed(LOC_DIALOG), "Dialog should not be visible.");
 
-        selenium.click(String.format(LOC_CELL_X_Y, 4, 3));
+        selenium.click(format(LOC_CELL_PREFORMATTED, 4, 3));
 
         // wait for JavaScript to show the dialog
         Wait.until(new Condition() {
@@ -121,7 +112,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
             }
         });
 
-        assertTrue(isDisplayed(LOC_DIALOG), MSG_DIALOG_VISIBLE);
+        assertTrue(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
 
         selenium.type(LOC_DIALOG_DESCRIPTION, "some description");
         selenium.type(LOC_DIALOG_NOTE, "note note note note note");
@@ -129,18 +120,16 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // wait for JavaScript to change the organizer
         Wait.until(new Condition() {
-
             public boolean isTrue() {
-                return !"Nothing planned".equals(selenium.getText(String.format(LOC_CELL_X_Y_DESC, 4, 3)));
+                return !"Nothing planned".equals(selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3)));
             }
-
         });
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 4, 3));
-        assertEquals(text, "some description", String.format(MSG_CELL_X_Y_DESC, 2, 3));
+        text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
+        assertEquals(text, "some description", "The description in the cell (week 2, day 3).");
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_NOTE, 4, 3));
-        assertEquals(text, "note note note note note", String.format(MSG_CELL_X_Y_NOTE, 2, 3));
+        text = selenium.getText(format(LOC_CELL_NOTE_PREFORMATTED, 4, 3));
+        assertEquals(text, "note note note note note", "The note in the cell (week 2, day 3).");
     }
 
     /**
@@ -151,12 +140,12 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testCancelNoteCancelButton() {
-        String text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 5, 3));
-        assertEquals(text, "Nothing planned", String.format(MSG_CELL_X_Y_DESC, 3, 3));
+        String text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 5, 3));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 3, day 3).");
 
-        assertFalse(isDisplayed(LOC_DIALOG), MSG_DIALOG_NOT_VISIBLE);
+        assertFalse(isDisplayed(LOC_DIALOG), "Dialog should not be visible.");
 
-        selenium.click(String.format(LOC_CELL_X_Y, 5, 3));
+        selenium.click(format(LOC_CELL_PREFORMATTED, 5, 3));
 
         // wait for JavaScript to show the dialog
         Wait.until(new Condition() {
@@ -165,7 +154,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
             }
         });
 
-        assertTrue(isDisplayed(LOC_DIALOG), MSG_DIALOG_VISIBLE);
+        assertTrue(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
 
         selenium.type(LOC_DIALOG_DESCRIPTION, "some description");
         selenium.type(LOC_DIALOG_NOTE, "note note note note note");
@@ -174,11 +163,11 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
         // wait for JavaScript to finish - nothing should change
         waitFor(3000);
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 5, 3));
-        assertEquals(text, "Nothing planned", String.format(MSG_CELL_X_Y_DESC, 3, 3));
+        text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 5, 3));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 3, day 3).");
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_NOTE, 5, 3));
-        assertEquals(text, "", String.format(MSG_CELL_X_Y_NOTE, 3, 3));
+        text = selenium.getText(format(LOC_CELL_NOTE_PREFORMATTED, 5, 3));
+        assertEquals(text, "", "The note in the cell (week 3, day 3).");
     }
 
     /**
@@ -189,12 +178,12 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testCancelNoteCrossButton() {
-        String text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 5, 5));
-        assertEquals(text, "Nothing planned", String.format(MSG_CELL_X_Y_DESC, 3, 5));
+        String text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 5, 5));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 3, day 5).");
 
-        assertFalse(isDisplayed(LOC_DIALOG), MSG_DIALOG_NOT_VISIBLE);
+        assertFalse(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
 
-        selenium.click(String.format(LOC_CELL_X_Y, 5, 5));
+        selenium.click(format(LOC_CELL_PREFORMATTED, 5, 5));
 
         // wait for JavaScript to show the dialog
         Wait.until(new Condition() {
@@ -203,7 +192,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
             }
         });
 
-        assertTrue(isDisplayed(LOC_DIALOG), MSG_DIALOG_VISIBLE);
+        assertTrue(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
 
         selenium.type(LOC_DIALOG_DESCRIPTION, "some description");
         selenium.type(LOC_DIALOG_NOTE, "note note note note note");
@@ -212,11 +201,11 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
         // wait for JavaScript to finish - nothing should change
         waitFor(3000);
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_DESC, 5, 5));
-        assertEquals(text, "Nothing planned", String.format(MSG_CELL_X_Y_DESC, 3, 5));
+        text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 5, 5));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 3, day 5).");
 
-        text = selenium.getText(String.format(LOC_CELL_X_Y_NOTE, 5, 5));
-        assertEquals(text, "", String.format(MSG_CELL_X_Y_NOTE, 3, 5));
+        text = selenium.getText(format(LOC_CELL_NOTE_PREFORMATTED, 5, 5));
+        assertEquals(text, "", "The note in the cell (week 3, day 5).");
     }
 
     /**
@@ -277,6 +266,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("Calendar");

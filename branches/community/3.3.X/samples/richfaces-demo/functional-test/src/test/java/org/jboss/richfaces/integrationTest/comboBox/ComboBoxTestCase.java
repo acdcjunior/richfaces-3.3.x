@@ -1,29 +1,26 @@
-/**
- * License Agreement.
- *
- *  JBoss RichFaces
- *
- * Copyright (C) 2009  Red Hat, Inc.
- *
- * This code is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this code; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
  */
 
 package org.jboss.richfaces.integrationTest.comboBox;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEqualsNoOrder;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.testng.annotations.BeforeMethod;
@@ -37,21 +34,39 @@ import org.testng.annotations.Test;
  */
 public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 
-    private final String firstComboInput = "//fieldset[1]/div/div[1]/div/div[2]/input[1]";
-    private final String firstComboButton = "//fieldset[1]/div/div[1]/div/div[2]/input[3]";
-    private final String firstComboConcreteSuggestion = "//body//div[@class='rich-combobox-list-scroll']/span[{0}]";
-    private final String firstComboSuggestions = "//body//div[@class='rich-combobox-list-scroll']/span";
+    // locators
+    private final String LOC_FIRST_COMBO_INPUT = getLoc("FIRST_COMBO_INPUT");
+    private final String LOC_FIRST_COMBO_BUTTON = getLoc("FIRST_COMBO_BUTTON");
+    private final String LOC_FIRST_COMBO_CONCRETE_SUGGESTION = getLoc("FIRST_COMBO_CONCRETE_SUGGESTION");
+    private final String LOC_FIRST_COMBO_SUGGESTIONS = getLoc("FIRST_COMBO_SUGGESTIONS");
 
-    private final String secondComboInput = "//fieldset[2]/div/div[1]/div/div[2]/input[1]";
-    private final String secondComboButton = "//fieldset[2]/div/div[1]/div/div[2]/input[3]";
-    private final String secondComboConcreteSuggestion = "//body//div[@class='rich-combobox-list-scroll']/span[{0}]";
-    private final String secondComboSuggestions = "//body//div[@class='rich-combobox-list-scroll']/span";
+    private final String LOC_SECOND_COMBO_INPUT = getLoc("SECOND_COMBO_INPUT");
+    private final String LOC_SECOND_COMBO_BUTTON = getLoc("SECOND_COMBO_BUTTON");
+    private final String LOC_SECOND_COMBO_CONCRETE_SUGGESTION = getLoc("SECOND_COMBO_CONCRETE_SUGGESTION");
+    private final String LOC_SECOND_COMBO_SUGGESTIONS = getLoc("SECOND_COMBO_SUGGESTIONS");
 
-    private final String thirdComboInput = "//fieldset[3]/div/div[1]/div/div[2]/input[1]";
-    private final String thirdComboButton = "//fieldset[3]/div/div[1]/div/div[2]/input[3]";
-    private final String thirdComboConcreteSuggestion = "//body//div[@class='rich-combobox-list-scroll']/span[{0}]";
-    private final String thirdComboSuggestions = "//body//div[@class='rich-combobox-list-scroll']/span";
+    private final String LOC_THIRD_COMBO_INPUT = getLoc("THIRD_COMBO_INPUT");
+    private final String LOC_THIRD_COMBO_BUTTON = getLoc("THIRD_COMBO_BUTTON");
+    private final String LOC_THIRD_COMBO_CONCRETE_SUGGESTION = getLoc("THIRD_COMBO_CONCRETE_SUGGESTION");
+    private final String LOC_THIRD_COMBO_SUGGESTIONS = getLoc("THIRD_COMBO_SUGGESTIONS");
 
+    // messages
+    private final String MSG_INITIAL_STATE_INITIAL_VALUE_1 = getMsg("INITIAL_STATE_INITIAL_VALUE_1");
+    private final String MSG_INITIAL_STATE_INITIAL_VALUE_2 = getMsg("INITIAL_STATE_INITIAL_VALUE_2");
+    private final String MSG_INITIAL_STATE_INITIAL_VALUE_3 = getMsg("INITIAL_STATE_INITIAL_VALUE_3");
+    
+    private final int MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1 = Integer.parseInt(getMsg("SUGGESTIONS_FIRST_COMBO_COUNT_1"));
+    private final int MSG_SUGGESTIONS_FIRST_COMBO_COUNT_2 = Integer.parseInt(getMsg("SUGGESTIONS_FIRST_COMBO_COUNT_2"));
+    private final String MSG_SUGGESTIONS_FIRST_COMBO_INPUT = getMsg("SUGGESTIONS_FIRST_COMBO_INPUT");
+    
+    private final int MSG_SUGGESTIONS_SECOND_COMBO_COUNT_1 = Integer.parseInt(getMsg("SUGGESTIONS_SECOND_COMBO_COUNT_1"));
+    private final int MSG_SUGGESTIONS_SECOND_COMBO_COUNT_2 = Integer.parseInt(getMsg("SUGGESTIONS_SECOND_COMBO_COUNT_2"));
+    private final String MSG_SUGGESTIONS_SECOND_COMBO_INPUT = getMsg("SUGGESTIONS_SECOND_COMBO_INPUT");
+    
+    private final int MSG_SUGGESTIONS_THIRD_COMBO_COUNT_1 = Integer.parseInt(getMsg("SUGGESTIONS_THIRD_COMBO_COUNT_1"));
+    private final int MSG_SUGGESTIONS_THIRD_COMBO_COUNT_2 = Integer.parseInt(getMsg("SUGGESTIONS_THIRD_COMBO_COUNT_2"));
+    private final String MSG_SUGGESTIONS_THIRD_COMBO_INPUT = getMsg("SUGGESTIONS_THIRD_COMBO_INPUT");
+    
     /**
      * Tests the initial state of the page. It checks that there are all
      * necessary component and that all combo boxes contain the string
@@ -59,21 +74,21 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testInitialState() {
-        assertTrue(selenium.isElementPresent(firstComboInput), "First combo's input is not present.");
-        assertTrue(selenium.isElementPresent(firstComboButton), "First combo's button is not present.");
-        assertTrue(selenium.isElementPresent(secondComboInput), "Second combo's input is not present.");
-        assertTrue(selenium.isElementPresent(secondComboInput), "Second combo's button is not present.");
-        assertTrue(selenium.isElementPresent(thirdComboInput), "Third combo's input is not present.");
-        assertTrue(selenium.isElementPresent(thirdComboInput), "Third combo's button is not present.");
+        assertTrue(selenium.isElementPresent(LOC_FIRST_COMBO_INPUT), "First combo's input is not present.");
+        assertTrue(selenium.isElementPresent(LOC_FIRST_COMBO_BUTTON), "First combo's button is not present.");
+        assertTrue(selenium.isElementPresent(LOC_SECOND_COMBO_INPUT), "Second combo's input is not present.");
+        assertTrue(selenium.isElementPresent(LOC_SECOND_COMBO_INPUT), "Second combo's button is not present.");
+        assertTrue(selenium.isElementPresent(LOC_THIRD_COMBO_INPUT), "Third combo's input is not present.");
+        assertTrue(selenium.isElementPresent(LOC_THIRD_COMBO_INPUT), "Third combo's button is not present.");
 
-        String text = selenium.getValue(firstComboInput);
-        assertEquals(text, "Enter some value", "Text in the first combo box.");
+        String text = selenium.getValue(LOC_FIRST_COMBO_INPUT);
+        assertEquals(text, MSG_INITIAL_STATE_INITIAL_VALUE_1, "Text in the first combo box.");
 
-        text = selenium.getValue(secondComboInput);
-        assertEquals(text, "Enter some value", "Text in the second combo box.");
+        text = selenium.getValue(LOC_SECOND_COMBO_INPUT);
+        assertEquals(text, MSG_INITIAL_STATE_INITIAL_VALUE_2, "Text in the second combo box.");
 
-        text = selenium.getValue(thirdComboInput);
-        assertEquals(text, "Enter some value", "Text in the third combo box.");
+        text = selenium.getValue(LOC_THIRD_COMBO_INPUT);
+        assertEquals(text, MSG_INITIAL_STATE_INITIAL_VALUE_3, "Text in the third combo box.");
     }
 
     /**
@@ -81,48 +96,40 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
      * count of all suggestions. Then it types "su", checks the number of
      * suggestions and the content of all suggestions. In the end, it clicks on
      * the third suggestion and verifies the combo box's input field.
-     * 
-     * <ul>
-     * <li><b>FIXME</b>the div containing suggestions moves out of fieldset</li>
-     * <li><b>FIXME</b>"su " has to be clicked instead of "su"</li>
-     * <li><b>FIXME</b>it is not possible to click on the third suggestion</li>
-     * </ul>
      */
     @Test
     public void testSuggestionsFirstComboBox() {
-        scrollIntoView(firstComboButton, true);
+        scrollIntoView(LOC_FIRST_COMBO_BUTTON, true);
 
-        selenium.click(firstComboButton);
-        waitForElement(format(firstComboConcreteSuggestion, 1));
-        int count = selenium.getXpathCount(firstComboSuggestions).intValue();
-        assertEquals(count, 5, "Number of suggestions after after clicking on button.");
+        selenium.click(LOC_FIRST_COMBO_BUTTON);
+        waitForElement(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, 1));
+        int count = selenium.getXpathCount(LOC_FIRST_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
-        selenium.click(firstComboInput);
-        selenium.typeKeys(firstComboInput, "su");
-        // FIXME why is this necessary?
-        selenium.typeKeys(firstComboInput, " ");
+        selenium.click(LOC_FIRST_COMBO_INPUT);
+        selenium.typeKeys(LOC_FIRST_COMBO_INPUT, "su");
+        selenium.typeKeys(LOC_FIRST_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(firstComboSuggestions).intValue();
-        assertEquals(count, 5, "Number of suggestions after typing 'su'.");
+        count = selenium.getXpathCount(LOC_FIRST_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_2, "Number of suggestions after typing 'su'.");
 
         String[] suggestions = new String[5];
         for (int i = 0; i < 5; i++) {
-            suggestions[i] = selenium.getText(format(firstComboConcreteSuggestion, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, i + 1));
         }
 
-        String[] expected = new String[] { "suggestion 1", "suggestion 2", "suggestion 3", "suggestion 4",
-                "suggestion 5", };
+        String[] expected = new String[] { "suggestion 1", "suggestion 2", "suggestion 3", "suggestion 4", "suggestion 5", };
 
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(firstComboConcreteSuggestion, 3), "");
+            selenium.clickAt(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, 3), "");
         } catch (Exception ex) {
-            // TODO why the exception is thrown?
+            // why the exception is thrown?
         }
         waitFor(1000);
-        String text = selenium.getValue(firstComboInput);
-        assertEquals(text, "suggestion 3", "Third suggestion was chosen.");
+        String text = selenium.getValue(LOC_FIRST_COMBO_INPUT);
+        assertEquals(text, MSG_SUGGESTIONS_FIRST_COMBO_INPUT, "Third suggestion was chosen.");
     }
 
     /**
@@ -130,32 +137,26 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
      * count of all suggestions. Then it types "sa", checks the number of
      * suggestions and the content of all suggestions. In the end, it clicks on
      * the third suggestion and verifies the combo box's input field.
-     * 
-     * <ul>
-     * <li><b>FIXME</b>the div containing suggestions moves out of fieldset</li>
-     * <li><b>FIXME</b>"sa " has to be clicked instead of "sa"</li>
-     * </ul>
      */
     @Test
     public void testSuggestionsSecondComboBox() {
-        scrollIntoView(secondComboButton, true);
+        scrollIntoView(LOC_SECOND_COMBO_BUTTON, true);
 
-        selenium.click(secondComboButton);
-        waitForElement(format(secondComboConcreteSuggestion, 1));
-        int count = selenium.getXpathCount(secondComboSuggestions).intValue();
-        assertEquals(count, 50, "Number of suggestions after after clicking on button.");
+        selenium.click(LOC_SECOND_COMBO_BUTTON);
+        waitForElement(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, 1));
+        int count = selenium.getXpathCount(LOC_SECOND_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
-        selenium.click(secondComboInput);
-        selenium.typeKeys(secondComboInput, "sa");
-        // FIXME why is this necessary?
-        selenium.typeKeys(secondComboInput, " ");
+        selenium.click(LOC_SECOND_COMBO_INPUT);
+        selenium.typeKeys(LOC_SECOND_COMBO_INPUT, "sa");
+        selenium.typeKeys(LOC_SECOND_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(secondComboSuggestions).intValue();
-        assertEquals(count, 4, "Number of suggestions after typing 'sa'.");
+        count = selenium.getXpathCount(LOC_SECOND_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
 
         String[] suggestions = new String[4];
         for (int i = 0; i < 4; i++) {
-            suggestions[i] = selenium.getText(format(secondComboConcreteSuggestion, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, i + 1));
         }
 
         String[] expected = new String[] { "Sacramento", "Santa Fe", "Salem", "Salt Lake City" };
@@ -163,14 +164,14 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(secondComboConcreteSuggestion, 3), "");
+            selenium.clickAt(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, 3), "");
         } catch (Exception ex) {
-            // TODO why the exception is thrown?
+            // why the exception is thrown?
         }
 
         waitFor(1000);
-        String text = selenium.getValue(secondComboInput);
-        assertEquals(text, "Salem", "Third suggestion was chosen.");
+        String text = selenium.getValue(LOC_SECOND_COMBO_INPUT);
+        assertEquals(text, MSG_SUGGESTIONS_SECOND_COMBO_INPUT, "Third suggestion was chosen.");
     }
 
     /**
@@ -178,31 +179,25 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
      * count of all suggestions. Then it types "sa", checks the number of
      * suggestions and the content of all suggestions. In the end, it clicks on
      * the third suggestion and verifies the combo box's input field.
-     * 
-     * <ul>
-     * <li><b>FIXME</b>the div containing suggestions moves out of fieldset</li>
-     * <li><b>FIXME</b>"sa " has to be clicked instead of "sa"</li>
-     * </ul>
      */
     @Test
     public void testSuggestionsThirdComboBox() {
-        selenium.click(thirdComboButton);
+        selenium.click(LOC_THIRD_COMBO_BUTTON);
 
-        waitForElement(format(thirdComboConcreteSuggestion, 1));
-        int count = selenium.getXpathCount(thirdComboSuggestions).intValue();
-        assertEquals(count, 50, "Number of suggestions after after clicking on button.");
+        waitForElement(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, 1));
+        int count = selenium.getXpathCount(LOC_THIRD_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
-        selenium.click(thirdComboInput);
-        selenium.typeKeys(thirdComboInput, "sa");
-        // FIXME why is this necessary?
-        selenium.typeKeys(thirdComboInput, " ");
+        selenium.click(LOC_THIRD_COMBO_INPUT);
+        selenium.typeKeys(LOC_THIRD_COMBO_INPUT, "sa");
+        selenium.typeKeys(LOC_THIRD_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(thirdComboSuggestions).intValue();
-        assertEquals(count, 4, "Number of suggestions after typing 'sa'.");
+        count = selenium.getXpathCount(LOC_THIRD_COMBO_SUGGESTIONS).intValue();
+        assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
 
         String[] suggestions = new String[4];
         for (int i = 0; i < 4; i++) {
-            suggestions[i] = selenium.getText(format(thirdComboConcreteSuggestion, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, i + 1));
         }
 
         String[] expected = new String[] { "Sacramento", "Santa Fe", "Salem", "Salt Lake City" };
@@ -210,55 +205,72 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(thirdComboConcreteSuggestion, 4), "");
+            selenium.clickAt(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, 4), "");
         } catch (Exception ex) {
-            // TODO why the exception is thrown?
+            // why the exception is thrown?
         }
 
         waitFor(1000);
-        String text = selenium.getValue(thirdComboInput);
-        assertEquals(text, "Salt Lake City", "Third suggestion was chosen.");
+        String text = selenium.getValue(LOC_THIRD_COMBO_INPUT);
+        assertEquals(text, MSG_SUGGESTIONS_THIRD_COMBO_INPUT, "Third suggestion was chosen.");
     }
 
     /**
-     * Tests the "View Source". It checks that the source code is not visible,
-     * clicks on the link, and checks the first 2 components of source code,
-     * i.e. that the source code begins with "&lt;ui:composition".
+     * Tests the "View Source" in the first example. It checks that the source code is not visible,
+     * clicks on the link, and checks 8 lines of source code.
      */
     @Test
     public void testFirstComboBoxSource() {
-        // index has to be 2 because the combo box is in a div element
-        abstractTestSource(1, 2, "<", "ui:composition");
-    }
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:comboBox defaultLabel=\"Enter some value\">",
+                "<f:selectItem itemValue=\"suggestion 1\"/>",
+                "<f:selectItem itemValue=\"suggestion 2\"/>",
+                "<f:selectItem itemValue=\"suggestion 3\"/>",
+                "<f:selectItem itemValue=\"suggestion 4\"/>",
+                "<f:selectItem itemValue=\"suggestion 5\"/>",
+                "</rich:comboBox>",
+        };
 
+        abstractTestSource(1, "View Source", strings);
+    }
+    
     /**
-     * Tests the "View Source". It checks that the source code is not visible,
-     * clicks on the link, and checks the first 2 components of source code,
-     * i.e. that the source code begins with "&lt;ui:composition".
+     * Tests the "View Source" in the second example. It checks that the source code is not visible,
+     * clicks on the link, and checks 5 lines of source code.
      */
     @Test
     public void testSecondComboBoxSource() {
-        // index has to be 2 because the combo box is in a div element
-        abstractTestSource(2, 2, "<", "ui:composition");
-    }
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:comboBox selectFirstOnUpdate=\"false\"",
+                "defaultLabel=\"Enter some value\">",
+                "<f:selectItems value=\"#{capitalsBean.capitalsOptions}\" />",
+                "</rich:comboBox>",
+       };
 
+        abstractTestSource(2, "View Source", strings);
+    }
+    
     /**
-     * Tests the "View Source". It checks that the source code is not visible,
-     * clicks on the link, and checks the first 2 components of source code,
-     * i.e. that the source code begins with "&lt;ui:composition".
+     * Tests the "View Source" in the third example. It checks that the source code is not visible,
+     * clicks on the link, and checks 3 lines of source code.
      */
     @Test
     public void testThirdComboBoxSource() {
-        // index has to be 2 because the combo box is in a div element
-        abstractTestSource(3, 2, "<", "ui:composition");
-    }
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:comboBox suggestionValues=\"#{capitalsBean.capitalsNames}\"",
+                "directInputSuggestions=\"true\" defaultLabel=\"Enter some value\" />",
+        };
 
+        abstractTestSource(3, "View Source", strings);
+    }
+    
     /**
      * Loads the page containing the calendar component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
-        super.loadPage("richInputs", 3, "The component provides editable combobox element on the page.");
+        openComponent("Combo Box");
     }
 
 }
