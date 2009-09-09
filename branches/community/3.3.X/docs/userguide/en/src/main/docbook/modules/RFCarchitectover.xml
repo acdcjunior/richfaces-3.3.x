@@ -113,6 +113,37 @@
 				automatically. </para>
 		</formalpara>
 	</section>
+	
+	<section>
+		<title>Partial Rendering</title>
+		<para>
+			RichFaces framework enhances the JSF framework with partial rendering of the components with Ajax capability enabled.
+			This means that only the part of the page that should be affected by some change is updated. Ajax capability of the components can be enabled by the <emphasis><property>&quot;mode&quot;</property></emphasis>, <emphasis><property>&quot;switchType&quot;</property></emphasis> etc. set to &quot;ajax&quot;.
+			This approach prevents multiple page refreshes, which minimized server load. 
+		</para>
+		<para>
+			A good example that can illustrate this feature is rendering of the tabs  of the <emphasis role="bold"><property>&lt;rich:tabPanel&gt;</property></emphasis>. 
+			By default the component updates the whole page to display the content of the tab which is clicked on, to enable partial rendering the <emphasis><property>&quot;switchType&quot;</property></emphasis> attribute set to &quot;ajax&quot; should be used.
+		</para>
+		<programlisting role="XML"><![CDATA[...
+<rich:tabPanel switchType="ajax">
+	<rich:tab label="Tab 1">
+		Content of Tab 1
+	</rich:tab>
+	<rich:tab label="Tab 2">
+		Content of Tab 2
+	</rich:tab>
+	<rich:tab label="Tab 3">
+		Content of Tab 3
+	</rich:tab>
+</rich:tabPanel>
+...]]></programlisting> 
+	
+	</section>
+	
+	
+	
+	
 	<section id="IntegralParts" role="new">
 		<?dbhtml filename="IntegralParts.html"?>
 		<title>RichFaces Integral Parts</title>
