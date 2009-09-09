@@ -107,7 +107,7 @@
         </para>
 
         <programlisting role="JAVA"><![CDATA[...
-public class actionListenerBean implements org.ajax4jsf.event.AjaxListener {
+public class ActionListenerBean implements org.ajax4jsf.event.AjaxListener {
     public void processAjax(AjaxEvent event) {
         FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Ajax request is sent"));
     }
