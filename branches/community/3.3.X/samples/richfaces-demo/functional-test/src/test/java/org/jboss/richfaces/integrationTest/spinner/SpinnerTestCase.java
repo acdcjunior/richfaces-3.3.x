@@ -295,7 +295,7 @@ public class SpinnerTestCase extends AbstractSeleniumRichfacesTestCase {
     }
 
     /**
-     * Loads the page containing the calendar component.
+     * Loads the page containing needed component.
      */
     @SuppressWarnings("unused")
     @BeforeMethod

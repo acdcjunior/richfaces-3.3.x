@@ -1,22 +1,19 @@
-/**
- * License Agreement.
- *
- *  JBoss RichFaces
- *
- * Copyright (C) 2009  Red Hat, Inc.
- *
- * This code is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this code; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
  */
 
 package org.jboss.richfaces.integrationTest.editor;
@@ -73,7 +70,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_TEXT_AREA = getLoc("TEXT_AREA");
     private final String LOC_IFRAME = getLoc("IFRAME");
     private final String LOC_ADV_DIALOG_IFRAME = getLoc("ADV_DIALOG_IFRAME");
-    
+
     private final String LOC_TEXT_AREA_P = getLoc("TEXT_AREA_P");
     private final String LOC_TEXT_AREA_P_A = getLoc("TEXT_AREA_P_A");
     private final String LOC_TEXT_AREA_P_IMG = getLoc("TEXT_AREA_P_IMG");
@@ -411,20 +408,20 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         }
 
         selenium.click(LOC_ADV_ALIGN_LEFT_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "text-align: left;", String.format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "left"));
+        attr = getStyle(LOC_TEXT_AREA_P, "text-align");
+        assertEquals(attr, "left", format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "left"));
 
         selenium.click(LOC_ADV_ALIGN_RIGHT_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "text-align: right;", String.format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "right"));
+        attr = getStyle(LOC_TEXT_AREA_P, "text-align");
+        assertEquals(attr, "right", format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "right"));
 
         selenium.click(LOC_ADV_ALIGN_CENTER_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "text-align: center;", String.format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "center"));
+        attr = getStyle(LOC_TEXT_AREA_P, "text-align");
+        assertEquals(attr, "center", format(MSG_PARAGRAPH_ALIGNED_TO_THE_SIDE_S, "center"));
 
         selenium.click(LOC_ADV_ALIGN_FULL_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "text-align: justify;", MSG_PARAGRAPH_JUSTIFIED);
+        attr = getStyle(LOC_TEXT_AREA_P, "text-align");
+        assertEquals(attr, "justify", MSG_PARAGRAPH_JUSTIFIED);
     }
 
     /**
@@ -435,43 +432,37 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testStyles() {
         selenium.typeKeys(LOC_TEXT_AREA, "aaa bbb ccc ddd eee fff ggg");
 
-        String attr = null;
         try {
-            attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
+            selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
             fail(MSG_PARAGRAPH_SHOULD_HAVE_NO_STYLE);
         } catch (Exception e) {
             // OK - there is no attribute
         }
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 2));
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
-        assertEquals(attr, "bold-larger", MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
+        selenium.click(format(LOC_ADV_STYLE_N, 2));
+        assertTrue(belongsClass("bold-larger", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 3));
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
-        assertEquals(attr, "bold-smaller", MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
+        selenium.click(format(LOC_ADV_STYLE_N, 3));
+        assertTrue(belongsClass("bold-smaller", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 4));
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
-        assertEquals(attr, "red-bold", MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
+        selenium.click(format(LOC_ADV_STYLE_N, 4));
+        assertTrue(belongsClass("red-bold", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 5));
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
-        assertEquals(attr, "red-bold-larger", MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
+        selenium.click(format(LOC_ADV_STYLE_N, 5));
+        assertTrue(belongsClass("red-bold-larger", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 6));
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
-        assertEquals(attr, "red-bold-smaller", MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
+        selenium.click(format(LOC_ADV_STYLE_N, 6));
+        assertTrue(belongsClass("red-bold-smaller", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_STYLE_N, 1));
+        selenium.click(format(LOC_ADV_STYLE_N, 1));
         try {
-            attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
+            selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
             fail(MSG_PARAGRAPH_SHOULD_HAVE_NO_STYLE);
         } catch (Exception e) {
             // OK - there is no attribute
@@ -489,60 +480,60 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // initial state
         selenium.selectFrame(LOC_IFRAME);
         int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         String text = selenium.getText(LOC_TEXT_AREA_P);
-        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "p"));
+        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
         selenium.selectFrame("relative=top");
 
         // address
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_FORMAT_N, 3));
+        selenium.click(format(LOC_ADV_FORMAT_N, 3));
         selenium.selectFrame(LOC_IFRAME);
         count = selenium.getXpathCount(LOC_TEXT_AREA_ADDRESS).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "address"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "address"));
         text = selenium.getText(LOC_TEXT_AREA_ADDRESS);
-        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "address"));
+        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "address"));
         selenium.selectFrame("relative=top");
 
         // paragraph
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_FORMAT_N, 2));
+        selenium.click(format(LOC_ADV_FORMAT_N, 2));
         selenium.selectFrame(LOC_IFRAME);
         count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         text = selenium.getText(LOC_TEXT_AREA_P);
-        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "p"));
+        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
         selenium.selectFrame("relative=top");
 
         // preformatted
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_FORMAT_N, 4));
+        selenium.click(format(LOC_ADV_FORMAT_N, 4));
         selenium.selectFrame(LOC_IFRAME);
         count = selenium.getXpathCount(LOC_TEXT_AREA_PRE).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "pre"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "pre"));
         text = selenium.getText(LOC_TEXT_AREA_PRE);
-        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "pre"));
+        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "pre"));
         selenium.selectFrame("relative=top");
 
         // change back to the initial state by clicking on "Format"
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(String.format(LOC_ADV_FORMAT_N, 1));
+        selenium.click(format(LOC_ADV_FORMAT_N, 1));
         selenium.selectFrame(LOC_IFRAME);
         count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         text = selenium.getText(LOC_TEXT_AREA_P);
-        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "p"));
+        assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
         selenium.selectFrame("relative=top");
 
         // heading 1-6
         for (int i = 1; i < 7; i++) {
             selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-            selenium.click(String.format(LOC_ADV_FORMAT_N, 4 + i));
+            selenium.click(format(LOC_ADV_FORMAT_N, 4 + i));
             selenium.selectFrame(LOC_IFRAME);
-            count = selenium.getXpathCount(String.format(LOC_TEXT_AREA_HN, i)).intValue();
-            assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "h" + i));
-            text = selenium.getText(String.format(LOC_TEXT_AREA_HN, i));
-            assertEquals(text, "aaa bbb ccc ddd eee fff ggg", String.format(MSG_CONTENT_OF_TAG_S, "h" + i));
+            count = selenium.getXpathCount(format(LOC_TEXT_AREA_HN, i)).intValue();
+            assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "h" + i));
+            text = selenium.getText(format(LOC_TEXT_AREA_HN, i));
+            assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "h" + i));
             selenium.selectFrame("relative=top");
         }
     }
@@ -558,21 +549,18 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.typeKeys(LOC_TEXT_AREA, "aaa bbb ccc ddd eee fff ggg");
 
         selenium.click(LOC_ADV_INDENT_BUTTON);
-        String attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "padding-left: 30px;", String.format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 30));
+        assertEquals(getStyle(LOC_TEXT_AREA_P, "padding-left"), "30px", format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 30));
 
         selenium.click(LOC_ADV_INDENT_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "padding-left: 60px;", String.format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 60));
+        assertEquals(getStyle(LOC_TEXT_AREA_P, "padding-left"), "60px", format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 60));
 
         selenium.click(LOC_ADV_OUTDENT_BUTTON);
-        attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-        assertEquals(attr, "padding-left: 30px;", String.format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 30));
+        assertEquals(getStyle(LOC_TEXT_AREA_P, "padding-left"), "30px", format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 30));
 
         selenium.click(LOC_ADV_OUTDENT_BUTTON);
         try {
-            attr = selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
-            fail(String.format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 0));
+            selenium.getAttribute(LOC_TEXT_AREA_P + "@style");
+            fail(format(MSG_PARAGRAPH_INDENTED_BY_N_PX, 0));
         } catch (Exception e) {
             // OK - no attribute
         }
@@ -589,7 +577,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_ADV_HORIZONTAL_RULER_BUTTON);
 
         selenium.selectFrame(LOC_IFRAME);
-        
+
         Wait.failWith(MSG_NUMBER_OF_RULERS).interval(3000).until(new Condition() {
             public boolean isTrue() {
                 return selenium.getXpathCount(LOC_TEXT_AREA_P_HR).intValue() == 3;
@@ -614,9 +602,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         selenium.selectFrame(LOC_IFRAME);
         int count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
-        assertEquals(count, 1, String.format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "b"));
+        assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "b"));
         String text = selenium.getText(LOC_TEXT_AREA_P2_B);
-        assertEquals(text, "bbb", String.format(MSG_CONTENT_OF_TAG_S, "b"));
+        assertEquals(text, "bbb", format(MSG_CONTENT_OF_TAG_S, "b"));
 
         // press Ctrl+A to select content of the editor
         selenium.controlKeyDown();
@@ -627,9 +615,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_ADV_REMOVE_FORMATTING_BUTTON);
 
         count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
-        assertEquals(count, 0, String.format(MSG_TAG_S_SHOULD_NOT_BE_IN_EDITOR, "b"));
+        assertEquals(count, 0, format(MSG_TAG_S_SHOULD_NOT_BE_IN_EDITOR, "b"));
         text = selenium.getText(LOC_TEXT_AREA_P2);
-        assertEquals(text, "bbb", String.format(MSG_CONTENT_OF_TAG_S, "b"));
+        assertEquals(text, "bbb", format(MSG_CONTENT_OF_TAG_S, "b"));
     }
 
     /**
@@ -701,13 +689,13 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = selenium.getText(LOC_TEXT_AREA_P_A);
         assertEquals(text, "aaa", MSG_LABEL_OF_LINK);
         text = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@class");
-        assertEquals(text, "red-bold", String.format(MSG_LINK_ATTRIBUTE_S, "class"));
+        assertEquals(text, "red-bold", format(MSG_LINK_ATTRIBUTE_S, "class"));
         text = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@href");
-        assertEquals(text, "http://www.redhat.com", String.format(MSG_LINK_ATTRIBUTE_S, "href"));
+        assertEquals(text, "http://www.redhat.com", format(MSG_LINK_ATTRIBUTE_S, "href"));
         text = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@title");
-        assertEquals(text, "title title", String.format(MSG_LINK_ATTRIBUTE_S, "title"));
+        assertEquals(text, "title title", format(MSG_LINK_ATTRIBUTE_S, "title"));
         text = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@target");
-        assertEquals(text, "_blank", String.format(MSG_LINK_ATTRIBUTE_S, "target"));
+        assertEquals(text, "_blank", format(MSG_LINK_ATTRIBUTE_S, "target"));
 
         selenium.selectFrame("relative=top");
 
@@ -726,7 +714,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.selectFrame(LOC_IFRAME);
 
         text = selenium.getText(LOC_TEXT_AREA_P_SPAN);
-        assertEquals(text, "aaa", String.format(MSG_CONTENT_OF_TAG_S, "span"));
+        assertEquals(text, "aaa", format(MSG_CONTENT_OF_TAG_S, "span"));
         text = selenium.getAttribute(LOC_TEXT_AREA_P_SPAN + "@class");
         assertEquals(text, "red-bold", MSG_CLASS_ATTRIBUTE);
 
@@ -747,19 +735,19 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_ADV_ANCHOR_DLG_INSERT_BUTTON);
 
         String attr = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@name");
-        assertEquals(attr, "aaa", String.format(MSG_LINK_ATTRIBUTE_S, "name"));
+        assertEquals(attr, "aaa", format(MSG_LINK_ATTRIBUTE_S, "name"));
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@class");
-        assertEquals(attr, "mceItemAnchor", String.format(MSG_LINK_ATTRIBUTE_S, "class"));
+        assertEquals(attr, "mceItemAnchor", format(MSG_LINK_ATTRIBUTE_S, "class"));
 
         selenium.click(LOC_ADV_TOGGLE_INVISIBLE_BUTTON);
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@name");
-        assertEquals(attr, "aaa", String.format(MSG_LINK_ATTRIBUTE_S, "name"));
+        assertEquals(attr, "aaa", format(MSG_LINK_ATTRIBUTE_S, "name"));
 
         try {
             attr = selenium.getAttribute(LOC_TEXT_AREA_P_A + "@class");
-            fail(String.format(MSG_LINK_ATTRIBUTE_S, "class"));
+            fail(format(MSG_LINK_ATTRIBUTE_S, "class"));
         } catch (Exception e) {
             // OK -- there is no class attribute
         }
@@ -793,21 +781,21 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         waitForElement(LOC_TEXT_AREA_P_IMG);
         String attr = selenium.getAttribute(LOC_TEXT_AREA_P_IMG + "@src");
-        assertEquals(attr, "../images/cn_Editor.gif", String.format(MSG_IMG_ATTRIBUTE_S, "src"));
+        assertEquals(attr, "../images/cn_Editor.gif", format(MSG_IMG_ATTRIBUTE_S, "src"));
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_IMG + "@alt");
-        assertEquals(attr, "Editor", String.format(MSG_IMG_ATTRIBUTE_S, "alt"));
+        assertEquals(attr, "Editor", format(MSG_IMG_ATTRIBUTE_S, "alt"));
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_IMG + "@style");
-        assertTrue(attr.contains("float: right;"), String.format(MSG_IMG_ATTRIBUTE_S, "style"));
-        assertTrue(attr.contains("border: 3px solid black;"), String.format(MSG_IMG_ATTRIBUTE_S, "style"));
-        assertTrue(attr.contains("margin: 10px 8px"), String.format(MSG_IMG_ATTRIBUTE_S, "style"));
+        assertTrue(attr.contains("float: right;"), format(MSG_IMG_ATTRIBUTE_S, "style"));
+        assertTrue(attr.contains("border: 3px solid black;"), format(MSG_IMG_ATTRIBUTE_S, "style"));
+        assertTrue(attr.contains("margin: 10px 8px"), format(MSG_IMG_ATTRIBUTE_S, "style"));
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_IMG + "@width");
-        assertEquals(attr, "192", String.format(MSG_IMG_ATTRIBUTE_S, "width"));
+        assertEquals(attr, "192", format(MSG_IMG_ATTRIBUTE_S, "width"));
 
         attr = selenium.getAttribute(LOC_TEXT_AREA_P_IMG + "@height");
-        assertEquals(attr, "62", String.format(MSG_IMG_ATTRIBUTE_S, "height"));
+        assertEquals(attr, "62", format(MSG_IMG_ATTRIBUTE_S, "height"));
 
         selenium.selectFrame("relative=top");
     }
@@ -821,23 +809,23 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
         // euro sign
-        selenium.click(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
 
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
         // Omega
-        selenium.click(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
 
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
         // heart suite
-        selenium.click(String.format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
 
         String text = selenium.getText(LOC_TEXT_AREA_P);
         assertEquals(text, "€Ω♥", MSG_CONTENT_OF_THE_EDITOR);
@@ -846,10 +834,11 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("Editor");
-        
+
         // wait for iframe to load
         selenium.click(LOC_ADVANCED_BUTTON);
         Wait.until(new Condition() {
@@ -857,7 +846,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
                 return selenium.isElementPresent(LOC_ADV_ANCHOR_BUTTON);
             }
         });
-        
+
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }
 }
