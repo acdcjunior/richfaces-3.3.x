@@ -1,22 +1,19 @@
-/**
- * License Agreement.
- *
- *  JBoss RichFaces
- *
- * Copyright (C) 2009  Red Hat, Inc.
- *
- * This code is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this code; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
  */
 
 package org.jboss.richfaces.integrationTest.fileUpload;
@@ -76,7 +73,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String MSG_RIGHT_PANEL_NUMBER_OF_ITEMS = getMsg("RIGHT_PANEL_NUMBER_OF_ITEMS");
     private final String MSG_RIGHT_PANEL_NAME_N = getMsg("RIGHT_PANEL_NAME_N");
     private final String MSG_RIGHT_PANEL_SIZE_N = getMsg("RIGHT_PANEL_SIZE_N");
-    private final String MSG_RIGHT_PANEL_COLOR_N_X_Y = getMsg("RIGHT_PANEL_COLOR_N_X_Y");
+    private final String MSG_RIGHT_PANEL_COLOR_X_Y = getMsg("RIGHT_PANEL_COLOR_X_Y");
 
     private final String MSG_ADD_BUTTON_ENABLED = getMsg("ADD_BUTTON_ENABLED");
     private final String MSG_ADD_BUTTON_NOT_ENABLED = getMsg("ADD_BUTTON_NOT_ENABLED");
@@ -134,7 +131,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         boolean isPresent = selenium.isElementPresent(LOC_CLEAR_UPLOADED_DATA_BUTTON);
         assertFalse(isPresent, MSG_CLEAR_UPLOADED_DATA_BUTTON_NOT_VISIBLE);
 
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
 
         count = selenium.getXpathCount(LOC_NOT_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 1, MSG_LEFT_PANEL_NUMBER_OF_ITEMS);
@@ -169,47 +166,47 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         int count = selenium.getXpathCount(LOC_NOT_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 0, MSG_LEFT_PANEL_NUMBER_OF_ITEMS);
 
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BLUE);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BLUE);
 
         count = selenium.getXpathCount(LOC_NOT_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 2, MSG_LEFT_PANEL_NUMBER_OF_ITEMS);
 
-        String text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
-        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
-        assertEquals(text, "selenium-test" + Color.BLUE.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 2));
+        String text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
+        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
+        assertEquals(text, "selenium-test" + Color.BLUE.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 2));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
-        assertEquals(text, "Cancel", String.format(MSG_LEFT_PANEL_CANCEL_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
-        assertEquals(text, "Cancel", String.format(MSG_LEFT_PANEL_CANCEL_N, 2));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
+        assertEquals(text, "Cancel", format(MSG_LEFT_PANEL_CANCEL_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
+        assertEquals(text, "Cancel", format(MSG_LEFT_PANEL_CANCEL_N, 2));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
-        assertEquals(text, "", String.format(MSG_LEFT_PANEL_DONE_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
-        assertEquals(text, "", String.format(MSG_LEFT_PANEL_DONE_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
+        assertEquals(text, "", format(MSG_LEFT_PANEL_DONE_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
+        assertEquals(text, "", format(MSG_LEFT_PANEL_DONE_N, 1));
 
         selenium.click(LOC_UPLOAD_BUTTON);
         waitFor(2000);
-        
+
         count = selenium.getXpathCount(LOC_NOT_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 2, MSG_LEFT_PANEL_NUMBER_OF_ITEMS);
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
-        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
-        assertEquals(text, "selenium-test" + Color.BLUE.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 2));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
+        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
+        assertEquals(text, "selenium-test" + Color.BLUE.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 2));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
-        assertEquals(text, "Clear", String.format(MSG_LEFT_PANEL_CANCEL_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
-        assertEquals(text, "Clear", String.format(MSG_LEFT_PANEL_CANCEL_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
+        assertEquals(text, "Clear", format(MSG_LEFT_PANEL_CANCEL_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
+        assertEquals(text, "Clear", format(MSG_LEFT_PANEL_CANCEL_N, 1));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
-        assertEquals(text, "Done", String.format(MSG_LEFT_PANEL_DONE_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
-        assertEquals(text, "Done", String.format(MSG_LEFT_PANEL_DONE_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
+        assertEquals(text, "Done", format(MSG_LEFT_PANEL_DONE_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
+        assertEquals(text, "Done", format(MSG_LEFT_PANEL_DONE_N, 1));
     }
 
     /**
@@ -222,36 +219,36 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         int count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 0, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
 
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_CYAN);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_ORANGE);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_CYAN);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_ORANGE);
 
         selenium.click(LOC_UPLOAD_BUTTON);
 
         count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 0, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
 
-        waitForElement(String.format(LOC_UPLOADED_LIST_N_NAME, 1));
+        waitForElement(format(LOC_UPLOADED_LIST_N_NAME, 1));
 
-        String text = selenium.getText(String.format(LOC_UPLOADED_LIST_N_NAME, 1));
-        assertEquals(text, "selenium-test" + Color.CYAN.getRGB() + ".jpg", String.format(MSG_RIGHT_PANEL_NAME_N, 1));
-        text = selenium.getText(String.format(LOC_UPLOADED_LIST_N_NAME, 2));
-        assertEquals(text, "selenium-test" + Color.ORANGE.getRGB() + ".jpg", String.format(MSG_RIGHT_PANEL_NAME_N, 2));
+        String text = selenium.getText(format(LOC_UPLOADED_LIST_N_NAME, 1));
+        assertEquals(text, "selenium-test" + Color.CYAN.getRGB() + ".jpg", format(MSG_RIGHT_PANEL_NAME_N, 1));
+        text = selenium.getText(format(LOC_UPLOADED_LIST_N_NAME, 2));
+        assertEquals(text, "selenium-test" + Color.ORANGE.getRGB() + ".jpg", format(MSG_RIGHT_PANEL_NAME_N, 2));
 
-        long size1 = Long.parseLong(selenium.getText(String.format(LOC_UPLOADED_LIST_N_SIZE, 1)));
+        long size1 = Long.parseLong(selenium.getText(format(LOC_UPLOADED_LIST_N_SIZE, 1)));
         long size2 = new File(FILE_CYAN).length();
-        assertEquals(size1, size2, String.format(MSG_RIGHT_PANEL_SIZE_N, 1));
+        assertEquals(size1, size2, format(MSG_RIGHT_PANEL_SIZE_N, 1));
 
-        size1 = Long.parseLong(selenium.getText(String.format(LOC_UPLOADED_LIST_N_SIZE, 2)));
+        size1 = Long.parseLong(selenium.getText(format(LOC_UPLOADED_LIST_N_SIZE, 2)));
         size2 = new File(FILE_ORANGE).length();
-        assertEquals(size1, size2, String.format(MSG_RIGHT_PANEL_SIZE_N, 1));
+        assertEquals(size1, size2, format(MSG_RIGHT_PANEL_SIZE_N, 1));
 
         // FIXME it cannot download the image
         // String url =
-        // selenium.getAttribute(String.format(LOC_UPLOADED_LIST_N_IMG, 1) +
+        // selenium.getAttribute(format(LOC_UPLOADED_LIST_N_IMG, 1) +
         // "@src");
         // assertImageColorEquals(url, Color.CYAN);
         //		    
-        // url = selenium.getAttribute(String.format(LOC_UPLOADED_LIST_N_IMG, 2)
+        // url = selenium.getAttribute(format(LOC_UPLOADED_LIST_N_IMG, 2)
         // + "@src");
         // assertImageColorEquals(url, Color.BLUE);
     }
@@ -268,7 +265,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         int count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 0, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
 
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_CYAN);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_CYAN);
 
         waitForElement(LOC_UPLOADED_LIST_TR);
         count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
@@ -282,11 +279,11 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testUploadFiveFiles() {
         assertTrue(!belongsClass("rich-fileupload-button-dis", LOC_ADD_BUTTON_CLASS), MSG_ADD_BUTTON_ENABLED);
 
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BLUE);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 3), "file://" + FILE_CYAN);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 4), "file://" + FILE_ORANGE);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 5), "file://" + FILE_RED);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BLUE);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 3), "file://" + FILE_CYAN);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 4), "file://" + FILE_ORANGE);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 5), "file://" + FILE_RED);
 
         assertFalse(!belongsClass("rich-fileupload-button-dis", LOC_ADD_BUTTON_CLASS), MSG_ADD_BUTTON_NOT_ENABLED);
     }
@@ -298,26 +295,26 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testUploadBigFile() {
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BIG);
-        
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BIG);
+
         selenium.click(LOC_UPLOAD_BUTTON);
         waitFor(2000);
-        
-        String text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
-        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
-        assertEquals(text, "selenium-test" + Color.GREEN.getRGB() + ".jpg", String.format(MSG_LEFT_PANEL_NAME_N, 2));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
-        assertEquals(text, "Clear", String.format(MSG_LEFT_PANEL_CANCEL_N, 1));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
-        assertEquals(text, "Cancel", String.format(MSG_LEFT_PANEL_CANCEL_N, 2));
+        String text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
+        assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 2));
+        assertEquals(text, "selenium-test" + Color.GREEN.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 2));
 
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
-        assertEquals(text, "Done", String.format(MSG_LEFT_PANEL_DONE_N, 2));
-        text = selenium.getText(String.format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
-        assertEquals(text, "File size restricted", String.format(MSG_LEFT_PANEL_DONE_N, 2));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 1));
+        assertEquals(text, "Clear", format(MSG_LEFT_PANEL_CANCEL_N, 1));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_CANCEL, 2));
+        assertEquals(text, "Cancel", format(MSG_LEFT_PANEL_CANCEL_N, 2));
+
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 1));
+        assertEquals(text, "Done", format(MSG_LEFT_PANEL_DONE_N, 2));
+        text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
+        assertEquals(text, "File size restricted", format(MSG_LEFT_PANEL_DONE_N, 2));
 
         int count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
         assertEquals(count, 1, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
@@ -330,8 +327,8 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testClearAllButton() {
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_CYAN);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_CYAN);
 
         assertFalse(isDisplayed(LOC_CLEAR_ALL_BUTTON_STYLE), MSG_CLEAR_ALL_BUTTON_NOT_VISIBLE);
 
@@ -357,8 +354,8 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testClearUploadedDataButton() {
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
-        selenium.attachFile(String.format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_CYAN);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 1), "file://" + FILE_YELLOW);
+        selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_CYAN);
 
         assertFalse(selenium.isElementPresent(LOC_CLEAR_UPLOADED_DATA_BUTTON),
                 MSG_CLEAR_UPLOADED_DATA_BUTTON_NOT_VISIBLE);
@@ -460,13 +457,13 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
      * @param expecteColor
      *            expected color of the image
      */
-    private void assertImageColorEquals(String url, Color expecteColor) {
-        assertEquals(getPixelColor(url, 0, 0), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 0, 0));
-        assertEquals(getPixelColor(url, 10, 18), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 10, 18));
-        assertEquals(getPixelColor(url, 120, 4), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 120, 4));
-        assertEquals(getPixelColor(url, 5, 9), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 5, 9));
-        assertEquals(getPixelColor(url, 84, 84), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 84, 84));
-        assertEquals(getPixelColor(url, 71, 55), expecteColor, String.format(MSG_RIGHT_PANEL_COLOR_N_X_Y, 71, 55));
+    private void assertImageColorEquals(String url, Color expectedColor) {
+        assertEquals(getPixelColor(url, 0, 0), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 0, 0));
+        assertEquals(getPixelColor(url, 10, 18), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 10, 18));
+        assertEquals(getPixelColor(url, 120, 4), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 120, 4));
+        assertEquals(getPixelColor(url, 5, 9), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 5, 9));
+        assertEquals(getPixelColor(url, 84, 84), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 84, 84));
+        assertEquals(getPixelColor(url, 71, 55), expectedColor, format(MSG_RIGHT_PANEL_COLOR_X_Y, 71, 55));
     }
 
     /**
@@ -502,6 +499,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         return new Color(red, green, blue);
     }
 
+    @SuppressWarnings("unused")
     @BeforeClass
     private void createImages() {
         createImage(Color.RED, 128, 128);
@@ -512,6 +510,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         createImage(Color.GREEN, 2000, 3500);
     }
 
+    @SuppressWarnings("unused")
     @AfterClass
     private void cleanUpImages() {
         new File(FILE_RED).delete();
@@ -524,6 +523,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("File Upload");

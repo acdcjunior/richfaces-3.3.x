@@ -1,3 +1,21 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.inplaceInput;
 
 import static org.testng.Assert.assertFalse;
@@ -10,26 +28,24 @@ import org.testng.annotations.Test;
 
 /**
  * Test case that tests the inplace input component.
- * <ul>
- * <li><b>TODO</b> create tests for the fourth example (table)
- * </ul>
- * 
+ *
  * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>
  * @version $Revision$
  */
+// TODO create tests for the fourth example (table)
 public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	// messages
-	private final String MSG_COMPONENT_DESCRIPTION = getMess("COMPONENT_DESCRIPTION");
-	private final String MSG_INITIAL_VALUE_NAME = getMess("INITIAL_VALUE_NAME");
-	private final String MSG_INITIAL_VALUE_EMAIL = getMess("INITIAL_VALUE_EMAIL");
-	private final String MSG_NAME_JOHN_SMITH = getMess("NAME_JOHN_SMITH");
-	private final String MSG_EMAIL_JOHN_SMITH = getMess("EMAIL_JOHN_SMITH");
-	private final String MSG_RICH_INPLACE_VIEW = getMess("RICH_INPLACE_VIEW");
-	private final String MSG_RICH_INPLACE_CHANGED = getMess("RICH_INPLACE_CHANGED");
-	private final String MSG_NOT_RICH_INPLACE_CHANGED = getMess("NOT_RICH_INPLACE_CHANGED");
-	private final String MSG_RICH_INPLACE_EDIT = getMess("RICH_INPLACE_EDIT");
-	private final String MSG_NOT_RICH_INPLACE_EDIT = getMess("NOT_RICH_INPLACE_EDIT");
+	private final String MSG_COMPONENT_DESCRIPTION = getMsg("COMPONENT_DESCRIPTION");
+	private final String MSG_INITIAL_VALUE_NAME = getMsg("INITIAL_VALUE_NAME");
+	private final String MSG_INITIAL_VALUE_EMAIL = getMsg("INITIAL_VALUE_EMAIL");
+	private final String MSG_NAME_JOHN_SMITH = getMsg("NAME_JOHN_SMITH");
+	private final String MSG_EMAIL_JOHN_SMITH = getMsg("EMAIL_JOHN_SMITH");
+	private final String MSG_RICH_INPLACE_VIEW = getMsg("RICH_INPLACE_VIEW");
+	private final String MSG_RICH_INPLACE_CHANGED = getMsg("RICH_INPLACE_CHANGED");
+	private final String MSG_NOT_RICH_INPLACE_CHANGED = getMsg("NOT_RICH_INPLACE_CHANGED");
+	private final String MSG_RICH_INPLACE_EDIT = getMsg("RICH_INPLACE_EDIT");
+	private final String MSG_NOT_RICH_INPLACE_EDIT = getMsg("NOT_RICH_INPLACE_EDIT");
 
 	// locators
 	private final String LOC_FIRST_NAME = getLoc("FIRST_NAME");
@@ -59,30 +75,22 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testFirstName() {
 		scrollIntoView(LOC_FIRST_NAME, true);
 
-		String attr = selenium.getAttribute(LOC_FIRST_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-view"), MSG_RICH_INPLACE_VIEW);
-		assertFalse(attr.contains("rich-inplace-changed"),
-				MSG_NOT_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
-
+		assertTrue(belongsClass("rich-inplace-view", LOC_FIRST_NAME), MSG_RICH_INPLACE_VIEW);
+		assertFalse(belongsClass("rich-inplace-changed", LOC_FIRST_NAME), MSG_NOT_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_FIRST_NAME), MSG_NOT_RICH_INPLACE_EDIT);
+		
 		String text = selenium.getText(LOC_FIRST_NAME);
-		assertTrue(text.endsWith("click to enter your name"),
-				MSG_INITIAL_VALUE_NAME);
+		assertTrue(text.endsWith("click to enter your name"), MSG_INITIAL_VALUE_NAME);
 
 		selenium.click(LOC_FIRST_NAME);
 
-		attr = selenium.getAttribute(LOC_FIRST_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-edit"), MSG_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-edit", LOC_FIRST_NAME), MSG_RICH_INPLACE_EDIT);
 
 		selenium.type(LOC_FIRST_NAME_INPUT, "John Smith");
 		selenium.fireEvent(LOC_FIRST_NAME_INPUT, "blur");
 
-		attr = selenium.getAttribute(LOC_FIRST_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-changed"),
-				MSG_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-changed", LOC_FIRST_NAME), MSG_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_FIRST_NAME), MSG_NOT_RICH_INPLACE_EDIT);
 
 		text = selenium.getText(LOC_FIRST_NAME);
 		assertTrue(text.endsWith("John Smith"), MSG_NAME_JOHN_SMITH);
@@ -98,30 +106,22 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testFirstEmail() {
 		scrollIntoView(LOC_FIRST_EMAIL, true);
 
-		String attr = selenium.getAttribute(LOC_FIRST_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-view"), MSG_RICH_INPLACE_VIEW);
-		assertFalse(attr.contains("rich-inplace-changed"),
-				MSG_NOT_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-view", LOC_FIRST_EMAIL), MSG_RICH_INPLACE_VIEW);
+		assertFalse(belongsClass("rich-inplace-changed", LOC_FIRST_EMAIL), MSG_NOT_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_FIRST_EMAIL), MSG_NOT_RICH_INPLACE_EDIT);
 
 		String text = selenium.getText(LOC_FIRST_EMAIL);
-		assertTrue(text.endsWith("click to enter your email"),
-				MSG_INITIAL_VALUE_EMAIL);
+		assertTrue(text.endsWith("click to enter your email"), MSG_INITIAL_VALUE_EMAIL);
 
 		selenium.click(LOC_FIRST_EMAIL);
 
-		attr = selenium.getAttribute(LOC_FIRST_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-edit"), MSG_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-edit", LOC_FIRST_EMAIL), MSG_RICH_INPLACE_EDIT);
 
 		selenium.type(LOC_FIRST_EMAIL_INPUT, "john@smith.name");
 		selenium.fireEvent(LOC_FIRST_EMAIL_INPUT, "blur");
 
-		attr = selenium.getAttribute(LOC_FIRST_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-changed"),
-				MSG_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-changed", LOC_FIRST_EMAIL), MSG_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_FIRST_EMAIL), MSG_NOT_RICH_INPLACE_EDIT);
 
 		text = selenium.getText(LOC_FIRST_EMAIL);
 		assertTrue(text.endsWith("john@smith.name"), MSG_EMAIL_JOHN_SMITH);
@@ -137,31 +137,23 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testSecondName() {
 		scrollIntoView(LOC_SECOND_NAME, true);
 
-		String attr = selenium.getAttribute(LOC_SECOND_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-view"), MSG_RICH_INPLACE_VIEW);
-		assertFalse(attr.contains("rich-inplace-changed"),
-				MSG_NOT_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-view", LOC_SECOND_NAME), MSG_RICH_INPLACE_VIEW);
+		assertFalse(belongsClass("rich-inplace-changed", LOC_SECOND_NAME), MSG_NOT_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_SECOND_NAME), MSG_NOT_RICH_INPLACE_EDIT);
 
 		String text = selenium.getText(LOC_SECOND_NAME);
-		assertTrue(text.endsWith("click to enter your name"),
-				MSG_INITIAL_VALUE_NAME);
+		assertTrue(text.endsWith("click to enter your name"), MSG_INITIAL_VALUE_NAME);
 
 		selenium.click(LOC_SECOND_NAME);
 
-		attr = selenium.getAttribute(LOC_SECOND_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-edit"), MSG_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-edit", LOC_SECOND_NAME), MSG_RICH_INPLACE_EDIT);
 
 		selenium.type(LOC_SECOND_NAME_INPUT, "John Smith");
 		// TODO check that the button is visible
 		selenium.fireEvent(LOC_SECOND_NAME_OK, Event.MOUSEDOWN);
 
-		attr = selenium.getAttribute(LOC_SECOND_NAME + "@class");
-		assertTrue(attr.contains("rich-inplace-changed"),
-				MSG_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-changed", LOC_SECOND_NAME), MSG_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_SECOND_NAME), MSG_NOT_RICH_INPLACE_EDIT);
 
 		text = selenium.getText(LOC_SECOND_NAME);
 		assertTrue(text.endsWith("John Smith"), MSG_NAME_JOHN_SMITH);
@@ -177,31 +169,23 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testSecondEmail() {
 		scrollIntoView(LOC_SECOND_EMAIL, true);
 
-		String attr = selenium.getAttribute(LOC_SECOND_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-view"), MSG_RICH_INPLACE_VIEW);
-		assertFalse(attr.contains("rich-inplace-changed"),
-				MSG_NOT_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-view", LOC_SECOND_EMAIL), MSG_RICH_INPLACE_VIEW);
+		assertFalse(belongsClass("rich-inplace-changed", LOC_SECOND_EMAIL), MSG_NOT_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_SECOND_EMAIL), MSG_NOT_RICH_INPLACE_EDIT);
 
 		String text = selenium.getText(LOC_SECOND_EMAIL);
-		assertTrue(text.endsWith("click to enter your email"),
-				MSG_INITIAL_VALUE_EMAIL);
+		assertTrue(text.endsWith("click to enter your email"), MSG_INITIAL_VALUE_EMAIL);
 
 		selenium.click(LOC_SECOND_EMAIL);
 
-		attr = selenium.getAttribute(LOC_SECOND_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-edit"), MSG_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-edit", LOC_SECOND_EMAIL), MSG_RICH_INPLACE_EDIT);
 
 		selenium.type(LOC_SECOND_EMAIL_INPUT, "john@smith.name");
 		// TODO check that the button is visible
 		selenium.fireEvent(LOC_SECOND_EMAIL_OK, Event.MOUSEDOWN);
 
-		attr = selenium.getAttribute(LOC_SECOND_EMAIL + "@class");
-		assertTrue(attr.contains("rich-inplace-changed"),
-				MSG_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-changed", LOC_SECOND_EMAIL), MSG_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_SECOND_EMAIL), MSG_NOT_RICH_INPLACE_EDIT);
 
 		text = selenium.getText(LOC_SECOND_EMAIL);
 		assertTrue(text.endsWith("john@smith.name"), MSG_EMAIL_JOHN_SMITH);
@@ -217,70 +201,94 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testThird() {
 		scrollIntoView(LOC_THIRD, true);
 
-		String attr = selenium.getAttribute(LOC_THIRD + "@class");
-		assertTrue(attr.contains("rich-inplace-view"), MSG_RICH_INPLACE_VIEW);
-		assertFalse(attr.contains("rich-inplace-changed"),
-				MSG_NOT_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-view", LOC_THIRD), MSG_RICH_INPLACE_VIEW);
+		assertFalse(belongsClass("rich-inplace-changed", LOC_THIRD), MSG_NOT_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_THIRD), MSG_NOT_RICH_INPLACE_EDIT);
 
 		String text = selenium.getText(LOC_THIRD);
 		assertTrue(text.endsWith("Click here to edit"), MSG_INITIAL_VALUE_EMAIL);
 
 		selenium.click(LOC_THIRD);
 
-		attr = selenium.getAttribute(LOC_THIRD + "@class");
-		assertTrue(attr.contains("rich-inplace-edit"), MSG_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-edit", LOC_THIRD), MSG_RICH_INPLACE_EDIT);
 
 		selenium.type(LOC_THIRD_INPUT, "John Smith");
 		// TODO check that the button is visible
 		selenium.fireEvent(LOC_THIRD_SAVE, Event.MOUSEDOWN);
 
-		attr = selenium.getAttribute(LOC_THIRD + "@class");
-		assertTrue(attr.contains("rich-inplace-changed"),
-				MSG_RICH_INPLACE_CHANGED);
-		assertFalse(attr.contains("rich-inplace-edit"),
-				MSG_NOT_RICH_INPLACE_EDIT);
+		assertTrue(belongsClass("rich-inplace-changed", LOC_THIRD), MSG_RICH_INPLACE_CHANGED);
+		assertFalse(belongsClass("rich-inplace-edit", LOC_THIRD), MSG_NOT_RICH_INPLACE_EDIT);
 
 		text = selenium.getText(LOC_THIRD);
 		assertTrue(text.endsWith("John Smith"), MSG_NAME_JOHN_SMITH);
 	}
 
 	/**
-	 * Tests the "View Source". It checks that the source code is not visible,
-	 * clicks on the link, and checks the first 2 components of source code,
-	 * i.e. that the source code begins with "&lt;ui:composition".
-	 */
-	@Test
-	public void testFirstInputSource() {
-		abstractTestSource(1, 2, "<", "ui:composition");
-	}
+     * Tests the "View Source" in the first example. It checks that the source code is not visible,
+     * clicks on the link, and checks 9 lines of source code.
+     */
+    @Test
+    public void testFirstSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:panel style=\"width:220px;\">",
+                "<f:facet name=\"header\">",
+                "<h:outputText value=\"Person Info\"></h:outputText>",
+                "<h:panelGrid columns=\"2\">",
+                "<h:outputText value=\"Name: \"/>",
+                "<rich:inplaceInput defaultLabel=\"click to enter your name\"/>",
+                "<h:outputText value=\"Email:\"/>",
+                "<rich:inplaceInput defaultLabel=\"click to enter your email\"/>",
+        };
 
-	/**
-	 * Tests the "View Source". It checks that the source code is not visible,
-	 * clicks on the link, and checks the first 2 components of source code,
-	 * i.e. that the source code begins with "&lt;ui:composition".
-	 */
-	@Test
-	public void testSecondInputSource() {
-		abstractTestSource(2, 2, "<", "ui:composition");
-	}
+        abstractTestSource(1, "View Source", strings);
+    }
 
-	/**
-	 * Tests the "View Source". It checks that the source code is not visible,
-	 * clicks on the link, and checks the first 2 components of source code,
-	 * i.e. that the source code begins with "&lt;ui:composition".
-	 */
-	@Test
-	public void testThirdInputSource() {
-		abstractTestSource(3, 1, "<", "ui:composition");
-	}
+    /**
+     * Tests the "View Source" in the second example. It checks that the source code is not visible,
+     * clicks on the link, and checks 9 lines of source code.
+     */
+    @Test
+    public void testSecondSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:panel style=\"width:220px;\">",
+                "<f:facet name=\"header\">",
+                "<h:outputText value=\"Person Info\"/>",
+                "<h:panelGrid columns=\"2\">",
+                "<h:outputText value=\"Name: \"/>",
+                "<rich:inplaceInput defaultLabel=\"click to enter your name\" ",
+                "showControls=\"true\"/>",
+                "</h:panelGrid>",
+        };
 
+        abstractTestSource(2, "View Source", strings);
+    }
+    
+    /**
+     * Tests the "View Source" in the third example. It checks that the source code is not visible,
+     * clicks on the link, and checks 9 lines of source code.
+     */
+    @Test
+    public void testThirdSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:inplaceInput defaultLabel=\"Click here to edit\" showControls=\"true\"",
+                "controlsHorizontalPosition=\"left\" controlsVerticalPosition=\"bottom\"",
+                "id=\"inplaceInput\">",
+                " <f:facet name=\"controls\">",
+                "<button onmousedown=\"#{rich:component('inplaceInput')}.save();\"",
+                " type=\"button\">Save</button>",
+                "<button onmousedown=\"#{rich:component('inplaceInput')}.cancel();\"",
+                "<rich:spacer height=\"25px\" width=\"100%\"/>",
+        };
+
+        abstractTestSource(3, "View Source", strings);
+    }
+    
 	/**
-	 * Loads the page containing the calendar component.
-	 */
-	@BeforeMethod
-	private void loadPage() {
-		super.loadPage("richInputs", 6, MSG_COMPONENT_DESCRIPTION);
-	}
+     * Loads the page containing needed component.
+     */
+    @SuppressWarnings("unused")
+    @BeforeMethod
+    private void loadPage() {
+        openComponent("Inplace Input");
+    }
 }

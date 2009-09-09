@@ -1,7 +1,26 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.contextMenu;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
@@ -9,153 +28,179 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
+ * Tests context menu in the example with table.
  * 
  * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>
  * @version $Revision$
  */
 public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase {
 
-	private String xpathPrefix;
+    private final String LOC_SECOND_EXAMPLE_HEADER = getLoc("SECOND_EXAMPLE_HEADER");
+    private final String LOC_SECOND_CONTEXT_MENU = getLoc("SECOND_CONTEXT_MENU");
+    private final String LOC_SECOND_LAST_MENU_ACTION = getLoc("SECOND_LAST_MENU_ACTION");
 
-	@Test
-	public void testTableContextMenu() {
-		xpathPrefix = "//fieldset[2]/div/form";
+    private final String LOC_SECOND_CAR_DETAILS = getLoc("SECOND_CAR_DETAILS");
+    private final String LOC_SECOND_ACTIONS = getLoc("SECOND_ACTIONS");
+    private final String LOC_SECOND_ACTION_PREFORMATTED = getLoc("SECOND_ACTION_PREFORMATTED");
 
-		// check that the context menu is not visible
-		boolean present = selenium.isElementPresent(xpathPrefix + "/div/div");
-		assertFalse(present, "Context menu should be invisible at start.");
+    private final String LOC_SECOND_LINE_3_COLUMN_1 = getLoc("SECOND_LINE_3_COLUMN_1");
+    private final String LOC_SECOND_LINE_3_COLUMN_2 = getLoc("SECOND_LINE_3_COLUMN_2");
+    private final String LOC_SECOND_LINE_6_COLUMN_2 = getLoc("SECOND_LINE_6_COLUMN_2");
+    private final String LOC_SECOND_LINE_1_COLUMN_3 = getLoc("SECOND_LINE_1_COLUMN_3");
 
-		// check that the 'Last Menu Action' is empty
-		String text = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[2]/span/div/div[2]");
-		assertEquals(text, "", "Last menu action should be empty.");
+    private final String MSG_SECOND_CAR_DETAILS_PREFORMATTED = getMsg("SECOND_CAR_DETAILS_PREFORMATTED");
+    private final String MSG_SECOND_PUT_PRODUCER_MODEL_TO_BASKET_PREFORMATTED = getMsg("SECOND_PUT_PRODUCER_MODEL_TO_BASKET_PREFORMATTED");
+    private final String MSG_SECOND_READ_COMMENTS_PREFORMATTED = getMsg("SECOND_READ_COMMENTS_PREFORMATTED");
+    private final String MSG_SECOND_GO_TO_PRODUCER_SITE_PREFORMATTED = getMsg("SECOND_GO_TO_PRODUCER_SITE_PREFORMATTED");
 
-		// open context menu on third line, first column
-		selenium.click(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[1]");
-		waitForElement(xpathPrefix + "/div/div/div[1]");
-		text = selenium.getAttribute(xpathPrefix + "/div/div/div[1]@style");
-		assertFalse(text.contains("display: none;"),
-				"Context menu should be visible after clicking on first column.");
+    /**
+     * Tests context menu. It checks that context menu is not visible at start,
+     * clicks into various places in table and checks that menu appeared.
+     */
+    @Test
+    public void testTableContextMenu() {
+        // check that the context menu is not visible
+        boolean present = selenium.isElementPresent(LOC_SECOND_CONTEXT_MENU);
+        assertFalse(present, "Context menu should be invisible at start.");
 
-		// open context menu on sixth line, second column
-		selenium.click(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[6]/td[2]");
-		waitForElement(xpathPrefix + "/div/div/div[1]");
-		text = selenium.getAttribute(xpathPrefix + "/div/div/div[1]@style");
-		assertFalse(text.contains("display: none;"),
-				"Context menu should be visible after clicking on second column.");
+        // check that the 'Last Menu Action' is empty
+        String text = selenium.getText(LOC_SECOND_LAST_MENU_ACTION);
+        assertEquals(text, "", "Last menu action should be empty.");
 
-		// open context menu on first line, third column (16773)
-		selenium.click(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[1]/td[3]");
-		waitForElement(xpathPrefix + "/div/div/div[1]");
-		text = selenium.getAttribute(xpathPrefix + "/div/div/div[1]@style");
-		assertFalse(text.contains("display: none;"),
-				"Context menu should be visible after clicking on third column.");
-	}
+        // open context menu on third line, first column
+        selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
+        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
+                "Context menu should be visible after clicking on first column.");
 
-	@Test
-	public void testClickOnCarDetails() {
-		xpathPrefix = "//fieldset[2]/div/form";
-		String text = null;
+        // open context menu on sixth line, second column
+        selenium.click(LOC_SECOND_LINE_6_COLUMN_2);
+        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
+                "Context menu should be visible after clicking on second column.");
 
-		String producer = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[1]");
-		String model = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[2]");
+        // open context menu on first line, third column
+        selenium.click(LOC_SECOND_LINE_1_COLUMN_3);
+        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
+                "Context menu should be visible after clicking on third column.");
+    }
 
-		// open context menu on third line, first column
-		selenium.click(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[1]");
-		waitForElement(xpathPrefix + "/div/div/div[1]");
-		text = selenium.getAttribute(xpathPrefix + "/div/div/div[1]@style");
-		assertFalse(text.contains("display: none;"),
-				"Context menu should be visible after clicking on first column.");
+    /**
+     * Tests clicking on "Car Details" in context menu".
+     */
+    @Test
+    public void testClickOnCarDetails() {
+        String producer = selenium.getText(LOC_SECOND_LINE_3_COLUMN_1);
+        String model = selenium.getText(LOC_SECOND_LINE_3_COLUMN_2);
 
-		// click '<car> details'
-		selenium.click(xpathPrefix + "/div/div/div[1]/div/div[1]/span[2]");
-		waitFor(400);
-		text = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[2]/span/div/div[2]");
-		assertEquals(text, producer + " " + model + " details",
-				"Details of car:");
-	}
+        // open context menu on third line, first column
+        selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
+        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
+                "Context menu should be visible after clicking on first column.");
 
-	@Test
-	public void testClickOnPutCarToBasket() {
-		clickAction(1);
-	}
+        // click '<car> details'
+        selenium.click(LOC_SECOND_CAR_DETAILS);
+        waitFor(400);
+        String text = selenium.getText(LOC_SECOND_LAST_MENU_ACTION);
+        assertEquals(text, format(MSG_SECOND_CAR_DETAILS_PREFORMATTED, producer, model), "Details of car.");
+    }
 
-	@Test
-	public void testClickOnReadComments() {
-		clickAction(2);
-	}
+    /**
+     * Tests clicking on "Put Car to Basket" in context menu.
+     */
+    @Test
+    public void testClickOnPutCarToBasket() {
+        clickAction(1);
+    }
 
-	@Test
-	public void testClickOnGoToProducerSite() {
-		clickAction(3);
-	}
+    /**
+     * Tests clicking on "Read Comments" in context menu.
+     */
+    @Test
+    public void testClickOnReadComments() {
+        clickAction(2);
+    }
 
-	@Test
-	public void testContextMenuTableSource() {
-		abstractTestSource(2, 1, "<", "f:subview");
-	}
+    /**
+     * Tests clicking on "Go to Producer Site" in context menu.
+     */
+    @Test
+    public void testClickOnGoToProducerSite() {
+        clickAction(3);
+    }
 
-	private void clickAction(int index) {
-		xpathPrefix = "//fieldset[2]/div/form";
-		String text = null;
+    /**
+     * Tests the "View Source". It checks that the source code is not visible,
+     * clicks on the link, and checks 15 lines of source code.
+     */
+    @Test
+    public void testContextMenuTableSource() {
+        String[] strings = new String[] { "<f:subview xmlns=\"http://www.w3.org/1999/xhtml\"", "<h:form id=\"form\">",
+                "<rich:contextMenu attached=\"false\" id=\"menu\" submitMode=\"ajax\">",
+                "<rich:menuItem ajaxSingle=\"true\">",
+                "<a4j:actionparam name=\"det\" assignTo=\"#{ddmenu.current}\" value=\"{car} {model} details\"/>",
+                "<rich:menuGroup value=\"Actions\">  ", "<rich:menuItem value=\"Read Comments\" ajaxSingle=\"true\">",
+                "<rich:dataTable value=\"#{dataTableScrollerBean.tenRandomCars}\" var=\"car\" id=\"table\"",
+                "onRowMouseOver=\"this.style.backgroundColor='#F8F8F8'\"",
+                "onRowMouseOut=\"this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'\" rowClasses=\"cur\">",
+                "<rich:column>", "<rich:componentControl event=\"onRowClick\" for=\"menu\" operation=\"show\">",
+                "<f:param value=\"#{car.model}\" name=\"model\"/>", "<a4j:outputPanel ajaxRendered=\"true\">",
+                "<f:facet name=\"header\">Last Menu Action</f:facet>", };
 
-		String producer = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[1]");
-		String model = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[2]");
+        abstractTestSource(2, "View Source", strings);
+    }
 
-		// open context menu on third line, first column
-		selenium.click(xpathPrefix
-				+ "/table/tbody/tr/td[1]/table/tbody/tr[3]/td[1]");
-		waitForElement(xpathPrefix + "/div/div/div[1]");
-		text = selenium.getAttribute(xpathPrefix + "/div/div/div[1]@style");
-		assertFalse(text.contains("display: none;"),
-				"Context menu should be visible after clicking on first column.");
+    /**
+     * Helper method that performs clicks on items in submenu of context menu.
+     * 
+     * @param index
+     *            which action should be performed
+     */
+    private void clickAction(int index) {
+        String producer = selenium.getText(LOC_SECOND_LINE_3_COLUMN_1);
+        String model = selenium.getText(LOC_SECOND_LINE_3_COLUMN_2);
 
-		// click 'Actions'
-		selenium.click(xpathPrefix + "/div/div/div[2]");
-		waitFor(400);
+        // open context menu on third line, first column
+        selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
+        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
+                "Context menu should be visible after clicking on first column.");
 
-		// click 'Put <car> To Basket'
-		selenium.click(xpathPrefix + "/div/div/div[2]/div/div[" + index
-				+ "]/span[2]");
-		waitFor(400);
-		text = selenium.getText(xpathPrefix
-				+ "/table/tbody/tr/td[2]/span/div/div[2]");
+        // click 'Actions'
+        selenium.click(LOC_SECOND_ACTIONS);
+        waitFor(400);
 
-		switch (index) {
-		case 1:
-			assertEquals(text, "Put " + producer + " " + model + " To Basket",
-					"Action put to basket:");
-			break;
-		case 2:
-			assertEquals(text, "Read Comments", "Action read comments:");
-			break;
-		case 3:
-			assertEquals(text, "Go to " + producer + " site",
-					"Action go to site:");
-			break;
-		default:
-			fail("Wrong index.");
-		}
-	}
+        // click "Put <car> To Basket", "Read Comments" or
+        // "Go to <producer> site"
+        selenium.click(format(LOC_SECOND_ACTION_PREFORMATTED, index));
+        waitFor(400);
+        String text = selenium.getText(LOC_SECOND_LAST_MENU_ACTION);
 
-	/**
-	 * Loads the needed page.
-	 */
-	@BeforeMethod
-	private void loadPage() {
-		super
-				.loadPage(
-						"richMenu",
-						1,
-						"RichFaces Context menu is a component that allows to organize the hierarchical context menus");
-	}
+        switch (index) {
+        case 1:
+            assertEquals(text, format(MSG_SECOND_PUT_PRODUCER_MODEL_TO_BASKET_PREFORMATTED, producer, model),
+                    "Action put to basket:");
+            break;
+        case 2:
+            assertEquals(text, MSG_SECOND_READ_COMMENTS_PREFORMATTED, "Action read comments:");
+            break;
+        case 3:
+            assertEquals(text, format(MSG_SECOND_GO_TO_PRODUCER_SITE_PREFORMATTED, producer), "Action go to site:");
+            break;
+        default:
+            fail("Wrong index.");
+        }
+    }
+
+    /**
+     * Loads the needed page.
+     */
+    @SuppressWarnings("unused")
+    @BeforeMethod
+    private void loadPage() {
+        openComponent("Context Menu");
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
+    }
 }

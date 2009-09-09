@@ -33,11 +33,11 @@ import org.testng.annotations.Test;
  */
 public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase {
 
-    private final String LOC_HEADER = getLoc("HEADER");
-    private final String LOC_IMAGE = getLoc("IMAGE");
-    private final String LOC_CONTEXT_MENU = getLoc("CONTEXT_MENU");
-    private final String LOC_ZOOM_IN = getLoc("ZOOM_IN");
-    private final String LOC_ZOOM_OUT = getLoc("ZOOM_OUT");
+    private final String LOC_FIRST_HEADER = getLoc("FIRST_HEADER");
+    private final String LOC_FIRST_IMAGE = getLoc("FIRST_IMAGE");
+    private final String LOC_FIRST_CONTEXT_MENU = getLoc("FIRST_CONTEXT_MENU");
+    private final String LOC_FIRST_ZOOM_IN = getLoc("FIRST_ZOOM_IN");
+    private final String LOC_FIRST_ZOOM_OUT = getLoc("FIRST_ZOOM_OUT");
 
     /**
      * Clicks into image and verifies that the context menu is displayed.
@@ -45,11 +45,11 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     @Test
     public void testImageContextMenu() {
         // open context menu
-        selenium.fireEvent(LOC_IMAGE, "contextmenu");
+        selenium.fireEvent(LOC_FIRST_IMAGE, "contextmenu");
 
         // check that context menu is visible
-        waitForElement(LOC_CONTEXT_MENU);
-        assertTrue(isDisplayed(LOC_CONTEXT_MENU), "Context menu should be visible.");
+        waitForElement(LOC_FIRST_CONTEXT_MENU);
+        assertTrue(isDisplayed(LOC_FIRST_CONTEXT_MENU), "Context menu should be visible.");
     }
 
     /**
@@ -60,25 +60,25 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     @Test
     public void testZoomIn() {
         // get the size of image at the beginning
-        int originalWidth = selenium.getElementWidth(LOC_IMAGE).intValue();
-        int originalHeight = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int originalWidth = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
+        int originalHeight = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
 
         // open context menu
-        selenium.fireEvent(LOC_IMAGE, "contextmenu");
-        waitForElement(LOC_ZOOM_IN);
+        selenium.fireEvent(LOC_FIRST_IMAGE, "contextmenu");
+        waitForElement(LOC_FIRST_ZOOM_IN);
 
         // zoom in
-        selenium.click(LOC_ZOOM_IN);
-        selenium.click(LOC_ZOOM_IN);
-        selenium.click(LOC_ZOOM_IN);
-        selenium.click(LOC_ZOOM_IN);
+        selenium.click(LOC_FIRST_ZOOM_IN);
+        selenium.click(LOC_FIRST_ZOOM_IN);
+        selenium.click(LOC_FIRST_ZOOM_IN);
+        selenium.click(LOC_FIRST_ZOOM_IN);
 
         // get the size of image after zooming in
-        int width = selenium.getElementWidth(LOC_IMAGE).intValue();
+        int width = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
         assertTrue(width > originalWidth, format(
                 "After zooming in, the image should be bigger (width {0}px -> {1}px).", originalWidth, width));
 
-        int height = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int height = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
         assertTrue(height > originalHeight, format(
                 "After zooming in, the image should be bigger (height {0}px -> {1}px).", originalHeight, height));
     }
@@ -91,25 +91,25 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     @Test
     void testZoomOut() {
         // get the size of image at the beginning
-        int originalWidth = selenium.getElementWidth(LOC_IMAGE).intValue();
-        int originalHeight = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int originalWidth = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
+        int originalHeight = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
 
         // open context menu
-        selenium.fireEvent(LOC_IMAGE, "contextmenu");
-        waitForElement(LOC_ZOOM_OUT);
+        selenium.fireEvent(LOC_FIRST_IMAGE, "contextmenu");
+        waitForElement(LOC_FIRST_ZOOM_OUT);
 
         // zoom out
-        selenium.click(LOC_ZOOM_OUT);
-        selenium.click(LOC_ZOOM_OUT);
-        selenium.click(LOC_ZOOM_OUT);
-        selenium.click(LOC_ZOOM_OUT);
+        selenium.click(LOC_FIRST_ZOOM_OUT);
+        selenium.click(LOC_FIRST_ZOOM_OUT);
+        selenium.click(LOC_FIRST_ZOOM_OUT);
+        selenium.click(LOC_FIRST_ZOOM_OUT);
 
         // get the size of image after zooming out
-        int width = selenium.getElementWidth(LOC_IMAGE).intValue();
+        int width = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
         assertTrue(originalWidth > width, format(
                 "After zooming out, the image should be smaller (width {0}px -> {1}px).", originalWidth, width));
 
-        int height = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int height = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
         assertTrue(originalHeight > height, format(
                 "After zooming out, the image should be smaller (height {0}px -> {1}px).", originalHeight, height));
     }
@@ -123,24 +123,24 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     @Test
     void testZoomInZoomOut() {
         // get the size of image at the beginning
-        int originalWidth = selenium.getElementWidth(LOC_IMAGE).intValue();
-        int originalHeight = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int originalWidth = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
+        int originalHeight = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
 
         // open context menu
-        selenium.fireEvent(LOC_IMAGE, "contextmenu");
-        waitForElement(LOC_ZOOM_IN);
+        selenium.fireEvent(LOC_FIRST_IMAGE, "contextmenu");
+        waitForElement(LOC_FIRST_ZOOM_IN);
 
-        selenium.click(LOC_ZOOM_IN);
-        selenium.click(LOC_ZOOM_OUT);
+        selenium.click(LOC_FIRST_ZOOM_IN);
+        selenium.click(LOC_FIRST_ZOOM_OUT);
 
         // get the size of image after zooming in and out
         // it does not zoom accurately so there has to be some tolerance
-        int width = selenium.getElementWidth(LOC_IMAGE).intValue();
+        int width = selenium.getElementWidth(LOC_FIRST_IMAGE).intValue();
         assertTrue(Math.abs(width - originalWidth) < 3, format(
                 "After zooming in and out, the image should have the same size (width {0}px -> {1}px).", originalWidth,
                 width));
 
-        int height = selenium.getElementHeight(LOC_IMAGE).intValue();
+        int height = selenium.getElementHeight(LOC_FIRST_IMAGE).intValue();
         assertTrue(Math.abs(height - originalHeight) < 3, format(
                 "After zooming in and out, the image should have the same size (height {0}px -> {1}px).",
                 originalHeight, height));
@@ -168,12 +168,13 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     /**
      * Loads the needed page.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("Context Menu");
 
         // XXX: context menu opens in top left corner so it isn't visible if it
         // scrolls down
-        // scrollIntoView(LOC_HEADER, true);
+        // scrollIntoView(LOC_FIRST_HEADER, true);
     }
 }
