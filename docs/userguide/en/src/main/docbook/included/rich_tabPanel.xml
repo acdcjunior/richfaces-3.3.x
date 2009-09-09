@@ -58,7 +58,7 @@
                </listitem>
                <listitem>
                   <para>
-                     <code>AJAX</code>
+                     <code>Ajax</code>
                   </para>
                </listitem>
       
@@ -92,7 +92,7 @@
                     <itemizedlist>
                               <listitem>
                                         <para>
-               <code>Server</code> (DEFAULT)</para>
+               <code>server</code> (DEFAULT)</para>
                                         <para>The common submission is performed around
                                                   <property>tabPanel</property> and a page
                                                   is completely rendered on a called panel. Only one
@@ -101,7 +101,7 @@
                               </listitem>
                               <listitem>
                                         <para>
-                                                  <code>Ajax</code>
+                                                  <code>ajax</code>
                                         </para>
                                         <para>AJAX form submission is performed around the
                                                   <property>tabPanel</property>, content
@@ -112,7 +112,7 @@
                               </listitem>
                               <listitem>
                                         <para>
-                                                  <code>Client</code>
+                                                  <code>client</code>
                                         </para>
                                         <para> All <property>tabPanels</property> are uploaded on
                                                   the client side. The switching from the active to
