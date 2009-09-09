@@ -1,26 +1,25 @@
 /*
-* JBoss, Home of Professional Open Source
-* Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
-* by the @authors tag. All rights reserved.
-* See the copyright.txt in the distribution for a
-* full listing of individual contributors.
-* This copyrighted material is made available to anyone wishing to use,
-* modify, copy, or redistribute it subject to the terms and conditions
-* of the GNU Lesser General Public License, v. 2.1.
-* This program is distributed in the hope that it will be useful, but WITHOUT A
-* WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-* PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-* You should have received a copy of the GNU Lesser General Public License,
-* v.2.1 along with this distribution; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-* MA 02110-1301, USA.
-*/
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
 package org.jboss.richfaces.integrationTest.extendedDataTable;
-
-import static org.testng.Assert.*;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jboss.test.selenium.waiting.Condition;
 import org.testng.annotations.Test;
 
 /**
@@ -143,19 +142,27 @@ public class SelectingTestCase extends AbstractExtendedDataTableTestCase {
 	}
 
 	private void checkSelection(int[] rows, boolean positiveComparison) {
-		String comparison = (positiveComparison) ? "position()=" : "position()!=";
-		String conjuction = (positiveComparison) ? " or " : " and ";
 
-		String condition = " and (" + comparison + StringUtils.join(ArrayUtils.toObject(rows), conjuction + comparison)
-				+ ")";
+		final String condition;
 
 		if (rows.length == 0) {
 			condition = "";
+		} else {
+			String comparison = (positiveComparison) ? "position()=" : "position()!=";
+			String conjuction = (positiveComparison) ? " or " : " and ";
+			condition = " and (" + comparison + StringUtils.join(ArrayUtils.toObject(rows), conjuction + comparison)
+					+ ")";
 		}
 
-		int count = selenium.getXpathCount(format(LOC_TR_SELECTED, condition)).intValue();
+		final int expectedCount = (positiveComparison) ? rows.length : 0;
 
-		assertTrue(positiveComparison ? count == rows.length : count == 0);
+		waitGuiInteraction.timeout(2000).failWith(
+				"In spite of waiting for GUI rendering finish there is wrong number of selected rows").until(
+				new Condition() {
+					public boolean isTrue() {
+						return expectedCount == selenium.getXpathCount(format(LOC_TR_SELECTED, condition)).intValue();
+					}
+				});
 	}
 
 	private int[] getRowSelection(String message) {
