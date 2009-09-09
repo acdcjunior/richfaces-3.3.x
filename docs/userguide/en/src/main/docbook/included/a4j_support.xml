@@ -112,8 +112,8 @@
 		    <programlisting role="JAVA"><![CDATA[...
 public class PlanetsMoons {
 	private String currentPlanet="";
-	public List&lt;SelectItem&gt; planetsList = new ArrayList&lt;SelectItem&gt;();
-	public List&lt;String&gt; moonsList = new ArrayList&lt;String&gt;();
+	public List<SelectItem> planetsList = new ArrayList<SelectItem>();
+	public List<String> moonsList = new ArrayList<String>();
 	private static final String [] EARTH = {"The Moon"};
 	private static final String [] MARS = {"Deimos", "Phobos"};
 	private static final String [] JUPITER = {"Europa", "Gamymede", "Callisto"};
@@ -137,7 +137,7 @@ public class PlanetsMoons {
          }else{
         	 currentItems = JUPITER;
          }
-         for (int i = 0; i &lt; currentItems.length; i++) {
+         for (int i = 0; i < currentItems.length; i++) {
              moonsList.add(currentItems[i]);
          }       
      }
