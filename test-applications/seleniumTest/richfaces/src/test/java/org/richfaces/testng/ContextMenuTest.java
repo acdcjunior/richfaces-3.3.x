@@ -288,7 +288,7 @@ public class ContextMenuTest extends SeleniumTestBase {
 				.getXpathCount(
 						"//div[@id='"
 								+ menuBody
-								+ "']/div/div[@class='dr-menu-separator rich-menu-separator']")
+								+ "']/div/div[@class='rich-menu-separator']")
 				.intValue();
 		Assert.assertTrue(separatorCount == 1, "Separators count is invalid");
 
@@ -311,7 +311,7 @@ public class ContextMenuTest extends SeleniumTestBase {
 				.getXpathCount(
 						"//div[@id='"
 								+ menuBody
-								+ "']/div/div[@class='dr-menu-separator rich-menu-separator']")
+								+ "']/div/div[@class='rich-menu-separator']")
 				.intValue();
 		Assert.assertTrue(separatorCount == 1, "Separators count is invalid");
 
