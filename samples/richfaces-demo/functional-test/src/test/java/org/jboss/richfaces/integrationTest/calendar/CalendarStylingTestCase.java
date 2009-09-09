@@ -1,3 +1,21 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.calendar;
 
 import static org.testng.Assert.assertTrue;
@@ -14,13 +32,9 @@ import org.testng.annotations.Test;
  */
 public class CalendarStylingTestCase extends AbstractSeleniumRichfacesTestCase {
 
-    // messages
-    private final String MSG_COMPONENT_DESCRIPTION_3 = getMsg("COMPONENT_DESCRIPTION_3");
-    private final String MSG_EVERY_THIRD_CELL = getMsg("EVERY_THIRD_CELL");
-
     // locators
     private final String LOC_STYLING_FIELDSET = getLoc("STYLING_FIELDSET");
-    private final String LOC_STYLING_CELL_X_Y = getLoc("STYLING_CELL_X_Y");
+    private final String LOC_STYLING_CELL_PREFORMATTED = getLoc("STYLING_CELL_PREFORMATTED");
     private final String LOC_STYLING_CALENDAR_BUTTON = getLoc("STYLING_CALENDAR_BUTTON");
     private final String LOC_STYLING_RIGHT_ARROW = getLoc("STYLING_RIGHT_ARROW");
 
@@ -40,12 +54,12 @@ public class CalendarStylingTestCase extends AbstractSeleniumRichfacesTestCase {
 
         for (int i = 3; i < 9; i++) {
             for (int j = 2; j < 9; j++) {
-                text = selenium.getText(String.format(LOC_STYLING_CELL_X_Y, i, j));
+                text = selenium.getText(format(LOC_STYLING_CELL_PREFORMATTED, i, j));
                 date = Integer.parseInt(text);
                 if (date % 3 == 0) {
-                    text = selenium.getAttribute(String.format(LOC_STYLING_CELL_X_Y, i, j) + "@class");
+                    text = selenium.getAttribute(format(LOC_STYLING_CELL_PREFORMATTED, i, j) + "@class");
                     assertTrue(text.contains("everyThirdDay") || text.contains("rich-calendar-boundary-dates"),
-                            MSG_EVERY_THIRD_CELL);
+                            "Every third cell should be either disabled (boundary dates) or styled (dates from current month).");
                 }
             }
         }
@@ -69,9 +83,11 @@ public class CalendarStylingTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
-        super.loadPage("richInputs", 1, 3, MSG_COMPONENT_DESCRIPTION_3);
+        openComponent("Calendar");
+        openTab("Client Side Disable/Styling");
         scrollIntoView(LOC_STYLING_FIELDSET, true);
     }
 }
