@@ -1,3 +1,21 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat Middleware LLC, and others contributors as indicated
+ * by the @authors tag. All rights reserved.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.jboss.richfaces.integrationTest.inputNumberSlider;
 
 import static org.testng.Assert.assertEquals;
@@ -18,42 +36,33 @@ public class InputNumberSliderTestCase extends
 		AbstractSeleniumRichfacesTestCase {
 
 	// messages
-	private final String MSG_COMPONENT_DESCRIPTION = getMess("COMPONENT_DESCRIPTION");
-	private final String MSG_HANDLE_N_PX = getMess("HANDLE_N_PX");
-	private final String MSG_TIP_N_PX = getMess("TIP_N_PX");
-	private final String MSG_TIP_SHOULD_BE_VISIBLE = getMess("TIP_SHOULD_BE_VISIBLE");
-	private final String MSG_TIP_SHOULD_NOT_BE_VISIBLE = getMess("TIP_SHOULD_NOT_BE_VISIBLE");
-	private final String MSG_OFFSETS_SHOULD_BE_THE_SAME = getMess("OFFSETS_SHOULD_BE_THE_SAME");
-	private final String MSG_TIP_FIRST_HALF = getMess("TIP_FIRST_HALF");
-	private final String MSG_TIP_SECOND_HALF = getMess("TIP_SECOND_HALF");
-	private final String MSG_HANDLE_FIRST_HALF = getMess("HANDLE_FIRST_HALF");
-	private final String MSG_HANDLE_SECOND_HALF = getMess("HANDLE_SECOND_HALF");
-	private final String MSG_VALUE_IN_INPUT = getMess("VALUE_IN_INPUT");
+	private final String MSG_HANDLE_N_PX = getMsg("HANDLE_N_PX");
+	private final String MSG_TIP_N_PX = getMsg("TIP_N_PX");
+	private final String MSG_TIP_SHOULD_BE_VISIBLE = getMsg("TIP_SHOULD_BE_VISIBLE");
+	private final String MSG_TIP_SHOULD_NOT_BE_VISIBLE = getMsg("TIP_SHOULD_NOT_BE_VISIBLE");
+	private final String MSG_OFFSETS_SHOULD_BE_THE_SAME = getMsg("OFFSETS_SHOULD_BE_THE_SAME");
+	private final String MSG_TIP_FIRST_HALF = getMsg("TIP_FIRST_HALF");
+	private final String MSG_TIP_SECOND_HALF = getMsg("TIP_SECOND_HALF");
+	private final String MSG_HANDLE_FIRST_HALF = getMsg("HANDLE_FIRST_HALF");
+	private final String MSG_HANDLE_SECOND_HALF = getMsg("HANDLE_SECOND_HALF");
+	private final String MSG_VALUE_IN_INPUT = getMsg("VALUE_IN_INPUT");
 
 	// locators
-	private final String LOC_FIRST = String.format(getLoc("SLIDER_N"), 1);
-	private final String LOC_FIRST_HANDLE = String.format(
-			getLoc("SLIDER_N_HANDLE"), 1);
-	private final String LOC_FIRST_TIP = String.format(getLoc("SLIDER_N_TIP"),
-			1);
-	private final String LOC_FIRST_INPUT = String.format(
-			getLoc("SLIDER_N_INPUT"), 1);
+	private final String LOC_EXAMPLE_HEADER = getLoc("EXAMPLE_HEADER");
+	private final String LOC_FIRST = format(getLoc("SLIDER_N"), 1);
+	private final String LOC_FIRST_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 1);
+	private final String LOC_FIRST_TIP = format(getLoc("SLIDER_N_TIP"), 1);
+	private final String LOC_FIRST_INPUT = format(getLoc("SLIDER_N_INPUT"), 1);
 
-	private final String LOC_SECOND = String.format(getLoc("SLIDER_N"), 2);
-	private final String LOC_SECOND_HANDLE = String.format(
-			getLoc("SLIDER_N_HANDLE"), 2);
-	private final String LOC_SECOND_TIP = String.format(getLoc("SLIDER_N_TIP"),
-			2);
-	private final String LOC_SECOND_INPUT = String.format(
-			getLoc("SLIDER_N_INPUT"), 2);
+	private final String LOC_SECOND = format(getLoc("SLIDER_N"), 2);
+	private final String LOC_SECOND_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 2);
+	private final String LOC_SECOND_TIP = format(getLoc("SLIDER_N_TIP"), 2);
+	private final String LOC_SECOND_INPUT = format(getLoc("SLIDER_N_INPUT"), 2);
 
-	private final String LOC_THIRD = String.format(getLoc("SLIDER_N"), 3);
-	private final String LOC_THIRD_HANDLE = String.format(
-			getLoc("SLIDER_N_HANDLE"), 3);
-	private final String LOC_THIRD_TIP = String.format(getLoc("SLIDER_N_TIP"),
-			3);
-	private final String LOC_THIRD_INPUT = String.format(
-			getLoc("SLIDER_N_INPUT"), 3);
+	private final String LOC_THIRD = format(getLoc("SLIDER_N"), 3);
+	private final String LOC_THIRD_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 3);
+	private final String LOC_THIRD_TIP = format(getLoc("SLIDER_N_TIP"), 3);
+	private final String LOC_THIRD_INPUT = format(getLoc("SLIDER_N_INPUT"), 3);
 
 	/**
 	 * Tests clicking on the first slider. First, it checks the offset of the handler and
@@ -63,24 +72,12 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testFirstSliderMouse() {
-		scrollIntoView(LOC_FIRST, true);
-
-		// TODO find out why it isn't offset by 75px but 74px
-		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE + "@style") - 75) < 2,
-				String.format(MSG_HANDLE_N_PX, 75));
-
-		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP + "@style") - 75) < 2,
-				String.format(MSG_TIP_N_PX, 75));
-
-		String attr = selenium.getAttribute(LOC_FIRST_TIP + "@style");
-		assertFalse(!attr.contains("display: none;"),
-				MSG_TIP_SHOULD_NOT_BE_VISIBLE);
+		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE + "@style") - 75) < 2, format(MSG_HANDLE_N_PX, 75));
+		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP + "@style") - 75) < 2, format(MSG_TIP_N_PX, 75));
+		assertFalse(isDisplayed(LOC_FIRST_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_FIRST, "20,3");
-
-		attr = selenium.getAttribute(LOC_FIRST_TIP + "@style");
-		assertTrue(!attr.contains("display: none;"), MSG_TIP_SHOULD_BE_VISIBLE);
-
+		assertTrue(isDisplayed(LOC_FIRST_TIP), MSG_TIP_SHOULD_BE_VISIBLE);
 		selenium.mouseUp(LOC_FIRST);
 
 		int tipOffset = getOffset(LOC_FIRST_TIP + "@style");
@@ -102,8 +99,6 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testFirstSliderKeyboard() {
-		scrollIntoView(LOC_FIRST, true);
-
 		selenium.type(LOC_FIRST_INPUT, "10");
 		int tipOffset = getOffset(LOC_FIRST_TIP + "@style");
 		int handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
@@ -149,26 +144,13 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testSecondSlider() {
-		scrollIntoView(LOC_SECOND, true);
-
-		// TODO find out why it isn't offset by 96px
-		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE + "@style") - 96) < 2,
-				String.format(MSG_HANDLE_N_PX, 96));
-
-		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP + "@style") - 96) < 2,
-				String.format(MSG_TIP_N_PX, 96));
-
-		String attr = selenium.getAttribute(LOC_SECOND_TIP + "@style");
-		assertFalse(!attr.contains("display: none;"),
-				MSG_TIP_SHOULD_NOT_BE_VISIBLE);
+		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE + "@style") - 96) < 2, format(MSG_HANDLE_N_PX, 96));
+		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP + "@style") - 96) < 2, format(MSG_TIP_N_PX, 96));
+		assertFalse(isDisplayed(LOC_SECOND_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_SECOND, "20,3");
-
-		attr = selenium.getAttribute(LOC_SECOND_TIP + "@style");
 		// it is a slider without tip so it cannot be visible
-		assertFalse(!attr.contains("display: none;"),
-				MSG_TIP_SHOULD_NOT_BE_VISIBLE);
-
+		assertFalse(isDisplayed(LOC_SECOND_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 		selenium.mouseUp(LOC_SECOND);
 
 		int tipOffset = getOffset(LOC_SECOND_TIP + "@style");
@@ -188,26 +170,13 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testThirdSliderMouse() {
-		scrollIntoView(LOC_THIRD, true);
-
-		// TODO find out why it isn't offset by 75px but 74px
-		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE + "@style") - 225) < 2,
-				String.format(MSG_HANDLE_N_PX, 225));
-
-		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP + "@style") - 225) < 2,
-				String.format(MSG_TIP_N_PX, 225));
-
-		String attr = selenium.getAttribute(LOC_THIRD_TIP + "@style");
-		assertFalse(!attr.contains("display: none;"),
-				MSG_TIP_SHOULD_NOT_BE_VISIBLE);
+		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE + "@style") - 225) < 2, format(MSG_HANDLE_N_PX, 225));
+		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP + "@style") - 225) < 2, format(MSG_TIP_N_PX, 225));
+		assertFalse(isDisplayed(LOC_THIRD_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_THIRD, "20,3");
-
-		attr = selenium.getAttribute(LOC_THIRD_TIP + "@style");
 		// slider does not use the tip so it has to be invisible
-		assertFalse(!attr.contains("display: none;"),
-				MSG_TIP_SHOULD_NOT_BE_VISIBLE);
-
+		assertFalse(isDisplayed(LOC_THIRD_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 		selenium.mouseUp(LOC_THIRD);
 
 		int tipOffset = getOffset(LOC_THIRD_TIP + "@style");
@@ -230,8 +199,6 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testThirdSliderKeyboard() {
-		scrollIntoView(LOC_THIRD, true);
-
 		selenium.type(LOC_THIRD_INPUT, "10"); // 10 -> 0
 		int tipOffset = getOffset(LOC_THIRD_TIP + "@style");
 		int handleOffset = getOffset(LOC_THIRD_HANDLE + "@style");
@@ -277,16 +244,26 @@ public class InputNumberSliderTestCase extends
 		assertEquals(value, 550, MSG_VALUE_IN_INPUT);
 	}
 
-	/**
-	 * Tests the "View Source". It checks that the source code is not visible,
-	 * clicks on the link, and checks the first 2 components of source code,
-	 * i.e. that the source code begins with "&lt;ui:composition".
-	 */
-	@Test
-	public void testSliderSource() {
-		abstractTestSource(1, 1, "<", "ui:composition");
-	}
+    /**
+     * Tests the "View Source". It checks that the source code is not visible,
+     * clicks on the link, and checks 9 lines of source code.
+     */
+    @Test
+    public void testExampleSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<p>Here is an example of default inputNumberSlider:</p>",
+                "<rich:inputNumberSlider value=\"50\" />",
+                "<p>Here is \"minimalistic\" input:</p>",
+                "<rich:inputNumberSlider value=\"50\" showInput=\"false\"",
+                "enableManualInput=\"false\" showBoundaryValues=\"false\"",
+                "showToolTip=\"false\" />",
+                "<rich:inputNumberSlider value=\"500\" width=\"500\" maxValue=\"1000\"",
+                "step=\"50\" showToolTip=\"false\" />",
+        };
 
+        abstractTestSource(1, "View Source", strings);
+    }
+    
 	/**
 	 * Returns the offset of the element. It requires a locator for an
 	 * attribute, e.g. //div@style. It returns the 'left' attribute, e.g. for
@@ -301,10 +278,12 @@ public class InputNumberSliderTestCase extends
 	}
 
 	/**
-	 * Loads the page containing the calendar component.
-	 */
-	@BeforeMethod
-	private void loadPage() {
-		super.loadPage("richInputs", 8, MSG_COMPONENT_DESCRIPTION);
-	}
+     * Loads the page containing needed component.
+     */
+    @SuppressWarnings("unused")
+    @BeforeMethod
+    private void loadPage() {
+        openComponent("Input Number Slider");
+        scrollIntoView(LOC_EXAMPLE_HEADER, true);
+    }
 }
