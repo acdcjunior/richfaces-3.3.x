@@ -20,7 +20,9 @@
  */
 package org.richfaces.component;
 
+import javax.el.ELException;
 import javax.el.ValueExpression;
+import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIViewRoot;
@@ -76,6 +78,9 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	private boolean requestDelaySet = false;
 	private boolean ignoreDupResponsesSet = false;
 	private boolean timeoutSet = false;
+	
+	private Object process = null;
+	private boolean processSet = false;
 	
 	public static final String COMPONENT_TYPE = "org.richfaces.TreeNode";
 
@@ -348,7 +353,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	}
 
 	public Object saveState(FacesContext context) {
-		Object[] state = new Object[18];
+		Object[] state = new Object[20];
 		state[0] = super.saveState(context);
 		state[1] = this.dragType;
 		state[2] = this.acceptedTypes;
@@ -367,6 +372,8 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		state[15] = new Integer(this.timeout);
 		state[16] = this.similarityGroupingId;
         state[17] = new Boolean(this.bypassUpdates);
+        state[18] = this.process;
+        state[19] = Boolean.valueOf(this.processSet);
 		
 		return state;
 	}
@@ -391,6 +398,8 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		this.timeout = ((Integer)_state[15]).intValue();
 		this.similarityGroupingId = (String) _state[16];
 		this.bypassUpdates = ((Boolean)_state[17]).booleanValue();
+		this.process = _state[18];
+		this.processSet = ((Boolean)_state[19]).booleanValue();
 	}
 	
 	public void setDragIndicator(String dragIndicator) {
@@ -548,6 +557,37 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 			return this.ajaxSingle;
     	}
 	 }
+	 
+	 public Object getProcess() {
+        if (this.process != null) {
+            return this.process;
+        }
+        
+        ValueExpression ve = getValueExpression("process");
+        if (ve != null) {
+            Object value = null;
+            
+            try {
+                value = (Object) ve.getValue(getFacesContext().getELContext());
+            } catch (ELException e) {
+                throw new FacesException(e);
+            }
+            
+            return value;
+        } else {
+            UITree tree = getUITree();
+            if (tree != null) {
+                return tree.getProcess();
+            }
+        }
+        
+        return null;
+    }
+	 
+    public void setProcess(Object process) {
+        this.process = process;
+        this.processSet = true;
+    }	 
 	 
 	 /**
 	 * If "true", after process validations phase it skips updates of model beans on a force render response. It can be used for validating components input
