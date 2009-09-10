@@ -423,7 +423,7 @@
                                    <entry>Defines transparency for blocking &lt;div&gt; element</entry>
                              </row>
                              <row>
-                                   <entry>rich-mpnl-ovf-hd</entry>
+                                   <entry>.rich-mpnl-ovf-hd</entry>
                                    <entry>Defines style for block element content</entry>
                              </row>
                              <row> 
