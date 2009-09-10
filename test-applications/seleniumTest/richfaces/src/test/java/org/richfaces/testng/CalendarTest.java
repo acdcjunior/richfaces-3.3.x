@@ -809,7 +809,8 @@ public class CalendarTest extends SeleniumTestBase {
 		
     }
     
-    @Test
+    //https://jira.jboss.org/jira/browse/RF-6475
+    @Test(groups=FAILURES_GROUP)
     public void testDataModelAttribute(Template template) {
     	renderPage(template, RESET_METHOD);
         initIds(getParentId());
