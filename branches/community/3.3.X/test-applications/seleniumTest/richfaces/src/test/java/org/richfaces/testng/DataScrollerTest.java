@@ -59,21 +59,19 @@ public class DataScrollerTest extends SeleniumTestBase {
 	String dataTableId;
 	
 	static final String [] activePageClasses = new String[] {
-		"dr-dscr-act","rich-datascr-act"
+		"rich-datascr-act"
 	};
 	
 	static final String [] inactivePageClasses = new String[] {
-			"dr-dscr-inact","rich-datascr-inact"
+			"rich-datascr-inact"
 	};
 		
 	static final String [] activeForwardClasses = new String[] {
-			"dr-dscr-button","rich-datascr-button"
+			"rich-datascr-button"
 	};
 
 	static final String [] inactiveForwardClasses = new String [] {
-		"dr-dscr-button-dsbld",
 		"rich-datascr-button-dsbld",
-		"dr-dscr-button",
 		"rich-datascr-button"
 	};
 	
@@ -547,13 +545,11 @@ public class DataScrollerTest extends SeleniumTestBase {
 	
 	private void testRendering() {
 		assertClassNames(dataScrollerId,new String [] 
-		                                            {"dr-dscr",
-		                                             "rich-datascr"},
+		                                            {"rich-datascr"},
 		                 "DataScroller rendering failed: ", true);
 		
 		assertClassNames(dataScrollerTableId,new String [] 
-		                                            {"dr-dscr-t",
-		                                             "rich-dtascroller-table"},
+		                                            {"rich-dtascroller-table"},
 		                 "DataScroller rendering failed: ", true);
 
 		testPageCount(16, dataScrollerTableId);

@@ -11,7 +11,7 @@
 			<h:outputText id="_auto_status" value="#{autoTestBean.status}"></h:outputText>
 		</a4j:outputPanel>
 		<h:outputText  id="_auto_time" value="#{autoTestBean.text}"></h:outputText>
-		<h:outputText  id="_auto_value" style="display: none;" value="#{autoTestBean.value}"></h:outputText>
+		<h:outputText  id="_auto_value" value="#{autoTestBean.value}"></h:outputText>
 		<h:commandButton id="_auto_simple_submit" value="Simple submit" immediate="#{autoTestBean.immediate}" style="display: none;" />
 		<a4j:commandButton id="_auto_ajax_submit" value="Ajax submit" reRender="componentId" immediate="#{autoTestBean.immediate}" style="display: none;" />
 </html>
