@@ -72,40 +72,40 @@
       <para>
          <emphasis role="bold">Example:</emphasis>
       </para>
-      <programlisting role="XML"><![CDATA[...
-<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5">
-		<f:facet name="caption">
-				<h:outputText value="United States Capitals" />
-		</f:facet>
-       	<f:facet name="header">
-       			<h:outputText value="Capitals and States Table" />
-       	</f:facet>
-       	<rich:column>
-       			<f:facet name="header">State Flag</f:facet>
-            			<h:graphicImage value="#{cap.stateFlag}"/>
-            	<f:facet name="footer">State Flag</f:facet>
-      	</rich:column>
-       	<rich:column>
-       			<f:facet name="header">State Name</f:facet>
-            			<h:outputText value="#{cap.state}"/>
-            	<f:facet name="footer">State Name</f:facet>
-      	</rich:column>
-       	<rich:column >
-       			<f:facet name="header">State Capital</f:facet>
-            			<h:outputText value="#{cap.name}"/>
-            	<f:facet name="footer">State Capital</f:facet>
-    	</rich:column>
-       	<rich:column>
-       			<f:facet name="header">Time Zone</f:facet>
-            		<h:outputText value="#{cap.timeZone}"/>
-            	<f:facet name="footer">Time Zone</f:facet>
-      	</rich:column>
-       	<f:facet name="footer">
-       			<h:outputText value="Capitals and States Table" />
-       	</f:facet>
-</rich:dataTable>
+      <programlisting role="XML">...
+&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt;
+		&lt;f:facet name="caption"&gt;
+				&lt;h:outputText value="United States Capitals" /&gt;
+		&lt;/f:facet&gt;
+       	&lt;f:facet name="header"&gt;
+       			&lt;h:outputText value="Capitals and States Table" /&gt;
+       	&lt;/f:facet&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;State Flag&lt;/f:facet&gt;
+            			&lt;h:graphicImage value="#{cap.stateFlag}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Flag&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;State Name&lt;/f:facet&gt;
+            			&lt;h:outputText value="#{cap.state}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Name&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;rich:column &gt;
+       			&lt;f:facet name="header"&gt;State Capital&lt;/f:facet&gt;
+            			&lt;h:outputText value="#{cap.name}"/&gt;
+            	&lt;f:facet name="footer"&gt;State Capital&lt;/f:facet&gt;
+    	&lt;/rich:column&gt;
+       	&lt;rich:column&gt;
+       			&lt;f:facet name="header"&gt;Time Zone&lt;/f:facet&gt;
+            		&lt;h:outputText value="#{cap.timeZone}"/&gt;
+            	&lt;f:facet name="footer"&gt;Time Zone&lt;/f:facet&gt;
+      	&lt;/rich:column&gt;
+       	&lt;f:facet name="footer"&gt;
+       			&lt;h:outputText value="Capitals and States Table" /&gt;
+       	&lt;/f:facet&gt;
+&lt;/rich:dataTable&gt;
 ...
-]]></programlisting>
+</programlisting>
 
       <para>This is a result:</para>
 
@@ -328,5 +328,8 @@
       <para>From <ulink url="http://www.jboss.org/community/docs/DOC-11861">"rich:dataTable border to 0px "</ulink> article you'll figure out how to set rich:dataTable border to 0px </para>
       <para>
          <ulink url="http://www.jboss.org/community/docs/DOC-11860">dataTable Background Out </ulink> tells you how to remove rich:dataTable header background</para>
+		<para>
+		<ulink url="http://www.jboss.org/community/wiki/RichfacesDatatableCheckbox">"Richfaces Datatable Checkbox"</ulink> article helps you to create a Richface Datatable with Checkbox Column and an CheckAll Checkbox in Header.
+		</para>  
   </section>
 </section>

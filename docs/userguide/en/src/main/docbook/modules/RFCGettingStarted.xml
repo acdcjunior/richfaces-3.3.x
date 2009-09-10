@@ -551,6 +551,9 @@ jsf-app
                       
                    
             </itemizedlist>
+            <para>
+				Read <ulink url="http://www.jboss.org/community/wiki/RichFacesinstallingandconfiguration">"RichFaces installing and configuration"</ulink> article to find out how to integrate RichFaces and Trinidad and possible problems that may occur while launching the RichFaces sample on the JBoss server.            
+            </para>
             <para>Read also the <ulink url="http://mkblog.exadel.com/?p=110">quick overview</ulink> to "Practical RichFaces " book by Max Katz at his blog.</para>
                 
                 

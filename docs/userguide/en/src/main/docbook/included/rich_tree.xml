@@ -93,7 +93,7 @@ a tree structure with a drag-and-drop capability.  </para>
                                         <property>&lt;rich:tree&gt;</property>
                               </emphasis> is built from a simple
                                         <code>org.richfaces.model.TreeNode</code> model: </para>
-                    <programlisting role="JAVA"><![CDATA[...
+                    <programlisting role="JAVA">...
 private TreeNodeImpl&lt;String&gt; stationRoot = new TreeNodeImpl&lt;String&gt;();
 private TreeNodeImpl&lt;String&gt; stationNodes = new TreeNodeImpl&lt;String&gt;(); 
 private String[] kickRadioFeed = { "Hall &amp; Oates - Kiss On My List",
@@ -108,20 +108,20 @@ for (int i = 0; i &lt; kickRadioFeed.length; i++){
 	child.setData(kickRadioFeed[i]);
 	stationRoot.addChild(i, child);
 }
-...]]></programlisting>
+...</programlisting>
                     <para> As it is mentioned before you need to pass
                                         <code>#{stations.stationNodes}</code> property to the <emphasis>
                                         <property>"value"</property>
                               </emphasis> attribute and define the <emphasis>
                                         <property>"var"</property>
                               </emphasis> attribute in order to refer to the data: </para>
-                    <programlisting role="XML"><![CDATA[...
-<rich:tree value="#{stations.stationNodes}" var="station">
-	<rich:treeNode>
-		<h:outputText value="#{station}" />
-	</rich:treeNode>
-</rich:tree>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;rich:tree value="#{stations.stationNodes}" var="station"&gt;
+	&lt;rich:treeNode&gt;
+		&lt;h:outputText value="#{station}" /&gt;
+	&lt;/rich:treeNode&gt;
+&lt;/rich:tree&gt;
+...</programlisting>
                     <para> This is a result: </para>
                     <figure>
                               <title>A simple <emphasis role="bold">
@@ -151,39 +151,39 @@ for (int i = 0; i &lt; kickRadioFeed.length; i++){
                                         <property>&lt;rich:tree&gt;</property>
                               </emphasis> from a local XML file. In the following example a simple
                               XML file (stations.xml) is used as a radio station playlist: </para>
-                    <programlisting role="XML"><![CDATA[<?xml version="1.0"?>
-<station name="KickRadio">
-		<feed date="today">
-			<song time="07:00">Hall &amp; Oates - Kiss On My List</song>
-			<song time="07:03">David Bowie - Let's Dance</song> 
-			<song time="07:06">Lyn Collins - Think (About It)</song>
-			<song time="07:10">Kim Carnes - Bette Davis Eyes</song>
-			<song time="07:15">KC &amp; the Sunshine Band - Give It Up</song>
-		</feed>
-</station>]]></programlisting>
+                    <programlisting role="XML">&lt;?xml version="1.0"?&gt;
+&lt;station name="KickRadio"&gt;
+		&lt;feed date="today"&gt;
+			&lt;song time="07:00"&gt;Hall &amp; Oates - Kiss On My List&lt;/song&gt;
+			&lt;song time="07:03"&gt;David Bowie - Let's Dance&lt;/song&gt; 
+			&lt;song time="07:06"&gt;Lyn Collins - Think (About It)&lt;/song&gt;
+			&lt;song time="07:10"&gt;Kim Carnes - Bette Davis Eyes&lt;/song&gt;
+			&lt;song time="07:15"&gt;KC &amp; the Sunshine Band - Give It Up&lt;/song&gt;
+		&lt;/feed&gt;
+&lt;/station&gt;</programlisting>
                     <para> Now you need to create a bean that holds a model nodes: </para>
-                    <programlisting role="JAVA"><![CDATA[...
+                    <programlisting role="JAVA">...
 private TreeNode data;
 	...
 FacesContext context = FacesContext.getCurrentInstance();
 data = XmlTreeDataBuilder.build(new InputSource(getClass().getResourceAsStream("stations.xml")));
-...]]></programlisting>
+...</programlisting>
                     <para> Finally you should set the <emphasis>
                                         <property>"value"</property>
                               </emphasis> attribute to the <code>data</code> bean property and
                               define the <emphasis>
                                         <property>"var"</property>
                               </emphasis> attribute in order to refer to the data of nodes: </para>
-                    <programlisting role="XML"><![CDATA[...
-<rich:tree id="treeXML" value="#{stations.data}" var="vardata">
-	<rich:treeNode>
-		<h:outputText value="#{vardata.attributes['name']}" />
-		<h:outputText value="#{vardata.attributes['date']}" />
-		<h:outputText value="#{vardata.attributes['time']}" />
-		<h:outputText value=" #{vardata.text}" />
-	</rich:treeNode>
-</rich:tree>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;rich:tree id="treeXML" value="#{stations.data}" var="vardata"&gt;
+	&lt;rich:treeNode&gt;
+		&lt;h:outputText value="#{vardata.attributes['name']}" /&gt;
+		&lt;h:outputText value="#{vardata.attributes['date']}" /&gt;
+		&lt;h:outputText value="#{vardata.attributes['time']}" /&gt;
+		&lt;h:outputText value=" #{vardata.text}" /&gt;
+	&lt;/rich:treeNode&gt;
+&lt;/rich:tree&gt;
+...</programlisting>
                     <para>This is a result:</para>
                     <figure>
                               <title>A simple <emphasis role="bold">
@@ -220,21 +220,21 @@ data = XmlTreeDataBuilder.build(new InputSource(getClass().getResourceAsStream("
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML"><![CDATA[...
-<h:form>
-    <rich:tree style="width:300px" value="#{library.data}" var="item" nodeFace="#{item.type}">
-        <rich:treeNode type="artist" iconLeaf="/images/tree/singer.png" icon="/images/tree/singer.png">
-            <h:outputText value="#{item.name}" />
-        </rich:treeNode>
-        <rich:treeNode type="album" iconLeaf="/images/tree/disc.png" icon="/images/tree/disc.png">
-            <h:outputText value="#{item.title}" />
-        </rich:treeNode>
-        <rich:treeNode type="song" iconLeaf="/images/tree/song.png" icon="/images/tree/song.png">
-            <h:outputText value="#{item.title}" />
-        </rich:treeNode>
-    </rich:tree>
-</h:form>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+    &lt;rich:tree style="width:300px" value="#{library.data}" var="item" nodeFace="#{item.type}"&gt;
+        &lt;rich:treeNode type="artist" iconLeaf="/images/tree/singer.png" icon="/images/tree/singer.png"&gt;
+            &lt;h:outputText value="#{item.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+        &lt;rich:treeNode type="album" iconLeaf="/images/tree/disc.png" icon="/images/tree/disc.png"&gt;
+            &lt;h:outputText value="#{item.title}" /&gt;
+        &lt;/rich:treeNode&gt;
+        &lt;rich:treeNode type="song" iconLeaf="/images/tree/song.png" icon="/images/tree/song.png"&gt;
+            &lt;h:outputText value="#{item.title}" /&gt;
+        &lt;/rich:treeNode&gt;
+    &lt;/rich:tree&gt;
+&lt;/h:form&gt;
+...</programlisting>
                     <para>This is a result: </para>
                     <figure>
                               <title>The <emphasis>
@@ -282,9 +282,9 @@ data = XmlTreeDataBuilder.build(new InputSource(getClass().getResourceAsStream("
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="JAVA"><![CDATA[
+                    <programlisting role="JAVA">
 nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
- ]]></programlisting>
+ </programlisting>
                     <para>There are some essential points in a <emphasis>
                                         <property>"nodeFace"</property>
                               </emphasis> attribute usage: you need to define notions for
@@ -309,9 +309,9 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML"><![CDATA[...
-<h:outputText value="#{varAttributeName}">
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;h:outputText value="#{varAttributeName}"&gt;
+...</programlisting>
                     <para>
                               <emphasis>
                                         <property>"varAttributeName"</property>
@@ -366,22 +366,22 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML"><![CDATA[...
-<h:form>
-    <rich:tree style="width:300px" value="#{library.data}" var="item" nodeFace="#{item.type}">
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+    &lt;rich:tree style="width:300px" value="#{library.data}" var="item" nodeFace="#{item.type}"&gt;
     	 ...
-        <rich:treeNode type="album" iconLeaf="/images/tree/album.gif" icon="/images/tree/album.gif"
-                      rendered="#{item.exist}">
-            <h:outputText value="#{item.name}" />
-        </rich:treeNode>
-        <rich:treeNode type="album" iconLeaf="/images/tree/album_absent.gif" icon="/images/tree/album_absent.gif"
-                      rendered="#{not item.exist}">
-            <h:outputText value="#{item.name}" />
-        </rich:treeNode>
+        &lt;rich:treeNode type="album" iconLeaf="/images/tree/album.gif" icon="/images/tree/album.gif"
+                      rendered="#{item.exist}"&gt;
+            &lt;h:outputText value="#{item.name}" /&gt;
+        &lt;/rich:treeNode&gt;
+        &lt;rich:treeNode type="album" iconLeaf="/images/tree/album_absent.gif" icon="/images/tree/album_absent.gif"
+                      rendered="#{not item.exist}"&gt;
+            &lt;h:outputText value="#{item.name}" /&gt;
+        &lt;/rich:treeNode&gt;
     	 ...
-    </rich:tree>
-</h:form>
-...]]></programlisting>
+    &lt;/rich:tree&gt;
+&lt;/h:form&gt;
+...</programlisting>
                     <para>This is a result of the code: </para>
                     <figure>
                               <title>The <emphasis>
@@ -456,24 +456,24 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML"><![CDATA[...
-<rich:tree value="#{library.data}" var="item">
+                    <programlisting role="XML">...
+&lt;rich:tree value="#{library.data}" var="item"&gt;
     ...
-    <f:facet name="icon">
-        <h:graphicImage value="/images/tree/singer.png "/>
-    </f:facet>
-    <f:facet name="iconCollapsed">
-        <h:graphicImage value="/images/tree/singer.png" />
-    </f:facet>
-    <f:facet name="iconExpanded">
-        <h:graphicImage value="/images/tree/singer.png" />
-    </f:facet>
-    <f:facet name="iconLeaf">
-        <h:graphicImage value="/images/tree/song.png" />
-    </f:facet>
+    &lt;f:facet name="icon"&gt;
+        &lt;h:graphicImage value="/images/tree/singer.png "/&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="iconCollapsed"&gt;
+        &lt;h:graphicImage value="/images/tree/singer.png" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="iconExpanded"&gt;
+        &lt;h:graphicImage value="/images/tree/singer.png" /&gt;
+    &lt;/f:facet&gt;
+    &lt;f:facet name="iconLeaf"&gt;
+        &lt;h:graphicImage value="/images/tree/song.png" /&gt;
+    &lt;/f:facet&gt;
     ...
-</rich:tree>
-...]]></programlisting>
+&lt;/rich:tree&gt;
+...</programlisting>
 
                     <para> The <emphasis role="bold">
                                         <property>&lt;rich: tree&gt;</property>
@@ -566,17 +566,17 @@ nodeFace="#{data.name != 'param-value' ? 'artist' : 'album'}"
                               <emphasis role="bold">Example:</emphasis>
                     </para>
                     
-                    <programlisting role="XML"><![CDATA[...
-<rich:tree value="#{treeBean.data}" var="node" switchType="ajax"    rowKeyConverter="org.richfaces.TreeRowKeyConverter">
-     <rich:treeNode ajaxSingle="true">
-          <h:outputText value="#{node}"/>
-     </rich:treeNode>
-</rich:tree>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;rich:tree value="#{treeBean.data}" var="node" switchType="ajax"    rowKeyConverter="org.richfaces.TreeRowKeyConverter"&gt;
+     &lt;rich:treeNode ajaxSingle="true"&gt;
+          &lt;h:outputText value="#{node}"/&gt;
+     &lt;/rich:treeNode&gt;
+&lt;/rich:tree&gt;
+...</programlisting>
                     
                     <para>In the example the tree uses the following data model:</para>
                     
-                    <programlisting role="JAVA"><![CDATA[...
+                    <programlisting role="JAVA">...
 String[ ] components = {"&lt; a4j:ajaxListener &gt;", "&lt; a4j:keepAlive &gt;", "&lt; a4j:actionparam &gt;" };
 String[ ][ ] attributes = {{"type"},
                                 {"ajaxOnly", "beanName"},
@@ -595,7 +595,7 @@ for (int i = 0; i &lt; components.length; i++) {
           child.addChild(attributes[i][j], grandChild);
      }
 }          
-...]]></programlisting>
+...</programlisting>
                     
          </section>
    <section id="tsebro" role="updated">
@@ -716,23 +716,23 @@ for (int i = 0; i &lt; components.length; i++) {
                               <emphasis role="bold">Example:</emphasis>
                     </para>
 
-                    <programlisting role="XML"><![CDATA[...
-<h:form>
-     <rich:tree style="width:300px" value="#{libraryAjaxTree.data}" nodeFace="#{item.type}" var="item" dragIndicator=":treeDragIndicator" dropListener="#{libraryAjaxTree.processDrop}">
-          <rich:treeNode type="artist" icon="/images/tree/group.png" iconLeaf="/images/tree/group.png" acceptedTypes="album">
-               <h:outputText value="#{item.name}" />
-          </rich:treeNode>
-          <rich:treeNode type="album" icon="/images/tree/cd.png" iconLeaf="/images/tree/cd.png" dragType="album" acceptedTypes="song">
-               <h:outputText value="#{item.title}" />
-               <rich:dndParam name="label" type="drag" value="Album: #{item.title}" />
-          </rich:treeNode>
-          <rich:treeNode type="song" icon="/images/tree/music.png" iconLeaf="/images/tree/music.png" dragType="song">
-               <h:outputText value="#{item.title}" />
-               <rich:dndParam name="label" type="drag" value="Song: #{item.title}" />
-          </rich:treeNode>
-    </rich:tree>
-</h:form>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+     &lt;rich:tree style="width:300px" value="#{libraryAjaxTree.data}" nodeFace="#{item.type}" var="item" dragIndicator=":treeDragIndicator" dropListener="#{libraryAjaxTree.processDrop}"&gt;
+          &lt;rich:treeNode type="artist" icon="/images/tree/group.png" iconLeaf="/images/tree/group.png" acceptedTypes="album"&gt;
+               &lt;h:outputText value="#{item.name}" /&gt;
+          &lt;/rich:treeNode&gt;
+          &lt;rich:treeNode type="album" icon="/images/tree/cd.png" iconLeaf="/images/tree/cd.png" dragType="album" acceptedTypes="song"&gt;
+               &lt;h:outputText value="#{item.title}" /&gt;
+               &lt;rich:dndParam name="label" type="drag" value="Album: #{item.title}" /&gt;
+          &lt;/rich:treeNode&gt;
+          &lt;rich:treeNode type="song" icon="/images/tree/music.png" iconLeaf="/images/tree/music.png" dragType="song"&gt;
+               &lt;h:outputText value="#{item.title}" /&gt;
+               &lt;rich:dndParam name="label" type="drag" value="Song: #{item.title}" /&gt;
+          &lt;/rich:treeNode&gt;
+    &lt;/rich:tree&gt;
+&lt;/h:form&gt;
+...</programlisting>
 
                     <para>This code renders following tree:</para>
 
@@ -946,5 +946,8 @@ for (int i = 0; i &lt; components.length; i++) {
                                         <property>&lt;rich:tree&gt;</property>
                               </emphasis> usage and sources for the given example. </para>
                     <para>How to Expand/Collapse Tree Nodes from code, see in this<ulink url="http://labs.jboss.com/wiki/ExpandCollapseTreeNodes">wiki article</ulink>. </para>
+                    <para>
+						Read <ulink url="https://www.jboss.org/community/wiki/RichFacesTreeFAQ"> RichFaces Tree FAQ </ulink> to know how to avoid problem with showing only two levels of node when tree  actually contains more.                    
+                    </para>
           </section>
 </section>
