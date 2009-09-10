@@ -229,7 +229,7 @@
 		</td>
 		<td class="rich-tree-node-text #{component.attributes['nodeClass']}"
             rich:selectedclass="#{selectedClass}" rich:highlightedclass="#{highlightedClass}"
-            id="#{clientId}:text">
+            id="#{clientId}:text" rich:ajaxsingle="#{component.attributes['ajaxSingle']}">
             <vcp:body />
 		</td>
 	</tr>

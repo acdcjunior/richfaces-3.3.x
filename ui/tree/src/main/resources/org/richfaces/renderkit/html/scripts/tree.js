@@ -136,6 +136,10 @@ Tree.addMethods({
 
 					var attr = Richfaces.getNSAttribute("ajaxselectedlistener", $(event.selectedNode + Tree.ID_DEVIDER + Tree.ID_ICON));
 					if (attr) {
+						var ajaxSingle = Richfaces.getNSAttribute("ajaxsingle", $(treeItem.id + ":text"));;
+						if (ajaxSingle && ajaxSingle == "true") {
+							event.ajaxSingle = this.id
+						}
 						this.onAjaxSelect(event);
 					}
 				} else if (event[Richfaces.TreeExpandEvent]){

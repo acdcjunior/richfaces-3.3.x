@@ -558,18 +558,25 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 
 	protected String getAjaxScript(FacesContext context, UITree tree) {
 		String id = tree.getBaseClientId(context);
-		JSFunction function = AjaxRendererUtils
-		.buildAjaxFunction(tree, context);
-		Map eventOptions = AjaxRendererUtils.buildEventOptions(context, tree, true);
-		Map parameters = (Map) eventOptions.get("parameters");
-		parameters.remove(id);
-		parameters.put(id + UITree.SELECTED_NODE_PARAMETER_NAME,
-				new JSReference("event.selectedNode"));
+		
+		StringBuilder builder = new StringBuilder();
+        Map<String, Object> eventOptions = AjaxRendererUtils.buildEventOptions(context, tree, true);
+        Map<String, Object> parameters = (Map<String, Object>) eventOptions.get("parameters");
+        parameters.remove(id);
+        parameters.put(id + UITree.SELECTED_NODE_PARAMETER_NAME, new JSReference("event.selectedNode"));
+        eventOptions.put("parameters", new JSReference("params"));
+        
+		builder.append("var params = ").append(ScriptUtils.toScript(parameters)).append(";\n");
+		builder.append("if (!params.").append(AjaxRendererUtils.AJAX_SINGLE_PARAMETER_NAME)
+		           .append(" && event.ajaxSingle) {\n");
+		builder.append("params.").append(AjaxRendererUtils.AJAX_SINGLE_PARAMETER_NAME).append(" = event.ajaxSingle;\n");
+		builder.append("}\n");
+		
+		JSFunction function = AjaxRendererUtils.buildAjaxFunction(tree, context);
 		function.addParameter(eventOptions);
-		StringBuffer buffer = new StringBuffer();
-		function.appendScript(buffer);
-		buffer.append("; return false;");
-		return buffer.toString();
+		builder.append(function);
+		builder.append("; return false;");
+		return builder.toString();
 	}
 
 	public String writeScriptElement(FacesContext context, UITree tree, String code) throws IOException {

@@ -80,7 +80,6 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	private boolean timeoutSet = false;
 	
 	private Object process = null;
-	private boolean processSet = false;
 	
 	public static final String COMPONENT_TYPE = "org.richfaces.TreeNode";
 
@@ -286,7 +285,7 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		}
 		ValueBinding vb = getValueBinding("acceptedTypes");
 		if (null != vb){
-			return (Object)vb.getValue(getFacesContext());
+			return vb.getValue(getFacesContext());
 		} else {
 			UITree tree = getUITree();
 			if (tree != null) {
@@ -373,7 +372,6 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		state[16] = this.similarityGroupingId;
         state[17] = new Boolean(this.bypassUpdates);
         state[18] = this.process;
-        state[19] = Boolean.valueOf(this.processSet);
 		
 		return state;
 	}
@@ -399,7 +397,6 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 		this.similarityGroupingId = (String) _state[16];
 		this.bypassUpdates = ((Boolean)_state[17]).booleanValue();
 		this.process = _state[18];
-		this.processSet = ((Boolean)_state[19]).booleanValue();
 	}
 	
 	public void setDragIndicator(String dragIndicator) {
@@ -586,7 +583,6 @@ TreeListenerEventsProducer, Draggable, Dropzone, AjaxComponent {
 	 
     public void setProcess(Object process) {
         this.process = process;
-        this.processSet = true;
     }	 
 	 
 	 /**
