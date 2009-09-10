@@ -302,7 +302,7 @@
                   <tgroup cols="4">
                         <thead>
                               <row>
-                                    <entry>Class name (selector)</entry>
+                                    <entry>Class name</entry>
                                     <entry>Description</entry>
                                     <entry>Skin Parameter</entry>
                                     <entry>CSS property</entry>
