@@ -2,45 +2,49 @@
 <f:template xmlns:f='http:/jsf.exadel.com/template'
    xmlns:u='http:/jsf.exadel.com/template/util' 
    xmlns="http://www.w3.org/1999/xhtml" >
-   <f:verbatim>
-<![CDATA[
-.rich-panel{
-   border-width: 1px;
-   border-style: solid;
-   padding : 1px;
-}
-   
-.rich-panel-header{
-   padding : 2px;
-   border-width: 1px;
-   border-style: solid;
-   background-position : top left;
-   background-repeat : repeat-x;
-}
+ 
+	<u:selector name=".rich-panel">
+		<u:style name="background-color" skin="generalBackgroundColor" />
+		<u:style name="border-color" 	 skin="panelBorderColor" />
+	</u:selector>
 
-.rich-panel-body{
-   padding : 10px;
-} 
+	<u:selector name=".rich-panel-header">
+		<u:style name="background-color" skin="headerBackgroundColor" />
+		<u:style name="border-color" 	 skin="headerBackgroundColor" />
+		<u:style name="font-size" 		 skin="headerSizeFont" />
+		<u:style name="color" 			 skin="headerTextColor" />
+		<u:style name="font-weight" 	 skin="headerWeightFont" />
+		<u:style name="font-family" 	 skin="headerFamilyFont" />
+		<u:style name="background-image" >
+    	    <f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
+		</u:style>
+	</u:selector>
+
+	<u:selector name=".rich-panel-body">
+		<u:style name="font-size" 		 skin="generalSizeFont" />
+		<u:style name="color" 			 skin="generalTextColor" />
+		<u:style name="font-family" 	 skin="generalFamilyFont" />
+	</u:selector>
+
+	<f:verbatim>
+		<![CDATA[
+		.rich-panel{
+			border-width: 1px;
+			border-style: solid;
+			padding : 1px;
+		}
+   
+		.rich-panel-header{
+			padding : 2px;
+			border-width: 1px;
+			border-style: solid;
+			background-position : top left;
+			background-repeat : repeat-x;
+		}
+
+		.rich-panel-body{
+			padding : 10px;
+		} 
 ]]>
-</f:verbatim>
-<u:selector name=".rich-panel">
-	<u:style name="background-color" skin="generalBackgroundColor" />
-	<u:style name="border-color" skin="panelBorderColor" />
-</u:selector>
-<u:selector name=".rich-panel-header">
-	<u:style name="background-color" skin="headerBackgroundColor" />
-	<u:style name="border-color" skin="headerBackgroundColor" />
-	<u:style name="font-size" skin="headerSizeFont" />
-	<u:style name="color" skin="headerTextColor" />
-	<u:style name="font-weight" skin="headerWeightFont" />
-   	<u:style name="font-family" skin="headerFamilyFont" />
-	<u:style name="background-image" >
-    	   <f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
-        </u:style>
-</u:selector>
-<u:selector name=".rich-panel-body">
-	<u:style name="font-size" skin="generalSizeFont" />
-	<u:style name="color" skin="generalTextColor" />
-    <u:style name="font-family" skin="generalFamilyFont" />
-</u:selector>
+	</f:verbatim>
 </f:template>
