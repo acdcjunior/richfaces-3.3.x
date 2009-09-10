@@ -70,9 +70,7 @@
             The object on which the Event initially occurred could be accessed using the
             <code>
                 <ulink url="http://java.sun.com/j2se/1.4.2/docs/api/java/util/EventObject.html">
-                    <property>java.util.EventObject.getSource()</property>
-                </ulink>
-            </code>
+                    <property>java.util.EventObject.getSource()</property></ulink></code>
             method.
         </para>
         <para>
@@ -95,7 +93,7 @@
 
         <programlisting role="XML"><![CDATA[...
 <rich:messages/>
-<h:form id="form" ajaxSubmit="true">
+<h:form id="form">
     <a4j:commandLink value="Click to send Ajax request">
         <a4j:ajaxListener type="org.docs.richfaces.actionListenerBean"/>
     </a4j:commandLink>
@@ -172,12 +170,12 @@ public class ActionListenerBean implements org.ajax4jsf.event.AjaxListener {
         <para>
             Visit
             <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/ajaxListener.jsf?c=ajaxListener">
-                AjaxListener
-            </ulink>
+                AjaxListener</ulink>
             page at RichFaces Livedemo for examples of component usage and their sources.
         </para>
         <para>
-            Check Sun JSF TLD documentation for more information on<ulink
+            Check Sun JSF TLD documentation for more information on
+            <ulink
                 url="http://java.sun.com/javaee/javaserverfaces/1.1_01/docs/tlddocs/f/valueChangeListener.html">&lt;f:valueChangeListener&gt;
             tag</ulink>.
         </para>
