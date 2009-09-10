@@ -12,7 +12,7 @@
      <title>Description</title>
      <para>The <emphasis role="bold">
             <property>&lt;rich:fileUpload&gt;</property>
-         </emphasis> component designed to perform Ajax-ed files upload to server.
+         </emphasis> component is designed to perform Ajax-ed files upload to server.
      </para>
      <figure>
          <title>
@@ -247,7 +247,7 @@
             <listitem>
                 <para> The <emphasis>
                         <property> "onadd"</property>
-                    </emphasis>a event handler called on an add file operation </para>
+                    </emphasis> event handler called on an add file operation </para>
             </listitem>
 
             <listitem>
@@ -311,7 +311,7 @@
             <listitem>
                 <para>By means of JavaScript on the client side. Use the following syntax for that
                         <code>entries[i].propertyName</code>. For example
-                        <code>entries[0].state</code> will return the state of the file the is being
+                        <code>entries[0].state</code> will return the state of the file that is being
                     processed or has just been processed.</para>
             </listitem>
 
@@ -349,7 +349,7 @@
 
 
         <para> Moreover, embedded Flash module provides a smoother representation of progress bar
-            during the uploading process: the polling is performed is not by Ajax, but my means of
+            during the uploading process: the polling is performed is not by Ajax, but by means of
             the flash module. </para>
         <figure>
             <title> Uploading using Flash module <emphasis role="bold">
@@ -363,7 +363,7 @@
             </mediaobject>
         </figure>
 
-        <para>However, the Flash module doens't perform any visual representation of the
+        <para>However, the Flash module doesn&apos;t perform any visual representation of the
             component.</para>
 
         <!--End of Flash Module-->
@@ -469,13 +469,13 @@
                 <para>
                     <emphasis>
                         <property> "listHeight"</property>
-                    </emphasis> attribute specify height for list of files in pixels </para>
+                    </emphasis> attribute specifies a height for list of files in pixels </para>
             </listitem>
             <listitem>
                 <para>
                     <emphasis>
                         <property> "listWidth"</property>
-                    </emphasis> attribute specify width for list of files in pixels </para>
+                    </emphasis> attribute specifies a width for list of files in pixels </para>
             </listitem>
         </itemizedlist>
 
@@ -503,7 +503,7 @@
             </mediaobject>
         </figure>
         <para>It's possible to handle events for fileUpload using JavaScript code. A
-            simplest example of usage JavaScript API is placed below:</para>
+        	simplest example of JavaScript API usage is placed below:</para>
         <para>
             <emphasis role="bold">Example:</emphasis>
         </para>
@@ -513,9 +513,9 @@
 ...]]></programlisting>
 
         <para>
-            <emphasis role="bold">
+            The <emphasis role="bold">
                 <property>&lt;rich:fileUpload&gt;</property>
-            </emphasis> component also provides a number of JavaScript property, that can be used to
+            </emphasis> component also provides a number of JavaScript properties, that can be used to
             process uploaded files, file states etc. The given below example illustrates how the
                 <code>entries[0].state</code> property can be used to get access to the file state.
             Full list of JavaScript properties can be found <link linkend="objectProperties">below</link>. </para>
@@ -560,7 +560,7 @@
                 <property>&lt;rich:fileUpload&gt;</property>
             </emphasis> requests. </para-->
         <para>To make <property>&lt;rich:fileUpload&gt;</property> component work properly
-            with MyFaces extensions, the order in which filters are defined and mapped in web.xml,
+            with MyFaces extensions, the order in which filters are defined and mapped in web.xml
             is important. See <ulink url="http://www.jboss.org/community/docs/DOC-13537">corresponding FAQ chapter</ulink>. </para>
 
     </section>
@@ -858,13 +858,10 @@
                         <entry>Returns the date of the last file modification. Available in flash
                             enabled version only</entry>
                     </row>
-
-
-
-
                 </tbody>
             </tgroup>
-        </table>
+      </table>
+   	
       <table>
 			      <title>Facets</title>
 				     <tgroup cols="2">
@@ -886,149 +883,207 @@
 
 					       </tbody>
 				     </tgroup>
-		    </table>
-      <table id="fileUploadCN">
-            <title>Classes names that define a component representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-fileupload-list-decor</entry>
-                        <entry>Defines styles for a wrapper &lt;div&gt; element of a
-                            fileUpload</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-font</entry>
-                        <entry>Defines styles for a font of buttons and items</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-toolbar-decor</entry>
-                        <entry>Defines styles for a toolbar</entry>
-                    </row>
-                    <row>
-                        <entry> rich-fileupload-list-overflow</entry>
-                        <entry>Defines styles for a list of files</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define buttons representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-fileupload-button</entry>
-                        <entry>Defines styles for a buttons</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-button-border</entry>
-                        <entry>Defines styles for a border of buttons</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-button-light</entry>
-                        <entry>Defines styles for a highlight of button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-button-press</entry>
-                        <entry>Defines styles for a pressed button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-button-dis</entry>
-                        <entry>Defines styles for a disabled button</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-button-selection</entry>
-                        <entry>Defines styles for "Upload",
-                            "Clean" buttons</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define the representation of the buttons' icons</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-fileupload-ico</entry>
-                        <entry>Defines styles for an icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-add</entry>
-                        <entry>Defines styles for a "Add" button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-start</entry>
-                        <entry>Defines styles for a "Upload" button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-stop</entry>
-                        <entry>Defines styles for a "Stop" button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-clear</entry>
-                        <entry>Defines styles for a "Clear" button icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-add-dis</entry>
-                        <entry>Defines styles for a disabled "Add" button
-                            icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-start-dis</entry>
-                        <entry>Defines styles for a disabled "Upload" button
-                            icon</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-ico-clear-dis</entry>
-                        <entry>Defines styles for a disabled "Clear" button
-                            icon</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-      <table>
-            <title>Classes names that define list items representation</title>
-            <tgroup cols="2">
-                <thead>
-                    <row>
-                        <entry>Class name</entry>
-                        <entry>Description</entry>
-                    </row>
-                </thead>
-                <tbody>
-                    <row>
-                        <entry>rich-fileupload-table-td</entry>
-                        <entry>Defines styles for a wrapper &lt;td&gt; element of a list
-                            items</entry>
-                    </row>
-                    <row>
-                        <entry>rich-fileupload-anc</entry>
-                        <entry>Defines styles for "Cancel",
-                            "Stop", "Clear" links</entry>
-                    </row>
-                </tbody>
-            </tgroup>
-        </table>
-							You can find all necessary information about style classes redefinition in 
+      </table>
+							
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameter</entry>
+   					<entry>CSS properties mapped</entry>
+   				</row>
+   			</thead>
+   			<tbody>            
+   				<row>
+   					<entry morerows="1">.rich-fileupload-font</entry>
+   					<entry morerows="1">Defines styles for a font of buttons and items</entry> 
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-table-td</entry>
+   					<entry>Defines styles for the &lt;td&gt; elements of the added item</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-fileupload-list-decor</entry>
+   					<entry morerows="1">Defines styles for a wrapper &lt;div&gt; element of a fileUpload</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-anc</entry>
+   					<entry>Defines styles for the &quot;Cancel&quot;, &quot;Stop&quot;, &quot;Clear&quot; links</entry> 
+   					<entry>generalLinkColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="2">.rich-fileupload-toolbar-decor</entry>
+   					<entry morerows="2">Defines styles for a toolbar</entry> 
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBorderColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>border-top-color, border-left-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-button-border</entry>
+   					<entry>Defines styles for a border of buttons</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-enrty-dis</entry>
+   					<entry>Defines styles for a disabled entry</entry> 
+   					<entry>trimColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-button-content</entry>
+   					<entry>Defines styles for the buttons content</entry> 
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-button</entry>
+   					<entry>Defines styles for a buttons</entry> 
+   					<entry>trimColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-fileupload-button-light</entry>
+   					<entry morerows="1">Defines styles for a highlight of button</entry> 
+   					<entry>trimColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>selectControlColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-fileupload-button-press</entry>
+   					<entry morerows="1">Defines styles for a pressed button</entry> 
+   					<entry>selectControlColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-ico-add-dis</entry>
+   					<entry>Defines styles for a disabled &quot;Add&quot; button icon</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-ico-start-dis</entry>
+   					<entry>Defines styles for a disabled &quot;Upload&quot; button icon</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-fileupload-ico-clear-dis</entry>
+   					<entry>Defines styles for a disabled &quot;Clear&quot; button icon</entry> 
+   					<entry>tableBorderColor</entry>
+   					<entry>color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry> rich-fileupload-list-overflow</entry>
+   					<entry>Defines styles for a list of files</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-button-dis</entry>
+   					<entry>Defines styles for a disabled button</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-button-selection</entry>
+   					<entry>Defines styles for &quot;Upload&quot;, &quot;Clean&quot; buttons</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-ico</entry>
+   					<entry>Defines styles for an icon</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-ico-add</entry>
+   					<entry>Defines styles for a &quot;Add&quot; button icon</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-ico-start</entry>
+   					<entry>Defines styles for a &quot;Upload&quot; button icon</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-ico-stop</entry>
+   					<entry>Defines styles for a &quot;Stop&quot; button icon</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-ico-clear</entry>
+   					<entry>Defines styles for a "Clear" button icon</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-fileupload-table-td</entry>
+   					<entry>Defines styles for a wrapper &lt;td&gt; element of a list
+   						items</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+		<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
         <title>Relevant Resources Links</title>
