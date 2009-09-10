@@ -108,16 +108,16 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML"><![CDATA[ ...
-<rich:datascroller for="table" maxPages="10">
-          <f:facet name="first">
-                    <h:outputText value="First"/>
-          </f:facet>
-          <f:facet name="last">
-                    <h:outputText value="Last"/>
-          </f:facet>
-</rich:datascroller>
-...]]></programlisting>
+                    <programlisting role="XML"> ...
+&lt;rich:datascroller for="table" maxPages="10"&gt;
+          &lt;f:facet name="first"&gt;
+                    &lt;h:outputText value="First"/&gt;
+          &lt;/f:facet&gt;
+          &lt;f:facet name="last"&gt;
+                    &lt;h:outputText value="Last"/&gt;
+          &lt;/f:facet&gt;
+&lt;/rich:datascroller&gt;
+...</programlisting>
                     <figure>
                               <title>
             <emphasis role="bold">
@@ -151,42 +151,42 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML"><![CDATA[...
-<h:form id="myForm">
-	<rich:dataTable id="carList" rows="7" value="#{dataTableScrollerBean.allCars}" var="category">
-		<f:facet name="header">
-			<rich:columnGroup>
-				<h:column>
-					<h:outputText value="Make" />
-				</h:column>
-				<h:column>
-					<h:outputText value="Model" />
-				</h:column>
-				<h:column>
-					<h:outputText value="Price" />
-				</h:column>
-			</rich:columnGroup>
-		</f:facet>
-		<h:column>
-			<h:outputText value="#{category.make}" />
-		</h:column>
-		<h:column>
-			<h:outputText value="#{category.model}" />
-		</h:column>
-		<h:column>
-			<h:outputText value="#{category.price}" />
-		</h:column>
-	</rich:dataTable>
-	<rich:datascroller id="sc2" for="carList" reRender="sc1" maxPages="7" page="#{dataTableScrollerBean.scrollerPage}" />
-	<h:panelGrid>
-		<h:panelGroup>
-			<h:outputText value="Set current page number:" />
-			<h:inputText value="#{dataTableScrollerBean.scrollerPage}" id="sc1" size="1"/>
-			<h:commandButton value="Set" />
-		</h:panelGroup>
-	</h:panelGrid>
-</h:form>
-...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;h:form id="myForm"&gt;
+	&lt;rich:dataTable id="carList" rows="7" value="#{dataTableScrollerBean.allCars}" var="category"&gt;
+		&lt;f:facet name="header"&gt;
+			&lt;rich:columnGroup&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Make" /&gt;
+				&lt;/h:column&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Model" /&gt;
+				&lt;/h:column&gt;
+				&lt;h:column&gt;
+					&lt;h:outputText value="Price" /&gt;
+				&lt;/h:column&gt;
+			&lt;/rich:columnGroup&gt;
+		&lt;/f:facet&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.make}" /&gt;
+		&lt;/h:column&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.model}" /&gt;
+		&lt;/h:column&gt;
+		&lt;h:column&gt;
+			&lt;h:outputText value="#{category.price}" /&gt;
+		&lt;/h:column&gt;
+	&lt;/rich:dataTable&gt;
+	&lt;rich:datascroller id="sc2" for="carList" reRender="sc1" maxPages="7" page="#{dataTableScrollerBean.scrollerPage}" /&gt;
+	&lt;h:panelGrid&gt;
+		&lt;h:panelGroup&gt;
+			&lt;h:outputText value="Set current page number:" /&gt;
+			&lt;h:inputText value="#{dataTableScrollerBean.scrollerPage}" id="sc1" size="1"/&gt;
+			&lt;h:commandButton value="Set" /&gt;
+		&lt;/h:panelGroup&gt;
+	&lt;/h:panelGrid&gt;
+&lt;/h:form&gt;
+...</programlisting>
 
                     <para> In the example above you can enter the page number you want and set it by
                               clicking on the <emphasis role="bold">
@@ -232,32 +232,32 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML"><![CDATA[...
-<h:form>
-	<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5">
-		<rich:column>
-			<h:outputText value="#{cap.name}" />
-		</rich:column>
-		<f:facet name="footer">
-			<rich:datascroller pageIndexVar="pageIndex" pagesVar="pages">
-				<f:facet name="pages">
-					<h:outputText value="#{pageIndex} / #{pages}" />
-				</f:facet>
-			</rich:datascroller>
-		</f:facet>
-	</rich:dataTable>
-</h:form>
+                    <programlisting role="XML">...
+&lt;h:form&gt;
+	&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt;
+		&lt;rich:column&gt;
+			&lt;h:outputText value="#{cap.name}" /&gt;
+		&lt;/rich:column&gt;
+		&lt;f:facet name="footer"&gt;
+			&lt;rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"&gt;
+				&lt;f:facet name="pages"&gt;
+					&lt;h:outputText value="#{pageIndex} / #{pages}" /&gt;
+				&lt;/f:facet&gt;
+			&lt;/rich:datascroller&gt;
+		&lt;/f:facet&gt;
+	&lt;/rich:dataTable&gt;
+&lt;/h:form&gt;
 ...
-]]></programlisting>
+</programlisting>
                     <para> It's possible to insert optional separators between controls.
                               For this purpose use a <emphasis>
                                         <property>"controlsSeparator"</property>
                               </emphasis> facet. An example is placed below. </para>
-                    <programlisting role="XML"><![CDATA[ ...
-<f:facet name="controlsSeparator">
-          <h:graphicImage value="/image/sep.png"/>
-</f:facet>
-...]]></programlisting>
+                    <programlisting role="XML"> ...
+&lt;f:facet name="controlsSeparator"&gt;
+          &lt;h:graphicImage value="/image/sep.png"/&gt;
+&lt;/f:facet&gt;
+...</programlisting>
                     <para> Starting from 3.2.1 of RichFaces multiple <emphasis role="bold">
                                         <property>&lt;rich:datascroller&gt;</property>
                               </emphasis> instances behavior and page bindings are corrected.
@@ -534,5 +534,14 @@
                               </emphasis> and <emphasis role="bold">
                                         <property>&lt;rich:datascroller&gt;</property>
                               </emphasis> in a context of Extended Data Model see on the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=115636">RichFaces Users Forum</ulink>.</para>
+                              <para>
+							<ulink url="http://www.jboss.org/community/wiki/DataTablemodeldoesntgetupdatedwhenrichdatascrollerused">This article</ulink> describes how to solve <emphasis role="bold"><property>&lt;rich:datatable&gt;</property></emphasis> update problem when <emphasis role="bold"><property>&lt;rich:datascroller&gt;</property></emphasis> used.                              
+                              </para>
+                              <para>
+                              <ulink url="http://www.jboss.org/community/wiki/HowtousepairofrichdatascrollersoutsidetheanydataTable"> Here</ulink> you can find out how to use pair of <emphasis role="bold"><property>&lt;rich:datascrollers&gt;</property></emphasis> outside the any dataTable.
+                              </para>
+                              <para>
+								The solution about how to make <emphasis role="bold"><property>&lt;rich:datascroller&gt;</property></emphasis>  be updated after sorting/filtering can be found on <ulink url="http://www.jboss.org/community/wiki/richdataScrollerisnotupdatedaftersortingfiltering">Data Iteration Components FAQ. </ulink>                                
+                              </para>
           </section>
 </section>

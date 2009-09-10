@@ -41,18 +41,18 @@
                     </para>
                 
      
-                    <programlisting role="XML"><![CDATA[...
-<table>
-      <tbody>
-            <a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}">
-                  <tr>
-                        <td><h:outputText value="#{item.code}" id="item1" /></td>
-                        <td><h:outputText value="#{item.price}" id="item2" /></td>
-                  </tr>
-            </a4j:repeat>
-      </tbody>
-</table>
- ...]]></programlisting>
+                    <programlisting role="XML">...
+&lt;table&gt;
+      &lt;tbody&gt;
+            &lt;a4j:repeat value="#{repeatBean.items}" var="item" ajaxKeys="#{updateBean.updatedRow}"&gt;
+                  &lt;tr&gt;
+                        &lt;td&gt;&lt;h:outputText value="#{item.code}" id="item1" /&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;h:outputText value="#{item.price}" id="item2" /&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+            &lt;/a4j:repeat&gt;
+      &lt;/tbody&gt;
+&lt;/table&gt;
+ ...</programlisting>
                     
                 <para>
                       The example above the <emphasis role="bold">
@@ -78,13 +78,13 @@
                     </para>
                     
                 <para>The next example shows collection output as a plain HTML list:</para>
-                    <programlisting role="XML"><![CDATA[<ul>
-      <a4j:repeat ...>
-	    <li>...<li/>
+                    <programlisting role="XML">&lt;ul&gt;
+      &lt;a4j:repeat ...&gt;
+	    &lt;li&gt;...&lt;li/&gt;
 	               ...
-	    <li>...<li/>
-      </a4j:repeat>
-</ul>]]></programlisting>
+	    &lt;li&gt;...&lt;li/&gt;
+      &lt;/a4j:repeat&gt;
+&lt;/ul&gt;</programlisting>
                     <para>All other general attributes are defined according to the similar
                               attributes of iterative components (<emphasis role="bold">
                                         <property>&lt;h:dataTable&gt;</property>
@@ -134,5 +134,11 @@
                     <para>
                               Visit the <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/repeat.jsf?c=repeat">Repeat page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
                     </para>
-          </section>
+          
+			<para>
+			<ulink url="http://www.jboss.org/community/wiki/Cantusea4jrepeattoiteratethemenuItemstabsetc">Here</ulink> you can find information why you can't use <emphasis role="bold"><property>&lt;a4j:repeat&gt;</property> </emphasis> to iterate the menuItems, tabs and way to solve this problem.
+
+			</para>
+			
+			</section>
 </section>
