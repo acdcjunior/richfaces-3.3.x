@@ -206,9 +206,10 @@ public class UserBean {
             at RichFaces Livedemo for examples of component usage and their sources.
         </para>
         <para>
-            For additional information about attributes of this component read<ulink
+            For additional information about attributes of this component read
+            <ulink
                 url="http://livedemo.exadel.com/richfaces-demo/richfaces/ajaxAttributes.jsf?c=ajaxattributes">'Ajax
-            Attribute' section</ulink>.
+            Attribute</ulink> section.
         </para>
     </section>
 </section>
