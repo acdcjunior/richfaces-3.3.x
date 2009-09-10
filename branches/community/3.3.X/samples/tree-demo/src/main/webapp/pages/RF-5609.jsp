@@ -5,21 +5,22 @@
     prefix="rich"%>
 <html>
 <head>
-    <title></title>
+<title></title>
 </head>
 <body>
 <f:view>
     <h:form id="f">
         <a4j:status startText="...start..." stopText="stopped" />
-    
+
         <rich:tree id="tree" value="#{bean.data}" var="item">
-            <rich:treeNode id="node" ajaxSubmitSelection="true" ajaxSingle="true"
+            <rich:treeNode id="node"  
                 nodeSelectListener="#{bean.onSelect}">
                 <h:outputText id="item" value="#{item}" />
             </rich:treeNode>
         </rich:tree>
-        <h:inputText id="text" value="" required="true" />
+        <h:inputText id="text" value="123" required="true" />
     </h:form>
 </f:view>
 </body>
 </html>
+
