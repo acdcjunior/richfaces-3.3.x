@@ -12,19 +12,40 @@
     <a4j:status startText="...start..." stopText="stopped" />
 
     <h:form id="id" >
-        <h:inputText id="input" value="#{rf4351.value}" />
+        <h:inputText id="input" value="#{rf4351.value}" required="true" />
         <a4j:commandLink value="process" process="input" ajaxSingle="true" /><br /><br />
         
         <h:outputText id="output" value="#{rf4351.date}" />
         <a4j:commandLink value="reRender" reRender="output" ajaxSingle="true" /><br /><br />
         
-        <rich:tree id="tree" value="#{rf4351.data}" var="node" switchType="ajax"
+        <rich:tree 
+            id="tree" 
+            value="#{rf4351.data}" var="node" 
+            switchType="ajax"
             rowKeyConverter="org.richfaces.TreeRowKeyConverter">
-            <rich:treeNode ajaxSingle="true" process="input" >
+            <rich:treeNode ajaxSingle="true" process="input">
                 <h:outputText value="#{node}" />
                 <a4j:commandLink ajaxSingle="true" value="link" process="input" reRender="output" action="#{rf4351.dateAction}"/>
             </rich:treeNode>
         </rich:tree>
+        
+        <p>__________________________________________________</p>
+        
+        <rich:tree
+            value="#{rf4351.data}" var="item" 
+            switchType="ajax" 
+            ajaxSingle="true" process="text"
+            rowKeyConverter="org.richfaces.TreeRowKeyConverter"
+            >
+            
+            <rich:treeNode  >
+                <h:outputText value="#{item}" />
+            </rich:treeNode>
+        </rich:tree>
+        
+        <h:panelGrid columns="1"  >
+            <h:inputText value="#{rf4351.value}" required="true" id="text"/>
+        </h:panelGrid>
     </h:form>
 </f:view>
 </body>
