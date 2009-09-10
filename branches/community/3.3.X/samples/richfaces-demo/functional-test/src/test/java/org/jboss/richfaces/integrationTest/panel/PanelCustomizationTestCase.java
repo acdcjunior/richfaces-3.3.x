@@ -1,22 +1,23 @@
-/**
- * License Agreement.
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat, Inc. and individual contributors
+ * by the @authors tag. See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
  *
- *  JBoss RichFaces
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
  *
- * Copyright (C) 2009  Red Hat, Inc.
- *
- * This code is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
+ * This software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with this code; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
 package org.jboss.richfaces.integrationTest.panel;
@@ -37,12 +38,15 @@ import org.testng.annotations.Test;
 public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCase {
 
     // messages
-    private final String MSG_CUST_PANEL_HEADER = getMsg("CUST_PANEL_HEADER");
-    private final String MSG_CUST_CLASS_HEADER = getMsg("CUST_CLASS_HEADER");
-    private final String MSG_CUST_THIRD_HEADER = getMsg("CUST_THIRD_HEADER");
-    private final String MSG_CUST_THIRD_BODY = getMsg("CUST_THIRD_BODY");
-    private final String MSG_CUST_FOURTH_PANEL_BODY_SCROLLABLE = getMsg("CUST_FOURTH_PANEL_BODY_SCROLLABLE");
-    private final String MSG_CUST_FIFTH_PANEL_NO_HEADER = getMsg("CUST_FIFTH_PANEL_NO_HEADER");
+    private final String MSG_CUST_FIRST_HEADER = getMsg("CUST_FIRST_HEADER");
+    private final String MSG_CUST_FIRST_CLASS = getMsg("CUST_FIRST_CLASS");
+    private final String MSG_CUST_SECOND_HEADER = getMsg("CUST_SECOND_HEADER");
+    private final String MSG_CUST_SECOND_CLASS = getMsg("CUST_SECOND_CLASS");
+    private final String MSG_CUST_THIRD_CLASS_1 = getMsg("CUST_THIRD_CLASS_1");
+    private final String MSG_CUST_THIRD_CLASS_2 = getMsg("CUST_THIRD_CLASS_2");
+    private final String MSG_CUST_FOURTH_HEADER = getMsg("CUST_FOURTH_HEADER");
+    private final String MSG_CUST_FOURTH_CLASS = getMsg("CUST_FOURTH_CLASS");
+    private final int MSG_CUST_FIFTH_COUNT = Integer.parseInt(getMsg("CUST_FIFTH_COUNT"));
 
     // locators
     private final String LOC_CUST_FIRST_PANEL_HEADER = getLoc("CUST_FIRST_PANEL_HEADER");
@@ -53,51 +57,63 @@ public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCas
     private final String LOC_CUST_FOURTH_PANEL_HEADER = getLoc("CUST_FOURTH_PANEL_HEADER");
     private final String LOC_CUST_FIFTH_PANEL_PARTS = getLoc("CUST_FIFTH_PANEL_PARTS");
 
+    /**
+     * Tests first panel. It checks panel header's text and class attribute.
+     */
     @Test
     public void testFirstPanel() {
         String text = selenium.getText(LOC_CUST_FIRST_PANEL_HEADER);
-        assertEquals(text, "Panel #1. Changing Style Synchronously", MSG_CUST_PANEL_HEADER);
-
-        text = selenium.getAttribute(LOC_CUST_FIRST_PANEL_HEADER + "@class");
-        assertTrue(text.contains("rich-panel-header"), MSG_CUST_CLASS_HEADER);
+        assertEquals(text, MSG_CUST_FIRST_HEADER, "Header of the panel.");
+        assertTrue(belongsClass(MSG_CUST_FIRST_CLASS, LOC_CUST_FIRST_PANEL_HEADER),
+                "The \"class\" attribute of the header should contain \"rich-panel-header\".");
     }
 
+    /**
+     * Tests second panel. It checks panel header's text and class attribute.
+     */
     @Test
     public void testSecondPanel() {
         String text = selenium.getText(LOC_CUST_SECOND_PANEL_HEADER);
-        assertEquals(text, "Panel #2. Changing Style Synchronously", MSG_CUST_PANEL_HEADER);
-
-        text = selenium.getAttribute(LOC_CUST_SECOND_PANEL_HEADER + "@class");
-        assertTrue(text.contains("rich-panel-header"), MSG_CUST_CLASS_HEADER);
+        assertEquals(text, MSG_CUST_SECOND_HEADER, "Header of the panel.");
+        assertTrue(belongsClass(MSG_CUST_SECOND_CLASS, LOC_CUST_SECOND_PANEL_HEADER),
+                "The \"class\" attribute of the header should contain \"rich-panel-header\".");
     }
 
+    /**
+     * Tests third panel. It checks that both header and body are green.
+     */
     @Test
     public void testThirdPanel() {
-        String text = selenium.getAttribute(LOC_CUST_THIRD_PANEL_HEADER + "@class");
-        assertTrue(text.contains("head2"), MSG_CUST_THIRD_HEADER);
-
-        text = selenium.getAttribute(LOC_CUST_THIRD_PANEL_BODY + "@class");
-        assertTrue(text.contains("body3"), MSG_CUST_THIRD_BODY);
+        assertTrue(belongsClass(MSG_CUST_THIRD_CLASS_1, LOC_CUST_THIRD_PANEL_HEADER),
+                "Header of the third panel should be green -- its class attribute has to contain \"head2\".");
+        assertTrue(belongsClass(MSG_CUST_THIRD_CLASS_2, LOC_CUST_THIRD_PANEL_BODY),
+                "Body of the third panel should be green -- its class attribute has to contain \"body3\".");
     }
 
+    /**
+     * Tests fourth panel. It checks panel's header and that it is scrollable.
+     */
     @Test
     public void testFourthPanel() {
         String text = selenium.getText(LOC_CUST_FOURTH_PANEL_HEADER);
-        assertEquals(text, "Scrolling Text Panel", MSG_CUST_PANEL_HEADER);
-
-        text = selenium.getAttribute(LOC_CUST_FOURTH_PANEL_BODY + "@class");
-        assertTrue(text.contains("body3"), MSG_CUST_FOURTH_PANEL_BODY_SCROLLABLE);
+        assertEquals(text, MSG_CUST_FOURTH_HEADER, "Header of the panel.");
+        assertTrue(belongsClass(MSG_CUST_FOURTH_CLASS, LOC_CUST_FOURTH_PANEL_BODY),
+                "Body of the fourth panel should be scrollable -- its class attribute has to contain \"body3\".");
     }
 
+    /**
+     * Tests fifth panel. It checks that the panel has no header.
+     */
     @Test
     public void testFifthPanel() {
         int count = selenium.getXpathCount(LOC_CUST_FIFTH_PANEL_PARTS).intValue();
-        assertEquals(count, 1, MSG_CUST_FIFTH_PANEL_NO_HEADER);
+        assertEquals(count, MSG_CUST_FIFTH_COUNT, "The fifth panel should have no header.");
     }
 
     /**
      * Loads the page containing the component.
      */
+    @SuppressWarnings("unused")
     @BeforeMethod
     private void loadPage() {
         openComponent("Panel");

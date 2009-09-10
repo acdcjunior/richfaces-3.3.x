@@ -1,3 +1,25 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat, Inc. and individual contributors
+ * by the @authors tag. See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */ 
+
 package org.jboss.richfaces.integrationTest.panelMenu;
 
 import static org.testng.Assert.assertEquals;
@@ -17,20 +39,19 @@ import org.testng.annotations.Test;
 public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	// messages
-	private final String MSG_COMPONENT_DESCRIPTION = getMess("COMPONENT_DESCRIPTION");
-	private final String MSG_CONTENT_OF_PANEL_ON_LOAD = getMess("CONTENT_OF_PANEL_ON_LOAD");
-	private final String MSG_CONTENT_OF_PANEL = getMess("CONTENT_OF_PANEL");
-	private final String MSG_IMAGE_BEFORE_GROUP_NAME = getMess("IMAGE_BEFORE_GROUP_NAME");
-	private final String MSG_NAME_OF_GROUP = getMess("NAME_OF_GROUP");
-	private final String MSG_IMAGE_AFTER_GROUP_NAME_DOWN = getMess("IMAGE_AFTER_GROUP_NAME_DOWN");
-	private final String MSG_IMAGE_AFTER_GROUP_NAME_UP = getMess("IMAGE_AFTER_GROUP_NAME_UP");
-	private final String MSG_IMAGE_AFTER_GROUP_NAME_SPACER = getMess("IMAGE_AFTER_GROUP_NAME_SPACER");
-	private final String MSG_ITEM_M_N_NOT_VISIBLE = getMess("ITEM_M_N_NOT_VISIBLE");
-	private final String MSG_ITEM_M_N_VISIBLE = getMess("ITEM_M_N_VISIBLE");
-	private final String MSG_IMAGE_BEFORE_ITEM_GRID = getMess("IMAGE_BEFORE_ITEM_GRID");
-	private final String MSG_DISK_BEFORE_GROUP_NAME = getMess("DISK_BEFORE_GROUP_NAME");
-	private final String MSG_SUBITEM_M_NOT_VISIBLE = getMess("SUBITEM_M_NOT_VISIBLE");
-	private final String MSG_SUBITEM_M_VISIBLE = getMess("SUBITEM_M_VISIBLE");
+	private final String MSG_CONTENT_OF_PANEL_ON_LOAD = getMsg("CONTENT_OF_PANEL_ON_LOAD");
+	private final String MSG_CONTENT_OF_PANEL = getMsg("CONTENT_OF_PANEL");
+	private final String MSG_IMAGE_BEFORE_GROUP_NAME = getMsg("IMAGE_BEFORE_GROUP_NAME");
+	private final String MSG_NAME_OF_GROUP = getMsg("NAME_OF_GROUP");
+	private final String MSG_IMAGE_AFTER_GROUP_NAME_DOWN = getMsg("IMAGE_AFTER_GROUP_NAME_DOWN");
+	private final String MSG_IMAGE_AFTER_GROUP_NAME_UP = getMsg("IMAGE_AFTER_GROUP_NAME_UP");
+	private final String MSG_IMAGE_AFTER_GROUP_NAME_SPACER = getMsg("IMAGE_AFTER_GROUP_NAME_SPACER");
+	private final String MSG_ITEM_M_N_NOT_VISIBLE = getMsg("ITEM_M_N_NOT_VISIBLE");
+	private final String MSG_ITEM_M_N_VISIBLE = getMsg("ITEM_M_N_VISIBLE");
+	private final String MSG_IMAGE_BEFORE_ITEM_GRID = getMsg("IMAGE_BEFORE_ITEM_GRID");
+	private final String MSG_DISK_BEFORE_GROUP_NAME = getMsg("DISK_BEFORE_GROUP_NAME");
+	private final String MSG_SUBITEM_M_NOT_VISIBLE = getMsg("SUBITEM_M_NOT_VISIBLE");
+	private final String MSG_SUBITEM_M_VISIBLE = getMsg("SUBITEM_M_VISIBLE");
 
 	// locators
 	private final String LOC_EXAMPLE_HEADER = getLoc("EXAMPLE_HEADER");
@@ -45,10 +66,9 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String LOC_ITEM_M_N_TEXT = getLoc("ITEM_M_N_TEXT");
 	private final String LOC_ITEM_M_N_STYLE = getLoc("ITEM_M_N_STYLE");
 
-	private final String LOC_SUBITEM_GROUP = getLoc("SUBITEM_GROUP");
-	private final String LOC_SUBITEM_M_IMAGE_BEFORE = formatLoc("SUBITEM_M_IMAGE_BEFORE_RELATIVE_TO_GROUP", LOC_SUBITEM_GROUP);
-	private final String LOC_SUBITEM_M_TEXT = formatLoc("SUBITEM_M_TEXT_RELATIVE_TO_GROUP", LOC_SUBITEM_GROUP);
-	private final String LOC_SUBITEM_M_STYLE = formatLoc("SUBITEM_M_STYLE_RELATIVE_TO_GROUP", LOC_SUBITEM_GROUP);
+	private final String LOC_SUBITEM_M_IMAGE = getLoc("SUBITEM_M_IMAGE");
+	private final String LOC_SUBITEM_M_TEXT = getLoc("SUBITEM_M_TEXT");
+	private final String LOC_SUBITEM_M_STYLE = getLoc("SUBITEM_M_STYLE");
 
 	/**
 	 * Tests the first group. First it checks the image before group name, group
@@ -97,57 +117,38 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testSubgroup() {
 		String text = null;
 		
-		selenium.click(String.format(LOC_GROUP_N_TEXT, 2));
+		selenium.click(format(LOC_GROUP_N_TEXT, 2));
 
 		// image before subgroup name
-		text = selenium.getAttribute(String.format(LOC_ITEM_M_N_IMAGE_BEFORE, 2, 4));
-		assertTrue(text.contains("PanelMenuIconDisc"),
-				MSG_DISK_BEFORE_GROUP_NAME);
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_BEFORE, 2, 4));
+		assertTrue(text.contains("PanelMenuIconDisc"), MSG_DISK_BEFORE_GROUP_NAME);
 
 		// subgroup name
-		text = selenium.getText(String.format(LOC_ITEM_M_N_TEXT, 2, 4));
+		text = selenium.getText(format(LOC_ITEM_M_N_TEXT, 2, 4));
 		assertEquals(text, "Group 2.4", MSG_NAME_OF_GROUP);
 
 		// image after subgroup name
-		text = selenium.getAttribute(String.format(LOC_ITEM_M_N_IMAGE_AFTER, 2,
-				4));
-		assertTrue(text.contains("PanelMenuIconSpacer"),
-				MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 2, 4));
+		assertTrue(text.contains("PanelMenuIconSpacer"), MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
 
 		for (int i = 1; i < 4; i++) {
-			text = selenium.getAttribute(String.format(LOC_SUBITEM_M_STYLE, i));
-			assertFalse(!text.contains("display: none;"), String.format(
-					MSG_SUBITEM_M_NOT_VISIBLE, i));
+			assertFalse(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_NOT_VISIBLE, i));
 		}
 
 		// click Group 2.4
-		selenium.click(String.format(LOC_ITEM_M_N_TEXT, 2, 4));
+		selenium.click(format(LOC_ITEM_M_N_TEXT, 2, 4));
 
 		// image after subgroup name
-		text = selenium.getAttribute(String.format(LOC_ITEM_M_N_IMAGE_AFTER, 2,
-				4));
-		assertTrue(text.contains("PanelMenuIconSpacer"),
-				MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 2, 4));
+		assertTrue(text.contains("PanelMenuIconSpacer"), MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
 
 		for (int i = 1; i < 4; i++) {
 			// check that items are not hidden
-			try {
-				text = selenium.getAttribute(String.format(LOC_SUBITEM_M_STYLE,
-						i));
-				assertTrue(!text.contains("display: none;"), String.format(
-						MSG_SUBITEM_M_VISIBLE, i));
-			} catch (Exception e) {
-				// OK -- there is no style attribute
-			}
-
+			assertTrue(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_VISIBLE, i));
+			
 			// check the image left of the item
-			System.out.println("--------------"
-					+ String.format(LOC_SUBITEM_M_IMAGE_BEFORE, i) + "-----");
-			text = selenium.getAttribute(String.format(
-					LOC_SUBITEM_M_IMAGE_BEFORE, i));
-			System.out.println("--------------" + text + "-----");
-			assertTrue(text.contains("PanelMenuIconGrid"),
-					MSG_IMAGE_BEFORE_ITEM_GRID);
+			text = selenium.getAttribute(format(LOC_SUBITEM_M_IMAGE, i));
+			assertTrue(text.contains("PanelMenuIconGrid"), MSG_IMAGE_BEFORE_ITEM_GRID);
 		}
 	}
 
@@ -164,24 +165,22 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 
 		// check items on the first level (1.1, 1.2, etc.)
 		for (int i = 1; i < 4; i++) {
-			selenium.click(String.format(LOC_GROUP_N_TEXT, i));
+			selenium.click(format(LOC_GROUP_N_TEXT, i));
 			for (int j = 1; j < 4; j++) {
-				selenium.click(String.format(LOC_ITEM_M_N_TEXT, i, j));
+				selenium.click(format(LOC_ITEM_M_N_TEXT, i, j));
 				waitFor(500); // it use Ajax mode
 				text = selenium.getText(LOC_PANEL);
-				assertEquals(text, String.format("Item %d.%d selected", i, j),
-						MSG_CONTENT_OF_PANEL);
+				assertEquals(text, format("Item {0}.{1} selected", i, j), MSG_CONTENT_OF_PANEL);
 			}
 		}
 
 		// check items on the second level (2.4.1, 2.4.2, 2.4.3)
-		selenium.click(String.format(LOC_ITEM_M_N_TEXT, 2, 4));
+		selenium.click(format(LOC_ITEM_M_N_TEXT, 2, 4));
 		for (int i = 1; i < 4; i++) {
-			selenium.click(String.format(LOC_SUBITEM_M_TEXT, i));
+			selenium.click(format(LOC_SUBITEM_M_TEXT, i));
 			waitFor(500); // it use Ajax mode
 			text = selenium.getText(LOC_PANEL);
-			assertEquals(text, String.format("Item 2.4.%d selected", i),
-					MSG_CONTENT_OF_PANEL);
+			assertEquals(text, format("Item 2.4.{0} selected", i), MSG_CONTENT_OF_PANEL);
 		}
 	}
 
@@ -213,62 +212,44 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 		String text = null;
 		
 		// spacer before group name
-		text = selenium.getAttribute(String.format(LOC_GROUP_N_IMAGE_BEFORE,
-				index));
-		assertTrue(text.contains("PanelMenuIconSpacer"),
-				MSG_IMAGE_BEFORE_GROUP_NAME);
+		text = selenium.getAttribute(format(LOC_GROUP_N_IMAGE_BEFORE, index));
+		assertTrue(text.contains("PanelMenuIconSpacer"), MSG_IMAGE_BEFORE_GROUP_NAME);
 
 		// group name
-		text = selenium.getText(String.format(LOC_GROUP_N_TEXT, index));
+		text = selenium.getText(format(LOC_GROUP_N_TEXT, index));
 		assertEquals(text, "Group " + index, MSG_NAME_OF_GROUP);
 
 		// image after group name
-		text = selenium.getAttribute(String.format(LOC_GROUP_N_IMAGE_AFTER,
-				index));
-		assertTrue(text.contains("PanelMenuIconChevronDown"),
-				MSG_IMAGE_AFTER_GROUP_NAME_DOWN);
+		text = selenium.getAttribute(format(LOC_GROUP_N_IMAGE_AFTER, index));
+		assertTrue(text.contains("PanelMenuIconChevronDown"), MSG_IMAGE_AFTER_GROUP_NAME_DOWN);
 
 		for (int i = 1; i < 4; i++) {
-			text = selenium.getAttribute(String.format(LOC_ITEM_M_N_STYLE,
-					index, i));
-			assertFalse(!text.contains("display: none;"), String.format(
-					MSG_ITEM_M_N_NOT_VISIBLE, index, i));
+			assertFalse(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_NOT_VISIBLE, index, i));
 		}
 
-		selenium.click(String.format(LOC_GROUP_N_TEXT, index));
+		selenium.click(format(LOC_GROUP_N_TEXT, index));
 
 		// image after group name
-		text = selenium.getAttribute(String.format(LOC_GROUP_N_IMAGE_AFTER,
-				index));
-		assertTrue(text.contains("PanelMenuIconChevronUp"),
-				MSG_IMAGE_AFTER_GROUP_NAME_UP);
+		text = selenium.getAttribute(format(LOC_GROUP_N_IMAGE_AFTER, index));
+		assertTrue(text.contains("PanelMenuIconChevronUp"), MSG_IMAGE_AFTER_GROUP_NAME_UP);
 
 		for (int i = 1; i < 4; i++) {
 			// check that items are not hidden
-			try {
-				text = selenium.getAttribute(String.format(LOC_ITEM_M_N_STYLE,
-						index, i));
-				assertTrue(!text.contains("display: none;"), String.format(
-						MSG_ITEM_M_N_VISIBLE, index, i));
-			} catch (Exception e) {
-				// OK -- there is no style attribute
-			}
-
+			assertTrue(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_VISIBLE, index, i));
+			
 			// check the image left of the item
-			text = selenium.getAttribute(String.format(
-					LOC_ITEM_M_N_IMAGE_BEFORE, index, i));
-			assertTrue(text.contains("PanelMenuIconGrid"),
-					MSG_IMAGE_BEFORE_ITEM_GRID);
+			text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_BEFORE, index, i));
+			assertTrue(text.contains("PanelMenuIconGrid"), MSG_IMAGE_BEFORE_ITEM_GRID);
 		}
 	}
 
 	/**
 	 * Loads the page containing the component.
 	 */
+	@SuppressWarnings("unused")
 	@BeforeMethod
 	private void loadPage() {
-//		selenium.allowNativeXpath("true");
-		super.loadPage("richOutputs", 5, 1, MSG_COMPONENT_DESCRIPTION);
-		scrollIntoView(LOC_EXAMPLE_HEADER, true);
+	    openComponent("Panel Menu");
+	    scrollIntoView(LOC_EXAMPLE_HEADER, true);
 	}
 }

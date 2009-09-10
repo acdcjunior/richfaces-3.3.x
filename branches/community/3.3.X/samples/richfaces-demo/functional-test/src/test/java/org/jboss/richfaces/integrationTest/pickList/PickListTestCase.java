@@ -1,3 +1,25 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2009, Red Hat, Inc. and individual contributors
+ * by the @authors tag. See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+
 package org.jboss.richfaces.integrationTest.pickList;
 
 import static org.testng.Assert.assertEquals;
@@ -8,267 +30,315 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * 
- * <ul>
- * <li><b>TODO</b> check that buttons are enabled and disabled properly</li>
- * <li><b>TODO</b> implement tests for multiple files with shift and control key
- * </li>
- * <li><b>TODO</b> check not only one table, but both</li>
- * <li><b>TODO</b> check the header of panel with capitals</li>
- * </ul>
+ * Test case for pick list.
  * 
  * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>
  * @version $Revision$
  */
+// TODO check that buttons are enabled and disabled properly
+// TODO implement tests for multiple files with shift and control key
+// TODO check not only one table, but both
+// TODO check the header of panel with capitals
 public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
 
-	private final String leftUpperTable = "//fieldset[1]/div/table/tbody/tr/td[1]/div/table/tbody/tr/td/div/div/table/tbody";
-	private final String upperButtons = "//fieldset[1]/div/table/tbody/tr/td[2]/div";
-	private final String rightUpperTable = "//fieldset[1]/div/table/tbody/tr/td[3]/div/table/tbody/tr/td/div/div/table/tbody";
+    // locators
+    private final String LOC_FIRST_EXAMPLE_HEADER = getLoc("FIRST_EXAMPLE_HEADER");
+    private final String LOC_FIRST_LEFT_ITEMS = getLoc("FIRST_LEFT_ITEMS");
+    private final String LOC_FIRST_LEFT_FIRST_ITEM = getLoc("FIRST_LEFT_FIRST_ITEM");
+    private final String LOC_FIRST_RIGHT_ITEMS = getLoc("FIRST_RIGHT_ITEMS");
+    private final String LOC_FIRST_RIGHT_FIRST_ITEM = getLoc("FIRST_RIGHT_FIRST_ITEM");
+    private final String LOC_FIRST_BUTTON_COPY_ALL = getLoc("FIRST_BUTTON_COPY_ALL");
+    private final String LOC_FIRST_BUTTON_COPY = getLoc("FIRST_BUTTON_COPY");
+    private final String LOC_FIRST_BUTTON_REMOVE = getLoc("FIRST_BUTTON_REMOVE");
+    private final String LOC_FIRST_BUTTON_REMOVE_ALL = getLoc("FIRST_BUTTON_REMOVE_ALL");
+    
+    private final String LOC_SECOND_EXAMPLE_HEADER = getLoc("SECOND_EXAMPLE_HEADER");
+    private final String LOC_SECOND_LEFT_ITEMS = getLoc("SECOND_LEFT_ITEMS");
+    private final String LOC_SECOND_LEFT_FIRST_ITEM = getLoc("SECOND_LEFT_FIRST_ITEM");
+    private final String LOC_SECOND_RIGHT_ITEMS = getLoc("SECOND_RIGHT_ITEMS");
+    private final String LOC_SECOND_RIGHT_FIRST_ITEM = getLoc("SECOND_RIGHT_FIRST_ITEM");
+    private final String LOC_SECOND_BUTTON_COPY_ALL = getLoc("SECOND_BUTTON_COPY_ALL");
+    private final String LOC_SECOND_BUTTON_COPY = getLoc("SECOND_BUTTON_COPY");
+    private final String LOC_SECOND_BUTTON_REMOVE = getLoc("SECOND_BUTTON_REMOVE");
+    private final String LOC_SECOND_BUTTON_REMOVE_ALL = getLoc("SECOND_BUTTON_REMOVE_ALL");
+    
+    private final String LOC_SECOND_CHOSEN_OPTIONS_UL = getLoc("SECOND_CHOSEN_OPTIONS_UL");
+    private final String LOC_SECOND_CHOSEN_OPTIONS_LI = getLoc("SECOND_CHOSEN_OPTIONS_LI");
+    private final String LOC_SECOND_CHOSEN_OPTIONS_LI1 = getLoc("SECOND_CHOSEN_OPTIONS_LI1");
+    
+    /**
+     * Test first pick list. It checks that there are some items on the left and no items on the right.
+     */
+    @Test
+    public void testFirstPickList() {
+        scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        assertTrue(count > 0, "There are no lines in the upper left table.");
 
-	private final String leftLowerTable = "//fieldset[2]/div/form/table/tbody/tr/td[1]/table/tbody/tr/td[1]/div/table/tbody/tr/td/div/div/table/tbody";
-	private final String lowerButtons = "//fieldset[2]/div/form/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div";
-	private final String rightLowerTable = "//fieldset[2]/div/form/table/tbody/tr/td[1]/table/tbody/tr/td[3]/div/table/tbody/tr/td/div/div/table/tbody";
-	private final String chosenOptions = "//fieldset[2]/div/form/table/tbody/tr/td[2]/div/div[2]";
+        count = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        assertEquals(count, 0, "There should be no lines in the upper right table.");
+    }
 
-	@Test
-	public void testUpperPickList() {
-		int count = selenium.getXpathCount(leftUpperTable + "/tr").intValue();
-		assertTrue(count > 0, "There are no lines in the upper left table.");
+    /**
+     * Tests the button copy in the first example.
+     */
+    @Test
+    public void testFirstCopySingleItem() {
+        scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
 
-		count = selenium.getXpathCount(rightUpperTable + "/tr").intValue();
-		assertEquals(count, 0,
-				"There should be no lines in the upper right table.");
-	}
+        selenium.click(LOC_FIRST_LEFT_FIRST_ITEM);
+        selenium.click(LOC_FIRST_BUTTON_COPY);
 
-	@Test
-	public void testUpperCopySingleFile() {
-		int count = selenium.getXpathCount(leftUpperTable + "/tr").intValue();
+        int newCount = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        assertEquals(newCount, count - 1, "There should be less lines in the left table.");
+    }
 
-		// click the first line
-		selenium.click(leftUpperTable + "/tr[1]");
-		// click 'Copy'
-		selenium.click(upperButtons + "/div[3]");
+    // @Test
+    // public void testFirstCopyMultipleItemsShift() {
+    // fail("TODO");
+    // }
+    //	
+    // @Test
+    // public void testFirstCopyMultipleItemsCtrl() {
+    // fail("TODO");
+    // }
 
-		int newCount = selenium.getXpathCount(leftUpperTable + "/tr")
-				.intValue();
-		assertEquals(newCount, count - 1,
-				"There should be less lines in the left table.");
-	}
+    /**
+     * Tests the button copy all in the first example.
+     */
+    @Test
+    public void testFirstCopyAll() {
+        scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
 
-	// @Test
-	// public void testUpperCopyMultipleFilesShift() {
-	// fail("TODO");
-	// }
-	//	
-	// @Test
-	// public void testUpperCopyMultipleFilesCtrl() {
-	// fail("TODO");
-	// }
+        selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
 
-	@Test
-	public void testUpperCopyAll() {
-		int count = selenium.getXpathCount(leftUpperTable + "/tr").intValue();
+        int newCount = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        assertEquals(newCount, 0, "There should be no lines in the left table.");
 
-		// click 'Copy All'
-		selenium.click(upperButtons + "/div[1]");
+        newCount = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, count, "All items from left table should be now in the right table.");
+    }
 
-		int newCount = selenium.getXpathCount(leftUpperTable + "/tr")
-				.intValue();
-		assertEquals(newCount, 0, "There should be no lines in the left table.");
+    /**
+     * Tests the button remove in the first example.
+     */
+    @Test
+    public void testFirstRemoveSingleItem() {
+        scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
+        
+        selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
 
-		newCount = selenium.getXpathCount(rightUpperTable + "/tr").intValue();
-		assertEquals(newCount, count,
-				"All items from left table should be now in the right table.");
-	}
+        int count = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
 
-	@Test
-	public void testUpperRemoveSingleFile() {
-		// click 'Copy All'
-		selenium.click(upperButtons + "/div[1]");
+        selenium.click(LOC_FIRST_RIGHT_FIRST_ITEM);
+        selenium.click(LOC_FIRST_BUTTON_REMOVE);
 
-		int count = selenium.getXpathCount(rightUpperTable + "/tr").intValue();
+        int newCount = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, count - 1, "There should be less lines in the right table.");
+    }
 
-		// click the first line
-		selenium.click(rightUpperTable + "/tr[1]");
-		// click 'Remove'
-		selenium.click(upperButtons + "/div[5]");
+    // @Test
+    // public void testFirstRemoveMultipleItemsShift() {
+    // fail("TODO");
+    // }
+    //	
+    // @Test
+    // public void testFirstRemoveMultipleItemsCtrl() {
+    // fail("TODO");
+    // }
 
-		int newCount = selenium.getXpathCount(rightUpperTable + "/tr")
-				.intValue();
-		assertEquals(newCount, count - 1,
-				"There should be less lines in the right table.");
-	}
+    /**
+     * Tests the button remove all in the first example.
+     */
+    @Test
+    public void testFirstRemoveAll() {
+        scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
 
-	// @Test
-	// public void testUpperRemoveMultipleFilesShift() {
-	// fail("TODO");
-	// }
-	//	
-	// @Test
-	// public void testUpperRemoveMultipleFilesCtrl() {
-	// fail("TODO");
-	// }
+        selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
+        selenium.click(LOC_FIRST_BUTTON_REMOVE_ALL);
 
-	@Test
-	public void testUpperRemoveAll() {
-		int count = selenium.getXpathCount(leftUpperTable + "/tr").intValue();
+        int newCount = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, 0, "There should be no lines in the right table.");
 
-		// click 'Copy All'
-		selenium.click(upperButtons + "/div[1]");
+        newCount = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        assertEquals(newCount, count, "All items from right table should be now in the left table.");
+    }
 
-		// click 'Remove All'
-		selenium.click(upperButtons + "/div[7]");
+    /**
+     * Tests the second pick list. It checks that there is something on the left, nothing on the right, and "chosen options" is empty.
+     */
+    @Test
+    public void testSecondPickList() {
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        assertTrue(count > 0, "There are no lines in the lower left table.");
 
-		int newCount = selenium.getXpathCount(rightUpperTable + "/tr")
-				.intValue();
-		assertEquals(newCount, 0,
-				"There should be no lines in the right table.");
+        count = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        assertEquals(count, 0, "There should be no lines in the lower right table.");
 
-		newCount = selenium.getXpathCount(leftUpperTable + "/tr").intValue();
-		assertEquals(newCount, count,
-				"All items from right table should be now in the left table.");
-	}
+        boolean empty = !selenium.isElementPresent(LOC_SECOND_CHOSEN_OPTIONS_UL);
+        assertTrue(empty, "Chosen options should not contain any items.");
+    }
 
-	@Test
-	public void testLowerPickList() {
-		int count = selenium.getXpathCount(leftLowerTable + "/tr").intValue();
-		assertTrue(count > 0, "There are no lines in the lower left table.");
+    /**
+     * Tests the button copy in the second example.
+     */
+    @Test
+    public void testSecondCopySingleItem() {
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
+        
+        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
 
-		count = selenium.getXpathCount(rightLowerTable + "/tr").intValue();
-		assertEquals(count, 0,
-				"There should be no lines in the lower right table.");
+        selenium.click(LOC_SECOND_LEFT_FIRST_ITEM);
+        selenium.click(LOC_SECOND_BUTTON_COPY);
 
-		boolean empty = !selenium.isElementPresent(chosenOptions + "/ul");
-		assertTrue(empty, "Chosen options should not contain any items.");
-	}
+        int newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        assertEquals(newCount, count - 1, "There should be less lines in the left table.");
 
-	@Test
-	public void testLowerCopySingleFile() {
-		int count = selenium.getXpathCount(leftLowerTable + "/tr").intValue();
+        count = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        assertEquals(count, 1, "There should be only one capital city.");
 
-		// click the first line
-		selenium.click(leftLowerTable + "/tr[1]");
-		// click 'Copy'
-		selenium.click(lowerButtons + "/div[3]");
+        String capital = selenium.getText(LOC_SECOND_CHOSEN_OPTIONS_LI1);
+        assertEquals(capital, "Montgomery", "Capital of Alaska.");
+    }
 
-		int newCount = selenium.getXpathCount(leftLowerTable + "/tr")
-				.intValue();
-		assertEquals(newCount, count - 1,
-				"There should be less lines in the left table.");
+    // @Test
+    // public void testSecondCopyMultipleItemsShift() {
+    // fail("TODO");
+    // }
+    //	
+    // @Test
+    // public void testSecondCopyMultipleItemsCtrl() {
+    // fail("TODO");
+    // }
 
-		count = selenium.getXpathCount(chosenOptions + "/ul/li").intValue();
-		assertEquals(count, 1, "There should be only one capital city.");
+    /**
+     * Tests the button copy all in the second example.
+     */
+    @Test
+    public void testSecondCopyAll() {
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
+      
+        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
 
-		String capital = selenium.getText(chosenOptions + "/ul/li[1]");
-		assertEquals(capital, "Montgomery", "Capital of Alaska.");
-	}
+        selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
 
-	// @Test
-	// public void testLowerCopyMultipleFilesShift() {
-	// fail("TODO");
-	// }
-	//	
-	// @Test
-	// public void testLowerCopyMultipleFilesCtrl() {
-	// fail("TODO");
-	// }
+        int newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        assertEquals(newCount, 0, "There should be no lines in the left table.");
 
-	@Test
-	public void testLowerCopyAll() {
-		int count = selenium.getXpathCount(leftLowerTable + "/tr").intValue();
+        newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, count, "All items from left table should be now in the right table.");
 
-		// click 'Copy All'
-		selenium.click(lowerButtons + "/div[1]");
+        newCount = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        assertEquals(newCount, count, "Not all capital cities were displayed in the panel.");
+    }
 
-		int newCount = selenium.getXpathCount(leftLowerTable + "/tr")
-				.intValue();
-		assertEquals(newCount, 0, "There should be no lines in the left table.");
+    /**
+     * Tests the button remove in the second example.
+     */
+    @Test
+    public void testSecondRemoveSingleItem() {
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
 
-		newCount = selenium.getXpathCount(rightLowerTable + "/tr").intValue();
-		assertEquals(newCount, count,
-				"All items from left table should be now in the right table.");
+        selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
 
-		newCount = selenium.getXpathCount(chosenOptions + "/ul/li").intValue();
-		assertEquals(newCount, count,
-				"Not all capital cities were displayed in the panel.");
-	}
+        int count = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
 
-	@Test
-	public void testLowerRemoveSingleFile() {
-		// click 'Copy All'
-		selenium.click(lowerButtons + "/div[1]");
+        selenium.click(LOC_SECOND_RIGHT_FIRST_ITEM);
+        selenium.click(LOC_SECOND_BUTTON_REMOVE);
 
-		int count = selenium.getXpathCount(rightLowerTable + "/tr").intValue();
+        int newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, count - 1, "There should be less lines in the right table.");
 
-		// click the first line
-		selenium.click(rightLowerTable + "/tr[1]");
-		// click 'Remove'
-		selenium.click(lowerButtons + "/div[5]");
+        newCount = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        assertEquals(newCount, count - 1, "The capital city was not removed from panel.");
+    }
 
-		int newCount = selenium.getXpathCount(rightLowerTable + "/tr")
-				.intValue();
-		assertEquals(newCount, count - 1,
-				"There should be less lines in the right table.");
+    // @Test
+    // public void testSecondRemoveMultipleItemsShift() {
+    // fail("TODO");
+    // }
+    //	
+    // @Test
+    // public void testSecondRemoveMultipleItemsCtrl() {
+    // fail("TODO");
+    // }
 
-		newCount = selenium.getXpathCount(chosenOptions + "/ul/li").intValue();
-		assertEquals(newCount, count - 1,
-				"The capital city was not removed from panel.");
-	}
+    /**
+     * Tests the button remove all in the second example.
+     */
+    @Test
+    public void testSecondRemoveAll() {
+        scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
 
-	// @Test
-	// public void testLowerRemoveMultipleFilesShift() {
-	// fail("TODO");
-	// }
-	//	
-	// @Test
-	// public void testLowerRemoveMultipleFilesCtrl() {
-	// fail("TODO");
-	// }
+        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
 
-	@Test
-	public void testLowerRemoveAll() {
-		int count = selenium.getXpathCount(leftLowerTable + "/tr").intValue();
+        selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
+        selenium.click(LOC_SECOND_BUTTON_REMOVE_ALL);
 
-		// click 'Copy All'
-		selenium.click(lowerButtons + "/div[1]");
+        int newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        assertEquals(newCount, 0, "There should be no lines in the right table.");
 
-		// click 'Remove All'
-		selenium.click(lowerButtons + "/div[7]");
+        newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        assertEquals(newCount, count, "All items from right table should be now in the left table.");
 
-		int newCount = selenium.getXpathCount(rightLowerTable + "/tr")
-				.intValue();
-		assertEquals(newCount, 0,
-				"There should be no lines in the right table.");
+        count = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        assertEquals(count, 0, "All capitals from the panel should be removed.");
+    }
 
-		newCount = selenium.getXpathCount(leftLowerTable + "/tr").intValue();
-		assertEquals(newCount, count,
-				"All items from right table should be now in the left table.");
+    /**
+     * Tests the "View Source" in the first example. It checks that the source
+     * code is not visible, clicks on the link, and checks 5 lines of source
+     * code.
+     */
+    @Test
+    public void testFirstPickListSource() {
+        String[] strings = new String[] { "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"", "<rich:pickList>",
+                "<f:selectItem itemLabel=\"Option 1\" itemValue=\"1\"/>",
+                "<f:selectItem itemLabel=\"Option 2\" itemValue=\"2\"/>",
+                "<f:selectItem itemLabel=\"Option 3\" itemValue=\"3\"/>",
+                "<f:selectItem itemLabel=\"Option 4\" itemValue=\"4\"/>",
+                "<f:selectItem itemLabel=\"Option 5\" itemValue=\"5\"/>", "</rich:pickList>", };
 
-		count = selenium.getXpathCount(chosenOptions + "/ul/li").intValue();
-		assertEquals(count, 0, "All capitals from the panel should be removed.");
-	}
+        abstractTestSource(1, "View Source", strings);
+    }
 
-	@Test
-	public void testUpperPickListSource() {
-		abstractTestSource(1, 1, "<", "ui:composition");
-	}
+    /**
+     * Tests the "View Source" in the second example. It checks that the source
+     * code is not visible, clicks on the link, and checks 5 lines of source
+     * code.
+     */
+    @Test
+    public void testSecondPickListSource() {
+        String[] strings = new String[] {
+                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<h:panelGrid columns=\"2\" columnClasses=\"top, top\">",
+                "<rich:pickList value=\"#{pickListBean.result}\"> ",
+                "<f:selectItems value=\"#{capitalsBean.capitalsOptions}\"/>",
+                "<a4j:support event=\"onlistchanged\" reRender=\"result\"/>",
+                "<rich:panel id=\"result\" bodyClass=\"pbody\">",
+                "<f:facet name=\"header\">",
+                "<h:outputText value=\"#{pickListBean.items} Options Choosen\"></h:outputText>",
+                "<rich:dataList value=\"#{pickListBean.result}\" var=\"pickList\" rendered=\"#{pickListBean.items>0}\"> ",
+                "<h:outputText value=\"#{pickList}\"/>", };
 
-	@Test
-	public void testLowerPickListSource() {
-		abstractTestSource(2, 1, "<", "ui:composition");
-	}
+        abstractTestSource(2, "View Source", strings);
+    }
 
-	/**
-	 * Loads the needed page.
-	 */
-	@BeforeMethod
-	private void loadPage() {
-		super.loadPage("richSelect", 3,
-				"Pick List component is a simple selection component");
-
-		// click 'Remove All'
-		selenium.click(upperButtons + "/div[7]");
-		selenium.click(lowerButtons + "/div[7]");
-	}
+    /**
+     * Loads the needed page.
+     */
+    @SuppressWarnings("unused")
+    @BeforeMethod
+    private void loadPage() {
+        openComponent("Pick List");
+    }
 }
