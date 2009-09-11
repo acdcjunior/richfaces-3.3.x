@@ -191,9 +191,9 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
      * 
      * @return hours and minutes from "defaultTime" attribute
      */
-    public String getPreparedDefaultTime(UICalendar component) {
+    public Map<String, Object> getPreparedDefaultTime(UICalendar component) {
 	    Date date = component.getFormattedDefaultTime();
-	    StringBuilder result = new StringBuilder();
+	    Map<String, Object> result = new HashMap<String, Object>();
 		if (date != null) {
 		    Calendar calendar = component.getCalendar();
 		    calendar.setTime(date);
@@ -201,14 +201,11 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		    int minutes = calendar.get(Calendar.MINUTE);
 		    
 		    if (hours != 12 || minutes != 0) {
-				result.append("{").append(HOURS_VALUE).append(":");
-				result.append(hours);
-				result.append(",");
-				result.append(MINUTES_VALUE).append(":");
-				result.append(minutes).append("}");
+		    	result.put(HOURS_VALUE, hours);
+		    	result.put(MINUTES_VALUE, minutes);
 			}
 	    }
-	    return result.toString();   
+	    return result;   
     } 
 
 	/**
