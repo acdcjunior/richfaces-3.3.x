@@ -41,7 +41,7 @@
             </para>
             <para>
                   In contrast to <emphasis role="bold"><property>&lt;rich:panel&gt;</property></emphasis> the component has <emphasis><property>&quot;width&quot;</property></emphasis> 
-                  and <emphasis><property>&quot;height&quot;</property></emphasis> attributes that control it size (by default thaey both has 100%).
+                  and <emphasis><property>&quot;height&quot;</property></emphasis> attributes that control it size (by default they both have 100%).
             </para>
             
            
