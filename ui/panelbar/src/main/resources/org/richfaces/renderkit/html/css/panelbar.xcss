@@ -48,13 +48,13 @@
     	<f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
     </u:style>
 	<u:style name="background-position" value="top left"/>
-	<u:style name="background-repeat" value="repeat-x"/>
-	<u:style name="vertical-align" value="middle"/>
-	<u:style name="color" skin="headerTextColor" />
-	<u:style name="background-color" skin="headerBackgroundColor" />
-	<u:style name="font-size" skin="headerSizeFont" />
-    <u:style name="font-weight" skin="headerWeightFont" />
-    <u:style name="font-family" skin="headerFamilyFont" />
+	<u:style name="background-repeat" 	value="repeat-x"/>
+	<u:style name="vertical-align" 		value="middle"/>
+	<u:style name="color" 				skin="headerTextColor" />
+	<u:style name="background-color" 	skin="headerBackgroundColor" />
+	<u:style name="font-size" 			skin="headerSizeFont" />
+    <u:style name="font-weight" 		skin="headerWeightFont" />
+    <u:style name="font-family" 		skin="headerFamilyFont" />
 </u:selector>
 
 <u:selector name=".rich-panelbar-header-act">
@@ -62,19 +62,19 @@
     	<f:resource f:key="org.richfaces.renderkit.html.GradientA"/>
     </u:style>
 	<u:style name="background-position" value="top left"/>
-	<u:style name="background-repeat" value="repeat-x"/>
-	<u:style name="vertical-align" value="middle"/>
-	<u:style name="color" skin="headerTextColor" />
-	<u:style name="background-color" skin="headerBackgroundColor" />
-	<u:style name="font-size" skin="headerSizeFont" />
-    <u:style name="font-weight" skin="headerWeightFont" />
-    <u:style name="font-family" skin="headerFamilyFont" />
+	<u:style name="background-repeat" 	value="repeat-x"/>
+	<u:style name="vertical-align" 		value="middle"/>
+	<u:style name="color" 				skin="headerTextColor" />
+	<u:style name="background-color" 	skin="headerBackgroundColor" />
+	<u:style name="font-size" 			skin="headerSizeFont" />
+    <u:style name="font-weight" 		skin="headerWeightFont" />
+    <u:style name="font-family" 		skin="headerFamilyFont" />
 </u:selector>
 
 
 <u:selector name=".rich-panelbar-content">
-	<u:style name="color" skin="generalTextColor" />
-	<u:style name="font-size" skin="preferableDataSizeFont" />
+	<u:style name="color" 		skin="generalTextColor" />
+	<u:style name="font-size" 	skin="preferableDataSizeFont" />
     <u:style name="font-family" skin="preferableDataFamilyFont" />
 </u:selector>
 
