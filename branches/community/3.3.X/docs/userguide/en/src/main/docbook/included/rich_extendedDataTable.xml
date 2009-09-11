@@ -10,9 +10,9 @@
    </title>
    <section>
       <title>Description</title>
-      <para>The component for tables extending standard component <emphasis role="bold">
+   	<para>The component is meant for rendering tables and differs from the standard <emphasis role="bold">
                                         <property moreinfo="none">&lt;rich:dataTable&gt;</property>
-                              </emphasis>.</para>
+   	</emphasis> component in that supports some extended features.</para>
       <figure float="0">
          <title>
             <emphasis role="bold">
@@ -25,7 +25,7 @@
          </mediaobject>
       </figure>
    </section>
-   <section>
+	<section id="extDataTable_key_features">
       <title>Key Features</title>
       <itemizedlist>
          <listitem>
@@ -62,7 +62,10 @@
                                         <property moreinfo="none">&lt;rich:extendedDataTable&gt;</property>
                               </emphasis> component is similar to the <emphasis role="bold">
                                         <property moreinfo="none">&lt;rich:dataTable&gt;</property>
-                              </emphasis>. The data in component is scrollable. You can also set the
+                              </emphasis>, but <emphasis role="bold">
+      	<property moreinfo="none">&lt;rich:extendedDataTable&gt;</property>
+                              </emphasis> supports some extended features (see the &quot;Key Features&quot; section above). 
+      	The data in the component is scrollable. You can also set the
                               type of selection (<emphasis>
                                         <property moreinfo="none">"none",</property>
                               </emphasis>
