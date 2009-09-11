@@ -65,12 +65,12 @@ public class PickListTest extends SeleniumTestBase {
 
         writeStatus("Check move controls customized labels");
 
-        AssertTextEquals(copyElemId,      "MOVE");
+        AssertTextEquals(pickListId + "dis" + COPY_BTN,      "MOVE");
         AssertTextEquals(copyAllElemId,   "MOVE ALL");
-        AssertTextEquals(removeElemId,    "TAKE AWAY");
+        AssertTextEquals(pickListId + "dis" + REMOVE_BTN,    "TAKE AWAY");
         AssertTextEquals(removeAllElemId, "TAKE ALL AWAY");
 
-        String destListId = parentId + PICK_LIST + "tlTbody";
+        String destListId = parentId + PICK_LIST + "tltbody";
         String srcListId = parentId + PICK_LIST + "tbody";
 
         writeStatus("Check initial disposition");
@@ -341,9 +341,9 @@ public class PickListTest extends SeleniumTestBase {
 
         String pickListId = getParentId() + "_form:" + PICK_LIST;
 
-        String copyElemId = pickListId + COPY_BTN;
+        String copyElemId = pickListId + "dis" + COPY_BTN;
         String copyAllElemId = pickListId + COPY_ALL_BTN;
-        String removeElemId = pickListId + REMOVE_BTN;
+        String removeElemId = pickListId + "dis" + REMOVE_BTN;
         String removeAllElemId = pickListId + REMOVE_ALL_BTN;
 
         writeStatus("This test page forces German locale. Check all labels are in German");
@@ -383,7 +383,7 @@ public class PickListTest extends SeleniumTestBase {
 
         writeStatus("Check styleClass/style attributes");
         String pickListId = getAutoTester(this).getClientId(AutoTester.COMPONENT_ID);
-        assertStyleAttributeContains(pickListId, "font-size: 13px", "Style attribute was not output to client");
+        assertStyleAttributeContains(pickListId, "font-weight: bold;", "Style attribute was not output to client");
         assertClassAttributeContains(pickListId, "noclass", "Class attribute was not output to client");
 
         writeStatus("Check listClass attributes");
