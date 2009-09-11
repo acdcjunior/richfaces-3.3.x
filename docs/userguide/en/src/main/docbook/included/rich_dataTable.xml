@@ -61,6 +61,15 @@
       	</emphasis> attributes for data iteration components in the 
       	<ulink url="http://www.jboss.org/community/wiki/UsingtheajaxKeysattributeforrichdataList">RichFaces Cookbook article</ulink>.</para>
 
+	<note>
+		<title>Note:</title>
+		<para>If you need to render a table with some extended features like data scrolling, hiding the columns with the help of the context menu and 
+			<link linkend="extDataTable_key_features">some others</link>,
+			then use the <link linkend="rich_extendedDataTable"><emphasis role="bold">
+				<property>&lt;rich:extendedDataTable&gt;</property>
+			</emphasis></link> component instead.</para>
+	</note>
+   	
       <para id="table_ex">The component allows to use <emphasis>
             <property>"header"</property>
          </emphasis>, <emphasis>
