@@ -40,7 +40,7 @@ public class ColorPickerTest extends SeleniumTestBase {
 //	private String message;
 	
 	private void init(Template template) {
-        renderPage(null, template, "#{comboBean.init}");
+        renderPage(null, template, "#{colorPickerBean.init}");
         String mainForm = getParentId() + "autoTestForm";
         
         colorPicker = mainForm + ":componentId";
@@ -159,7 +159,7 @@ public class ColorPickerTest extends SeleniumTestBase {
         Assert.assertTrue(isVisible(hexInputId), "Hex Input must be presented");
         Assert.assertEquals("#" + selenium.getValue(hexInputId), expectedValue); 
         
-        final String xPathButtonOk = "xpath=id('" + colorPickerList + "')//button[@name='submit']";
+        final String xPathButtonOk = "xpath=id('" + colorPickerList + "')//button[@class='rich-color-picker-submit']";
         Assert.assertTrue(isVisible(xPathButtonOk), "Button Cancel must be presented");
         selenium.click(xPathButtonOk);
         
