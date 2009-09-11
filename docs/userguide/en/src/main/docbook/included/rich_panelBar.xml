@@ -201,16 +201,16 @@
                                     <entry>Defines styles for panelBar content</entry>
                               </row>
                               <row>
-                                    <entry>.rich-panelbar-content</entry>
-                                    <entry>Defines styles for panelBar content</entry>
-                              </row>
-                              <row>
                                     <entry>.rich-panel-header</entry>
                                     <entry>Defines styles for active header element</entry>
                               </row>
                               <row>
                                     <entry>.rich-panel-header-act</entry>
                                     <entry>Defines styles for header element</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-panelbar-content</entry>
+                                    <entry>Defines styles for panelBar content</entry>
                               </row>
                               <row>
                                     <entry>.rich-panelbar-interior</entry>
