@@ -89,9 +89,10 @@ public abstract class UITab extends AjaxActionComponent implements AjaxComponent
       * @see org.ajax4jsf.framework.ajax.AjaxActionComponent#setupReRender()
       */
     //TODO remove
-    protected void setupReRender() {
-        super.setupReRender();
-        AjaxRendererUtils.addRegionByName(getFacesContext(), this, this.getId());
+    protected void setupReRender(FacesContext context) {
+        super.setupReRender(context);
+        UITabPanel tabPanel = getPane();
+        AjaxRendererUtils.addRegionByName(context, tabPanel, tabPanel.getId());
     }
 
     /**
