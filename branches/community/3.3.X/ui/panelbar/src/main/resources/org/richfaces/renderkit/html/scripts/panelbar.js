@@ -25,6 +25,7 @@ Richfaces.PanelBar.prototype = {
 		this.ch=this.panel.clientHeight;
 		this.options = options;
         this.onitemchange = options.onitemchange;
+        this.onitemchanged = options.onitemchanged;
         this.onclick = options.onclick;
         this.items = options.items;
         
@@ -301,6 +302,8 @@ Richfaces.PanelBar.Slide.prototype = {
 
 		this.slidePanel.panel.style.maxHeight="";
 		this.slidePanel.panel.style.minHeight="";
+
+		this.slidePanel.invokeEvent("onchangeditem", event, leaveElement, enterElement, this.slidePanel.panel, this.slidePanel.onitemchanged);
 	},
 
 	headerOnSelectStart: function() {

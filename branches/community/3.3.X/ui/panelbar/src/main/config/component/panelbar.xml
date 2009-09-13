@@ -98,6 +98,14 @@
             </description>
             <defaultvalue><![CDATA[""]]></defaultvalue>
         </property>
+		<property>
+            <name>onitemchanged</name>
+            <classname>java.lang.String</classname>
+            <description>
+            	The client-side script method to be called after a panel bar item has been changed
+            </description>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
+        </property>
         <property>
             <name>onmouseover</name>
             <classname>java.lang.String</classname>

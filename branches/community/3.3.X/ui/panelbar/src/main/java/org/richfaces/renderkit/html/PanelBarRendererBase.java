@@ -164,28 +164,20 @@ public abstract class PanelBarRendererBase extends HeaderResourcesRendererBase {
 				
 		return items;
 	}
-	
+
 	public void encodeScript(FacesContext context, UIComponent component) throws IOException{
 		
 		if(component instanceof UIPanelBar){
 			UIPanelBar panelBar = (UIPanelBar)component;
 			
-			List items = getScriptPanelBarItems(context, panelBar);
+			List<?> items = getScriptPanelBarItems(context, panelBar);
 				
 			ScriptOptions options = new ScriptOptions(component);
 			
 			AjaxContext ajaxContext = AjaxContext.getCurrentInstance(context);
-			
-			Object changeScript = panelBar.getAttributes().get("onitemchange");
-			
-			if (changeScript != null && !changeScript.equals("")) {
-				JSFunctionDefinition function =  new JSFunctionDefinition();
-				function.addParameter("event");
-				function.addToBody(changeScript);
-				options.addOption("onitemchange",function);
-			} else {
-				options.addOption("onitemchange","");
-			}
+		
+			addHandlerOption(panelBar, options, "onitemchange");
+			addHandlerOption(panelBar, options, "onitemchanged");
 					
 			options.addOption("onclick", panelBar.getAttributes().get("onclick"));
 			options.addOption("mouseover", panelBar.getAttributes().get("onmouseover"));
@@ -207,6 +199,20 @@ public abstract class PanelBarRendererBase extends HeaderResourcesRendererBase {
 			String outerScript = script.append(";").toString(); 
 			writer.write(outerScript);
 			writer.endElement(HTML.SCRIPT_ELEM);
+		}
+	}
+
+	private void addHandlerOption(UIPanelBar component, ScriptOptions options,
+			String handlerName) {
+		Object changeScript = component.getAttributes().get(handlerName);
+		
+		if (changeScript != null && !changeScript.equals("")) {
+			JSFunctionDefinition function =  new JSFunctionDefinition();
+			function.addParameter("event");
+			function.addToBody(changeScript);
+			options.addOption(handlerName, function);
+		} else {
+			options.addOption(handlerName, "");
 		}
 	}
 }
