@@ -89,6 +89,8 @@ public abstract class UIToggleControl extends AjaxActionComponent implements
         AjaxRendererUtils.addRegionByName(facesContext, togglePanel,
                 togglePanel.getId());
         
+        AjaxRendererUtils.addRegionByName(facesContext, this,
+                this.getId());
     }
     
     @Override
