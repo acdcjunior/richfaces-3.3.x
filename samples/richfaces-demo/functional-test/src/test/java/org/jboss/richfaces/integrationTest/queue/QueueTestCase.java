@@ -20,9 +20,8 @@
  */
 package org.jboss.richfaces.integrationTest.queue;
 
-import static org.testng.Assert.*;
-
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -45,17 +44,22 @@ public class QueueTestCase extends AbstractSeleniumRichfacesTestCase {
 		for (int i = 0; i < order.length; i++) {
 			final String locButtonImage = format(LOC_BUTTON_IMAGE_PREFORMATTED, order[i]);
 			final String locQueueItem = format(LOC_OUTPUT_QUEUE_ITEM, order[i]);
-			
+
 			selenium.click(locButtonImage);
-			
+
 			scrollIntoView(locButtonImage, true);
 
 			waitFor(1000);
 
 			scrollIntoView(locQueueItem, false);
-			
-			assertTrue(selenium.isElementPresent(locQueueItem), format("The enqueued item isn't present '{0}'",
-					locQueueItem));
+
+			waitModelUpdate.failWith(format("The enqueued item isn't present '{0}'", locQueueItem)).until(
+					new Condition() {
+
+						public boolean isTrue() {
+							return selenium.isElementPresent(locQueueItem);
+						}
+					});
 		}
 	}
 
