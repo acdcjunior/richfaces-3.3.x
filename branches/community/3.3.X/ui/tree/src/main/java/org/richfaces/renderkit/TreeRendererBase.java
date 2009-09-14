@@ -571,6 +571,9 @@ public abstract class TreeRendererBase extends CompositeRenderer {
 		           .append(" && event.ajaxSingle) {\n");
 		builder.append("params.").append(AjaxRendererUtils.AJAX_SINGLE_PARAMETER_NAME).append(" = event.ajaxSingle;\n");
 		builder.append("}\n");
+		if (!eventOptions.containsKey("oncomplete")) {
+		    eventOptions.put("oncomplete", new JSReference("event.oncomplete"));
+		}
 		
 		JSFunction function = AjaxRendererUtils.buildAjaxFunction(tree, context);
 		function.addParameter(eventOptions);
