@@ -47,7 +47,6 @@ public class DataTableTest extends SeleniumTestBase {
 	private static final String RESET_METHOD = "#{dataTableBean.reset}";
 	
 	private static final String [] dataTableClassNames = new String [] {
-		"dr-table",
 		"rich-table" 
 	};
 	

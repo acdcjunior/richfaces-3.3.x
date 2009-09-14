@@ -46,7 +46,7 @@ public class ColumnsTest extends SeleniumTestBase {
 		FILTERING
 	}
 	
-	static final String [] COLUMNS_CLASSSES = new String [] {"dr-table-cell", "rich-table-cell", "columnClass"};
+	static final String [] COLUMNS_CLASSSES = new String [] {"rich-table-cell", "columnClass"};
 	
 	@Test
 	public void testExternalSorting(Template template) {

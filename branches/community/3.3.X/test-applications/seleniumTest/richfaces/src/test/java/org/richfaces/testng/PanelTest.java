@@ -45,7 +45,6 @@ public class PanelTest extends SeleniumTestBase {
 	
 	
 	static final String [] panelClasses = new String [] {
-		"dr-pnl",
 		"rich-panel",
 		"myClass"
 	};

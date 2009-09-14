@@ -1735,7 +1735,7 @@ public class CalendarTest extends SeleniumTestBase {
 
     @Test
     public void testResetTimeOnDateSelect(Template template) {
-        renderPage(RESET_TIME_ON_DATE_SELECTION_TEST_URL, template, null);
+        renderPage(RESET_TIME_ON_DATE_SELECTION_TEST_URL, template, RESET_METHOD);
         initIds(getParentId());
 
         String expectedDefaultTime = "05/05/2007 13:13";

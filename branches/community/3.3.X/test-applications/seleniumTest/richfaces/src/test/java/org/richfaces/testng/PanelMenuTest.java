@@ -29,7 +29,7 @@ public class PanelMenuTest extends SeleniumTestBase {
 
     private final static String RESET_METHOD_NAME = "#{panelBean.cleanValues}";
 
-    private final static String[] ITEM_HIGHLIGHTS = {"dr-pmenu-selected-item", "rich-pmenu-selected-element"};
+    private final static String[] ITEM_HIGHLIGHTS = {"rich-pmenu-selected-element"};
 
     private final static String COSMETIC_TEST_URL = "pages/panelMenu/menuPanelCosmeticTest.xhtml";
 
@@ -275,7 +275,8 @@ public class PanelMenuTest extends SeleniumTestBase {
         AssertTextNotEquals(itemAction, "NOT none", "Nothing is going to happen");
     }
 
-    @Test
+    //https://jira.jboss.org/jira/browse/RF-7900
+    @Test(groups=FAILURES_GROUP)
     public void testIconsAttributesAreApplied(Template template) {
         renderPage(COSMETIC_TEST_URL, template, RESET_METHOD_NAME);
 
