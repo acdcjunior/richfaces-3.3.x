@@ -140,6 +140,10 @@ Tree.addMethods({
 						if (ajaxSingle && ajaxSingle == "true") {
 							event.ajaxSingle = this.id
 						}
+						var oncomplete = Richfaces.getNSAttribute("oncomplete", $(treeItem.id + ":text"));;
+						if (oncomplete && oncomplete != "") {
+							event.oncomplete = new Function("request", "event", "data", oncomplete);
+						}
 						this.onAjaxSelect(event);
 					}
 				} else if (event[Richfaces.TreeExpandEvent]){

@@ -227,9 +227,12 @@
 				]]>
 			</jsp:scriptlet>
 		</td>
-		<td class="rich-tree-node-text #{component.attributes['nodeClass']}"
-            rich:selectedclass="#{selectedClass}" rich:highlightedclass="#{highlightedClass}"
-            id="#{clientId}:text" rich:ajaxsingle="#{component.attributes['ajaxSingle']}">
+		<td id="#{clientId}:text"
+            class="rich-tree-node-text #{component.attributes['nodeClass']}"
+            rich:selectedclass="#{selectedClass}" 
+            rich:highlightedclass="#{highlightedClass}"
+            rich:oncomplete="#{component.attributes['oncomplete']}"
+            rich:ajaxsingle="#{component.attributes['ajaxSingle']}">
             <vcp:body />
 		</td>
 	</tr>
