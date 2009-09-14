@@ -7,12 +7,11 @@
       <section>
             <title>Description</title>
             <para>
-                  The component is used for grouping any content which is loaded on the client side and appears as groups divided on child panels after the header is clicked.</para>
+                  The component is designed to group one or more <link linkend="rich_panelBarItem">&lt;rich:panelBarItem&gt;</link> components into one interactive panel.
+            </para>
             <figure>
                   <title>
-                        <emphasis role="bold">
-                              <property>&lt;rich:panelBar&gt;</property>
-                        </emphasis> with content inside</title>
+                        <emphasis role="bold"><property>&lt;rich:panelBar&gt;</property></emphasis> with content inside</title>
                   <mediaobject>
                         <imageobject>
                               <imagedata fileref="images/panelBar_init.png"/>
