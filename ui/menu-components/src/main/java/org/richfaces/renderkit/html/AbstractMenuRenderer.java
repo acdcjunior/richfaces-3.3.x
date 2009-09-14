@@ -150,6 +150,10 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
 	}
 
 	protected Object getItemScriptObject(FacesContext context, UIComponent kid) {
+		if (!kid.isRendered()) {
+			return null;
+		}
+		
         String itemId = null;
         List<Object> scriptObject = null;
         boolean closeOnClick = true;
@@ -198,6 +202,7 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
 				scriptObject.add(options);
 			}
         }
+        
         return scriptObject;
     }
     
@@ -207,21 +212,29 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
     
     public void encodeChildren(FacesContext context, UIComponent component)
             throws IOException {
-        List flatListOfNodes = new LinkedList();
+        List<UIMenuGroup> flatListOfNodes = new LinkedList<UIMenuGroup>();
         String width = (String) component.getAttributes().get("popupWidth");
         
         flatten(component.getChildren(), flatListOfNodes);
         processLayer(context, component, width);
         
-        for (Iterator iter = flatListOfNodes.iterator(); iter.hasNext();) {
-            UIMenuGroup node = (UIMenuGroup) iter.next();
-            if (node.isRendered() && !node.isDisabled())
-                processLayer(context, node, width);
+        for (Iterator<UIMenuGroup> iter = flatListOfNodes.iterator(); iter.hasNext();) {
+            UIMenuGroup node = iter.next();
+            processLayer(context, node, width);
         }
     }
     
     public void processLayer(FacesContext context, UIComponent layer,
             String width) throws IOException {
+    	
+    	if (!layer.isRendered()) {
+    		return ;
+    	}
+    	
+    	if (layer instanceof UIMenuGroup && ((UIMenuGroup) layer).isDisabled()) {
+    		return ;
+    	}
+
         String clientId = layer.getClientId(context);
         
         ResponseWriter writer = context.getResponseWriter();
@@ -268,14 +281,17 @@ public abstract class AbstractMenuRenderer extends HeaderResourcesRendererBase {
         }
     }
     
-    private void flatten(List kids, List flatList) {
+    private void flatten(List<UIComponent> kids, List<UIMenuGroup> flatList) {
         if (kids != null) {
-            for (Iterator iter = kids.iterator(); iter.hasNext();) {
+            for (Iterator<UIComponent> iter = kids.iterator(); iter.hasNext();) {
                 UIComponent kid = (UIComponent) iter.next();
                 if (kid instanceof UIMenuGroup) {
                     UIMenuGroup node = (UIMenuGroup) kid;
-                    flatList.add(node);
-                    flatten(node.getChildren(), flatList);
+                    
+                    if (node.isRendered()) {
+                        flatList.add(node);
+                        flatten(node.getChildren(), flatList);
+                    }
                 }
             }
         }
