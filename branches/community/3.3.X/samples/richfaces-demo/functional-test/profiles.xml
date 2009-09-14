@@ -7,7 +7,7 @@
 			<!-- set local environment specific properties here -->
 			<properties>
 				<!-- *** browser: the type of web browser (and path to its binary if needed) -->
-				<browser>*firefox</browser>
+				<!--<browser>*firefox</browser>-->
 				<!--<browser>*firefox /usr/lib/firefox-3.5.2/firefox</browser>-->
 				<!--<browser>*chrome</browser>-->
 				<!--<browser>*chrome /usr/lib/firefox-3.5.2/firefox</browser>-->
