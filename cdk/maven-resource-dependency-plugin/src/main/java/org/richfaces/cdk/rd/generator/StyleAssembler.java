@@ -44,6 +44,10 @@ import org.codehaus.plexus.velocity.VelocityComponent;
 
 public class StyleAssembler implements ResourceAssembler {
 	
+	private static final String PLAIN_CSS_BLOCK_START = "<f:verbatim><![CDATA[";
+
+	private static final String PLAIN_CSS_BLOCK_END = "]]></f:verbatim>";
+	
 	protected Log log = new SystemStreamLog(); 
 	
 	private VelocityComponent velocityComponent;
@@ -78,7 +82,9 @@ public class StyleAssembler implements ResourceAssembler {
 					}
 					
 				} else {
+					builder.append(PLAIN_CSS_BLOCK_START);
 					builder.append(IOUtil.toString(resourceInputStream));
+					builder.append(PLAIN_CSS_BLOCK_END);
 				}
 				
 			} finally {
