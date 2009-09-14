@@ -28,6 +28,8 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -172,14 +174,16 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on first column.");
 
-        // click 'Actions'
-        selenium.click(LOC_SECOND_ACTIONS);
-        waitFor(400);
-
         // click "Put <car> To Basket", "Read Comments" or
         // "Go to <producer> site"
         selenium.click(format(LOC_SECOND_ACTION_PREFORMATTED, index));
-        waitFor(400);
+        
+        Wait.timeout(15000).failWith("Action was not performed.").until(new Condition() {
+            public boolean isTrue() {
+                return !selenium.getText(LOC_SECOND_LAST_MENU_ACTION).equals("");
+            }
+        });
+        
         String text = selenium.getText(LOC_SECOND_LAST_MENU_ACTION);
 
         switch (index) {
