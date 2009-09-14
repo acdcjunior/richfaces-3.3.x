@@ -190,7 +190,7 @@ public class InputNumberSliderTest extends SeleniumTestBase {
 
     @Test
     public void testStylesAndStyleClassesAreOutputToClient(Template template) {
-        renderPage(LOOK_AND_FEEL_TEST_URL, template, null);
+        renderPage(LOOK_AND_FEEL_TEST_URL, template, RESET_METHOD);
 
         writeStatus("Check styles and classes are output to client");
 
