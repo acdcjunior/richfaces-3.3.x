@@ -30,6 +30,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -240,8 +242,11 @@ public class CalendarTestCase extends AbstractSeleniumRichfacesTestCase {
 
         String date = selenium.getText(LOC_RANDOM_DAY);
         selenium.click(LOC_RANDOM_DAY);
-        assertTrue(belongsClass("rich-calendar-select", LOC_RANDOM_DAY), format("The date {0} should be selected.",
-                date));
+        Wait.timeout(15000).failWith(format("The date {0} should be selected.", date)).until(new Condition() {
+            public boolean isTrue() {
+                return belongsClass("rich-calendar-select", LOC_RANDOM_DAY);
+            }
+        });
 
         String dateTime = selenium.getValue(LOC_DATE_INPUT);
         StringBuilder expected = new StringBuilder(date);
