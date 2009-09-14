@@ -67,7 +67,7 @@ public class DropDownMenuTest extends SeleniumTestBase {
 		String ddMenuItem = tester.getClientId("item1");
 		String ddMenuIdPath = "//div[@id='" + ddMenuId + "']/div[1]";
 		
-		assertClassNames(ddMenuId, new String [] {"dr-menu-label", "rich-ddmenu-label", "dr-menu-label-unselect", "rich-ddmenu-label-unselect"}, "Drop down menu has unexpected css classes", true);
+		assertClassNames(ddMenuId, new String [] {"rich-ddmenu-label", "rich-ddmenu-label-unselect"}, "Drop down menu has unexpected css classes", true);
 		assertClassNames(ddMenuId, new String[] {"dropDownMenuClass"}, "Class attribute does not work for DropDown menu component", true);
 		assertClassNames(ddMenuGroup, new String [] {"rich-menu-group-enabled", "rich-menu-group"}, "Menu group has unexpected css classes", true);
 		assertClassNames(ddMenuGroup, new String[] {"menuGroupClass"}, "Class attribute does not work for Menu group component", true);

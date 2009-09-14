@@ -277,7 +277,7 @@ public class InputNumberSliderTest extends SeleniumTestBase {
         String id = getAutoTester(this).getClientId(AutoTester.COMPONENT_ID);
         writeStatus("Checking value in input field");
         AssertValueEquals(id + "Input", Integer.toString(value));
-        AssertTextEquals(id + "Tip", Integer.toString(value));
+        AssertTextEquals("//*[@id='" + id + "Tip']/text()", Integer.toString(value));
 
         writeStatus("Checking tip and tracker position");
         String actualHandle = runScript("document.getElementById('" + id + "Handle').style.left");

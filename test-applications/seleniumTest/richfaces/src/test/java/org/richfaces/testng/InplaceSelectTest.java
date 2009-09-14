@@ -66,7 +66,7 @@ public class InplaceSelectTest extends InplacesTest {
 
         writeStatus("Check that a new element is selected");
 
-        AssertValueEquals(inplaceSelectId + "inplaceValue", "Birch");
+        AssertValueEquals(inplaceSelectId + "value", "Birch");
 
         writeStatus("Select another element"); // Aspen
 
@@ -126,7 +126,7 @@ public class InplaceSelectTest extends InplacesTest {
 		super.initIds();
 		inplaceValuePrefix = "value";
 		inplaceId = formId + "ii";
-		iTempValuePx = "tmpValue";
+		iTempValuePx = "tempValue";
 	}
 
 }

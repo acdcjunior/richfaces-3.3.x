@@ -65,7 +65,7 @@ public class TabPanelTest extends SeleniumTestBase {
 
     private static Map<String, String> params = new HashMap<String, String>();
     
-    private static final String [] DISABLED_TAB_CLASSES = new String [] { "dr-tbpnl-tb", "rich-tab-header", "dr-tbpnl-tb-dsbl", "rich-tab-disabled"};
+    private static final String [] DISABLED_TAB_CLASSES = new String [] {"rich-tab-header", "rich-tab-disabled"};
 
     static {
         params.put("parameter1", "value1");
@@ -444,16 +444,16 @@ public class TabPanelTest extends SeleniumTestBase {
     	
     	autoTester.testHTMLEvents();
     	
-       	assertClassNames("//*[@id='" + panelId + "']/tbody/tr/td", new String [] { "dr-bottom-line", "rich-tab-bottom-line", "headerClass"}, "Header css classes are incoorect or headerClass attribute was not output to client", false);
+       	assertClassNames("//*[@id='" + panelId + "']/tbody/tr/td", new String [] {"rich-tab-bottom-line", "headerClass"}, "Header css classes are incoorect or headerClass attribute was not output to client", false);
     	
-    	assertClassNames("//*[@id='" + tab1Id + "_lbl']", new String [] {"dr-tbpnl-tb", "rich-tab-header", "dr-tbpnl-tb-act", "rich-tab-active", "tabClass", "activeTabClass"}, "Active Tab has incorrect css classes.", false);
-    	assertClassNames("//*[@id='" + tab2Id + "_lbl']", new String [] {"dr-tbpnl-tb", "rich-tab-header", "dr-tbpnl-tb-inact", "rich-tab-inactive", "tabClass", "inactiveTabClass"}, "Inactive Tab has incorrect css classes.", false);
+    	assertClassNames("//*[@id='" + tab1Id + "_lbl']", new String [] {"rich-tab-header", "rich-tab-active", "tabClass", "activeTabClass"}, "Active Tab has incorrect css classes.", false);
+    	assertClassNames("//*[@id='" + tab2Id + "_lbl']", new String [] {"rich-tab-header", "rich-tab-inactive", "tabClass", "inactiveTabClass"}, "Inactive Tab has incorrect css classes.", false);
     	
     	clickAjaxCommandAndWait(tab2Id + "_lbl");
     	
     	String tab2ContentPath = "//*[@id='" + tab2Id + "']/table/tbody/tr/td";
     	assertStyleAttributeContains(tab2ContentPath, "font-weight: bold", "Style attribute was not output for tab");
-    	assertClassNames(tab2ContentPath, new String [] {"dr-tbpnl-cntnt", "rich-tabpanel-content", "contentClass", "styleClass"}, "Tab css classes are incorrect", false);
+    	assertClassNames(tab2ContentPath, new String [] {"rich-tabpanel-content", "contentClass", "styleClass"}, "Tab css classes are incorrect", false);
     	assertEvents(tab2ContentPath, SeleniumEvent.STANDARD_HTML_EVENTS);
     	
     	title = selenium.getAttribute(tab2ContentPath + "/@title");
