@@ -52,7 +52,7 @@ public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTest
 	 * Wait for splash screen indicating request of table rerendering disappears
 	 */
 	protected void waitForSplash() {
-		Wait.dontFail().interval(5).timeout(2000).until(new Condition() {
+		waitModelUpdate.interval(5).until(new Condition() {
 			public boolean isTrue() {
 				return selenium.isElementPresent(LOC_DIV_SPLASH_SCREEN);
 			}
