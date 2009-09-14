@@ -488,27 +488,27 @@ public class ListShuttleTest extends SeleniumTestBase {
     @Test
     public void testShowButtonsLabel(Template template) {
         init(template);
-        Assert.assertEquals(getTextById(copyAllId), "Copy All Items", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(copyId), "Copy", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(removeId), "Remove", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(removeAllId), "Remove All", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(firstId), "Move to top", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(upId), "Up", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(downId), "Down", "The text on the button must be visible.");
-        Assert.assertEquals(getTextById(lastId), "Last", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + copyAllId + "']//text()"), "Copy All Items", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + copyId + "']//text()"), "Copy", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + removeId + "']//text()"), "Remove", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + removeAllId + "']//text()"), "Remove All", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + firstId + "']//text()"), "Move to top", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + upId + "']//text()"), "Up", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + downId + "']//text()"), "Down", "The text on the button must be visible.");
+        Assert.assertEquals(selenium.getText("//*[@id='" + lastId + "']//text()"), "Last", "The text on the button must be visible.");
 
         selenium.click(showButtonLabelsId);
         waitForAjaxCompletion();
         clickAjaxCommandAndWait(submitId);       
         
-        Assert.assertEquals(getTextById(copyAllId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(copyId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(removeId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(removeAllId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(firstId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(upId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(downId), "", "The text on the button mustn't be visible.");
-        Assert.assertEquals(getTextById(lastId), "", "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + copyAllId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + copyId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + removeId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + removeAllId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + firstId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + upId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + downId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
+        Assert.assertEquals(selenium.getXpathCount("//*[@id='" + lastId + "']//text()").intValue(), 0, "The text on the button mustn't be visible.");
     }
     
    /**
