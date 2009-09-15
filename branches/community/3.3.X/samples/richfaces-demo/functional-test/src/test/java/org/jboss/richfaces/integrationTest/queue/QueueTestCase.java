@@ -48,10 +48,6 @@ public class QueueTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			selenium.click(locButtonImage);
 
-			scrollIntoView(locButtonImage, true);
-
-			waitFor(1000);
-
 			scrollIntoView(locQueueItem, false);
 
 			waitModelUpdate.failWith(format("The enqueued item isn't present '{0}'", locQueueItem)).until(
