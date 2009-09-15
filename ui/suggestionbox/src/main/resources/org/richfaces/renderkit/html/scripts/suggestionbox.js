@@ -792,6 +792,13 @@ Suggestion.Base.prototype = {
     	        this.getUpdatedChoices(event);
         	}
         } else {
+	        if (this.isSelectedItemsUpdated)
+	        {
+	        	//call user listner
+	        	this.isSelectedItemsUpdated = false;
+	        	this.callOnObjectChangeListener(event);
+	        }
+	        
             this.active = false;
             this.hide();
         }
@@ -1051,7 +1058,7 @@ Object.extend(Object.extend(RichFaces.Suggestion.prototype, Suggestion.Base.prot
 	        	//call user listner
 	        	this.isSelectedItemsUpdated = false;
 	        	this.callOnObjectChangeListener(event);
-	        }  
+	        }
 
 	        LOG.debug("Choices updated");
         }
