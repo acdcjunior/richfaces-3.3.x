@@ -16,8 +16,9 @@ public class AjaxPageTest extends SeleniumTestBase {
     private final static String INPUT_ID = "form:input";
 
     private final static String SUBMIT_ID = "form:submit";
-
-    @Test
+    
+    //https://jira.jboss.org/jira/browse/RF-6667
+    @Test(groups=FAILURES_GROUP)
     public void testRenderer(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, null);
@@ -43,7 +44,8 @@ public class AjaxPageTest extends SeleniumTestBase {
         }
     }
 
-    @Test
+    //https://jira.jboss.org/jira/browse/RF-6667
+    @Test(groups=FAILURES_GROUP)
     public void testAjaxListener(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, null);
@@ -57,7 +59,8 @@ public class AjaxPageTest extends SeleniumTestBase {
         }
     }
 
-    @Test
+    //https://jira.jboss.org/jira/browse/RF-6667
+    @Test(groups=FAILURES_GROUP)
     public void testSelfRenderedAttribute(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, null);
@@ -72,7 +75,8 @@ public class AjaxPageTest extends SeleniumTestBase {
         }
     }
 
-    @Test
+    //https://jira.jboss.org/jira/browse/RF-6667
+    @Test(groups=FAILURES_GROUP)
     public void testImmediate(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, null);
