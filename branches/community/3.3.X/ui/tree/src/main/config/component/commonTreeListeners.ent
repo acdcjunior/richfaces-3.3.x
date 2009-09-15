@@ -16,11 +16,6 @@
 		<eventclass>
 			org.richfaces.event.DropEvent
 		</eventclass>
-		<taghandler generate="false">
-			<classname>
-				org.richfaces.taglib.DropListenerHandler
-			</classname>
-		</taghandler>
 		<property existintag="true" exist="true" el="false">
 			<name>type</name>
 			<classname>java.lang.String</classname>
@@ -44,11 +39,6 @@
 		<eventclass>
 			org.richfaces.event.DragEvent
 		</eventclass>
-		<taghandler generate="false">
-			<classname>
-				org.richfaces.taglib.DragListenerHandler
-			</classname>
-		</taghandler>
 		<property existintag="true" exist="true" el="false">
 			<name>type</name>
 			<classname>java.lang.String</classname>
