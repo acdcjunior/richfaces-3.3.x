@@ -29,6 +29,8 @@ import java.io.IOException;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.utils.URLUtils;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -98,7 +100,7 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         int position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_INITIAL_STATE_SHADOW_SLIDER_HANDLE, "Size of the shadow.");
 
-        assertImageHash(MSG_INITIAL_STATE_HASH);
+        assertEquals(getImageHash(), MSG_INITIAL_STATE_HASH, "Hash of the image.");
     }
 
     /**
@@ -108,13 +110,22 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testChangeText() {
         selenium.type(LOC_INPUT_TEXT, "XoXoXoXoX");
         selenium.typeKeys(LOC_INPUT_TEXT, " "); // why is this necessary?
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_TEXT_HASH_1);
+
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_TEXT_HASH_1);
+            }
+        });
 
         selenium.type(LOC_INPUT_TEXT, "Red Hat");
         selenium.typeKeys(LOC_INPUT_TEXT, " "); // why is this necessary?
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_TEXT_HASH_2);
+        
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_TEXT_HASH_2);
+            }
+        });
+
     }
 
     /**
@@ -124,15 +135,21 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testChangeColor() {
         selenium.type(LOC_INPUT_COLOR, "fbff00");
         selenium.click(LOC_BUTTON_APPLY_COLOR);
-
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_COLOR_HASH_1);
+        
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_COLOR_HASH_1);
+            }
+        });
 
         selenium.type(LOC_INPUT_COLOR, "00ffbb");
         selenium.click(LOC_BUTTON_APPLY_COLOR);
-
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_COLOR_HASH_2);
+        
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_COLOR_HASH_2);
+            }
+        });
     }
 
     /**
@@ -145,24 +162,33 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         int position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_SHADOW_SLIDER_HANDLE_1, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_SHADOW_HASH_1);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_SHADOW_HASH_1);
+            }
+        });
 
         selenium.mouseDownAt(LOC_SHADOW_SLIDER, "96,0");
         selenium.mouseUp(LOC_SHADOW_SLIDER);
         position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_SHADOW_SLIDER_HANDLE_2, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_SHADOW_HASH_2);
-
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_SHADOW_HASH_2);
+            }
+        });
+        
         selenium.mouseDownAt(LOC_SHADOW_SLIDER, "191,0");
         selenium.mouseUp(LOC_SHADOW_SLIDER);
         position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_SHADOW_SLIDER_HANDLE_3, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_SHADOW_HASH_3);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_SHADOW_HASH_3);
+            }
+        });
     }
 
     /**
@@ -175,8 +201,11 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.type(LOC_INPUT_COLOR, "894bd6");
         selenium.click(LOC_BUTTON_APPLY_COLOR);
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_TEXT_AND_COLOR_HASH);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_TEXT_AND_COLOR_HASH);
+            }
+        });
     }
 
     /**
@@ -191,8 +220,11 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         int position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_TEXT_AND_SHADOW_SLIDER_HANDLE, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_TEXT_AND_SHADOW_HASH);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_TEXT_AND_SHADOW_HASH);
+            }
+        });
     }
 
     /**
@@ -208,8 +240,11 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         int position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_COLOR_AND_SHADOW_SLIDER_HANDLE, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_COLOR_AND_SHADOW_HASH);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_COLOR_AND_SHADOW_HASH);
+            }
+        });
     }
 
     /**
@@ -227,8 +262,11 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         int position = Integer.parseInt(getStyle(LOC_SHADOW_SLIDER_HANDLE, "left").replace("px", ""));
         assertEquals(position, MSG_CHANGE_ALL_SLIDER_HANDLE, "Position of the slider's handle.");
 
-        waitFor(1500);
-        assertImageHash(MSG_CHANGE_ALL_HASH);
+        Wait.failWith("Hash of the image.").until(new Condition() {
+            public boolean isTrue() {
+                return getImageHash().equals(MSG_CHANGE_ALL_HASH);
+            }
+        });
     }
 
     /**
@@ -271,28 +309,25 @@ public class Paint2DTestCase extends AbstractSeleniumRichfacesTestCase {
         abstractTestSource(1, "View PaintData.java Source", strings);
     }
 
-    /**
-     * Verifies the hash code of the displayed image.
-     * 
-     * @param hashCode
-     *            expected hash code of the image
-     */
-    private void assertImageHash(String hashCode) {
-        // create URL of the image
-        int index = selenium.getLocation().indexOf('/', 7);
-        String tmp = selenium.getLocation().substring(0, index);
-        tmp += selenium.getAttribute(LOC_IMAGE + "@src");
+   /**
+    * Returns hash code of the image.
+    */
+   private String getImageHash() {
+       // create URL of the image
+       int index = selenium.getLocation().indexOf('/', 7);
+       String tmp = selenium.getLocation().substring(0, index);
+       tmp += selenium.getAttribute(LOC_IMAGE + "@src");
 
-        try {
-            tmp = URLUtils.resourceMd5Digest(tmp);
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail(e.getMessage());
-        }
-
-        assertEquals(tmp, hashCode, "Hash of the image.");
-    }
-
+       try {
+           return URLUtils.resourceMd5Digest(tmp);
+       } catch (IOException e) {
+           e.printStackTrace();
+           fail(e.getMessage());
+       }
+       
+       return null;
+   }
+    
     /**
      * Loads the page containing the component.
      */
