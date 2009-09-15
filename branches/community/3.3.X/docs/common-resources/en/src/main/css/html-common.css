@@ -46,7 +46,7 @@ a#expand_collapse:hover{
 	display: block; 
 	float: right;
 }
-
+tbody td p {margin: 1px;  padding: 1px;}
 
 span.since sup {
 	color:#6e6e6e;
