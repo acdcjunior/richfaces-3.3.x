@@ -99,7 +99,7 @@
             </table>
             <table id="tab_pB">
                   <title>Style classes (selectors) and mapped skin parameters</title>
-                  <tgroup cols="2">
+                  <tgroup cols="4">
                         <thead>
                               <row>
                                     <entry>Class name</entry>
@@ -124,6 +124,7 @@
                               <row>
                                     <entry>preferableDataSizeFont</entry>
                                     <entry>font-size</entry>
+                                    
                               </row>
                               <row>
                                     <entry>generalTextColor</entry>
