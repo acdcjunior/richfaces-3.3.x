@@ -26,6 +26,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -47,6 +49,26 @@ public class ProgressBarTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_SECOND_LABEL_INITIAL = getLoc("SECOND_LABEL_INITIAL");
     private final String LOC_SECOND_PROGRESS_BAR_STYLE = getLoc("SECOND_PROGRESS_BAR_STYLE");
 
+    private class ProgressBarCondition implements Condition {
+        private int oldValue;
+        private int newValue;
+        private String locator;
+
+        public ProgressBarCondition(int oldValue, String locator) {
+            this.oldValue = oldValue;
+            this.locator = locator;
+        }
+
+        public int getNewValue() {
+            return newValue;
+        }
+
+        public boolean isTrue() {
+            newValue = (int) Double.parseDouble(getStyle(locator, "width").replace("px", ""));
+            return newValue > oldValue;
+        }
+    }
+
     /**
      * Tests the first example. It checks that the button is visible and then it
      * click on the button. The process starts and the test checks 3 times that
@@ -61,18 +83,17 @@ public class ProgressBarTestCase extends AbstractSeleniumRichfacesTestCase {
 
         selenium.click(LOC_FIRST_BUTTON);
 
-        waitFor(500);
-        present = selenium.isElementPresent(LOC_FIRST_BUTTON);
-        assertFalse(present, "Button \"Restart Process\" should not be present on the page.");
+        Wait.failWith("Button \"Restart Process\" should not be present on the page.").until(new Condition() {
+            public boolean isTrue() {
+                return !selenium.isElementPresent(LOC_FIRST_BUTTON);
+            }
+        });
 
-        int value1 = 0;
-        int value2 = 0;
-
-        for (int i = 0; i < 6; i++) {
-            waitFor(2000);
-            value2 = value1;
-            value1 = (int) Double.parseDouble(getStyle(LOC_FIRST_PROGRESS_BAR_STYLE, "width").replace("px", ""));
-            assertTrue(value1 > value2, "Progress bar should move to the right.");
+        int oldValue = 0;
+        for (int i = 0; i < 4; i++) {
+            ProgressBarCondition condition = new ProgressBarCondition(oldValue, LOC_FIRST_PROGRESS_BAR_STYLE);
+            Wait.timeout(3000).failWith("Progress bar should move to the right.").until(condition);
+            oldValue = condition.getNewValue();
         }
     }
 
@@ -91,21 +112,23 @@ public class ProgressBarTestCase extends AbstractSeleniumRichfacesTestCase {
 
         selenium.click(LOC_SECOND_BUTTON);
 
-        int current = 0;
-        int previous = 0;
-        waitFor(2200);
+        int oldValue = 0;
+        waitFor(3000);
 
-        for (int i = 0; i < 10; i++) {
-            waitFor(2000);
-            current = (int) Double.parseDouble(getStyle(LOC_SECOND_PROGRESS_BAR_STYLE, "width").replace("px", ""));
-            assertTrue(current >= previous, "Progress of the progress bar -- the current value should be greater then the one 2 seconds ago.");
-            previous = current;
+        for (int i = 0; i < 4; i++) {
+            ProgressBarCondition condition = new ProgressBarCondition(oldValue, LOC_SECOND_PROGRESS_BAR_STYLE);
+            Wait.timeout(6000).failWith(format("Progress bar should move to the right {0} times.", i + 1)).until(
+                    condition);
+            oldValue = condition.getNewValue();
         }
 
-        waitFor(82000);
+        Wait.timeout(120000).interval(6000).failWith("Finished label should be visible.").until(new Condition() {
+            public boolean isTrue() {
+                return isDisplayed(LOC_SECOND_LABEL_FINISHED);
+            }
+        });
 
         assertFalse(isDisplayed(LOC_SECOND_LABEL_INITIAL), "Initial label should not be visible.");
-        assertTrue(isDisplayed(LOC_SECOND_LABEL_FINISHED), "Finished label should be visible.");
     }
 
     /**

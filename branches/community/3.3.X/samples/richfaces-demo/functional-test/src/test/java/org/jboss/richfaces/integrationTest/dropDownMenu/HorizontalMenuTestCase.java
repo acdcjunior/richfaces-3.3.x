@@ -27,6 +27,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -71,10 +73,12 @@ public class HorizontalMenuTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testMenuItem() {
         selenium.click(LOC_FIRST_MENU_NEW);
-        waitFor(400);
 
-        String text = selenium.getText(LOC_FIRST_CURRENT_SELECTION);
-        assertEquals(text, MSG_FIRST_CURRENT_SELECTION_NEW, "Text shown in current selection.");
+        Wait.failWith("Text shown in current selection.").until(new Condition() {
+            public boolean isTrue() {
+                return MSG_FIRST_CURRENT_SELECTION_NEW.equals(selenium.getText(LOC_FIRST_CURRENT_SELECTION));
+            }
+        });
     }
 
     /**
@@ -83,10 +87,12 @@ public class HorizontalMenuTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testMenuGroup() {
         selenium.click(LOC_FIRST_MENU_SAVE_ALL);
-        waitFor(400);
 
-        String text = selenium.getText(LOC_FIRST_CURRENT_SELECTION);
-        assertEquals(text, MSG_FIRST_CURRENT_SELECTION_SAVE_ALL, "Text shown in 'Current Selection:'");
+        Wait.failWith("Text shown in current Selection.").until(new Condition() {
+            public boolean isTrue() {
+                return MSG_FIRST_CURRENT_SELECTION_SAVE_ALL.equals(selenium.getText(LOC_FIRST_CURRENT_SELECTION));
+            }
+        });
     }
 
     /**

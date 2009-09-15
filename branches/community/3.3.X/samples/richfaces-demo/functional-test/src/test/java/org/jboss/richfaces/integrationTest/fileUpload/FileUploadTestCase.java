@@ -303,7 +303,12 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.attachFile(format(LOC_ADD_BUTTON_N, 2), "file://" + FILE_BIG);
 
         selenium.click(LOC_UPLOAD_BUTTON);
-        waitFor(2000);
+        
+        Wait.failWith(MSG_RIGHT_PANEL_NUMBER_OF_ITEMS).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue() == 1;
+            }
+        });
 
         String text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_NAME, 1));
         assertEquals(text, "selenium-test" + Color.YELLOW.getRGB() + ".jpg", format(MSG_LEFT_PANEL_NAME_N, 1));
@@ -319,9 +324,6 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEquals(text, "Done", format(MSG_LEFT_PANEL_DONE_N, 2));
         text = selenium.getText(format(LOC_NOT_UPLOADED_LIST_N_DONE, 2));
         assertEquals(text, "File size restricted", format(MSG_LEFT_PANEL_DONE_N, 2));
-
-        int count = selenium.getXpathCount(LOC_UPLOADED_LIST_TR).intValue();
-        assertEquals(count, 1, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
     }
 
     /**
