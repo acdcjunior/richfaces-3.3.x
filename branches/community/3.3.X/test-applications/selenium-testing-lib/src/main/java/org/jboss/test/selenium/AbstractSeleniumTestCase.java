@@ -239,25 +239,6 @@ public abstract class AbstractSeleniumTestCase {
 
     /**
      * Gets the property from messagesProperties and use it to format Message
-     * with given arguments. Use formatMsg instead of this deprecated method.
-     * 
-     * @param prop
-     *            the name of the property with message format.
-     * @param args
-     *            an array of atributes to be formatted and substituted to prop
-     * @throws IllegalStateException
-     *             when property wasn't found
-     * @return the property
-     * @see org.jboss.test.selenium.AbstractSeleniumTestCase#formatMsg(String,
-     *      Object...) formattMsg(String, Object...)
-     */
-    @Deprecated
-    public String formatMess(String prop, Object... args) {
-        return format(getMsg(prop, null), args);
-    }
-
-    /**
-     * Gets the property from messagesProperties and use it to format Message
      * with given arguments
      * 
      * @param prop
