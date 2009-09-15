@@ -1053,6 +1053,101 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				</emphasis> . It points to an ID of a component where focus will be set after an
 				Ajax request. </para>
 		</section>
+		<section>
+			<title>Common Ajax Attributes</title>
+			<para>This section of the guide summarizes all Ajax-related attributes that both <property>rich</property> and <property>a4j</property> components have.</para>
+			
+			
+			
+			<table class="tableclass">
+				<title>Title of the table</title>   
+				<tgroup cols="4">
+					<thead>
+						<row>
+							<entry>Attribute</entry>
+							
+							<entry>Description</entry>
+							<entry>Rich Components</entry>
+							<entry>A4j Components</entry>
+						</row>
+					</thead>
+					<tbody valign="top">
+						<row>
+							<entry>ajaxSingle</entry>
+							<entry>Limits JSF tree processing (decoding, conversion, validation and model updating) only to a component that sends the request. Boolean. Default value is "false".</entry>
+							<entry>
+								<para>&lt;a4j:form&gt;</para>
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para> 
+								<para>&lt;a4j:commandLink&gt;</para> 
+								<para>&lt;a4j:jsFunction&gt;</para> 
+								<para>&lt;a4j:poll&gt;</para> 
+								<para>&lt;a4j:push&gt;</para>
+								
+
+							</entry>
+							<entry>								
+								<para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:treeNode&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para>
+								<para>&lt;rich:panelMenuItem&gt;</para>
+								<para>&lt;rich:progressBar&gt;</para>
+								<para>&lt;rich:simpleTogglePanel&gt;</para>
+								<para>&lt;rich:tab&gt;</para> 
+								<para>&lt;rich:toggleControl&gt;</para> 
+								<para>&lt;rich:toolTip&gt;</para>
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:fileUpload&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para>
+								
+								
+								
+								
+							</entry>
+						</row> 
+						<row>
+							<entry>bypassUpdates</entry>
+							<entry>If "true", after process validations phase it skips updates of model beans on a force render response. It can be used for validating components input</entry>
+							<entry>
+								<para>&lt;a4j:form&gt;</para>
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para>
+								<para>&lt;a4j:commandLink&gt;</para>
+								<para>&lt;a4j:jsFunction&gt;</para> 
+								<para>&lt;a4j:poll&gt;</para>
+								<para>&lt;a4j:push&gt;</para>
+							</entry>
+							<entry>
+								<para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:scrollableDataTable&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para> 
+								<para>&lt;rich:treeNode&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para>
+								<para>&lt;rich:panelMenuItem&gt;</para>
+								<para>&lt;rich:progressBar&gt;</para>
+								<para>&lt;rich:simpleTogglePanel&gt;</para>
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para>
+								
+								
+								
+								
+							</entry>
+						</row> 
+						
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		
 	</section>
 	<section id="HowTo...">
 		<?dbhtml filename="HowTo.html"?>
