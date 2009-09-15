@@ -333,7 +333,7 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
             // we want to avoid rendering toolTip content during initialy page
             // displaying
             AjaxContext ajaxContext = AjaxContext.getCurrentInstance();
-            if (ajaxContext != null && (ajaxContext.getAjaxAreasToRender().contains(clientId + "content") || !ajaxContext.isAjaxRequest())) {
+            if (ajaxContext != null && ajaxContext.getAjaxAreasToRender().contains(clientId + "content") ) {
         
                 responseWriter.write(value != null ? value.toString() : "");
                 
