@@ -115,36 +115,51 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testThirdToolBarGroupSeparators() {
         scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 3), true);
-        String text;
-
+        
         // select line
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 1));
-        waitForElement(LOC_GROUP_SEPARATOR_IMG);
+        
+        Wait.failWith(format(MSG_GROUP_SEPARATOR_S, "LineSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src").contains("LineSeparatorImage");
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_GROUP_SEPARATOR_IMG), MSG_THERE_IS_NO_GROUP_SEPARATOR);
-        text = selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("LineSeparatorImage"), format(MSG_GROUP_SEPARATOR_S, "LineSeparatorImage"));
-
+        
         // select grid
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 2));
-        waitForElement(LOC_GROUP_SEPARATOR_IMG);
+        
+        Wait.failWith(format(MSG_GROUP_SEPARATOR_S, "GridSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src").contains("GridSeparatorImage");
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_GROUP_SEPARATOR_IMG), MSG_THERE_IS_NO_GROUP_SEPARATOR);
-        text = selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("GridSeparatorImage"), format(MSG_GROUP_SEPARATOR_S, "GridSeparatorImage"));
-
+        
         // select disc
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 3));
-        waitForElement(LOC_GROUP_SEPARATOR_IMG);
+        
+        Wait.failWith(format(MSG_GROUP_SEPARATOR_S, "DotSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src").contains("DotSeparatorImage");
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_GROUP_SEPARATOR_IMG), MSG_THERE_IS_NO_GROUP_SEPARATOR);
-        text = selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("DotSeparatorImage"), format(MSG_GROUP_SEPARATOR_S, "DotSeparatorImage"));
-
+        
         // select square
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 4));
-        waitForElement(LOC_GROUP_SEPARATOR_IMG);
+        
+        Wait.failWith(format(MSG_GROUP_SEPARATOR_S, "SquareSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src").contains("SquareSeparatorImage");
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_GROUP_SEPARATOR_IMG), MSG_THERE_IS_NO_GROUP_SEPARATOR);
-        text = selenium.getAttribute(LOC_GROUP_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("SquareSeparatorImage"), format(MSG_GROUP_SEPARATOR_S, "SquareSeparatorImage"));
-
+        
         // select none
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 5));
         Wait.failWith(MSG_THERE_IS_GROUP_SEPARATOR).until(new Condition() {
@@ -160,35 +175,50 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testToolBarItemSeparators() {
         scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 3), true);
-        String text;
-
+     
         // select line
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 1));
-        waitForElement(LOC_ITEM_SEPARATOR_IMG);
+        
+        Wait.failWith(format(MSG_ITEM_SEPARATOR_S, "LineSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src").contains("LineSeparatorImage");
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_ITEM_SEPARATOR_IMG), MSG_THERE_IS_NO_ITEM_SEPARATOR);
-        text = selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("LineSeparatorImage"), format(MSG_ITEM_SEPARATOR_S, "LineSeparatorImage"));
-
+        
         // select grid
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 2));
-        waitForElement(LOC_ITEM_SEPARATOR_IMG);
-        assertTrue(selenium.isElementPresent(LOC_ITEM_SEPARATOR_IMG), MSG_THERE_IS_NO_ITEM_SEPARATOR);
-        text = selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("GridSeparatorImage"), format(MSG_ITEM_SEPARATOR_S, "GridSeparatorImage"));
 
+        Wait.failWith(format(MSG_ITEM_SEPARATOR_S, "GridSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src").contains("GridSeparatorImage");
+            }
+        });
+        
+        assertTrue(selenium.isElementPresent(LOC_ITEM_SEPARATOR_IMG), MSG_THERE_IS_NO_ITEM_SEPARATOR);
+        
         // select disc
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 3));
-        waitForElement(LOC_ITEM_SEPARATOR_IMG);
+
+        Wait.failWith(format(MSG_ITEM_SEPARATOR_S, "DotSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src").contains("DotSeparatorImage");
+            }
+        });
+
         assertTrue(selenium.isElementPresent(LOC_ITEM_SEPARATOR_IMG), MSG_THERE_IS_NO_ITEM_SEPARATOR);
-        text = selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("DotSeparatorImage"), format(MSG_ITEM_SEPARATOR_S, "DotSeparatorImage"));
 
         // select square
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 4));
-        waitForElement(LOC_ITEM_SEPARATOR_IMG);
+
+        Wait.failWith(format(MSG_ITEM_SEPARATOR_S, "SquareSeparatorImage")).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src").contains("SquareSeparatorImage");
+            }
+        });
+
         assertTrue(selenium.isElementPresent(LOC_ITEM_SEPARATOR_IMG), MSG_THERE_IS_NO_ITEM_SEPARATOR);
-        text = selenium.getAttribute(LOC_ITEM_SEPARATOR_IMG + "@src");
-        assertTrue(text.contains("SquareSeparatorImage"), format(MSG_ITEM_SEPARATOR_S, "SquareSeparatorImage"));
 
         // select none
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 5));

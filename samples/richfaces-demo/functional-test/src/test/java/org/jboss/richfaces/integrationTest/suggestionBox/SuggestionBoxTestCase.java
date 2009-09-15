@@ -25,6 +25,8 @@ package org.jboss.richfaces.integrationTest.suggestionBox;
 import static org.testng.Assert.assertEquals;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -189,17 +191,32 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_BORDER_INPUT, "3");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 3;
+            }
+        });
+
         int width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
         assertEquals(width, 3, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 3));
 
         selenium.type(LOC_FIRST_BORDER_INPUT, "5");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 5;
+            }
+        });
+
         width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
         assertEquals(width, 5, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 5));
 
         selenium.type(LOC_FIRST_BORDER_INPUT, "7"); // 7 -> 5
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 5;
+            }
+        });
+
         width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
         assertEquals(width, 5, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 7));
     }
@@ -212,22 +229,42 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_WIDTH_INPUT, "150");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 150;
+            }
+        });
+
         int width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
         assertEquals(width, 150, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 150));
 
         selenium.type(LOC_FIRST_WIDTH_INPUT, "350");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 350;
+            }
+        });
+
         width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
         assertEquals(width, 350, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 350));
 
         selenium.type(LOC_FIRST_WIDTH_INPUT, "400"); // 400 -> 350
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 350;
+            }
+        });
+
         width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
         assertEquals(width, 350, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 400));
 
         selenium.type(LOC_FIRST_WIDTH_INPUT, "176"); // 176 -> 200
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 200;
+            }
+        });
+
         width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
         assertEquals(width, 200, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 176));
     }
@@ -240,22 +277,42 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_HEIGHT_INPUT, "100");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 100;
+            }
+        });
+
         int height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
         assertEquals(height, 100, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 100));
 
         selenium.type(LOC_FIRST_HEIGHT_INPUT, "300");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 300;
+            }
+        });
+
         height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
         assertEquals(height, 300, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 300));
 
         selenium.type(LOC_FIRST_HEIGHT_INPUT, "400"); // 400 -> 300
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 300;
+            }
+        });
+
         height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
         assertEquals(height, 300, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 400));
 
         selenium.type(LOC_FIRST_HEIGHT_INPUT, "176"); // 176 -> 200
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 200;
+            }
+        });
+
         height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
         assertEquals(height, 200, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 176));
     }
@@ -269,28 +326,48 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "3");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 3;
+            }
+        });
+
         int top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
         assertEquals(top, 3, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 3));
         int left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
         assertEquals(left, 3, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 3));
 
         selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "5");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 5;
+            }
+        });
+
         top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
         assertEquals(top, 5, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 5));
         left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
         assertEquals(left, 5, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 5));
 
         selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "6");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 6;
+            }
+        });
+
         top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
         assertEquals(top, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 6));
         left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
         assertEquals(left, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 6));
 
         selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "7"); // 7 -> 6
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 6;
+            }
+        });
+
         top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
         assertEquals(top, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 7));
         left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
@@ -305,22 +382,42 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "1");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.1;
+            }
+        });
+
         double opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
         assertEquals(opacity, 0.1, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 1));
 
         selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "5");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.5;
+            }
+        });
+
         opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
         assertEquals(opacity, 0.5, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 5));
 
         selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "9");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.9;
+            }
+        });
+
         opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
         assertEquals(opacity, 0.9, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 9));
 
         selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "11"); // 11 -> 9
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.9;
+            }
+        });
+
         opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
         assertEquals(opacity, 0.9, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 11));
     }
@@ -333,22 +430,42 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         selenium.type(LOC_FIRST_CELLPADDING_INPUT, "1");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING)) == 1;
+            }
+        });
+
         int cellpadding = Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING));
         assertEquals(cellpadding, 1, format(MSG_SUGGESTION_BOX_CELLPADDING_PREFORMATTED, 1));
 
         selenium.type(LOC_FIRST_CELLPADDING_INPUT, "10");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING)) == 10;
+            }
+        });
+
         cellpadding = Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING));
         assertEquals(cellpadding, 10, format(MSG_SUGGESTION_BOX_CELLPADDING_PREFORMATTED, 10));
 
         selenium.type(LOC_FIRST_CELLPADDING_INPUT, "20");
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING)) == 20;
+            }
+        });
+
         cellpadding = Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING));
         assertEquals(cellpadding, 20, format(MSG_SUGGESTION_BOX_CELLPADDING_PREFORMATTED, 20));
 
         selenium.type(LOC_FIRST_CELLPADDING_INPUT, "25"); // 25 -> 20
-        waitFor(1500);
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING)) == 20;
+            }
+        });
+
         cellpadding = Integer.parseInt(selenium.getAttribute(LOC_FIRST_CELLPADDING));
         assertEquals(cellpadding, 20, format(MSG_SUGGESTION_BOX_CELLPADDING_PREFORMATTED, 25));
     }
@@ -402,9 +519,11 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         waitForTextEquals(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 3), "Madison");
         selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 3)); // Madison
 
-        waitFor(700);
-        String state = selenium.getText(LOC_SECOND_STATE);
-        assertEquals(state, "Maine,Wisconsin", MSG_AUGUSTA_MADISON_MAINE_WISCONSIN);
+        Wait.failWith(MSG_AUGUSTA_MADISON_MAINE_WISCONSIN).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getText(LOC_SECOND_STATE).equals("Maine,Wisconsin");
+            }
+        });
     }
 
     /**
