@@ -1,23 +1,16 @@
 <section role="NotInToc" id="rich_panelMenu">
-   <title>
-				&lt;
-				rich:panelMenu
-				&gt;
-				<emphasis role="since">
-         <superscript> available since <emphasis role="version">3.1.0</emphasis>
-         </superscript>
-      </emphasis>
-   </title>
-   <section>
-        <title>Description</title>
-        <para>The <emphasis role="bold">
-                <property>&lt;rich:panelMenu&gt;</property>
-            </emphasis> component is used to define an in line vertical menu on a page.</para>
-        <figure>
-            <title>
-            <emphasis role="bold">
-                <property>&lt;rich:panelMenu&gt;</property>
-            </emphasis> component</title> 
+      <title>
+            &lt;rich:panelMenu&gt; <emphasis role="since"><superscript> available since <emphasis role="version">3.1.0</emphasis></superscript></emphasis>
+      </title>
+      <section>
+            <title>Description</title>
+            <para>
+                  The <emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> component  defines vertical menu on a page. 
+                  Used together with <link linkend="rich_panelMenuItem">&lt;rich:panelMenuItem&gt;</link> and <link linkend="rich_panelMenuGroup">&lt;rich:panelMenuGroup&gt;</link>, 
+                  which form <emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> content.
+            </para>
+            <figure>
+            <title><emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> component</title> 
         <mediaobject>
             <imageobject>
                 <imagedata fileref="images/panelMenu_init.png"/>
@@ -25,73 +18,55 @@
         </mediaobject>
         </figure>
     </section>
-   <section>
-        <title>Key Features</title>
-        <itemizedlist>
-            <listitem>
-            <para>Highly customizable look and feel</para>
-         </listitem>
-            <listitem>
-            <para>Different submission modes</para>
-         </listitem>
-            <listitem>
-            <para>Collapsing/expanding sublevels with optional request sending</para>
-         </listitem>
-            <listitem>
-            <para>Custom and predefined icons support</para>
-         </listitem>
-            <listitem>
-            <para>Disablement support</para>
-         </listitem>
-        </itemizedlist>
-    </section>
-   <section>
-      <title>Details of Usage</title>
-
-      <para>All attributes are not required.</para>
-      <para>Use <emphasis>
-            <property>"event"</property>
-         </emphasis> attribute to define an event for appearance of collapsing/expanding sublevels.
-      Default value is "onclick". An example could be seen below.</para>
+   
+      <section>
+            <title>Key Features</title>
+            <itemizedlist>
+                  <listitem>
+                        <para>Supports any number of sublevels implemented with <emphasis role="bold"><property>&lt;rich:panelMenuGroup&gt;</property></emphasis></para>
+                  </listitem>
+                  <listitem>
+                        <para>Has three submission modes: ajax, server and none</para>
+                  </listitem>
+                  <listitem>
+                        <para>Can be disabled</para>
+                  </listitem>
+                  <listitem>
+                        <para>Supports predefined and custom icons</para>
+                  </listitem>
+                  <listitem>
+                        <para>Has customizable look and feel</para>
+                  </listitem>
+            </itemizedlist>
+      </section>
+      
+      <section>
+         <title>Details of Usage</title>
+            
+            <para>Use <emphasis><property>&quot;event&quot;</property></emphasis> attribute to define an event for appearance of collapsing/expanding sublevels. 
+                  Default value is <code>onclick</code>:
+            </para>
+            <programlisting role="XML"><![CDATA[<rich:panelMenu event="onmouseover">
+      ...
+</rich:panelMenu>]]></programlisting>
 
       <para>
-         <emphasis role="bold">Example:</emphasis>
+            Switching mode could be chosen with the <emphasis><property>&quot;mode&quot;</property></emphasis> attribute for all panelMenu items except ones where this attribute was redefined. 
+            By default all items send traditional request. 
+            The <emphasis><property>&quot;expandMode&quot;</property></emphasis> attribute defines the submission modes for all collapsing/expanding panelMenu groups except ones where this attribute was redefined.
+            The <emphasis><property>&quot;mode&quot;</property></emphasis> and <emphasis><property>&quot;expandMode&quot;</property></emphasis> attributes could be used with three possible parameters. 
+            The <emphasis><property>&quot;mode&quot;</property></emphasis> attribute defines parameters for all included <emphasis role="bold"><property>&lt;rich:panelMenuItem&gt;</property></emphasis> elements.
       </para>
-      <programlisting role="XML"><![CDATA[...
-<rich:panelMenu event="onmouseover">
-		<!--Nested panelMenu components-->
-</rich:panelMenu>
-...]]></programlisting>
-
-      <para>Switching mode could be chosen with the <emphasis>
-            <property>"mode"</property>
-         </emphasis> attribute for all panelMenu items except ones where this attribute was redefined.
-      By default all items send traditional request. </para>
-      <para>The <emphasis>
-            <property>"expandMode"</property>
-         </emphasis> attribute defines the submission modes for all collapsing/expanding panelMenu
-      groups except ones where this attribute was redefined. </para>
-      <para>The <emphasis>
-            <property>"mode"</property>
-         </emphasis> and <emphasis>
-            <property>"expandMode"</property>
-         </emphasis> attributes could be used with three possible parameters. The <emphasis>
-            <property>"mode"</property>
-         </emphasis> attribute defines parameters for all included <emphasis role="bold">
-            <property>&lt;rich:panelMenuItem&gt;</property>
-         </emphasis> elements.</para>
-
       <itemizedlist>
          <listitem>
             <para>
-               <code>Server</code> (default)</para>
+               <code>Server</code> (default)
+            </para>
          </listitem>
       </itemizedlist>
 
       <para>The common submission of the form is performed and a page is completely refreshed.</para>
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
+     
       <programlisting role="XML"><![CDATA[...
 <rich:panelMenu mode="server">
 		<rich:panelMenuGroup label="test Group" action="#{bean.action}"> 
@@ -112,9 +87,7 @@
       <para>An Ajax form submission is performed, and additionally specified elements in the <emphasis>
             <property>"reRender"</property>
          </emphasis> attribute are reRendered.</para>
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
+      
       <programlisting role="XML"><![CDATA[...
 <rich:panelMenu mode="ajax">
 		<rich:panelMenuGroup label="test Group" action="#{bean.action}"> 
@@ -140,9 +113,7 @@
          </emphasis> item's attributes are ignored. Items don't fire any submits itself. Behavior is
       fully defined by the components nested into items.</para>
 
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
+     
       <programlisting role="XML"><![CDATA[...
 <rich:panelMenu event="onclick" submitMode="none">
 		<rich:panelMenuItem label="Link to external page">
@@ -189,9 +160,7 @@
 
       <para>Here is an example:</para>
 
-      <para>
-         <emphasis role="bold">Example:</emphasis>
-      </para>
+     
       <programlisting role="XML"><![CDATA[...
 <rich:panelMenu selectedChild="thisChild">
 		<rich:panelMenuGroup label="Group1" name="thisChild">
