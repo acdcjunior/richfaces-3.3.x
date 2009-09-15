@@ -145,8 +145,9 @@ public class AjaxLogTest extends SeleniumTestBase {
             Assert.fail("log must be empty");
         }
     }
-
-    @Test
+    
+    //https://jira.jboss.org/jira/browse/RF-6036
+    @Test(groups=FAILURES_GROUP)
     public void testStylesAndClassesAndHtmlAttributes(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, RESET_METHOD);

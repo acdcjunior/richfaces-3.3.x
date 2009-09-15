@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 		<h:inputHidden id="_auto_input" value="#{autoTestBean.input}" required="true"></h:inputHidden>
-		<h:outputText id="_auto_request_params" style="display: none;" value="#{requestBean.paramString}" />
+		<h:outputText id="_auto_request_params" value="#{requestBean.paramString}" />
 		<h:inputHidden id="_auto_process_input" value="#{autoTestBean.processInput}" valueChangeListener="#{autoTestBean.processInputChangeListener}"></h:inputHidden>
 		<a4j:outputPanel ajaxRendered="true">
 			<h:outputText id="_auto_status" value="#{autoTestBean.status}"></h:outputText>

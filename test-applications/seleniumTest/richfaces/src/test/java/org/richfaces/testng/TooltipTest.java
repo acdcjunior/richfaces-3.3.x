@@ -99,7 +99,7 @@ public class TooltipTest extends SeleniumTestBase {
         writeStatus("Component retrieves data from server; 'defaultContent' facet is handled; listeners fire");
         String componentId = autoTester.getClientId(AutoTester.COMPONENT_ID);
         String contentId = autoTester.getClientId(AutoTester.COMPONENT_ID + "content");
-        String defaultContentId = autoTester.getClientId(AutoTester.COMPONENT_ID + "defaultContent");
+        String defaultContentId = "//*[@id='" + autoTester.getClientId(AutoTester.COMPONENT_ID + "defaultContent") + "']/strong/text()";
 
         triggerTooltip();
         writeStatus("Check 'defaultContent' feature");
