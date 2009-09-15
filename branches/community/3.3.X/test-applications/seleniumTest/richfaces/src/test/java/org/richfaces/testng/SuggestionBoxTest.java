@@ -187,8 +187,9 @@ public class SuggestionBoxTest extends SeleniumTestBase {
         selenium.click(nothingLabelItemXpath);
         AssertValueEquals(componentId, "Azir");
     }
-
-    @Test
+    
+    //https://jira.jboss.org/jira/browse/RF-6676
+    @Test(groups=FAILURES_GROUP)
     public void testStylesAndClassesAndHtmlAttributes(Template template) {
         AutoTester tester = getAutoTester(this);
         tester.renderPage(template, RESET_METHOD);
