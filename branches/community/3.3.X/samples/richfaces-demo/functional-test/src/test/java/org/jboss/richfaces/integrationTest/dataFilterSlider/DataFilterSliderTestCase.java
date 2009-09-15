@@ -21,6 +21,7 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.dataFilterSlider;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 	private final String LOC_DIV_SLIDER_HANDLE = getLoc("DIV_SLIDER_HANDLE");
 	private final String LOC_DIV_SLIDER_TRACK = getLoc("DIV_SLIDER_TRACK");
 	private final String LOC_INPUT_MAX_PRICE = getLoc("INPUT_MAX_PRICE");
+	private final String LOC_TABLE_FILTERED_CAR_LIST = getLoc("TABLE_FILTERED_CAR_LIST");
 
 	private final int MSG_COUNT_MAX_ROWS = Integer.valueOf(getMsg("COUNT_MAX_ROWS"));
 	private final String MSG_CHOICES_OF_BRANDS = getMsg("CHOICES_OF_BRANDS");
@@ -90,6 +92,13 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 		assertTrue(allMileages.size() >= MSG_COUNT_MAX_ROWS || allMileages.containsAll(highMileages));
 		assertTrue(highMileages.size() >= MSG_COUNT_MAX_ROWS || highMileages.containsAll(lowMileages));
 		assertTrue(lowMileages.size() >= MSG_COUNT_MAX_ROWS || lowMileages.containsAll(lowestMileages));
+		// TODO remove taking screenshot when lowestMileages is empty
+		if (lowestMileages.isEmpty()) {
+			scrollIntoView(LOC_DIV_SLIDER_TRACK, true);
+			selenium.captureScreenshot(new File("screenshot-" + this.getClass().getSimpleName() + "-01.png").toString());
+			scrollIntoView(LOC_TABLE_FILTERED_CAR_LIST, true);
+			selenium.captureScreenshot(new File("screenshot-" + this.getClass().getSimpleName() + "-02.png").toString());
+		}
 		// check that there is at least one mileage greater than slider minimum
 		assertFalse(lowestMileages.isEmpty());
 	}
@@ -133,7 +142,8 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 	private List<Integer> testSlider(String percentage) {
 		clickSliderAtPercent(Integer.valueOf(percentage));
 		int maxMileage = getCurrentMileageFromInput();
-		return checkAllMileagesMaxAndReturnItsList(maxMileage);
+		List<Integer> result = checkAllMileagesMaxAndReturnItsList(maxMileage);
+		return result;
 	}
 
 	private List<Integer> checkAllMileagesMaxAndReturnItsList(int maxMileage) {
