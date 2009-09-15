@@ -27,6 +27,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -165,10 +167,19 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 
 		// check items on the first level (1.1, 1.2, etc.)
 		for (int i = 1; i < 4; i++) {
-			selenium.click(format(LOC_GROUP_N_TEXT, i));
-			for (int j = 1; j < 4; j++) {
-				selenium.click(format(LOC_ITEM_M_N_TEXT, i, j));
-				waitFor(500); // it use Ajax mode
+		    final int newI = i;
+		    selenium.click(format(LOC_GROUP_N_TEXT, i));
+			
+		    for (int j = 1; j < 4; j++) {
+			    final int newJ = j;
+			    selenium.click(format(LOC_ITEM_M_N_TEXT, i, j));
+				
+				Wait.until(new Condition() {
+                    public boolean isTrue() {
+                        return format("Item {0}.{1} selected", newI, newJ).equals(selenium.getText(LOC_PANEL));
+                    }
+                });
+				
 				text = selenium.getText(LOC_PANEL);
 				assertEquals(text, format("Item {0}.{1} selected", i, j), MSG_CONTENT_OF_PANEL);
 			}
@@ -177,9 +188,16 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 		// check items on the second level (2.4.1, 2.4.2, 2.4.3)
 		selenium.click(format(LOC_ITEM_M_N_TEXT, 2, 4));
 		for (int i = 1; i < 4; i++) {
-			selenium.click(format(LOC_SUBITEM_M_TEXT, i));
-			waitFor(500); // it use Ajax mode
-			text = selenium.getText(LOC_PANEL);
+		    final int newI = i;
+		    selenium.click(format(LOC_SUBITEM_M_TEXT, i));
+			
+		    Wait.until(new Condition() {
+                public boolean isTrue() {
+                    return format("Item 2.4.{0} selected", newI).equals(selenium.getText(LOC_PANEL));
+                }
+            });
+			
+		    text = selenium.getText(LOC_PANEL);
 			assertEquals(text, format("Item 2.4.{0} selected", i), MSG_CONTENT_OF_PANEL);
 		}
 	}
