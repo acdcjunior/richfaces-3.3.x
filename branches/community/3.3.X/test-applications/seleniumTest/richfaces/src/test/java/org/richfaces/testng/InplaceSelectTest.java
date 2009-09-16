@@ -76,7 +76,7 @@ public class InplaceSelectTest extends InplacesTest {
         selenium.mouseDown(cancelButton);
 
         writeStatus("Cancel selected value.");
-        AssertValueEquals(inplaceSelectId + "inplaceValue", "Birch", "A value has not to be changed");
+        AssertValueEquals(inplaceSelectId + "value", "Birch", "A value has not to be changed");
 
         writeStatus("Verify javascript event triggering");
 
