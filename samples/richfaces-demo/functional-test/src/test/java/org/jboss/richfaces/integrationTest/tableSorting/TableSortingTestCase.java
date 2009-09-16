@@ -109,14 +109,25 @@ public class TableSortingTestCase extends AbstractDataIterationTestCase {
 
 		// define 3 columns sorting in table
 		for (int column = 0; column < columns; column++) {
-			String[] association = StringUtils.splitPreserveAllTokens(MSG_LIST_OF_SORTED_COLUMNS[column], '|');
-			String msgLabel = association[0];
-			String msgColumnName = association[1];
-			String msgColumnOrder = association[2];
+			final String[] association = StringUtils.splitPreserveAllTokens(MSG_LIST_OF_SORTED_COLUMNS[column], '|');
+			final String msgLabel = association[0];
+			final String msgColumnName = association[1];
+			final String msgColumnOrder = association[2];
 
-			selenium.select(format(LOC_SELECT_COLUMN_PREFORMATTED, msgLabel), msgColumnName);
+			final String locSelectColumn = format(LOC_SELECT_COLUMN_PREFORMATTED, msgLabel);
+			final String locSelectOrder = format(LOC_SELECT_ORDER_PREFORMATTED, msgLabel);
 
-			selenium.select(format(LOC_SELECT_ORDER_PREFORMATTED, msgLabel), msgColumnOrder);
+			Wait.failWith(format("Given SELECTs never appeared - '{0}', '{1}'", locSelectColumn, locSelectOrder))
+					.until(new Condition() {
+						public boolean isTrue() {
+							return selenium.isElementPresent(locSelectColumn)
+									&& selenium.isElementPresent(locSelectOrder);
+						}
+					});
+			
+			selenium.select(locSelectColumn, msgColumnName);
+
+			selenium.select(locSelectOrder, msgColumnOrder);
 
 			Wait.failWith("Sort table button never got enabled").until(new Condition() {
 				public boolean isTrue() {
