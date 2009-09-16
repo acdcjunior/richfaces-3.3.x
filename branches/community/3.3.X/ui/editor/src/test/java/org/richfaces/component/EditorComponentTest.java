@@ -155,6 +155,27 @@ public class EditorComponentTest extends AbstractAjax4JsfTestCase {
 		assertEquals("Some value", value);
 	}
 
+	public void testEditorRenderingInput() throws Exception {
+		editor.getAttributes().put("inputElementType", "input");
+		
+		HtmlPage page = renderView();
+		assertNotNull(page);
+		HtmlElement htmlDiv = page.getHtmlElementById(editor
+				.getClientId(facesContext));
+		assertNotNull(htmlDiv);
+		assertEquals(htmlDiv.getTagName(), "div");
+		HtmlElement input = page.getHtmlElementById(editor
+				.getClientId(facesContext)
+				+ UIEditor.EDITOR_TEXT_AREA_ID_SUFFIX);
+		assertNotNull(input);
+		assertEquals(input.getTagName(), "input");
+		String style = input.getAttribute("style");
+		assertNotNull(style);
+		assertTrue(style.contains("visibility: hidden"));
+		String value = input.getAttribute("value");
+		assertEquals("Some value", value);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.ajax4jsf.tests.AbstractAjax4JsfTestCase#tearDown()
 	 */

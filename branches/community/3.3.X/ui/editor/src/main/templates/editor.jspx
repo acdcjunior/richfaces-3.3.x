@@ -21,11 +21,30 @@
 		    if(shouldRenderTinyMCE(component)) {
     	]]>
 	</jsp:scriptlet>
+		
+    <jsp:scriptlet>
+	<![CDATA[
+	    if ("input".equals(component.getAttributes().get("inputElementType"))) {
+   	]]>
+	</jsp:scriptlet>
+			<input type="text" id="#{clientId}TextArea" name="#{clientId}TextArea"
+				style="visibility: hidden" 
+				value="#{this:getFormattedComponentStringValue(context, component)}" />
+    <jsp:scriptlet>
+	<![CDATA[
+	    } else {
+   	]]>
+	</jsp:scriptlet>
+			<textarea id="#{clientId}TextArea" name="#{clientId}TextArea"
+				style="visibility: hidden">
+				#{this:getFormattedComponentStringValue(context, component)}
+			</textarea>
+    <jsp:scriptlet>
+	<![CDATA[
+		}
+   	]]>
+	</jsp:scriptlet>
 			
-		<textarea id="#{clientId}TextArea" name="#{clientId}TextArea"
-			style="visibility: hidden">
-			#{this:getFormattedComponentStringValue(context, component)}
-		</textarea>
         <script type="text/javascript">
 				
 			<f:call name="writeEditorCustomPluginsParameters" />
