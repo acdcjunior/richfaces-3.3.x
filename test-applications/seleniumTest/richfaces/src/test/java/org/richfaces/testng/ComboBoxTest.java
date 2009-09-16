@@ -231,7 +231,8 @@ public class ComboBoxTest extends SeleniumTestBase {
      *    by testing "directInputSuggestions", "filterNewValues",
      *    "selectFirstOnUpdate" attributes.
      */
-	@Test
+	//https://jira.jboss.org/jira/browse/RF-7910
+	@Test(groups=FAILURES_GROUP)
 	public void testSelectionFilteringAndPresentation(Template template) {
 		init(template);
 		type(comboboxField, "c");
