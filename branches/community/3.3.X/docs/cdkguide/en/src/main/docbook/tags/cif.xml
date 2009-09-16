@@ -8,7 +8,7 @@
 	</sectioninfo>
 	<title>&lt;c:if /&gt;</title>
 	<para>
-	The <emphasis role="bold"><property>&lt;c:if /&gt;</property></emphasis> tag is a simple conditional tag, which evalutes its body if the supplied condition is true.
+	The <emphasis role="bold"><property>&lt;c:if /&gt;</property></emphasis> tag is a simple conditional tag, which evaluates its body if the supplied condition is true.
 	</para>
 	<table>
 		<title>The &lt;c:if /&gt; attributes</title>
