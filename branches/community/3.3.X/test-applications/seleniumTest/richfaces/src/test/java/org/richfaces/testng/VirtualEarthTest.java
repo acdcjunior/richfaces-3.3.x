@@ -26,7 +26,7 @@ public class VirtualEarthTest  extends SeleniumTestBase {
      *    component with rendered = false is not present on the page,
      *    style and classes, standard HTML attributes are output to client
      */
-	@Test
+	@Test(groups=FAILURES_GROUP)
 	public void testStandardAttributes(Template template) {
     	AutoTester autoTester = getAutoTester(this);
     	autoTester.renderPage(template, null);
