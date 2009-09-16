@@ -1,29 +1,35 @@
 <section role="NotInToc" id="rich_panelMenu">
-      <title>
-            &lt;rich:panelMenu&gt; <emphasis role="since"><superscript> available since <emphasis role="version">3.1.0</emphasis></superscript></emphasis>
+      <title> &lt;rich:panelMenu&gt; <emphasis role="since">
+                  <superscript> available since <emphasis role="version">3.1.0</emphasis></superscript>
+            </emphasis>
       </title>
       <section>
             <title>Description</title>
-            <para>
-                  The <emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> component  defines vertical menu on a page. 
-                  Used together with <link linkend="rich_panelMenuItem">&lt;rich:panelMenuItem&gt;</link> and <link linkend="rich_panelMenuGroup">&lt;rich:panelMenuGroup&gt;</link>, 
-                  which form <emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> content.
-            </para>
+            <para> The <emphasis role="bold">
+                        <property>&lt;rich:panelMenu&gt;</property>
+                  </emphasis> component defines vertical menu on a page. Used together with <link linkend="rich_panelMenuItem">&lt;rich:panelMenuItem&gt;</link> and <link linkend="rich_panelMenuGroup"
+                        >&lt;rich:panelMenuGroup&gt;</link>, which form <emphasis role="bold">
+                        <property>&lt;rich:panelMenu&gt;</property>
+                  </emphasis> content. </para>
             <figure>
-            <title><emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> component</title> 
-        <mediaobject>
-            <imageobject>
-                <imagedata fileref="images/panelMenu_init.png"/>
-            </imageobject>
-        </mediaobject>
-        </figure>
-    </section>
-   
+                  <title><emphasis role="bold">
+                              <property>&lt;rich:panelMenu&gt;</property>
+                        </emphasis> component</title>
+                  <mediaobject>
+                        <imageobject>
+                              <imagedata fileref="images/panelMenu_init.png"/>
+                        </imageobject>
+                  </mediaobject>
+            </figure>
+      </section>
+
       <section>
             <title>Key Features</title>
             <itemizedlist>
                   <listitem>
-                        <para>Supports any number of sublevels implemented with <emphasis role="bold"><property>&lt;rich:panelMenuGroup&gt;</property></emphasis></para>
+                        <para>Supports any number of sublevels implemented with <emphasis role="bold">
+                                    <property>&lt;rich:panelMenuGroup&gt;</property>
+                              </emphasis></para>
                   </listitem>
                   <listitem>
                         <para>Has three submission modes: ajax, server and none</para>
@@ -39,35 +45,37 @@
                   </listitem>
             </itemizedlist>
       </section>
-      
+
       <section>
-         <title>Details of Usage</title>
-            
-            <para>Use <emphasis><property>&quot;event&quot;</property></emphasis> attribute to define an event for appearance of collapsing/expanding sublevels. 
-                  Default value is <code>onclick</code>:
-            </para>
+            <title>Details of Usage</title>
+
+            <para>Use <emphasis>
+                        <property>&quot;event&quot;</property>
+                  </emphasis> attribute to define an event for appearance of collapsing/expanding sublevels. Default value is <code>onclick</code>: </para>
             <programlisting role="XML"><![CDATA[<rich:panelMenu event="onmouseover">
       ...
 </rich:panelMenu>]]></programlisting>
 
-      <para>
-            Switching mode could be chosen with the <emphasis><property>&quot;mode&quot;</property></emphasis> attribute for all panelMenu items except ones where this attribute was redefined. 
-            By default all items send traditional request. 
-            The <emphasis><property>&quot;expandMode&quot;</property></emphasis> attribute defines the submission modes for all collapsing/expanding panelMenu groups except ones where this attribute was redefined.
-            The <emphasis><property>&quot;mode&quot;</property></emphasis> and <emphasis><property>&quot;expandMode&quot;</property></emphasis> attributes could be used with three possible parameters. 
-            The <emphasis><property>&quot;mode&quot;</property></emphasis> attribute defines parameters for all included <emphasis role="bold"><property>&lt;rich:panelMenuItem&gt;</property></emphasis> elements.
-      </para>
-      <itemizedlist>
-         <listitem>
-            <para>
-               <code>Server</code> (default)
-            </para>
-         </listitem>
-      </itemizedlist>
-
-      <para>The common submission of the form is performed and a page is completely refreshed.</para>
-     
-      <programlisting role="XML"><![CDATA[...
+            <para> Switching mode could be chosen with the <emphasis>
+                        <property>&quot;mode&quot;</property>
+                  </emphasis> attribute for all panelMenu items except ones where this attribute was redefined. By default all items send traditional request. The <emphasis>
+                        <property>&quot;expandMode&quot;</property>
+                  </emphasis> attribute defines the submission modes for all collapsing/expanding panelMenu groups except ones where this attribute was redefined. The <emphasis>
+                        <property>&quot;mode&quot;</property>
+                  </emphasis> and <emphasis>
+                        <property>&quot;expandMode&quot;</property>
+                  </emphasis> attributes could be used with three possible parameters. The <emphasis>
+                        <property>&quot;mode&quot;</property>
+                  </emphasis> attribute defines parameters for all included <emphasis role="bold">
+                        <property>&lt;rich:panelMenuItem&gt;</property>
+                  </emphasis> elements. </para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              <code>Server</code> (default) &mdash; the common submission of the form is performed and page is completely refreshed:</para>
+                  </listitem>
+            </itemizedlist>
+            <programlisting role="XML"><![CDATA[...
 <rich:panelMenu mode="server">
 		<rich:panelMenuGroup label="test Group" action="#{bean.action}"> 
        			<rich:panelMenuItem label="test" action="#{capitalsBean.action}"> 
@@ -76,19 +84,16 @@
       	</rich:panelMenuGroup>
 </rich:panelMenu>
 ...]]></programlisting>
-      <itemizedlist>
-         <listitem>
-            <para>
-               <code>Ajax</code>
-            </para>
-         </listitem>
-      </itemizedlist>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              <code>Ajax</code> &mdash; an Ajax form submission is performed, and additionally specified elements in the <emphasis><property>&quot;reRender&quot;</property></emphasis> attribute are reRendered:
+                        </para>
+                  </listitem>
+            </itemizedlist>
 
-      <para>An Ajax form submission is performed, and additionally specified elements in the <emphasis>
-            <property>"reRender"</property>
-         </emphasis> attribute are reRendered.</para>
-      
-      <programlisting role="XML"><![CDATA[...
+           
+            <programlisting role="XML"><![CDATA[...
 <rich:panelMenu mode="ajax">
 		<rich:panelMenuGroup label="test Group" action="#{bean.action}"> 
        			<rich:panelMenuItem label="test" reRender="test" action="#{capitalsBean.action}"> 
@@ -97,24 +102,15 @@
      	</rich:panelMenuGroup>
 </rich:panelMenu>
 ...]]></programlisting>
-      <itemizedlist>
-         <listitem>
-            <para>
-               <code>None</code>
-            </para>
-         </listitem>
-      </itemizedlist>
-    
-      <para>
-         <emphasis>
-            <property>"Action"</property>
-         </emphasis> and <emphasis>
-            <property>"ActionListener"</property>
-         </emphasis> item's attributes are ignored. Items don't fire any submits itself. Behavior is
-      fully defined by the components nested into items.</para>
+            <itemizedlist>
+                  <listitem>
+                        <para>
+                              <code>None</code> &mdash; <emphasis><property>&quot;Action&quot;</property></emphasis> and <emphasis><property>&quot;ActionListener&quot;</property></emphasis> item's attributes are ignored. Items don't fire any submits itself. Behavior is fully defined by the components nested into items:
+                        </para>
+                  </listitem>
+            </itemizedlist>
 
-     
-      <programlisting role="XML"><![CDATA[...
+            <programlisting role="XML"><![CDATA[...
 <rich:panelMenu event="onclick" submitMode="none">
 		<rich:panelMenuItem label="Link to external page">
        			<h:outputLink ... >
@@ -122,176 +118,295 @@
 </rich:panelMenu>
 ...]]></programlisting>
 
-      <note>
-         <title>Note:</title>
-         <para> As the <emphasis role="bold">
-               <property>&lt;rich:panelMenu&gt;</property>
-            </emphasis> component doesn't provide its own form, use it between
-      <emphasis role="bold"> 
-               <property>&lt;h:form&gt;</property>
-            </emphasis> and  <emphasis role="bold">
-               <property>&lt;/h:form&gt;</property> 
-            </emphasis> tags.</para>
-      </note>
+            <note>
+                  <title>Note:</title>
+                  <para> As the <emphasis role="bold">
+                              <property>&lt;rich:panelMenu&gt;</property>
+                        </emphasis> component doesn't provide its own form, use it between <emphasis role="bold">
+                              <property>&lt;h:form&gt;</property>
+                        </emphasis> and <emphasis role="bold">
+                              <property>&lt;/h:form&gt;</property>
+                        </emphasis> tags.</para>
+            </note>
 
-      <para>The <emphasis>
-            <property>"expandSingle"</property>
-         </emphasis> attribute is defined for expanding more than one submenu on the same level. The
-      default value is <emphasis>
-            <property>"false"</property>
-         </emphasis>. If it's true the previously opened group on the top level closes before
-      opening another one. See the picture below.</para>
+            <para>The <emphasis>
+                        <property>"expandSingle"</property>
+                  </emphasis> attribute is defined for expanding more than one submenu on the same level. The default value is <emphasis>
+                        <property>"false"</property>
+                  </emphasis>. If it's true the previously opened group on the top level closes before opening another one. See the picture below.</para>
 
-      <figure>
-         <title>Using the <emphasis>
-               <property>"expandSingle"</property>
-            </emphasis> attribute</title>
-         <mediaobject>
-            <imageobject>
-               <imagedata fileref="images/panelMenu2.png"/>
-            </imageobject>
-         </mediaobject>
-      </figure>
+            <figure>
+                  <title>Using the <emphasis>
+                              <property>"expandSingle"</property>
+                        </emphasis> attribute</title>
+                  <mediaobject>
+                        <imageobject>
+                              <imagedata fileref="images/panelMenu2.png"/>
+                        </imageobject>
+                  </mediaobject>
+            </figure>
 
-      <para>The <emphasis>
-            <property>"selectedChild"</property>
-         </emphasis> attribute is used for defining the name of the selected group or item. An example
-      for group is placed below:</para>
+            <para>The <emphasis>
+                        <property>"selectedChild"</property>
+                  </emphasis> attribute is used for defining the name of the selected group or item. An example for group is placed below:</para>
 
-      <para>Here is an example:</para>
+            <para>Here is an example:</para>
 
-     
-      <programlisting role="XML"><![CDATA[...
+
+            <programlisting role="XML"><![CDATA[...
 <rich:panelMenu selectedChild="thisChild">
 		<rich:panelMenuGroup label="Group1" name="thisChild">
        			<!--Nested panelMenu components-->
       	</rich:panelMenuGroup>
 </rich:panelMenu>
 ...]]></programlisting>
-      <para>
-      The <emphasis>
-            <property>"label"</property>
-         </emphasis> attribute is a generic attribute.
-      The <emphasis>
-            <property>"label"</property>
-         </emphasis> attribute provides an association between a component, and the message that the component (indirectly) produced.  
-      This attribute defines the parameters of localized error and informational messages that
-      occur as a result of conversion, validation, or other application actions during the request
-      processing lifecycle. With the help of this attribute you can  replace the
-      last parameter substitution token shown in the messages. For example, {1} for <code>"DoubleRangeValidator.MAXIMUM"</code>, {2}
-      for <code>"ShortConverter.SHORT"</code>.
-    </para>
-  </section>
-   <section>
-      <title>Reference Data</title>
-      <para>
-         <ulink url="&tlddoc;rich/panelMenu.html">Table of 
-							&lt;rich:panelMenu&gt; 
-							 attributes</ulink>.
-						</para>
-      <table>
-         <title>Component Identification Parameters</title>
+            <para> The <emphasis>
+                        <property>"label"</property>
+                  </emphasis> attribute is a generic attribute. The <emphasis>
+                        <property>"label"</property>
+                  </emphasis> attribute provides an association between a component, and the message that the component (indirectly) produced. This attribute defines the parameters of localized error and informational messages that occur as
+                  a result of conversion, validation, or other application actions during the request processing lifecycle. With the help of this attribute you can replace the last parameter substitution token shown in the messages. For
+                  example, {1} for <code>"DoubleRangeValidator.MAXIMUM"</code>, {2} for <code>"ShortConverter.SHORT"</code>. </para>
+      </section>
+      <section>
+            <title>Reference Data</title>
+            <para>
+                  <ulink url="&tlddoc;rich/panelMenu.html">Table of &lt;rich:panelMenu&gt; attributes</ulink>. </para>
+            <table>
+                  <title>Component Identification Parameters</title>
 
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Name</entry>
+                  <tgroup cols="2">
+                        <thead>
+                              <row>
+                                    <entry>Name</entry>
 
-                  <entry>Value</entry>
-               </row>
-            </thead>
+                                    <entry>Value</entry>
+                              </row>
+                        </thead>
 
-            <tbody>
-               <row>
-                  <entry>component-type</entry>
+                        <tbody>
+                              <row>
+                                    <entry>component-type</entry>
 
-                  <entry>org.richfaces.PanelMenu</entry>
-               </row>
+                                    <entry>org.richfaces.PanelMenu</entry>
+                              </row>
 
-               <row>
-                  <entry>component-class</entry>
+                              <row>
+                                    <entry>component-class</entry>
 
-                  <entry>org.richfaces.component.html.HtmlPanelMenu</entry>
-               </row>
+                                    <entry>org.richfaces.component.html.HtmlPanelMenu</entry>
+                              </row>
 
-               <row>
-                  <entry>component-family</entry>
+                              <row>
+                                    <entry>component-family</entry>
 
-                  <entry>org.richfaces.PanelMenu</entry>
-               </row>
+                                    <entry>org.richfaces.PanelMenu</entry>
+                              </row>
 
-               <row>
-                  <entry>renderer-type</entry>
+                              <row>
+                                    <entry>renderer-type</entry>
 
-                  <entry>org.richfaces.PanelMenuRenderer</entry>
-               </row>
+                                    <entry>org.richfaces.PanelMenuRenderer</entry>
+                              </row>
 
-               <row>
-                  <entry>tag-class</entry>
+                              <row>
+                                    <entry>tag-class</entry>
 
-                  <entry>org.richfaces.taglib.PanelMenuTag</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>JavaScript API</title>
+                                    <entry>org.richfaces.taglib.PanelMenuTag</entry>
+                              </row>
+                        </tbody>
+                  </tgroup>
+            </table>
+            <table>
+                  <title>JavaScript API</title>
 
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Function</entry>
+                  <tgroup cols="2">
+                        <thead>
+                              <row>
+                                    <entry>Function</entry>
 
-                  <entry>Description</entry>
-               </row>
-            </thead>
+                                    <entry>Description</entry>
+                              </row>
+                        </thead>
 
-            <tbody>
-               <row>
-                  <entry>expand()</entry>
+                        <tbody>
+                              <row>
+                                    <entry>expand()</entry>
 
-                  <entry>Expands group element</entry>
-               </row>
+                                    <entry>Expands group element</entry>
+                              </row>
 
-               <row>
-                  <entry>collapse()</entry>
+                              <row>
+                                    <entry>collapse()</entry>
 
-                  <entry>Collapses group element</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table id="tab_cn_pM">
-         <title>Classes names that define a component appearance</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Class description</entry>
-               </row>
-            </thead>
-            <tbody>
+                                    <entry>Collapses group element</entry>
+                              </row>
+                        </tbody>
+                  </tgroup>
+            </table>
+            
+            <table id="tab_cn_pM">
+                  <title>Style classes (selectors) and mapped skin parameters</title>
+                  <tgroup cols="4">
+                        <thead>
+                              <row>
+                                    <entry>Class name</entry>
+                                    <entry>Description</entry>
+                                    <entry>Skin parameter</entry>
+                                    <entry>CSS property</entry>
+                              </row>
+                        </thead>
+                        <tbody>
+                              <row>
+                                    <entry>.rich-pmenu-disabled-element</entry>
+                                    <entry>Defines styles for panel menu disabled element</entry>
+                                    <entry>tabDisabledTextColor</entry>
+                                    <entry>color</entry>
+                              </row>
+                              <row>
+                                    <entry morerows="4">.rich-pmenu-group</entry>
+                                    <entry morerows="4">Defines styles for panel menu group</entry>
+                                    <entry>generalTextColor</entry>
+                                    <entry>color</entry>
+                              </row>
+                              <row>
+                                    <entry>headerFamilyFont</entry>
+                                    <entry>font-family</entry>
+                              </row>
+                              <row>
+                                    <entry>headerSizeFont</entry>
+                                    <entry>font-size</entry>
+                              </row>
+                              <row>
+                                    <entry>headerWeightFont</entry>
+                                    <entry>font-weight</entry>
+                              </row>
+                              <row>
+                                    <entry>tableBorderColor</entry>
+                                    <entry>border-top-color</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-hovered-element</entry>
+                                    <entry>Defines styles for panel menu hevered element</entry>
+                                    <entry>additionalBackgroundColor</entry>
+                                    <entry>background-color</entry>
+                              </row>
+                              <row>
+                                    <entry morerows="4">.rich-pmenu-item</entry>
+                                    <entry morerows="4">Defines styles for panel menu item</entry>
+                                    <entry>generalTextColor</entry>
+                                    <entry>color</entry>
+                              </row>
+                              <row>
+                                    <entry>generalFamilyFont</entry>
+                                    <entry>font-family</entry>
+                              </row>
+                              <row>
+                                    <entry>genealSizeFont</entry>
+                                    <entry>font-size</entry>
+                              </row>
+                              <row>
+                                    <entry>generalWeightFont</entry>
+                                    <entry>font-weight</entry>
+                              </row>
+                              <row>
+                                    <entry>tableBorderColor</entry>
+                                    <entry>border-top-color</entry>
+                              </row>
+                              <row>
+                                    <entry morerows="4">.rich-pmenu-top-group</entry>
+                                    <entry morerows="4">Defines styles for a top group element of a component</entry>
+                                    <entry>generalFamilyFont</entry>
+                                    <entry>font-family</entry>
+                              </row>
+                              <row>
+                                    <entry>headerSizeFont</entry>
+                                    <entry>font-size</entry>
+                              </row>
+                              <row>
+                                    <entry>headerTextColor</entry>
+                                    <entry>color</entry>
+                              </row>
+                              <row>
+                                    <entry>headerWeightFont</entry>
+                                    <entry>font-weight</entry>
+                              </row>
+                              <row>
+                                    <entry>headerBackgroundColor</entry>
+                                    <entry>background-color</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-top-group-div</entry>
+                                    <entry>Defines styles for a top group div element of a component</entry>
+                                    <entry>panelBorderColor</entry>
+                                    <entry>border-color</entry>
+                              </row>
+                           </tbody>
+                  </tgroup>
+            </table>
+            
+            <table>
+                  <title>Internal style classes (selectors)</title>
+                  <tgroup cols="2">
+                        <thead>
+                              <row>
+                                    <entry>Class name (selector)</entry>
+                                    <entry>Description</entry>
+                              </row>
+                        </thead>
+                        <tbody>
+                              <row>
+                                    <entry>.rich-pmenu</entry>
+                                    <entry>Defines styles for panel menu</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-disabled-element</entry>
+                                    <entry>Defines styles for panel menu disabled element</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-group</entry>
+                                    <entry>Defines styles for panel menu group</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-group-self-label</entry>
+                                    <entry>Defines styles for panel menu group label</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-item</entry>
+                                    <entry>Defines styles for panel menu item</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-nowrap</entry>
+                                    <entry>Defines styles for panel menu wrapper</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-selected-element</entry>
+                                    <entry>Defines styles for panel menu selected element</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-top-group</entry>
+                                    <entry>Defines styles for panel menu top group element</entry>
+                              </row>
+                              <row>
+                                    <entry>.rich-pmenu-top-group-div</entry>
+                                    <entry>Defines styles for panel menu top group div element</entry>
+                              </row>
+                         </tbody>
+                  </tgroup>
+            </table>
+           
+         <para>
+               You can find all necessary information about style classes redefinition in <link linkend="customstyles">Definition of Custom Style Classes</link> section.   
+         </para>
          
-               <row>
-                  <entry>rich-pmenu</entry>
-                  <entry>Defines styles for a wrapper  &lt;div&gt; element of a component</entry>
-               </row>
-                    <row>
-                  <entry>rich-pmenu-top-group</entry>
-                  <entry>Defines styles for a top group element of a component</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
-						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
-						</section>
-   <section>
-      <title>Relevant Resources Links</title>
-      <para>
-         <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenu">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
-            <property>&lt;rich:panelMenu&gt;</property>
-         </emphasis> usage and sources for the given example. </para>
-  </section>
+             </section>
+      <section>
+            <title>Relevant Resources Links</title>
+            <para>
+                  Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenu">panelMenu page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+            </para>
+            <para>
+                  If you have any questions or ideas regarding the <emphasis role="bold"><property>&lt;rich:panel&gt;</property></emphasis> tell about them at the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4064191">RichFaces Users Forum</ulink>.
+            </para> 
+      </section>
 </section>
