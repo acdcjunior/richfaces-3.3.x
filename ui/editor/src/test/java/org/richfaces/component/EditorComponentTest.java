@@ -169,9 +169,7 @@ public class EditorComponentTest extends AbstractAjax4JsfTestCase {
 				+ UIEditor.EDITOR_TEXT_AREA_ID_SUFFIX);
 		assertNotNull(input);
 		assertEquals(input.getTagName(), "input");
-		String style = input.getAttribute("style");
-		assertNotNull(style);
-		assertTrue(style.contains("visibility: hidden"));
+		assertEquals("hidden", input.getAttribute("type"));
 		String value = input.getAttribute("value");
 		assertEquals("Some value", value);
 	}
