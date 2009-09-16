@@ -197,5 +197,10 @@
 			<classname>java.lang.String</classname>
 			<description>A localized user presentable name for this component.</description>
 		</property>
+		<property>
+			<name>inputElementType</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"textarea"</defaultvalue>
+		</property>
 	</component>
 </components>
