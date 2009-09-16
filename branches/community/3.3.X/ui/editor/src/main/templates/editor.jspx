@@ -27,8 +27,7 @@
 	    if ("input".equals(component.getAttributes().get("inputElementType"))) {
    	]]>
 	</jsp:scriptlet>
-			<input type="text" id="#{clientId}TextArea" name="#{clientId}TextArea"
-				style="visibility: hidden" 
+			<input type="hidden" id="#{clientId}TextArea" name="#{clientId}TextArea"
 				value="#{this:getFormattedComponentStringValue(context, component)}" />
     <jsp:scriptlet>
 	<![CDATA[
