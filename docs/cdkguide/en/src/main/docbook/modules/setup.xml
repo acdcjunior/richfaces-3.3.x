@@ -216,7 +216,7 @@
 		<row>
                     <entry>scope</entry>
                     <entry>
-			Dependency scope is used to limit the transitivity of a depedency, and also to affect the classpath used for various build tasks.
+			Dependency scope is used to limit the transitivity of a dependency, and also to affect the classpath used for various build tasks.
 			&quot;Provided&quot; scope indicates you expect the JDK or a container to provide the dependency at runtime.
 			For example, when you build a web application with RichFaces, 
 			you would set the dependency on the Servlet API and related libraries to scope 

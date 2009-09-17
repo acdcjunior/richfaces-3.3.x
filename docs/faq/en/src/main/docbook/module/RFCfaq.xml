@@ -463,7 +463,7 @@ included2.xhtml
                     <?dbhtml filename="Isitpossibletoplacetabsvertically.html"?>
                     <title>Is it possible to place tabs upright in the tabPanel?</title>
                     <para>It&apos;s not possible to place tabs upright in the tabPanel. For this
-                              purporse use togglePanel. Toggle controls can be placed anywhere in
+                              purpose use togglePanel. Toggle controls can be placed anywhere in
                               the layout.</para>
           </section>
 
@@ -611,7 +611,7 @@ included2.xhtml
                     <programlisting role="CSS"><![CDATA[.rich-datascr-button { 
 border: 0px; 
 } 
-.rich-dtascroller-table { 
+.rich-datascroller-table { 
 border: 0px; 
 } 
 .rich-datascr-button { 
@@ -995,7 +995,7 @@ background-color: transparent;
                     <programlisting role="XML"><![CDATA[<a4j:outputPanel ajaxRendered="true">
       <h:messages/>
 </a4j:outpurPanel>]]></programlisting>
-                <para><emphasis role="bold"><property>&lt;rich:message&gt;</property></emphasis> component has build in Ajax support and could be realy helpfull 
+                <para><emphasis role="bold"><property>&lt;rich:message&gt;</property></emphasis> component has build in Ajax support and could be really helpful 
                       together with <ulink url="http://www.jsfone.com/blog/max_katz/2008/07/creating_jsf_phase_listener.html">JSF Phase Tracker</ulink> in such cases.  
                       
                 </para>
@@ -1138,7 +1138,7 @@ background-color: transparent;
                     <title>How to disable skinability?</title>
                     <para>There is possibility to use special skin with name "plain". It doesn't
                               have any parameters. It's necessary for embedding RichFaces components
-                              into existing projecst which have its own styles.</para>
+                              into existing project which have its own styles.</para>
                     <para>For information you can see discussion about this problem on the <ulink
                                         url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4066340#4066340"
                                         >Ajax4Jsf Users Forum. </ulink>
@@ -1656,7 +1656,7 @@ public void dropListener(DropEvent event) {
           <section id="SimpleTogglePanelPanelMenuState">
                     <?dbhtml filename="SimpleTogglePanelPanelMenuState.html"?>
                     <title>How to save the state of &lt;rich:simpleTogglePanel&gt;?</title>
-                    <para> In order to save the state (exapnd/collapse) of the <emphasis role="bold">
+                    <para> In order to save the state (expand/collapse) of the <emphasis role="bold">
                                         <property>&lt;rich:simpleTogglePanel&gt;</property>
                               </emphasis> component you could use <emphasis>
                                         <property>&quot;opened&quot;</property>
@@ -2455,7 +2455,7 @@ public class TableBackingRendered implements Serializable {
                               <emphasis role="bold">Example in web.xml::</emphasis>
                     </para>
                     <programlisting role="XML"><![CDATA[...
-<context-param>
+<context-param>int
 	<param-name>org.richfaces.ExcludeScripts</param-name>
 	<param-value>Prototype,Scriptaculous</param-value>
 </context-param>
