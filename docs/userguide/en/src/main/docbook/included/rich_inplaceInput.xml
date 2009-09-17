@@ -29,7 +29,7 @@
         <title>Key Features</title> 
         <itemizedlist>
             <listitem>
-                <para>View/changed/edit states highly customizable representations</para>
+                <para>View/changed/edit states in highly customizable representations</para>
             </listitem>
             <listitem>
                 <para>Changing state event customization</para>
@@ -59,7 +59,7 @@
           <emphasis role="bold">
             <property>&lt;rich:inplaceInput&gt;</property>
          </emphasis>
-        component was designed to facilitate displaying and inputting(editing) some data.
+        component was designed to facilitate displaying and inputting (editing) some data.
         </para>
       
       <para>     
@@ -81,7 +81,7 @@
         <itemizedlist>        
           <listitem>
             <para>
-              <property>View</property> state displays default label with the value taken from 
+              <property>View</property> state displays the default label with the value taken from the
               <emphasis>
                   <property>"value"</property>
                </emphasis> or <emphasis>
@@ -114,10 +114,10 @@ private String value = null;
               In the example above the <emphasis>
                   <property>"value"</property>
                </emphasis> attribute is not initialized
-              therefore "<code>click to edit</code>" text, that  
+              therefore the &quot;<code>click to edit</code>&quot; text, that  
               <emphasis>
                   <property>"defaultLabel"</property>
-               </emphasis>, contains is displayed.
+               </emphasis> contains, is displayed.
             </para>
             <para>
               This is the result:
@@ -264,7 +264,7 @@ private String value = null;
          </emphasis>
         attribute, which makes "Save" and  "Cancel" buttons appear next to the input field.
         If the controls are used, data is not saved automatically when the form loses focus: user has to confirm that he/she wants to save/discard the data explicitly. 
-       In both cases(with controls or without them) the input data can be discarded by pressing "Esc" key.
+       In both cases (with controls or without them) the input data can be discarded by pressing "Esc" key.
       
       </para>
       <para>
@@ -289,7 +289,7 @@ private String value = null;
         <itemizedlist>
           <listitem>
             <para>
-              The <emphasis>
+              the <emphasis>
                   <property>"controlsHorizontalPosition"</property>
                </emphasis> attribute 
               with "left", "right" and  "center" definitions      
@@ -297,7 +297,7 @@ private String value = null;
           </listitem>
           <listitem>
             <para>
-              The <emphasis>
+              the <emphasis>
                   <property>"controlsVerticalPosition "</property>
                </emphasis> attribute
               with "bottom", "center" and "top" definitions
@@ -417,7 +417,7 @@ private String value = null;
       <para>
         The <emphasis role="bold">
             <property>&lt;rich:inplaceInput&gt;</property>
-         </emphasis> component supports standard
+         </emphasis> component supports the standard
         <emphasis>
             <property>"tabindex"</property>
          </emphasis> attribute. 
@@ -556,133 +556,145 @@ private String value = null;
 						         </row>
 					       </tbody>
 				     </tgroup>
-		    </table>
-      <table>
-         <title>Classes names that define a component appearance</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace</entry>
-                  <entry>Defines styles for a wrapper &lt;span&gt; (or &lt;div&gt;) element of a component</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-input</entry>
-                  <entry>Defines styles for the component input field</entry>
-               </row>
-            </tbody>
-         </tgroup>
       </table>
-      <table id="tab_cn_iI">
-         <title>Class name for the view state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-view</entry>
-                  <entry>Defines styles for the view state</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-input-view-hover</entry>
-                  <entry>Defines styles for hovered text in  the view state  </entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Class name for the input field in  edit state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-field</entry>
-                  <entry>Defines styles for the input field look and feel in edit state</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Class name for the "Changed" state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-changed</entry>
-                  <entry>Defines styles for the "Changed" state</entry>
-               </row>
-               <row>
-                  <entry> rich-inplace-input-changed-hover </entry>
-                  <entry>Defines styles for the hovered text in  the "Changed" state</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names for "save" and "cancel" controls in Edit state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-          
-               <row>
-                  <entry>rich-inplace-control</entry>
-                  <entry>Defines styles for the controls</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-control-press</entry>
-                  <entry>Defines styles for the controls when either of the buttons is pressed</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-shadow-size</entry>
-                  <entry>Defines size of the shadow</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-shadow-tl</entry>
-                  <entry>Defines styles for the shadow in the top left corner </entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-shadow-tr</entry>
-                  <entry>Defines styles for the shadow in the top right corner</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-shadow-bl</entry>
-                  <entry>Defines styles for the shadow in the bottom left corner</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-shadow-br</entry>
-                  <entry>Defines styles for the shadow in the bottom right corner</entry>
-               </row>
-          
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+				
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry morerows="1">.rich-inplace-control</entry>
+   					<entry morerows="1">Defines styles for the controls</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-control-press</entry>
+   					<entry morerows="1">Defines styles for the controls when either of the buttons is pressed</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-view</entry>
+   					<entry morerows="1">Defines styles for the view state</entry>
+   					<entry>editorBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-changed</entry>
+   					<entry morerows="1">Defines styles for the &quot;Changed&quot; state</entry>
+   					<entry>editorBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">input.rich-inplace-field</entry>
+   					<entry morerows="1">Defines styles for the input field in edit state</entry>
+   					<entry>editorBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>rich-inplace</entry>
+   					<entry>Defines styles for a wrapper &lt;span&gt; (or &lt;div&gt;) element of a component</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-input</entry>
+   					<entry>Defines styles for the component input field</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-input-view-hover</entry>
+   					<entry>Defines styles for hovered text in  the view state  </entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-field</entry>
+   					<entry>Defines styles for the input field look and feel in edit state</entry>
+   				</row>
+   				
+   				<row>
+   					<entry> rich-inplace-input-changed-hover </entry>
+   					<entry>Defines styles for the hovered text in  the "Changed" state</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-shadow-size</entry>
+   					<entry>Defines size of the shadow</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-shadow-tl</entry>
+   					<entry>Defines styles for the shadow in the top left corner </entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-shadow-tr</entry>
+   					<entry>Defines styles for the shadow in the top right corner</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-shadow-bl</entry>
+   					<entry>Defines styles for the shadow in the bottom left corner</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>rich-inplace-shadow-br</entry>
+   					<entry>Defines styles for the shadow in the bottom right corner</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+	 <para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
