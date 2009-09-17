@@ -275,7 +275,7 @@ public class SimpleTogglePanelRenderer extends org.ajax4jsf.renderkit.HeaderReso
     }
     
     public String getSwitchStatus(FacesContext context, UIComponent component, boolean isSwitchOn) {
-        return ((UISimpleTogglePanel) component).isOpened() ^ isSwitchOn ? EMPTY : NONE;
+        return ((UISimpleTogglePanel) component).isOpened() ^ isSwitchOn ? NONE : EMPTY;
     }
     
     private boolean isEmpty(String str) {
