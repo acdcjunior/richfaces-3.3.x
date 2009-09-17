@@ -640,52 +640,52 @@ private String value = null;
    			</thead>
    			<tbody>
    				<row>
-   					<entry>rich-inplace</entry>
+   					<entry>.rich-inplace</entry>
    					<entry>Defines styles for a wrapper &lt;span&gt; (or &lt;div&gt;) element of a component</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-input</entry>
+   					<entry>.rich-inplace-input</entry>
    					<entry>Defines styles for the component input field</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-input-view-hover</entry>
+   					<entry>.rich-inplace-input-view-hover</entry>
    					<entry>Defines styles for hovered text in  the view state  </entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-field</entry>
+   					<entry>.rich-inplace-field</entry>
    					<entry>Defines styles for the input field look and feel in edit state</entry>
    				</row>
    				
    				<row>
-   					<entry> rich-inplace-input-changed-hover </entry>
+   					<entry>.rich-inplace-input-changed-hover </entry>
    					<entry>Defines styles for the hovered text in  the "Changed" state</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-shadow-size</entry>
+   					<entry>.rich-inplace-shadow-size</entry>
    					<entry>Defines size of the shadow</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-shadow-tl</entry>
+   					<entry>.rich-inplace-shadow-tl</entry>
    					<entry>Defines styles for the shadow in the top left corner </entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-shadow-tr</entry>
+   					<entry>.rich-inplace-shadow-tr</entry>
    					<entry>Defines styles for the shadow in the top right corner</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-shadow-bl</entry>
+   					<entry>.rich-inplace-shadow-bl</entry>
    					<entry>Defines styles for the shadow in the bottom left corner</entry>
    				</row>
    				
    				<row>
-   					<entry>rich-inplace-shadow-br</entry>
+   					<entry>.rich-inplace-shadow-br</entry>
    					<entry>Defines styles for the shadow in the bottom right corner</entry>
    				</row>
    			</tbody>
