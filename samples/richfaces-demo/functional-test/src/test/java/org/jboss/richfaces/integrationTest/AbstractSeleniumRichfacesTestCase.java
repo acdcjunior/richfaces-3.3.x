@@ -71,9 +71,8 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     /**
      * predefined waitings to use in inheritors
      */
-    protected Waiting waitModelUpdate = Wait.interval(100).timeout(10000);
+    protected Waiting waitModelUpdate = Wait.interval(100).timeout(60000);
     protected Waiting waitGuiInteraction = Wait.interval(100).timeout(500);
-    
 
     /**
      * Initializes context before each class run.
@@ -186,57 +185,6 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     };
 
     /**
-     * Abstract test for testing source code of examples. Deprecated -- use
-     * abstractTestSource(int, String, String) instead of this method.
-     * 
-     * @param fieldset
-     * @param index
-     * @param first
-     * @param second
-     */
-    @Deprecated
-    protected void abstractTestSource(int fieldset, int index, String first, String second) {
-        String xpathPrefix = String.format("//fieldset[%d]/div/div[%d]", fieldset, index);
-        String text = null;
-
-        scrollIntoView(xpathPrefix, true);
-
-        text = selenium.getAttribute(xpathPrefix + "/div@style");
-        assertTrue(text.contains("display: none;"),
-                "Source should not be visible -- it has to contain 'display: none;'.");
-
-        // click on 'View xxx Source'
-        waitForElement(xpathPrefix + "/span[2]");
-        selenium.click(xpathPrefix + "/span[2]");
-
-        waitForElement(xpathPrefix + "/div/div[2]");
-
-        text = selenium.getAttribute(xpathPrefix + "/div@id");
-        assertFalse(text.contains("display: none;"),
-                "Source should be visible -- it should not contain 'display: none;'");
-
-        text = selenium.getText(xpathPrefix + "/div/div[2]/div/div/span[1]");
-        assertEquals(text, first, "The code should start with '" + first + "'.");
-
-        text = selenium.getText(xpathPrefix + "/div/div[2]/div/div/span[2]");
-        assertEquals(text, second);
-
-        // click on 'Hide'
-        selenium.click(xpathPrefix + "/span[1]");
-
-        // wait while 'style' attribute changes
-        for (int i = 0; i * 100 <= 10000; i++) {
-            text = selenium.getAttribute(xpathPrefix + "/div@style");
-            if (text.contains("display: none;")) {
-                break;
-            }
-            waitFor(100);
-        }
-
-        assertTrue(text.contains("display: none;"), "Source should be hidden.");
-    }
-
-    /**
      * An abstract implementation of test for testing source code of examples.
      * 
      * @param fieldset
@@ -285,76 +233,6 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 
         text = selenium.getAttribute(xpathPrefix + "/div@style");
         assertTrue(text.contains("display: none;"), "Source should be hidden.");
-    }
-
-    /**
-     * <p>
-     * <b>Deprecated.</b> <i>This method is replaced by method
-     * {@link #openComponent(String)} and {{@link #openTab(String)}</i>
-     * </p>
-     * 
-     * Loads the page defined in contextPath. There is a 5-second timeout.
-     * 
-     * @param group
-     *            ID of div element that represents a group of menu items in
-     *            main menu, e.g. ajaxSupport,richInputs, richValidators, etc.
-     * @param index
-     *            which menu item from the group should be clicked, numbered
-     *            from 1
-     * @param text
-     *            wait while the specified text appears on the page; it does not
-     *            wait if the text is null
-     */
-    // TODO: remove this @deprecated method
-    @Deprecated
-    protected void loadPage(String group, int index, String text) {
-        loadPage(group, index, 1, text);
-    }
-
-    /**
-     * <p>
-     * <b>Deprecated.</b> <i>This method is replaced by method
-     * {@link #openComponent(String)} and {{@link #openTab(String)}</i>
-     * </p>
-     * 
-     * Loads the page defined in contextPath. There is a 5-second timeout.
-     * 
-     * @param group
-     *            ID of div element that represents a group of menu items in
-     *            main menu, e.g. ajaxSupport,richInputs, richValidators, etc.
-     * @param index
-     *            which menu item from the group should be clicked, numbered
-     *            from 1
-     * @param tab
-     *            the number of the tab
-     * @param text
-     *            wait while the specified text appears on the page; it does not
-     *            wait if the text is null
-     */
-    // TODO: remove this @deprecated method
-    @Deprecated
-    protected void loadPage(String group, int index, int tab, String text) {
-
-        selenium.open(contextPath);
-        selenium.waitForPageToLoad("5000");
-
-        String menuItem = String.format("//div[@id='%s']/div[3]/table/tbody/tr/td/table/tbody/tr[%d]/td[2]/a", group,
-                index);
-
-        // click the group
-        selenium.click(group);
-        // click the menu item
-        selenium.click(menuItem);
-
-        waitForElement("//table[@class='content_container']/tbody/tr/td[2]/table/tbody/tr[1]/td/form/table/tbody/tr/td["
-                + (tab * 2) + "]/table");
-        selenium
-                .click("//table[@class='content_container']/tbody/tr/td[2]/table/tbody/tr[1]/td/form/table/tbody/tr/td["
-                        + (tab * 2) + "]/table");
-
-        if (text != null) {
-            waitForText(text);
-        }
     }
 
     /**
