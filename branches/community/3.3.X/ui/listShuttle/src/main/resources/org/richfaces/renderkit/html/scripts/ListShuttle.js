@@ -202,14 +202,10 @@ Richfaces.ListShuttle.prototype = {
 		}
 		if (Richfaces.browser.isFF2 && (targetComponent.shuttleTbody.rows.length == 0)) {
 			this.tableUpdate(targetComponent);
-			this.addItem(targetComponent, item);
-			
-			this.removeItem(sourceComponent, item);
-			sourceComponent.shuttleTable.deleteRow(item._node.rowIndex);
-		} else {
-			this.addItem(targetComponent, item);
-			this.removeItem(sourceComponent, item);
 		}
+
+		this.addItem(targetComponent, item);
+		this.removeItem(sourceComponent, item);
 	},
 	
 	removeItem : function(component, item) {
