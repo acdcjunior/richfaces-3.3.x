@@ -12,7 +12,7 @@
         <title>Description</title>
         <para>The <emphasis role="bold">
             <property>&lt;rich:inplaceSelect&gt;</property>
-        </emphasis> is used for creation select based inputs: it shows the value as text in one state and enables editing the value, providing a list of options in another state</para>
+        </emphasis> is used for the creation of select based inputs: it shows the value as a text in one state and enables editing the value, providing a list of options in another state</para>
         
         <figure>
             <title>Three states of <emphasis role="bold">
@@ -29,7 +29,7 @@
         <title>Key Features</title> 
         <itemizedlist>
             <listitem>
-                <para>View/changed/edit states highly customizable representations</para>
+                <para>View/changed/edit states in highly customizable representations</para>
             </listitem>
             <listitem>
                 <para>Optional "inline" or "block" element rendering on a page</para>
@@ -79,10 +79,10 @@
               If the initial value of the <emphasis>
                   <property>"value"</property>
                </emphasis> 
-              attribute is "null" or <property>empty string</property>
+              attribute is "null" or <property>empty string</property>, 
               the <emphasis>
                   <property>"defaultLabel"</property>
-               </emphasis> attribute is used to define default label.
+               </emphasis> attribute is used to define a default label.
             </para>
             <para>
               <emphasis role="bold">Example:</emphasis>
@@ -103,11 +103,11 @@ private String value = "";
             <para>
               In the example above the <emphasis>
                   <property>"value"</property>
-               </emphasis> attribute is not initialized
-              therefore "<code>click to edit</code>" text, that  
+               </emphasis> attribute is not initialized,
+              therefore the "<code>click to edit</code>" text, that  
               <emphasis>
                   <property>"defaultLabel"</property>
-               </emphasis>, contains is displayed.
+               </emphasis> contains, is displayed.
             </para>
             <para>
               This is the result:
@@ -179,7 +179,7 @@ private String value = "";
       <para>
         The <emphasis>
             <property>"editEvent"</property>
-         </emphasis> attribute provides an option to assign an JavaScript action 
+         </emphasis> attribute provides an option to assign a JavaScript action 
         that initiates the change of the state from <property>view</property> to <property>edit</property>. 
         The default value is "onclick". 
       </para>
@@ -324,7 +324,7 @@ private String value = "";
       <itemizedlist>
         <listitem>
             <para>
-            The <emphasis>
+            the <emphasis>
                   <property>"controlsHorizontalPosition"</property>
                </emphasis> attribute 
             with "left", "right" and  "center" definitions      
@@ -332,7 +332,7 @@ private String value = "";
         </listitem>
         <listitem>
             <para>
-            The <emphasis>
+            the <emphasis>
                   <property>"controlsVerticalPosition "</property>
                </emphasis> attribute
             with "bottom" and "top" definitions
@@ -363,7 +363,7 @@ private String value = "";
          </emphasis>  
         facet in order to replace the default controls with facets content. See the example below.
       </para>
-          <para>Please, see the example.</para>
+    
           <para>
             <emphasis role="bold">Example:</emphasis>
           </para>      
@@ -451,7 +451,7 @@ private String value = "";
       <para>
         The <emphasis role="bold">
             <property>&lt;rich:inplaceSelect&gt;</property>
-         </emphasis> component supports standard
+         </emphasis> component supports the standard
         <emphasis>
             <property>"tabindex"</property>
          </emphasis> attribute. 
@@ -582,138 +582,138 @@ private String value = "";
 					       </tbody>
 				     </tgroup>
 		    </table>
-      <table id="cn3">
-         <title>Class name for the view state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-select-view</entry>
-                  <entry>Defines styles for the select view</entry>
-               </row>
-          
-         
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Class name for the input field in edit state</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-select-field</entry>
-                  <entry>Defines styles for the select field</entry>
-               </row>
-      
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Class name for the control</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-select-control</entry>
-                  <entry>Defines styles for the select control</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-select-control-press</entry>
-                  <entry>Defines styles for the pressed select control</entry>
-               </row>
-
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Class name for the list</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-inplace-select-list-decoration</entry>
-                  <entry>Defines styles for a wrapper &lt;table&gt; element of an inplaceSelect</entry>
-               </row>
-                 
-                </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names for the selected item</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-          
-               <row>
-                  <entry>rich-inplace-select-selected-item</entry>
-                  <entry>Defines styles for the selected item</entry>
-               </row>
-         
-          
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names for the shadow</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-    
-               <row>
-                  <entry>rich-inplace-select-shadow-tl</entry>
-                  <entry>Defines styles for the top-left shadow</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-select-shadow-tr</entry>
-                  <entry>Defines styles for the top-right shadow</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-select-shadow-bl</entry>
-                  <entry>Defines styles for the bottom-left shadow</entry>
-               </row>
-               <row>
-                  <entry>rich-inplace-select-shadow-br</entry>
-                  <entry>Defines styles for the bottom-right shadow</entry>
-               </row>
-    
-    
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+					
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry morerows="1">.rich-inplace-select-view</entry>
+   					<entry morerows="1">Defines styles for the component in the view state</entry>
+   					<entry>editorBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generaTextColor</entry>
+   					<entry>border-bottom-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">input.rich-inplace-select-field, .rich-inplace-select-field</entry>
+   					<entry morerows="1">Define styles for the component input field</entry>
+   					<entry>editorBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   			
+   				<row>
+   					<entry morerows="1">.rich-inplace-select-control</entry>
+   					<entry morerows="1">Defines styles for the component control</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-select-control-press</entry>
+   					<entry morerows="1">Defines styles for the pressed control</entry>
+   					<entry>tabBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-select-list-decoration</entry>
+   					<entry morerows="1">Defines styles for a wrapper &lt;table&gt; element of the component</entry>
+   					<entry>editBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.rich-inplace-select-selected-item</entry>
+   					<entry morerows="1">Defines styles for the selected item</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color, border-color</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>input.rich-inplace-select-arrow</entry>
+   					<entry>Defines styles for the drop-down arrow</entry>
+   					<entry>editBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>  		
+   				<row>
+   					<entry>.rich-inplace-select-changed</entry>
+   					<entry>Defines styles for the component in the changed state</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-inplace-select-shadow-tl</entry>
+   					<entry>Defines styles for the top-left shadow</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-inplace-select-shadow-tr</entry>
+   					<entry>Defines styles for the top-right shadow</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-inplace-select-shadow-bl</entry>
+   					<entry>Defines styles for the bottom-left shadow</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-inplace-select-shadow-br</entry>
+   					<entry>Defines styles for the bottom-right shadow</entry>
+   				</row>
+   				
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+	   <para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
