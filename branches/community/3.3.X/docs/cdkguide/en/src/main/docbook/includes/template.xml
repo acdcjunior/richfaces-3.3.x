@@ -50,7 +50,7 @@
 			<emphasis role="bold"><property>&lt;div&gt;</property></emphasis>-wrapper element with 
 			<emphasis><property>&quot;title&quot;</property></emphasis>,
 <emphasis><property>&quot;id&quot;</property></emphasis> attributes and with 
-the<emphasis><property>&quot;caption&quot;</property></emphasis> facet
+the <emphasis><property>&quot;caption&quot;</property></emphasis> facet
 		</para>
 		   <programlisting role="XML"><![CDATA[...
 <div id="#{clientId}" title="#{value}" x:passThruWithExclusions="value,name,type,id">
