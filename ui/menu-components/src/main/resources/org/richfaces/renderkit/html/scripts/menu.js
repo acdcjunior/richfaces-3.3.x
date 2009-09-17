@@ -1246,34 +1246,29 @@ RichFaces.Menu.Items = {
 		var icon = item.getIcon();
 		var labl = item.getLabel();
 
-		var hoverClass = item.getHoverClasses();
-		var iconHoverClass = item.getIconHoverClasses();
-		var labelHoverClass = item.getLabelHoverClasses();
-		
 		var inlineStyle = item.getInlineStyle();
 		var hoverStyle = item.getHoverStyle();
 		element.style.cssText = inlineStyle.concat(hoverStyle);
 				
+		var hoverClass = item.getHoverClasses();
 		this.replaceClasses(element, this.getClassNames(item), this.getHoverClassNames(item).concat(hoverClass));
-		this.replaceClasses(icon, this.iconClassNames, this.hoverIconClassNames.concat(iconHoverClass));
-		this.replaceClasses(labl, this.labelClassNames, this.hoverLabelClassNames.concat(labelHoverClass));
+
+		this.replaceClasses(icon, this.iconClassNames, this.hoverIconClassNames);
+		this.replaceClasses(labl, this.labelClassNames, this.hoverLabelClassNames);
 	},
 	onmouseout : function(item) {
 		var element = item.getElement();
 		var icon = item.getIcon();
 		var labl = item.getLabel();
 
-		var hoverClass = item.getHoverClasses();
-		var iconHoverClass = item.getIconHoverClasses();
-		var labelHoverClass = item.getLabelHoverClasses();
-
 		var inlineStyle = item.getInlineStyle();
 		element.style.cssText = inlineStyle;
 
+		var hoverClass = item.getHoverClasses();
 		this.replaceClasses(element, this.getHoverClassNames(item).concat(hoverClass), this.getClassNames(item));
-		this.replaceClasses(icon, this.hoverIconClassNames.concat(iconHoverClass), this.iconClassNames);
-		this.replaceClasses(labl, this.hoverLabelClassNames.concat(labelHoverClass), this.labelClassNames);
-					}
+		this.replaceClasses(icon, this.hoverIconClassNames, this.iconClassNames);
+		this.replaceClasses(labl, this.hoverLabelClassNames, this.labelClassNames);
+	}
 
 };
 RichFaces.Menu.isWithin = function (event, element) {
@@ -1369,13 +1364,11 @@ RichFaces.Menu.Item = Class.create({
 		return this.options.selectStyle || "";
 	},
 	getHoverClasses: function() {
-		return $A(this.options.selectClass).compact();
-	},
-	getIconHoverClasses : function() {
-		return $A(this.options.iconHoverClass).compact();
-	},
-	getLabelHoverClasses : function() {
-		return $A(this.options.labelHoverClass).compact();
+		if (this.options.selectClass) {
+			return this.options.selectClass.split(/\s+/).compact();
+		} else {
+			return [];
+		}
 	},
 
 	isDisabled : function() {
@@ -1402,14 +1395,19 @@ RichFaces.Menu.Item = Class.create({
 			this.mouseOver = true;
 			this.highLightGroup(true);
 		}
+		
 		RichFaces.Menu.Items.onmouseover(this);
-		var menuOptions = this.menu.options;
-		element.className = 'rich-menu-item rich-menu-item-hover ' 
-			+ this.options.styleClass || "" + " " + this.options.selectClass || "" + " " + menuOptions.selectItemClass || "";
-		element.style.cssText = this.options.style || "" + "; " + menuOptions.itemStyle || ""
-			+ this.options.selectStyle || "" + "; " + menuOptions.selectItemStyle || "";
-		this.getIcon().className='rich-menu-item-icon rich-menu-item-icon-selected ' + (this.options.iconClass || '');
-		Element.addClassName(this.getLabel(), 'rich-menu-item-label-selected');
+		
+		if (this.options.flagGroup != 1) {
+			var menuOptions = this.menu.options;
+			element.className = 'rich-menu-item rich-menu-item-hover ' 
+				+ (this.options.styleClass || "") + " " + (this.options.selectClass || "") + " " 
+				+ (menuOptions.selectItemClass || "");
+			element.style.cssText = (this.options.style || "") + "; " + (menuOptions.itemStyle || "")
+				+ (this.options.selectStyle || "") + "; " + (menuOptions.selectItemStyle || "");
+			this.getIcon().className='rich-menu-item-icon rich-menu-item-icon-selected ' + (this.options.iconClass || '');
+			Element.addClassName(this.getLabel(), 'rich-menu-item-label-selected');
+		}
 	},
 	onmouseout : function(event) {
 		Event.extend(event);
@@ -1431,13 +1429,17 @@ RichFaces.Menu.Item = Class.create({
 					this.mouseOver = false;
 					this.highLightGroup(false);
  		}
+		
 		RichFaces.Menu.Items.onmouseout(this);
-		var menuOptions = this.menu.options;
-		element.className = 'rich-menu-item rich-menu-item-enabled '
-			+ this.options.styleClass || "" + " " + menuOptions.itemClass || "";
-		element.style.cssText = this.options.style || "" + "; " + menuOptions.itemStyle || "";
-		this.getIcon().className='rich-menu-item-icon ' + this.options.iconClass || "";
-		Element.removeClassName(this.getLabel(), 'rich-menu-item-label-selected');
+		
+		if (this.options.flagGroup != 1) {
+			var menuOptions = this.menu.options;
+			element.className = 'rich-menu-item rich-menu-item-enabled '
+				+ (this.options.styleClass || "") + " " + (menuOptions.itemClass || "");
+			element.style.cssText = (this.options.style || "") + "; " + (menuOptions.itemStyle || "");
+			this.getIcon().className='rich-menu-item-icon ' + (this.options.iconClass || "");
+			Element.removeClassName(this.getLabel(), 'rich-menu-item-label-selected');
+		}
 	},
 	highLightGroup: function(light)  {
 		if (light) {
