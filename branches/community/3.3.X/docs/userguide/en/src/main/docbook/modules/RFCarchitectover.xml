@@ -1142,6 +1142,417 @@ onsubmit="if (mynosendfunct()==false){return false}"
 								
 							</entry>
 						</row> 
+
+						<row>
+							<entry>limitToList</entry>
+							<entry>If "true", then of all AJAX-rendered on the page components only those will be updated, 
+								which ID's are passed to the "reRender" attribute of the describable component. 
+								"false"-the default value-means that all components with ajaxRendered="true" will be updated.
+							</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para>
+								<para>&lt;a4j:jsFunction&gt;</para>
+								<para>&lt;a4j:poll&gt;</para>
+								<para>&lt;a4j:push&gt;</para>
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para>
+								<para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:dragSupport&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:treeNode&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para>
+								<para>&lt;rich:panelMenuItem&gt;</para>
+								<para>&lt;rich:progressBar&gt;</para>
+								<para>&lt;rich:simpleTogglePanel&gt;</para>
+								<para>&lt;rich:tab&gt;</para>
+								<para>&lt;rich:toggleControl&gt;</para>
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para> 
+							</entry>
+						</row> 
+						<row>
+							<entry>reRender</entry>
+							<entry>Id['s] (in format of call  UIComponent.findComponent()) of components, rendered in case of AjaxRequest  caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</entry>
+							<entry><para>&lt;a4j:form&gt;</para>
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para>
+								<para>&lt;a4j:commandLink&gt;</para>
+								<para>&lt;a4j:jsFunction&gt;</para>
+								<para>&lt;a4j:poll&gt;</para>
+								<para>&lt;a4j:push&gt;</para>
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para>
+								<para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:dataTable&gt;</para> 
+								<para>&lt;rich:extendedDataTable&gt;</para>
+								<para>&lt;rich:scrollableDataTable&gt;</para>
+								<para>&lt;rich:dragSupport&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:treeNode&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para> 
+								<para>&lt;rich:panelMenuItem&gt;</para>
+								<para>&lt;rich:progressBar&gt;</para> 
+								<para>&lt;rich:simpleTogglePanel&gt;</para>
+								<para>&lt;rich:tab&gt;</para>
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para>
+								</entry>
+						</row> 
+						
+						<row>
+							<entry>process</entry>
+							<entry>Id['s] (in format of call  UIComponent.findComponent()) of components, processed at the phases 2-5 in case of AjaxRequest  caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</entry>
+							<entry><para>&lt;a4j:form&gt;</para>
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para>
+								<para>&lt;a4j:commandLink&gt;</para>
+								<para>&lt;a4j:jsFunction&gt;</para>
+								<para>&lt;a4j:poll&gt;</para> 
+								<para>&lt;a4j:push&gt;</para>
+							</entry>
+							<entry><para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:treeNode&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para>
+								<para>&lt;rich:panelMenuItem&gt;</para> 
+								<para>&lt;rich:progressBar&gt;</para> 
+								<para>&lt;rich:simpleTogglePanel&gt;</para> 
+								<para>&lt;rich:tab&gt;</para> 
+								<para>&lt;rich:toggleControl&gt;</para> 
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para>
+							</entry>
+						
+						</row> 
+						<row>
+							<entry>status</entry>
+							<entry>ID (in format of call UIComponent.findComponent()) of Request status component</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:commandLink&gt;</para> 
+											<para>&lt;a4j:jsFunction&gt;</para> 
+												<para>&lt;a4j:poll&gt;</para> 
+													<para>&lt;a4j:push&gt;</para> 
+														<para>&lt;a4j:queue&gt;</para> 
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dragSupport&gt;</para> 
+												<para>&lt;rich:dropSupport&gt;</para> 
+													<para>&lt;rich:tree&gt;</para> 
+														<para>&lt;rich:treeNode&gt;</para> 
+															<para>&lt;rich:panelMenuGroup&gt;</para> 
+																<para>&lt;rich:panelMenuItem&gt;</para> 
+																	<para>&lt;rich:progressBar&gt;</para> 
+																		<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																			<para>&lt;rich:tab&gt;</para> 
+																				<para>&lt;rich:toggleControl&gt;</para> 
+																					<para>&lt;rich:calendar&gt;</para> 
+																						<para>&lt;rich:fileUpload&gt;</para> 
+																							<para>&lt;rich:suggestionbox&gt;</para> 
+																								
+							</entry>
+						</row> 
+						<row>
+							<entry>eventsQueue</entry>
+							<entry>Name of requests queue to avoid send next request before complete other from same event. Can be used to reduce number of requests of frequently events (key press, mouse move etc.)</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:commandLink&gt;</para> 
+											<para>&lt;a4j:jsFunction&gt;</para> 
+												<para>&lt;a4j:poll&gt;</para> 
+													<para>&lt;a4j:push&gt;</para> 
+														
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dragSupport&gt;</para> 
+												<para>&lt;rich:dropSupport&gt;</para> 
+													<para>&lt;rich:menuItem&gt;</para> 
+														<para>&lt;rich:tree&gt;</para> 
+															<para>&lt;rich:panelMenuGroup&gt;</para> 
+																<para>&lt;rich:panelMenuItem&gt;</para> 
+																	<para>&lt;rich:progressBar&gt;</para> 
+																		<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																			<para>&lt;rich:tab&gt;</para> 
+																				<para>&lt;rich:toggleControl&gt;</para> 
+																					<para>&lt;rich:calendar&gt;</para> 
+																						<para>&lt;rich:suggestionbox&gt;</para> 
+							</entry>
+						</row> 
+						<row>
+							<entry>requestDelay</entry>
+							<entry>Attribute defines the time (in ms.) that the request will be wait in the queue before it is ready to send.
+								When the delay time is over, the request will be sent to the server or removed if the newest 'similar' request is in a queue already
+							</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:commandLink&gt;</para> 
+											<para>&lt;a4j:jsFunction&gt;</para> 
+												<para>&lt;a4j:queue&gt;</para> 
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dragSupport&gt;</para> 
+												<para>&lt;rich:dropSupport&gt;</para> 
+													<para>&lt;rich:menuItem&gt;</para> 
+														<para>&lt;rich:tree&gt;</para> 
+															<para>&lt;rich:panelMenuGroup&gt;</para> 
+																<para>&lt;rich:panelMenuGroup&gt;</para> 
+																	<para>&lt;rich:panelMenuItem&gt;</para> 
+																		<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																			<para>&lt;rich:tab&gt;</para> 
+																				<para>&lt;rich:calendar&gt;</para> 
+																					<para>&lt;rich:suggestionbox&gt;</para> 
+							</entry>
+						</row> 
+						<row>
+							<entry>data</entry>
+							<entry>Serialized (on default with JSON) data passed on the client by a developer on AJAX request. It's accessible via "data.foo" syntax</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:commandLink&gt;</para> 
+											<para>&lt;a4j:jsFunction&gt;</para> 
+												<para>&lt;a4j:poll&gt;</para> 
+													<para>&lt;a4j:push&gt;</para> 
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dropSupport&gt;</para> 
+												<para>&lt;rich:menuItem&gt;</para> 
+													<para>&lt;rich:tree&gt;</para> 
+														<para>&lt;rich:treeNode&gt;</para> 
+															<para>&lt;rich:paint2D&gt;</para> 
+																<para>&lt;rich:panelMenuGroup&gt;</para> 
+																	<para>&lt;rich:panelMenuItem&gt;</para> 
+																		<para>&lt;rich:progressBar&gt;</para> 
+																			<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																				<para>&lt;rich:tab&gt;</para> 
+																					<para>&lt;rich:toggleControl&gt;</para> 
+																						<para>&lt;rich:calendar&gt;</para> 
+							</entry>
+						</row> 
+						<row>
+							<entry>ignoreDupResponses</entry>
+							<entry>Attribute allows to ignore an Ajax Response produced by a request if the newest 'similar' request is
+								in a queue already. ignoreDupResponses="true" does not cancel the request while it is processed on the server,
+								but just allows to avoid unnecessary updates on the client side if the response isn't actual now
+							</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:jsFunction&gt;</para> 
+											<para>&lt;a4j:poll&gt;</para> 
+												<para>&lt;a4j:push&gt;</para> 
+													<para>&lt;a4j:queue&gt;</para> 
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> <para>&lt;rich:datascroller&gt;</para> 
+									<para>&lt;rich:scrollableDataTable&gt;</para> 
+										<para>&lt;rich:dragSupport&gt;</para> 
+											<para>&lt;rich:dropSupport&gt;</para> 
+												<para>&lt;rich:menuItem&gt;</para> 
+													<para>&lt;rich:tree&gt;</para> 
+														<para>&lt;rich:treeNode&gt;</para> 
+															<para>&lt;rich:panelMenuGroup&gt;</para> 
+																<para>&lt;rich:panelMenuItem&gt;</para> 
+																	<para>&lt;rich:progressBar&gt;</para> 
+																		<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																			<para>&lt;rich:tab&gt;</para> 
+																				<para>&lt;rich:toggleControl&gt;</para> 
+																					<para>&lt;rich:calendar&gt;</para> 
+																						<para>&lt;rich:suggestionbox&gt;</para> 
+							</entry>
+						</row> 
+						<row>
+							<entry>timeout</entry>
+							<entry>Response waiting time on a particular request. If a response is not received during this time, the request is aborted</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:form&gt;</para> 
+									<para>&lt;a4j:support&gt;</para> 
+										<para>&lt;a4j:commandButton&gt;</para> 
+											<para>&lt;a4j:commandLink&gt;</para> 
+												<para>&lt;a4j:jsFunction&gt;</para> 
+													<para>&lt;a4j:poll&gt;</para> 
+														<para>&lt;a4j:push&gt;</para> 
+															<para>&lt;a4j:queue&gt;</para> 
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dragSupport&gt;</para> 
+												<para>&lt;rich:dropSupport&gt;</para> 
+													<para>&lt;rich:menuItem&gt;</para> 
+														<para>&lt;rich:tree&gt;</para> 
+															<para>&lt;rich:treeNode&gt;</para> 
+																<para>&lt;rich:panelMenuGroup&gt;</para> 
+																	<para>&lt;rich:panelMenuItem&gt;</para> 
+																		<para>&lt;rich:progressBar&gt;</para> 
+																			<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																				<para>&lt;rich:tab&gt;</para> 
+																					<para>&lt;rich:toggleControl&gt;</para> 
+																						<para>&lt;rich:suggestionbox&gt;</para> 
+							</entry>
+						</row>
+						<row>
+							<entry>similarityGroupingId</entry>
+							<entry>If there are any component requests with identical IDs then these requests will be grouped.</entry>
+							<entry><para>&lt;a4j:form&gt;</para> 
+								<para>&lt;a4j:support&gt;</para> 
+									<para>&lt;a4j:commandButton&gt;</para> 
+										<para>&lt;a4j:commandLink&gt;</para> 
+											<para>&lt;a4j:jsFunction&gt;</para> 
+												<para>&lt;a4j:poll&gt;</para> 
+													
+							</entry>
+							<entry><para>&lt;rich:ajaxValidator&gt;</para> 
+								<para>&lt;rich:dataFilterSlider&gt;</para> 
+									<para>&lt;rich:datascroller&gt;</para> 
+										<para>&lt;rich:scrollableDataTable&gt;</para> 
+											<para>&lt;rich:dragSupport&gt;</para> 
+												<para>&lt;rich:dropSupport&gt;</para> 
+													<para>&lt;rich:menuItem&gt;</para> 
+														<para>&lt;rich:tree&gt;</para> 
+															<para>&lt;rich:treeNode&gt;</para> 
+																<para>&lt;rich:panelMenuGroup&gt;</para> 
+																	<para>&lt;rich:panelMenuItem&gt;</para> 
+																		<para>&lt;rich:progressBar&gt;</para> 
+																			<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																				<para>&lt;rich:tab&gt;</para> 
+																					<para>&lt;rich:toggleControl&gt;</para> 
+																						<para>&lt;rich:calendar&gt;</para> 
+																							<para>&lt;rich:suggestionbox&gt;</para> 
+																								
+																								<para>&lt;rich:message&gt;</para> 
+																									<para>&lt;rich:messages&gt;</para> 
+																										
+							</entry>
+						</row> 
+						<row>
+							<entry>keepTransient</entry>
+							<entry>Flag for mark all child components to non-transient. If "true", all children components will be set to non-transient state and keep in saved components tree.
+								For output in self-renderer region all content (By default, all content in &lt;f:verbatim&gt; tags and non-jsf elements in facelets, marked as transient - since, self-rendered ajax regions don't plain output for ajax processing).
+									The default value is "false".
+							</entry>
+							<entry><para>&lt;a4j:include&gt;</para> 
+								<para>&lt;a4j:outputPanel&gt;</para>
+							</entry>
+							<entry>&nbsp;</entry>
+						</row> 
+						
+						<row>
+							<entry>ajaxListener</entry>
+							<entry>MethodExpression representing an action listener method that will be notified when this component is activated by the ajax Request and handle it. The expression must evaluate to a public method that takes an AjaxEvent parameter, with a return type of void.</entry>
+							<entry><para>&lt;a4j:include&gt;</para>
+								<para>&lt;a4j:outputPanel&gt;</para>
+							</entry>
+							<entry>&nbsp;</entry>
+						</row> 
+						<row>
+							<entry>selfRendered</entry>
+							<entry>if "true", self-render subtree at InvokeApplication ( or Decode, if immediate property set to true )  phase</entry>
+							<entry><para>&lt;a4j:page&gt;</para> 
+								<para>&lt;a4j:region&gt;</para> 
+								
+							</entry>
+							<entry><para>&lt;rich:suggestionbox&gt;</para></entry>
+						</row> 
+						<row>
+							<entry>immediate</entry>
+							<entry>Flag indicating that, if this component is activated by ajaxrequest, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase</entry>
+							<entry><para>&lt;a4j:region&gt;</para>
+								<para>&lt;a4j:region&gt;</para>
+								<para>&lt;a4j:support&gt;</para>
+								<para>&lt;a4j:commandButton&gt;</para>
+								<para>&lt;a4j:commandLink&gt;</para>
+								<para>&lt;a4j:jsFunction&gt;</para>
+								<para>&lt;a4j:poll&gt;</para> 
+								<para>&lt;a4j:push&gt;</para>
+								<para>&lt;a4j:page&gt;</para> 
+								<para>&lt;a4j:htmlCommandLink&gt;</para>
+							</entry>
+							<entry><para>&lt;rich:dataFilterSlider&gt;</para>
+								<para>&lt;rich:datascroller&gt;</para>
+								<para>&lt;rich:dragSupport&gt;</para>
+								<para>&lt;rich:dropSupport&gt;</para>
+								<para>&lt;rich:menuItem&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:panelBar&gt;</para>
+								<para>&lt;rich:panelMenu&gt;</para>
+								<para>&lt;rich:panelMenuGroup&gt;</para>
+								<para>&lt;rich:panelMenuItem&gt;</para>
+								<para>&lt;rich:progressBar&gt;</para>
+								<para>&lt;rich:simpleTogglePanel&gt;</para>
+								<para>&lt;rich:tabPanel&gt;</para>
+								<para>&lt;rich:tab&gt;</para>
+								<para>&lt;rich:togglePanel&gt;</para> 
+								<para>&lt;rich:toggleControl&gt;</para> 
+								<para>&lt;rich:toolTip&gt;</para>
+								<para>&lt;rich:calendar&gt;</para>
+								<para>&lt;rich:colorPicker&gt;</para>
+								<para>&lt;rich:comboBox&gt;</para>
+								<para>&lt;rich:editor&gt;</para>
+								<para>&lt;rich:inplaceInput&gt;</para>
+								<para>&lt;rich:inplaceSelect&gt;</para>
+								<para>&lt;rich:inputNumberSlider&gt;</para>
+								<para>&lt;rich:inputNumberSpinner&gt;</para>
+								<para>&lt;rich:suggestionbox&gt;</para>
+								<para>&lt;rich:listShuttle&gt;</para>
+								<para>&lt;rich:orderingList&gt;</para>
+								<para>&lt;rich:pickList&gt;</para>
+								
+							</entry>
+						</row> 
+						<row>
+							<entry>mode</entry>
+							<entry>Defines the submission type:  Ajax or Sever</entry>
+							<entry>&nbsp;</entry>
+							<entry><para>&lt;rich:panelMenu&gt;</para> 
+								<para>&lt;rich:panelMenuItem&gt;</para> 
+								<para>&lt;rich:progressBar&gt;</para>
+								<para>&lt;rich:toolTip&gt;</para> 
+								<para>&lt;rich:calendar&gt;</para>
+								
+							</entry>
+					
+						</row> 
+						<row>
+							<entry>switchType</entry>
+							<entry>Defines the re-rendering mode: Ajax, server, client.</entry>
+							<entry>
+								&nbsp;
+							</entry>
+							<entry>		
+								<para>&lt;rich:simpleTogglePanel&gt;</para> 
+								<para>&lt;rich:tabPanel&gt;</para>
+								<para>&lt;rich:tab&gt;</para>
+								<para>&lt;rich:togglePanel&gt;</para>
+								<para>&lt;rich:tree&gt;</para>
+								<para>&lt;rich:simpleTogglePanel&gt;</para></entry>
+						</row> 
 						
 					</tbody>
 				</tgroup>
