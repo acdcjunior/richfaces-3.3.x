@@ -78,7 +78,7 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 	private int read = 0;
 
 	//we shouldn't allow to stop until request reaches PhaseListener because of portlets
-	private boolean canStop = false;
+	private volatile boolean canStop = false;
 	
 	private Map<String, Param> parameters = null;
 
@@ -625,6 +625,8 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 			if (!this.shouldStop) {
 				throw new FileUploadException("IO Error parsing multipart request", e);
 			}
+		} finally {
+			canStop = false;
 		}
 	}
 	
