@@ -11,16 +11,16 @@ var PanelMenuStorage = new Object();
 PanelMenu = Class.create();
 
 PanelMenu.prototype = { 
-	initialize: function(myId, so, selectedChild){ 
+	initialize: function(myId, so) { 
 		this.myId = myId;
 	
 		this.childObj = new Array(); 
 		this.expandSingle = so;
 		this.lastExpanded = null;
-		this.selectedChild = selectedChild;
 		this.selectedClass = 'rich-pmenu-selected-element';
 		this.is = 'panelMenu';
 		this.selectedNameInput = $(myId + 'selectedItemName');		
+		this.selectedChild = this.selectedNameInput.value;
 		PanelMenuStorage[myId] = this;
 	},
 	

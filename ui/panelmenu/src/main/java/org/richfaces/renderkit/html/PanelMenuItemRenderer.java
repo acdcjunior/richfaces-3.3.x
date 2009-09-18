@@ -207,13 +207,6 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 		return styleBuffer.toString();
 	}
 	
-	public String getSelectedClass(FacesContext context, UIComponent component) {
-		if (isSelected(context, component)) {
-			return UIPanelMenu.SELECTED_CLASS;
-		}
-		return  ""; 
-	}
-
 	public String getLabelClass(FacesContext context, UIComponent component) {
 		StringBuffer resClass = new StringBuffer();
 		UIPanelMenuItem item = (UIPanelMenuItem)component;
@@ -251,10 +244,9 @@ public class PanelMenuItemRenderer extends PanelMenuRendererBase {
 		
 		return iconClass;
 	}
-	
-	public boolean isSelected(FacesContext context, UIComponent component){
-		UIPanelMenuItem item = (UIPanelMenuItem)component;
-		UIPanelMenu parentMenu = findMenu(item);
-		return item.getName().equals(parentMenu.getSelectedName());
+
+	@Override
+	protected String getName(UIComponent component) {
+		return ((UIPanelMenuItem) component).getName();
 	}
 }

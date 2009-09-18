@@ -248,13 +248,6 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 		return value;
 	}
 	
-	public String getSelectedClass(FacesContext context, UIComponent component) {
-		if (isSelected(context, component)) {
-			return UIPanelMenu.SELECTED_CLASS;
-		}
-		return  ""; 
-	}
-	
 	public String getLabelClass(FacesContext context, UIComponent component) {
 		UIPanelMenuGroup group = (UIPanelMenuGroup)component;
 		UIPanelMenu parentMenu = findMenu(group);
@@ -305,10 +298,8 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 		return result;
 	}
 	
-	public boolean isSelected(FacesContext context, UIComponent component){
-		UIPanelMenuGroup group = (UIPanelMenuGroup)component;
-		UIPanelMenu parentMenu = findMenu(group);
-		return group.getName().equals(parentMenu.getSelectedName());
+	@Override
+	protected String getName(UIComponent component) {
+		return ((UIPanelMenuGroup) component).getName();
 	}
-
 }
