@@ -57,8 +57,7 @@ public class DropDownMenuTest extends SeleniumTestBase {
 	
 	}
 	
-	//https://jira.jboss.org/jira/browse/RF-7908
-	@Test(groups=FAILURES_GROUP)
+	@Test()
 	public void testClassStylesAndHtmlAttributes(Template template) {
 		AutoTester tester = getAutoTester(this);
 		tester.renderPage(template, RESET_METHOD);
