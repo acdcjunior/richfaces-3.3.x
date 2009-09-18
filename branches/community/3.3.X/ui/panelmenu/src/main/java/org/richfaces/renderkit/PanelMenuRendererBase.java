@@ -57,6 +57,8 @@ public abstract class PanelMenuRendererBase extends HeaderResourcesRendererBase 
 	
 	public final static String PANEL_MENU_SPACER_ICON_NAME = "spacer";
 	
+	public final static String DEFAULT_ICON = "grid";
+	
 	public void insertSpacerImages(FacesContext context , UIComponent component) throws IOException {
 		ResponseWriter writer 	= context.getResponseWriter();
 		int level = calculateLevel(component);

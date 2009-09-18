@@ -121,7 +121,9 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 				defaultIconNodeClosed = panelMenu.getIconCollapsedGroup();
 			}
 		}
-		
+		if(defaultIconNodeClosed == null || defaultIconNodeClosed.equals("")){
+			defaultIconNodeClosed = DEFAULT_ICON;
+		}
 		String defaultIconNodeOpened = null;
 		
 		if(isTopLevel){
@@ -132,7 +134,9 @@ public class PanelMenuGroupRenderer extends PanelMenuRendererBase {
 		} else {
 			defaultIconNodeOpened = panelMenu.getIconExpandedGroup();
 		}
-
+		if(defaultIconNodeOpened == null || defaultIconNodeOpened.equals("")){
+			defaultIconNodeOpened = DEFAULT_ICON;
+		}
 		String iconExpanded = "";
 		String iconCollapsed = "";
 
