@@ -15,9 +15,15 @@
 	
 	<div id="#{clientId}" style="#{this:getHideStyle(context, component)}" 
 			class="#{this:getDivClass(context, component)}" >
+			
+		<c:object type="boolean" var="isNodeSelected" value="#{false}" />
 		<jsp:scriptlet>
 		     <![CDATA[
 		          String isNodeOpened = isOpened(context, component) ? "opened" : "closed";
+		          
+		          //marks current selection in renderer helper object - method should be called 
+		          //even if return value is not necessary
+		          isNodeSelected = queryAndMarkSelection(context, component);
 		      ]]>
 		</jsp:scriptlet>
 		<table 	cellspacing="0" cellpadding="0" border="0" 
@@ -28,7 +34,7 @@
 			
 			<tbody>
 				<tr id="row_#{clientId}"
-						class="#{this:getSelectedClass( context, component )}" >
+						class="#{this:getSelectedClass(isNodeSelected)}" >
 					<td class="rich-pmenu-nowrap #{this:getIconClass( context, component,'left')}">
 						<f:call name="insertSpacerImages" />
 						<f:call name="insertImage">

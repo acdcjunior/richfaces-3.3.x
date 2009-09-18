@@ -44,6 +44,8 @@ import org.richfaces.component.UIPanelMenu;
 import org.richfaces.component.UIPanelMenuGroup;
 import org.richfaces.component.UIPanelMenuItem;
 import org.richfaces.renderkit.PanelMenuRendererBase;
+import org.richfaces.renderkit.PanelMenuRendererHelper;
+import org.richfaces.renderkit.PanelMenuRendererHelper.PanelMenuState;
 
 public class PanelMenuRenderer extends PanelMenuRendererBase {
 
@@ -117,15 +119,12 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 		
 		boolean expandSingle = parentMenu.isExpandSingle();
 		
-		String selectedChild = parentMenu.getSelectedName();
-		
 		flatten(component.getChildren(), flatList, levels, 0);
 		
 		panelMenu.append("var ids = new PanelMenu('")
 					.append(component.getClientId(context).toString())
 					.append("',")
 					.append(new Boolean(expandSingle).toString())
-					.append(",").append("'").append(selectedChild).append("'")
 					.append(").getIds();\n");
 		
 		for (Iterator iter = flatList.iterator(); iter.hasNext();) {
@@ -522,8 +521,8 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 		if(component instanceof UIPanelMenu){
 			UIPanelMenu panelMenu = (UIPanelMenu)component;
 			if(panelMenu.getChildCount() > 0){
-				for (Iterator it = component.getChildren().iterator(); it.hasNext();) {
-					UIComponent child = (UIComponent) it.next();
+				for (Iterator<UIComponent> it = component.getChildren().iterator(); it.hasNext();) {
+					UIComponent child = it.next();
 					if(child instanceof UIPanelMenuGroup) {
 						UIPanelMenuGroup group = (UIPanelMenuGroup)child;
 		
@@ -556,4 +555,13 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 		}
 	}
 	
+	@Override
+	protected String getName(UIComponent component) {
+		return null;
+	}
+	
+	public String getSelectedItemInputValue(FacesContext context, UIPanelMenu panelMenu) {
+		PanelMenuState panelMenuState = PanelMenuRendererHelper.getOrCreateState(context, panelMenu);
+		return panelMenuState.getSelectedItemInputValue();
+	}
 }

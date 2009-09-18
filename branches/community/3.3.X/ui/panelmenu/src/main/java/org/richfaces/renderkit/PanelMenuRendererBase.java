@@ -35,6 +35,7 @@ import org.ajax4jsf.util.style.CSSFormat;
 import org.richfaces.component.UIPanelMenu;
 import org.richfaces.component.UIPanelMenuGroup;
 import org.richfaces.component.UIPanelMenuItem;
+import org.richfaces.renderkit.PanelMenuRendererHelper.PanelMenuState;
 import org.richfaces.renderkit.html.PanelMenuGroupRenderer;
 import org.richfaces.renderkit.html.iconimages.PanelMenuIconChevron;
 import org.richfaces.renderkit.html.iconimages.PanelMenuIconChevronDown;
@@ -285,4 +286,18 @@ public abstract class PanelMenuRendererBase extends HeaderResourcesRendererBase 
 		
 	}
 
+	protected abstract String getName(UIComponent component);
+	
+	public String getSelectedClass(boolean isSelected) {
+		if (isSelected) {
+			return UIPanelMenu.SELECTED_CLASS;
+		}
+		return  ""; 
+	}
+
+	public boolean queryAndMarkSelection(FacesContext context, UIComponent component){
+		UIPanelMenu parentMenu = findMenu(component);
+		PanelMenuState panelMenuState = PanelMenuRendererHelper.getOrCreateState(context, parentMenu);
+		return panelMenuState.queryAndMarkSelection(getName(component));
+	}
 }
