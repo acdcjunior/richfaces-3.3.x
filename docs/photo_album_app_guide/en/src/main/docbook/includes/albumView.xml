@@ -159,7 +159,7 @@
 	            
 	            <listitem>
 	                  <para>
-	                        <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:suport&gt;</property></emphasis> component.
+	                        <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component.
 	                  </para>     
 	            </listitem>
 	            
@@ -364,7 +364,7 @@ public void startSlideshow(){
                         
                         <listitem>
                               <para>
-                                    <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:suport&gt;</property></emphasis> component;
+                                    <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component;
                               </para>     
                         </listitem>
                         

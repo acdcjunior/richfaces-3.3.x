@@ -107,7 +107,7 @@
        <para>
              The <code>listener()</code> method creates an <code>Image</code> object 
              and extracts all image metadata such as Camera name, Image size, etc. 
-             It performs scaling of an image and saves six different image's dimentions in order to create thumbnails. 
+             It performs scaling of an image and saves six different image's dimensions in order to create thumbnails. 
              After that the photo is added into the database 
 			 the temporary file is removed.
        </para>
@@ -125,7 +125,7 @@
             
             <listitem>
                   <para>
-                        <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:suport&gt;</property></emphasis> component.
+                        <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/support.jsf?c=support">AjaxSupport</ulink> for the <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> component.
                   </para>     
             </listitem>
             
