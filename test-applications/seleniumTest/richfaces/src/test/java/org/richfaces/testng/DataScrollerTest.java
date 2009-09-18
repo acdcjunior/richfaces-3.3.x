@@ -445,14 +445,14 @@ public class DataScrollerTest extends SeleniumTestBase {
 		
 		assertClassNames(getPageLinkRefScript(5, dataScrollerTableId), activePageClasses, "'3' link should current", false);
 		assertClassNames(getPageLinkRefScript(3, dataScrollerTableId), inactivePageClasses, "'1' link should be inactive", false);
-		assertClassNames(getPageLinkRefScript(0, dataScrollerTableId), activeForwardClasses, "'««' control should be accessible", false);
-		assertClassNames(getPageLinkRefScript(1, dataScrollerTableId), activeForwardClasses, "'«' control should be accessible", false);
+		assertClassNames(getPageLinkRefScript(0, dataScrollerTableId), activeForwardClasses, "'Â«Â«' control should be accessible", false);
+		assertClassNames(getPageLinkRefScript(1, dataScrollerTableId), activeForwardClasses, "'Â«' control should be accessible", false);
 		
 		if(paired){
 			assertClassNames(getPageLinkRefScript(5, secondDataScrollerTableId), activePageClasses, "'3' link should current", false);
 			assertClassNames(getPageLinkRefScript(3, secondDataScrollerTableId), inactivePageClasses, "'1' link should be inactive", false);
-			assertClassNames(getPageLinkRefScript(0, secondDataScrollerTableId), activeForwardClasses, "'««' control should be accessible", false);
-			assertClassNames(getPageLinkRefScript(1, secondDataScrollerTableId), activeForwardClasses, "'«' control should be accessible", false);
+			assertClassNames(getPageLinkRefScript(0, secondDataScrollerTableId), activeForwardClasses, "'Â«Â«' control should be accessible", false);
+			assertClassNames(getPageLinkRefScript(1, secondDataScrollerTableId), activeForwardClasses, "'Â«' control should be accessible", false);
 		}
 		
 		if(paired){
@@ -468,11 +468,11 @@ public class DataScrollerTest extends SeleniumTestBase {
 		
 		clickControl(15, dataScrollerTableId);
 		testData(1, "Page 10");
-		assertClassNames(getPageLinkRefScript(15, dataScrollerTableId), inactiveForwardClasses, "'»»' control should be inactive", false);
-		assertClassNames(getPageLinkRefScript(14, dataScrollerTableId), inactiveForwardClasses, "'»' control should be inactive", false);
+		assertClassNames(getPageLinkRefScript(15, dataScrollerTableId), inactiveForwardClasses, "'Â»Â»' control should be inactive", false);
+		assertClassNames(getPageLinkRefScript(14, dataScrollerTableId), inactiveForwardClasses, "'Â»' control should be inactive", false);
 		if(paired){
-			assertClassNames(getPageLinkRefScript(15, secondDataScrollerTableId), inactiveForwardClasses, "'»»' control should be inactive", false);
-			assertClassNames(getPageLinkRefScript(14, secondDataScrollerTableId), inactiveForwardClasses, "'»' control should be inactive", false);
+			assertClassNames(getPageLinkRefScript(15, secondDataScrollerTableId), inactiveForwardClasses, "'Â»Â»' control should be inactive", false);
+			assertClassNames(getPageLinkRefScript(14, secondDataScrollerTableId), inactiveForwardClasses, "'Â»' control should be inactive", false);
 		}
 		
 		if(paired){
@@ -481,12 +481,12 @@ public class DataScrollerTest extends SeleniumTestBase {
 			clickControl(1, dataScrollerTableId);
 		}
 		testData(1, "Page 9");
-		assertClassNames(getPageLinkRefScript(0, dataScrollerTableId), activeForwardClasses, "'»»' control should be active", false);
-		assertClassNames(getPageLinkRefScript(1, dataScrollerTableId), activeForwardClasses, "'»' control should be active", false);
+		assertClassNames(getPageLinkRefScript(0, dataScrollerTableId), activeForwardClasses, "'Â»Â»' control should be active", false);
+		assertClassNames(getPageLinkRefScript(1, dataScrollerTableId), activeForwardClasses, "'Â»' control should be active", false);
 		assertClassNames(getPageLinkRefScript(11, dataScrollerTableId), activePageClasses, "'9' link should be current", false);
 		if(paired){
-			assertClassNames(getPageLinkRefScript(0, secondDataScrollerTableId), activeForwardClasses, "'»»' control should be active", false);
-			assertClassNames(getPageLinkRefScript(1, secondDataScrollerTableId), activeForwardClasses, "'»' control should be active", false);
+			assertClassNames(getPageLinkRefScript(0, secondDataScrollerTableId), activeForwardClasses, "'Â»Â»' control should be active", false);
+			assertClassNames(getPageLinkRefScript(1, secondDataScrollerTableId), activeForwardClasses, "'Â»' control should be active", false);
 			assertClassNames(getPageLinkRefScript(11, secondDataScrollerTableId), activePageClasses, "'9' link should be current", false);
 		}
 		
@@ -564,15 +564,15 @@ public class DataScrollerTest extends SeleniumTestBase {
 	}
 	
 	private void testControls() {
-		// Check '««' link 
+		// Check 'Â«Â«' link 
 		String text = selenium.getTable("id=" + dataScrollerTableId + ".0.0");
-		Assert.assertEquals("««", text, "DataScroller does not contain '««' link or its position is invalid");
+		Assert.assertEquals("\u0171\u0171", text, "DataScroller does not contain 'Â«Â«' link or its position is invalid");
 		assertClassNames(getPageLinkRefScript(0, dataScrollerTableId),inactiveForwardClasses,
 		                 "DataScroller rendering failed: ", false);
 		
-		// Check '«' link
+		// Check 'Â«' link
 		text = selenium.getTable("id=" + dataScrollerTableId + ".0.1");
-		Assert.assertEquals("«", text, "DataScroller does not contain '«' link or its position is invalid");
+		Assert.assertEquals("\u0171", text, "DataScroller does not contain 'Â«' link or its position is invalid");
 		assertClassNames(getPageLinkRefScript(1, dataScrollerTableId),inactiveForwardClasses,
 		                 "DataScroller rendering failed: ", false);
 		
@@ -588,15 +588,15 @@ public class DataScrollerTest extends SeleniumTestBase {
 		assertClassNames(getPageLinkRefScript(7, dataScrollerTableId),inactivePageClasses,
 		 		                 "DataScroller rendering failed: ", false);
 		
-		// Check '»' link
+		// Check 'Â»' link
 		text = selenium.getTable("id=" + dataScrollerTableId + ".0.14");
-		Assert.assertEquals("»", text, "DataScroller does not contain '»' link or its position is invalid");
+		Assert.assertEquals("\u0187", text, "DataScroller does not contain 'Â»' link or its position is invalid");
 		assertClassNames(getPageLinkRefScript(14, dataScrollerTableId),activeForwardClasses,
 		 		                 "DataScroller rendering failed: ", false);
 		
-		// Check '»»' link
+		// Check 'Â»Â»' link
 		text = selenium.getTable("id=" + dataScrollerTableId + ".0.15");
-		Assert.assertEquals("»»", text, "DataScroller does not contain '»»' link or its position is invalid");
+		Assert.assertEquals("\u0187\u0187", text, "DataScroller does not contain 'Â»Â»' link or its position is invalid");
 		assertClassNames(getPageLinkRefScript(15, dataScrollerTableId),activeForwardClasses,
 		 		                 "DataScroller rendering failed: ", false);
 

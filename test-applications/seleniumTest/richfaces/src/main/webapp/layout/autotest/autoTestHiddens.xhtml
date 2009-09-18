@@ -4,7 +4,7 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-		<div style="height: 30px; width: 1000px; overflow: hidden;">
+		<div style="height: 50px; width: 300px; overflow: scroll;">
 			<h:inputHidden id="_auto_input" value="#{autoTestBean.input}" required="true"></h:inputHidden>
 			<h:outputText id="_auto_request_params" value="#{requestBean.paramString}" />
 			<h:inputHidden id="_auto_process_input" value="#{autoTestBean.processInput}" valueChangeListener="#{autoTestBean.processInputChangeListener}"></h:inputHidden>
