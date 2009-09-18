@@ -108,7 +108,7 @@
 			<description>Path to the icon to be displayed for the expanded Group state.
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconCollapsedGroup</name>
@@ -116,7 +116,7 @@
 			<description>Path to the icon to be displayed for the collapsed Group state.
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconDisabledGroup</name>
@@ -124,7 +124,7 @@
 			<description>Path to the icon to be displayed for the disabled group state.
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconExpandedTopGroup</name>
@@ -132,7 +132,7 @@
 			<description>Path to the icon to be displayed for the expanded top group state.
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconCollapsedTopGroup</name>
@@ -140,7 +140,7 @@
 			<description>Path to the icon to be displayed for the collapsed top group state.\
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconTopDisableGroup</name>
@@ -149,7 +149,7 @@
 				You can also use predefined icons, setting the attribute to one of these possible values: &quot;triangle&quot;, &quot;triangleUp&quot;, &quot;triangleDown&quot;, &quot;disc&quot;, &quot;chevron&quot;, &quot;chevronUp&quot;, &quot;chevronDown&quot;, &quot;grid&quot;.
 				Default value is &quot;grid&quot;.
 			</description>
-			<defaultvalue><![CDATA["grid"]]></defaultvalue>
+			<defaultvalue><![CDATA[""]]></defaultvalue>
 		</property>
 		<property>
 			<name>iconItemPosition</name>

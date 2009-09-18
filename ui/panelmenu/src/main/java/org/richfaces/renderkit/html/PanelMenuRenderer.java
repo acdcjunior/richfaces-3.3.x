@@ -452,7 +452,9 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 					defaultIconNodeClosed = panelMenu.getIconCollapsedGroup();
 				}
 			}
-			
+			if(defaultIconNodeClosed == null || defaultIconNodeClosed.equals("")){
+				defaultIconNodeClosed = DEFAULT_ICON;
+			}
 			String defaultIconNodeOpened = isTopLevel ? panelMenu.getIconExpandedTopGroup() : panelMenu.getIconExpandedGroup();
 			
 			if(isTopLevel){
@@ -463,7 +465,9 @@ public class PanelMenuRenderer extends PanelMenuRendererBase {
 			} else {
 				defaultIconNodeOpened = panelMenu.getIconExpandedGroup();
 			}
-
+			if(defaultIconNodeOpened == null || defaultIconNodeOpened.equals("")){
+				defaultIconNodeOpened = DEFAULT_ICON;
+			}
 			String defaultIconNodeClosedSrc	= getIconByType(defaultIconNodeClosed, isTopLevel,context, component);
 			String defaultIconNodeOpenedSrc	= getIconByType(defaultIconNodeOpened, isTopLevel,context, component);
 

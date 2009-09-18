@@ -291,7 +291,7 @@ public class PanelMenuTest extends SeleniumTestBase {
         writeStatus("Expose group 2");        
         clickById("tablehide" + parentId + "pGroup2_selected");
 
-        testIcon("pGroup2_selected", "Spacer");
+        testIcon("pGroup2_selected", "Grid");
         testIcon("pItem2_selected", "Chevron");
     }
 
