@@ -4,7 +4,7 @@
 	<para>
 		
 		<emphasis role="bold"><property>&lt;a4j:status&gt;</property></emphasis>
-		 is a component, designed to create some visual effect during Ajax request. The comportment is  usually attached to a certain request, which implies  time consuming processing, so that the end user is aware the page is not hung up, 
+		 is a component, designed to create some visual effect during Ajax request. The component is  usually attached to a certain request, which implies  time consuming processing, so that the end user is aware the page is not hung up, 
 		it's responding to her actions: the user sees the processing progress (the component is frequently used to indicate file uploading process).
 	</para>
 	<para>

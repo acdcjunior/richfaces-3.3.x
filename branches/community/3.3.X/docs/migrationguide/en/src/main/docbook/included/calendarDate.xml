@@ -33,7 +33,7 @@
     <section>
         <title>How to reproduce</title>    
         <para>
-            The described above problem occurs when  <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis>is put inside <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis>. 
+            The described above problem occurs when  <emphasis role="bold"><property>&lt;a4j:support&gt;</property></emphasis> is put inside <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis>. 
             If the <emphasis><property>&quot;event&quot;</property></emphasis> property is set to &quot;ondateselected&quot; 
             previous value of the <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis> is stored after selection.
         </para>

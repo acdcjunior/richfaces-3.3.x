@@ -179,6 +179,6 @@ xmlns:richx="http://richfaces.org/richx">
 
 ...]]></programlisting> 
 	<para>
-		You can find more infromation about Facelets, custom tags, taglibs, Facelets tag handlers and Facelets templates <ulink url="http://java.sun.com/javaee/6/docs/tutorial/doc/giepx.html" ></ulink> here.
+		You can find more information about Facelets, custom tags, taglibs, Facelets tag handlers and Facelets templates <ulink url="http://java.sun.com/javaee/6/docs/tutorial/doc/giepx.html" ></ulink> here.
 	</para>
 </section>

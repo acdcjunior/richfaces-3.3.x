@@ -2,7 +2,7 @@
 <section id="tooltips">
 	<title>ToolTips </title>
 	<para>
-		When using RichFaces components library you&apos;ve got nealy everything to build UI, making a tooltip is not an exception. RichFaces provides a separate component to make a bubble appeare when the user hovers a UI element or layout area. 
+		When using RichFaces components library you&apos;ve got nealy everything to build UI, making a tooltip is not an exception. RichFaces provides a separate component to make a bubble appeared when the user hovers a UI element or layout area. 
 		The component is <emphasis role="bold"><property>&lt;rich:toolTip&gt;</property></emphasis>.
 		There's nothing complicated in using  <emphasis role="bold"><property>&lt;rich:toolTip&gt;</property></emphasis>: you just need to set the text to be shown in the tooltip with the <emphasis><property>&quot;value&quot;</property></emphasis> attribute and specify for which component you want the tooltip to be shown with the <emphasis><property>&quot;for&quot;</property></emphasis> attribute that takes the id of the targeted component as a parameter.
 	</para>

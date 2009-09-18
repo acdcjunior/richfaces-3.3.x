@@ -136,7 +136,7 @@ mvn clean install -Plivedemo
             </para>
             
             <para>
-                  You also need to build the Photo Album project in <code>inexamples/photoalbum/reource</code>.
+                  You also need to build the Photo Album project in <code>inexamples/photoalbum/resource</code>.
             </para>
             <para>
                   Then, you need to go to the test folder of the project (examples/photoalbum/test/) and run the
