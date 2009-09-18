@@ -84,4 +84,14 @@ public final class RequestContext {
 		}
 	}
 	
+	public Map<String, Object> getOrCreateNestedMap(String attributeName) {
+		@SuppressWarnings("unchecked")
+		Map<String, Object> nestedMap = (Map<String, Object>) getAttribute(attributeName);
+		if (nestedMap == null) {
+			nestedMap = new HashMap<String, Object>();
+			setAttribute(attributeName, nestedMap);
+		}
+		
+		return nestedMap;
+	}
 }
