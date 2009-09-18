@@ -236,11 +236,17 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 					}
 				} else {
 				    	InvokerCallback invokerCallback = new InvokerCallbackWrapper(callback);
-					invokeOnComponent(context, ajaxSingleClientId, invokerCallback);
+					boolean invoked = invokeOnComponent(context, ajaxSingleClientId, invokerCallback);
+					if(!invoked){
+						_log.warn("No component found to process as 'ajaxSingle' for clientId "+ajaxSingleClientId);
+					}
 					Set<String> areasToProcess = ajaxContext.getAjaxAreasToProcess();
 					if(null != areasToProcess){
 						for (String areaId : areasToProcess) {
-							invokeOnComponent(context, areaId, invokerCallback);
+							boolean areaProcessed = invokeOnComponent(context, areaId, invokerCallback);
+							if(!areaProcessed){
+								_log.warn("No component found to process for clientId "+ajaxSingleClientId);
+							}
 						}
 					}
 				}
