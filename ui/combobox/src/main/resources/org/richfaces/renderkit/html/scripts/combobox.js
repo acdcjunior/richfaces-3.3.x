@@ -321,8 +321,10 @@ Richfaces.ComboBox.prototype = {
 				}
 			} else {
 				if (!this.comboList.visible()) {
+					this.comboList.createDefaultList();
 					this.comboList.showWithDelay();
 				}
+				
 				var item = this.comboList.findItemBySubstr(this.field.value);
 				if (item) {
 					this.comboList.doActiveItem(item);
