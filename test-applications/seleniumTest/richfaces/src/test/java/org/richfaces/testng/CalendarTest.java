@@ -1789,10 +1789,10 @@ public class CalendarTest extends SeleniumTestBase {
         String bottomLeftPointTop = "($('" + inputDateId + "').cumulativeOffset().top + $('" + inputDateId + "').getHeight())";
 
         String topRightPointLeft = "($('" + popupButtonId + "').cumulativeOffset().left + $('" + popupButtonId + "').getWidth())";
-        String topRightPointTop =  "$('" + popupButtonId + "').cumulativeOffset().top";
+        String topRightPointTop =  "$('" + inputDateId + "').cumulativeOffset().top";
 
         String bottomRightPointLeft = topRightPointLeft;
-        String bottomRightPointTop =  "($('" + popupButtonId + "').cumulativeOffset().top + $('" + popupButtonId + "').getHeight())";
+        String bottomRightPointTop =  "($('" + inputDateId + "').cumulativeOffset().top + $('" + inputDateId + "').getHeight())";
 
         testJointPoint("top-left", topLeftPointLeft, topLeftPointTop);
         testJointPoint("top-right", topRightPointLeft, topRightPointTop);
