@@ -12,8 +12,12 @@
 			</run>
 		</groups>
 
-		<packages>
+		<classes>
+			<class name="org.richfaces.testng.TooltipTest" />
+		</classes>
+
+		<!-- packages>
 			<package name="org.richfaces.testng" />
-		</packages>
+		</packages -->
 	</test>
 </suite>
