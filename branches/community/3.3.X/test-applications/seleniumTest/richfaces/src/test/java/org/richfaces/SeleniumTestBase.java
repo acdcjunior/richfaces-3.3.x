@@ -1547,5 +1547,9 @@ public abstract class SeleniumTestBase implements RichSeleniumTest {
     	
     }
     
+    public void resizeWindowToScrenSize() {
+    	selenium.getEval("(window.top || window).moveTo(0, 0);");
+    	selenium.getEval("(window.top || window).resizeTo(screen.width, screen.height);");
+    }
     
 }

@@ -1780,6 +1780,9 @@ public class CalendarTest extends SeleniumTestBase {
     @Test
     public void testJointPointAndDirectionAttributes(Template template) {
         renderPage(JOINTPOINT_DIRECTION_TEST_URL, template, null);
+        
+        resizeWindowToScrenSize();
+        
         initIds(getParentId());
 
         String topLeftPointLeft = "$('" + inputDateId + "').cumulativeOffset().left";
