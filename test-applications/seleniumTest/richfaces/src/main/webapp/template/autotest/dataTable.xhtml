@@ -13,14 +13,14 @@
 					<h:outputText value="Data Table" />
 				</f:facet>
 			<h:panelGroup columns="1" rendered="#{templateBean.dataTableRowIndex == row}">
+				<ui:insert name="outOfFormComponent" />
+				<h:form id="autoTestForm">
+					<ui:insert name="component" />
+					<ui:include src="../../layout/autotest/autoTestHiddens.xhtml" />
+					<br/>
+					<h:message id="_auto_messageId" for="componentId"></h:message>
+				</h:form>
 				<ui:include src="../../layout/autotest/autoTestControls.xhtml" />
-					<h:form id="autoTestForm">
-						<ui:include src="../../layout/autotest/autoTestHiddens.xhtml" />
-						<ui:insert name="component" />
-						<br/>
-						<h:message id="_auto_messageId" for="componentId"></h:message>
-					</h:form>
-					<ui:insert name="outOfFormComponent" />
 			</h:panelGroup>
 			<h:outputText value="#{row}" rendered="#{templateBean.dataTableRowIndex != row}" />
 			</rich:column>
