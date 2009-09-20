@@ -32,6 +32,8 @@ import java.util.Map;
 import org.ajax4jsf.bean.Configurator;
 import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.template.Template;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.server.RemoteControlConfiguration;
 import org.openqa.selenium.server.SeleniumServer;
 import org.testng.Assert;
@@ -54,6 +56,8 @@ import com.thoughtworks.selenium.DefaultSelenium;
  */
 public abstract class SeleniumTestBase implements RichSeleniumTest {
 
+	private static final Log LOG = LogFactory.getLog(SeleniumTestBase.class);
+	
     /** Specifies the time to wait for page rendering */
     private static final Integer pageRenderTime = 10000;
 
@@ -1548,8 +1552,23 @@ public abstract class SeleniumTestBase implements RichSeleniumTest {
     }
     
     public void resizeWindowToScrenSize() {
+    	Integer screenWidth = Integer.parseInt(selenium.getEval("screen.width"));
+    	Integer screenHeight = Integer.parseInt(selenium.getEval("screen.height"));
+    	
+    	LOG.info(String.format("Screen size is %1$s x %2$s", 
+    		screenWidth, screenHeight));
+    	
     	selenium.getEval("(window.top || window).moveTo(0, 0);");
-    	selenium.getEval("(window.top || window).resizeTo(screen.width, screen.height);");
+    	
+    	if (screenWidth < 1280) {
+    		screenWidth = 1280;
+    	}
+    	
+    	if (screenHeight < 1024) {
+    		screenHeight = 1024;
+    	}
+    	
+    	selenium.getEval(String.format("(window.top || window).resizeTo(%1$s, %2$s);", 
+    		screenWidth, screenHeight));
     }
-    
 }
