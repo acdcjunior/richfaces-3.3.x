@@ -96,6 +96,9 @@ public class TooltipTest extends SeleniumTestBase {
     public void testCoreAjaxMode(Template template) {
         AutoTester autoTester = getAutoTester(this);
         autoTester.renderPage(template, RESET_METHOD);
+        
+        resizeWindowToScrenSize();
+        
         writeStatus("Component retrieves data from server; 'defaultContent' facet is handled; listeners fire");
         String componentId = autoTester.getClientId(AutoTester.COMPONENT_ID);
         String contentId = autoTester.getClientId(AutoTester.COMPONENT_ID + "content");
@@ -123,6 +126,9 @@ public class TooltipTest extends SeleniumTestBase {
     public void testCoreClientMode(Template template) {
         AutoTester autoTester = getAutoTester(this);
         autoTester.renderPage(template, INIT_CLIENT_TEST);
+
+        resizeWindowToScrenSize();
+        
         writeStatus("Check component is activated by defined event(onclick); its positioning and dimensions are ok");
 
         String componentId = autoTester.getClientId(AutoTester.COMPONENT_ID);
@@ -221,7 +227,7 @@ public class TooltipTest extends SeleniumTestBase {
 
     @Test
     public void testStylesAndClassesAndHtmlAttributes(Template template) {
-        AutoTester autoTester = getAutoTester(this);
+    	AutoTester autoTester = getAutoTester(this);
         autoTester.renderPage(template, RESET_METHOD);
         writeStatus("Check style and classes, standard HTML attributes are output to client");
 
