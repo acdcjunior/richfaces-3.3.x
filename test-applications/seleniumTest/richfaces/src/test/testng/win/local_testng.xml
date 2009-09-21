@@ -1,12 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="seleniumTest">
   <test name="FFFunctionalTests">
-    <parameter name="browser" value="*firefox"/>
+    <parameter name="browser" value="*firefox c:/Program Files/Mozilla Firefox3/firefox.exe"/>
      <parameter name="loadStyleStrategy" value="DEFAULT"/>
    <parameter name="loadScriptStrategy" value="DEFAULT"/>
    <parameter name="filterPrefix" value="/faces/NONE/"/>
+		<!--parameter name="templates" value="SIMPLE" /-->
+		<groups>
+			<run>
+				<exclude name="failures" />
+			</run>
+		</groups>
     <classes>
-    	<class name="org.richfaces.testng.MessageTest" />
+    	<class name="org.richfaces.testng.AjaxLogTest" >
+    		<!--methods><include name="testLogComponentWithPopupTrue"></include></methods-->
+    	</class>
     </classes>
   </test>
+  <!-- "D:/workspace/seleniumFirefoxProfile/" -->
 </suite>
