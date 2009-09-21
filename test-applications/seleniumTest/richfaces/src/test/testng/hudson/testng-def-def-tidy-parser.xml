@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="seleniumTestAANe">
+	<test name="default_default_tidy">
+		<parameter name="loadStyleStrategy" value="DEFAULT" />
+		<parameter name="loadScriptStrategy" value="DEFAULT" />
+		<parameter name="filterPrefix" value="/faces/TIDY/" />
+		<parameter name="browser" value="*firefox" />
+
+		<groups>
+			<run>
+				<exclude name="failures" />
+			</run>
+		</groups>
+
+		<packages>
+			<package name="org.richfaces.testng" />
+		</packages>
+	</test>
+</suite>
