@@ -110,7 +110,7 @@
 							<skip>true</skip>
 							<suiteXmlFiles>
 							<suiteXmlFile>
-									src/test/testng/hudson/testng-def-def-none-parser.xml
+									src/test/testng/hudson/testng.xml
 							</suiteXmlFile>
 							<!--  
 								<suiteXmlFile>
