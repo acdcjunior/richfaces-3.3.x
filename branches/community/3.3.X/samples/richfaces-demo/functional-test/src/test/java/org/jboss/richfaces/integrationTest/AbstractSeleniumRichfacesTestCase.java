@@ -108,6 +108,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      */
     @AfterClass
     public void finalizeContext() {
+        selenium.close();
         selenium.stop();
         selenium = null;
         contextPath = null;
