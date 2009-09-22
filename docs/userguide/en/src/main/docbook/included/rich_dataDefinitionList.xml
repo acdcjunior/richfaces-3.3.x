@@ -146,7 +146,7 @@
          </tgroup>
       </table>
       <table id="tab_dDL">
-		       <title>Classes names that define a list appearance</title>
+      	<title>Style classes (selectors) without skin parameters</title>
 		       <tgroup cols="2">
 		          <thead>
 		             <row>
@@ -156,23 +156,23 @@
 		          </thead>
 		          <tbody>
 		             <row>
-		                <entry>rich-deflist</entry>
+		                <entry>.rich-deflist</entry>
 		                <entry>Defines styles for an html &lt;dl&gt; element</entry>
 		             </row>
 		             <row>
-		                <entry>rich-definition</entry>
+		                <entry>.rich-definition</entry>
 		                <entry>Defines styles for an html &lt;dd&gt; element</entry>
 		             </row>
 		             <row>
-		                <entry>rich-definition-term</entry>
+		                <entry>.rich-definition-term</entry>
 		                <entry>Defines styles for an html &lt;dt&gt; element</entry>
 		             </row>
 		          </tbody>
 		       </tgroup>
 		   </table>
-							You can find all necessary information about style classes redefinition in 
+			<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>

@@ -160,7 +160,7 @@
          </tgroup>
       </table>
       <table id="dataLC">
-         <title>Classes names that define a list appearance</title>
+      	<title>Style classes (selectors) without skin parameters</title>
          <tgroup cols="2">
             <thead>
                <row>
@@ -170,19 +170,19 @@
             </thead>
             <tbody>
                <row>
-                  <entry>rich-datalist</entry>
+                  <entry>.rich-datalist</entry>
                   <entry>Defines styles for an html &lt;ul&gt; element</entry>
                </row>
                <row>
-                  <entry>rich-list-item</entry>
+                  <entry>.rich-list-item</entry>
                   <entry>Defines styles for an html &lt;li&gt; element</entry>
                </row>
             </tbody>
          </tgroup>
       </table>
-							You can find all necessary information about style classes redefinition in 
+		<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
