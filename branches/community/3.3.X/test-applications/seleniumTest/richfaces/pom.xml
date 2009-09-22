@@ -109,9 +109,7 @@
 							<!-- Skip the normal tests, we'll run them in the integration-test phase -->
 							<skip>true</skip>
 							<suiteXmlFiles>
-							<suiteXmlFile>
-									src/test/testng/hudson/testng.xml
-							</suiteXmlFile>
+							<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 							<!--  
 								<suiteXmlFile>
 									src/test/testng/hudson/testng-failures.xml
