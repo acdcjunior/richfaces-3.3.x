@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype>
+  <id>myproject</id>
+  <sources>
+    <source>src/main/java/Bean.java</source>
+  </sources>
+  <testSources>
+    <source>src/test/java/BeanTest.java</source>
+  </testSources>
+  <resources>
+    <resource>src/main/webapp/WEB-INF/web.xml</resource>
+    <resource>src/main/webapp/WEB-INF/faces-config.xml</resource>
+    <resource>src/main/webapp/META-INF/MANIFEST.MF</resource>
+    <resource>src/main/webapp/templates/template.xhtml</resource>
+    <resource>src/main/webapp/pages/static.xhtml</resource>
+    <resource>src/main/webapp/pages/polling.xhtml</resource>
+    <resource>src/main/webapp/pages/home.xhtml</resource>
+    <resource>src/main/webapp/index.jsp</resource>
+  </resources>
+</archetype>

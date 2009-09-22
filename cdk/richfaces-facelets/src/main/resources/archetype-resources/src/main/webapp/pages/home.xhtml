@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<head>
+<title></title>
+</head>
+<body>
+
+<ui:composition template="/templates/template.xhtml">
+
+	<ui:define name="panels">
+
+		<rich:tabPanel switchType="ajax">
+			<rich:tab label="Static">
+				<ui:include src="static.xhtml" />
+			</rich:tab>
+
+			<rich:tab label="Polling">
+				<ui:include src="polling.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>
