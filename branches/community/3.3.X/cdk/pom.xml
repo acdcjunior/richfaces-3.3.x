@@ -35,6 +35,7 @@
 		<module>maven-archetype-plug-n-skin</module>
 		<module>maven-resource-dependency-plugin</module>
 		<module>maven-archetype-theme</module>
+		<module>richfaces-facelets</module>
 	</modules>
 
 
