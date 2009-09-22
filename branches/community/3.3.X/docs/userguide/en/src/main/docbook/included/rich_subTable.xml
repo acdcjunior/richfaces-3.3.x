@@ -135,117 +135,142 @@
             </tbody>
          </tgroup>
       </table>
-      <table id="tab_sT">
-         <title>Classes names that define a component appearance</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-subtable</entry>
-                  <entry>Defines styles for all subtable</entry>
-               </row>
-               <row>
-                  <entry>rich-subtable-caption</entry>
-                  <entry>Defines styles for a "caption" facet element</entry>
-               </row>
-
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define header and footer elements</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-
-               <row>
-                  <entry>rich-subtable-header</entry>
-                  <entry>Defines styles for a subtable header row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-header-continue</entry>
-                  <entry>Defines styles for all subtable header lines after the first</entry>
-               </row>
-               <row>
-                  <entry>rich-subtable-subheader</entry>
-                  <entry>Defines styles for a column header of subtable</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-subfooter</entry>
-                  <entry>Defines styles for a column footer of subtable</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-footer</entry>
-                  <entry>Defines styles for a subtable footer row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-footer-continue</entry>
-                  <entry>Defines styles for all subtable footer lines after the first</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define rows and cells</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-subtable-headercell</entry>
-                  <entry>Defines styles for a subtable header cell</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-subheadercell</entry>
-                  <entry>Defines styles for a column header cell of subtable</entry>
-               </row>
-               <row>
-                  <entry>rich-subtable-cell</entry>
-                  <entry>Defines styles for a subtable cell</entry>
-               </row>
-               <row>
-                  <entry>rich-subtable-row</entry>
-                  <entry>Defines styles for a subtable row</entry>
-               </row>
-               <row>
-                  <entry>rich-subtable-firstrow</entry>
-                  <entry>Defines styles for a subtable start row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-subfootercell</entry>
-                  <entry>Defines styles for a column footer cell of subtable</entry>
-               </row>
-
-               <row>
-                  <entry>rich-subtable-footercell</entry>
-                  <entry>Defines styles for a subtable footer cell</entry>
-               </row>
-
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+   	
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry morerows="2">.rich-subtable-cell</entry>
+   					<entry morerows="2">Defines styles for a subtable cell</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-subtable-headercell</entry>
+   					<entry morerows="3">Defines styles for a subtable header cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-header</entry>
+   					<entry>Defines styles for a subtable header row</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-footer</entry>
+   					<entry>Defines styles for a subtable footer row</entry>
+   					<entry>tableSubfooterBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-footercell</entry>
+   					<entry>Defines styles for a subtable footer cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table id="tab_sT">
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-subtable</entry>
+   					<entry>Defines styles for all subtable</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-caption</entry>
+   					<entry>Defines styles for a "caption" facet element</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-header-continue</entry>
+   					<entry>Defines styles for all subtable header lines after the first</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-subtable-subheader</entry>
+   					<entry>Defines styles for a column header of subtable</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-subfooter</entry>
+   					<entry>Defines styles for a column footer of subtable</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-footer-continue</entry>
+   					<entry>Defines styles for all subtable footer lines after the first</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-subheadercell</entry>
+   					<entry>Defines styles for a column header cell of subtable</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-row</entry>
+   					<entry>Defines styles for a subtable row</entry>
+   				</row>
+   				<row>
+   					<entry>.rich-subtable-firstrow</entry>
+   					<entry>Defines styles for a subtable start row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-subtable-subfootercell</entry>
+   					<entry>Defines styles for a column footer cell of subtable</entry>
+   				</row>
+   				
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+	   <para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
 </section>

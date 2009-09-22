@@ -199,115 +199,209 @@
             </tbody>
          </tgroup>
       </table>
-      <table id="dTC">
-         <title>Classes names that define a whole component appearance</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-table</entry>
-                  <entry>Defines styles for all table</entry>
-               </row>
-               <row>
-                  <entry>rich-table-caption</entry>
-                  <entry>Defines styles for a "caption" facet element</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define header and footer elements</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-
-               <row>
-                  <entry>rich-table-header</entry>
-                  <entry>Defines styles for a table header row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-header-continue</entry>
-                  <entry>Defines styles for all header lines after the first</entry>
-               </row>
-               <row>
-                  <entry>rich-table-subheader</entry>
-                  <entry>Defines styles for a column header</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-footer</entry>
-                  <entry>Defines styles for a footer row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-footer-continue</entry>
-                  <entry>Defines styles for all footer lines after the first</entry>
-               </row>
-               <row>
-                  <entry>rich-table-subfooter</entry>
-                  <entry>Defines styles for a column footer</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define rows and cells of a table</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-table-headercell</entry>
-                  <entry>Defines styles for a header cell</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-subheadercell</entry>
-                  <entry>Defines styles for a column header cell</entry>
-               </row>
-               <row>
-                  <entry>rich-table-cell</entry>
-                  <entry>Defines styles for a table cell</entry>
-               </row>
-               <row>
-                  <entry>rich-table-row</entry>
-                  <entry>Defines styles for a table row</entry>
-               </row>
-               <row>
-                  <entry>rich-table-firstrow</entry>
-                  <entry>Defines styles for a table's first  row</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-footercell</entry>
-                  <entry>Defines styles for a footer cell</entry>
-               </row>
-
-               <row>
-                  <entry>rich-table-subfootercell</entry>
-                  <entry>Defines styles for a column footer cell</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+		
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-table</entry>
+   					<entry>Defines styles for a table</entry>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   			
+   				<row>
+   					<entry morerows="2">.rich-table-cell</entry>
+   					<entry morerows="2">Defines styles for a table cell</entry>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-header</entry>
+   					<entry>Defines styles for a table header row</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-header-continue</entry>
+   					<entry>Defines styles for all header lines after the first</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-table-headercell</entry>
+   					<entry morerows="4">Defines styles for a header cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-subheader</entry>
+   					<entry>Defines styles for a column header</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-thead</entry>
+   					<entry></entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-bottom</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-table-subheadercell</entry>
+   					<entry morerows="3">Defines styles for a column header cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-footer</entry>
+   					<entry>Defines styles for a footer row</entry>
+   					<entry>tableFooterBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-footer-continue</entry>
+   					<entry>Defines styles for all footer lines after the first</entry>
+   					<entry>tableFooterBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.rich-table-footercell</entry>
+   					<entry morerows="4">Defines styles for a footer cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-subfooter</entry>
+   					<entry>Defines styles for a column footer</entry>
+   					<entry>tableSubfooterBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.rich-table-subfootercell</entry>
+   					<entry morerows="3">Defines styles for a column footer cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table  id="dTC">
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-table-caption</entry>
+   					<entry>Defines styles for a "caption" facet element</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-row</entry>
+   					<entry>Defines styles for a table row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-table-firstrow</entry>
+   					<entry>Defines styles for a table's first  row</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+		<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>

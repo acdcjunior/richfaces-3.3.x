@@ -204,9 +204,12 @@
             </tbody>
          </tgroup>
       </table>
-							You can find all necessary information about style classes redefinition in 
+   	<para>Custom style classes as well as skin parameters for  <emphasis role="bold">
+   		<property>&lt;rich:dataGrid&gt;</property></emphasis> are the same as for the  <link linkend="dataTableRefData"><emphasis role="bold">
+   			<property>&lt;rich:dataTable&gt;</property></emphasis> component.</link></para>
+	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
