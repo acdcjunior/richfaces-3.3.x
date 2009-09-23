@@ -7,7 +7,13 @@
   <version>3.3.2-SNAPSHOT</version>
   <name>maven-archetype-rf-facelets</name>
   <packaging>maven-archetype</packaging>
-  <build>
+  <parent>
+    <artifactId>cdk</artifactId>
+    <groupId>org.richfaces</groupId>
+    <version>3.3.2-SNAPSHOT</version>
+  </parent>
+
+ <build>
     <extensions>
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
