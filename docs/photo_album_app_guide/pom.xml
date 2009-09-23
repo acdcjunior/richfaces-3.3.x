@@ -85,15 +85,6 @@
 		</profile>
 	</profiles>
 	
-	  <distributionManagement>
-    <repository>
-      <id>ftpserver</id>
-      <name>some ftpserver name</name>
-      <url>ftp://norskleksen.com/wwww/norskleksen.com/docs</url>
-	  
-    </repository>
-  </distributionManagement>
-
 	<build>
 		<pluginManagement>
 			<plugins>
