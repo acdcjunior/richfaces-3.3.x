@@ -56,7 +56,7 @@
       <title>Details of Usage</title>
       <para>The <emphasis role="bold">
             <property>dataFilterSlider</property>
-         </emphasis> component is bound to some UIData component using a <emphasis>
+         </emphasis> component is bound to some UIData component using the <emphasis>
             <property>"for"</property>
          </emphasis> attribute and filters data in a table. </para>
       <para>
@@ -136,7 +136,7 @@
             <tbody>
                <row>
                   <entry>component-type</entry>
-                  <entry>org.richfaces.dataFilterSlider</entry>
+                  <entry>org.richfaces.DataFilterSlider</entry>
                </row>
                <row>
                   <entry>component-class</entry>
@@ -157,6 +157,82 @@
             </tbody>
          </tgroup>
       </table>
+   	
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.range, .rich-dataFilterSlider-range</entry>
+   					<entry>Define styles for the component range</entry>
+   					<entry>subBorderColor, panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="5">.slider-input-field, .rich-dataFilterSlider-input-field</entry>
+   					<entry morerows="5">Define styles for the component input field</entry>
+   					<entry>controlBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>controlTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>subBorderColor</entry>
+   					<entry>border-bottom-color, border-right-color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.trailer, .rich-dataFilterSlider-trailer</entry>
+   					<entry>Define styles for the component trailer</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.track, .rich-dataFilterSlider-track</entry>
+   					<entry>Define styles for the component track</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<para>You can find all necessary information about style classes redefinition in 
+   		<link linkend="customstyles">Definition of Custom Style Classes</link> 
+   		section.</para>
    </section>
    <section>
       <title>Relevant Resources Links</title>

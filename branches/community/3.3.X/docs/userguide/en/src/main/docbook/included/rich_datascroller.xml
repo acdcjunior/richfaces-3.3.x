@@ -60,7 +60,7 @@
                                         <property>&lt;rich:dataTable&gt;</property>
                               </emphasis> current model.
                               </para>
-                    <para>The component should be placed into footer of the parent table or be bound
+                    <para>The component should be placed into the footer of the parent table or be bound
                               to it with the <emphasis>
                                         <property>"for"</property>
                               </emphasis> attribute. Note, that <emphasis>
@@ -108,16 +108,16 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML"> ...
-&lt;rich:datascroller for="table" maxPages="10"&gt;
-          &lt;f:facet name="first"&gt;
-                    &lt;h:outputText value="First"/&gt;
-          &lt;/f:facet&gt;
-          &lt;f:facet name="last"&gt;
-                    &lt;h:outputText value="Last"/&gt;
-          &lt;/f:facet&gt;
-&lt;/rich:datascroller&gt;
-...</programlisting>
+                    <programlisting role="XML"><![CDATA[ ...
+<rich:datascroller for="table" maxPages="10">
+          <f:facet name="first">
+                    <h:outputText value="First"/>
+          </f:facet>
+          <f:facet name="last">
+                    <h:outputText value="Last"/>
+          </f:facet>
+</rich:datascroller>
+...]]></programlisting>
                     <figure>
                               <title>
             <emphasis role="bold">
@@ -147,46 +147,46 @@
                     <para> The <emphasis>
                                         <property>"page"</property>
                               </emphasis> is a value-binding attribute used to define and save
-                              current page number. The example is placed below. </para>
+                             the current page number. The example is placed below. </para>
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;h:form id="myForm"&gt;
-	&lt;rich:dataTable id="carList" rows="7" value="#{dataTableScrollerBean.allCars}" var="category"&gt;
-		&lt;f:facet name="header"&gt;
-			&lt;rich:columnGroup&gt;
-				&lt;h:column&gt;
-					&lt;h:outputText value="Make" /&gt;
-				&lt;/h:column&gt;
-				&lt;h:column&gt;
-					&lt;h:outputText value="Model" /&gt;
-				&lt;/h:column&gt;
-				&lt;h:column&gt;
-					&lt;h:outputText value="Price" /&gt;
-				&lt;/h:column&gt;
-			&lt;/rich:columnGroup&gt;
-		&lt;/f:facet&gt;
-		&lt;h:column&gt;
-			&lt;h:outputText value="#{category.make}" /&gt;
-		&lt;/h:column&gt;
-		&lt;h:column&gt;
-			&lt;h:outputText value="#{category.model}" /&gt;
-		&lt;/h:column&gt;
-		&lt;h:column&gt;
-			&lt;h:outputText value="#{category.price}" /&gt;
-		&lt;/h:column&gt;
-	&lt;/rich:dataTable&gt;
-	&lt;rich:datascroller id="sc2" for="carList" reRender="sc1" maxPages="7" page="#{dataTableScrollerBean.scrollerPage}" /&gt;
-	&lt;h:panelGrid&gt;
-		&lt;h:panelGroup&gt;
-			&lt;h:outputText value="Set current page number:" /&gt;
-			&lt;h:inputText value="#{dataTableScrollerBean.scrollerPage}" id="sc1" size="1"/&gt;
-			&lt;h:commandButton value="Set" /&gt;
-		&lt;/h:panelGroup&gt;
-	&lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-...</programlisting>
+                    <programlisting role="XML"><![CDATA[...
+<h:form id="myForm">
+	<rich:dataTable id="carList" rows="7" value="#{dataTableScrollerBean.allCars}" var="category">
+		<f:facet name="header">
+			<rich:columnGroup>
+				<h:column>
+					<h:outputText value="Make" />
+				</h:column>
+				<h:column>
+					<h:outputText value="Model" />
+				</h:column>
+				<h:column>
+					<h:outputText value="Price" />
+				</h:column>
+			</rich:columnGroup>
+		</f:facet>
+		<h:column>
+			<h:outputText value="#{category.make}" />
+		</h:column>
+		<h:column>
+			<h:outputText value="#{category.model}" />
+		</h:column>
+		<h:column>
+			<h:outputText value="#{category.price}" />
+		</h:column>
+	</rich:dataTable>
+	<rich:datascroller id="sc2" for="carList" reRender="sc1" maxPages="7" page="#{dataTableScrollerBean.scrollerPage}" />
+	<h:panelGrid>
+		<h:panelGroup>
+			<h:outputText value="Set current page number:" />
+			<h:inputText value="#{dataTableScrollerBean.scrollerPage}" id="sc1" size="1"/>
+			<h:commandButton value="Set" />
+		</h:panelGroup>
+	</h:panelGrid>
+</h:form>
+...]]></programlisting>
 
                     <para> In the example above you can enter the page number you want and set it by
                               clicking on the <emphasis role="bold">
@@ -232,32 +232,31 @@
                     <para>
                               <emphasis role="bold">Example:</emphasis>
                     </para>
-                    <programlisting role="XML">...
-&lt;h:form&gt;
-	&lt;rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5"&gt;
-		&lt;rich:column&gt;
-			&lt;h:outputText value="#{cap.name}" /&gt;
-		&lt;/rich:column&gt;
-		&lt;f:facet name="footer"&gt;
-			&lt;rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"&gt;
-				&lt;f:facet name="pages"&gt;
-					&lt;h:outputText value="#{pageIndex} / #{pages}" /&gt;
-				&lt;/f:facet&gt;
-			&lt;/rich:datascroller&gt;
-		&lt;/f:facet&gt;
-	&lt;/rich:dataTable&gt;
-&lt;/h:form&gt;
-...
-</programlisting>
+                    <programlisting role="XML"><![CDATA[...
+<h:form>
+	<rich:dataTable value="#{capitalsBean.capitals}" var="cap" rows="5">
+		<rich:column>
+			<h:outputText value="#{cap.name}" />
+		</rich:column>
+		<f:facet name="footer">
+			<rich:datascroller pageIndexVar="pageIndex" pagesVar="pages">
+				<f:facet name="pages">
+					<h:outputText value="#{pageIndex} / #{pages}" />
+				</f:facet>
+			</rich:datascroller>
+		</f:facet>
+	</rich:dataTable>
+</h:form>
+...]]></programlisting>
                     <para> It's possible to insert optional separators between controls.
                               For this purpose use a <emphasis>
                                         <property>"controlsSeparator"</property>
                               </emphasis> facet. An example is placed below. </para>
-                    <programlisting role="XML"> ...
-&lt;f:facet name="controlsSeparator"&gt;
-          &lt;h:graphicImage value="/image/sep.png"/&gt;
-&lt;/f:facet&gt;
-...</programlisting>
+                    <programlisting role="XML"><![CDATA[ ...
+<f:facet name="controlsSeparator">
+          <h:graphicImage value="/image/sep.png"/>
+</f:facet>
+...]]></programlisting>
                     <para> Starting from 3.2.1 of RichFaces multiple <emphasis role="bold">
                                         <property>&lt;rich:datascroller&gt;</property>
                               </emphasis> instances behavior and page bindings are corrected.
@@ -452,74 +451,140 @@
                                         </tbody>
                               </tgroup>
                     </table>
-      <table id="tab_cn2">
-                              <title>Classes names that define a component appearance</title>
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-datascr</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  &lt;div&gt; element of
-                                                  a datascroller</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-dtascroller-table</entry>
-                                                  <entry>Defines styles for a wrapper
-                                                  	&lt;table&gt; element of a
-                                                  datascroller</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-datascr-button</entry>
-                                                  <entry>Defines styles for a
-                                                  button</entry>
-                                                  </row>
-
-                                                  <row>
-                                                  <entry>rich-datascr-ctrls-separator</entry>
-                                                  <entry>Defines styles for a separator
-                                                  between buttons</entry>
-                                                  </row>
-                                        </tbody>
-
-                              </tgroup>
-                    </table>
-      <table>
-                              <title>Classes names that define a buttons appearance</title>
-                              <tgroup cols="2">
-                                        <thead>
-                                                  <row>
-                                                  <entry>Class name</entry>
-                                                  <entry>Description</entry>
-                                                  </row>
-                                        </thead>
-                                        <tbody>
-                                                  <row>
-                                                  <entry>rich-datascr-act</entry>
-                                                  <entry>Defines styles for an active
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-datascr-inact</entry>
-                                                  <entry>Defines styles for an inactive
-                                                  button</entry>
-                                                  </row>
-                                                  <row>
-                                                  <entry>rich-datascr-button-dsbld</entry>
-                                                  <entry>Defines styles for a disabled
-                                                  button</entry>
-                                                  </row>
-                                        </tbody>
-                              </tgroup>
-                    </table>
-							You can find all necessary information about style classes redefinition in 
+ 
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry  morerows="4">.rich-datascr-button</entry>
+   					<entry  morerows="4">Defines styles for a button</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry  morerows="4">.rich-datascr-ctrls-separator</entry>
+   					<entry  morerows="4">Defines styles for a separator between buttons</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-datascr-button-dsbld</entry>
+   					<entry>Defines styles for a disabled button</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry  morerows="2">.rich-datascr-act</entry>
+   					<entry  morerows="2">Defines styles for an active button</entry>
+   					<entry>generalTextColor</entry>
+   					<entry>border-top-color, color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry  morerows="2">.rich-datascr-inact</entry>
+   					<entry  morerows="2">Defines styles for an inactive button</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>border-top-color, color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				
+   				<row>
+   					<entry  morerows="1">.rich-dtascroller-table</entry>
+   					<entry  morerows="1">Defines styles for a wrapper &lt;table&gt; element of a datascroller</entry>
+   					<entry>panelBorderColor</entry>
+   					<entry>border-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-datascr</entry>
+   					<entry>Defines styles for a wrapper
+   						&lt;div&gt; element of
+   						a datascroller</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
                     <title>Relevant Resources Links</title>
