@@ -139,7 +139,7 @@ public class ComponentDescriptor {
         if (pos > 0) {
             return tldDocLocation.substring(pos);
         }
-        return tldDocLocation;
+        return "tlddoc/" + tldDocLocation;
     }
 
     public String getTagUsageLocation() {
