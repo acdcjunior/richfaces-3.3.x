@@ -52,7 +52,7 @@ public abstract class UITabPanel extends UISwitchablePanel {
 
     protected Iterator getSwitchedFacetsAndChildren() {
     	
-        final Object renderedValue = this.restoredRenderedValue;
+        final Object renderedValue = null != this.restoredRenderedValue?this.restoredRenderedValue:getRenderedValue();
 
     	return new IteratorChain(new FilterIterator(getRenderedTabs(), new Predicate() {
 
@@ -167,8 +167,8 @@ public abstract class UITabPanel extends UISwitchablePanel {
     	Object[] states = (Object[]) state;
     	super.restoreState(context, states[0]);
     	this.renderedValue = states[1];
-    	//TODO remove that
-    	this.restoredRenderedValue = getRenderedValue();
+    	// https://jira.jboss.org/jira/browse/RF-7353 - getRenderedValue() can call wrong bean instance.
+    	this.restoredRenderedValue = this.renderedValue;//getRenderedValue();
     }
     
     private static final Predicate RENDERED_TAB_PREDICATE = new Predicate() {
