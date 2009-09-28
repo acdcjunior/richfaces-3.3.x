@@ -406,7 +406,7 @@
                   Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/panelMenu.jsf?c=panelMenu">panelMenu page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
             </para>
             <para>
-                  If you have any questions or ideas regarding the <emphasis role="bold"><property>&lt;rich:panel&gt;</property></emphasis> tell about them at the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4064191">RichFaces Users Forum</ulink>.
+                  If you have any questions or ideas regarding the <emphasis role="bold"><property>&lt;rich:panelMenu&gt;</property></emphasis> tell about them at the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4064191">RichFaces Users Forum</ulink>.
             </para> 
       </section>
 </section>
