@@ -6,35 +6,6 @@
 
 <f:verbatim>
 
-.rich-tabpanel{
-			width:100%;
-}
-
-.rich-tabpanel-content {
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-left-width: 1px;
-	border-left-style: solid;
-	border-right-width: 1px;
-	border-right-style: solid;
-	vertical-align: top;
-}
-
-.rich-tabhdr-side-cell {
-	border-top-width: 1px;
-	border-top-style: solid;
-}
-
-.rich-tab-header{
-	padding : 2px 10px 2px 10px;
-	text-align: center;
-}
-
-.rich-tabhdr-side-border{
-	background-repeat: no-repeat;
-	background-position: top;
-}
-
 .rich-tab-active{
 	border-width: 1px;
 	border-style: solid;
@@ -53,32 +24,43 @@
 	cursor : default;	
 }
 
-.rich-tabhdr-cell-disabled, .rich-tabhdr-cell-inactive {
-	padding-top: 2px; 
-	
-	
+.rich-tab-header{
+	padding : 2px 10px 2px 10px;
+	text-align: center;
 }
 
-</f:verbatim>
-	<u:selector name=".rich-tab-header">
-		<u:style name="color" skin="generalTextColor"/>
-		<u:style name="font-size" skin="generalSizeFont"/>
-		<u:style name="font-family" skin="generalFamilyFont"/>
-	</u:selector>
+.rich-tabhdr-cell-disabled, .rich-tabhdr-cell-inactive {
+	padding-top: 2px; 
+}
 
-	<u:selector name=".rich-tab-active">
-		<u:style name="color" skin="generalTextColor"/>
-		<u:style name="border-color" skin="subBorderColor"/>
-	</u:selector>
-	<u:selector name=".rich-tab-disabled">
-		<u:style name="border-color" skin="subBorderColor"/>
-		<u:style name="color" skin="tabDisabledTextColor"/>
-		<u:style name="background-color" skin="tabBackgroundColor" />
-		<u:style name="background-image">
-			<f:resource f:key="org.richfaces.renderkit.images.TabGradientB" />
-		</u:style>
-	</u:selector>
-<f:verbatim>
+.rich-tabhdr-side-cell {
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+
+.rich-tabhdr-side-border{
+	background-repeat: no-repeat;
+	background-position: top;
+}
+
+.rich-tabpanel{
+			width:100%;
+}
+
+.rich-tabpanel-content {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-right-width: 1px;
+	border-right-style: solid;
+	vertical-align: top;
+}
+
+.rich-tabpanel-content-position {
+	height:100%;
+	position: relative;
+}
 
 .rich-tbpnl-tb-sel {
 	border-width: 1px;
@@ -88,13 +70,31 @@
 	background-position: top;
 	cursor : default;	
 }
-	
-.rich-tabpanel-content-position {
-	height:100%;
-	position: relative;
-}	
 </f:verbatim>
 
+	
+	<u:selector name=".rich-tab-header">
+		<u:style name="color" 		skin="generalTextColor"/>
+		<u:style name="font-size" 	skin="generalSizeFont"/>
+		<u:style name="font-family" skin="generalFamilyFont"/>
+	</u:selector>
+
+	<u:selector name=".rich-tab-active">
+		<u:style name="color" 		 skin="generalTextColor"/>
+		<u:style name="border-color" skin="subBorderColor"/>
+	</u:selector>
+	
+	<u:selector name=".rich-tab-disabled">
+		<u:style name="border-color" 	 skin="subBorderColor"/>
+		<u:style name="color" 			 skin="tabDisabledTextColor"/>
+		<u:style name="background-color" skin="tabBackgroundColor" />
+		<u:style name="background-image">
+			<f:resource f:key="org.richfaces.renderkit.images.TabGradientB" />
+		</u:style>
+	</u:selector>
+    
+	
+	
 	<u:selector name=".dr-tbpnl-tb-sel">
 		<u:style name="border-color" skin="selectControlColor"/>
 		<u:style name="background-image">
@@ -118,27 +118,23 @@
 
 	<u:selector name=".rich-tab-inactive">
 		<u:style name="background-color" skin="tabBackgroundColor" />
+		<u:style name="border-color" 	 skin="subBorderColor"/>
 		<u:style name="background-image">
 			<f:resource f:key="org.richfaces.renderkit.images.TabGradientB" />
 		</u:style>
-		<u:style name="border-color" skin="subBorderColor"/>
-		
 		<u:style name="border-width" value="1px"/>
 		<u:style name="border-style" value="solid"/>
 		<u:style name="background-repeat" value="repeat-x"/>
 		<u:style name="background-position" value="top"/>
 		<u:style name="border-bottom-width" value="0px"/>
 		<u:style name="cursor" value="default"/>
-		
 	</u:selector>
-
 
 	<u:selector name=".rich-tab-bottom-line">
 		<u:style name="border-bottom-color" skin="panelBorderColor"/>
 		<u:style name="border-bottom-style" value="solid"/>
 		<u:style name="border-bottom-width" value="1px"/>
 	</u:selector>
-
 		
 	<u:selector name=".rich-tab-active">
 		<u:style name="background-image">
@@ -152,4 +148,5 @@
 			<f:resource f:key="org.richfaces.renderkit.images.TabStripeImage"/>
 		</u:style>
 	</u:selector>	
+
 </f:template>
