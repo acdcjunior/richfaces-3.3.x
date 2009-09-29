@@ -1,16 +1,8 @@
 <section role="NotInToc" id="rich_tabPanel">
-   <title>
-				&lt;
-				rich:tabPanel
-				&gt;
-				<emphasis role="since">
-         <superscript> available since <emphasis role="version">3.0.0</emphasis>
-         </superscript>
-      </emphasis>
-   </title>
+      <title>&lt;rich:tabPanel&gt;<emphasis role="since"><superscript> available since <emphasis role="version">3.0.0</emphasis></superscript></emphasis></title>
    <section>
       <title>Description</title>
-      <para>A <property>tab panel</property> displaying tabs for grouping content of the panel.</para>
+      <para>The component defines a tab panel displaying tabs for grouping content of the panel.</para>
       <figure>
          <title>
             <emphasis role="bold">
@@ -320,16 +312,17 @@
                                                   </row>
                                         </tbody>
                               </tgroup>
-                    </table>
-							You can find all necessary information about style classes redefinition in 
-						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
-						</section>
-   <section>
-                    <title>Relevant Resources Links</title>
-                    <para>
-                              <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/tabPanel.jsf?c=tabPanel">On the component LiveDemo page</ulink> you can see the example of <emphasis role="bold">
-                                        <property>&lt;rich:tabPanel&gt;</property>
-                              </emphasis> usage and sources for the given example. </para>
-          </section>
+      </table>
+         <para>You can find all necessary information about style classes redefinition in <link linkend="customstyles">Definition of Custom Style Classes</link> section.</para>
+   </section>
+      
+      <section>
+            <title>Relevant Resources Links</title>
+            <para>
+                  Visit <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/tabPanel.jsf;">TabPanel page</ulink> at RichFaces LiveDemo for examples of component usage and their sources.
+            </para>
+            <para>
+                  If you have any questions or ideas regarding the <emphasis role="bold"><property>&lt;rich:tab&gt;</property></emphasis> tell about them at the <ulink url="http://www.jboss.com/index.html?module=bb&amp;op=viewtopic&amp;p=4064191">RichFaces Users Forum</ulink>.
+            </para> 
+      </section>
 </section>
