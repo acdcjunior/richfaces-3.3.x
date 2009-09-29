@@ -40,6 +40,9 @@ Richfaces.Slider.prototype = {
 	        this.tipArrowDec = $(tipArrowDecId) || document.getElementsByName(tipArrowDecId)[0];
 		}
 		this.options = defaultOptions;
+		//QUICK FIX for RF-7930 // need to be reworked
+		this.options.minValue = parseFloat(this.options.minValue);
+		this.options.maxValue = parseFloat(this.options.maxValue);
 		
 		this.orientation = this.options.orientation;
 		
@@ -64,11 +67,6 @@ Richfaces.Slider.prototype = {
 		this.graggedImageOn = false;
 		this.value	 = 0;
 		this.digCount = 0;
-		
-		//QUICK FIX for RF-7930 // need to be reworked
-		this.options.minValue = this.roundFloat(this.options.minValue);
-		this.options.maxValue = this.roundFloat(this.options.maxValue);
-		
 		this.delay = this.options.delay;
 		if("" == this.input.value){
 			  this.input.value = this.options.minValue;
