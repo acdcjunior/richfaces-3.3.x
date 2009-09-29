@@ -122,31 +122,31 @@
       <para>Information about sorting and filtering can be found in <link linkend="sort">RichFaces Developer Guide section on sorting</link>.
                     </para>
       <para>
-                          For external filtering 
+                          For external filtering the 
                           <emphasis role="bold">
             <property moreinfo="none">&lt;rich:extendedDataTable&gt;</property>
          </emphasis> 
-                          component supports <emphasis>
+                          component supports the <emphasis>
             <property moreinfo="none">"filter"</property>
          </emphasis> facet
                           for <emphasis role="bold">
             <property moreinfo="none">&lt;rich:column&gt;</property>
-         </emphasis> component.
+         </emphasis>.
                           In this facet you can define your own controls for filtering which will be positioned like built-in filter controls.
-                          Rest of the filter scenario is the same as described <link linkend="filter">RichFaces Developer Guide section on filtering</link>.
+                          Rest of the filter scenario is the same as described in the <link linkend="filter">RichFaces Developer Guide section on filtering</link>.
                     </para>
-      <para> In the example <emphasis>
+      <para> In the example the <emphasis>
                                         <property moreinfo="none">"selection"</property>
-                              </emphasis> attribute contains object with selected rows. </para>
+                              </emphasis> attribute contains an object with selected rows.</para>
       <note>
          <title>Note:</title>
-         <para> Attribute<emphasis>
-                                                  <property moreinfo="none">"height"</property>
-                                        </emphasis>is mandatory. The default value is <emphasis>
+      	<para> The <emphasis>
+      		<property moreinfo="none">"height"</property>
+      	</emphasis> attribute is mandatory. The default value is <emphasis>
                                                   <property moreinfo="none">"500px"</property>
                                         </emphasis>. </para>
       </note>
-      <para> Menu on the right side of the column header is used to perform action:
+      <para> Menu on the right side of the column header is used to perform actions like
                               sorting, grouping, hiding columns. </para>
       <para>This is an example:</para>
       <figure float="0">
@@ -195,9 +195,9 @@
             </imageobject>
          </mediaobject>
       </figure>
-      <para> In the component <emphasis role="bold">
+      <para>The <emphasis role="bold">
                                         <property moreinfo="none">&lt;rich:extendedDataTable&gt;</property>
-                              </emphasis> columns can hidden: </para>
+      </emphasis>  component  columns can be hidden: </para>
       <figure float="0">
          <title>
             <emphasis role="bold">
@@ -232,13 +232,13 @@
   </imageobject>
   </mediaobject>
   </figure>
-  --><para>
+  --><para>The 
          <emphasis>
                                         <property moreinfo="none">"tableState"</property>
                               </emphasis> attribute can be used to bind state of the table (column
                               width, column position, visible, sequence, grouping...) to a
                               backing-bean string property, for a later used. This state can be for
-                              example saved to a database, and it is different form standard JSF
+                              example saved to a database, and it is different from standard JSF
                               state saving mechanisms.</para>
       <para>
                               <emphasis role="bold">Example:</emphasis>
@@ -313,133 +313,314 @@
             </tbody>
          </tgroup>
       </table>
-      <table id="ExtdTC">
-         <title>Classes names that define a whole component appearance</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-extdt</entry>
-                  <entry>Defines styles for all
-                                                  table</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-caption</entry>
-                  <entry>Defines styles for a
-                                                  "caption"
-                                                  facet element</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define header and footer elements</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-extdt-header</entry>
-                  <entry>Defines styles for a table header
-                                                  row</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-header-continue</entry>
-                  <entry>Defines styles for all header
-                                                  lines after the first</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-subheader</entry>
-                  <entry>Defines styles for a column
-                                                  header</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-footer</entry>
-                  <entry>Defines styles for a footer
-                                                  row</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-footer-continue</entry>
-                  <entry>Defines styles for all footer
-                                                  lines after the first</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-subfooter</entry>
-                  <entry>Defines styles for a column
-                                                  footer</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-      <table>
-         <title>Classes names that define rows and cells of a table</title>
-         <tgroup cols="2">
-            <thead>
-               <row>
-                  <entry>Class name</entry>
-                  <entry>Description</entry>
-               </row>
-            </thead>
-            <tbody>
-               <row>
-                  <entry>rich-extdt-headercell</entry>
-                  <entry>Defines styles for a header
-                                                  cell</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-subheadercell</entry>
-                  <entry>Defines styles for a column
-                                                  header cell</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-cell</entry>
-                  <entry>Defines styles for a table
-                                                  cell</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-row</entry>
-                  <entry>Defines styles for a table
-                                                  row</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-firstrow</entry>
-                  <entry>Defines styles for a table start
-                                                  row</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-footercell</entry>
-                  <entry>Defines styles for a footer
-                                                  cell</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-subfootercell</entry>
-                  <entry>Defines styles for a column
-                                                  footer cell</entry>
-               </row>
-               <row>
-                  <entry>rich-extdt-group-cell</entry>
-                  <entry>Defines styles for a grouping row cell</entry>
-               </row>
-            </tbody>
-         </tgroup>
-      </table>
-							You can find all necessary information about style classes redefinition in 
+   	
+   	<table>
+   		<title>Style classes (selectors) with the corresponding skin parameters</title>
+   		<tgroup cols="4">
+   			<thead>
+   				<row>
+   					<entry>Class (selector) name</entry>
+   					<entry>Description</entry>
+   					<entry>Skin Parameters</entry>
+   					<entry>CSS properties mapped</entry>
+   					
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.extdt-empty-cell</entry>
+   					<entry>Defines styles for empty cells of the component</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-bottom</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-table-layout</entry>
+   					<entry>Defines styles for the table layout</entry>
+   					<entry>tableBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.extdt-cell</entry>
+   					<entry morerows="3">Defines styles for the table cells</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-header</entry>
+   					<entry>Defines styles for the header</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-header-continue</entry>
+   					<entry>Defines styles for all header lines after the first</entry>
+   					<entry>headerBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.extdt-headercell</entry>
+   					<entry morerows="4">Defines styles for the header cells</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>headerTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-subheader</entry>
+   					<entry>Defines styles for the subheader</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="1">.extdt-table-filterrow</entry>
+   					<entry morerows="1">Defines styles for the filter row</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				<row>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-top</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.extdt-subheadercell</entry>
+   					<entry morerows="3">Defines styles for the subheader cells</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="5">.extdt-caption</entry>
+   					<entry morerows="5">Defines styles for the table caption</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				<row>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="4">.extdt-footercell</entry>
+   					<entry morerows="4">Defines styles for the footer cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>headerWeightFont</entry>
+   					<entry>font-weight</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry morerows="3">.extdt-subfootercell</entry>
+   					<entry morerows="3">Defines styles for the subfooter cell</entry>
+   					<entry>tableBorderWidth, tableBorderColor</entry>
+   					<entry>border-right, border-bottom</entry>
+   				</row>
+   				<row>
+   					<entry>generalSizeFont</entry>
+   					<entry>font-size</entry>
+   				</row>
+   				<row>
+   					<entry>generalTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   				<row>
+   					<entry>generalFamilyFont</entry>
+   					<entry>font-family</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-row-selected</entry>
+   					<entry>Defines styles for the selected row</entry>
+   					<entry>additionalBackgroundColor</entry>
+   					<entry>background-color</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.extdt-row-active</entry>
+   					<entry>Defines styles for the active row</entry>
+   					<entry>tabDisabledTextColor</entry>
+   					<entry>color</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+   	
+   	<table>
+   		<title>Style classes (selectors) without skin parameters</title>
+   		<tgroup cols="2">
+   			<thead>
+   				<row>
+   					<entry>Class name</entry>
+   					<entry>Description</entry>
+   				</row>
+   			</thead>
+   			<tbody>
+   				<row>
+   					<entry>.rich-extdt</entry>
+   					<entry>Defines styles for all table</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-caption</entry>
+   					<entry>Defines styles for a "caption" facet element</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-header</entry>
+   					<entry>Defines styles for a table header
+   						row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-header-continue</entry>
+   					<entry>Defines styles for all header lines after the first</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-subheader</entry>
+   					<entry>Defines styles for a column header</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-footer</entry>
+   					<entry>Defines styles for a footer row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-footer-continue</entry>
+   					<entry>Defines styles for all footer lines after the first</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-subfooter</entry>
+   					<entry>Defines styles for a column footer</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-headercell</entry>
+   					<entry>Defines styles for a header cell</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-subheadercell</entry>
+   					<entry>Defines styles for a column header cell</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-cell</entry>
+   					<entry>Defines styles for a table cell</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-row</entry>
+   					<entry>Defines styles for a table row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-firstrow</entry>
+   					<entry>Defines styles for a table start row</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-footercell</entry>
+   					<entry>Defines styles for a footer cell</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-subfootercell</entry>
+   					<entry>Defines styles for a column footer cell</entry>
+   				</row>
+   				
+   				<row>
+   					<entry>.rich-extdt-group-cell</entry>
+   					<entry>Defines styles for a grouping row cell</entry>
+   				</row>
+   			</tbody>
+   		</tgroup>
+   	</table>
+	<para>You can find all necessary information about style classes redefinition in 
 						<link linkend="customstyles">Definition of Custom Style Classes</link> 
-							section.
+							section.</para>
 						</section>
    <section>
       <title>Relevant Resources Links</title>
       <para>
-	  Some additional information about usage of component can be found 
+      	Some additional information about the component usage can be found 
 	  <ulink url="http://livedemo.exadel.com/richfaces-demo/richfaces/extendedDataTable.jsf?c=extendedDataTable">on its LiveDemo page</ulink>.</para>
    </section>
 </section>
