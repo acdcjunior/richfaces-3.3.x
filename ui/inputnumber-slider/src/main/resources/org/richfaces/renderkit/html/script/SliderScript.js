@@ -64,6 +64,11 @@ Richfaces.Slider.prototype = {
 		this.graggedImageOn = false;
 		this.value	 = 0;
 		this.digCount = 0;
+		
+		//QUICK FIX for RF-7930 // need to be reworked
+		this.options.minValue = this.roundFloat(this.options.minValue);
+		this.options.maxValue = this.roundFloat(this.options.maxValue);
+		
 		this.delay = this.options.delay;
 		if("" == this.input.value){
 			  this.input.value = this.options.minValue;
