@@ -252,11 +252,19 @@ public class user {
                                     and <emphasis role="bold"><property>&lt;a4j:form&gt;</property></emphasis> helps the button to perform the action. 
                               </para>
                               <para>Note, that the RichFaces tag library should be declared on each
-                                        JSP page. For XHTML pages add following lines for tag
+                                        JSP page. 
+</para>
+<para>
+For Facelets you should add the following lines for tag
                                         library declaration: </para>
-                              <programlisting role="XML"><![CDATA[<xmlns:a4j="http://richfaces.org/a4j">
-<xmlns:rich="http://richfaces.org/rich">]]></programlisting>
-                              <para>That’s it. Run the application on server. Point your browser to                                        <code>index.jsp</code> page in browser:
+                              <programlisting role="XML"><![CDATA[<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+   ...
+</ui:composition>
+]]></programlisting>
+                              <para>That&apos;s it. Run the application on server. Point your browser to                                        <code>index.jsp</code> page in browser:
                                                   <code>http://localhost:8080/Greeter/index.jsf</code>
                               </para>
                               <figure>
