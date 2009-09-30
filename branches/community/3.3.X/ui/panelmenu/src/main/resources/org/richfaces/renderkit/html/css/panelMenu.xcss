@@ -4,83 +4,18 @@
    	xmlns:u="http://jsf.exadel.com/template/util" 
    	xmlns="http://www.w3.org/1999/xhtml">	
 
-	<u:selector name=".rich-pmenu-disabled-element" >
-		<u:style name="color" 			 skin="tabDisabledTextColor"/>
-	</u:selector>
-	
-	<u:selector name=".rich-pmenu-group">
-		<u:style name="font-weight" 	 skin="headerWeightFont"/>
-		<u:style name="font-family" 	 skin="headerFamilyFont"/>
-		<u:style name="font-size" 		 skin="headerSizeFont"/>
-		<u:style name="color" 			 skin="generalTextColor"/>
-		<u:style name="border-top-color" skin="tableBorderColor"/>
-	</u:selector>
-	
-	<u:selector name=".rich-pmenu-hovered-element" >
-		<u:style name="background-color" skin="additionalBackgroundColor"/>
-	</u:selector>
-	
-	<u:selector name=".rich-pmenu-item">
-		<u:style name="font-family" 	 skin="generalFamilyFont"/>
-		<u:style name="font-weight" 	 skin="generalWeightFont"/>
-		<u:style name="font-size" 		 skin="generalSizeFont"/>
-		<u:style name="color" 			 skin="generalTextColor"/>
-		<u:style name="border-top-color" skin="tableBorderColor"/>
-	</u:selector>
-		
-	<u:selector name=".rich-pmenu-top-group">
-		<u:style name="font-weight" 	 skin="headerWeightFont"/>
-		<u:style name="font-family" 	 skin="generalFamilyFont"/>
-		<u:style name="font-size" 		 skin="headerSizeFont"/>
-		<u:style name="color" 			 skin="headerTextColor"/>
-		<u:style name="background-color" skin="headerBackgroundColor"/>
-		<u:style name="background-image" >
-			<f:resource f:key="org.richfaces.renderkit.html.gradientimages.PanelMenuGroupGradient" />
-		</u:style>
-	</u:selector>
-	
-	<u:selector name=".rich-pmenu-top-group-div" >
-		<u:style name="border-color" 	 skin="panelBorderColor"/>
-	</u:selector>
-	
-	
 	<f:verbatim>
 		.rich-pmenu {
 			overflow: hidden;
 			padding-right: 4px;
 		}
 		
-		.rich-pmenu-disabled-element {
-			cursor: default;
-		}
-
 		.rich-pmenu-group {
 			padding: 2px 1px 1px;
 			margin-top:1px;
 			cursor:pointer;
 			border-top: 1px solid;
 		}
-		
-		.rich-pmenu-group-self-label {
-			padding-left: 5px;
-			width: 100%;			
-		}
-		
-		.rich-pmenu-item {
-			border-top: 1px solid;
-			cursor: pointer;
-			padding: 2px 1px 1px;
-			margin-top: 1px;
-		}
-		
-		.rich-pmenu-nowrap {
-			white-space: nowrap;
-		}
-		
-		.rich-pmenu-selected-element {
-			font-style : italic;
-		}
-		
 		
 		.rich-pmenu-top-group {
 			height: 20px;
@@ -91,13 +26,79 @@
 			padding: 2px 1px 2px 2px;
 			cursor: pointer;
 		}
-				
+		
+		.rich-pmenu-item {
+			border-top: 1px solid;
+			cursor: pointer;
+			padding: 2px 1px 1px;
+			margin-top: 1px;
+			
+		}
+		
 		.rich-pmenu-top-group-div {
 			border: 1px solid;
 			margin-bottom: 3px;
 			padding: 1px;
 			overflow: hidden;
 			width: 100%;
+		}
+		
+		.rich-pmenu-group-self-label {
+			padding-left: 5px;
+			width: 100%;			
+		}
+		
+		.rich-pmenu-nowrap {
+			white-space: nowrap;
+		}
+		
+	</f:verbatim>
+	
+	<u:selector name=".rich-pmenu-group">
+		<u:style name="font-weight" skin="headerWeightFont"/>
+		<u:style name="font-family" skin="headerFamilyFont"/>
+		<u:style name="font-size" skin="headerSizeFont"/>
+		<u:style name="color" skin="generalTextColor"/>
+		<u:style name="border-top-color" skin="tableBorderColor"/>
+	</u:selector>
+	
+	<u:selector name=".rich-pmenu-top-group">
+		<u:style name="font-weight" skin="headerWeightFont"/>
+		<u:style name="font-family" skin="generalFamilyFont"/>
+		<u:style name="font-size" skin="headerSizeFont"/>
+		<u:style name="color" skin="headerTextColor"/>
+		<u:style name="background-color" skin="headerBackgroundColor"/>
+		<u:style name="background-image" >
+			<f:resource f:key="org.richfaces.renderkit.html.gradientimages.PanelMenuGroupGradient" />
+		</u:style>
+	</u:selector>
+	
+	<u:selector name=".rich-pmenu-item">
+		<u:style name="font-family" skin="generalFamilyFont"/>
+		<u:style name="font-weight" skin="generalWeightFont"/>
+		<u:style name="font-size" skin="generalSizeFont"/>
+		<u:style name="color" skin="generalTextColor"/>
+		<u:style name="border-top-color" skin="tableBorderColor"/>
+	</u:selector>
+
+	<u:selector name=".rich-pmenu-top-group-div" >
+		<u:style name="border-color" skin="panelBorderColor"/>
+	</u:selector>
+	
+	<u:selector name=".rich-pmenu-disabled-element" >
+		<u:style name="color" skin="tabDisabledTextColor"/>
+	</u:selector>
+	
+	<u:selector name=".rich-pmenu-hovered-element" >
+		<u:style name="background-color" skin="additionalBackgroundColor"/>
+	</u:selector>
+	
+	<f:verbatim>
+		.rich-pmenu-disabled-element {
+			cursor: default;
+		}
+		.rich-pmenu-selected-element {
+			font-style : italic;
 		}
 	</f:verbatim>
 	
