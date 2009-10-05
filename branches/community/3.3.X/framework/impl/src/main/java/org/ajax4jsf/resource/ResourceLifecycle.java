@@ -133,6 +133,8 @@ public class ResourceLifecycle extends Lifecycle {
 				root.setLocale(Locale.getDefault());
 				root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
 				facesContext.setViewRoot(root);
+				// We do not simulate other phases.
+				facesContext.renderResponse();
 				// Invoke after restore view phase listeners
 				processPhaseListeners(phaseListeners, restoreViewEvent, false);
 				// Fix for a http://jira.jboss.org/jira/browse/RF-1056
