@@ -81,7 +81,7 @@
 			<tbody>
 				<tr>
 					<td colspan="#{columnsCount}" style="padding: 0px;">
-						<div id="#{clientId}:sd" class="extdt-content" style="height:50px;width:100%;overflow:hidden;">
+						<div id="#{clientId}:sd" class="extdt-content" style="height:50px;width:100%;">
 							<jsp:scriptlet>
 				     		<![CDATA[
 								if (component.getRowCount() <= 0) {
@@ -102,7 +102,7 @@
 								}
 							]]>	
 							</jsp:scriptlet>
-							<table id="#{clientId}:n" style="width:100%; height:100%;overflow: hidden;"
+							<table id="#{clientId}:n" width="100%;"
 					    				class="extdt-table-layout rich-table #{component.attributes['styleClass']}"
 			  						>
 								<f:call name="utils.encodePassThruWithExclusions">
