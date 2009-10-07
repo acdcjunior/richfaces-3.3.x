@@ -53,7 +53,7 @@
 				<button class="rich-mpnl-button" id="#{clientId}FirstHref"></button>
 			</div>	
 
-			<div class="rich-mpnl_panel" >
+			<div class="rich-mpnl-panel" >
 			<div id="#{clientId}CDiv" style="position: absolute; left: 0px; top: 0px; z-index: 9;" class="rich-mp-container">
 
 				<div id="#{clientId}ShadowDiv" class="rich-mpnl-shadow"
