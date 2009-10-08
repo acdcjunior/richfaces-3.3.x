@@ -26,7 +26,9 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
@@ -272,7 +274,7 @@ public class CalendarTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_DATE_BUTTON);
         selenium.click(LOC_RANDOM_DAY);
 
-        String month1 = Month.values()[Calendar.getInstance(new Locale("de")).get(Calendar.MONTH)].toString();
+        String month1 = new SimpleDateFormat("MMMMM", new Locale("de")).format(new Date());
         String month2 = selenium.getText(LOC_MONTH_YEAR_LABEL).split(",")[0].trim();
 
         assertTrue(month1.equalsIgnoreCase(month2), "The name of the month is not localized.");
