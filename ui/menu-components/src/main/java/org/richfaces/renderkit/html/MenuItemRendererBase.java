@@ -158,7 +158,7 @@ public class MenuItemRendererBase extends CompositeRenderer {
     	return paramsMap;
     }    
     
-    private boolean isNestedInMenu(UIComponent component) {
+    protected boolean isNestedInMenu(UIComponent component) {
     	for (UIComponent c = component; c != null; c = c.getParent()) {
     		if (c instanceof MenuComponent) {
     			return true;
@@ -166,6 +166,14 @@ public class MenuItemRendererBase extends CompositeRenderer {
     	}
     	
     	return false;
+    }
+    
+    protected String collectItemInlineStyles(FacesContext context, UIMenuItem menuItem, boolean isOnmouseover) {
+    	return delegate.collectInlineStyles(context, menuItem, isOnmouseover);
+    }
+    
+    protected String collectItemClasses(FacesContext context, UIMenuItem menuItem, boolean isOnmouseover) {
+    	return delegate.collectClasses(context, menuItem, isOnmouseover);
     }
     
     public void initializeResources(FacesContext context, UIMenuItem menuItem)
