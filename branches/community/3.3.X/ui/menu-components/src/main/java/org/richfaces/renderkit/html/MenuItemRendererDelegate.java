@@ -83,6 +83,28 @@ public class MenuItemRendererDelegate extends RendererBase {
 		}
 	}
 	
+	protected String collectInlineStyles(FacesContext context, UIComponent menuItem, boolean isOnmouseover) {
+		String style = (String) menuItem.getAttributes().get("style");
+		String selectStyle = (String) menuItem.getAttributes().get("selectStyle");
+
+		if (isOnmouseover) {
+			return concatStyles(style, selectStyle);
+		} else {
+			return style;
+		}
+	}
+	
+	protected String collectClasses(FacesContext context, UIComponent component, boolean isOnmouseover) {
+		String styleClass = (String) component.getAttributes().get("styleClass");
+		String selectClass = (String) component.getAttributes().get("selectClass");
+	
+		if (isOnmouseover) {
+			return concatStyles(styleClass, selectClass);
+		} else {
+			return styleClass;
+		}
+	}
+
 	protected UIComponent getParentMenu(FacesContext context, UIComponent menuItem) {
 		UIComponent parent = menuItem.getParent();
 		while (null != parent) {

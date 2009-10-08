@@ -1,6 +1,7 @@
 if(!window.RichFaces) window.RichFaces = {};
 if(!RichFaces.Menu) RichFaces.Menu = {};
 
+
 /**
  * Fixes IE bug with incorrect layer width when set to auto
  * @param layer
@@ -1297,6 +1298,46 @@ RichFaces.Menu.isWithin = function (event, element) {
 	return within;
 };
 
+RichFaces.Menu.Utils = {};
+
+RichFaces.Menu.Utils.itemMouseOut = function(event, element, parentClasses, itemClasses) {
+	
+	if(!itemClasses && RichFaces.Menu.isWithin(event, element)){
+		return; 
+	}
+	
+	element.className = 'rich-menu-item rich-menu-item-enabled ' + (parentClasses.styleClass || '') + " " + (itemClasses != null ? itemClasses.itemClass || '' : '');
+	element.style.cssText = (parentClasses.style || '') + "; " + (itemClasses != null ? itemClasses.itemStyle || '' : '');
+	var icon =  typeof element.getIcon == 'fuction' ? element.getIcon() :  RichFaces.Menu.Utils.getIcon(element); 
+	icon.className='rich-menu-item-icon ' + (parentClasses.iconClass || '');
+	var label = typeof element.getLabel == 'fuction' ? element.getLabel() :  RichFaces.Menu.Utils.getLabel(element); 
+	Element.removeClassName(label, 'rich-menu-item-label-selected');
+	
+}
+
+RichFaces.Menu.Utils.itemMouseOver = function(event, element, parentClasses, itemClasses) {
+	
+	if(!itemClasses && RichFaces.Menu.isWithin(event, element)){
+		return; 
+	}
+	
+	element.className = 'rich-menu-item rich-menu-item-hover ' + (parentClasses.styleClass || '') + " " + (parentClasses.selectClass || '') + " " + (itemClasses != null ? itemClasses.selectItemClass || '':'');
+	element.style.cssText = (parentClasses.style || '') + "; " + (itemClasses != null ? itemClasses.itemStyle || '' : '') + "; "+ (parentClasses.selectStyle || '') + "; " + (itemClasses != null ? itemClasses.selectItemStyle || '' : '');
+	var icon =  typeof element.getIcon == 'fuction' ? element.getIcon() :  RichFaces.Menu.Utils.getIcon(element); 
+	icon.className='rich-menu-item-icon rich-menu-item-icon-selected ' + (parentClasses.iconClass || '');
+	var label = typeof element.getLabel == 'fuction' ? element.getLabel() :  RichFaces.Menu.Utils.getLabel(element); 
+	Element.addClassName(label, 'rich-menu-item-label-selected');
+	
+}
+
+RichFaces.Menu.Utils.getIcon = function (element) {
+	return $(element.id + ':icon');
+}
+
+RichFaces.Menu.Utils.getLabel = function (element) {
+	return $(element.id + ':anchor');
+}
+
 RichFaces.Menu.Item = Class.create({
 	initialize: function(id, menu, options) {
 		this.options = {
@@ -1352,10 +1393,13 @@ RichFaces.Menu.Item = Class.create({
 		return $(this.id);
 	},
 	getIcon: function() {
-		return $(this.id + ":icon");
+		//return $(this.id + ":icon");
+		return 	RichFaces.Menu.Utils.getIcon(this);
+		
 	},
 	getLabel: function() {
-		return $(this.id + ":anchor");
+		//return $(this.id + ":anchor");
+		return 	RichFaces.Menu.Utils.getLabel(this);
 	},
 	getInlineStyle: function() {
 		return this.options.style || "";
@@ -1400,13 +1444,15 @@ RichFaces.Menu.Item = Class.create({
 		
 		if (this.options.flagGroup != 1) {
 			var menuOptions = this.menu.options;
+			RichFaces.Menu.Utils.itemMouseOver(event, element, this.options, menuOptions);
+		/*	var menuOptions = this.menu.options;
 			element.className = 'rich-menu-item rich-menu-item-hover ' 
 				+ (this.options.styleClass || "") + " " + (this.options.selectClass || "") + " " 
 				+ (menuOptions.selectItemClass || "");
 			element.style.cssText = (this.options.style || "") + "; " + (menuOptions.itemStyle || "")
 				+ (this.options.selectStyle || "") + "; " + (menuOptions.selectItemStyle || "");
 			this.getIcon().className='rich-menu-item-icon rich-menu-item-icon-selected ' + (this.options.iconClass || '');
-			Element.addClassName(this.getLabel(), 'rich-menu-item-label-selected');
+			Element.addClassName(this.getLabel(), 'rich-menu-item-label-selected'); */
 		}
 	},
 	onmouseout : function(event) {
@@ -1433,12 +1479,16 @@ RichFaces.Menu.Item = Class.create({
 		RichFaces.Menu.Items.onmouseout(this);
 		
 		if (this.options.flagGroup != 1) {
+			
+			var menuOptions = this.menu.options;
+			RichFaces.Menu.Utils.itemMouseOut(event, element, this.options, menuOptions);
+			/*
 			var menuOptions = this.menu.options;
 			element.className = 'rich-menu-item rich-menu-item-enabled '
 				+ (this.options.styleClass || "") + " " + (menuOptions.itemClass || "");
 			element.style.cssText = (this.options.style || "") + "; " + (menuOptions.itemStyle || "");
 			this.getIcon().className='rich-menu-item-icon ' + (this.options.iconClass || "");
-			Element.removeClassName(this.getLabel(), 'rich-menu-item-label-selected');
+			Element.removeClassName(this.getLabel(), 'rich-menu-item-label-selected'); */
 		}
 	},
 	highLightGroup: function(light)  {
@@ -1530,3 +1580,4 @@ RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, me
 	element.className = 'rich-menu-group rich-menu-group-enabled ' + (menuGroupHoverClass ? menuGroupHoverClass : '');
 	element.style.cssText = menuGroupStyle;
 }
+
