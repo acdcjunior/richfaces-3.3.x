@@ -125,16 +125,38 @@
     <title>Supported Browsers</title>
 
     <itemizedlist>
-      <listitem><para>Internet Explorer 6.0 - 8.0</para></listitem>
+    
+      <title>Linux environments</title>
+      
+      <listitem><para>Firefox 3.0 and higher</para></listitem>
 
-      <listitem><para>Firefox 2.0 - 3.0</para></listitem>
+      <listitem><para>Opera 8.5 and higher</para></listitem>
 
-      <listitem><para>Opera 8.5 - 9.5</para></listitem>
+    </itemizedlist>
+    
+    <itemizedlist>
+    
+      <title>Windows environments</title>
+      
+      <listitem><para>Internet Explorer 6.0 and higher</para></listitem>
+
+      <listitem><para>Firefox 3.0 and higher</para></listitem>
+
+      <listitem><para>Opera 8.5 and higher</para></listitem>
    
-      <listitem><para>Safari 3.0</para></listitem>
+      <listitem><para>Safari 3.0 and higher</para></listitem>
 
       <listitem><para>Google Chrome</para></listitem>
 
+    </itemizedlist>
+    
+    <itemizedlist>
+    
+      <title>Mac OS environments</title>
+      
+      <listitem><para>Safari 3.0 and higher</para></listitem>
+
+      <listitem><para>Firefox 3.5 and higher</para></listitem>
 
     </itemizedlist>
     
