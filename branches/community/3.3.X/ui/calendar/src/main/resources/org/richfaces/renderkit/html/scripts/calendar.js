@@ -2172,7 +2172,7 @@ CalendarView.getControl = function(text, attributes, functionName, paramsStr) {
 
 CalendarView.getSelectedDateControl = function(calendar) {
 	
-	if (!calendar.selectedDate || calendar.showApplyButton) return "";
+	if (!calendar.selectedDate || calendar.params.showApplyButton) return "";
 	
 	var text = Richfaces.Calendar.formatDate(calendar.selectedDate,(calendar.timeType ? calendar.datePattern : calendar.params.datePattern), calendar.params.monthLabels, calendar.params.monthLabelsShort);
 	var onclick = "Richfaces.getComponent('calendar',this).showSelectedDate(); return true;"
