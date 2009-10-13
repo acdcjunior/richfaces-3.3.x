@@ -179,6 +179,8 @@ public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTest
 			}
 
 			final int rows = selenium.getXpathCount(format(columnsPreformatted[0], 0)).intValue();
+			
+			assertTrue(rows > 0, "There must be at least one row in the table");
 
 			for (int row = 1; row <= rows; row++) {
 				for (int column = 0; column < columns; column++) {
