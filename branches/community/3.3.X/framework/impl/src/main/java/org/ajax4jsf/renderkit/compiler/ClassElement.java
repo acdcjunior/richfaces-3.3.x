@@ -56,7 +56,8 @@ public class ClassElement extends ElementBase {
 	 * @see org.ajax4jsf.renderkit.compiler.ElementBase#encode(org.ajax4jsf.renderkit.compiler.TemplateContext)
 	 */
 	public void encode(TemplateContext context) throws IOException {
-		context.getWriter().writeText(getString(context), null);
+		// To fix https://jira.jboss.org/jira/browse/RF-7992 , writeText was replaced by 'write'
+		context.getWriter().write(getString(context));
 	}
 
 	/**
