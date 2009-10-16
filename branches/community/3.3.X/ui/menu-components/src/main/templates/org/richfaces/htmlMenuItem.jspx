@@ -140,7 +140,7 @@
 	]]></jsp:scriptlet>	
 	</div>
 	<jsp:scriptlet><![CDATA[
-		} if(isNestedInMenu(component)){
+		}else if(isNestedInMenu(component)){
 	]]></jsp:scriptlet>
 	</div>
 	<jsp:scriptlet><![CDATA[
