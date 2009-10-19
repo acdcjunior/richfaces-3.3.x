@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+<ui:composition template="/templates/template.xhtml">
+
+	<ui:define name="title">Menu Item - RF-7994</ui:define>
+
+	<ui:define name="body">
+		<h1>Menu Item</h1>
+		<h3><a href="https://jira.jboss.org/jira/browse/RF-7994">https://jira.jboss.org/jira/browse/RF-7994</a></h3>
+		
+		<h:form>
+		<h:commandLink id="back1" action="index" value="Back to main page"/>
+		<h:panelGrid columns="3" class="bug-table">
+			<h:outputText value="Component"/>
+			<h:outputText value="WRONG" style="color: red;"/>
+			<h:outputText value="Description"/>
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="titi" />
+				</f:facet>
+				<rich:menuGroup value="bob">
+					<rich:menuItem value="bob1" />
+					<rich:menuItem value="bob2" disabled="true" />
+					<rich:menuItem value="bob3" />
+					<rich:menuItem value="bob4" />
+				</rich:menuGroup>
+				<rich:menuGroup value="toto">
+					<rich:menuItem value="toto1" />
+					<rich:menuItem value="toto2" />
+					<rich:menuItem value="toto3" />
+				</rich:menuGroup>
+				<rich:menuItem value="coucou" />
+			</rich:dropDownMenu>
+			
+			<h:panelGroup>
+				<h:graphicImage value="/images/rf7994/1.png"/>
+				<h:graphicImage value="/images/rf7994/2.png"/>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<ol>
+					<li>hover over "titi" and verify that menu is next to it</li>
+					<li>open submenu "bob" and verify that the second item is disabled and other are rendered well</li>
+					<li>open submenu "toto" and verify that submenu is rendered correctly</li>
+				</ol>
+			</h:panelGroup>
+			
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:outputText value="titi" />
+				</f:facet>
+				<rich:menuGroup value="bob">
+					<rich:menuItem value="bob1" />
+					<rich:menuItem value="bob2" disabled="true" />
+					<rich:menuItem value="bob3" disabled="true" />
+					<rich:menuItem value="bob4" />
+				</rich:menuGroup>
+				<rich:menuGroup value="toto">
+					<rich:menuItem value="toto1" />
+					<rich:menuItem value="toto2" />
+					<rich:menuItem value="toto3" />
+				</rich:menuGroup>
+				<rich:menuItem value="coucou" />
+			</rich:dropDownMenu>
+			
+			<h:panelGroup>
+				<h:graphicImage value="/images/rf7994/3.png"/>
+				<h:graphicImage value="/images/rf7994/4.png"/>
+				<h:graphicImage value="/images/rf7994/5.png"/>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<ol>
+					<li>verify that "bob4" is not rendered outside of drop down menu</li>
+					<li>open menu "bob", verify that "bob2" and "bob3" are disabled and that "bob3" is rendered correctly</li>
+					<li>open menu "toto" and verify that submenu is rendered next to main menu</li>
+				</ol>
+			</h:panelGroup>
+			
+		</h:panelGrid>
+		<h:commandLink id="back2" action="index" value="Back to main page"/>
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
+</body>
+</html>
