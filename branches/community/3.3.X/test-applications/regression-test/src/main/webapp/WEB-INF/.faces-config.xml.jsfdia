@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#index.xhtml" PATH="/pages/index.xhtml"
+  SHAPE="208,72,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#*" PATH="/pages/*" SHAPE="32,48,53,42" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#*:0" NAME="item" PATH="/pages/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#pages#index.xhtml" NAME="output"
+    PATH="/pages/index.xhtml" TARGET="rules:#pages#index.xhtml"
+    TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

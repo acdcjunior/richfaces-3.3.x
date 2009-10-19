@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+	<style type="text/css">
+		.table-header {
+			font: bolder; #
+			padding: 2px;
+			margin: 2px;
+			width: 110px;
+			border: 1px solid;
+		}
+		body {
+			background-color: #{richSkin.generalBackgroundColor};
+		}
+	table.bug-table {
+		border-width: 1px 1px 1px 1px;
+		border-spacing: 2px;
+		border-style: none none none none;
+		border-color: blue blue blue blue;
+		border-collapse: separate;
+		background-color: rgb(255, 255, 240);
+	}
+	table.bug-table th {
+		border-width: 1px 1px 1px 1px;
+		padding: 3px 3px 3px 3px;
+		border-style: dotted dotted dotted dotted;
+		border-color: blue blue blue blue;
+		background-color: white;
+	}
+	table.bug-table td {
+		border-width: 1px 1px 1px 1px;
+		padding: 3px 3px 3px 3px;
+		border-style: dotted dotted dotted dotted;
+		border-color: blue blue blue blue;
+		background-color: white;
+	}
+</style>
+</head>
+
+<body>
+<ui:insert name="body">
+	<p>Body of the page.</p>
+</ui:insert>
+</body>
+
+</html>
