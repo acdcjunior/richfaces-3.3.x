@@ -232,8 +232,8 @@
 								<id>start-container</id>
 								<phase>pre-integration-test</phase>
 								<goals>
-									<goal>start</goal>
 									<goal>deploy</goal>
+									<goal>start</goal>
 								</goals>
 							</execution>
 							<execution>
@@ -267,7 +267,6 @@
 										<groupId>org.richfaces.samples</groupId>
 										<artifactId>richfaces-demo</artifactId>
 										<type>war</type>
-										<pingURL>${context.root}${context.path}</pingURL>
 										<properties>
 											<context>${context.path}</context>
 										</properties>
