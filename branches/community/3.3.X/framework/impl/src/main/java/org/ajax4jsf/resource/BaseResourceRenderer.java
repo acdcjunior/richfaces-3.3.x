@@ -61,7 +61,7 @@ public abstract class BaseResourceRenderer implements ResourceRenderer {
 			writer.startElement(getTag(), null);
 			String attrs[][] = getCommonAttrs();
 			if (null != getHrefAttr()) {
-				writer.writeAttribute(getHrefAttr(), resource.getUri(context,
+				writer.writeURIAttribute(getHrefAttr(), resource.getUri(context,
 						data), null);
 			}
 			if (null != attrs) {
