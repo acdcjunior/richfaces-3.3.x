@@ -1065,10 +1065,9 @@ onsubmit="if (mynosendfunct()==false){return false}"
 					<thead>
 						<row>
 							<entry>Attribute</entry>
-							
 							<entry>Description</entry>
+							<entry>A4J Components</entry>
 							<entry>Rich Components</entry>
-							<entry>A4j Components</entry>
 						</row>
 					</thead>
 					<tbody valign="top">
@@ -1316,13 +1315,12 @@ onsubmit="if (mynosendfunct()==false){return false}"
 												<para>&lt;rich:dropSupport&gt;</para> 
 													<para>&lt;rich:menuItem&gt;</para> 
 														<para>&lt;rich:tree&gt;</para> 
-															<para>&lt;rich:panelMenuGroup&gt;</para> 
-																<para>&lt;rich:panelMenuGroup&gt;</para> 
-																	<para>&lt;rich:panelMenuItem&gt;</para> 
-																		<para>&lt;rich:simpleTogglePanel&gt;</para> 
-																			<para>&lt;rich:tab&gt;</para> 
-																				<para>&lt;rich:calendar&gt;</para> 
-																					<para>&lt;rich:suggestionbox&gt;</para> 
+															<para>&lt;rich:panelMenuGroup&gt;</para>
+																<para>&lt;rich:panelMenuItem&gt;</para> 
+																	<para>&lt;rich:simpleTogglePanel&gt;</para> 
+																		<para>&lt;rich:tab&gt;</para> 
+																			<para>&lt;rich:calendar&gt;</para> 
+																				<para>&lt;rich:suggestionbox&gt;</para> 
 							</entry>
 						</row> 
 						<row>
