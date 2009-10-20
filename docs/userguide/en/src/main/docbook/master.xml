@@ -129,15 +129,14 @@
 	<!ENTITY rich_messages SYSTEM "included/rich_messages.xml">
 	<!ENTITY rich_jQuery SYSTEM "included/rich_jQuery.xml">	
 	
-	<!ENTITY cdkguide "http://docs.jboss.org/richfaces/3.3.1.GA/en/cdkguide/html_single/">
-	<!ENTITY devguide "http://docs.jboss.org/richfaces/3.3.1.GA/en/devguide/html_single/">
-	<!ENTITY migrationguide "http://docs.jboss.org/richfaces/3.3.1.GA/en/migrationguide/html_single/">
-	<!ENTITY photoalbumguide "http://docs.jboss.org/richfaces/3.3.1.GA/en/realworld/html_single/">
-	<!ENTITY realworld "http://docs.jboss.org/richfaces/3.3.1.GA/en/realworld/html_single/">
-	<!ENTITY tlddoc "http://docs.jboss.org/richfaces/3.3.1.GA/en/tlddoc/">
-	<!ENTITY apidoc "http://docs.jboss.org/richfaces/3.3.1.GA/en/apidoc/">
-	<!ENTITY apidoc_framework "http://docs.jboss.org/richfaces/3.3.1.GA/en/apidoc_framework/">
-	
+	<!ENTITY cdkguide "../../cdkguide/html_single/index.html">
+	<!ENTITY devguide "../../devguide/html_single/index.html">
+	<!ENTITY migrationguide "../../migrationguide/html_single/index.html">
+	<!ENTITY photoalbumguide "../../realworld/html_single/index.html">
+	<!ENTITY realworld "../../realworld/html_single/index.html">
+	<!ENTITY tlddoc "../../tlddoc/index.html">
+	<!ENTITY apidoc "../../apidoc/index.html">
+	<!ENTITY apidoc_framework "../../apidoc_framework/index.html">
 	
 ]>
 <book>
