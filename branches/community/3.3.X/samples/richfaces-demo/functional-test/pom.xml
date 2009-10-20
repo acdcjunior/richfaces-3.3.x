@@ -336,13 +336,15 @@
 				<container.installer.url>http://www.apache.org/dist/tomcat/tomcat-6/v6.0.20/bin/apache-tomcat-6.0.20.zip</container.installer.url>
 			</properties>
 			<build>
-				<plugins>
+					<plugins>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
 						<artifactId>cargo-maven2-plugin</artifactId>
 						<version>1.0-beta-2</version>
 						<configuration>
 							<configuration>
+								<home>${container.home}</home>
+								<type>existing</type>
 							</configuration>
 						</configuration>
 					</plugin>
