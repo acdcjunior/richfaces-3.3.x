@@ -305,9 +305,8 @@ public class AjaxStateManager extends StateManager {
 		}
 	}
 
-	private static final            Pattern PATTERN = Pattern.compile(".*<input.*(?:\\svalue=[\"\'](.*)[\"\']\\s).*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*>");
-
-	private static final            Pattern PATTERN2 = Pattern.compile(".*<input .*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*(?:\\svalue=[\"\'](.*)[\"\']\\s).*>");
+    static final            Pattern PATTERN = Pattern.compile(".*<input.*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*>");
+    static final            Pattern PATTERN2 = Pattern.compile(".*<input .*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*>");
 
 
 	/**
