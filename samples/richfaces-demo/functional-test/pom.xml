@@ -288,9 +288,7 @@
 				</property>
 			</activation>
 			<properties>
-				<container.version>5.1.0.GA</container.version>
 				<container.home>${project.build.directory}/installs/jboss-${container.version}/jboss-${container.version}</container.home>
-				<container.installer.url>http://downloads.sourceforge.net/project/jboss/JBoss/JBoss-${container.version}/jboss-${container.version}.zip</container.installer.url>
 			</properties>
 			<build>
 				<plugins>
@@ -321,6 +319,19 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>container-jboss5x-installation</id>
+			<activation>
+				<property>
+					<name>containerId</name>
+					<value>jboss5x</value>
+				</property>
+			</activation>
+			<properties>
+				<container.version>5.1.0.GA</container.version>
+				<container.installer.url>http://downloads.sourceforge.net/project/jboss/JBoss/JBoss-${container.version}/jboss-${container.version}.zip</container.installer.url>
+			</properties>
+		</profile>
 		<!--  Container: Tomcat 6.X -->
 		<profile>
 			<id>container-tomcat6x</id>
@@ -331,12 +342,10 @@
 				</property>
 			</activation>
 			<properties>
-				<container.version>6.0.20</container.version>
 				<container.home>${project.build.directory}/installs/apache-tomcat-${container.version}/apache-tomcat-${container.version}</container.home>
-				<container.installer.url>http://www.apache.org/dist/tomcat/tomcat-6/v6.0.20/bin/apache-tomcat-6.0.20.zip</container.installer.url>
 			</properties>
 			<build>
-					<plugins>
+				<plugins>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
 						<artifactId>cargo-maven2-plugin</artifactId>
@@ -350,6 +359,19 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>container-tomcat6x-installation</id>
+			<activation>
+				<property>
+					<name>containerId</name>
+					<value>tomcat6x</value>
+				</property>
+			</activation>
+			<properties>
+				<container.version>6.0.20</container.version>
+				<container.installer.url>http://www.apache.org/dist/tomcat/tomcat-6/v${container.version}/bin/apache-tomcat-${container.version}.zip</container.installer.url>
+			</properties>
 		</profile>
 	</profiles>
 	<dependencies>
