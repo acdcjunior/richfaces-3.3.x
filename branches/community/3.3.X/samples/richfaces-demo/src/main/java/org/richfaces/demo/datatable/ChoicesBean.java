@@ -98,10 +98,10 @@ public class ChoicesBean implements Runnable {
 				}
 				// changing votes count
 				for (Choice choice : lastVotes) {
-					choice.setVotesCount(DataTableScrollerBean.rand(0, 3));
+					choice.setVotesCount(DataTableScrollerBean.rand(0, 2));
 				}
 				listener.onEvent(new EventObject(this));
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
