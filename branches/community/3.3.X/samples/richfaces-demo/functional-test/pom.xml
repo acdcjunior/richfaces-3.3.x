@@ -173,7 +173,7 @@
 											fixlastline="yes">
 											<!--  space-separated list of files -->
 											<filelist dir="${extensions.dir}"
-												files="jbossqa-extensions.js rfqa-extensions.js" />
+												files="jquery.js jbossqa-extensions.js rfqa-extensions.js" />
 										</concat>
 										<delete
 											dir="${project.build.directory}/test-classes/user-extensions" />
@@ -430,6 +430,12 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
