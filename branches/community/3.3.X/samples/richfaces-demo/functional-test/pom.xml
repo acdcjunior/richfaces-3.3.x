@@ -67,6 +67,7 @@
 		<context.path>/richfaces-demo</context.path>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<selenium.port>8444</selenium.port>
+		<firefoxProfileTemplate></firefoxProfileTemplate>
 	</properties>
 	<build>
 		<finalName>seleniumTest</finalName>
@@ -217,6 +218,7 @@
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
 									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.port='${selenium.port}'</argLine>
+									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 								</configuration>
 							</execution>
 						</executions>
