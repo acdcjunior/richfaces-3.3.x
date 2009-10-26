@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Properties;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.jboss.test.selenium.waiting.Condition;
@@ -818,5 +819,27 @@ public abstract class AbstractSeleniumTestCase {
             }
             throw new IllegalStateException("getAttributeOrNull unexpected state - " + e.getMessage(), e);
         }
-    }
+	}
+
+	/**
+	 * Add required script to page once.
+	 * 
+	 * (This code will refuse adding script to the page duplicitly due to usage
+	 * of hash, so you can add it thought you are not sure script is already
+	 * added or not - this is usefull for adding libraries directly to the
+	 * page).
+	 * 
+	 * This script will be appended to end of the body tag within the script
+	 * tag.
+	 * 
+	 * @param script what should be added to the page
+	 */
+	public void addRequiredScript(String script) {
+		final String escapedScript = StringEscapeUtils.escapeJavaScript(script);
+		final String id = "selenium_script_" + Integer.toString(escapedScript.hashCode());
+		if (selenium.isElementPresent(id)) {
+			return;
+		}
+		selenium.getEval(format("selenium.addScriptLocally('{0}', '{1}')", id, escapedScript));
+	}
 }
