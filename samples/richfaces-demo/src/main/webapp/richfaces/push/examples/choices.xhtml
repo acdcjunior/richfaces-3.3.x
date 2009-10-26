@@ -4,30 +4,40 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
-	<style>
+<a4j:loadScript src="resource://org/richfaces/renderkit/html/scripts/jquery/jquery.js" />
+<style>
 .top {
 	vertical-align: top;
 }
+.highlight{
+	background-color: yellow;
+	background-image: none;
+}
 </style>
-	<h:form>
+	<h:form id="choisesForm">
+			<rich:jQuery selector=".votesClass"
+				query="each(function(key){
+				if (param[key].votesCount > 0) jQuery(this).addClass('highlight'); 
+				else jQuery(this).removeClass('highlight'); })"
+				name="jqhighlight" />
 			<rich:dataTable value="#{choicesBean.choices}" var="choice"
-				rowKeyVar="row" ajaxKeys="#{choicesBean.keysSet}">
+				rowKeyVar="row" ajaxKeys="#{choicesBean.keysSet}" id="choises">
 				<f:facet name="header">
 					<h:outputText value="Voting for favourite fruit" />
 				</f:facet>
-				<rich:column>
+				<rich:column id="row">
 					<f:facet name="header">
 						<h:outputText value="" />
 					</f:facet>
 					<h:outputText value="#{row}" />
 				</rich:column>
-				<rich:column>
+				<rich:column id="label">
 					<f:facet name="header">
 						<h:outputText value="Choice name" />
 					</f:facet>
 					<h:outputText value="#{choice.label}" id="choiceLabel" />
 				</rich:column>
-				<rich:column>
+				<rich:column id="votes" styleClass="votesClass">
 					<f:facet name="header">
 						<h:outputText value="Current Votes" />
 					</f:facet>
@@ -46,10 +56,9 @@
 				value="Latest update votes was: #{choicesBean.updateInfo} at #{choicesBean.timeStamp}"
 				rendered="#{choicesBean.enabled}" />
 		</a4j:outputPanel>
-
-		<a4j:push enabled="#{choicesBean.enabled}" interval="3000"
+		<a4j:push enabled="#{choicesBean.enabled}" interval="2000"
 			timeout="3000" eventProducer="#{choicesBean.addListener}" id="push"
 			limitToList="true" action="#{choicesBean.processUpdates}"
-			reRender="choiceVotes, push, tempResults" />
+			reRender="choiceVotes, push, tempResults, start, stop" data="#{choicesBean.lastVotes}" oncomplete="jqhighlight(null,data)"/>
 	</h:form>
 </ui:composition>
