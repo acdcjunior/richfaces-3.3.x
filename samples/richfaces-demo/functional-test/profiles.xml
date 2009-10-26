@@ -24,6 +24,9 @@
 				
 				<!--*** selenium.port: specifies on which port should run selenium server (default: 8444) ***-->
 				<!--<selenium.port>8446</selenium.port>-->
+				
+				<!--*** firefoxProfileTemplate: specifies path to firefox's profile which should be used as template to create new session -->
+				<!--<firefoxProfileTemplate>/home/qa/.mozilla/firefox/87nmklfc.Testing</firefoxProfileTemplate>-->
 			</properties>
 		</profile>
 	</profiles>
