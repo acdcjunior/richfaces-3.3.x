@@ -21,14 +21,16 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
 import org.jboss.test.selenium.AbstractSeleniumTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
@@ -97,8 +99,29 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
         selenium = new DefaultSelenium("localhost", Integer.valueOf(seleniumPort), browser, contextRoot);
         selenium.start();
         allowInitialXpath();
-    }
+        loadCustomLocationStrategies();
+	}
 
+	/**
+	 * Uses selenium.addLocationStrategy to implement own strategies to locate
+	 * items in the tested page
+	 */
+	private void loadCustomLocationStrategies() {
+		// jQuery location strategy
+		try {
+			String jqueryLocationStrategy = IOUtils.toString(new FileReader(
+					"src/test/resources/selenium-location-strategies/jquery-strategy.js"));
+			selenium.addLocationStrategy("jquery", jqueryLocationStrategy);
+		} catch (IOException ex) {
+			throw new IllegalStateException(ex);
+		}
+	}
+
+	/**
+	 * Setup initial type of XPath to non-native version.
+	 * 
+	 * Use to return XPath settings to initial type.
+	 */
     protected void allowInitialXpath() {
         selenium.allowNativeXpath("false");
     }
@@ -258,7 +281,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected void openComponent(final String componentName) {
 
         final String LOC_MENU_ITEM = format(
-                "//table[@class='left_menu']//td[contains(@class, 'text')]//a/span[normalize-space(text())='{0}']",
+                "jquery=table.left_menu td.text a > span:contains('{0}')",
                 componentName);
 
         // TODO needs to open clean page, see {@link
@@ -288,7 +311,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     }
 
     private boolean isComponentPageActive(String componentName) {
-        final String LOC_OUTPUT_COMPONENT_NAME = "//body/table[@class='left_menu']//*[contains(@class,'panel_documents')]//strong";
+        final String LOC_OUTPUT_COMPONENT_NAME = "jquery=body table.left_menu *.panel_documents strong";
         return componentName.equals(getTextOrNull(LOC_OUTPUT_COMPONENT_NAME));
     }
 
@@ -311,7 +334,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected void openTab(String tabTitle) {
 
         final String LOC_TAB = format(
-                "//form[contains(@id, ':_form')]//td[contains(@class,'rich-tab-header') and text()='{0}']", tabTitle);
+                "jquery=form[id$='_form'] td.rich-tab-header:contains('{0}')", tabTitle);
 
         if (belongsClass("rich-tab-active", LOC_TAB)) {
             return;

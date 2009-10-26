@@ -21,11 +21,14 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.actionParameter;
 
+import java.awt.Color;
+
 import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
 import static org.testng.Assert.*;
+import static org.jboss.test.selenium.utils.ColorUtils.convertToAWTColor;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,7 +42,7 @@ public class ActionParameterTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String LOC_OUTPUT_SELECTED_NAME_PREFORMATTED = getLoc("OUTPUT_SELECTED_NAME_PREFORMATTED");
 	private final String LOC_BUTTON_SELECTED_NAME_PREFORMATTED = getLoc("BUTTON_SELECTED_NAME_PREFORMATTED");
 	private final String LOC_LABEL_CHANGE_SKIN = getLoc("LABEL_CHANGE_SKIN");
-	private final String LOC_ANCHOR_SELECT_SKIN_RELATIVE = getLoc("ANCHOR_SELECT_SKIN_RELATIVE");
+	private final String LOC_ANCHOR_SELECT_SKIN_PREFORMATTED = getLoc("ANCHOR_SELECT_SKIN_PREFORMATTED");
 	private final String LOC_BUTTON_SCREEN_SIZE = getLoc("BUTTON_SCREEN_SIZE");
 	private final String LOC_OUTPUT_SCREEN_WIDTH = formatLoc("OUTPUT_SCREEN_WIDTH", LOC_BUTTON_SCREEN_SIZE);
 	private final String LOC_OUTPUT_SCREEN_HEIGHT = formatLoc("OUTPUT_SCREEN_HEIGHT", LOC_BUTTON_SCREEN_SIZE);
@@ -91,8 +94,8 @@ public class ActionParameterTestCase extends AbstractSeleniumRichfacesTestCase {
 		for (String relation : MSG_RELATION_SKINS_COLORS) {
 			final String[] msgSkinColor = StringUtils.split(relation, '|');
 			final String msgInputSkin = msgSkinColor[0];
-			final String msgOutputColor = msgSkinColor[1];
-			final String locAnchorSelectSkin = format(LOC_ANCHOR_SELECT_SKIN_RELATIVE, LOC_LABEL_CHANGE_SKIN, msgInputSkin);
+			final Color msgOutputColor = convertToAWTColor(msgSkinColor[1]);
+			final String locAnchorSelectSkin = format(LOC_ANCHOR_SELECT_SKIN_PREFORMATTED, msgInputSkin);
 			
 			scrollIntoView(locAnchorSelectSkin, false);
 			
@@ -100,7 +103,7 @@ public class ActionParameterTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			Wait.failWith(format("Color never changed to '{0}'", msgOutputColor)).until(new Condition() {
 				public boolean isTrue() {
-					String actualColor = getStyle(LOC_LABEL_CHANGE_SKIN, "background-color");
+					Color actualColor = convertToAWTColor(getStyle(LOC_LABEL_CHANGE_SKIN, "background-color"));
 
 					return msgOutputColor.equals(actualColor);
 				}
