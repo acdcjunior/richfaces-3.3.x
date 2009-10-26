@@ -183,4 +183,30 @@ Selenium.prototype.getTextOrNull = function(locator) {
 	}
 	return getText(element).trim();
 };
+
+/**
+ * Add required script to page.
+ * 
+ * Use a id of script (ideally based on hash of script) to avoid adding the same script twice.
+ * 
+ * (This code should refuse adding script to the page duplicitly due to usage
+ * of hash-id, so you can add it thought you are not sure script is already
+ * added or not - this is usefull for adding libraries directly to the
+ * page).
+ * 
+ * Script will be appended to end of the body tag within the script
+ * tag.
+ * 
+ * @param script what should be added to the page
+ */
+Selenium.prototype.addScriptLocally = function(id, script) {
+	var inDocument = this.browserbot.getCurrentWindow().document;
+	if (inDocument.getElementById(id)) {
+		return;
+	}
+	var scriptTag = inDocument.createElement('script');
+	scriptTag.id = id;
+	scriptTag.innerHTML = script;
+	inDocument.body.appendChild(scriptTag);
+};
  
