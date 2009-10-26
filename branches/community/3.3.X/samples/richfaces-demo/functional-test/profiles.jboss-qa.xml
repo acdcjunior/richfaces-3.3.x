@@ -28,6 +28,22 @@
 				<demo.version>${profile.demo.version}</demo.version>
 			</properties>
 		</profile>
+		<!-- INTERNET EXPLORER PROFILE -->
+		<profile>
+			<id>browser-internet-explorer</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+				<property>
+					<name>profile.browser</name>
+					<value>internet-explorer</value>
+				</property>
+			</activation>
+			<properties>
+				<browser>*piiexplore</browser>
+			</properties>
+		</profile>
 		<!--  FIREFOX_VERSION -->
 		<profile>
 			<id>browser-firefox-2</id>
