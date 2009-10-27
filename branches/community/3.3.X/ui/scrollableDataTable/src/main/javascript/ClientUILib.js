@@ -106,6 +106,8 @@ var ClientUILib = {
 	   	/** @type Boolean */
 		this.isIE7 = (ua.indexOf('msie 7') > -1);
 	   	/** @type Boolean */
+		this.isIE8 = (ua.indexOf('msie 8') > -1);
+	   	/** @type Boolean */
 		this.isGecko = !this.isSafari && (ua.indexOf('gecko') > -1);
 		
 		if(ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1){

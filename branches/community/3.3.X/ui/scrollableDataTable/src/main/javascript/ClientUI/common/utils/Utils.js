@@ -221,11 +221,11 @@ var Utils = {
 					} 
 				);
 			}
-			if (ClientUILib.isIE7) {
+			if (ClientUILib.isIE7 || ClientUILib.isIE8) {
 				setTimeout(function()  {
 					var scrollElement = grid.getBody().scrollBox.getElement();
 					var scrollTop = scrollElement.scrollTop;
-					if (scrollTop) {
+					if (!scrollTop) {
 						scrollElement.scrollTop++;
 					} else {
 						scrollElement.scrollTop--;
