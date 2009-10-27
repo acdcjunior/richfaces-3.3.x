@@ -56,8 +56,8 @@ public class CalendarStylingTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = null;
         int date = 0;
 
-        for (int i = 3; i < 9; i++) {
-            for (int j = 2; j < 9; j++) {
+        for (int i = 1; i < 7; i++) {
+            for (int j = 1; j < 8; j++) {
                 text = selenium.getText(format(LOC_STYLING_CELL_PREFORMATTED, i, j));
                 date = Integer.parseInt(text);
                 if (date % 3 == 0) {

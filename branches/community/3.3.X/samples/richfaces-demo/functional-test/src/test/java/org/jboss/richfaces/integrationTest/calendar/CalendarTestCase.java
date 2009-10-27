@@ -62,6 +62,7 @@ public class CalendarTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_MONTH_YEAR_LABEL = getLoc("MONTH_YEAR_LABEL");
     private final String LOC_RIGHT_ARROW = getLoc("RIGHT_ARROW");
     private final String LOC_DOUBLE_RIGHT_ARROW = getLoc("DOUBLE_RIGHT_ARROW");
+    private final String LOC_DAY_LABEL = getLoc("DAY_LABEL");
     private final String LOC_CLOSE_BUTTON = getLoc("CLOSE_BUTTON");
     private final String LOC_CLEAN_BUTTON = getLoc("CLEAN_BUTTON");
     private final String LOC_TODAY_BUTTON = getLoc("TODAY_BUTTON");
@@ -268,7 +269,7 @@ public class CalendarTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testLocale() {
         // choose German localization
-        selenium.click(LOC_LOCALE_SELECT + "/td[2]/input");
+        selenium.click(format(LOC_LOCALE_SELECT, 1));
 
         waitFor(1000);
         selenium.click(LOC_DATE_BUTTON);
@@ -279,7 +280,8 @@ public class CalendarTestCase extends AbstractSeleniumRichfacesTestCase {
 
         assertTrue(month1.equalsIgnoreCase(month2), "The name of the month is not localized.");
 
-        String text = selenium.getText(LOC_CALENDAR + "/tbody/tr[2]/td[3]");
+        // get the label of second day
+        String text = selenium.getText(format(LOC_DAY_LABEL,1));
         assertTrue(!"Mon".equalsIgnoreCase(text), "The name of the second day is not localized.");
 
         // TODO find out whether the following strings should be translated

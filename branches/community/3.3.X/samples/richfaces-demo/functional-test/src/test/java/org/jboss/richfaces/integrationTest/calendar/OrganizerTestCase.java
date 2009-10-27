@@ -66,13 +66,13 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
         String today = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         String text = null;
 
-        int fromLine = 3;
+        int fromLine = 1;
         if (Integer.parseInt(today) > 15) {
-            fromLine = 5;
+            fromLine = 3;
         }
 
-        for (int i = fromLine; i < 9; i++) {
-            for (int j = 1; j < 8; j++) {
+        for (int i = fromLine; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
                 text = selenium.getText(format(LOC_CELL_DATE_PREFORMATTED, i, j));
                 if (today.equals(text)) {
                     assertTrue(belongsClass("rich-calendar-today", format(LOC_CELL_PREFORMATTED, i, j)),
@@ -89,7 +89,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testLastDayIsGrey() {
-        assertTrue(belongsClass("rich-calendar-boundary-dates", format(LOC_CELL_PREFORMATTED, 8, 7)),
+        assertTrue(belongsClass("rich-calendar-boundary-dates", format(LOC_CELL_PREFORMATTED, 6, 6)),
                 "Class attribute of the last cell should contain \"rich-calendar-boundary-dates\".");
     }
 
