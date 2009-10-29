@@ -41,17 +41,14 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     // locators
     private final String LOC_FIRST_COMBO_INPUT = getLoc("FIRST_COMBO_INPUT");
     private final String LOC_FIRST_COMBO_BUTTON = getLoc("FIRST_COMBO_BUTTON");
-    private final String LOC_FIRST_COMBO_CONCRETE_SUGGESTION = getLoc("FIRST_COMBO_CONCRETE_SUGGESTION");
     private final String LOC_FIRST_COMBO_SUGGESTIONS = getLoc("FIRST_COMBO_SUGGESTIONS");
 
     private final String LOC_SECOND_COMBO_INPUT = getLoc("SECOND_COMBO_INPUT");
     private final String LOC_SECOND_COMBO_BUTTON = getLoc("SECOND_COMBO_BUTTON");
-    private final String LOC_SECOND_COMBO_CONCRETE_SUGGESTION = getLoc("SECOND_COMBO_CONCRETE_SUGGESTION");
     private final String LOC_SECOND_COMBO_SUGGESTIONS = getLoc("SECOND_COMBO_SUGGESTIONS");
 
     private final String LOC_THIRD_COMBO_INPUT = getLoc("THIRD_COMBO_INPUT");
     private final String LOC_THIRD_COMBO_BUTTON = getLoc("THIRD_COMBO_BUTTON");
-    private final String LOC_THIRD_COMBO_CONCRETE_SUGGESTION = getLoc("THIRD_COMBO_CONCRETE_SUGGESTION");
     private final String LOC_THIRD_COMBO_SUGGESTIONS = getLoc("THIRD_COMBO_SUGGESTIONS");
 
     // messages
@@ -106,20 +103,20 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_COMBO_BUTTON, true);
 
         selenium.click(LOC_FIRST_COMBO_BUTTON);
-        waitForElement(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, 1));
-        int count = selenium.getXpathCount(LOC_FIRST_COMBO_SUGGESTIONS).intValue();
+        waitForElement(format(LOC_FIRST_COMBO_SUGGESTIONS, 0));
+        int count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS,-1));
         assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
         selenium.click(LOC_FIRST_COMBO_INPUT);
         selenium.typeKeys(LOC_FIRST_COMBO_INPUT, "su");
         selenium.typeKeys(LOC_FIRST_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(LOC_FIRST_COMBO_SUGGESTIONS).intValue();
+        count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_2, "Number of suggestions after typing 'su'.");
 
         String[] suggestions = new String[5];
         for (int i = 0; i < 5; i++) {
-            suggestions[i] = selenium.getText(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_FIRST_COMBO_SUGGESTIONS, i));
         }
 
         String[] expected = new String[] { "suggestion 1", "suggestion 2", "suggestion 3", "suggestion 4", "suggestion 5", };
@@ -127,7 +124,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(LOC_FIRST_COMBO_CONCRETE_SUGGESTION, 3), "");
+            selenium.clickAt(format(LOC_FIRST_COMBO_SUGGESTIONS, 2), "");
         } catch (Exception ex) {
             // why the exception is thrown?
         }
@@ -147,20 +144,20 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_SECOND_COMBO_BUTTON, true);
 
         selenium.click(LOC_SECOND_COMBO_BUTTON);
-        waitForElement(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, 1));
-        int count = selenium.getXpathCount(LOC_SECOND_COMBO_SUGGESTIONS).intValue();
+        waitForElement(format(LOC_SECOND_COMBO_SUGGESTIONS, 0));
+        int count = getJQueryCount(format(LOC_SECOND_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
         selenium.click(LOC_SECOND_COMBO_INPUT);
         selenium.typeKeys(LOC_SECOND_COMBO_INPUT, "sa");
         selenium.typeKeys(LOC_SECOND_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(LOC_SECOND_COMBO_SUGGESTIONS).intValue();
+        count = getJQueryCount(format(LOC_SECOND_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
 
         String[] suggestions = new String[4];
         for (int i = 0; i < 4; i++) {
-            suggestions[i] = selenium.getText(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_SECOND_COMBO_SUGGESTIONS, i));
         }
 
         String[] expected = new String[] { "Sacramento", "Santa Fe", "Salem", "Salt Lake City" };
@@ -168,7 +165,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(LOC_SECOND_COMBO_CONCRETE_SUGGESTION, 3), "");
+            selenium.clickAt(format(LOC_SECOND_COMBO_SUGGESTIONS, 2), "");
         } catch (Exception ex) {
             // why the exception is thrown?
         }
@@ -188,20 +185,20 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSuggestionsThirdComboBox() {
         selenium.click(LOC_THIRD_COMBO_BUTTON);
 
-        waitForElement(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, 1));
-        int count = selenium.getXpathCount(LOC_THIRD_COMBO_SUGGESTIONS).intValue();
+        waitForElement(format(LOC_THIRD_COMBO_SUGGESTIONS, 0));
+        int count = getJQueryCount(format(LOC_THIRD_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
         selenium.click(LOC_THIRD_COMBO_INPUT);
         selenium.typeKeys(LOC_THIRD_COMBO_INPUT, "sa");
         selenium.typeKeys(LOC_THIRD_COMBO_INPUT, " ");
 
-        count = selenium.getXpathCount(LOC_THIRD_COMBO_SUGGESTIONS).intValue();
+        count = getJQueryCount(format(LOC_THIRD_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
 
         String[] suggestions = new String[4];
         for (int i = 0; i < 4; i++) {
-            suggestions[i] = selenium.getText(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, i + 1));
+            suggestions[i] = selenium.getText(format(LOC_THIRD_COMBO_SUGGESTIONS, i));
         }
 
         String[] expected = new String[] { "Sacramento", "Santa Fe", "Salem", "Salt Lake City" };
@@ -209,7 +206,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
 
         try {
-            selenium.clickAt(format(LOC_THIRD_COMBO_CONCRETE_SUGGESTION, 4), "");
+            selenium.clickAt(format(LOC_THIRD_COMBO_SUGGESTIONS, 3), "");
         } catch (Exception ex) {
             // why the exception is thrown?
         }
