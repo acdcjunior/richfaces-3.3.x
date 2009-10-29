@@ -86,39 +86,39 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // select Atlanta
         selenium.typeKeys(LOC_FIRST_INPUT, "at");
-        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
-        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
         // select Madison
         selenium.typeKeys(LOC_FIRST_INPUT, ",ma");
 
-        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1), "MadisonWisconsin");
-        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "MadisonWisconsin");
+        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
-        String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 1));
-        assertEquals(text, "Georgia", format(MSG_TABLE_PREFORMATTED, 1, 1));
+        String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 0));
+        assertEquals(text, "Georgia", format(MSG_TABLE_PREFORMATTED, 1, 0));
+
+        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 1));
+        assertEquals(text, "Atlanta", format(MSG_TABLE_PREFORMATTED, 1, 1));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 2));
-        assertEquals(text, "Atlanta", format(MSG_TABLE_PREFORMATTED, 1, 2));
+        assertEquals(text, "Augusta", format(MSG_TABLE_PREFORMATTED, 1, 2));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 3));
-        assertEquals(text, "Augusta", format(MSG_TABLE_PREFORMATTED, 1, 3));
+        assertEquals(text, "Columbus", format(MSG_TABLE_PREFORMATTED, 1, 3));
 
-        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 4));
-        assertEquals(text, "Columbus", format(MSG_TABLE_PREFORMATTED, 1, 4));
+        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 0));
+        assertEquals(text, "Wisconsin", format(MSG_TABLE_PREFORMATTED, 2, 0));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 1));
-        assertEquals(text, "Wisconsin", format(MSG_TABLE_PREFORMATTED, 2, 1));
+        assertEquals(text, "Milwaukee", format(MSG_TABLE_PREFORMATTED, 2, 1));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 2));
-        assertEquals(text, "Milwaukee", format(MSG_TABLE_PREFORMATTED, 2, 2));
+        assertEquals(text, "Madison", format(MSG_TABLE_PREFORMATTED, 2, 2));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 3));
-        assertEquals(text, "Madison", format(MSG_TABLE_PREFORMATTED, 2, 3));
-
-        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 4));
-        assertEquals(text, "Green Bay", format(MSG_TABLE_PREFORMATTED, 2, 4));
+        assertEquals(text, "Green Bay", format(MSG_TABLE_PREFORMATTED, 2, 3));
     }
 
     /**
@@ -131,40 +131,40 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // select Atlanta
         selenium.typeKeys(LOC_FIRST_INPUT, "[at");
-        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
-        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
         selenium.typeKeys(LOC_FIRST_INPUT, "]");
 
         // select Madison
         selenium.typeKeys(LOC_FIRST_INPUT, "[ma");
-        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1), "MadisonWisconsin");
-        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "MadisonWisconsin");
+        selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
         selenium.typeKeys(LOC_FIRST_INPUT, "]");
 
-        String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 1));
-        assertEquals(text, "Georgia", format(MSG_TABLE_PREFORMATTED, 1, 1));
+        String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 0));
+        assertEquals(text, "Georgia", format(MSG_TABLE_PREFORMATTED, 1, 0));
+
+        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 1));
+        assertEquals(text, "Atlanta", format(MSG_TABLE_PREFORMATTED, 1, 1));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 2));
-        assertEquals(text, "Atlanta", format(MSG_TABLE_PREFORMATTED, 1, 2));
+        assertEquals(text, "Augusta", format(MSG_TABLE_PREFORMATTED, 1, 2));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 3));
-        assertEquals(text, "Augusta", format(MSG_TABLE_PREFORMATTED, 1, 3));
+        assertEquals(text, "Columbus", format(MSG_TABLE_PREFORMATTED, 1, 3));
 
-        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 4));
-        assertEquals(text, "Columbus", format(MSG_TABLE_PREFORMATTED, 1, 4));
+        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 0));
+        assertEquals(text, "Wisconsin", format(MSG_TABLE_PREFORMATTED, 2, 0));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 1));
-        assertEquals(text, "Wisconsin", format(MSG_TABLE_PREFORMATTED, 2, 1));
+        assertEquals(text, "Milwaukee", format(MSG_TABLE_PREFORMATTED, 2, 1));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 2));
-        assertEquals(text, "Milwaukee", format(MSG_TABLE_PREFORMATTED, 2, 2));
+        assertEquals(text, "Madison", format(MSG_TABLE_PREFORMATTED, 2, 2));
 
         text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 3));
-        assertEquals(text, "Madison", format(MSG_TABLE_PREFORMATTED, 2, 3));
-
-        text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 2, 4));
-        assertEquals(text, "Green Bay", format(MSG_TABLE_PREFORMATTED, 2, 4));
+        assertEquals(text, "Green Bay", format(MSG_TABLE_PREFORMATTED, 2, 3));
     }
 
     /**
@@ -178,8 +178,8 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         // select aaa
         selenium.typeKeys(LOC_FIRST_INPUT, "aaa");
 
-        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
-        String text = selenium.getText(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 1));
+        waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
+        String text = selenium.getText(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
         assertEquals(text, "No capitals found", MSG_PREFORMATTEDO_CAPITALS_FOUND);
     }
 
@@ -481,7 +481,8 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_SECOND_BUTTON);
         waitForElement(LOC_SECOND_SUGGESTION_LINES);
 
-        int count = selenium.getXpathCount(LOC_SECOND_SUGGESTION_LINES).intValue();
+//        int count = selenium.getXpathCount(LOC_SECOND_SUGGESTION_LINES).intValue();
+        int count = getJQueryCount(LOC_SECOND_SUGGESTION_LINES);
         assertEquals(count, 50, MSG_COUNT_OF_ALL_SUGGESTIONS);
     }
 
@@ -494,8 +495,8 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_SECOND_INPUT, true);
 
         selenium.typeKeys(LOC_SECOND_INPUT, "a");
-        waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2));
-        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2)); // Augusta
+        waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1));
+        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1)); // Augusta
 
         String state = selenium.getText(LOC_SECOND_STATE);
         assertEquals(state, "Maine", MSG_AUGUSTA_MAINE);
@@ -512,12 +513,12 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_SECOND_INPUT, true);
 
         selenium.typeKeys(LOC_SECOND_INPUT, "a");
-        waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2));
-        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2)); // Augusta
+        waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1));
+        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1)); // Augusta
 
         selenium.typeKeys(LOC_SECOND_INPUT, ",m");
-        waitForTextEquals(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 3), "Madison");
-        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 3)); // Madison
+        waitForTextEquals(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2), "Madison");
+        selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2)); // Madison
 
         Wait.failWith(MSG_AUGUSTA_MADISON_MAINE_WISCONSIN).until(new Condition() {
             public boolean isTrue() {

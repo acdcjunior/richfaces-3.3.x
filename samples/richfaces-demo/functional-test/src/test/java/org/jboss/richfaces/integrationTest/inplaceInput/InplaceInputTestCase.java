@@ -40,7 +40,6 @@ import org.testng.annotations.Test;
 public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	// messages
-	private final String MSG_COMPONENT_DESCRIPTION = getMsg("COMPONENT_DESCRIPTION");
 	private final String MSG_INITIAL_VALUE_NAME = getMsg("INITIAL_VALUE_NAME");
 	private final String MSG_INITIAL_VALUE_EMAIL = getMsg("INITIAL_VALUE_EMAIL");
 	private final String MSG_NAME_JOHN_SMITH = getMsg("NAME_JOHN_SMITH");
@@ -187,7 +186,7 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 		selenium.type(LOC_SECOND_EMAIL_INPUT, "john@smith.name");
 		// TODO check that the button is visible
 		selenium.fireEvent(LOC_SECOND_EMAIL_OK, Event.MOUSEDOWN);
-
+		
 		assertTrue(belongsClass("rich-inplace-changed", LOC_SECOND_EMAIL), MSG_RICH_INPLACE_CHANGED);
 		assertFalse(belongsClass("rich-inplace-edit", LOC_SECOND_EMAIL), MSG_NOT_RICH_INPLACE_EDIT);
 

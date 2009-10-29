@@ -101,10 +101,10 @@ public class InplaceSelectTestCase extends AbstractSeleniumRichfacesTestCase {
         // expand the component and select "Option 4"
         selenium.click(LOC_FIRST);
 
-        int count = selenium.getXpathCount(LOC_FIRST_LIST_SPAN).intValue();
+        int count = getJQueryCount(LOC_FIRST_LIST_SPAN);
         assertEquals(count, 5, MSG_COUNT_OF_ITEMS);
 
-        selenium.mouseMove(format(LOC_FIRST_LIST_SPAN_N, 4));
+        selenium.mouseMove(format(LOC_FIRST_LIST_SPAN_N, 3));
 
         // TODO explore whether this isn't too low-level
         selenium.getEval(format("selenium.browserbot.findElement(\"{0}\").component.save()", LOC_FIRST_SELECT_VIEW));
@@ -141,14 +141,14 @@ public class InplaceSelectTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_SECOND_INPUT_1);
         selenium.click(LOC_SECOND_INPUT_2);
 
-        int count = selenium.getXpathCount(LOC_SECOND_LIST_SPAN).intValue();
+        int count = getJQueryCount(LOC_SECOND_LIST_SPAN);
         assertEquals(count, 50, MSG_COUNT_OF_ITEMS);
 
         text = selenium.getText(LOC_SECOND);
         assertTrue(text.equals("Double Click to edit"), MSG_DOUBLE_CLICK_TO_EDIT);
 
         // expand the inplace select and click "Arkansas"
-        selenium.mouseMove(format(LOC_SECOND_LIST_SPAN_N, 4));
+        selenium.mouseMove(format(LOC_SECOND_LIST_SPAN_N, 3));
         selenium.mouseDown(LOC_SECOND_OK_BUTTON);
 
         text = selenium.getText(LOC_SECOND);
@@ -178,7 +178,7 @@ public class InplaceSelectTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_THIRD_INPUT_1);
         selenium.click(LOC_THIRD_INPUT_2);
 
-        int count = selenium.getXpathCount(LOC_THIRD_LIST_SPAN).intValue();
+        int count = getJQueryCount(LOC_THIRD_LIST_SPAN);
         assertEquals(count, 50, MSG_COUNT_OF_ITEMS);
 
         text = selenium.getText(LOC_THIRD);
@@ -188,7 +188,7 @@ public class InplaceSelectTestCase extends AbstractSeleniumRichfacesTestCase {
         text = selenium.getText(LOC_THIRD_CAPITAL);
 
         // select "Arkansas"
-        selenium.mouseMove(format(LOC_THIRD_LIST_SPAN_N, 4));
+        selenium.mouseMove(format(LOC_THIRD_LIST_SPAN_N, 3));
         selenium.mouseDown(LOC_THIRD_SAVE_BUTTON);
 
         // wait for remembered value change

@@ -53,20 +53,20 @@ public class InputNumberSliderTestCase extends
 
 	// locators
 	private final String LOC_EXAMPLE_HEADER = getLoc("EXAMPLE_HEADER");
-	private final String LOC_FIRST = format(getLoc("SLIDER_N"), 1);
-	private final String LOC_FIRST_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 1);
-	private final String LOC_FIRST_TIP = format(getLoc("SLIDER_N_TIP"), 1);
-	private final String LOC_FIRST_INPUT = format(getLoc("SLIDER_N_INPUT"), 1);
+	private final String LOC_FIRST = format(getLoc("SLIDER_N"), 0);
+	private final String LOC_FIRST_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 0);
+	private final String LOC_FIRST_TIP = format(getLoc("SLIDER_N_TIP"), 0);
+	private final String LOC_FIRST_INPUT = format(getLoc("SLIDER_N_INPUT"), 0);
 
-	private final String LOC_SECOND = format(getLoc("SLIDER_N"), 2);
-	private final String LOC_SECOND_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 2);
-	private final String LOC_SECOND_TIP = format(getLoc("SLIDER_N_TIP"), 2);
-	private final String LOC_SECOND_INPUT = format(getLoc("SLIDER_N_INPUT"), 2);
+	private final String LOC_SECOND = format(getLoc("SLIDER_N"), 1);
+	private final String LOC_SECOND_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 1);
+	private final String LOC_SECOND_TIP = format(getLoc("SLIDER_N_TIP"), 1);
+	private final String LOC_SECOND_INPUT = format(getLoc("SLIDER_N_INPUT"), 1);
 
-	private final String LOC_THIRD = format(getLoc("SLIDER_N"), 3);
-	private final String LOC_THIRD_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 3);
-	private final String LOC_THIRD_TIP = format(getLoc("SLIDER_N_TIP"), 3);
-	private final String LOC_THIRD_INPUT = format(getLoc("SLIDER_N_INPUT"), 3);
+	private final String LOC_THIRD = format(getLoc("SLIDER_N"), 2);
+	private final String LOC_THIRD_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 2);
+	private final String LOC_THIRD_TIP = format(getLoc("SLIDER_N_TIP"), 2);
+	private final String LOC_THIRD_INPUT = format(getLoc("SLIDER_N_INPUT"), 2);
 
 	/**
 	 * Tests clicking on the first slider. First, it checks the offset of the handler and

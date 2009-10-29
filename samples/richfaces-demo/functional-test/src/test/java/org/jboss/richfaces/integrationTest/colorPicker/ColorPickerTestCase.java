@@ -156,7 +156,7 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.mouseDownAt(LOC_COLOR_AREA, "50,50");
         selenium.click(LOC_APPLY_BUTTON);
         waitFor(500);
-
+        
         String url = selenium.getAttribute(LOC_IMAGE + "@src");
 
         Color imageColor = getPixelColor(url, 18, 97);

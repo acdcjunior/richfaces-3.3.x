@@ -169,10 +169,10 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_B);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_BOLD);
 
         selenium.selectFrame("relative=top");
@@ -204,10 +204,10 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_I).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_I);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_ITALIC);
 
         selenium.selectFrame("relative=top");
@@ -239,10 +239,10 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_U).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_U);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_UNDERLINED);
 
         selenium.selectFrame("relative=top");
@@ -274,10 +274,10 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_STRIKE).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_STRIKE);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_HAVE_A_LINE_THROUGH);
 
         selenium.selectFrame("relative=top");
@@ -339,13 +339,13 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = selenium.getText(LOC_TEXT_AREA);
         assertEquals(text, "aaaa\nbbbbccccddddeeee", MSG_CONTENT_OF_THE_EDITOR);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_SHOULD_CONTAIN_A_PARAGRAPH);
 
         boolean isPresent = selenium.isElementPresent(LOC_TEXT_AREA_UL);
         assertTrue(isPresent, MSG_EDITOR_SHOULD_CONTAIN_UL);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_UL_LI).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_UL_LI);
         assertEquals(count, 3, MSG_LIST_SHOULD_CONTAIN_THREE_ITEMS);
 
         selenium.selectFrame("relative=top");
@@ -380,13 +380,13 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = selenium.getText(LOC_TEXT_AREA);
         assertEquals(text, "aaaa\nbbbbccccddddeeee", MSG_CONTENT_OF_THE_EDITOR);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_SHOULD_CONTAIN_A_PARAGRAPH);
 
         boolean isPresent = selenium.isElementPresent(LOC_TEXT_AREA_OL);
         assertTrue(isPresent, MSG_EDITOR_SHOULD_CONTAIN_OL);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_OL_LI).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_OL_LI);
         assertEquals(count, 3, MSG_LIST_SHOULD_CONTAIN_THREE_ITEMS);
 
         selenium.selectFrame("relative=top");
@@ -444,27 +444,27 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         }
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 2));
+        selenium.click(format(LOC_ADV_STYLE_N, 1));
         assertTrue(belongsClass("bold-larger", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 3));
+        selenium.click(format(LOC_ADV_STYLE_N, 2));
         assertTrue(belongsClass("bold-smaller", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 4));
+        selenium.click(format(LOC_ADV_STYLE_N, 3));
         assertTrue(belongsClass("red-bold", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 5));
+        selenium.click(format(LOC_ADV_STYLE_N, 4));
         assertTrue(belongsClass("red-bold-larger", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 6));
+        selenium.click(format(LOC_ADV_STYLE_N, 5));
         assertTrue(belongsClass("red-bold-smaller", LOC_TEXT_AREA_P), MSG_PARAGRAPHS_CLASS_ATTRIBUTE);
 
         selenium.click(LOC_ADV_STYLE_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_STYLE_N, 1));
+        selenium.click(format(LOC_ADV_STYLE_N, 0));
         try {
             selenium.getAttribute(LOC_TEXT_AREA_P + "@class");
             fail(MSG_PARAGRAPH_SHOULD_HAVE_NO_STYLE);
@@ -483,7 +483,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // initial state
         selenium.selectFrame(LOC_IFRAME);
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         String text = selenium.getText(LOC_TEXT_AREA_P);
         assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
@@ -491,9 +491,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // address
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_FORMAT_N, 3));
+        selenium.click(format(LOC_ADV_FORMAT_N, 2));
         selenium.selectFrame(LOC_IFRAME);
-        count = selenium.getXpathCount(LOC_TEXT_AREA_ADDRESS).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_ADDRESS);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "address"));
         text = selenium.getText(LOC_TEXT_AREA_ADDRESS);
         assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "address"));
@@ -501,9 +501,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // paragraph
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_FORMAT_N, 2));
+        selenium.click(format(LOC_ADV_FORMAT_N, 1));
         selenium.selectFrame(LOC_IFRAME);
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         text = selenium.getText(LOC_TEXT_AREA_P);
         assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
@@ -511,9 +511,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // preformatted
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_FORMAT_N, 4));
+        selenium.click(format(LOC_ADV_FORMAT_N, 3));
         selenium.selectFrame(LOC_IFRAME);
-        count = selenium.getXpathCount(LOC_TEXT_AREA_PRE).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_PRE);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "pre"));
         text = selenium.getText(LOC_TEXT_AREA_PRE);
         assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "pre"));
@@ -521,9 +521,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // change back to the initial state by clicking on "Format"
         selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-        selenium.click(format(LOC_ADV_FORMAT_N, 1));
+        selenium.click(format(LOC_ADV_FORMAT_N, 0));
         selenium.selectFrame(LOC_IFRAME);
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "p"));
         text = selenium.getText(LOC_TEXT_AREA_P);
         assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "p"));
@@ -532,9 +532,9 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // heading 1-6
         for (int i = 1; i < 7; i++) {
             selenium.click(LOC_ADV_FORMAT_SELECT_BUTTON);
-            selenium.click(format(LOC_ADV_FORMAT_N, 4 + i));
+            selenium.click(format(LOC_ADV_FORMAT_N, 3 + i));
             selenium.selectFrame(LOC_IFRAME);
-            count = selenium.getXpathCount(format(LOC_TEXT_AREA_HN, i)).intValue();
+            count = getJQueryCount(format(LOC_TEXT_AREA_HN, i));
             assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "h" + i));
             text = selenium.getText(format(LOC_TEXT_AREA_HN, i));
             assertEquals(text, "aaa bbb ccc ddd eee fff ggg", format(MSG_CONTENT_OF_TAG_S, "h" + i));
@@ -584,7 +584,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
 
         Wait.failWith(MSG_NUMBER_OF_RULERS).interval(3000).until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_TEXT_AREA_P_HR).intValue() == 3;
+                return getJQueryCount(LOC_TEXT_AREA_P_HR) == 3;
             }
         });
 
@@ -605,7 +605,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.typeKeys(LOC_TEXT_AREA, "bbb");
 
         selenium.selectFrame(LOC_IFRAME);
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P2_B);
         assertEquals(count, 1, format(MSG_TAG_S_SHOULD_BE_IN_EDITOR, "b"));
         String text = selenium.getText(LOC_TEXT_AREA_P2_B);
         assertEquals(text, "bbb", format(MSG_CONTENT_OF_TAG_S, "b"));
@@ -618,7 +618,7 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.selectFrame("relative=top");
         selenium.click(LOC_ADV_REMOVE_FORMATTING_BUTTON);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_B);
         assertEquals(count, 0, format(MSG_TAG_S_SHOULD_NOT_BE_IN_EDITOR, "b"));
         text = selenium.getText(LOC_TEXT_AREA_P2);
         assertEquals(text, "bbb", format(MSG_CONTENT_OF_TAG_S, "b"));
@@ -755,6 +755,8 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         } catch (Exception e) {
             // OK -- there is no class attribute
         }
+        
+        selenium.selectFrame("relative=top");
     }
 
     /**
@@ -813,23 +815,23 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
         // euro sign
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 1, 5));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
 
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
         // Omega
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 5));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
 
         selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
         waitForElement(LOC_ADV_DIALOG_IFRAME);
         selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
+        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
         // heart suite
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 10, 18));
+        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
 
         String text = selenium.getText(LOC_TEXT_AREA_P);
         assertEquals(text, "€Ω♥", MSG_CONTENT_OF_THE_EDITOR);

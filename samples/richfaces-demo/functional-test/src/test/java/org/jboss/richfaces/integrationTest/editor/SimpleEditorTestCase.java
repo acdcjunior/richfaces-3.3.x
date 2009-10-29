@@ -99,10 +99,10 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_B).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_B);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_BOLD);
 
         selenium.selectFrame("relative=top");
@@ -134,10 +134,10 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_I).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_I);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_ITALIC);
 
         selenium.selectFrame("relative=top");
@@ -169,10 +169,10 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_U).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_U);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_BE_UNDERLINED);
 
         selenium.selectFrame("relative=top");
@@ -204,10 +204,10 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         // select the iframe for Selenium to be able to get iframe's content
         selenium.selectFrame(LOC_IFRAME);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_IN_THE_EDITOR);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_P2_STRIKE).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_P2_STRIKE);
         assertEquals(count, 2, MSG_STRINGS_SHOULD_HAVE_A_LINE_THROUGH);
 
         selenium.selectFrame("relative=top");
@@ -264,13 +264,13 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = selenium.getText(LOC_TEXT_AREA);
         assertEquals(text, "aaaa\nbbbbccccddddeeee", MSG_CONTENT_OF_THE_EDITOR);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_SHOULD_CONTAIN_A_PARAGRAPH);
 
         boolean isPresent = selenium.isElementPresent(LOC_TEXT_AREA_UL);
         assertTrue(isPresent, MSG_EDITOR_SHOULD_CONTAIN_UL);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_UL_LI).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_UL_LI);
         assertEquals(count, 3, MSG_LIST_SHOULD_CONTAIN_THREE_ITEMS);
 
         selenium.selectFrame("relative=top");
@@ -305,13 +305,13 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = selenium.getText(LOC_TEXT_AREA);
         assertEquals(text, "aaaa\nbbbbccccddddeeee", MSG_CONTENT_OF_THE_EDITOR);
 
-        int count = selenium.getXpathCount(LOC_TEXT_AREA_P).intValue();
+        int count = getJQueryCount(LOC_TEXT_AREA_P);
         assertEquals(count, 2, MSG_TWO_LINES_SHOULD_CONTAIN_A_PARAGRAPH);
 
         boolean isPresent = selenium.isElementPresent(LOC_TEXT_AREA_OL);
         assertTrue(isPresent, MSG_EDITOR_SHOULD_CONTAIN_OL);
 
-        count = selenium.getXpathCount(LOC_TEXT_AREA_OL_LI).intValue();
+        count = getJQueryCount(LOC_TEXT_AREA_OL_LI);
         assertEquals(count, 3, MSG_LIST_SHOULD_CONTAIN_THREE_ITEMS);
 
         selenium.selectFrame("relative=top");
