@@ -280,11 +280,9 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      */
     protected void openComponent(final String componentName) {
 
-        final String LOC_MENU_ITEM = format(
-                "jquery=table.left_menu td.text a > span:contains('{0}')",
-                componentName);
+		final String LOC_MENU_ITEM = format("jquery=table.left_menu td.text a > span:textEquals('{0}')", componentName);
 
-        // TODO needs to open clean page, see {@link
+		// TODO needs to open clean page, see {@link
         // https://jira.jboss.org/jira/browse/RF-7640}
         selenium.getEval("selenium.doDeleteAllVisibleCookies()");
 
