@@ -53,7 +53,13 @@
                <link linkend="filter">Filtering column values</link>
             </para>
          </listitem>
-      </itemizedlist>  
+      </itemizedlist>
+      <important>
+        <title>Important</title>
+        <para>
+          The <property>&quot;colspan&quot;</property>, <property>&quot;rowspan&quot;</property>, and <property>&quot;breakbefore&quot;</property> attributes only affect columns in a <emphasis role="bold"><property>&lt;rich:dataTable&gt;</property></emphasis>, not those in a <emphasis role="bold"><property>&lt;rich:extendedDataTable&gt;</property></emphasis>.
+        </para>
+      </important>
    </section>
    <section>
                     <title>Details of Usage</title>
