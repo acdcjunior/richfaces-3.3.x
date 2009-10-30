@@ -55,6 +55,58 @@
             <para>Possibility to combine rows to groups</para>
          </listitem>
       </itemizedlist>
+      <para>
+		<emphasis role="bold"><property moreinfo="none">&lt;rich:extendedDataTable&gt;</property></emphasis> includes the following attributes not included with <emphasis role="bold"><property moreinfo="none">&lt;rich:dataTable&gt;</property></emphasis>:
+      </para>
+	<itemizedlist>
+		<listitem>
+			<property moreinfo="none">activeClass</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">activeRowKey</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">enableContextMenu</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">groupingColumn</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">height</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">noDataLabel</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onselectionchange</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selectedClass</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selection</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selectionMode</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">tableState</property>
+		</listitem>
+	</itemizedlist>
+	<para>
+		<emphasis role="bold"><property moreinfo="none">&lt;rich:extendedDataTable&gt;</property></emphasis> does <emphasis>not</emphasis> include the following attributes available with <emphasis role="bold"><property moreinfo="none">&lt;rich:dataTable&gt;</property></emphasis>:
+	</para>
+	<itemizedlist>
+		<listitem>
+			<property moreinfo="none">columns</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">columnsWidth</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onRowContextMenu</property>
+		</listitem>
+	</itemizedlist>
    </section>
    <section>
       <title>Details of Usage</title>

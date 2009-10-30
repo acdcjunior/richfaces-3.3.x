@@ -43,6 +43,9 @@
             	<para><link linkend="sort">Sorting</link> and <link linkend="filter">filtering</link> functionalities for a table columns</para>
          </listitem>
         </itemizedlist>
+        <para>
+        	Extended table features, such as scrollable data, row selection, and column re-ordering, require the use of the <emphasis role="bold"><property>&lt;rich:extendedDataTable&gt;</property></emphasis> component instead of <emphasis role="bold"><property>&lt;rich:dataTable&gt;</property></emphasis>. Refer to the <emphasis role="bold"><property>&lt;rich:extendedDataTable&gt;</property></emphasis> section for details on the differences between the two components.
+        </para>
     </section>
    <section>
       <title>Details of Usage</title>
