@@ -14,14 +14,14 @@
 	background-image: none;
 }
 </style>
-	<h:form id="choisesForm">
+	<h:form id="choicesForm">
 			<rich:jQuery selector=".votesClass"
 				query="each(function(key){
 				if (param[key].votesCount > 0) jQuery(this).addClass('highlight'); 
 				else jQuery(this).removeClass('highlight'); })"
 				name="jqhighlight" />
 			<rich:dataTable value="#{choicesBean.choices}" var="choice"
-				rowKeyVar="row" ajaxKeys="#{choicesBean.keysSet}" id="choises">
+				rowKeyVar="row" ajaxKeys="#{choicesBean.keysSet}" id="choices">
 				<f:facet name="header">
 					<h:outputText value="Voting for favourite fruit" />
 				</f:facet>
