@@ -10,9 +10,10 @@
 	padding-left: 10px;
 }
 </style>
+	<a4j:keepAlive beanName="dataScrollerBean" ajaxOnly="true"/>
 	<h:form>
 		<rich:dataTable width="483" id="carList"
-			rows="#{dataTableScrollerBean.rows}" columnClasses="col"
+			rows="#{dataScrollerBean.rows}" columnClasses="col"
 			value="#{dataTableScrollerBean.allCars}" var="category">
 			<f:facet name="header">
 				<rich:columnGroup>
@@ -44,7 +45,7 @@
 			</rich:column>
 			<f:facet name="footer">
 				<rich:datascroller maxPages="20" fastControls="hide"
-					page="#{dataTableScrollerBean.scrollerPage}" pagesVar="pages"
+					page="#{dataScrollerBean.scrollerPage}" pagesVar="pages"
 					id="ds">
 					<f:facet name="first">
 						<h:outputText value="First" styleClass="scrollerCell" />
@@ -73,9 +74,9 @@
 					<f:facet name="pages">
 						<h:panelGroup>
 							<h:outputText value="Page "/>
-							<h:selectOneMenu value="#{dataTableScrollerBean.scrollerPage}" 
+							<h:selectOneMenu value="#{dataScrollerBean.scrollerPage}" 
 								onchange="#{rich:component('ds')}.switchToPage(this.value)">
-								<f:selectItems value="#{dataTableScrollerBean.pagesToScroll}" />
+								<f:selectItems value="#{dataScrollerBean.pagesToScroll}" />
 							</h:selectOneMenu>
 							<h:outputText value=" of #{pages}" />
 						</h:panelGroup>

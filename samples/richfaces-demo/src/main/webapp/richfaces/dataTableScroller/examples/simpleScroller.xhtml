@@ -10,10 +10,10 @@
 	width: 100px;
 }
 </style>
-
+	<a4j:keepAlive beanName="dataScrollerBean" ajaxOnly="true"/>
 	<h:form>
 		<rich:datascroller align="left" for="carList" maxPages="20"
-			page="#{dataTableScrollerBean.scrollerPage}" reRender="sc2" id="sc1" />
+			page="#{dataScrollerBean.scrollerPage}" reRender="sc2" id="sc1" />
 		<rich:spacer height="30" />
 		<rich:dataTable width="483" id="carList" rows="10" columnClasses="col"
 			value="#{dataTableScrollerBean.allCars}" var="category">
@@ -51,7 +51,7 @@
 
 		</rich:dataTable>
 		<rich:datascroller align="left" for="carList" maxPages="20"
-			page="#{dataTableScrollerBean.scrollerPage}" id="sc2" reRender="sc1" />
+			page="#{dataScrollerBean.scrollerPage}" id="sc2" reRender="sc1" />
 	</h:form>
 
 </ui:composition>

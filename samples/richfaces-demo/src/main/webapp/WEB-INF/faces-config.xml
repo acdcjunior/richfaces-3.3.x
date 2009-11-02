@@ -130,6 +130,15 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>dataScrollerBean</managed-bean-name>
+  <managed-bean-class>org.richfaces.demo.dataTableScroller.DataScrollerBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+  <managed-property>
+  	<property-name>size</property-name>
+  	<value>#{dataTableScrollerBean.allCars.size()}</value>
+  </managed-property>
+ </managed-bean>
+ <managed-bean>
   <managed-bean-name>toggleBean</managed-bean-name>
   <managed-bean-class>org.richfaces.demo.togglePanel.ToggleBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>

@@ -14,7 +14,6 @@ import java.util.Set;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.model.SelectItem;
 
 import org.richfaces.component.UIScrollableDataTable;
 import org.richfaces.demo.datafilterslider.DemoInventoryItem;
@@ -29,16 +28,6 @@ import org.richfaces.model.selection.SimpleSelection;
 public class DataTableScrollerBean {
 
 	private DemoInventoryItem currentItem = new DemoInventoryItem();
-
-	private int rows = 10;
-
-	public int getRows() {
-		return rows;
-	}
-
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
 
 	public void fetchCurrentRow(ActionEvent event) {
 		String vin=(FacesContext.getCurrentInstance().
@@ -63,7 +52,6 @@ public class DataTableScrollerBean {
 
 	private SortOrder order = new SortOrder();
 
-	private int scrollerPage=1;
 
 	private ArrayList<DemoInventoryItem[]> model = null;
 
@@ -131,17 +119,6 @@ public class DataTableScrollerBean {
 			}
 		}
 		return allCars;
-	}
-
-	public List<SelectItem> getPagesToScroll() {
-		List<SelectItem> list = new ArrayList<SelectItem>();
-		for (int i = 1; i <= allCars.size() / getRows()+1; i++) {
-			if (Math.abs(i - scrollerPage) < 5) {
-				SelectItem item = new SelectItem(i);
-				list.add(item);
-			}
-		}
-		return list;
 	}
 
 	public List<DemoInventoryItem> getTenRandomCars() {
@@ -312,14 +289,6 @@ public class DataTableScrollerBean {
 
 	public ArrayList<Facet> getColumns() {
 		return columns;
-	}
-
-	public int getScrollerPage() {
-		return scrollerPage;
-	}
-
-	public void setScrollerPage(int scrollerPage) {
-		this.scrollerPage = scrollerPage;
 	}
 
 	public SortOrder getOrder() {
