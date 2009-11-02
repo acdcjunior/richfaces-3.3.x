@@ -7,18 +7,19 @@
 	xmlns:rich="http://richfaces.org/rich">
 	<ui:composition template="/templates/component-sample.xhtml">
 		<ui:define name="sample">
-			
+			 
 			<p>a4j:mediaOutput allows to generate images, video, sounds and other binary
 			resources defined by a user on-the-fly.
 			</p>
-			<p><b>createContent</b> attribute references to the method that will be used 
+			<p><b>createContent</b> attribute references to the managed Bean method that will be used 
 			for content creating. The method accepts two parameters. The first parameter
 			has an OutputStream type. It is a reference to the steam that should be used for output.
 			The second parameter is a reference to a 'value' attribute of the component.
 			</p>
 			<p>
-			<b>value</b> attribute references to data that can be used as input data for a content
-			creator method. The data should be serializable because it is encoded to the URL
+			<b>value</b> attribute references to some managed Bean with data that can be 
+			used as input data for a content
+			creator method. The object should be serializable because it is encoded to the URL
 			of the resource. 
 			</p>
 			<p>
