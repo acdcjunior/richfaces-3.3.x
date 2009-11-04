@@ -66,22 +66,22 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testFirstToolBar() {
-        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 1), true);
+        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 0), true);
 
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 1)), MSG_ITEM_CLASS_ATTRIBUTE);
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 5)), MSG_ITEM_CLASS_ATTRIBUTE);
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 9)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 0)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 4)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_FIRST_TOOLBAR_ITEM_N, 8)), MSG_ITEM_CLASS_ATTRIBUTE);
 
-        String text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 4) + "@align");
+        String text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 3) + "@align");
         assertTrue(text.contains("center"), MSG_GROUP_SEPARATOR);
 
-        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 1) + "/img@src");
+        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 0) + " > img@src");
         assertTrue(text.contains("create_doc.gif"), format(MSG_ITEM_IMAGE_S, "create_doc.gif"));
 
-        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 2) + "/img@src");
+        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 1) + " > img@src");
         assertTrue(text.contains("create_folder.gif"), format(MSG_ITEM_IMAGE_S, "create_folder.gif"));
 
-        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 6) + "/img@src");
+        text = selenium.getAttribute(format(LOC_FIRST_TOOLBAR_ITEM_N, 5) + " > img@src");
         assertTrue(text.contains("save_as.gif"), format(MSG_ITEM_IMAGE_S, "save_as.gif"));
     }
 
@@ -93,19 +93,19 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testSecondToolBar() {
-        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 2), true);
+        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 1), true);
 
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 1)), MSG_ITEM_CLASS_ATTRIBUTE);
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 4)), MSG_ITEM_CLASS_ATTRIBUTE);
-        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 7)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 0)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 3)), MSG_ITEM_CLASS_ATTRIBUTE);
+        assertTrue(belongsClass("rich-toolbar-item", format(LOC_SECOND_TOOLBAR_ITEM_N, 6)), MSG_ITEM_CLASS_ATTRIBUTE);
 
-        String text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 3) + "@align");
+        String text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 2) + "@align");
         assertTrue(text.contains("center"), MSG_ITEM_SEPARATOR);
 
-        text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 1) + "/img@src");
+        text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 0) + " > img@src");
         assertTrue(text.contains("edit.gif"), format(MSG_ITEM_IMAGE_S, "edit.gif"));
 
-        text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 4) + "/img@src");
+        text = selenium.getAttribute(format(LOC_SECOND_TOOLBAR_ITEM_N, 3) + " > img@src");
         assertTrue(text.contains("find.gif"), format(MSG_ITEM_IMAGE_S, "find.gif"));
     }
 
@@ -114,7 +114,7 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testThirdToolBarGroupSeparators() {
-        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 3), true);
+        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 2), true);
         
         // select line
         selenium.click(format(LOC_THIRD_TOOLBAR_GROUP_SEPARATOR_N, 1));
@@ -174,7 +174,7 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testToolBarItemSeparators() {
-        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 3), true);
+        scrollIntoView(format(LOC_EXAMPLE_N_HEADER, 2), true);
      
         // select line
         selenium.click(format(LOC_THIRD_TOOLBAR_ITEM_SEPARATOR_N, 1));

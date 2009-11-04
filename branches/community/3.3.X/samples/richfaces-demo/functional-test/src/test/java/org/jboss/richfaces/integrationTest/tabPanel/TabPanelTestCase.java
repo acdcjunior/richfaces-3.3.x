@@ -71,47 +71,46 @@ public class TabPanelTestCase extends AbstractSeleniumRichfacesTestCase {
         String text;
 
         // test the first tab panel
-        for (int i = 3; i > 0; i--) {
+        for (int i = 2; i >= 0; i--) {
             scrollIntoView(LOC_USAGE_EXAMPLE_HEADER, true); // scrolling is
             // forgotten after
             // page reload
-            selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 1, i));
+            selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 0, i));
             waitFor(2000);
-            text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 1));
-            assertEquals(text, "Here is tab #" + i, format(MSG_USAGE_CONTENT_OF_PANEL_PREFORMATTED, 1));
+            text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 0));
+            assertEquals(text, "Here is tab #" + (i+1), format(MSG_USAGE_CONTENT_OF_PANEL_PREFORMATTED, 1));
         }
 
         // test the second tab panel
         scrollIntoView(LOC_USAGE_EXAMPLE_HEADER, true);
-        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 2, 3));
+        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 1, 2));
         waitFor(2000);
-        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 2));
+        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 1));
         assertEquals(text, "Here is tab #" + 3, format(MSG_USAGE_CONTENT_OF_PANEL_PREFORMATTED, 2));
-
-        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 2, 1));
+        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 1, 0));
         waitFor(2000);
-        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 2));
+        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 1));
         assertEquals(text, "Here is tab #" + 1, format(MSG_USAGE_CONTENT_OF_PANEL_PREFORMATTED, 2));
 
         // test the disabled tab
         boolean isEnabled = true;
         try {
-            isEnabled = belongsClass("rich-tab-diabled", format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 2, 2));
+            isEnabled = belongsClass("rich-tab-diabled", format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 1, 1));
             assertFalse(isEnabled, MSG_USAGE_SECOND_TAB_SHOULD_BE_DISABLED);
         } catch (Exception e) {
             // OK - there is no class attribute
         }
-        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 2, 2));
+        selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 1, 1));
         waitFor(2000);
-        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 2));
+        text = selenium.getText(format(LOC_USAGE_PANEL_TEXT_PREFORMATTED, 1));
         assertEquals(text, "Here is tab #1", format(MSG_USAGE_CONTENT_OF_PANEL_PREFORMATTED, 2));
 
         // test the third tab panel -- client type work different
         scrollIntoView(LOC_USAGE_EXAMPLE_HEADER, true);
-        for (int i = 3; i > 0; i--) {
-            selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 3, i));
+        for (int i = 2; i >= 0; i--) {
+            selenium.click(format(LOC_USAGE_PANEL_TAB_PREFORMATTED, 2, i));
             waitFor(2000);
-            for (int j = 1; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 if (i == j) {
                     assertTrue(isDisplayed(format(LOC_USAGE_PANEL_3_TEXT_PREFORMATTED, j)));
                 } else {
@@ -132,17 +131,16 @@ public class TabPanelTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_CUST_EXAMPLE_HEADER, true);
         String text;
 
-        for (int i = 3; i > 0; i--) {
+        for (int i = 2; i >= 0; i--) {
             selenium.click(format(LOC_CUST_PANEL_TAB_PREFORMATTED, i));
             waitFor(2000);
-            for (int j = 1; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 if (i == j) {
-                    waitFor(5000);
                     assertTrue(isDisplayed(format(LOC_CUST_PANEL_TEXT_PREFORMATTED, j)), format(
-                            "Tab nr. {0} should be open.", j));
+                            "Tab nr. {0} should be open.", j+1));
                 } else {
                     assertFalse(isDisplayed(format(LOC_CUST_PANEL_TEXT_PREFORMATTED, j)), format(
-                            "Tab nr. {0} should not be open.", j));
+                            "Tab nr. {0} should not be open.", j+1));
                 }
             }
         }
@@ -162,20 +160,20 @@ public class TabPanelTestCase extends AbstractSeleniumRichfacesTestCase {
         openTab("Tabs Deletion");
         scrollIntoView(LOC_DELET_EXAMPLE_HEADER, true);
 
-        int count = selenium.getXpathCount(LOC_DELET_PANEL_TABS).intValue();
-        assertEquals(count - 4, 3, MSG_DELET_NUMBER_OF_TABS);
+        int count = getJQueryCount(LOC_DELET_PANEL_TABS);
+        assertEquals(count, 3, MSG_DELET_NUMBER_OF_TABS);
 
-        for (int i = 3; i > 0; i--) {
-            selenium.click(format(LOC_DELET_PANEL_TAB_CLOSE_PREFORMATTED, i));
+        for (int i = 2; i >= 0; i--) {
+            selenium.click(format(LOC_DELET_PANEL_TAB_CLOSE_PREFORMATTED, i+1));
             waitFor(2000);
-            count = selenium.getXpathCount(LOC_DELET_PANEL_TABS).intValue();
-            assertEquals(count / 2, i - 1, MSG_DELET_NUMBER_OF_TABS);
+            count = getJQueryCount(LOC_DELET_PANEL_TABS);
+            assertEquals(count, i, MSG_DELET_NUMBER_OF_TABS);
         }
 
         selenium.click(LOC_DELET_RESET_BUTTON);
         waitFor(2000);
-        count = selenium.getXpathCount(LOC_DELET_PANEL_TABS).intValue();
-        assertEquals(count - 4, 3, MSG_DELET_NUMBER_OF_TABS);
+        count = getJQueryCount(LOC_DELET_PANEL_TABS);
+        assertEquals(count, 3, MSG_DELET_NUMBER_OF_TABS);
     }
 
     /**

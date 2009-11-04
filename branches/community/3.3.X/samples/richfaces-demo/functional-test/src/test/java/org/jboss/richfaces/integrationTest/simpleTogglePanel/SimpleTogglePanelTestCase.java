@@ -92,7 +92,7 @@ public class SimpleTogglePanelTestCase extends AbstractSeleniumRichfacesTestCase
      */
     @Test
     public void testSecondExampleServerSwitch() {
-        abstractTestPanelInSecondExample(1, "Server Switch Type");
+        abstractTestPanelInSecondExample(0, "Server Switch Type");
     }
 
     /**
@@ -104,7 +104,7 @@ public class SimpleTogglePanelTestCase extends AbstractSeleniumRichfacesTestCase
      */
     @Test
     public void testSecondExampleAjaxSwitch() {
-        abstractTestPanelInSecondExample(2, "Ajax Switch Type");
+        abstractTestPanelInSecondExample(1, "Ajax Switch Type");
     }
 
     /**
@@ -116,7 +116,7 @@ public class SimpleTogglePanelTestCase extends AbstractSeleniumRichfacesTestCase
      */
     @Test
     public void testSecondExampleClientSwitch() {
-        abstractTestPanelInSecondExample(3, "Client Switch Type");
+        abstractTestPanelInSecondExample(2, "Client Switch Type");
     }
 
     /**

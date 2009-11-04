@@ -64,10 +64,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testFirstSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 1), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 0), "height");
         assertEquals(text, MSG_FIRST_HEIGHT, "Height of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 1));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 0));
         assertEquals(text, MSG_FIRST_HASH, "Hash code of the image that makes the separator.");
     }
 
@@ -77,15 +77,15 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testSecondSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 2), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 1), "height");
         assertEquals(text, MSG_SECOND_HEIGHT, "Height of the separator.");
 
-        double widthFull = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 1), "width").replace("px", ""));
-        double width75 = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 2), "width").replace("px", ""));
+        double widthFull = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 0), "width").replace("px", ""));
+        double width75 = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 1), "width").replace("px", ""));
 
         assertEquals(width75, widthFull * 0.75, "Width of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 2));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 1));
         assertEquals(text, MSG_SECOND_HASH, "Hash code of the image that makes the separator.");
     }
 
@@ -95,10 +95,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testThirdSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 3), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 2), "height");
         assertEquals(text, MSG_THIRD_HEIGHT, "Height of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 3));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 2));
         assertEquals(text, MSG_THIRD_HASH, "Hash code of the image that makes the separator.");
     }
 
@@ -108,10 +108,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testFourthSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 4), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 3), "height");
         assertEquals(text, MSG_FOURTH_HEIGHT, "Height of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 4));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 3));
         assertEquals(text, MSG_FOURTH_HASH, "Hash code of the image that makes the separator.");
     }
 
@@ -121,10 +121,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testFifthSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 5), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 4), "height");
         assertEquals(text, MSG_FIFTH_HEIGHT, "Height of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 5));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 4));
         assertEquals(text, MSG_FIFTH_HASH, "Hash code of the image that makes the separator.");
     }
 
@@ -134,10 +134,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testSixthSeparator() {
-        String text = getStyle(format(LOC_SEPARATOR_N, 6), "height");
+        String text = getStyle(format(LOC_SEPARATOR_N, 5), "height");
         assertEquals(text, MSG_SIXTH_HEIGHT, "Height of the separator.");
 
-        text = getSeparatorHash(format(LOC_SEPARATOR_N, 6));
+        text = getSeparatorHash(format(LOC_SEPARATOR_N, 5));
         assertEquals(text, MSG_SIXTH_HASH, "Hash code of the image that makes the separator.");
     }
 
