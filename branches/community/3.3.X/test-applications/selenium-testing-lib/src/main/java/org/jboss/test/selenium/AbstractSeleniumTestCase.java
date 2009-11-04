@@ -495,18 +495,23 @@ public abstract class AbstractSeleniumTestCase {
      *            the locator of the element to be waited for
      */
     public void waitForElement(String locator) {
-        for (int second = 0;; second++) {
-            if (second >= ELEM_TIMEOUT) {
-                Assert.fail("Element " + locator + " not found.");
+        waitForElement(locator, 1000);
+    }
+    
+    /**
+     * Waits for element to appear on the screen. Used mostly in AJAX based
+     * tests.
+     * 
+     * @param locator
+     *            the locator of the element to be waited for
+     * @param step interval between two pollings
+     */
+    public void waitForElement(final String locator, int step) {
+        Wait.failWith("Element \"" + locator + "\" not found.").interval(step).timeout(ELEM_TIMEOUT).until(new Condition() {
+            public boolean isTrue() {
+                return selenium.isElementPresent(locator);
             }
-            try {
-                if (selenium.isElementPresent(locator)) {
-                    break;
-                }
-            } catch (Exception e) {
-            }
-            waitFor(1000);
-        }
+        });
     }
 
     /**
