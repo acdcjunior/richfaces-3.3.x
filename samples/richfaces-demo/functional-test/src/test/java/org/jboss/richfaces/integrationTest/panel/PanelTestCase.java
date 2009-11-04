@@ -62,7 +62,7 @@ public class PanelTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testFirstExample() {
-        int count = selenium.getXpathCount(LOC_FIRST_DIVS).intValue();
+        int count = getJQueryCount(LOC_FIRST_DIVS);
         assertEquals(count, 2, MSG_FIRST_PANEL_TWO_PARTS);
 
         String text = selenium.getText(LOC_FIRST_HEADER);
@@ -74,7 +74,7 @@ public class PanelTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testSecondExample() {
-        int count = selenium.getXpathCount(LOC_SECOND_DIVS).intValue();
+        int count = getJQueryCount(LOC_SECOND_DIVS);
         assertEquals(count, 1, MSG_SECOND_PANEL_NO_HEADER);
     }
 
@@ -86,19 +86,19 @@ public class PanelTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testThirdExample() {
-        int count = selenium.getXpathCount(LOC_THIRD_DIVS).intValue();
+        int count = getJQueryCount(LOC_THIRD_DIVS);
         assertEquals(count, 2, MSG_THIRD_PANEL_TWO_PARTS);
 
         String text = selenium.getText(LOC_THIRD_HEADER);
         assertEquals(text, "", MSG_THIRD_HEADER);
 
-        count = selenium.getXpathCount(LOC_THIRD_NESTED_PANELS).intValue();
+        count = getJQueryCount(LOC_THIRD_NESTED_PANELS);
         assertEquals(count, 2, MSG_SHOULD_BE_TWO_NESTED_PANELS);
 
-        count = selenium.getXpathCount(LOC_LEFT_NESTED_PANEL_LIST_LI).intValue();
+        count = getJQueryCount(LOC_LEFT_NESTED_PANEL_LIST_LI);
         assertEquals(count, 6, MSG_SIX_ITEMS_IN_LIST_LEFT);
 
-        count = selenium.getXpathCount(LOC_RIGHT_NESTED_PANEL_LIST_LI).intValue();
+        count = getJQueryCount(LOC_RIGHT_NESTED_PANEL_LIST_LI);
         assertEquals(count, 6, MSG_SIX_ITEMS_IN_LIST_RIGHT);
     }
 

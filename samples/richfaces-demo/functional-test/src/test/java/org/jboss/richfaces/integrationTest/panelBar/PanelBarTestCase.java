@@ -61,14 +61,14 @@ public class PanelBarTestCase extends AbstractSeleniumRichfacesTestCase {
                 "Create a modern rich user interface look-and-feel with skins-based technology",
                 "Test the components, actions, listeners, and pages as you are creating them" };
 
-        String text = selenium.getText(format(LOC_HEADER_2_N, 1));
+        String text = selenium.getText(format(LOC_HEADER_1_N, 0));
         assertEquals(text, headers[0], format(MSG_HEADER_N, 1));
-        assertTrue(isDisplayed(format(LOC_CONTENT_N, 1)), format(MSG_PANEL_N_SHOULD_BE_VISIBLE, 1));
+        assertTrue(isDisplayed(format(LOC_CONTENT_N, 0)), format(MSG_PANEL_N_SHOULD_BE_VISIBLE, 1));
 
-        for (int i = 2; i < 8; i++) {
-            text = selenium.getText(format(LOC_HEADER_1_N, i));
-            assertEquals(text, headers[i - 1], format(MSG_HEADER_N, i));
-            assertFalse(isDisplayed(format(LOC_CONTENT_N, i)), format(MSG_PANEL_N_SHOULD_NOT_BE_VISIBLE, i));
+        for (int i = 1; i < 7; i++) {
+            text = selenium.getText(format(LOC_HEADER_2_N, i));
+            assertEquals(text, headers[i], format(MSG_HEADER_N, i + 1));
+            assertFalse(isDisplayed(format(LOC_CONTENT_N, i)), format(MSG_PANEL_N_SHOULD_NOT_BE_VISIBLE, i + 1));
         }
     }
 
@@ -78,18 +78,18 @@ public class PanelBarTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testExpanding() {
-        for (int i = 7; i > 0; i--) {
+        for (int i = 6; i >= 0; i--) {
             selenium.click(format(LOC_HEADER_1_N, i));
 
             // check that clicked panel is visible
-            assertTrue(isDisplayed(format(LOC_CONTENT_N, i)), format(MSG_PANEL_N_SHOULD_BE_VISIBLE, i));
+            assertTrue(isDisplayed(format(LOC_CONTENT_N, i)), format(MSG_PANEL_N_SHOULD_BE_VISIBLE, i + 1));
 
             // check that other panel are not visible
-            for (int j = 1; j < 8; j++) {
+            for (int j = 0; j < 7; j++) {
                 if (j == i) {
                     continue;
                 }
-                assertFalse(isDisplayed(format(LOC_CONTENT_N, j)), format(MSG_PANEL_N_SHOULD_NOT_BE_VISIBLE, i));
+                assertFalse(isDisplayed(format(LOC_CONTENT_N, j)), format(MSG_PANEL_N_SHOULD_NOT_BE_VISIBLE, i + 1));
             }
         }
     }

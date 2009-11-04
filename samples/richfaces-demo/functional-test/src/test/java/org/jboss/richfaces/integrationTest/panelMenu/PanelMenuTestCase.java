@@ -81,7 +81,7 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testFirstGroup() {
-		abstractTestGroupN(1);
+		abstractTestGroupN(0);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testSecondGroup() {
-		abstractTestGroupN(2);
+		abstractTestGroupN(1);
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	@Test
 	public void testThirdGroup() {
-		abstractTestGroupN(3);
+		abstractTestGroupN(2);
 	}
 
 	/**
@@ -119,34 +119,34 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	public void testSubgroup() {
 		String text = null;
 		
-		selenium.click(format(LOC_GROUP_N_TEXT, 2));
+		selenium.click(format(LOC_GROUP_N_TEXT, 1));
 
 		// image before subgroup name
-		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_BEFORE, 2, 4));
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_BEFORE, 1, 3));
 		assertTrue(text.contains("PanelMenuIconDisc"), MSG_DISK_BEFORE_GROUP_NAME);
 
 		// subgroup name
-		text = selenium.getText(format(LOC_ITEM_M_N_TEXT, 2, 4));
+		text = selenium.getText(format(LOC_ITEM_M_N_TEXT, 1, 3));
 		assertEquals(text, "Group 2.4", MSG_NAME_OF_GROUP);
 
 		// image after subgroup name
-		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 2, 4));
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 1, 3));
 		assertTrue(text.contains("PanelMenuIconSpacer"), MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
 
-		for (int i = 1; i < 4; i++) {
-			assertFalse(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_NOT_VISIBLE, i));
+		for (int i = 0; i < 3; i++) {
+			assertFalse(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_NOT_VISIBLE, i + 1));
 		}
 
 		// click Group 2.4
-		selenium.click(format(LOC_ITEM_M_N_TEXT, 2, 4));
+		selenium.click(format(LOC_ITEM_M_N_TEXT, 1, 3));
 
 		// image after subgroup name
-		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 2, 4));
+		text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_AFTER, 1, 3));
 		assertTrue(text.contains("PanelMenuIconSpacer"), MSG_IMAGE_AFTER_GROUP_NAME_SPACER);
 
-		for (int i = 1; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			// check that items are not hidden
-			assertTrue(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_VISIBLE, i));
+			assertTrue(isDisplayed(format(LOC_SUBITEM_M_STYLE, i)), format(MSG_SUBITEM_M_VISIBLE, i + 1));
 			
 			// check the image left of the item
 			text = selenium.getAttribute(format(LOC_SUBITEM_M_IMAGE, i));
@@ -166,39 +166,39 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 		assertEquals(text, "Nothing selected", MSG_CONTENT_OF_PANEL_ON_LOAD);
 
 		// check items on the first level (1.1, 1.2, etc.)
-		for (int i = 1; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 		    final int newI = i;
 		    selenium.click(format(LOC_GROUP_N_TEXT, i));
 			
-		    for (int j = 1; j < 4; j++) {
+		    for (int j = 0; j < 3; j++) {
 			    final int newJ = j;
 			    selenium.click(format(LOC_ITEM_M_N_TEXT, i, j));
 				
 				Wait.until(new Condition() {
                     public boolean isTrue() {
-                        return format("Item {0}.{1} selected", newI, newJ).equals(selenium.getText(LOC_PANEL));
+                        return format("Item {0}.{1} selected", newI + 1, newJ + 1).equals(selenium.getText(LOC_PANEL));
                     }
                 });
 				
 				text = selenium.getText(LOC_PANEL);
-				assertEquals(text, format("Item {0}.{1} selected", i, j), MSG_CONTENT_OF_PANEL);
+				assertEquals(text, format("Item {0}.{1} selected", i + 1, j + 1), MSG_CONTENT_OF_PANEL);
 			}
 		}
 
 		// check items on the second level (2.4.1, 2.4.2, 2.4.3)
-		selenium.click(format(LOC_ITEM_M_N_TEXT, 2, 4));
-		for (int i = 1; i < 4; i++) {
+		selenium.click(format(LOC_ITEM_M_N_TEXT, 1, 3));
+		for (int i = 0; i < 3; i++) {
 		    final int newI = i;
 		    selenium.click(format(LOC_SUBITEM_M_TEXT, i));
 			
 		    Wait.until(new Condition() {
                 public boolean isTrue() {
-                    return format("Item 2.4.{0} selected", newI).equals(selenium.getText(LOC_PANEL));
+                    return format("Item 2.4.{0} selected", newI + 1).equals(selenium.getText(LOC_PANEL));
                 }
             });
 			
 		    text = selenium.getText(LOC_PANEL);
-			assertEquals(text, format("Item 2.4.{0} selected", i), MSG_CONTENT_OF_PANEL);
+			assertEquals(text, format("Item 2.4.{0} selected", i + 1), MSG_CONTENT_OF_PANEL);
 		}
 	}
 
@@ -235,14 +235,14 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 
 		// group name
 		text = selenium.getText(format(LOC_GROUP_N_TEXT, index));
-		assertEquals(text, "Group " + index, MSG_NAME_OF_GROUP);
+		assertEquals(text, "Group " + (index + 1), MSG_NAME_OF_GROUP);
 
 		// image after group name
 		text = selenium.getAttribute(format(LOC_GROUP_N_IMAGE_AFTER, index));
 		assertTrue(text.contains("PanelMenuIconChevronDown"), MSG_IMAGE_AFTER_GROUP_NAME_DOWN);
 
-		for (int i = 1; i < 4; i++) {
-			assertFalse(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_NOT_VISIBLE, index, i));
+		for (int i = 0; i < 3; i++) {
+			assertFalse(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_NOT_VISIBLE, index + 1, i + 1));
 		}
 
 		selenium.click(format(LOC_GROUP_N_TEXT, index));
@@ -251,9 +251,9 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 		text = selenium.getAttribute(format(LOC_GROUP_N_IMAGE_AFTER, index));
 		assertTrue(text.contains("PanelMenuIconChevronUp"), MSG_IMAGE_AFTER_GROUP_NAME_UP);
 
-		for (int i = 1; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			// check that items are not hidden
-			assertTrue(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_VISIBLE, index, i));
+			assertTrue(isDisplayed(format(LOC_ITEM_M_N_STYLE, index, i)), format(MSG_ITEM_M_N_VISIBLE, index + 1, i + 1));
 			
 			// check the image left of the item
 			text = selenium.getAttribute(format(LOC_ITEM_M_N_IMAGE_BEFORE, index, i));

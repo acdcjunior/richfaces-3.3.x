@@ -46,8 +46,7 @@ public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCas
     private final String MSG_CUST_THIRD_CLASS_2 = getMsg("CUST_THIRD_CLASS_2");
     private final String MSG_CUST_FOURTH_HEADER = getMsg("CUST_FOURTH_HEADER");
     private final String MSG_CUST_FOURTH_CLASS = getMsg("CUST_FOURTH_CLASS");
-    private final int MSG_CUST_FIFTH_COUNT = Integer.parseInt(getMsg("CUST_FIFTH_COUNT"));
-
+    
     // locators
     private final String LOC_CUST_FIRST_PANEL_HEADER = getLoc("CUST_FIRST_PANEL_HEADER");
     private final String LOC_CUST_SECOND_PANEL_HEADER = getLoc("CUST_SECOND_PANEL_HEADER");
@@ -55,7 +54,8 @@ public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCas
     private final String LOC_CUST_THIRD_PANEL_BODY = getLoc("CUST_THIRD_PANEL_BODY");
     private final String LOC_CUST_FOURTH_PANEL_BODY = getLoc("CUST_FOURTH_PANEL_BODY");
     private final String LOC_CUST_FOURTH_PANEL_HEADER = getLoc("CUST_FOURTH_PANEL_HEADER");
-    private final String LOC_CUST_FIFTH_PANEL_PARTS = getLoc("CUST_FIFTH_PANEL_PARTS");
+    private final String LOC_CUST_FIFTH_PANEL_BODY = getLoc("CUST_FIFTH_PANEL_BODY");
+    private final String LOC_CUST_FIFTH_PANEL_HEADER = getLoc("CUST_FIFTH_PANEL_HEADER");
 
     /**
      * Tests first panel. It checks panel header's text and class attribute.
@@ -106,8 +106,11 @@ public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCas
      */
     @Test
     public void testFifthPanel() {
-        int count = selenium.getXpathCount(LOC_CUST_FIFTH_PANEL_PARTS).intValue();
-        assertEquals(count, MSG_CUST_FIFTH_COUNT, "The fifth panel should have no header.");
+        boolean isPresent = selenium.isElementPresent(LOC_CUST_FIFTH_PANEL_HEADER);
+        assertEquals(isPresent, false, "The fifth panel should have no header.");
+        
+        isPresent = selenium.isElementPresent(LOC_CUST_FIFTH_PANEL_BODY);
+        assertEquals(isPresent, true, "The fifth panel should have body.");
     }
 
     /**
