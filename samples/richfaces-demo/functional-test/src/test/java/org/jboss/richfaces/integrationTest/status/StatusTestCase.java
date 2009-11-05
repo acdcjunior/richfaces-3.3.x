@@ -61,7 +61,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	// TODO investigate JavaScript injecting to fix this, see
 	// https://jira.jboss.org/jira/browse/JBQA-2606
-	// @Test
+	@Test
 	public void testTextStatus() {
 		doStatusTesting(1);
 	}
@@ -77,7 +77,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	// TODO investigate JavaScript injecting to fix this, see
 	// https://jira.jboss.org/jira/browse/JBQA-2606
-	// @Test
+	@Test
 	public void testImageStatus() {
 		doStatusTesting(2);
 	}
@@ -135,7 +135,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	// TODO investigate JavaScript injecting to fix testInputsStatus, see
 	// https://jira.jboss.org/jira/browse/JBQA-2606
-	// @Test
+	@Test
 	public void testInputsStatus() {
 		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, 3), true);
 
