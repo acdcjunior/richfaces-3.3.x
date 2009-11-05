@@ -75,19 +75,19 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
 
         // open context menu on third line, first column
         selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
-        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        waitForElement(LOC_SECOND_CONTEXT_MENU, 200);
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on first column.");
 
         // open context menu on sixth line, second column
         selenium.click(LOC_SECOND_LINE_6_COLUMN_2);
-        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        waitForElement(LOC_SECOND_CONTEXT_MENU, 200);
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on second column.");
 
         // open context menu on first line, third column
         selenium.click(LOC_SECOND_LINE_1_COLUMN_3);
-        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        waitForElement(LOC_SECOND_CONTEXT_MENU, 200);
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on third column.");
     }
@@ -102,7 +102,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
 
         // open context menu on third line, first column
         selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
-        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        waitForElement(LOC_SECOND_CONTEXT_MENU, 200);
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on first column.");
 
@@ -118,7 +118,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
      */
     @Test
     public void testClickOnPutCarToBasket() {
-        clickAction(1);
+        clickAction(0);
     }
 
     /**
@@ -126,7 +126,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
      */
     @Test
     public void testClickOnReadComments() {
-        clickAction(2);
+        clickAction(1);
     }
 
     /**
@@ -134,7 +134,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
      */
     @Test
     public void testClickOnGoToProducerSite() {
-        clickAction(3);
+        clickAction(2);
     }
 
     /**
@@ -170,7 +170,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
 
         // open context menu on third line, first column
         selenium.click(LOC_SECOND_LINE_3_COLUMN_1);
-        waitForElement(LOC_SECOND_CONTEXT_MENU);
+        waitForElement(LOC_SECOND_CONTEXT_MENU, 200);
         assertTrue(isDisplayed(LOC_SECOND_CONTEXT_MENU),
                 "Context menu should be visible after clicking on first column.");
 
@@ -187,14 +187,14 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
         String text = selenium.getText(LOC_SECOND_LAST_MENU_ACTION);
 
         switch (index) {
-        case 1:
+        case 0:
             assertEquals(text, format(MSG_SECOND_PUT_PRODUCER_MODEL_TO_BASKET_PREFORMATTED, producer, model),
                     "Action put to basket:");
             break;
-        case 2:
+        case 1:
             assertEquals(text, MSG_SECOND_READ_COMMENTS_PREFORMATTED, "Action read comments:");
             break;
-        case 3:
+        case 2:
             assertEquals(text, format(MSG_SECOND_GO_TO_PRODUCER_SITE_PREFORMATTED, producer), "Action go to site:");
             break;
         default:
