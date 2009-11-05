@@ -343,13 +343,13 @@
 		</classes>
 	</test>
 
-	<test
-		name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase">
-		<classes>
-			<class
-				name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase" />
-		</classes>
-	</test>
+<!--	<test-->
+<!--		name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase">-->
+<!--		<classes>-->
+<!--			<class-->
+<!--				name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase" />-->
+<!--		</classes>-->
+<!--	</test>-->
 
 	<test
 		name="org.jboss.richfaces.integrationTest.modalPanel.ModalPanelTestCase">
@@ -375,11 +375,11 @@
 		</classes>
 	</test>
 
-	<test name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase">
-		<classes>
-			<class name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase" />
-		</classes>
-	</test>
+<!--	<test name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase">-->
+<!--		<classes>-->
+<!--			<class name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase" />-->
+<!--		</classes>-->
+<!--	</test>-->
 
 	<test
 		name="org.jboss.richfaces.integrationTest.panel.PanelCustomizationTestCase">
@@ -488,11 +488,11 @@
 		</classes>
 	</test>
 
-	<test name="org.jboss.richfaces.integrationTest.status.StatusTestCase">
-		<classes>
-			<class name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />
-		</classes>
-	</test>
+<!--	<test name="org.jboss.richfaces.integrationTest.status.StatusTestCase">-->
+<!--		<classes>-->
+<!--			<class name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />-->
+<!--		</classes>-->
+<!--	</test>-->
 
 	<test name="org.jboss.richfaces.integrationTest.style.StyleTestCase">
 		<classes>
