@@ -806,36 +806,36 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.selectFrame("relative=top");
     }
 
-    /**
-     * Tests inserting custom character. It tries to insert euro sign, upper
-     * case omega, and a symbol for heart suite.
-     */
-    @Test
-    public void testInsertCustomCharacter() {
-        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
-        waitForElement(LOC_ADV_DIALOG_IFRAME);
-        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
-        // euro sign
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
-
-        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
-        waitForElement(LOC_ADV_DIALOG_IFRAME);
-        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
-        // Omega
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
-
-        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
-        waitForElement(LOC_ADV_DIALOG_IFRAME);
-        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
-        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
-        // heart suite
-        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
-
-        String text = selenium.getText(LOC_TEXT_AREA_P);
-        assertEquals(text, "€Ω♥", MSG_CONTENT_OF_THE_EDITOR);
-    }
+//    /**
+//     * Tests inserting custom character. It tries to insert euro sign, upper
+//     * case omega, and a symbol for heart suite.
+//     */
+//    @Test
+//    public void testInsertCustomCharacter() {
+//        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
+//        waitForElement(LOC_ADV_DIALOG_IFRAME);
+//        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
+//        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
+//        // euro sign
+//        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 0, 4));
+//
+//        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
+//        waitForElement(LOC_ADV_DIALOG_IFRAME);
+//        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
+//        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
+//        // Omega
+//        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 8, 4));
+//
+//        selenium.click(LOC_ADV_CUSTOM_CHAR_BUTTON);
+//        waitForElement(LOC_ADV_DIALOG_IFRAME);
+//        selenium.selectFrame(LOC_ADV_DIALOG_IFRAME);
+//        waitForElement(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
+//        // heart suite
+//        selenium.click(format(LOC_ADV_CUSTOM_CHAR_DLG_M_N, 9, 17));
+//
+//        String text = selenium.getText(LOC_TEXT_AREA_P);
+//        assertEquals(text, "€Ω♥", MSG_CONTENT_OF_THE_EDITOR);
+//    }
 
     /**
      * Loads the page containing the calendar component.
