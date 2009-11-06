@@ -33,7 +33,7 @@ import org.testng.annotations.Test;
  */
 public class AjaxSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 	private String LOC_INPUT_TEXT = getLoc("INPUT_TEXT");
-	private String LOC_OUTPUT_TEXT_RELATIVE = formatLoc("OUTPUT_TEXT_RELATIVE", LOC_INPUT_TEXT);
+	private String LOC_OUTPUT_TEXT = getLoc("OUTPUT_TEXT");
 
 	private String MSG_INPUT_NON_EMPTY = getMsg("INPUT_NON_EMPTY");
 
@@ -70,7 +70,7 @@ public class AjaxSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 		selenium.fireEvent(LOC_INPUT_TEXT, Event.KEYUP);
 
 		waitFor(Wait.DEFAULT_INTERVAL);
-		waitForTextEquals(LOC_OUTPUT_TEXT_RELATIVE, MSG_INPUT_NON_EMPTY);
+		waitForTextEquals(LOC_OUTPUT_TEXT, MSG_INPUT_NON_EMPTY);
 	}
 
 	public void empty() {

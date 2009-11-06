@@ -62,7 +62,7 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testOrderingList() {
-        int count = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int count = getJQueryCount(LOC_TABLE_LINES);
         assertTrue(count > 0, "There are no lines in the table.");
 
         waitFor(1000);
@@ -75,8 +75,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testClickSingleSong() {
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        String text = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        String text = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
 
         waitFor(1000);
         String text2 = selenium.getText(LOC_SELECTION);
@@ -93,21 +93,21 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] fromPanel = new String[3];
 
         // click lines nr. 1, 3, and 5 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         selenium.controlKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         selenium.controlKeyUp();
 
-        fromTable[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        fromTable[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        fromTable[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        fromTable[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        fromTable[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        fromTable[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
 
         waitFor(1000);
 
         // get all selections from the panel on the right
         for (int i = 0; i < 3; i++) {
-            fromPanel[i] = selenium.getText(format(LOC_SELECTION_PREFORMATTED, i + 1));
+            fromPanel[i] = selenium.getText(format(LOC_SELECTION_PREFORMATTED, i+1));
         }
 
         assertEqualsNoOrder(fromPanel, fromTable, "Items chosen in table should be also in the right panel.");
@@ -122,20 +122,20 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] fromPanel = new String[3];
 
         // click lines nr. 1 and 3 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         selenium.shiftKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 3));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 2));
         selenium.shiftKeyUp();
 
-        fromTable[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        fromTable[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        fromTable[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
+        fromTable[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        fromTable[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        fromTable[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
 
         waitFor(1000);
 
         // get all selections from the panel on the right
         for (int i = 0; i < 3; i++) {
-            fromPanel[i] = selenium.getText(format(LOC_SELECTION_PREFORMATTED, i + 1));
+            fromPanel[i] = selenium.getText(format(LOC_SELECTION_PREFORMATTED, i+1));
         }
 
         assertEqualsNoOrder(fromPanel, fromTable, "Items chosen in table should be also in the right panel.");
@@ -149,16 +149,16 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[2];
         String[] after = new String[2];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
 
         // click line nr. 6 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         // click the 'Up' button
         selenium.click(LOC_BUTTON_UP);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
 
         assertEquals(after[0], before[1], "The sixth line should be now fifth.");
         assertEquals(after[1], before[0], "The fifth line should be now sixth.");
@@ -172,22 +172,22 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[3];
         String[] after = new String[3];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         // click line nr. 6 and 7 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         selenium.shiftKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
         selenium.shiftKeyUp();
 
         // click the 'Up' button (5,6,7 -> 6,7,5)
         selenium.click(LOC_BUTTON_UP);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         assertEquals(after[0], before[1], "The sixth line should be now fifth.");
         assertEquals(after[1], before[2], "The seventh line should be now sixth.");
@@ -202,22 +202,22 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[3];
         String[] after = new String[3];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         // click line nr. 6 and 7 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         selenium.controlKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
         selenium.controlKeyUp();
 
         // click the 'Up' button (5,6,7 -> 6,7,5)
         selenium.click(LOC_BUTTON_UP);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         assertEquals(after[0], before[1], "The sixth line should be now fifth.");
         assertEquals(after[1], before[2], "The seventh line should be now sixth.");
@@ -232,16 +232,16 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[2];
         String[] after = new String[2];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         // click line nr. 6 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         // click the 'Down' button
         selenium.click(LOC_BUTTON_DOWN);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         assertEquals(after[0], before[1], "The sixth line should be now seventh.");
         assertEquals(after[1], before[0], "The seventh line should be now sixth.");
@@ -255,22 +255,22 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[3];
         String[] after = new String[3];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         // click line nr. 5 and 6 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         selenium.shiftKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         selenium.shiftKeyUp();
 
         // click the 'Down' button (5,6,7 -> 7,5,6)
         selenium.click(LOC_BUTTON_DOWN);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         assertEquals(after[0], before[2], "The seventh line should be now fifth.");
         assertEquals(after[1], before[0], "The fifth line should be now sixth.");
@@ -285,26 +285,26 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         String[] before = new String[3];
         String[] after = new String[3];
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
         // click line nr. 5 and 6 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         selenium.controlKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 6));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         selenium.controlKeyUp();
 
         // click the 'Down' button (5,6,7 -> 7,5,6)
         selenium.click(LOC_BUTTON_DOWN);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 7));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
 
-        assertEquals(after[0], before[2], "The seventh line should be now fifth.");
-        assertEquals(after[1], before[0], "The fifth line should be now sixth.");
-        assertEquals(after[2], before[1], "The sixth line should be now seventh.");
+        assertEquals(after[0], before[2], "The seventh line should be now sixth.");
+        assertEquals(after[1], before[0], "The fifth line should be now seventh.");
+        assertEquals(after[2], before[1], "The sixth line should be now fifth.");
     }
 
     /**
@@ -314,20 +314,20 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testLastSingleSong() {
         String[] before = new String[3];
         String[] after = new String[3];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click line nr. 1 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         // click the 'Last' button (1,2,..,last-1,last --> 2,..,last,1)
         selenium.click(LOC_BUTTON_LAST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[1], "The second line should be now first.");
         assertEquals(after[1], before[2], "The last line should be now last but one.");
@@ -341,26 +341,26 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testLastMultipleSongsShift() {
         String[] before = new String[4];
         String[] after = new String[4];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click line nr. 1 and 2 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         selenium.shiftKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
         selenium.shiftKeyUp();
 
         // click the 'Last' button (1,2,3,..,last --> 3,..,last,1,2)
         selenium.click(LOC_BUTTON_LAST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 2));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[2], "The third line should be now first.");
         assertEquals(after[1], before[3], "The last line should be now last but two.");
@@ -375,26 +375,26 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testLastMultipleSongsCtrl() {
         String[] before = new String[4];
         String[] after = new String[4];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click line nr. 1 and 2 in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         selenium.controlKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 1));
         selenium.controlKeyUp();
 
         // click the 'Last' button (1,2,3,..,last --> 3,..,last,1,2)
         selenium.click(LOC_BUTTON_LAST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 2));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[2], "The third line should be now first.");
         assertEquals(after[1], before[3], "The last line should be now last but two.");
@@ -409,20 +409,20 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstSingleSong() {
         String[] before = new String[3];
         String[] after = new String[3];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click the last line in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
         // click the 'First' button (1...last-1,last --> last,1...last-1)
         selenium.click(LOC_BUTTON_FIRST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[2], "The second line should be now first.");
         assertEquals(after[1], before[0], "The first line should be now second.");
@@ -436,27 +436,27 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstMultipleSongsShift() {
         String[] before = new String[4];
         String[] after = new String[4];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 2));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click last 2 lines in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
         selenium.shiftKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
         selenium.shiftKeyUp();
 
         // click the 'First' button (1...last-2,last-1,last -->
         // last-1,last,1...last-2)
         selenium.click(LOC_BUTTON_FIRST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[2], "The last but one line should be now first.");
         assertEquals(after[1], before[3], "The last line should be now second.");
@@ -471,27 +471,27 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstMultipleSongsCtrl() {
         String[] before = new String[4];
         String[] after = new String[4];
-        int countOfLines = selenium.getXpathCount(LOC_TABLE_LINES).intValue();
+        int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
-        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 2));
-        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
-        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        before[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        before[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
+        before[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
+        before[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         // click last 2 lines in the table
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines - 1));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
         selenium.controlKeyDown();
-        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
         selenium.controlKeyUp();
 
         // click the 'First' button (1...last-2,last-1,last -->
         // last-1,last,1...last-2)
         selenium.click(LOC_BUTTON_FIRST);
 
-        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
-        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
-        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 3));
-        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines));
+        after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
+        after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
+        after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 2));
+        after[3] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
 
         assertEquals(after[0], before[2], "The last but one line should be now first.");
         assertEquals(after[1], before[3], "The last line should be now second.");

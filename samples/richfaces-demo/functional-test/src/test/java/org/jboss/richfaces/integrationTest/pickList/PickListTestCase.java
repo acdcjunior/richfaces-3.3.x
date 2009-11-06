@@ -75,10 +75,10 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstPickList() {
         scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
         
-        int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        int count = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
         assertTrue(count > 0, "There are no lines in the upper left table.");
 
-        count = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        count = getJQueryCount(LOC_FIRST_RIGHT_ITEMS);
         assertEquals(count, 0, "There should be no lines in the upper right table.");
     }
 
@@ -89,14 +89,14 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstCopySingleItem() {
         scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
         
-        final int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
 
         selenium.click(LOC_FIRST_LEFT_FIRST_ITEM);
         selenium.click(LOC_FIRST_BUTTON_COPY);
 
         Wait.failWith("There should be less lines in the left table.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue() == count -1;
+                return getJQueryCount(LOC_FIRST_LEFT_ITEMS) == count -1;
             }
         });
     }
@@ -118,17 +118,17 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstCopyAll() {
         scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
         
-        final int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
 
         selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
 
         Wait.failWith("All items from left table should be now in the right table.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue() == count;
+                return getJQueryCount(LOC_FIRST_RIGHT_ITEMS) == count;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
         assertEquals(newCount, 0, "There should be no lines in the left table.");
     }
 
@@ -141,14 +141,14 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
         
         selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
 
-        final int count = selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_FIRST_RIGHT_ITEMS);
 
         selenium.click(LOC_FIRST_RIGHT_FIRST_ITEM);
         selenium.click(LOC_FIRST_BUTTON_REMOVE);
 
         Wait.failWith("There should be less lines in the right table.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue() == count - 1;
+                return getJQueryCount(LOC_FIRST_RIGHT_ITEMS) == count - 1;
             }
         });
     }
@@ -170,18 +170,18 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testFirstRemoveAll() {
         scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
         
-        final int count = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
 
         selenium.click(LOC_FIRST_BUTTON_COPY_ALL);
         selenium.click(LOC_FIRST_BUTTON_REMOVE_ALL);
 
         Wait.failWith("There should be no lines in the right table.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_FIRST_RIGHT_ITEMS).intValue() == 0;
+                return getJQueryCount(LOC_FIRST_RIGHT_ITEMS) == 0;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_FIRST_LEFT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_FIRST_LEFT_ITEMS);
         assertEquals(newCount, count, "All items from right table should be now in the left table.");
     }
 
@@ -192,10 +192,10 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondPickList() {
         scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
         
-        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        int count = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
         assertTrue(count > 0, "There are no lines in the lower left table.");
 
-        count = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        count = getJQueryCount(LOC_SECOND_RIGHT_ITEMS);
         assertEquals(count, 0, "There should be no lines in the lower right table.");
 
         boolean empty = !selenium.isElementPresent(LOC_SECOND_CHOSEN_OPTIONS_UL);
@@ -209,18 +209,18 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondCopySingleItem() {
         scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
         
-        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        int count = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
 
         selenium.click(LOC_SECOND_LEFT_FIRST_ITEM);
         selenium.click(LOC_SECOND_BUTTON_COPY);
 
         Wait.failWith("There should be only one capital city.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue() == 1;
+                return getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI) == 1;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
         assertEquals(newCount, count - 1, "There should be less lines in the left table.");
 
         String capital = selenium.getText(LOC_SECOND_CHOSEN_OPTIONS_LI1);
@@ -244,23 +244,23 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondCopyAll() {
         scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
       
-        final int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
 
         selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
 
         Wait.failWith("Not all capital cities were displayed in the panel.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue() == count;
+                return getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI) == count;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
         assertEquals(newCount, 0, "There should be no lines in the left table.");
 
-        newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        newCount = getJQueryCount(LOC_SECOND_RIGHT_ITEMS);
         assertEquals(newCount, count, "All items from left table should be now in the right table.");
 
-        newCount = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        newCount = getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI);
         assertEquals(newCount, count, "Not all capital cities were displayed in the panel.");
     }
 
@@ -273,21 +273,21 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
 
         selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
 
-        final int count = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        final int count = getJQueryCount(LOC_SECOND_RIGHT_ITEMS);
 
         selenium.click(LOC_SECOND_RIGHT_FIRST_ITEM);
         selenium.click(LOC_SECOND_BUTTON_REMOVE);
 
         Wait.failWith("The capital city was not removed from panel.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue() == count - 1;
+                return getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI) == count - 1;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_SECOND_RIGHT_ITEMS);
         assertEquals(newCount, count - 1, "There should be less lines in the right table.");
 
-        newCount = selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue();
+        newCount = getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI);
         assertEquals(newCount, count - 1, "The capital city was not removed from panel.");
     }
 
@@ -308,21 +308,21 @@ public class PickListTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondRemoveAll() {
         scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
 
-        int count = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        int count = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
 
         selenium.click(LOC_SECOND_BUTTON_COPY_ALL);
         selenium.click(LOC_SECOND_BUTTON_REMOVE_ALL);
 
         Wait.failWith("All capitals from the panel should be removed.").until(new Condition() {
             public boolean isTrue() {
-                return selenium.getXpathCount(LOC_SECOND_CHOSEN_OPTIONS_LI).intValue() == 0;
+                return getJQueryCount(LOC_SECOND_CHOSEN_OPTIONS_LI) == 0;
             }
         });
         
-        int newCount = selenium.getXpathCount(LOC_SECOND_RIGHT_ITEMS).intValue();
+        int newCount = getJQueryCount(LOC_SECOND_RIGHT_ITEMS);
         assertEquals(newCount, 0, "There should be no lines in the right table.");
 
-        newCount = selenium.getXpathCount(LOC_SECOND_LEFT_ITEMS).intValue();
+        newCount = getJQueryCount(LOC_SECOND_LEFT_ITEMS);
         assertEquals(newCount, count, "All items from right table should be now in the left table.");
     }
 
