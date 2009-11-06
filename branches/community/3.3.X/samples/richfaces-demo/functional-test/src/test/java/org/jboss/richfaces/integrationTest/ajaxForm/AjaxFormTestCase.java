@@ -37,9 +37,8 @@ public class AjaxFormTestCase extends AbstractSeleniumRichfacesTestCase {
 	private String LOC_LEGEND_HEADER = getLoc("LEGEND_HEADER");
 	private String LOC_BUTTON_AJAX = getLoc("BUTTON_AJAX");
 	private String LOC_BUTTON_NON_AJAX = getLoc("BUTTON_NON_AJAX");
-	private String LOC_OUTPUT_TEXT_RELATIVE = getLoc("OUTPUT_TEXT_RELATIVE");
-	private String LOC_OUTPUT_AJAX = format(LOC_OUTPUT_TEXT_RELATIVE, LOC_BUTTON_AJAX);
-	private String LOC_OUTPUT_NON_AJAX = format(LOC_OUTPUT_TEXT_RELATIVE, LOC_BUTTON_NON_AJAX);
+	private String LOC_OUTPUT_AJAX = getLoc("OUTPUT_AJAX");
+	private String LOC_OUTPUT_NON_AJAX = getLoc("OUTPUT_NON_AJAX");
 
 	private final String MSG_OUTPUT_NON_AJAX = getMsg("OUTPUT_NON_AJAX");
 	private final String MSG_OUTPUT_AJAX = getMsg("OUTPUT_AJAX");

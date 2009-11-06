@@ -292,11 +292,12 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
         // wait for new page is opened
         selenium.waitForPageToLoad("5000");
 
-        // if component's page is already opened, skin selecting from menu
-        if (isComponentPageActive(componentName)) {
-            return;
-        }
-
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return selenium.isElementPresent(LOC_MENU_ITEM);
+            }
+        });
+        
         // click the menu item
         selenium.click(LOC_MENU_ITEM);
 

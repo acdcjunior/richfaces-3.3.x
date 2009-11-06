@@ -35,12 +35,11 @@ import org.testng.annotations.Test;
  * @version $Revision$
  */
 public class AjaxRegionTestCase extends AbstractSeleniumRichfacesTestCase {
-	private final String LOC_INPUT_RELATIVE = getLoc("INPUT_RELATIVE");
-	private final String LOC_INPUT_TEST1_NAME1 = format(LOC_INPUT_RELATIVE, 1, 1, 1);
-	private final String LOC_INPUT_TEST1_JOB1 = format(LOC_INPUT_RELATIVE, 1, 1, 2);
-	private final String LOC_INPUT_TEST1_NAME2 = format(LOC_INPUT_RELATIVE, 1, 2, 1);
-	private final String LOC_INPUT_TEST2_NAME1 = format(LOC_INPUT_RELATIVE, 2, 1, 1);
-	private final String LOC_INPUT_TEST2_NAME2 = format(LOC_INPUT_RELATIVE, 2, 2, 1);
+	private final String LOC_INPUT_TEST1_NAME1 = getLoc("INPUT_TEST1_NAME1");
+	private final String LOC_INPUT_TEST1_JOB1 = getLoc("INPUT_TEST1_JOB1");
+	private final String LOC_INPUT_TEST1_NAME2 = getLoc("INPUT_TEST1_NAME2");
+	private final String LOC_INPUT_TEST2_NAME1 = getLoc("INPUT_TEST2_NAME1");
+	private final String LOC_INPUT_TEST2_NAME2 = getLoc("INPUT_TEST2_NAME2");
 	private final String LOC_OUTPUT_VALIDATION_MESSAGE = getLoc("OUTPUT_VALIDATION_MESSAGE");
 	private final String LOC_OUTPUT_TEST1_TYPED_NAME = getLoc("OUTPUT_TEST1_TYPED_NAME");
 	private final String LOC_OUTPUT_TEST2_TYPED_NAME = getLoc("OUTPUT_TEST2_TYPED_NAME");
