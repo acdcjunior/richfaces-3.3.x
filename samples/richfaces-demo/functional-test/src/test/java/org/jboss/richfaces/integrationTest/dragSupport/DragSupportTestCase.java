@@ -108,8 +108,8 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	private void accepting(int phase) {
 		String itemText = format(MSG_CHOICES_FRAMEWORKS, 1);
-		String item = format(LOC_DIV_DRAGGED_ITEM_PREFORMATTED, itemText);
-		String target = format(LOC_CHOICES_OF_DIV_TARGETS, 1);
+		String item = format(LOC_DIV_DRAGGED_ITEM_PREFORMATTED, 1);
+		String target = format(LOC_CHOICES_OF_DIV_TARGETS, 0);
 
 		if (phase == 0) {
 			assertTrue(selenium.isElementPresent(LOC_DIV_DRAG_INDICATOR),
@@ -119,7 +119,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 
 		Drag drag = new Drag(selenium, item, target);
-
+		
 		drag.move();
 
 		if (phase == 0) {
@@ -137,7 +137,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 			assertTrue(Pattern.matches(MSG_REGEXP_IMGSRC_OF_MOVING, actual), format(
 					"The image source of indicator '{0}' doesn't match '{1}", actual, MSG_REGEXP_IMGSRC_OF_MOVING));
 		}
-
+		
 		drag.enter();
 
 		if (phase == 1) {
@@ -157,14 +157,13 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 
 		String firstInsertedItem = format(LOC_DIV_FIRST_INSERTED_ITEM_RELATIVE, target);
-
 		if (phase == 2) {
 			assertFalse(selenium.isElementPresent(firstInsertedItem),
 					"There was one item inserted to target, but there was expected no item");
 		}
 
 		drag.drop();
-
+		
 		if (phase == 2) {
 			Wait.failWith("Drag indicator never disappeared when item dropped").until(new Condition() {
 				public boolean isTrue() {
@@ -174,8 +173,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			assertTrue(selenium.isElementPresent(firstInsertedItem),
 					"There was no item inserted in target after drop of accepting item");
-			assertFalse(selenium.isElementPresent(item),
-					"The dragged item was still in framework list after drop to accepting target");
+			assertFalse(selenium.getText(item).equals(itemText), "The dragged item was still in framework list after drop to accepting target");
 
 			String actual = selenium.getText(firstInsertedItem);
 			assertEquals(itemText, actual,
@@ -184,9 +182,8 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private void rejecting(int phase) {
-		String itemText = format(MSG_CHOICES_FRAMEWORKS, 1);
-		String item = format(LOC_DIV_DRAGGED_ITEM_PREFORMATTED, itemText);
-		String target = format(LOC_CHOICES_OF_DIV_TARGETS, 2);
+		String item = format(LOC_DIV_DRAGGED_ITEM_PREFORMATTED, 1);
+		String target = format(LOC_CHOICES_OF_DIV_TARGETS, 1);
 
 		Drag drag = new Drag(selenium, item, target);
 		drag.move();

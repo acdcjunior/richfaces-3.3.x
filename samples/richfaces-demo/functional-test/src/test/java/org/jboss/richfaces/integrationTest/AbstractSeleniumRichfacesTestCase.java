@@ -73,7 +73,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     /**
      * predefined waitings to use in inheritors
      */
-    protected Waiting waitModelUpdate = Wait.interval(100).timeout(60000);
+    protected Waiting waitModelUpdate = Wait.interval(100).timeout(30000);
     protected Waiting waitGuiInteraction = Wait.interval(100).timeout(500);
 
     /**

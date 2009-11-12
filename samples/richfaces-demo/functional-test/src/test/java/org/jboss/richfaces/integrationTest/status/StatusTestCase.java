@@ -47,7 +47,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	private final String MSG_STYLE_DISPLAY = getMsg("STYLE_DISPLAY");
 	private final String MSG_PATTERN_NAME_JOB = getMsg("PATTERN_NAME_JOB");
-
+	
 	/**
 	 * <p>
 	 * This test requests update by pressing button, waiting for processing
@@ -63,7 +63,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testTextStatus() {
-		doStatusTesting(1);
+		doStatusTesting(0);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testImageStatus() {
-		doStatusTesting(2);
+		doStatusTesting(1);
 	}
 
 	/**
@@ -97,30 +97,30 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 		final String locOutputStatusMessage = format(LOC_OUTPUT_STATUS_MESSAGE_PREFORMATTED, testNumber);
 		final String locButtonRequest = format(LOC_BUTTON_REQUEST_PREFORMATTED, testNumber);
 
-		// get a initial style of status field
-		final String initialStyle = getStyle(locOutputStatusMessage, MSG_STYLE_DISPLAY);
-
+		assertFalse(isDisplayed(locOutputStatusMessage), "Status message should not be visible at start.");
+		
+		// prepare both needed conditions for waiting so that it will be faster
+	    Condition styleCondition = new Condition() {
+	        public boolean isTrue() {
+	            return isDisplayed(locOutputStatusMessage);
+	        }
+	    };
+	    
+	    Condition styleConditionNot = new Condition() {
+	        public boolean isTrue() {
+	            return !isDisplayed(locOutputStatusMessage);
+	        }
+	    };
+	    
 		selenium.click(locButtonRequest);
-
+        
 		// wait for style is changed to "processing" state indicates that
 		// request is in progress
-		waitModelUpdate.interval(10).failWith("Test timeouted when waiting for request moves to processing state.")
-				.until(new Condition() {
-					public boolean isTrue() {
-						String actualStyle = getStyle(locOutputStatusMessage, MSG_STYLE_DISPLAY);
-						return !initialStyle.equals(actualStyle);
-					}
-				});
+		waitModelUpdate.interval(0).failWith("Test timeouted when waiting for request moves to processing state.").until(styleCondition);
 
 		// wait for style is changed back to initial state after request is
 		// complete
-		waitModelUpdate.interval(10).failWith("Timeout when waiting for request moves to complete state.").until(
-				new Condition() {
-					public boolean isTrue() {
-						String actual = getStyle(locOutputStatusMessage, MSG_STYLE_DISPLAY);
-						return initialStyle.equals(actual);
-					}
-				});
+		waitModelUpdate.interval(0).failWith("Timeout when waiting for request moves to complete state.").until(styleConditionNot);
 	}
 
 	/**
@@ -137,10 +137,10 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testInputsStatus() {
-		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, 3), true);
+		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, 2), true);
 
 		// PAGE CONTROLS
-		final String locOutputStatusMessage = format(LOC_OUTPUT_STATUS_MESSAGE_PREFORMATTED, 3);
+		final String locOutputStatusMessage = format(LOC_OUTPUT_STATUS_MESSAGE_PREFORMATTED, 2);
 
 		// init buffers for typed text for each input
 		StringBuilder textName = new StringBuilder();
@@ -148,12 +148,24 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 
 		// init pattern for getting name and job from output
 		Pattern patternNameJob = Pattern.compile(MSG_PATTERN_NAME_JOB);
-
-		// get a initial value of status message's style
-		final String initialStyle = getStyle(locOutputStatusMessage, MSG_STYLE_DISPLAY);
-
+		
+		assertFalse(isDisplayed(locOutputStatusMessage), "Status message should not be visible at start.");
+		
+		// prepare both needed conditions for waiting so that it will be faster
+	    Condition styleCondition = new Condition() {
+	        public boolean isTrue() {
+	            return isDisplayed(locOutputStatusMessage);
+	        }
+	    };
+	    
+	    Condition styleConditionNot = new Condition() {
+	        public boolean isTrue() {
+	            return !isDisplayed(locOutputStatusMessage);
+	        }
+	    };
+		
 		// cycle over 30 chars and alternating between two inputs
-		for (int counter = 1; counter <= 30; counter++) {
+		for (int counter = 1; counter <= 15; counter++) {
 			// select input and it's buffered text by state of counter
 			final String selectedInput = (counter % 3 == 0) ? LOC_INPUT_NAME : LOC_INPUT_JOB;
 			final StringBuilder selectedText = (counter % 3 == 0) ? textName : textJob;
@@ -163,13 +175,15 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			selenium.type(selectedInput, selectedText.toString());
 			selenium.fireEvent(selectedInput, Event.KEYUP);
+			
+			// wait for style is changed to "processing" state indicates that
+	        // request is in progress
+	        waitModelUpdate.interval(0).failWith("Test timeouted when waiting for request moves to processing state.").until(styleCondition);
 
-			// wait for display-style changes to value different than initial
-			waitForDisplayChanges(locOutputStatusMessage, initialStyle, false);
-
-			// wait for display-style changes to initial value
-			waitForDisplayChanges(locOutputStatusMessage, initialStyle, true);
-
+	        // wait for style is changed back to initial state after request is
+	        // complete
+			waitModelUpdate.interval(0).failWith("Timeout when waiting for request moves to complete state.").until(styleConditionNot);
+			
 			String outputText = selenium.getText(LOC_OUTPUT_TEXT);
 
 			// matches output to pattern declared above?
@@ -202,7 +216,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 */
 	private void waitForDisplayChanges(final String locator, final String initialStyle,
 			final boolean shouldEqualOldValue) {
-		waitModelUpdate.interval(10).until(new Condition() {
+		waitModelUpdate.interval(0).until(new Condition() {
 			public boolean isTrue() {
 				String actualStyle = getStyle(locator, MSG_STYLE_DISPLAY);
 				return !shouldEqualOldValue ^ initialStyle.equals(actualStyle);
