@@ -141,8 +141,8 @@ public class AdvancedEditorTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_ADV_IMAGE_DLG_VSPACE = getLoc("ADV_IMAGE_DLG_VSPACE");
     private final String LOC_ADV_IMAGE_DLG_HSPACE = getLoc("ADV_IMAGE_DLG_HSPACE");
     private final String LOC_ADV_IMAGE_DLG_INSERT_BUTTON = getLoc("ADV_IMAGE_DLG_INSERT_BUTTON");
-    private final String LOC_ADV_CUSTOM_CHAR_BUTTON = getLoc("ADV_CUSTOM_CHAR_BUTTON");
-    private final String LOC_ADV_CUSTOM_CHAR_DLG_M_N = getLoc("ADV_CUSTOM_CHAR_DLG_M_N");
+//    private final String LOC_ADV_CUSTOM_CHAR_BUTTON = getLoc("ADV_CUSTOM_CHAR_BUTTON");
+//    private final String LOC_ADV_CUSTOM_CHAR_DLG_M_N = getLoc("ADV_CUSTOM_CHAR_DLG_M_N");
 
     /**
      * Tests the bold button. It types "aaaa", presses enter followed by the

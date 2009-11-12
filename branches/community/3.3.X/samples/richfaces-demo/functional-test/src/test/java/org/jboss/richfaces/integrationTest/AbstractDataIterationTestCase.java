@@ -90,7 +90,7 @@ public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTest
 	 */
 	protected void gotoPage(String button) {
 		final String previousPage = getActivePage().toString();
-
+		
 		if (previousPage.equals(selenium.getText(button))) {
 			return;
 		}
@@ -99,15 +99,14 @@ public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTest
 				&& (LOC_BUTTON_FIRST_PAGE.equals(button) || LOC_BUTTON_PREVIOUS_PAGE.equals(button))) {
 			return;
 		}
-
+		
 		if (previousPage.equals(getLastVisiblePage().toString())
 				&& (LOC_BUTTON_LAST_PAGE.equals(button) || LOC_BUTTON_NEXT_PAGE.equals(button))) {
 			return;
 		}
-
 		// move to specified page
 		selenium.click(button);
-
+		
 		Wait.failWith("The page never changed as required").until(new Condition() {
 			public boolean isTrue() {
 				return !previousPage.equals(getActivePage().toString());
@@ -130,8 +129,8 @@ public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTest
 	 * @return number of last page visible on page control
 	 */
 	protected Integer getLastVisiblePage() {
-		Number pages = selenium.getXpathCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0));
-		String lastVisiblePage = selenium.getText(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, pages));
+		Number pages = getJQueryCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, -1)) - 6;
+		String lastVisiblePage = selenium.getText(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, pages.intValue()));
 		return Integer.valueOf(lastVisiblePage);
 	}
 
@@ -178,7 +177,7 @@ public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTest
 				gotoPage(LOC_BUTTON_NEXT_PAGE);
 			}
 
-			final int rows = selenium.getXpathCount(format(columnsPreformatted[0], 0)).intValue();
+			final int rows = getJQueryCount(format(columnsPreformatted[0], 0));
 			
 			assertTrue(rows > 0, "There must be at least one row in the table");
 

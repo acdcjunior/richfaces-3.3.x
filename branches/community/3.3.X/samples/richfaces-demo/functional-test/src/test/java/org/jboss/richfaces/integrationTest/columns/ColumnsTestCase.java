@@ -111,8 +111,8 @@ public class ColumnsTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private String[][] getMapOfCells() {
-		final int columns = selenium.getXpathCount(format(LOC_TD_PREFORMATTED, 1, 0)).intValue();
-		final int rows = selenium.getXpathCount(format(LOC_TD_PREFORMATTED, 0, 1)).intValue();
+		final int columns = getJQueryCount(format(LOC_TD_PREFORMATTED, 1, 0));
+		final int rows = getJQueryCount(format(LOC_TD_PREFORMATTED, 0, 1));
 
 		String[][] map = new String[rows][columns];
 

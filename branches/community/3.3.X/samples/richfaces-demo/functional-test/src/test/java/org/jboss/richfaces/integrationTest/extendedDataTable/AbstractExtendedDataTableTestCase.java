@@ -23,7 +23,6 @@ package org.jboss.richfaces.integrationTest.extendedDataTable;
 
 import org.jboss.richfaces.integrationTest.AbstractDataIterationTestCase;
 import org.jboss.test.selenium.waiting.Condition;
-import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 
 /**
@@ -36,8 +35,12 @@ public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTest
 	protected final String LOC_TH_CAPITAL = getLoc("TH_CAPITAL");
 	protected final String LOC_TH_TIME_ZONE = getLoc("TH_TIME_ZONE");
 	protected final String LOC_TH_FLAG = getLoc("TH_FLAG");
-	protected final String LOC_TH_RELATIVE = getLoc("TH_RELATIVE");
-	protected final String LOC_TD_PREFORMATTED = getLoc("TD_PREFORMATTED");
+	
+    protected final String LOC_SPAN_STATE = getLoc("SPAN_STATE");
+    protected final String LOC_SPAN_CAPITAL = getLoc("SPAN_CAPITAL");
+    protected final String LOC_SPAN_TIME_ZONE = getLoc("SPAN_TIME_ZONE");
+    
+    protected final String LOC_TD_PREFORMATTED = getLoc("TD_PREFORMATTED");
 	private final String LOC_TABLE_EXTENDED = getLoc("TABLE_EXTENDED");
 	private final String LOC_DIV_SPLASH_SCREEN = getLoc("DIV_SPLASH_SCREEN");
 	private final String LOC_INPUT_COLUMN_FILTER = getLoc("INPUT_COLUMN_FILTER");
@@ -92,7 +95,7 @@ public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTest
 	 * @return the actual position (sequence) of column in table
 	 */
 	protected int getColumnIndex(String columnHeader) {
-		return 1 + selenium.getElementIndex(format(LOC_TH_RELATIVE, columnHeader)).intValue();
+	    return 1 + selenium.getElementIndex(columnHeader).intValue();
 	}
 
 	/**
@@ -108,8 +111,9 @@ public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTest
 	protected String preformatColumn(String columnHeader) {
 		int columnIndex = getColumnIndex(columnHeader);
 		String columnPreformatted = format(LOC_TD_PREFORMATTED, Integer.MAX_VALUE, columnIndex);
-		return columnPreformatted.replaceFirst(format("\\[{0,number}\\]", Integer.MAX_VALUE), "{0,choice,0#|1#[{0}]}");
-	}
+		columnPreformatted = columnPreformatted.replaceFirst(format(":nth-child\\({0}\\)", Integer.MAX_VALUE), "{0,choice,0#|1#:nth-child({0})}");
+		return columnPreformatted;
+    }
 
 	/**
 	 * Preformat filtering input's locator for column given by its columnHeader

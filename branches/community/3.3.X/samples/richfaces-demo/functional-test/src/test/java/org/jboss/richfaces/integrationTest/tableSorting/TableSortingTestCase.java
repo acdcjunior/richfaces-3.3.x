@@ -126,12 +126,11 @@ public class TableSortingTestCase extends AbstractDataIterationTestCase {
 					});
 			
 			selenium.select(locSelectColumn, msgColumnName);
-
 			selenium.select(locSelectOrder, msgColumnOrder);
-
+			
 			Wait.failWith("Sort table button never got enabled").until(new Condition() {
 				public boolean isTrue() {
-					return !selenium.isElementPresent(format("{0}/@disabled", LOC_BUTTON_SORT));
+					return !selenium.isElementPresent(format("{0}[disabled]", LOC_BUTTON_SORT));
 				}
 			});
 		}

@@ -141,7 +141,7 @@ public class TableFilteringTestCase extends AbstractDataIterationTestCase {
 		String statePrefix = selenium.getValue(LOC_INPUT_STATE);
 		String capitalPrefix = selenium.getValue(LOC_INPUT_CAPITAL);
 
-		int rows = selenium.getXpathCount(format(LOC_TD_STATE_PREFORMATTED, 0)).intValue();
+		int rows = getJQueryCount(format(LOC_TD_STATE_PREFORMATTED, 0));
 
 		for (int row = 1; row <= rows; row++) {
 			if (statePrefix.length() > 0) {
@@ -159,7 +159,7 @@ public class TableFilteringTestCase extends AbstractDataIterationTestCase {
 		String statePrefix = selenium.getValue(LOC_INPUT_STATE);
 		String selectedTimezone = selenium.getText(LOC_OPTION_SELECTED_TIMEZONE);
 
-		int rows = selenium.getXpathCount(format(LOC_TD_STATE_PREFORMATTED, 0)).intValue();
+		int rows = getJQueryCount(format(LOC_TD_STATE_PREFORMATTED, 0));
 
 		for (int row = 1; row <= rows; row++) {
 			if (statePrefix.length() > 0) {

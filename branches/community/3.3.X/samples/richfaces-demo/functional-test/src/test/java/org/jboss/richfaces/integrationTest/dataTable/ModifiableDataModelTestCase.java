@@ -59,7 +59,7 @@ public class ModifiableDataModelTestCase extends AbstractDataIterationTestCase {
 		});
 
 		// check if keys on all pages are sorted in right way
-		final int pageCount = selenium.getXpathCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0)).intValue();
+		final int pageCount = getJQueryCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0));
 
 		String lastText = null; // remembers last cell text
 
@@ -76,7 +76,7 @@ public class ModifiableDataModelTestCase extends AbstractDataIterationTestCase {
 			});
 
 			// count how many rows (cells in one column) table have
-			final int cellCount = selenium.getXpathCount(format(LOC_TD_KEY_PREFORMATTED, 0)).intValue();
+			final int cellCount = getJQueryCount(format(LOC_TD_KEY_PREFORMATTED, 0));
 
 			// checks that columns are correctly sorted
 			for (int row = 1; row <= cellCount; row++) {
@@ -113,12 +113,12 @@ public class ModifiableDataModelTestCase extends AbstractDataIterationTestCase {
 		});
 
 		// check how many pages should be displayed
-		String pageCount = selenium.getXpathCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0)).toString();
-		assertEquals(pageCount, MSG_COUNT_ASSIGNEE_PAGES);
+		int pageCount = getJQueryCount(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, 0));
+		assertEquals(pageCount, Integer.parseInt(MSG_COUNT_ASSIGNEE_PAGES));
 
 		// checks how many columns should be displayed
-		String cellCount = selenium.getXpathCount(format(LOC_TD_KEY_PREFORMATTED, 0)).toString();
-		assertEquals(cellCount, MSG_COUNT_ASSIGNEE_ROWS);
+		int cellCount = getJQueryCount(format(LOC_TD_KEY_PREFORMATTED, 0));
+		assertEquals(cellCount, Integer.parseInt(MSG_COUNT_ASSIGNEE_ROWS));
 
 		// checks that assignee column contains assignee name
 		String assigneeName = selenium.getText(LOC_TD_ASSIGNEE_PREFORMATTED);

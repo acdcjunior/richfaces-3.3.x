@@ -92,62 +92,62 @@ public class TreeTestCase extends AbstractSeleniumRichfacesTestCase {
         abstractTestTree(2);
     }
 
-//    /**
-//     * Tests the "View Source" in the first example -- Ajax switch type. It
-//     * checks that the source code is not visible, clicks on the link, and
-//     * checks 8 lines of source code.
-//     */
-//    @Test
-//    public void testAjaxExampleSource() {
-//        String[] strings = new String[] {
-//                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
-//                "<h:form>",
-//                "<rich:tree style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
-//                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
-//                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
-//                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
-//                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
-//
-//        abstractTestSource(1, "View Source", strings);
-//    }
-//
-//    /**
-//     * Tests the "View Source" in the second example -- client switch type. It
-//     * checks that the source code is not visible, clicks on the link, and
-//     * checks 8 lines of source code.
-//     */
-//    @Test
-//    public void testClientExampleSource() {
-//        String[] strings = new String[] {
-//                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
-//                "<h:form>",
-//                "<rich:tree switchType=\"client\" style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
-//                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
-//                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
-//                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
-//                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
-//
-//        abstractTestSource(2, "View Source", strings);
-//    }
-//
-//    /**
-//     * Tests the "View Source" in the third example -- server switch type. It
-//     * checks that the source code is not visible, clicks on the link, and
-//     * checks 8 lines of source code.
-//     */
-//    @Test
-//    public void testServerExampleSource() {
-//        String[] strings = new String[] {
-//                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
-//                "<h:form>",
-//                "<rich:tree switchType=\"server\" style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
-//                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
-//                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
-//                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
-//                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
-//
-//        abstractTestSource(3, "View Source", strings);
-//    }
+    /**
+     * Tests the "View Source" in the first example -- Ajax switch type. It
+     * checks that the source code is not visible, clicks on the link, and
+     * checks 8 lines of source code.
+     */
+    @Test
+    public void testAjaxExampleSource() {
+        String[] strings = new String[] {
+                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<h:form>",
+                "<rich:tree style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
+                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
+                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
+                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
+                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
+
+        abstractTestSource(1, "View Source", strings);
+    }
+
+    /**
+     * Tests the "View Source" in the second example -- client switch type. It
+     * checks that the source code is not visible, clicks on the link, and
+     * checks 8 lines of source code.
+     */
+    @Test
+    public void testClientExampleSource() {
+        String[] strings = new String[] {
+                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<h:form>",
+                "<rich:tree switchType=\"client\" style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
+                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
+                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
+                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
+                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
+
+        abstractTestSource(2, "View Source", strings);
+    }
+
+    /**
+     * Tests the "View Source" in the third example -- server switch type. It
+     * checks that the source code is not visible, clicks on the link, and
+     * checks 8 lines of source code.
+     */
+    @Test
+    public void testServerExampleSource() {
+        String[] strings = new String[] {
+                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<h:form>",
+                "<rich:tree switchType=\"server\" style=\"width:300px\" value=\"#{library.data}\" var=\"item\" nodeFace=\"#{item.type}\">",
+                "<rich:treeNode type=\"artist\" iconLeaf=\"/images/tree/singer.gif\" icon=\"/images/tree/singer.gif\">",
+                "<h:outputText value=\"#{item.name}\" />", "</rich:treeNode>",
+                "<rich:treeNode type=\"album\" iconLeaf=\"/images/tree/disc.gif\" icon=\"/images/tree/disc.gif\">",
+                "<rich:treeNode type=\"song\" iconLeaf=\"/images/tree/song.gif\" icon=\"/images/tree/song.gif\">", };
+
+        abstractTestSource(3, "View Source", strings);
+    }
 
     /**
      * Tests selected tree. First it tries to expand "Chris Rea" node, checks

@@ -48,7 +48,7 @@ public class RepeatTestCase extends AbstractDataIterationTestCase {
 	 */
 	@Test
 	public void functionalTest() {
-		int rows = selenium.getXpathCount(format(LOC_INPUT_PROPOSED_PRICE_PREFORMATTED, 0)).intValue();
+		int rows = getJQueryCount(format(LOC_INPUT_PROPOSED_PRICE_PREFORMATTED, 0));
 
 		String[] grossMargins = new String[rows];
 
@@ -86,7 +86,7 @@ public class RepeatTestCase extends AbstractDataIterationTestCase {
 			}
 
 			// select some option in reason
-			int options = selenium.getXpathCount(locSelectReason + "/*[@value]").intValue();
+			int options = getJQueryCount(locSelectReason + "/*[@value]");
 			assertTrue(options > 0);
 			selenium.select(locSelectReason, format("index={0}", row % options));
 
