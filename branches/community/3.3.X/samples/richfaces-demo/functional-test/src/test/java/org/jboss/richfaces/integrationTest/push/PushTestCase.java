@@ -46,7 +46,7 @@ public class PushTestCase extends AbstractSeleniumRichfacesTestCase {
 	@Test
 	public void testPushingProgress() {
 		setPushingStatus(true);
-
+		
 		checkPushingProgress();
 	}
 
@@ -67,28 +67,32 @@ public class PushTestCase extends AbstractSeleniumRichfacesTestCase {
 	@Test
 	public void testPushingStopAndStart() {
 		setPushingStatus(false);
-
+		
 		checkPushingStopped();
 
 		setPushingStatus(true);
-
+		
 		checkPushingProgress();
 
 		setPushingStatus(false);
-
+		
 		checkPushingStopped();
 
 		setPushingStatus(true);
-
+		
 		checkPushingProgress();
 	}
 
 	private void checkPushingProgress() {
-		assertTrue(isPushingActive(), "Pushing was inactive but should be active");
-
+	    Wait.failWith("Pushing was inactive but should be active").interval(200).timeout(10000).until(new Condition() {
+            public boolean isTrue() {
+                return isPushingActive();
+            }
+        });
+	    
 		final String oldOutput = selenium.getText(LOC_OUTPUT_TEXT);
 
-		Wait.failWith("When waiting for text change, it never happen").interval(2500).timeout(20000).until(
+		Wait.failWith("When waiting for text change, it never happen").interval(1000).timeout(20000).until(
 				new Condition() {
 					public boolean isTrue() {
 						String actualOutput = selenium.getText(LOC_OUTPUT_TEXT);
@@ -107,13 +111,17 @@ public class PushTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private void checkPushingStopped() {
-		assertFalse(isPushingActive(), "Pushing was active but expected to be inactive");
-
+	    Wait.failWith("Pushing was active but should be inactive").interval(200).timeout(10000).until(new Condition() {
+            public boolean isTrue() {
+                return !isPushingActive();
+            }
+        });
+	    
 		String expected = MSG_OUTPUT_PUSH_INACTIVE;
 
 		for (int i = 0; i < 7; i++) {
 			if (i > 0)
-				waitFor(2500);
+				waitFor(1000);
 			String actual = selenium.getText(LOC_OUTPUT_TEXT);
 
 			assertEquals(actual, expected);

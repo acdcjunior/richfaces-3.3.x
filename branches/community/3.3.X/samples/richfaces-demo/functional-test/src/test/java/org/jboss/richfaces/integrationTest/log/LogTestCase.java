@@ -81,14 +81,14 @@ public class LogTestCase extends AbstractSeleniumRichfacesTestCase {
 	}
 
 	private void fillLog() {
-		final long startCount = selenium.getXpathCount(LOC_DIV_LOG_CONSOLE_ENTRY).longValue();
+		final int startCount = getJQueryCount(LOC_DIV_LOG_CONSOLE_ENTRY);
 
 		selenium.type(LOC_INPUT_TEXT, MSG_INPUT_SAMPLE);
 		selenium.fireEvent(LOC_INPUT_TEXT, Event.KEYUP);
 
 		Wait.failWith("Count of log entries never increase").until(new Condition() {
 			public boolean isTrue() {
-				return selenium.getXpathCount(LOC_DIV_LOG_CONSOLE_ENTRY).longValue() > startCount;
+				return getJQueryCount(LOC_DIV_LOG_CONSOLE_ENTRY) > startCount;
 			}
 		});
 
@@ -112,10 +112,10 @@ public class LogTestCase extends AbstractSeleniumRichfacesTestCase {
 	private void waitForLogStabilize() {
 		Wait.failWith("Log stabilized in entry count in given time").interval(3000).timeout(9000).until(
 				new Condition() {
-					long count = -1;
+					int count = -1;
 
 					public boolean isTrue() {
-						long actual = selenium.getXpathCount(LOC_DIV_LOG_CONSOLE_ENTRY).longValue();
+						int actual = getJQueryCount(LOC_DIV_LOG_CONSOLE_ENTRY);
 						if (actual == count) {
 							return true;
 						}
