@@ -76,7 +76,7 @@ public class FilteringTestCase extends AbstractExtendedDataTableTestCase {
 		String statePrefix = selenium.getValue(inputFilterState);
 		String capitalPrefix = selenium.getValue(inputFilterCapital);
 
-		int rows = selenium.getXpathCount(format(cellsState, 0)).intValue();
+		int rows = getJQueryCount(format(cellsState, 0));
 
 		for (int row = 1; row <= rows; row++) {
 			if (statePrefix.length() > 0) {

@@ -31,6 +31,7 @@ import org.testng.annotations.Test;
 public class SortingTestCase extends AbstractExtendedDataTableTestCase {
 
 	private final String[] LOC_TH_SORTING_TESTS = new String[] { LOC_TH_STATE, LOC_TH_CAPITAL };
+	private final String[] LOC_TH_LABELS = new String[] { LOC_SPAN_STATE, LOC_SPAN_CAPITAL };
 	private final String LOC_SELECT_SORT_MODE = getLoc("SELECT_SORT_MODE");
 	
 	private final String MSG_OPTION_SORT_SINGLE = getMsg("OPTION_SORT_SINGLE");
@@ -46,8 +47,10 @@ public class SortingTestCase extends AbstractExtendedDataTableTestCase {
 
 		for (String columnHeader : LOC_TH_SORTING_TESTS) {
 			// two iterations -- one for ascending and one for descending order
+		    String columnText = columnHeader.equals(LOC_TH_STATE) ? LOC_SPAN_STATE : LOC_SPAN_CAPITAL;
+		    
 			for (int i = 0; i < 2; i++) {
-				selenium.click(columnHeader);
+				selenium.click(columnText);
 				waitForSplash();
 
 				String columnPreformatted = preformatColumn(columnHeader);
@@ -71,12 +74,12 @@ public class SortingTestCase extends AbstractExtendedDataTableTestCase {
 
 		// two iterations -- one for ascending and one for descending order
 		for (int i = 0; i < 2; i++) {
-			selenium.click(LOC_TH_SORTING_TESTS[0]);
+			selenium.click(LOC_TH_LABELS[0]);
 			waitForSplash();
-
+			
 			// two iterations -- one for ascending and one for descending order
 			for (int j = 0; j < 2; j++) {
-				selenium.click(LOC_TH_SORTING_TESTS[1]);
+				selenium.click(LOC_TH_LABELS[1]);
 				waitForSplash();
 
 				checkSortingForColumnOrder(columnsPreformatted);

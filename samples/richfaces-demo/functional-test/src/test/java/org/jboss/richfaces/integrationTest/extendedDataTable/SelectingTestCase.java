@@ -24,6 +24,7 @@ package org.jboss.richfaces.integrationTest.extendedDataTable;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.Test;
 
 /**
@@ -32,151 +33,159 @@ import org.testng.annotations.Test;
  */
 public class SelectingTestCase extends AbstractExtendedDataTableTestCase {
 
-	private final String LOC_TR_SELECTED = getLoc("TR_SELECTED");
-	private final String LOC_SELECT_SELECTION_MODE = getLoc("SELECT_SELECTION_MODE");
+    private final String LOC_TR_SELECTED = getLoc("TR_SELECTED");
+    private final String LOC_SELECT_SELECTION_MODE = getLoc("SELECT_SELECTION_MODE");
 
-	private final String MSG_OPTION_SELECTION_NONE = getMsg("OPTION_SELECTION_NONE");
-	private final String MSG_OPTION_SELECTION_SINGLE = getMsg("OPTION_SELECTION_SINGLE");
-	private final String MSG_OPTION_SELECTION_MULTI = getMsg("OPTION_SELECTION_MULTI");
-	private final String MSG_INPUT_SINGLE_ROW = getMsg("INPUT_SINGLE_ROW");
-	private final String MSG_INPUT_MULTIPLE_ROWS = getMsg("INPUT_MULTIPLE_ROWS");
-	private final String MSG_OUTPUT_MODE_NONE = getMsg("OUTPUT_MODE_NONE");
-	private final String MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_SINGLE_MODE");
-	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE");
-	private final String MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_MULTI_MODE");
-	private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE");
+    private final String MSG_OPTION_SELECTION_NONE = getMsg("OPTION_SELECTION_NONE");
+    private final String MSG_OPTION_SELECTION_SINGLE = getMsg("OPTION_SELECTION_SINGLE");
+    private final String MSG_OPTION_SELECTION_MULTI = getMsg("OPTION_SELECTION_MULTI");
+    private final String MSG_INPUT_SINGLE_ROW = getMsg("INPUT_SINGLE_ROW");
+    private final String MSG_INPUT_MULTIPLE_ROWS = getMsg("INPUT_MULTIPLE_ROWS");
+    private final String MSG_OUTPUT_MODE_NONE = getMsg("OUTPUT_MODE_NONE");
+    private final String MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_SINGLE_MODE");
+    private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE");
+    private final String MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE = getMsg("OUTPUT_SINGLE_ROW_IN_MULTI_MODE");
+    private final String MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE = getMsg("OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE");
 
-	/**
-	 * Checks single and multiple selection in selection-mode "none". Checks
-	 * that no rows will select.
-	 */
-	@Test
-	public void testSelectionModeNone() {
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_NONE);
+    private static int rows = -1;
 
-		int[] rows, selectedRows;
+    /**
+     * Checks single and multiple selection in selection-mode "none". Checks
+     * that no rows will select.
+     */
+    @Test
+    public void testSelectionModeNone() {
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_NONE);
 
-		rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_MODE_NONE);
-		checkSelection(selectedRows);
+        int[] rows, selectedRows;
 
-		loadPage();
+        rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_MODE_NONE);
+        checkSelection(selectedRows);
 
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_NONE);
+        loadPage();
 
-		rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_MODE_NONE);
-		checkSelection(selectedRows);
-	}
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_NONE);
 
-	/**
-	 * Checks single and multiple row selection in selection-mode "single".
-	 * Checks that only first selected row is selected right.
-	 */
-	@Test
-	public void testSelectionModeSingle() {
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_SINGLE);
+        rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_MODE_NONE);
+        checkSelection(selectedRows);
+    }
 
-		int[] rows, selectedRows;
+    /**
+     * Checks single and multiple row selection in selection-mode "single".
+     * Checks that only first selected row is selected right.
+     */
+    @Test
+    public void testSelectionModeSingle() {
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_SINGLE);
 
-		rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE);
-		checkSelection(selectedRows);
+        int[] rows, selectedRows;
 
-		loadPage();
+        rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_SINGLE_ROW_IN_SINGLE_MODE);
+        checkSelection(selectedRows);
 
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_SINGLE);
+        loadPage();
 
-		rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE);
-		checkSelection(selectedRows);
-	}
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_SINGLE);
 
-	/**
-	 * Checks single and multiple row selection in selection-mode "multi".
-	 * Checks that all selected rows will be selected right.
-	 */
-	@Test
-	public void testSelectionModeMulti() {
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_MULTI);
+        rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_MULTIPLE_ROWS_IN_SINGLE_MODE);
+        checkSelection(selectedRows);
+    }
 
-		int[] rows, selectedRows;
+    /**
+     * Checks single and multiple row selection in selection-mode "multi".
+     * Checks that all selected rows will be selected right.
+     */
+    @Test
+    public void testSelectionModeMulti() {
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_MULTI);
 
-		rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE);
-		checkSelection(selectedRows);
+        int[] rows, selectedRows;
 
-		loadPage();
+        rows = getRowSelection(MSG_INPUT_SINGLE_ROW);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_SINGLE_ROW_IN_MULTI_MODE);
+        checkSelection(selectedRows);
 
-		selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_MULTI);
+        loadPage();
 
-		rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
-		multiSelection(rows);
-		selectedRows = getRowSelection(MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE);
-		checkSelection(selectedRows);
-	}
+        selectMode(LOC_SELECT_SELECTION_MODE, MSG_OPTION_SELECTION_MULTI);
 
-	private void checkSelection(int[] rows) {
-		checkSelection(rows, true);
-		checkSelection(rows, false);
-	}
+        rows = getRowSelection(MSG_INPUT_MULTIPLE_ROWS);
+        multiSelection(rows);
+        selectedRows = getRowSelection(MSG_OUTPUT_MULTIPLE_ROWS_IN_MULTI_MODE);
+        checkSelection(selectedRows);
+    }
 
-	private void multiSelection(int[] rows) {
-		int column = 2;
+    private void checkSelection(int[] selectedRows) {
+        if (rows == -1) {
+            rows = getJQueryCount(LOC_TR_SELECTED);
+        }
 
-		for (int i = 0; i < rows.length; i++) {
-			final int row = rows[i];
-			String cell = format(LOC_TD_PREFORMATTED, row, column);
+        int[] notSelectedRows = new int[rows];
 
-			if (i > 0) {
-				selenium.controlKeyDown();
-			}
+        // create an array with all rows
+        for (int i = 0; i < rows; i++) {
+            notSelectedRows[i] = i + 1;
+        }
 
-			selenium.click(cell);
+        // create an array with not selected rows
+        for (int row : selectedRows) {
+            notSelectedRows = ArrayUtils.removeElement(notSelectedRows, row);
+        }
 
-			if (i > 0) {
-				selenium.controlKeyUp();
-			}
-		}
-	}
+        for (final int row : selectedRows) {
+            Wait.timeout(3000).interval(100).failWith(format("Row nr. {0} should be selected.", row)).until(
+                    new Condition() {
+                        public boolean isTrue() {
+                            return selenium.isElementPresent(format(LOC_TR_SELECTED, row));
+                        }
+                    });
+        }
+        for (final int row : notSelectedRows) {
+            Wait.timeout(3000).interval(100).failWith(format("Row nr. {0} should not be selected.", row)).until(
+                    new Condition() {
+                        public boolean isTrue() {
+                            return !selenium.isElementPresent(format(LOC_TR_SELECTED, row));
+                        }
+                    });
+        }
+    }
 
-	private void checkSelection(int[] rows, boolean positiveComparison) {
+    private void multiSelection(int[] rows) {
+        int column = 2;
 
-		final String condition;
+        for (int i = 0; i < rows.length; i++) {
+            final int row = rows[i];
+            String cell = format(LOC_TD_PREFORMATTED, row, column);
 
-		if (rows.length == 0) {
-			condition = "";
-		} else {
-			String comparison = (positiveComparison) ? "position()=" : "position()!=";
-			String conjuction = (positiveComparison) ? " or " : " and ";
-			condition = " and (" + comparison + StringUtils.join(ArrayUtils.toObject(rows), conjuction + comparison)
-					+ ")";
-		}
+            if (i > 0) {
+                selenium.controlKeyDown();
+            }
 
-		final int expectedCount = (positiveComparison) ? rows.length : 0;
+            selenium.click(cell);
 
-		waitGuiInteraction.timeout(2000).failWith(
-				"In spite of waiting for GUI rendering finish there is wrong number of selected rows").until(
-				new Condition() {
-					public boolean isTrue() {
-						return expectedCount == selenium.getXpathCount(format(LOC_TR_SELECTED, condition)).intValue();
-					}
-				});
-	}
+            if (i > 0) {
+                selenium.controlKeyUp();
+            }
+        }
+    }
 
-	private int[] getRowSelection(String message) {
-		String[] tokens = StringUtils.splitPreserveAllTokens(message, ',');
-		int[] rows = new int[tokens.length];
+    private int[] getRowSelection(String message) {
+        String[] tokens = StringUtils.splitPreserveAllTokens(message, ',');
+        int[] rows = new int[tokens.length];
 
-		for (int i = 0; i < tokens.length; i++) {
-			rows[i] = Integer.valueOf(tokens[i]);
-		}
+        for (int i = 0; i < tokens.length; i++) {
+            rows[i] = Integer.valueOf(tokens[i]);
+        }
 
-		return rows;
-	}
+        return rows;
+    }
 }

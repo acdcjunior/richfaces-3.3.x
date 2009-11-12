@@ -55,18 +55,17 @@ public class DataGridTestCase extends AbstractDataIterationTestCase {
 			if (!cellTexts.isEmpty()) {
 				gotoPage(LOC_BUTTON_NEXT_PAGE);
 			}
-
-			final int cellCount = selenium.getXpathCount(format(LOC_TD_GRID_PREFORMATTED, 0, 0)).intValue();
+			
+			final int cellCount = getJQueryCount(format(LOC_TD_GRID_PREFORMATTED, 0, 0));
 
 			assertTrue(cellCount > 0 && cellCount <= MSG_COUNT_CELLS_PER_PAGE, format(
 					"There should be at least one cell per page (page {0}), but no more than {1}", page,
 					MSG_COUNT_CELLS_PER_PAGE));
 
-			int rowCount = selenium.getXpathCount(format(LOC_TD_GRID_PREFORMATTED, 0, 1)).intValue();
+			int rowCount = getJQueryCount(format(LOC_TD_GRID_PREFORMATTED, 0, 1));
 
 			for (int row = 1; row <= rowCount; row++) {
-				final int columnCount = selenium.getXpathCount(format(LOC_TD_GRID_PREFORMATTED, row, 0)).intValue();
-
+				final int columnCount = getJQueryCount(format(LOC_TD_GRID_PREFORMATTED, row, 0));
 				assertTrue(columnCount > 0 && columnCount <= MSG_COUNT_CELLS_PER_COLUMN, format(
 						"There should be at least one cell per column (page {0}), but no more than {1}", page,
 						MSG_COUNT_CELLS_PER_COLUMN));

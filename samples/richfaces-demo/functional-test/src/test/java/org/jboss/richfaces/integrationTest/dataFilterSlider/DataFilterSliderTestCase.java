@@ -40,6 +40,7 @@ import org.testng.annotations.Test;
 public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 
 	private final String LOC_FIELDSET_HEADER = getLoc("FIELDSET_HEADER");
+	private final String LOC_TABLE_ROWS = getLoc("TABLE_ROWS");
 	private final String LOC_TD_MILEAGE_PREFORMATTED = getLoc("TD_MILEAGE_PREFORMATTED");
 	private final String LOC_TD_BRAND_PREFORMATTED = getLoc("TD_BRAND_PREFORMATTED");
 	private final String LOC_LINK_BRAND_PREFORMATTED = getLoc("LINK_BRAND_PREFORMATTED");
@@ -124,7 +125,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 			}
 		});
 
-		for (int row = 1; row <= selenium.getXpathCount(format(LOC_TD_BRAND_PREFORMATTED, 0)).intValue(); row++) {
+		for (int row = 1; row <= getJQueryCount(LOC_TABLE_ROWS); row++) {
 			String rowBrand = selenium.getText(format(LOC_TD_BRAND_PREFORMATTED, row));
 
 			assertEquals(rowBrand, brand, "In all rows must be the defined brand");
@@ -140,9 +141,9 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 
 	private List<Integer> checkAllMileagesMaxAndReturnItsList(int maxMileage) {
 		List<Integer> list = new LinkedList<Integer>();
-
-		int rowCount = selenium.getXpathCount(format(LOC_TD_MILEAGE_PREFORMATTED, 0)).intValue();
-
+		
+		int rowCount = getJQueryCount(LOC_TABLE_ROWS);
+		
 		for (int row = 1; row <= rowCount; row++) {
 			int rowMileage = Double.valueOf(selenium.getText(format(LOC_TD_MILEAGE_PREFORMATTED, row))).intValue();
 
@@ -160,7 +161,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 	}
 
 	private void clickSliderAtPercent(double percent) {
-		final Number handlePosition = selenium.getElementPositionLeft(LOC_DIV_SLIDER_HANDLE);
+	    final Number handlePosition = selenium.getElementPositionLeft(LOC_DIV_SLIDER_HANDLE);
 
 		int width = selenium.getElementWidth(LOC_DIV_SLIDER_TRACK).intValue();
 		int height = selenium.getElementHeight(LOC_DIV_SLIDER_TRACK).intValue();

@@ -35,8 +35,7 @@ public class GroupingTestCase extends AbstractExtendedDataTableTestCase {
 	private final String LOC_MENU_ITEM_GROUP_BY_COLUMN = getLoc("MENU_ITEM_GROUP_BY_COLUMN");
 	private final String LOC_TD_GROUP_PREFORMATTED = getLoc("TD_GROUP_PREFORMATTED");
 	private final String LOC_TR_PREFORMATTED = getLoc("TR_PREFORMATTED");
-	private final String LOC_COLUMN_HEADER = format(LOC_TH_RELATIVE, LOC_TH_STATE);
-	private final String LOC_BUTTON_MENU = format(LOC_DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE, LOC_COLUMN_HEADER);
+	private final String LOC_BUTTON_MENU = format(LOC_DIV_CONTEXT_MENU_FOR_COLUMN_RELATIVE, LOC_TH_STATE);
 
 	private final String MSG_TR_CLASS = getMsg("TR_CLASS");
 
@@ -47,30 +46,27 @@ public class GroupingTestCase extends AbstractExtendedDataTableTestCase {
 	@Test
 	public void testGrouping() {
 		// use grouping by state
-		selenium.fireEvent(LOC_COLUMN_HEADER, Event.MOUSEOVER);
+		selenium.fireEvent(LOC_TH_STATE, Event.MOUSEOVER);
 		selenium.clickAt(LOC_BUTTON_MENU, "1,1");
 
 		waitForElement(LOC_MENU_ITEM_GROUP_BY_COLUMN);
 		selenium.click(LOC_MENU_ITEM_GROUP_BY_COLUMN);
 		waitForSplash();
-
-		final int rows = selenium.getXpathCount(format(LOC_TR_PREFORMATTED, 0)).intValue();
+		
+		final int rows = getJQueryCount(format(LOC_TR_PREFORMATTED, 0)) -1;
+		
 		String expectedGroup = null;
 
-		for (int row = 1, group = 0, tabular = 0; row <= rows; row++) {
-			if (belongsClass(MSG_TR_CLASS, format(LOC_TR_PREFORMATTED, row))) {
+		for (int row = 1; row <= rows; row++) {
+		    if (belongsClass(MSG_TR_CLASS, format(LOC_TR_PREFORMATTED, row))) {
 				// table row is type group
-				group++;
-
-				expectedGroup = selenium.getText(format(LOC_TD_GROUP_PREFORMATTED, group));
+				expectedGroup = selenium.getText(format(LOC_TD_GROUP_PREFORMATTED, row)).replace("State Name: ", "").replace("(1)", "");
 			} else {
 				// table row is regular data row
-				tabular++;
-
 				assertNotNull(expectedGroup, format("First row in grouped table has to belong to class '{0}'",
 						MSG_TR_CLASS));
 
-				String actualGroup = selenium.getText(format(preformatColumn(LOC_COLUMN_HEADER), tabular));
+				String actualGroup = selenium.getText(format(preformatColumn(LOC_TH_STATE), row));
 
 				assertEquals(actualGroup, expectedGroup, format("Cell ('{0}', row {1}) doesn't belong to group '{2}'",
 						actualGroup, row, expectedGroup));

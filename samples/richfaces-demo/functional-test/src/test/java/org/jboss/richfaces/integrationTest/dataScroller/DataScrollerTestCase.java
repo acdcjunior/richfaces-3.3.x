@@ -49,7 +49,7 @@ public class DataScrollerTestCase extends AbstractDataIterationTestCase {
 		String tableText = getTableText();
 
 		for (String page : MSG_LIST_OF_PAGES) {
-			gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, Integer.valueOf(page)));
+		    gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, Integer.valueOf(page)-1));
 
 			tableText = checkThatTextDiffersAndReturn(tableText);
 		}
@@ -74,7 +74,6 @@ public class DataScrollerTestCase extends AbstractDataIterationTestCase {
 		gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, page));
 
 		selenium.refresh();
-
 		assertTrue(page.equals(getActivePage()));
 
 		// TODO cannot just do openPage
