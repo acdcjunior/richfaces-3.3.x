@@ -36,21 +36,21 @@ public class TooltipDataTableTestCase extends AbstractSeleniumRichfacesTestCase 
 
 	private final String LOC_FIELDSET_HEADER_2 = getLoc("FIELDSET_HEADER_2");
 	private final String LOC_TD_PREFORMATTED = getLoc("TD_PREFORMATTED");
-	private final String LOC_DIV_TOOLTIP_ITEM_PREFORMATTED = getLoc("DIV_TOOLTIP_ITEM_PREFORMATTED");
-	private final String LOC_OUTPUT_TOOLTIP_MAKE = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.MAKE);
-	private final String LOC_OUTPUT_TOOLTIP_MODEL = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.MODEL);
-	private final String LOC_OUTPUT_TOOLTIP_YEAR = format(LOC_DIV_TOOLTIP_ITEM_PREFORMATTED, Column.YEAR);
-	private final String LOC_TD_MAKE_RELATIVE_TO_LABEL = getLoc("TD_MAKE_RELATIVE_TO_LABEL");
+	private final String LOC_OUTPUT_TOOLTIP_MAKE = getLoc("OUTPUT_TOOLTIP_MAKE");
+    private final String LOC_OUTPUT_TOOLTIP_MODEL = getLoc("OUTPUT_TOOLTIP_MODEL");
+    private final String LOC_OUTPUT_TOOLTIP_YEAR = getLoc("OUTPUT_TOOLTIP_YEAR");
+	
+    private final String LOC_TD_MAKE_RELATIVE_TO_LABEL = getLoc("TD_MAKE_RELATIVE_TO_LABEL");
 	private final String LOC_TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA = getLoc("TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA");
 
 	private final String MSG_EVENT_COORDS_FOR_TABLE = getMsg("EVENT_COORDS_FOR_TABLE");
 
 	@Test
 	public void testIterateThroughTable() {
-		int rows = selenium.getXpathCount(format(LOC_TD_PREFORMATTED, 0, Column.MAKE)).intValue();
+		int rows = getJQueryCount(format(LOC_TD_PREFORMATTED, 0, Column.MAKE));
 
 		for (int row = 1; row <= rows; row++) {
-			final String locCellMake = format(LOC_TD_PREFORMATTED, row, Column.MAKE);
+		    final String locCellMake = format(LOC_TD_PREFORMATTED, row, Column.MAKE);
 			final String locCellModel = format(LOC_TD_PREFORMATTED, row, Column.MODEL);
 			final String locCellYear = format(LOC_TD_PREFORMATTED, row, Column.YEAR);
 			final String locActiveTooltipArea = format(LOC_TD_MAKE_RELATIVE_TO_ACTIVE_TOOLTIP_AREA, locCellMake);

@@ -137,9 +137,8 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_TEXT));
 
 			selenium.clickAt(LOC_PANEL_SAMPLE_4, MSG_EVENT_COORDS_AT_PANEL);
-
 			tooltipsRequested = waitForTooltipChanges(tooltipsRequested, i == 0);
-
+			
 			selenium.mouseOut(LOC_PANEL_SAMPLE_4);
 			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
 		}
@@ -166,16 +165,17 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	private Retrieve<Integer> retrieveRequestedTooltips = new Retrieve<Integer>() {
 		public Integer retrieve() {
-			String text = Wait.interval(20).timeout(2000).waitForChangeAndReturn(null, new Retrieve<String>() {
+			String text = Wait.interval(10).timeout(2000).waitForChangeAndReturn(null, new Retrieve<String>() {
 				public String retrieve() {
-					return getTextOrNull(LOC_SPAN_TOOLTIPS_REQUESTED);
+				    String retrieved = getTextOrNull(LOC_SPAN_TOOLTIPS_REQUESTED);
+					return retrieved;
 				}
 			});
 			Matcher matcher = MSG_REGEXP_TOOLTIPS_REQUESTED.matcher(text);
 			if (!matcher.matches()) {
 				fail();
 			}
-			return Integer.valueOf(matcher.group(1));
+			return Integer.valueOf(text);
 		}
 	};
 
