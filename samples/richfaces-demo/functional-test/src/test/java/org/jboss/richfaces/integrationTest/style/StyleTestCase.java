@@ -67,7 +67,6 @@ public class StyleTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			selenium.click(locLink);
 			selenium.waitForPageToLoad(Long.toString(Wait.DEFAULT_TIMEOUT));
-
 			scrollIntoView(LOC_FIELDSET_HEADER, true);
 
 			assertEquals(msgColor, getStyle(LOC_PANEL, "background-color"), format(
