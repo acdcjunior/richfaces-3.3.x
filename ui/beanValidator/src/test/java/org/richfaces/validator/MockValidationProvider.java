@@ -148,11 +148,27 @@ public class MockValidationProvider implements ValidationProvider {
 						// TODO Auto-generated method stub
 						return this;
 					}
+
+					public ValidatorContext constraintValidatorFactory(
+							ConstraintValidatorFactory factory) {
+						// TODO Auto-generated method stub
+						return null;
+					}
 					
 				};
 			}
 
 			public <T> T unwrap(Class<T> type) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			public ConstraintValidatorFactory getConstraintValidatorFactory() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			public TraversableResolver getTraversableResolver() {
 				// TODO Auto-generated method stub
 				return null;
 			}
@@ -210,6 +226,16 @@ public class MockValidationProvider implements ValidationProvider {
 					TraversableResolver resolver) {
 				// TODO Auto-generated method stub
 				return this;
+			}
+
+			public ConstraintValidatorFactory getDefaultConstraintValidatorFactory() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			public TraversableResolver getDefaultTraversableResolver() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 			
 		};

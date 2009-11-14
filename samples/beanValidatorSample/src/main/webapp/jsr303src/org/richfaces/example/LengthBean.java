@@ -3,7 +3,7 @@
  */
 package org.richfaces.example;
 
-import org.hibernate.validation.constraints.Length;
+import org.hibernate.validator.constraints.Length;
 import org.richfaces.Validable;
 
 /**

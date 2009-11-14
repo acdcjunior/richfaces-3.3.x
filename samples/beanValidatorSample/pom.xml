@@ -98,7 +98,7 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>jsr299</id>
+			<id>jsr303</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -114,7 +114,7 @@
 								</goals>
 								<configuration>
 									<sources>
-										<source>src/main/webapp/jsr299src</source>
+										<source>src/main/webapp/jsr303src</source>
 									</sources>
 								</configuration>
 							</execution>
@@ -126,12 +126,12 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.CR3</version>
+			<version>1.0.0.GA</version>
 		</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>4.0.0.Beta2</version>
+				<version>4.0.1.GA</version>
 			</dependency>
 			</dependencies>
 		</profile>
