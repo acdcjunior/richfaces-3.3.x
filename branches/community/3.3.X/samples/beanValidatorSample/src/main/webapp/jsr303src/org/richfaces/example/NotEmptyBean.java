@@ -3,7 +3,7 @@
  */
 package org.richfaces.example;
 
-import org.hibernate.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.richfaces.Validable;
 
 /**

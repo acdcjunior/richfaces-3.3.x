@@ -23,7 +23,8 @@ package org.richfaces.example;
 
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 
 /**
