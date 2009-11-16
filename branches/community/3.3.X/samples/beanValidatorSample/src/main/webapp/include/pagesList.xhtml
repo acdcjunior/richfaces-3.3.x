@@ -7,7 +7,6 @@
       xmlns:c="http://java.sun.com/jstl/core"  
       >
       <ui:composition>
-       <h:form>
          <h:dataTable value="#{pages.xhtmlPages}" var="page">
            <h:column>
               <h:outputLink value="#{page.url}">
@@ -15,6 +14,5 @@
               </h:outputLink>
            </h:column>
          </h:dataTable>
-       </h:form>
       </ui:composition>
 </html>	

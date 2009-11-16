@@ -16,7 +16,7 @@ public class MinMaxBean implements Validable {
 	
 	private String text;
 	
-	@Min(2)
+	@Min(value=2,message="Value {0} should be more than {value}")
 	@Max(10)
 	private int intValue;
 

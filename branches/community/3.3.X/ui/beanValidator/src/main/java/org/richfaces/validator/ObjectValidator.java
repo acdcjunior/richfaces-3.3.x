@@ -45,7 +45,7 @@ public abstract class ObjectValidator {
 	 * 
 	 * @return
 	 */
-	protected static ObjectValidator createInstance() {
+	static ObjectValidator createInstance() {
 		// TODO - get instance class name from a "META-INF/service"
 		// If the Seam framework is active, org.jboss.seam.core.Validators
 		// component should be used.
@@ -119,7 +119,6 @@ public abstract class ObjectValidator {
 					context, elContext.getELResolver(),profiles);
 			ELContextWrapper wrappedElContext = new ELContextWrapper(elContext,
 					validationResolver);
-			// TODO - handle ELExceptions ?
 			try {
 				target.setValue(wrappedElContext, value);
 			} catch (ELException e) {
@@ -131,16 +130,6 @@ public abstract class ObjectValidator {
 
 		}
 		return validationMessages;
-	}
-
-	protected Locale calculateLocale(FacesContext context) {
-		if (null == context.getViewRoot()) {
-			throw new FacesException(VIEW_ROOT_IS_NOT_INITIALIZED);
-		} else if (null == context.getViewRoot().getLocale()) {
-			throw new FacesException(LOCALE_IS_NOT_SET);
-		}
-		Locale locale = context.getViewRoot().getLocale();
-		return locale;
 	}
 
 	/**
@@ -160,8 +149,17 @@ public abstract class ObjectValidator {
 	protected abstract String[] validate(FacesContext facesContext, Object base,
 			String property, Object value, Set<String> profiles);
 
-	protected ResourceBundle getResourceBundle(FacesContext facesContext, String name) {
-		// TODO - cache resource bundles.
+	static Locale calculateLocale(FacesContext context) {
+		if (null == context.getViewRoot()) {
+			throw new FacesException(VIEW_ROOT_IS_NOT_INITIALIZED);
+		} else if (null == context.getViewRoot().getLocale()) {
+			throw new FacesException(LOCALE_IS_NOT_SET);
+		}
+		Locale locale = context.getViewRoot().getLocale();
+		return locale;
+	}
+
+	static ResourceBundle getResourceBundle(FacesContext facesContext, String name) {
 		ResourceBundle bundle = null;
 		if (null != facesContext) {
 			Application application = facesContext.getApplication();
@@ -177,7 +175,7 @@ public abstract class ObjectValidator {
 			ClassLoader classLoader = Thread.currentThread()
 					.getContextClassLoader();
 			if (null == classLoader) {
-				classLoader = this.getClass().getClassLoader();
+				classLoader = ObjectValidator.class.getClassLoader();
 			}
 			try {
 				bundle = ResourceBundle.getBundle(name, calculateLocale(facesContext),

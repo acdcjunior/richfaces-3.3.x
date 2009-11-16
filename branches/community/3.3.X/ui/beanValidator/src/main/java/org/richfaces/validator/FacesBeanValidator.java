@@ -21,6 +21,8 @@
 package org.richfaces.validator;
 
 import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.el.ELException;
@@ -99,16 +101,20 @@ public class FacesBeanValidator implements Validator,Serializable, GraphValidato
 				ValueExpression valueExpression = component
 						.getValueExpression("value");
 				if (null != valueExpression) {
-					// TODO - check EL Exceptions ?
-					String[] messages = HibernateValidator.getInstance(context)
+					String[] messages = ObjectValidator.getInstance(context)
 							.validate(context, valueExpression, convertedValue, getProfiles());
 					if (null != messages) {
 						input.setValid(false);
+						Object label = getLabel(context, component);
+						Locale locale = context.getViewRoot().getLocale();
 						// send all validation messages.
 						for (String msg : messages) {
-							// TODO - create Summary message ?
-							String summaryString = getSummary()!=null?getSummary():msg;
-							
+							// https://jira.jboss.org/jira/browse/RF-7636 -
+							// format values.
+							msg = formatMessage(msg, locale, label,convertedValue); // create Summary message ?
+							String summaryString = getSummary() != null ? getSummary()
+									: msg;
+							summaryString = formatMessage(summaryString, locale, label,convertedValue);
 							context.addMessage(component.getClientId(context), new FacesMessage(
 									FacesMessage.SEVERITY_ERROR, summaryString , msg));
 						}
@@ -120,9 +126,27 @@ public class FacesBeanValidator implements Validator,Serializable, GraphValidato
 		}
 	}
 
+	static String formatMessage(String msg, Locale locale, Object... messageParams) {
+		if (msg.contains("{")) {
+			MessageFormat messageFormat = new MessageFormat(
+					msg, locale);
+			msg = messageFormat.format(messageParams);
+
+		}
+		return msg;
+	}
+
+	static Object getLabel(FacesContext context, UIComponent component) {
+		Object label = component.getAttributes().get("label");
+		if(null == label || 0 == label.toString().length()){
+			label = component.getClientId(context);
+		}
+		return label;
+	}
+
 	public String[] validateGraph(FacesContext context, UIComponent component,
 			Object value, Object profiles)  throws ValidatorException {
-		ObjectValidator beanValidator = HibernateValidator.getInstance(context);
+		ObjectValidator beanValidator = ObjectValidator.getInstance(context);
 		String[] messages = beanValidator.validateGraph(context, value,AjaxRendererUtils.asSet(profiles));
 		return messages;
 	}
