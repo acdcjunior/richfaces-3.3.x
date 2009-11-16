@@ -23,6 +23,7 @@ package org.richfaces.component;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -149,8 +150,12 @@ public abstract class UIGraphValidator extends UIComponentBase {
 				Class<?> type = valueExpression.getType(new ELContextWrapper(initialELContext, capturingELResolver));
 				if(null != type) {
 					validatorState = new GraphValidatorState();
-					Method method = value.getClass().getDeclaredMethod("clone");
-					method.setAccessible(true);
+					Method method = getCloneMethod(value.getClass());
+					if(!Modifier.isPublic(method.getModifiers())){
+						// Method Object#clone() is protected by default. Make it public
+						// unless developer did it.
+						method.setAccessible(true);
+					}
 					validatorState.cloned = method.invoke(value);
 					validatorState.base = capturingELResolver.getBase();
 					validatorState.property = capturingELResolver.getProperty();
@@ -171,6 +176,18 @@ public abstract class UIGraphValidator extends UIComponentBase {
 		super.processDecodes(context);
 		if(null != validatorState){
 			validatorState.active = false;
+		}
+	}
+
+	private Method getCloneMethod(Class<?> clazz) throws NoSuchMethodException {
+		try {
+			return clazz.getDeclaredMethod("clone");
+		} catch( NoSuchMethodException e){
+			if(null != clazz.getSuperclass()){
+				return getCloneMethod(clazz.getSuperclass());
+			} else {
+				throw e;
+			}
 		}
 	}
 

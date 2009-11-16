@@ -25,6 +25,7 @@ public class BeanValidator extends ObjectValidator {
 
 	private static final Class[] DEFAULT_PROFILE = new Class[] {};
 	private final ValidatorFactory validatorFactory;
+	private ValidatorContext validatorContext;
 
 	BeanValidator() {
 		// Enforce class to load
@@ -33,6 +34,10 @@ public class BeanValidator extends ObjectValidator {
 		// https://jira.jboss.org/jira/browse/RF-7226
 		validatorFactory = Validation
 					.buildDefaultValidatorFactory();
+		validatorContext = validatorFactory.usingContext();
+		MessageInterpolator jsfMessageInterpolator = new JsfMessageInterpolator(
+				validatorFactory.getMessageInterpolator());
+		validatorContext.messageInterpolator(jsfMessageInterpolator);
 	}
 
 	/*
@@ -107,30 +112,25 @@ public class BeanValidator extends ObjectValidator {
 	}
 
 	protected Validator getValidator(FacesContext facesContext) {
-		ValidatorContext validatorContext = validatorFactory.usingContext();
-		MessageInterpolator jsfMessageInterpolator = new JsfMessageInterpolator(
-				calculateLocale(facesContext), validatorFactory.getMessageInterpolator());
-		validatorContext.messageInterpolator(jsfMessageInterpolator);
 		Validator beanValidator = validatorContext.getValidator();
 		return beanValidator;
 	}
 
 	private static class JsfMessageInterpolator implements MessageInterpolator {
 
-		private Locale locale;
 		private MessageInterpolator delegate;
 
-		public JsfMessageInterpolator(Locale locale,
+		public JsfMessageInterpolator(
 				MessageInterpolator delegate) {
-			this.locale = locale;
 			this.delegate = delegate;
 		}
 
 		public String interpolate(String messageTemplate, Context context) {
 
+			Locale locale = ObjectValidator.calculateLocale(FacesContext.getCurrentInstance());
 			if (null != locale) {
 				return delegate.interpolate(messageTemplate, context,
-						this.locale);
+						locale);
 			} else {
 				return delegate.interpolate(messageTemplate, context);
 			}
@@ -138,9 +138,10 @@ public class BeanValidator extends ObjectValidator {
 
 		public String interpolate(String messageTemplate, Context context,
 				Locale locale) {
-			if (null != locale) {
+			Locale faceslocale = ObjectValidator.calculateLocale(FacesContext.getCurrentInstance());
+			if (null != faceslocale) {
 				return delegate.interpolate(messageTemplate, context,
-						this.locale);
+						faceslocale);
 			} else {
 				return delegate.interpolate(messageTemplate, context, locale);
 			}

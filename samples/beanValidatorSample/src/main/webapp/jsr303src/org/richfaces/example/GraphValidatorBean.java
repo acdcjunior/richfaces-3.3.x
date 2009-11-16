@@ -11,17 +11,18 @@ import javax.validation.constraints.Min;
  * @author asmirnov
  *
  */
-public class GraphValidatorBean {
+public class GraphValidatorBean implements Cloneable {
 
 	@Min(0)
 	@Max(10)
 	private int first ;
 
-	@Min(0)
-	@Max(10)
+	@Min(value=5,message="Value {0} should be more than {value}")
+	@Max(15)
 	private int second ;
+	
 	@Min(0)
-	@Max(10)
+	@Max(20)
 	private int third ;
 
 	private String actionResult;
