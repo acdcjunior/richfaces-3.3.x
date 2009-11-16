@@ -268,9 +268,10 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
 
         int count = getJQueryCount(LOC_UPLOADED_LIST_TR);
         assertEquals(count, 0, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
-
+        
+        waitFor(3000);
         selenium.attachFile(LOC_ADD_BUTTON, "file://" + FILE_CYAN);
-
+        
         waitForElement(LOC_UPLOADED_LIST_TR);
         count = getJQueryCount(LOC_UPLOADED_LIST_TR);
         assertEquals(count, 1, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);

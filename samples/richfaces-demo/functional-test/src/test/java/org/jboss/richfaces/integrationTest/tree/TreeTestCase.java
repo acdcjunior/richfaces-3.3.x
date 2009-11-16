@@ -27,6 +27,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.waiting.Condition;
+import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -39,16 +41,16 @@ import org.testng.annotations.Test;
 public class TreeTestCase extends AbstractSeleniumRichfacesTestCase {
 
     private final String LOC_HEADER_PREFORMATTED = getLoc("HEADER_PREFORMATTED");
-    private final String LOC_NODE_1_LINK_PREFORMATTED = getLoc("NODE_1_LINK_PREFORMATTED");
-    private final String LOC_NODE_1_1_LABEL_PREFORMATTED = getLoc("NODE_1_1_LABEL_PREFORMATTED");
-    private final String LOC_NODE_1_1_IMAGE_FIRST_PREFORMATTED = getLoc("NODE_1_1_IMAGE_FIRST_PREFORMATTED");
-    private final String LOC_NODE_1_1_IMAGE_SECOND_PREFORMATTED = getLoc("NODE_1_1_IMAGE_SECOND_PREFORMATTED");
-    private final String LOC_NODE_1_1_LINK_PREFORMATTED = getLoc("NODE_1_1_LINK_PREFORMATTED");
-    private final String LOC_NODE_1_1_4_LABEL_PREFORMATTED = getLoc("NODE_1_1_4_LABEL_PREFORMATTED");
-    private final String LOC_NODE_1_1_N_LABEL_PREFORMATTED = getLoc("NODE_1_1_N_LABEL_PREFORMATTED");
+    private final String LOC_CHRIS_REA_LINK_PREFORMATTED = getLoc("CHRIS_REA_LINK_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_LABEL_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_LABEL_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_IMAGE_FIRST_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_IMAGE_FIRST_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_IMAGE_SECOND_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_IMAGE_SECOND_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_LINK_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_LINK_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_4_LABEL_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_4_LABEL_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_N_LABEL_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_N_LABEL_PREFORMATTED");
     private final String LOC_NODE_N_PREFORMATTED = getLoc("NODE_N_PREFORMATTED");
-    private final String LOC_CHILDREN_1_1_PREFORMATTED = getLoc("CHILDREN_1_1_PREFORMATTED");
-    private final String LOC_CHILDREN_1_PREFORMATTED = getLoc("CHILDREN_1_PREFORMATTED");
+    private final String LOC_CHRIS_REA_NODE_1_CHILDREN_PREFORMATTED = getLoc("CHRIS_REA_NODE_1_CHILDREN_PREFORMATTED");
+    private final String LOC_CHILDREN_PREFORMATTED = getLoc("CHILDREN_PREFORMATTED");
 
     private final String[] MSG_NODE_1_1_N_LABEL = new String[] { getMsg("NODE_1_1_1_LABEL"),
             getMsg("NODE_1_1_2_LABEL"), getMsg("NODE_1_1_3_LABEL"), getMsg("NODE_1_1_4_LABEL"),
@@ -159,47 +161,46 @@ public class TreeTestCase extends AbstractSeleniumRichfacesTestCase {
      * @param index
      *            which tree is being tested
      */
-    private void abstractTestTree(int index) {
+    private void abstractTestTree(final int index) {
         scrollIntoView(format(LOC_HEADER_PREFORMATTED, index), true);
 
         // click 'Chris Rea'
-        waitForElement(format(LOC_NODE_1_LINK_PREFORMATTED, index));
-        selenium.click(format(LOC_NODE_1_LINK_PREFORMATTED, index));
+        waitForElement(format(LOC_CHRIS_REA_LINK_PREFORMATTED, index));
+        selenium.click(format(LOC_CHRIS_REA_LINK_PREFORMATTED, index));
 
         // check Rea's child node
-        waitForElement(format(LOC_NODE_1_1_LABEL_PREFORMATTED, index));
-        String text = selenium.getText(format(LOC_NODE_1_1_LABEL_PREFORMATTED, index));
-        assertEquals(text, MSG_NODE_1_1_LABEL, "Name of the first child of first node.");
-
+        Wait.interval(2000).failWith("Name of the first child of first node.").until(new Condition() {
+            public boolean isTrue() {
+                return selenium.getText(format(LOC_CHRIS_REA_NODE_1_LABEL_PREFORMATTED, index)).equals(MSG_NODE_1_1_LABEL);
+            }
+        });
+        
         // check the icon of node
-        assertTrue(isDisplayed(format(LOC_NODE_1_1_IMAGE_FIRST_PREFORMATTED, index)),
+        assertTrue(isDisplayed(format(LOC_CHRIS_REA_NODE_1_IMAGE_FIRST_PREFORMATTED, index)),
                 "Node 1.1 should be collapsed -- wrong image.");
-        assertFalse(isDisplayed(format(LOC_NODE_1_1_IMAGE_SECOND_PREFORMATTED, index)),
+        assertFalse(isDisplayed(format(LOC_CHRIS_REA_NODE_1_IMAGE_SECOND_PREFORMATTED, index)),
                 "Node 1.1 should be collapsed -- wrong image.");
 
         // click 'The Road to Hell'
-        selenium.click(format(LOC_NODE_1_1_LINK_PREFORMATTED, index));
+        selenium.click(format(LOC_CHRIS_REA_NODE_1_LINK_PREFORMATTED, index));
         
         // check the number of nodes
-        waitForElement(format(LOC_NODE_1_1_4_LABEL_PREFORMATTED, index));
-        int numberOfNodes = getJQueryCount(format(LOC_CHILDREN_1_1_PREFORMATTED, index));
-        assertEquals(numberOfNodes, MSG_CHILDREN_COUNT_1_1, "Number of children of node 1.1.");
-
+        Wait.interval(2000).failWith("Number of children of node 1.1.").until(new Condition() {
+            public boolean isTrue() {
+                return getJQueryCount(format(LOC_CHRIS_REA_NODE_1_CHILDREN_PREFORMATTED, index)) == MSG_CHILDREN_COUNT_1_1;
+            }
+        });
+        
         // get all nodes
         String label = null;
         for (int i = 0; i < 11; i++) {
-            label = selenium.getText(format(LOC_NODE_1_1_N_LABEL_PREFORMATTED, index, i));
+            label = selenium.getText(format(LOC_CHRIS_REA_NODE_1_N_LABEL_PREFORMATTED, index, i));
             assertEquals(label, MSG_NODE_1_1_N_LABEL[i], format("Node 1.1.{0} should have name {1}.", i + 1, MSG_NODE_1_1_N_LABEL[0]));
         }
 
         // check the number of expanded nodes on first level
-        numberOfNodes = getJQueryCount(format(LOC_CHILDREN_1_PREFORMATTED, index));
+        int numberOfNodes = getJQueryCount(format(LOC_CHILDREN_PREFORMATTED, index));
         assertEquals(numberOfNodes, MSG_CHILDREN_COUNT_TOP, format("There should be {0} top nodes.", MSG_CHILDREN_COUNT_TOP));
-
-        // check that only the first node is expanded
-        for (int i = 1; i < 4; i++) {
-            assertFalse(isDisplayed(format(LOC_NODE_N_PREFORMATTED, index, i)), format("Node nr. {0} should be collapsed.", i+1));
-        }
     }
 
     /**
