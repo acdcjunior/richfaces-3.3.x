@@ -108,6 +108,13 @@ public class UserResource extends InternetResourceBase {
 			OutputStream out = context.getOutputStream();
 			MethodExpression send = (MethodExpression) UIComponentBase.restoreAttachedState(facesContext,data.createContent);
 			send.invoke(elContext,new Object[]{out,data.value});
+			try{
+				// https://jira.jboss.org/jira/browse/RF-8064
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// Ignore it, stream would be already closed by user bean.
+			}
 		}
 	}
 
