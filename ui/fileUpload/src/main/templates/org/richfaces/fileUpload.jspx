@@ -48,12 +48,6 @@
 		variables.setVariable("addLabel",labels.get("add"));
 		variables.setVariable("uploadLabel",labels.get("upload"));
 		variables.setVariable("clearAllLabel",labels.get("clear_all"));
-
-		org.ajax4jsf.context.AjaxContext ajaxContext = org.ajax4jsf.context.AjaxContext.getCurrentInstance(context);
-		String ajaxActionUrl = ajaxContext.getAjaxActionURL(context);
-		
-		variables.setVariable("actionUrl", ajaxActionUrl);
-
 		variables.setVariable("listWidth", getFileListWidth(component));
 		variables.setVariable("listHeight", getFileListHeight(component));
 	
@@ -191,7 +185,7 @@
 			<c:scriptOption name="labels"  value="#{labels}" />
 		</c:scriptObject>
 		<script type="text/javascript">
-			new FileUpload('#{clientId}','#{actionUrl}', #{this:getActionScript(context, component)}, '#{this:getProgressBarId(context, component)}',
+			new FileUpload('#{clientId}','#{this:getActionUrl(context)}', #{this:getActionScript(context, component)}, '#{this:getProgressBarId(context, component)}',
 					'#{this:getSessionId(context, component)}'
 						<c:if test="#{not empty options}">
 						, <f:writeAsScript value="#{options}" />
