@@ -100,14 +100,14 @@ public class ForEachTemplateElement extends TemplateElementBase {
 	 * @return
 	 */
 	protected String getTemplate2Name() {
-		return A4JRendererElementsFactory.TEMPLATES_TEMPLATECOMPILER_PATH+"/FORElement_1.vm";
+		return A4JRendererElementsFactory.TEMPLATES_TEMPLATECOMPILER_PATH+"/FORElement_2.vm";
 	}
 
 	/**
 	 * @return
 	 */
 	protected String getTemplate1Name() {
-		return A4JRendererElementsFactory.TEMPLATES_TEMPLATECOMPILER_PATH+"/FORElement_2.vm";
+		return A4JRendererElementsFactory.TEMPLATES_TEMPLATECOMPILER_PATH+"/FORElement_1.vm";
 	}
 
 	/**
