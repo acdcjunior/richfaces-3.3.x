@@ -364,11 +364,11 @@ public class NekkoParser implements HtmlParser {
 					}
 				} else {
 					if (!haveHtml) {
-						insertStartElement("html");
+						insertStartElement("html",augs);
 					}
-					insertStartElement("head");
+					insertStartElement("head",augs);
 					insertResources(element.prefix, element.uri);
-					insertEndElement("head");
+					insertEndElement("head",augs);
 				}
 
 			}
@@ -444,7 +444,7 @@ public class NekkoParser implements HtmlParser {
 				break;
 
 			case Node.ELEMENT_NODE:
-				QName name = new QName(prefix, node.getNodeName(), node.getNodeName(), uri);
+				QName name = new QName("", node.getNodeName(), node.getNodeName(), getNamespace());
 				XMLAttributes attrs = new XMLAttributesImpl();
 				
 				NamedNodeMap attributes = node.getAttributes();
@@ -515,7 +515,7 @@ public class NekkoParser implements HtmlParser {
 					haveHead = true;
 					super.startElement(name, attributes, augmentation);
 					insertResources(name.prefix, name.uri);
-					insertEndElement(name.rawname);
+					insertEndElement(name.rawname,augmentation);
 					return;
 				}
 			}
@@ -547,17 +547,15 @@ public class NekkoParser implements HtmlParser {
 			return false;
 		}
 
-		void insertStartElement(String name) {
-			QName element = new QName(null, name, name, null);
+		void insertStartElement(String name,Augmentations augs) {
+			QName element = new QName("", name, name, getNamespace());
 			XMLAttributes attrs = new XMLAttributesImpl();
-			Augmentations augs = new HTMLAugmentations();
 			super.startElement(element, attrs, augs);
 		}
 
-		void insertEndElement(String name) {
-			QName element = new QName(null, name, name, null);
+		void insertEndElement(String name,Augmentations augs) {
+			QName element = new QName("", name, name, getNamespace());
 			// XMLAttributes attrs = new XMLAttributesImpl();
-			Augmentations augs = new HTMLAugmentations();
 			super.endElement(element, augs);
 		}
 
@@ -568,7 +566,7 @@ public class NekkoParser implements HtmlParser {
 		 */
 		public void endDocument(Augmentations augs) throws XNIException {
 			if (!haveHtml) {
-				insertEndElement("html");
+				insertEndElement("html",augs);
 			}
 			super.endDocument(augs);
 		}
@@ -699,10 +697,6 @@ public class NekkoParser implements HtmlParser {
 						getNamespace());
 
 			}
-			// config
-			// .setFeature(
-			// "http://cyberneko.org/html/features/balance-tags/ignore-outside-content",
-			// true);
 			_config
 					.setFeature(
 							"http://cyberneko.org/html/features/scanner/cdata-sections",
@@ -737,6 +731,10 @@ public class NekkoParser implements HtmlParser {
 							"lower");
 			_config.setProperty("http://cyberneko.org/html/properties/filters",
 					_filters);
+			 _config
+			 .setFeature(
+			 "http://cyberneko.org/html/features/balance-tags/document-fragment",
+			 true);
 		} catch (XMLConfigurationException e) {
 			// throw new ServletException("error set Neko feature ", e);
 		}

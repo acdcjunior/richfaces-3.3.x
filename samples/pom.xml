@@ -80,16 +80,16 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>nekohtml</groupId>
+			<groupId>net.sourceforge.nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-			<version>0.9.5</version>
-			<scope>runtime</scope>
+			<version>1.9.13</version>
 			<exclusions>
 				<exclusion>
-					<artifactId>xerces</artifactId>
 					<groupId>xerces</groupId>
+					<artifactId>xercesImpl</artifactId>
 				</exclusion>
 			</exclusions>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<profiles>

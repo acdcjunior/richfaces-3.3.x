@@ -105,6 +105,7 @@ public class AjaxContainerRenderer extends AjaxChildrenRenderer {
 	public void encodeAjax(FacesContext context, UIComponent component)
 			throws IOException {
 		UIComponent root;
+		AjaxRendererUtils.encodeAjaxBegin(context, component);
 		// Iterate over all childrens, render it if nessesary...
 		log.debug(Messages.getMessage(Messages.RENDER_CHILDREN_AJAX_INFO));
 		AjaxContext ajaxContext = AjaxContext.getCurrentInstance(context);
@@ -124,6 +125,7 @@ public class AjaxContainerRenderer extends AjaxChildrenRenderer {
 		} 
 		// Write information about encoded areas after submission.
 		AjaxRendererUtils.encodeAreas(context, component);
+		AjaxRendererUtils.encodeAjaxEnd(context, component);
 	}
 
 	public boolean isParentRendered(UIComponent target) {
