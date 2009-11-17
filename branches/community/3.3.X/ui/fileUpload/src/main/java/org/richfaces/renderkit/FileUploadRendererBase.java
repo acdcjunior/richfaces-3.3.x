@@ -435,6 +435,17 @@ public abstract class FileUploadRendererBase extends
 
 		return function.toScript();
 	}
+	
+	/**
+	 * https://jira.jboss.org/jira/browse/RF-8053 - public hook to change action URL in portlet environment.
+	 * @param context
+	 * @return
+	 */
+	public String getActionUrl(FacesContext context){
+		AjaxContext ajaxContext = org.ajax4jsf.context.AjaxContext.getCurrentInstance(context);
+		String ajaxActionUrl = ajaxContext.getAjaxActionURL(context);
+		return ajaxActionUrl;
+	}
 
 	/**
 	 * Return accepted types map
