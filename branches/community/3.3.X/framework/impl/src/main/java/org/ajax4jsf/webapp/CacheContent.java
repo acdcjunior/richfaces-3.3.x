@@ -251,6 +251,8 @@ public class CacheContent implements Serializable {
 
 			};
 		}
+//		filledOutputStream = true;
+//		content = null;
 		return servletStream;
 	}
 
@@ -276,6 +278,8 @@ public class CacheContent implements Serializable {
 			};
 			servletWriter = new PrintWriter(out);
 		}
+//		filledOutputWriter = true;
+//		writerContent = null;
 		return servletWriter;
 	}
 
