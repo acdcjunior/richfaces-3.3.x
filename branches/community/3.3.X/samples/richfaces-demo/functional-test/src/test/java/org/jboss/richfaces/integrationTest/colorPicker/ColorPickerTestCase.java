@@ -33,6 +33,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -125,14 +127,12 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testInitialState() {
-        String url = selenium.getAttribute(LOC_IMAGE + "@src");
-
-        // get color of the pixel from the image
-        Color imageColor = getPixelColor(url, 18, 97);
         // get color from the input field
         Color inputColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
 
-        assertEquals(imageColor, inputColor, "Image should have the same color as the one defined in input field.");
+        Map<Color, Integer> histogram = getHistogram();
+        assertTrue(histogram.containsKey(inputColor),
+                "Image should have the same color as the one defined in input field.");
 
         // get color of the button
         String attr = getStyle(LOC_COLOR_BUTTON, "background-color").replace("rgb(", "").replace(")", "");
@@ -142,7 +142,7 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
             values[i] = Integer.parseInt(attr.split(",")[i].trim());
         }
 
-        assertEquals(imageColor, new Color(values[0], values[1], values[2]),
+        assertTrue(histogram.containsKey(new Color(values[0], values[1], values[2])),
                 "Image should have the same color as the button.");
     }
 
@@ -155,14 +155,13 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_COLOR_BUTTON);
         selenium.mouseDownAt(LOC_COLOR_AREA, "50,50");
         selenium.click(LOC_APPLY_BUTTON);
-        waitFor(500);
-        
-        String url = selenium.getAttribute(LOC_IMAGE + "@src");
+        waitFor(1500);
 
-        Color imageColor = getPixelColor(url, 18, 97);
+        Map<Color, Integer> histogram = getHistogram();
         Color inputColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
 
-        assertEquals(imageColor, inputColor, "Image should have the same color as the one defined in input field.");
+        assertTrue(histogram.containsKey(inputColor),
+                "Image should have the same color as the one defined in input field.");
     }
 
     /**
@@ -370,9 +369,8 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         Color newColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
         assertEquals(newColor, original, "Color in input should not change after clicking on \"Cancel\"");
 
-        String url = selenium.getAttribute(LOC_IMAGE + "@src");
-        Color imageColor = getPixelColor(url, 18, 97);
-        assertEquals(imageColor, original, "Color of image should not change after clicking on \"Cancel\"");
+        Map<Color, Integer> histogram = getHistogram();
+        assertTrue(histogram.containsKey(original), "Color of image should not change after clicking on \"Cancel\"");
     }
 
     /**
@@ -522,17 +520,14 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
     }
 
     /**
-     * Returns the color of the pixel with specified coordinates.
+     * Creates a histogram of colors contained in the image. It reads 6 lines of
+     * the image where letters, shadow and background should be present.
      * 
-     * @param url
-     *            relative URL of the image
-     * @param x
-     *            the horizontal coordinate of the pixel
-     * @param y
-     *            the vertical coordinate of the pixel
-     * @return color of the pixel
+     * @return map containg each color of the image and how many pixels are of
+     *         that color
      */
-    private Color getPixelColor(String url, int x, int y) {
+    private Map<Color, Integer> getHistogram() {
+        String url = selenium.getAttribute(LOC_IMAGE + "@src");
         // the index of first '/' not counting http://
         int index = selenium.getLocation().indexOf('/', 7);
         url = selenium.getLocation().substring(0, index) + url;
@@ -547,12 +542,32 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
             e.printStackTrace();
             fail("Could not read image.");
         }
-        int c = image.getRGB(18, 97);
-        int red = (c & 0x00ff0000) >> 16;
-        int green = (c & 0x0000ff00) >> 8;
-        int blue = c & 0x000000ff;
 
-        return new Color(red, green, blue);
+        Map<Integer, Integer> result = new HashMap<Integer, Integer>();
+
+        int width = image.getWidth();
+        int color = 0;
+
+        for (int y = 95; y < 101; y++) {
+            for (int x = 0; x < width; x++) {
+                color = image.getRGB(x, y);
+                if (result.containsKey(color)) {
+                    result.put(color, result.get(color) + 1);
+                } else {
+                    result.put(color, 1);
+                }
+            }
+        }
+
+        Map<Color, Integer> colors = new HashMap<Color, Integer>();
+        for (int key : result.keySet()) {
+            int red = (key & 0x00ff0000) >> 16;
+            int green = (key & 0x0000ff00) >> 8;
+            int blue = key & 0x000000ff;
+            colors.put(new Color(red, green, blue), result.get(key));
+        }
+
+        return colors;
     }
 
     /**
