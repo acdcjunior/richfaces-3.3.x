@@ -67,6 +67,9 @@ public class InputNumberSliderTestCase extends
 	private final String LOC_THIRD_HANDLE = format(getLoc("SLIDER_N_HANDLE"), 2);
 	private final String LOC_THIRD_TIP = format(getLoc("SLIDER_N_TIP"), 2);
 	private final String LOC_THIRD_INPUT = format(getLoc("SLIDER_N_INPUT"), 2);
+	
+	// tolerance (in pixels)
+	private final int DELTA = 10;
 
 	/**
 	 * Tests clicking on the first slider. First, it checks the offset of the handler and
@@ -76,8 +79,8 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testFirstSliderMouse() {
-		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE + "@style") - 75) < 2, format(MSG_HANDLE_N_PX, 75));
-		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP + "@style") - 75) < 2, format(MSG_TIP_N_PX, 75));
+		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE + "@style") - 75) < DELTA, format(MSG_HANDLE_N_PX, 75));
+		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP + "@style") - 75) < DELTA, format(MSG_TIP_N_PX, 75));
 		assertFalse(isDisplayed(LOC_FIRST_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_FIRST, "20,3");
@@ -89,7 +92,7 @@ public class InputNumberSliderTestCase extends
 		int value = Integer.parseInt(selenium.getValue(LOC_FIRST_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - value * 1.5) < 5, MSG_TIP_FIRST_HALF);
+		assertTrue(Math.abs(tipOffset - value * 1.5) < DELTA, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 	}
 
@@ -108,7 +111,7 @@ public class InputNumberSliderTestCase extends
 		int handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - 10 * 1.5) < 5, MSG_TIP_FIRST_HALF);
+		assertTrue(Math.abs(tipOffset - 10 * 1.5) < DELTA, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 
 		selenium.type(LOC_FIRST_INPUT, "90");
@@ -116,7 +119,7 @@ public class InputNumberSliderTestCase extends
 		handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - 90 * 1.5) < 5, MSG_TIP_SECOND_HALF);
+		assertTrue(Math.abs(tipOffset - 90 * 1.5) < DELTA, MSG_TIP_SECOND_HALF);
 		assertTrue(handleOffset > 75, MSG_HANDLE_SECOND_HALF);
 
 		selenium.type(LOC_FIRST_INPUT, "0");
@@ -148,8 +151,8 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testSecondSlider() {
-		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE + "@style") - 96) < 2, format(MSG_HANDLE_N_PX, 96));
-		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP + "@style") - 96) < 2, format(MSG_TIP_N_PX, 96));
+		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE + "@style") - 96) < DELTA, format(MSG_HANDLE_N_PX, 96));
+		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP + "@style") - 96) < DELTA, format(MSG_TIP_N_PX, 96));
 		assertFalse(isDisplayed(LOC_SECOND_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_SECOND, "20,3");
@@ -162,7 +165,7 @@ public class InputNumberSliderTestCase extends
 		int value = Integer.parseInt(selenium.getValue(LOC_SECOND_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - value * 1.5) < 5, MSG_TIP_FIRST_HALF);
+		assertTrue(Math.abs(tipOffset - value * 1.5) < DELTA, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 	}
 
@@ -174,8 +177,8 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testThirdSliderMouse() {
-		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE + "@style") - 225) < 2, format(MSG_HANDLE_N_PX, 225));
-		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP + "@style") - 225) < 2, format(MSG_TIP_N_PX, 225));
+		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE + "@style") - 225) < DELTA, format(MSG_HANDLE_N_PX, 225));
+		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP + "@style") - 225) < DELTA, format(MSG_TIP_N_PX, 225));
 		assertFalse(isDisplayed(LOC_THIRD_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_THIRD, "20,3");
@@ -188,7 +191,7 @@ public class InputNumberSliderTestCase extends
 		int value = Integer.parseInt(selenium.getValue(LOC_THIRD_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - value * 0.46) < 12, MSG_TIP_FIRST_HALF);
+		assertTrue(Math.abs(tipOffset - value * 0.46) < DELTA, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 	}
 
@@ -216,7 +219,7 @@ public class InputNumberSliderTestCase extends
 		handleOffset = getOffset(LOC_THIRD_HANDLE + "@style");
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
-		assertTrue(Math.abs(tipOffset - 0.69 * 450) < 5, MSG_TIP_SECOND_HALF);
+		assertTrue(Math.abs(tipOffset - 0.69 * 450) < DELTA, MSG_TIP_SECOND_HALF);
 		assertTrue(handleOffset > 75, MSG_HANDLE_SECOND_HALF);
 
 		selenium.type(LOC_THIRD_INPUT, "0");
