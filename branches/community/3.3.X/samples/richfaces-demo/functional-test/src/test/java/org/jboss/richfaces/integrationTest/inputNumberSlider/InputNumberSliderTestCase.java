@@ -69,7 +69,7 @@ public class InputNumberSliderTestCase extends
 	private final String LOC_THIRD_INPUT = format(getLoc("SLIDER_N_INPUT"), 2);
 	
 	// tolerance (in pixels)
-	private final int DELTA = 10;
+	private final int DELTA = 14;
 
 	/**
 	 * Tests clicking on the first slider. First, it checks the offset of the handler and
