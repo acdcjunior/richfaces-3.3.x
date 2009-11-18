@@ -10,7 +10,12 @@
 		margin-bottom: -4px;
 		margin-right: 2px;
 	}
+	.search .rich-menu-item-hover{
+		background-color: transparent;
+		border-color: transparent;
+	}
 	</style>
+	
 	<h:form>
 
 		<rich:toolBar>
@@ -70,6 +75,15 @@
 				</rich:menuItem>
 
 			</rich:dropDownMenu>
+			<rich:toolBarGroup location="right">
+				<rich:dropDownMenu value="Search" direction="bottom-left" jointPoint="br" styleClass="search">
+					<rich:menuItem submitMode="none">
+						<h:inputText value="" id="searchinput"/>
+						<button type="button">Search</button>
+					</rich:menuItem>
+					<rich:menuItem value="Enter your search criteria here" disabled="true"></rich:menuItem>
+				</rich:dropDownMenu>
+			</rich:toolBarGroup>
 		</rich:toolBar>
 	</h:form>
 	<rich:spacer width="1" height="5"/>
