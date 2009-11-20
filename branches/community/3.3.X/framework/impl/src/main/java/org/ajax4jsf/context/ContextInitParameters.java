@@ -51,6 +51,19 @@ public class ContextInitParameters {
 		"com.sun.faces.serializeServerState",
 		"org.apache.myfaces.SERIALIZE_STATE_IN_SESSION"
 	};
+
+	/**
+	 * @since 3.3.3
+	 */
+	public static final String[] COMPRESS_SERVER_STATE = new String[] {
+		"org.ajax4jsf.COMPRESS_SERVER_STATE", 
+
+		/* detect MyFaces vs. RI */
+		"com.sun.faces.compressViewState",
+		"org.apache.myfaces.COMPRESS_STATE_IN_SESSION",
+		"com.sun.faces.COMPRESS_STATE"
+	};
+	
 	
 	public static final String[] NUMBER_OF_VIEWS_IN_SESSION = {"com.sun.faces.numberOfViewsInSession"};
 	public static final String[] NUMBER_OF_LOGICAL_VIEWS_IN_SESSION = {"com.sun.faces.numberOfLogicalViews"};
@@ -65,6 +78,15 @@ public class ContextInitParameters {
 	
 	public static final boolean isSerializeServerState(FacesContext context) {
 		return getBoolean(context, SERIALIZE_SERVER_STATE, false);
+	} 
+
+	/**
+	 * @since 3.3.3
+	 * @param context
+	 * @return
+	 */
+	public static final boolean isCompressServerState(FacesContext context) {
+		return getBoolean(context, COMPRESS_SERVER_STATE, true);
 	} 
 	
 	/**

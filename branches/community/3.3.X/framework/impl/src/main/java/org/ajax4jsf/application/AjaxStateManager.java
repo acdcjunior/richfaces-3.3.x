@@ -24,9 +24,11 @@ package org.ajax4jsf.application;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectStreamClass;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -35,6 +37,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import javax.faces.FacesException;
 import javax.faces.FactoryFinder;
@@ -106,7 +110,7 @@ public class AjaxStateManager extends StateManager {
 		}
 		@SuppressWarnings("deprecation")
 		public void writeState(FacesContext arg0, SerializedView arg1)
-				throws IOException {
+		throws IOException {
 			// do nothing
 		}
 	}
@@ -116,7 +120,7 @@ public class AjaxStateManager extends StateManager {
 	public static final int DEFAULT_NUMBER_OF_VIEWS = 16;
 
 	public static final String AJAX_VIEW_SEQUENCE = AjaxStateManager.class.getName()
-			+ ".AJAX_VIEW_SEQUENCE";
+	+ ".AJAX_VIEW_SEQUENCE";
 	public static final String VIEW_SEQUENCE = AjaxStateManager.class.getName()
 	+ ".VIEW_SEQUENCE";
 
@@ -129,8 +133,11 @@ public class AjaxStateManager extends StateManager {
 	private static final Log _log = LogFactory.getLog(AjaxStateManager.class);
 
 	public static final String VIEW_SEQUENCE_ATTRIBUTE = AjaxStateManager.class
-			.getName()
-			+ ".view_sequence";
+	.getName()
+	+ ".view_sequence";
+
+	private static final int UNCOMPRESSED_FLAG = 0;
+	private static final int COMPRESSED_FLAG = 1;
 
 	/**
 	 * @param parent
@@ -143,18 +150,18 @@ public class AjaxStateManager extends StateManager {
 		// Try to create it instance by reflection,
 		// to call in real state saving operations.
 		ClassLoader classLoader = Thread.currentThread()
-				.getContextClassLoader();
+		.getContextClassLoader();
 		if (null == classLoader) {
 			classLoader = AjaxStateManager.class.getClassLoader();
 		}
 		try {
 			Class<? extends StateManager> seamStateManagerClass = classLoader
-					.loadClass("org.jboss.seam.jsf.SeamStateManager")
-					.asSubclass(StateManager.class);
+			.loadClass("org.jboss.seam.jsf.SeamStateManager")
+			.asSubclass(StateManager.class);
 			Constructor<? extends StateManager> constructor = seamStateManagerClass
-					.getConstructor(STATE_MANAGER_ARGUMENTS);
+			.getConstructor(STATE_MANAGER_ARGUMENTS);
 			seamStateManager = constructor
-					.newInstance(new Object[] { new SeamStateManagerWrapper() });
+			.newInstance(new Object[] { new SeamStateManagerWrapper() });
 			if (_log.isDebugEnabled()) {
 				_log.debug("Create instance of the SeamStateManager");
 			}
@@ -218,16 +225,16 @@ public class AjaxStateManager extends StateManager {
 	 *      javax.faces.application.StateManager.SerializedView)
 	 */
 	public void writeState(FacesContext context, Object state)
-			throws IOException {
+	throws IOException {
 		RenderKit renderKit = getRenderKit(context);
 		ResponseStateManager responseStateManager = renderKit
-				.getResponseStateManager();
+		.getResponseStateManager();
 		Object[] stateArray = getStateArray( state );
 		if(null == stateArray[0] && null == stateArray[1]){
 			// Myfaces https://issues.apache.org/jira/browse/MYFACES-1753 hack.
 			stateArray=new Object[]{getLogicalViewId(context),null};
 		}
-			writeState(context, responseStateManager, stateArray);
+		writeState(context, responseStateManager, stateArray);
 		if (_log.isDebugEnabled()) {
 			_log.debug("Write view state to the response");
 		}
@@ -241,19 +248,19 @@ public class AjaxStateManager extends StateManager {
 	 */
 	@SuppressWarnings("deprecation")
 	public void writeState(FacesContext context, SerializedView state)
-			throws IOException {
+	throws IOException {
 		RenderKit renderKit = getRenderKit(context);
 		ResponseStateManager responseStateManager = renderKit
-				.getResponseStateManager();
+		.getResponseStateManager();
 		Object[] stateArray;
 		if(null == state.getState() && null == state.getStructure()){
 			// MyFaces https://issues.apache.org/jira/browse/MYFACES-1753 hack
 			stateArray = new Object[]{getLogicalViewId(context),null};
 		} else {
 			stateArray = new Object[] {
-				state.getStructure(),state.getState() };
+					state.getStructure(),state.getState() };
 		}
-			writeState(context, responseStateManager, stateArray);
+		writeState(context, responseStateManager, stateArray);
 		if (_log.isDebugEnabled()) {
 			_log.debug("Write view state to the response");
 		}
@@ -267,7 +274,7 @@ public class AjaxStateManager extends StateManager {
 	 * @throws FacesException
 	 */
 	private Object[] getStateArray(Object state) throws IOException,
-			FacesException {
+	FacesException {
 		if (null != state && state.getClass().isArray()
 				&& state.getClass().getComponentType().equals(Object.class)) {
 			Object stateArray[] = (Object[]) state;
@@ -283,13 +290,13 @@ public class AjaxStateManager extends StateManager {
 
 	private void writeState(FacesContext context,
 			ResponseStateManager responseStateManager, Object[] stateArray)
-			throws IOException {
+	throws IOException {
 		// Capture writed state into string.
 		ResponseWriter originalWriter = context.getResponseWriter();
 		StringWriter buff = new StringWriter(128);
 		try {
 			ResponseWriter stateResponseWriter = originalWriter
-					.cloneWithWriter(buff);
+			.cloneWithWriter(buff);
 			context.setResponseWriter(stateResponseWriter);
 			responseStateManager.writeState(context, stateArray);
 			stateResponseWriter.flush();
@@ -305,73 +312,81 @@ public class AjaxStateManager extends StateManager {
 		}
 	}
 
-    static final            Pattern PATTERN = Pattern.compile(".*<input.*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*>");
-    static final            Pattern PATTERN2 = Pattern.compile(".*<input .*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*>");
+	static final            Pattern PATTERN = Pattern.compile(".*<input.*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*>");
+	static final            Pattern PATTERN2 = Pattern.compile(".*<input .*name=[\"']"+ResponseStateManager.VIEW_STATE_PARAM+"[\"'].*(?:\\svalue=[\"\'](\\S*)[\"\']\\s).*>");
 
 
 	/**
-     * Parse content of the writed viewState hidden input field for a state value.
-     * @param input
-     * @return
-     */
-    private String getStateValue(String input) {
-        Matcher matcher = PATTERN.matcher(input);
-        if(!matcher.matches()){
-                matcher = PATTERN2.matcher(input);
-                if(!matcher.matches()){
-                        return null;
-                }
-        }
-        return matcher.group(1);
-}
+	 * Parse content of the writed viewState hidden input field for a state value.
+	 * @param input
+	 * @return
+	 */
+	private String getStateValue(String input) {
+		Matcher matcher = PATTERN.matcher(input);
+		if(!matcher.matches()){
+			matcher = PATTERN2.matcher(input);
+			if(!matcher.matches()){
+				return null;
+			}
+		}
+		return matcher.group(1);
+	}
 
-    private static final Map<String,Class<?>> PRIMITIVE_CLASSES =
-          new HashMap<String,Class<?>>(9, 1.0F);
+	private static final Map<String,Class<?>> PRIMITIVE_CLASSES =
+		new HashMap<String,Class<?>>(9, 1.0F);
 
-    static {
-        PRIMITIVE_CLASSES.put("boolean", boolean.class);
-        PRIMITIVE_CLASSES.put("byte", byte.class);
-        PRIMITIVE_CLASSES.put("char", char.class);
-        PRIMITIVE_CLASSES.put("short", short.class);
-        PRIMITIVE_CLASSES.put("int", int.class);
-        PRIMITIVE_CLASSES.put("long", long.class);
-        PRIMITIVE_CLASSES.put("float", float.class);
-        PRIMITIVE_CLASSES.put("double", double.class);
-        PRIMITIVE_CLASSES.put("void", void.class);
-    }
-    
-    private static final Object handleRestoreState(FacesContext context, Object state) {
+	static {
+		PRIMITIVE_CLASSES.put("boolean", boolean.class);
+		PRIMITIVE_CLASSES.put("byte", byte.class);
+		PRIMITIVE_CLASSES.put("char", char.class);
+		PRIMITIVE_CLASSES.put("short", short.class);
+		PRIMITIVE_CLASSES.put("int", int.class);
+		PRIMITIVE_CLASSES.put("long", long.class);
+		PRIMITIVE_CLASSES.put("float", float.class);
+		PRIMITIVE_CLASSES.put("double", double.class);
+		PRIMITIVE_CLASSES.put("void", void.class);
+	}
+
+	private static final Object handleRestoreState(FacesContext context, Object state) {
 		if (ContextInitParameters.isSerializeServerState(context)) {
 			ObjectInputStream ois = null;
-	        try {
-	        	ois = new ObjectInputStream(new ByteArrayInputStream((byte[]) state)) {
-	        		@Override
-	        		protected Class<?> resolveClass(ObjectStreamClass desc)
-	        				throws IOException, ClassNotFoundException {
-	        	        String name = desc.getName();
+			try {
+				ByteArrayInputStream bais = new ByteArrayInputStream((byte[]) state);
+				InputStream is = bais;
+				
+				int compressionFlag = is.read();
+				if(compressionFlag == COMPRESSED_FLAG) {    
+					is = new GZIPInputStream(is);
+				}
+				
+				ois = new ObjectInputStream(is) {
+					@Override
+					protected Class<?> resolveClass(ObjectStreamClass desc)
+					throws IOException, ClassNotFoundException {
+						String name = desc.getName();
 						try {
-		        			return Class.forName(name, true, 
-		        	                Thread.currentThread().getContextClassLoader());
-	        	        } catch (ClassNotFoundException cnfe) {
-	        	        	Class<?> clazz = PRIMITIVE_CLASSES.get(name);
-	        	        	if (clazz != null) {
-	        	        		return clazz;
-	        	        	} else {
-	        	        		throw cnfe;
-	        	        	}
-	        	        }
-	        		}
-	        	};
-	        	return ois.readObject();
-	        } catch (Exception e) {
-	            throw new FacesException(e);
-	        } finally {
-	            if (ois != null) {
-	                try {
-	                    ois.close();
-	                } catch (IOException ignored) { }
-	            }
-	        }
+							return Class.forName(name, true, 
+									Thread.currentThread().getContextClassLoader());
+						} catch (ClassNotFoundException cnfe) {
+							Class<?> clazz = PRIMITIVE_CLASSES.get(name);
+							if (clazz != null) {
+								return clazz;
+							} else {
+								throw cnfe;
+							}
+						}
+					}
+				};
+				return ois.readObject();
+			} catch (Exception e) {
+				throw new FacesException(e);
+			} finally {
+				if (ois != null) {
+					try {
+						ois.close();
+					} catch (IOException ignored) { }
+				}
+			}
 		} else {
 			return state;
 		}
@@ -382,7 +397,15 @@ public class AjaxStateManager extends StateManager {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
 			ObjectOutputStream oas = null;
 			try {
-				oas = new ObjectOutputStream(baos);
+				OutputStream os = baos;
+				if (ContextInitParameters.isCompressServerState(context)) {
+					os.write(COMPRESSED_FLAG);
+					os = new GZIPOutputStream(os, 1024);
+				} else {
+					os.write(UNCOMPRESSED_FLAG);
+				}
+
+				oas = new ObjectOutputStream(os);
 				oas.writeObject(state);
 				oas.flush();
 			} catch (Exception e) {
@@ -399,7 +422,7 @@ public class AjaxStateManager extends StateManager {
 			return state;
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -478,11 +501,11 @@ public class AjaxStateManager extends StateManager {
 		String id = restoreLogicalViewId(context, viewId, renderKitId);
 		StateHolder stateHolder = getStateHolder(context);
 		Object[] restoredState = stateHolder.getState(context, viewId, id);
-		
+
 		if (restoredState != null && id != null) {
 			context.getExternalContext().getRequestMap().put(AJAX_VIEW_SEQUENCE, id);
 		}
-		
+
 		return restoredState;
 	}
 
@@ -520,7 +543,7 @@ public class AjaxStateManager extends StateManager {
 		StateHolder stateHolder = getStateHolder(context);
 		String id = getLogicalViewId(context);
 		stateHolder.saveState(context, viewRoot.getViewId(), id, new Object[] {
-				treeStructure, state });
+			treeStructure, state });
 		serializedView = new Object[]{id, null};
 		return serializedView;
 	}
@@ -536,7 +559,7 @@ public class AjaxStateManager extends StateManager {
 	protected Object getAdditionalState(FacesContext context) {
 		Map<String, Object> keepAliveBeans = new HashMap<String, Object>();
 		Map<String, Object> requestMap = context.getExternalContext()
-				.getRequestMap();
+		.getRequestMap();
 		// Save all objects form request map wich marked by @KeepAlive
 		// annotations
 		for (Entry<String, Object> requestEntry : requestMap.entrySet()) {
@@ -559,12 +582,12 @@ public class AjaxStateManager extends StateManager {
 	protected void restoreAdditionalState(FacesContext context, Object state) {
 		if (null != state) {
 			boolean isAjax = AjaxContext.getCurrentInstance(context).isAjaxRequest();
-			
+
 			// Append all saved beans to the request map.
 			Map beansMap = (Map) UIComponentBase.restoreAttachedState(context,
 					state);
 			Map<String, Object> requestMap = context.getExternalContext()
-					.getRequestMap();
+			.getRequestMap();
 			for (Object key : beansMap.keySet()) {
 				Object bean = beansMap.get(key);
 				if (bean != null) {
@@ -595,8 +618,8 @@ public class AjaxStateManager extends StateManager {
 	protected String restoreLogicalViewId(FacesContext context, String viewId,
 			String renderKitId) {
 		String id = (String) getRenderKit(context, renderKitId)
-				.getResponseStateManager().getTreeStructureToRestore(context,
-						viewId);
+		.getResponseStateManager().getTreeStructureToRestore(context,
+				viewId);
 		return id;
 	}
 
@@ -624,7 +647,7 @@ public class AjaxStateManager extends StateManager {
 		synchronized (session) {
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			Integer sequence = (Integer) sessionMap
-					.get(VIEW_SEQUENCE_ATTRIBUTE);
+			.get(VIEW_SEQUENCE_ATTRIBUTE);
 			if (null != sequence) {
 				viewSequence = sequence.intValue();
 			} else {
@@ -649,7 +672,7 @@ public class AjaxStateManager extends StateManager {
 		}
 		if (null == renderKitId) {
 			renderKitId = context.getApplication().getViewHandler()
-					.calculateRenderKitId(context);
+			.calculateRenderKitId(context);
 		}
 		return getRenderKit(context, renderKitId);
 	}
@@ -658,7 +681,7 @@ public class AjaxStateManager extends StateManager {
 		RenderKit renderKit = context.getRenderKit();
 		if (null == renderKit) {
 			RenderKitFactory factory = (RenderKitFactory) FactoryFinder
-					.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
+			.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
 			renderKit = factory.getRenderKit(context, renderKitId);
 		}
 		return renderKit;
