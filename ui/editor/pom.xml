@@ -59,11 +59,6 @@
 	</profiles>
 	
   <dependencies>
-    <dependency>
-      <groupId>org.richfaces.framework</groupId>
-      <artifactId>richfaces-impl</artifactId>
-      <version>3.3.3-SNAPSHOT</version>
-    </dependency>
 	<dependency>
       <groupId>antlr</groupId>
       <artifactId>antlr</artifactId>
