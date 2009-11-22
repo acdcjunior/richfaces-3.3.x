@@ -11,6 +11,8 @@ cd $PROJECT_DIR/cdk
 mvn -s $settings -P local,docs,release clean deploy
 cd $PROJECT_DIR/framework
 mvn -s $settings -P local,docs,release clean deploy
+cd $PROJECT_DIR/framework/impl
+mvn -s $settings -P local,docs,release,jsf2_0 clean deploy
 cd $PROJECT_DIR/ui
 mvn -s $settings -P local,docs,release clean deploy -N
 mvn -s $settings -P local,docs,release clean install
