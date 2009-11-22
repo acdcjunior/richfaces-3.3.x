@@ -366,6 +366,10 @@ public class HtmlSeamParserTest extends TestCase {
         assertTrue(result.contains(content));
     }
     
+    public void testRF7347_3() throws Exception {
+        assertHtml2SeamConverting("<p><b>qwe</b>123</p>");
+    }
+    
     public void testUglyTextFromWord() throws Exception {
         final String str = "<p><meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\"/><meta content=\"Word.Document\" name=\"ProgId\"/><meta content=\"Microsoft Word 12\" name=\"Generator\"/><meta content=\"Microsoft Word 12\" name=\"Originator\"/><link href=\"file:///E:\\TEMP~1\\msohtmlclip1\\01\\clip_filelist.xml\" rel=\"File-List\"/><link href=\"file:///E:\\TEMP~1\\msohtmlclip1\\01\\clip_themedata.thmx\" rel=\"themeData\"/><link href=\"file:///E:\\TEMP~1\\msohtmlclip1\\01\\clip_colorschememapping.xml\" rel=\"colorSchemeMapping\"/>"
                 + "<!--[if gte mso 9]><xml>\n"
