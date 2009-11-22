@@ -77,7 +77,7 @@ public class HtmlInputTextarea extends javax.faces.component.html.HtmlInputTexta
 
 	}
 
-	private static boolean isEmpty(Object value) {
+	public static boolean isEmpty(Object value) {
 
 		if (value == null) {
 			return (true);

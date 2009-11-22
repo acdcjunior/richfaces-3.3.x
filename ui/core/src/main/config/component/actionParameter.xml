@@ -34,7 +34,7 @@
 			<superclass>
 				org.ajax4jsf.taglib.html.jsp.ActionParamTag
 			</superclass>
-			<test/>
+			
 			<description>
 			<![CDATA[
 				A combination of the functionality of two JSF tags,
@@ -52,6 +52,7 @@
 				<br />
 				]]>
 			</description>
+			<test/>
 		</tag>
 		<taghandler generate="false">
 			<classname>org.ajax4jsf.taglib.html.facelets.ActionParamHandler</classname>
