@@ -9,7 +9,13 @@
 	<artifactId>richfaces-api</artifactId>
 	<name>Java Server Faces AJAX framework API</name>
 	<version>3.3.3-SNAPSHOT</version>
+	
 	<dependencies>
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>

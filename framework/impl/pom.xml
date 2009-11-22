@@ -20,6 +20,25 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin> 
+		        <groupId>org.codehaus.mojo</groupId> 
+		        <artifactId>build-helper-maven-plugin</artifactId> 
+		        <version>1.4</version> 
+		        <executions> 
+	                <execution> 
+                        <id>add-source</id> 
+                        <phase>generate-sources</phase> 
+                        <goals> 
+                        	<goal>add-source</goal> 
+                        </goals> 
+                        <configuration> 
+                               <sources> 
+                                      <source>${frameworkAdditionalSourceFolder}</source> 
+                               </sources> 
+                        </configuration> 
+	                </execution> 
+		        </executions> 
+			</plugin> 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>javacc-maven-plugin</artifactId>
@@ -132,6 +151,45 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>jsf2_0</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-jar-plugin</artifactId>
+						<configuration>
+							<classifier>jsf2</classifier>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<properties>
+				<frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>
+			</properties>
+		</profile>
+		<profile>
+			<id>jsf1_2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<properties>
+				<frameworkAdditionalSourceFolder>src/main/java-jsf12</frameworkAdditionalSourceFolder>
+			</properties>
 		</profile>
 	</profiles>
 	<dependencies>

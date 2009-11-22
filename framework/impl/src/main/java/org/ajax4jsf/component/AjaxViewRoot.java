@@ -253,7 +253,7 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 			}
 		}
 		// Broadcast phase events.
-		broadcastEvents(context, phase);
+		broadcastEventsForPhase(context, phase);
 		// Process afterPhase listeners.
 		processPhaseListeners(context, phase, false);
 	}
@@ -283,7 +283,7 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 	 * @param phaseId -
 	 *            phase, for which events must be processed.
 	 */
-	void broadcastEvents(FacesContext context, PhaseId phaseId) {
+	void broadcastEventsForPhase(FacesContext context, PhaseId phaseId) {
 		EventsQueue[] events = getEvents();
 		EventsQueue anyPhaseEvents = events[PhaseId.ANY_PHASE.getOrdinal()];
 		EventsQueue phaseEvents = events[phaseId.getOrdinal()];

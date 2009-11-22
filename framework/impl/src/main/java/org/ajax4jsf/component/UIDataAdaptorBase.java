@@ -69,7 +69,7 @@ import org.apache.commons.logging.LogFactory;
  * @author shura
  * 
  */
-public abstract class UIDataAdaptor extends UIData implements AjaxDataEncoder {
+public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncoder {
 
 	/**
 	 * 
@@ -1394,7 +1394,7 @@ public abstract class UIDataAdaptor extends UIData implements AjaxDataEncoder {
 
 		private final Object key;
 
-		public IndexedEvent(UIDataAdaptor owner, FacesEvent target, Object key) {
+		public IndexedEvent(UIDataAdaptorBase owner, FacesEvent target, Object key) {
 			super(owner);
 			this.target = target;
 			this.key = key;
@@ -1413,7 +1413,7 @@ public abstract class UIDataAdaptor extends UIData implements AjaxDataEncoder {
 		}
 
 		public void processListener(FacesListener listener) {
-			UIDataAdaptor owner = (UIDataAdaptor) this.getComponent();
+			UIDataAdaptorBase owner = (UIDataAdaptorBase) this.getComponent();
 			Object prevIndex = owner._rowKey;
 			try {
 				owner.setRowKey(this.key);
