@@ -47,10 +47,5 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.richfaces.framework</groupId>
-      <artifactId>richfaces-impl</artifactId>
-      <version>3.3.3-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 </project>

@@ -34,10 +34,5 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
-      <groupId>org.richfaces.framework</groupId>
-      <artifactId>richfaces-impl</artifactId>
-      <version>${project.version}</version>
-    </dependency>
   </dependencies>
 </project>
