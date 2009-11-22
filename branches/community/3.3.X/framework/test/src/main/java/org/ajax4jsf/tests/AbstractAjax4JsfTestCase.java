@@ -74,7 +74,6 @@ import org.ajax4jsf.tests.org.apache.shale.test.config.ConfigParser;
 import org.ajax4jsf.webapp.BaseXMLFilter;
 import org.ajax4jsf.webapp.HtmlParser;
 import org.ajax4jsf.webapp.WebXml;
-import org.apache.shale.test.base.AbstractJsfTestCase;
 import org.apache.shale.test.mock.MockApplication;
 import org.apache.shale.test.mock.MockPrintWriter;
 import org.apache.shale.test.mock.MockResponseWriter;
@@ -128,6 +127,15 @@ public class AbstractAjax4JsfTestCase extends AbstractJsfTestCase {
 		String message = condition.getMessage();
 		assertTrue(message, condition.isConditionTrue());
 	}
+	
+	@Override
+	protected void setupFactories() {
+		super.setupFactories();
+		
+		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, Ajax4JsfMockFacesContextFactory.class.getName());
+		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, Ajax4JsfMockApplicationFactory.class.getName());
+	}
+	
 	/**
 	 * @param name
 	 */

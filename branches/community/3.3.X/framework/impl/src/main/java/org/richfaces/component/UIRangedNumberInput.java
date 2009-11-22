@@ -102,7 +102,7 @@ public abstract class UIRangedNumberInput extends UIInput {
     	return new Double(object.toString());
     }
     
-    private boolean isEmpty(Object newValue) {
+    public static boolean isEmpty(Object newValue) {
 		if (newValue == null) {
 			return true;
 		}
