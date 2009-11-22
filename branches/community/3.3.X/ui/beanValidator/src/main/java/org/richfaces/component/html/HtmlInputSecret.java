@@ -76,7 +76,7 @@ public class HtmlInputSecret extends javax.faces.component.html.HtmlInputSecret 
         }
     }
 
-    private static boolean isEmpty(Object value) {
+    public static boolean isEmpty(Object value) {
 
         if (value == null) {
             return true;
