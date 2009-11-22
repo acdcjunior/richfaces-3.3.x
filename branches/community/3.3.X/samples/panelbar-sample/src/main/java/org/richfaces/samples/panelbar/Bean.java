@@ -25,10 +25,10 @@ package org.richfaces.samples.panelbar;
  *
  */
 public class Bean {
-	
 	private String width = "300px";
 	private String height = "300px";
 	private String label = "Default label";
+    private String value = "item_01";
 	
 	public String getHeight() {
 		return height;
@@ -48,5 +48,10 @@ public class Bean {
 	public void setWidth(String width) {
 		this.width = width;
 	}
-	
+    public String getValue() {
+        return value;
+    }
+    public void setValue(String value) {
+        this.value = value;
+    }
 }
