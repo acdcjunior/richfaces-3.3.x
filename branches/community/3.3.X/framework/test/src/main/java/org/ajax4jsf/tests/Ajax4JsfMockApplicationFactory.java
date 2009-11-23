@@ -24,10 +24,14 @@ package org.ajax4jsf.tests;
 import javax.faces.FacesException;
 import javax.faces.application.Application;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shale.test.mock.MockApplication;
 
 public class Ajax4JsfMockApplicationFactory extends org.apache.shale.test.mock.MockApplicationFactory {
 
+	private static final Log LOG = LogFactory.getLog(Ajax4JsfMockApplicationFactory.class);
+	
 	private Application application;
 
 	public Ajax4JsfMockApplicationFactory() {
@@ -50,7 +54,7 @@ public class Ajax4JsfMockApplicationFactory extends org.apache.shale.test.mock.M
 			
 			application = (MockApplication) clazz.newInstance();
 
-			return application;
+			LOG.debug("Successfully created JSF 2.0 MockApplication class");
 		} catch (NoClassDefFoundError e) {
 			clazz = null; // We are not running in a JSF 2.0 environment
 		} catch (ClassNotFoundException e) {
@@ -61,7 +65,12 @@ public class Ajax4JsfMockApplicationFactory extends org.apache.shale.test.mock.M
 			throw new FacesException(e);
 		}
 
-		return super.getApplication();
+		if (application == null) {
+			LOG.debug("Falling back to JSF 1.1/1.2 MockApplication");
+			application = super.getApplication();
+		}
+	
+		return application;
 	}
 
 	@Override
