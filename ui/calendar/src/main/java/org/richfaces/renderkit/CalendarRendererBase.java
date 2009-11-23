@@ -382,29 +382,10 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
         ResponseWriter clonedWriter = writer.cloneWithWriter(dumpingWriter);
         context.setResponseWriter(clonedWriter);
 
-        TemplateComponent templateComponent = null;
-        if (component instanceof TemplateComponent) {
-            templateComponent = (TemplateComponent) component;
-	}
+        writeScriptBody(context, component, children);
 
-        try {
-            if (templateComponent != null) {
-                templateComponent.startTemplateEncode();
-            }
-
-            if (children) {
-                this.renderChildren(context, component);
-            } else {
-                this.renderChild(context, component);
-            }
-        } finally {
-            if (templateComponent != null) {
-                templateComponent.endTemplateEncode();
-            }
-
-            clonedWriter.flush();
-            context.setResponseWriter(writer);
-        }
+        clonedWriter.flush();
+        context.setResponseWriter(writer);
 
         return dumpingWriter.toString();
     }
@@ -482,7 +463,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
         addFacetMarkupScriptBody(context, component, jsonMap, "footer");
 
         context.getResponseWriter().write(new JSONObject(jsonMap).toString());
-		}
+    }
 
     private void addFacetMarkupScriptBody(FacesContext context, UIComponent component, Map<String, String> jsonMap, String facetName) throws IOException {
         String res = getOptionalFacetMarkupScriptBody(context, component, facetName);
