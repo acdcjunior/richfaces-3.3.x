@@ -133,7 +133,7 @@ extends AbstractAjax4JsfTestCase
 			}
 		};
 		input.setId("input");
-
+		input.getAttributes().put("onchange", "return true;");
 		form.getChildren().add(input);
 
 		command = new HtmlCommandLink();

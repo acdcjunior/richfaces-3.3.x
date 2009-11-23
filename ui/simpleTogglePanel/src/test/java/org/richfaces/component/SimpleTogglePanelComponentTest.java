@@ -126,6 +126,7 @@ public class SimpleTogglePanelComponentTest extends AbstractAjax4JsfTestCase {
         input = (UIInput)application.createComponent(UIInput.COMPONENT_TYPE);
         input.setValue("");
         input.setId("opened");
+        input.getAttributes().put("onchange", "return true;");
         stp1.getChildren().add(input);
 
         command = new HtmlCommandLink();

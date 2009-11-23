@@ -63,6 +63,7 @@ public class UIAjaxFormTest extends AbstractAjax4JsfTestCase {
 			}
 		};
 		child.setId("input");
+		child.getAttributes().put("onchange", "return true;");
 		child.addValidator(new TestAjaxFormValidator());
 		childInvoked = 0;
 		child.setId("child");

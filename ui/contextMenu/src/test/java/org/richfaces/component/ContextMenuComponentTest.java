@@ -22,27 +22,24 @@
 package org.richfaces.component;
 
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import javax.faces.FacesException;
-import javax.faces.component.UIOutput;
+import javax.faces.component.UIPanel;
 import javax.faces.component.UIParameter;
 import javax.faces.component.html.HtmlForm;
+import javax.faces.component.html.HtmlPanelGroup;
 import javax.faces.context.FacesContext;
 import javax.faces.el.EvaluationException;
 import javax.faces.el.PropertyNotFoundException;
 import javax.faces.el.ValueBinding;
 
 import org.ajax4jsf.tests.AbstractAjax4JsfTestCase;
-import org.apache.commons.lang.StringUtils;
 
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.DomText;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlScript;
 
 /**
  * Unit test for context menu component.
@@ -54,7 +51,7 @@ public class ContextMenuComponentTest extends AbstractAjax4JsfTestCase {
 	
 	private UIContextMenu menu = null;
 	private HtmlForm form = null;
-	private UIOutput output = null;
+	private UIPanel panel = null;
 	private UIMenuItem menuItem = null;
 	private UIParameter param = null;
 	private UIMenuGroup menuGroup = null;
@@ -91,9 +88,8 @@ public class ContextMenuComponentTest extends AbstractAjax4JsfTestCase {
         form.setId("form");
         facesContext.getViewRoot().getChildren().add(form);
         
-        output = new UIOutput();
-        output.setId("output");
-        output.setValue("value");
+        panel = new HtmlPanelGroup();
+        panel.setId("output");
         
         menu = (UIContextMenu)application.createComponent(UIContextMenu.COMPONENT_TYPE);
         menu.setId("contextMenu");
@@ -106,14 +102,14 @@ public class ContextMenuComponentTest extends AbstractAjax4JsfTestCase {
         
         menuGroup = (UIMenuGroup)application.createComponent(UIMenuGroup.COMPONENT_TYPE);
         
-        output.getChildren().add(menu);
+        panel.getChildren().add(menu);
         
         menuItem = (UIMenuItem)application.createComponent(UIMenuItem.COMPONENT_TYPE);
         menuItem.setId("menuItem");
         menuItem.setValue("value");
         menuGroup.getChildren().add(menuItem);
         
-        form.getChildren().add(output);
+        form.getChildren().add(panel);
     }
     
     public void tearDown() throws Exception {
@@ -122,7 +118,7 @@ public class ContextMenuComponentTest extends AbstractAjax4JsfTestCase {
     	menuGroup =  null;
     	menu = null;
     	form = null;
-    	output = null;
+    	panel = null;
     	
     	super.tearDown();
     }

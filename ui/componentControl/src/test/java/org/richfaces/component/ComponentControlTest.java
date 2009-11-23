@@ -27,9 +27,13 @@ import javax.faces.FacesException;
 import javax.faces.component.UIForm;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIOutput;
+import javax.faces.component.UIPanel;
 import javax.faces.component.UIParameter;
 import javax.faces.component.html.HtmlForm;
+import javax.faces.component.html.HtmlPanelGrid;
+import javax.faces.component.html.HtmlPanelGroup;
 
+import org.ajax4jsf.component.AjaxOutput;
 import org.ajax4jsf.tests.AbstractAjax4JsfTestCase;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
@@ -52,7 +56,7 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
     
     private UIForm form = null;
     private UIComponentControl componentControl = null;
-    private UIInput input = null;
+    private UIPanel panelGrid = null;
     private UIOutput output = null;
     public UIParameter param = null;
 
@@ -65,10 +69,9 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
         form.setId("form");
         facesContext.getViewRoot().getChildren().add(form);
         
-        input = new UIInput();
-        input.setId("input");
-        input.setValue("value");
-        form.getChildren().add(input);
+        panelGrid = new HtmlPanelGrid();
+        panelGrid.setId("input");
+        form.getChildren().add(panelGrid);
         
         componentControl =  (UIComponentControl) application.createComponent(UIComponentControl.COMPONENT_TYPE);
         componentControl.setEvent("onclick");
@@ -77,7 +80,7 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
         componentControl.setId("componentControl");
         componentControl.setParams("x:'y'");
         componentControl.setFor("button");
-        input.getChildren().add(componentControl);
+        panelGrid.getChildren().add(componentControl);
 
         output = new UIOutput();
         output.setId("output");
@@ -94,7 +97,7 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
     	super.tearDown();
     	
     	param = null;
-    	input = null;
+    	panelGrid = null;
     	componentControl = null;
     	output = null;
     	form = null; 
@@ -104,10 +107,10 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
     	HtmlPage page = renderView();
     	assertNotNull(page);
     	
-    	HtmlInput htmlInput = (HtmlInput)page.getHtmlElementById(input.getClientId(facesContext));
-    	assertNotNull(htmlInput);
+    	HtmlElement htmlElement = (HtmlElement)page.getHtmlElementById(panelGrid.getClientId(facesContext));
+    	assertNotNull(htmlElement);
     	
-    	String eventString = htmlInput.getAttributeValue("onclick");
+    	String eventString = htmlElement.getAttributeValue("onclick");
     	assertNotNull(eventString);
     	assertTrue(eventString.contains("Richfaces.componentControl.performOperation"));
     	
@@ -191,7 +194,7 @@ public class ComponentControlTest extends AbstractAjax4JsfTestCase {
     	try {
 			renderView();
 			assertTrue("Parameter name is null, but exception isn't thrown!", false);
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			
 		}
     }

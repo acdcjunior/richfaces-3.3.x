@@ -89,6 +89,7 @@ public class SuggestionBoxComponentTest extends AbstractAjax4JsfTestCase {
 
         input = new UIInput();
         input.setId("text");
+        input.getAttributes().put("onchange", "return true;");
         form.getChildren().add(input);
 
         sb = (UISuggestionBox)application.createComponent("org.richfaces.SuggestionBox");

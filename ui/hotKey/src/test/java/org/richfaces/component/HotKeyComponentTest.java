@@ -153,12 +153,12 @@ public class HotKeyComponentTest extends AbstractAjax4JsfTestCase {
 
 		UIComponent input = application.createComponent(UIInput.COMPONENT_TYPE);
 		input.setId("i1");
-		
+		input.getAttributes().put("onchange", "return true;");
 		facesContext.getViewRoot().getChildren().add(input);
 
 		input = application.createComponent(UIInput.COMPONENT_TYPE);
 		input.setId("i2");
-		
+		input.getAttributes().put("onchange", "return true;");
 		this.hotKey.getParent().getChildren().add(input);
 		
 		String scriptBody = processScriptBody();
