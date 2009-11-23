@@ -49,6 +49,7 @@ public class Ajax4JsfMockApplicationFactory extends org.apache.shale.test.mock.M
 			clazz.getDeclaredFields();
 			
 			application = (MockApplication) clazz.newInstance();
+			application.setResourceHandler(new MockResourceHandler());
 
 			return application;
 		} catch (NoClassDefFoundError e) {
