@@ -254,7 +254,7 @@ public class StateApplication extends Application {
 	 * @return
 	 * @see javax.faces.application.Application#getConverterTypes()
 	 */
-	public Iterator<Class> getConverterTypes() {
+	public Iterator getConverterTypes() {
 		return parent.getConverterTypes();
 	}
 
