@@ -147,11 +147,7 @@
 		<profile>
 			<id>jsf1_2</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
-				<property>
-					<name>jsfVersion</name>
-					<value>1.2</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
 				<defaultGoal>jetty:run</defaultGoal>
