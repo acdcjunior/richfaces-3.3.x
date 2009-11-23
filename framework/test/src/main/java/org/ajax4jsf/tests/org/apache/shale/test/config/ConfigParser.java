@@ -19,6 +19,7 @@ package org.ajax4jsf.tests.org.apache.shale.test.config;
 
 import java.io.IOException;
 import java.net.URL;
+
 import javax.faces.FactoryFinder;
 import javax.faces.application.Application;
 import javax.faces.application.ApplicationFactory;
@@ -210,6 +211,16 @@ public final class ConfigParser {
               ("faces-config/validator/validator-id", "setValidatorId", 0);
             digester.addCallMethod
               ("faces-config/validator/validator-class", "setValidatorClass", 0);
+            
+            digester.addRule("faces-config/factory/visit-context-factory", new Rule() {
+            	@Override
+            	public void body(String namespace, String name, String text)
+            			throws Exception {
+            		if (text != null && text.trim().length() != 0) {
+                		FactoryFinder.setFactory("javax.faces.component.visit.VisitContextFactory", text.trim());
+            		}
+            	}
+            });
         }
         
         digester.setEntityResolver(new FacesEntityResolver());

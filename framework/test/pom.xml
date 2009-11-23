@@ -12,6 +12,35 @@
 	<name>Ajax4Jsf test framework</name>
 	<url>https://ajax4jsf.dev.java.net</url>
 	
+	<profiles>
+			<profile>
+			<id>jsf2_0</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>${project.version}</version>
+					<scope>provided</scope>
+					<classifier>jsf2</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>jsf1_2</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>${project.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+	
 	
 	<dependencies>
 		<dependency>
@@ -51,11 +80,6 @@
 					<artifactId>myfaces-impl</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.framework</groupId>
-			<artifactId>richfaces-impl</artifactId>
-			<version>3.3.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
