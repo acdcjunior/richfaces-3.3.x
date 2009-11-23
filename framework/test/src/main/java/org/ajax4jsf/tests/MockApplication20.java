@@ -33,7 +33,7 @@ import javax.faces.event.SystemEventListener;
 
 public class MockApplication20 extends MockApplication {
 
-	private ResourceHandler resourceHandler = null;
+	private ResourceHandler resourceHandler = new MockResourceHandler();
 
 	public MockApplication20() {
 		super();
