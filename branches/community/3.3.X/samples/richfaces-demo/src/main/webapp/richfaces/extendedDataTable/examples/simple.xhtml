@@ -7,7 +7,7 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition>
-	<h:form>
+	<h:form id="form">
 		<h:panelGrid columns="2" columnClasses="top , top">
 			<rich:extendedDataTable
 				value="#{extendedTableBean.capitalsDataModel}" var="cap" id="table"
@@ -16,35 +16,35 @@
 				selectionMode="#{extendedTableBean.selectionMode}"
 				tableState="#{extendedTableBean.tableState}"
 				selection="#{extendedTableBean.selection}">
-				<rich:column sortable="false" label="Flag">
+				<rich:column sortable="false" label="Flag" id="col_1">
 					<f:facet name="header">
-						<h:outputText value="Flag" />
+						<h:outputText value="Flag" id="flag"/>
 					</f:facet>
-					<h:graphicImage value="#{cap.stateFlag}" />
+					<h:graphicImage value="#{cap.stateFlag}" id="cap_state_flag"/>
 				</rich:column>
-				<rich:column sortable="true" sortBy="#{cap.state}"
+				<rich:column sortable="true" sortBy="#{cap.state}" id="col_2"
 					filterBy="#{cap.state}" filterEvent="onkeyup" width="170px"
 					label="State Name">
 					<f:facet name="header">
-						<h:outputText value="State Name" />
+						<h:outputText value="State Name" id="state_name"/>
 					</f:facet>
-					<h:outputText value="#{cap.state}" />
+					<h:outputText value="#{cap.state}" id="cap_state"/>
 				</rich:column>
-				<rich:column sortable="true" sortBy="#{cap.name}"
+				<rich:column sortable="true" sortBy="#{cap.name}" id="col_3"
 					filterBy="#{cap.name}" filterEvent="onkeyup" width="170px"
 					label="State Capital">
 					<f:facet name="header">
-						<h:outputText value="State Capital" />
+						<h:outputText value="State Capital" id="state_capital"/>
 					</f:facet>
-					<h:outputText value="#{cap.name}" />
+					<h:outputText value="#{cap.name}" id="cap_name"/>
 				</rich:column>
-				<rich:column sortable="false" label="Time Zone">
+				<rich:column sortable="false" label="Time Zone" id="col_4">
 					<f:facet name="header">
-						<h:outputText value="Time Zone" />
+						<h:outputText value="Time Zone" id="time_zone"/>
 					</f:facet>
-					<h:outputText value="#{cap.timeZone}" />
+					<h:outputText value="#{cap.timeZone}" id="cap_time_zone"/>
 				</rich:column>
-				<a4j:support reRender="selectiontable"
+				<a4j:support reRender="selectiontable" id="extended_table_bean_take_selection"
 					action="#{extendedTableBean.takeSelection}"
 					event="onselectionchange" />
 			</rich:extendedDataTable>
@@ -58,11 +58,11 @@
 						<h:selectOneMenu value="#{extendedTableBean.sortMode}">
 							<f:selectItem itemLabel="Single" itemValue="single" />
 							<f:selectItem itemLabel="Multi" itemValue="multi" />
-							<a4j:support event="onchange" ajaxSingle="true" reRender="table" />
+							<a4j:support event="onchange" ajaxSingle="true" reRender="table" id="support_sort_onchange"/>
 						</h:selectOneMenu>
 						<h:outputText value="Selection Mode:" />
 						<h:selectOneMenu value="#{extendedTableBean.selectionMode}">
-							<a4j:support ajaxSingle="true" event="onchange" reRender="table" />
+							<a4j:support ajaxSingle="true" event="onchange" reRender="table" id="support_select_onchange"/>
 							<f:selectItem itemLabel="Single" itemValue="single" />
 							<f:selectItem itemLabel="Multi" itemValue="multi" />
 							<f:selectItem itemLabel="None" itemValue="none" />

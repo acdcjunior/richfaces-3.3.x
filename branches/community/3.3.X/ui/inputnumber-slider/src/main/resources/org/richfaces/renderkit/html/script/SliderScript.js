@@ -24,11 +24,11 @@ Richfaces.Slider.prototype = {
 	};
 	Object.extend(defaultOptions, options);
 		this.handle = $( id + "Handle" );
-		this.tip	= $( id + "Tip" );
-		this.track	= $( id + "Track" );
-		this.mainTable	= $( id );
+		this.tip = $( id + "Tip" );
+		this.track = $( id + "Track" );
+		this.mainTable = $( id );
 		var inputId = id + "Input";
-		this.input	= $(inputId) || document.getElementsByName(inputId)[0];
+		this.input = $(inputId) || document.getElementsByName(inputId)[0];
 		if(defaultOptions.showArrows){
 			var arrowIncId = id + "ArrowInc";
 			this.arrowInc = $(arrowIncId) || document.getElementsByName(arrowIncId)[0];
@@ -57,8 +57,8 @@ Richfaces.Slider.prototype = {
 			  this.classes.arrowSelected = "rich-inslider-handler-selected-vertical";
 			  this.classes.base = " " + this.trim(this.classes.temp.replace("rich-inslider-handler-vertical",""));
 			}
-		
-		this.classes.handleSelected = " " + defaultOptions.handleSelectedClass;
+
+        this.classes.handleSelected = defaultOptions.handleSelectedClass ? " " + defaultOptions.handleSelectedClass : ""; 
 
 		this.table = this.findTableForTrack(this.track);
 		
@@ -356,10 +356,12 @@ Richfaces.Slider.prototype = {
 	},
 
 	startDrag: function(event) {
-		if (this.editInFocus)
+		if (this.editInFocus) {
 			this.input.blur();
-		window.document.onmouseup		= this.eventMouseUp.bindAsEventListener(this);
-		window.document.onmousemove		= this.eventMouseMove.bindAsEventListener(this);
+        }
+
+		window.document.onmouseup = this.eventMouseUp.bindAsEventListener(this);
+		window.document.onmousemove = this.eventMouseMove.bindAsEventListener(this);
 		Event.observe(document, "mouseout", this.eventWindowMouseOut);
 		this.editBlur();
 		this.prevMouseDownEvent = event;
@@ -381,7 +383,7 @@ Richfaces.Slider.prototype = {
 				} else {
 				    pointer = Event.pointerX(event);
 				}
-				var offsets	= Position.cumulativeOffset(this.track);
+				var offsets = Position.cumulativeOffset(this.track);
 				this.updating = true;
 				
 				var value;

@@ -193,25 +193,10 @@
 			</c:if>
 			<c:if test="#{empty options}">
 				{}
-			</c:if>, { 			
+			</c:if>,
+            <f:call name="writeFacetMarkup" />
+		).load(
 				<jsp:scriptlet>/*<![CDATA[*/
-					if (component.getChildCount() != 0) {
-				/*]]>*/</jsp:scriptlet>
-						\n dayListMarkup: 
-				<jsp:scriptlet>/*<![CDATA[*/
-						writeMarkupScriptBody(context, component, true);
-					} 
-				/*]]>*/</jsp:scriptlet>
-								
-				<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalHeader" /></f:call>
-				<f:call name="writeOptionalFacetMarkupScriptBody"><f:parameter value="optionalFooter" /></f:call>
-								
-				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekDay" /></f:call>
-				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="weekNumber" /></f:call>
-				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="header" /></f:call>
-				<f:call name="writeFacetMarkupScriptBody"><f:parameter value="footer" /></f:call>
-		}).load(
-			<jsp:scriptlet>/*<![CDATA[*/
 				writePreloadBody(context, component);
 			/*]]>*/</jsp:scriptlet>
 			);

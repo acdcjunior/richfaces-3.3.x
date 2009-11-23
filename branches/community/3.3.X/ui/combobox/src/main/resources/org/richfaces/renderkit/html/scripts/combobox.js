@@ -17,7 +17,9 @@ Richfaces.ComboBox.prototype = {
 		this.tempItem;
 		
 		this.BUTTON_WIDTH = 17; //px
-		
+		this.BUTTON_LEFT_BORDER = 1; //px
+		this.BUTTON_RIGHT_BORDER = 1; //px
+
 		this.classes = Richfaces.mergeStyles(options.userStyles,new Richfaces.ComboBoxStyles().getCommonStyles());
 		
 		
@@ -115,8 +117,18 @@ Richfaces.ComboBox.prototype = {
 	},
 	
 	setInputWidth : function() {
-		var width = parseInt(this.field.parentNode.style.width) - this.BUTTON_WIDTH;
-		this.field.style.width = width + "px"; 	
+		var width;
+        if (Richfaces.browser.isIE6) {
+            width = parseInt(this.field.parentNode.style.width) - this.BUTTON_WIDTH; 
+        } else {
+            width = parseInt(this.field.parentNode.style.width)
+                - parseInt(Element.getStyle(this.field, Richfaces.borders.l))
+                - parseInt(Element.getStyle(this.field, Richfaces.paddings.l))
+                - parseInt(Element.getStyle(this.field, Richfaces.paddings.r))
+                - parseInt(Element.getStyle(this.field, Richfaces.borders.r));
+            width -= this.buttonBG.offsetWidth ? this.buttonBG.offsetWidth : this.BUTTON_WIDTH;
+        }
+		this.field.style.width = width + "px";
 	},
 	
 	buttonClickHandler : function(event) {

@@ -19,14 +19,14 @@ RichFaces.Menu.fitLayerToContent = function(layer) {
     	}
         //layer.style.height = dims.height + "px";
     } // if
-}
+};
 
 RichFaces.Menu.removePx = function(e) {
 	if ((e+"").indexOf("px")!=-1)
 		return (e+"").substring(0,e.length-2);
 	else
 		return e;
-}
+};
 
 RichFaces.Menu.Layers = {
 	listl: new Array(),
@@ -113,7 +113,7 @@ RichFaces.Menu.Layers = {
 	},
 
 	isVisible: function(layer) {
-		return ($(layer).style.display != 'none');
+		return $(layer).style.display != 'none';
 	},
 
 	/**
@@ -121,11 +121,11 @@ RichFaces.Menu.Layers = {
 	 *	@param visibleFlag
 	 */
 	LMPopUpL: function(menuName, visibleFlag, event) {
-		if (!this.loaded) {
+        var menu = $(menuName);
+		if (!this.loaded || !menu) {
 			return;
 		}
 		this.detectWidth();
-		var menu = $(menuName);
 		var eventResult = true;
 		
 		RichFaces.Menu.fitLayerToContent(menu);
@@ -1313,7 +1313,7 @@ RichFaces.Menu.Utils.itemMouseOut = function(event, element, parentClasses, item
 	var label = typeof element.getLabel == 'fuction' ? element.getLabel() :  RichFaces.Menu.Utils.getLabel(element); 
 	Element.removeClassName(label, 'rich-menu-item-label-selected');
 	
-}
+};
 
 RichFaces.Menu.Utils.itemMouseOver = function(event, element, parentClasses, itemClasses) {
 	
@@ -1328,15 +1328,15 @@ RichFaces.Menu.Utils.itemMouseOver = function(event, element, parentClasses, ite
 	var label = typeof element.getLabel == 'fuction' ? element.getLabel() :  RichFaces.Menu.Utils.getLabel(element); 
 	Element.addClassName(label, 'rich-menu-item-label-selected');
 	
-}
+};
 
 RichFaces.Menu.Utils.getIcon = function (element) {
 	return $(element.id + ':icon');
-}
+};
 
 RichFaces.Menu.Utils.getLabel = function (element) {
 	return $(element.id + ':anchor');
-}
+};
 
 RichFaces.Menu.Item = Class.create({
 	initialize: function(id, menu, options) {
@@ -1532,7 +1532,7 @@ RichFaces.Menu.findMenuItem = function (itemId) {
 		if (menuItem) break;
 	}
 	return menuItem;
-}
+};
 
 RichFaces.Menu.updateItem = function (event, element, attr) {
 	var menuItem = RichFaces.Menu.findMenuItem(element.id);
@@ -1546,7 +1546,7 @@ RichFaces.Menu.updateItem = function (event, element, attr) {
 		element.className = classes;
  		if (attr.onselect) attr.onselect(event);
 	}
-}
+};
 
 RichFaces.Menu.submitForm = function (event, element, options) {
 	if (!options) {
@@ -1562,7 +1562,7 @@ RichFaces.Menu.submitForm = function (event, element, options) {
 	params[element.id+':hidden'] = element.id;
 	Richfaces.jsFormSubmit(element.id, form.id, target, params);
 	return false;	
-}
+};
 
 RichFaces.Menu.groupMouseOut = function(event, element, menuGroupClass, menuGroupStyle) {
 	if (RichFaces.Menu.isWithin(event, element)) {
@@ -1571,7 +1571,8 @@ RichFaces.Menu.groupMouseOut = function(event, element, menuGroupClass, menuGrou
 	
 	element.className = 'rich-menu-group rich-menu-group-enabled ' + (menuGroupClass ? menuGroupClass : '');
 	element.style.cssText = menuGroupStyle;
-}
+};
+
 RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, menuGroupStyle) {
 	if (RichFaces.Menu.isWithin(event, element)) {
 		return;
@@ -1579,5 +1580,5 @@ RichFaces.Menu.groupMouseOver = function(event, element, menuGroupHoverClass, me
 	
 	element.className = 'rich-menu-group rich-menu-group-enabled ' + (menuGroupHoverClass ? menuGroupHoverClass : '');
 	element.style.cssText = menuGroupStyle;
-}
+};
 

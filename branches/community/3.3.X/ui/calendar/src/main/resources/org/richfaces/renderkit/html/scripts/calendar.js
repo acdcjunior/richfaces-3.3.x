@@ -288,10 +288,16 @@ Richfaces.Calendar.joinArray = function(array, begin, end, separator)
 	return value;
 };
 
-Richfaces.Calendar.getMonthByLabel = function (monthLabel, monthNames)
-{
-	var i=0;
-	while (i<monthNames.length) if (monthNames[i]==monthLabel) return i; else i++;
+Richfaces.Calendar.getMonthByLabel = function (monthLabel, monthNames) {
+    var toLowerMonthLabel = monthLabel.toLowerCase();
+    var i = 0;
+    while (i < monthNames.length) {
+        if (monthNames[i].toLowerCase() == toLowerMonthLabel) {
+            return i;
+        }
+        
+        i++;
+    }
 };
 
 Object.extend(Event, {
@@ -351,22 +357,17 @@ Richfaces.Calendar.parseDate = function(dateString, pattern, monthNames, monthNa
 	var re = /([.*+?^<>=!:${}()[\]\/\\])/g;
 	var monthNamesStr
 	var monthNamesShortStr;
-	if (!monthNames)
-	{
+	if (!monthNames) {
 		monthNames = Richfaces.Calendar.getDefaultMonthNames();
 		monthNamesStr = monthNames.join('|');
-	}
-	else
-	{
+	} else {
 		monthNamesStr = monthNames.join('|').replace(re, '\\$1');
 	}
-	if (!monthNamesShort)
-	{
+
+	if (!monthNamesShort) {
 		monthNamesShort = Richfaces.Calendar.getDefaultMonthNames(true);
 		monthNamesShortStr = monthNamesShort.join('|');
-	}
-	else
-	{
+	} else {
 		monthNamesShortStr = monthNamesShort.join('|').replace(re, '\\$1');
 	}
 	

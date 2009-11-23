@@ -4,27 +4,40 @@ Richfaces.ContextMenu = Class.create();
 Richfaces.ContextMenu.prototype = {
 	
 	initialize: function(id, delay, evaluator, options) {
-		this.options = options || {};
 		this.id = id;
 		this.element = $(id);
+        this.element.component = this;
 		this.menuContent = null;
+
+        this.options = options || {};
 		this.evaluator = evaluator;
-		this.element.component = this;
 		this["rich:destructor"] = "destroy";
+
 		this.doShow = this.show;
 		this.doHide = this.hide;
 		this.delay = delay;
+
+        this.attachedToElementId = null;
+        this.attachedTo = [];
 	},
 	
 	destroy: function() {
+        for (var elementId in this.attachedTo) {
+            var element = $(elementId);
+            if (element) {
+                var attached = this.attachedTo[elementId];
+                Event.stopObserving(element, attached['eventName'], attached['listener']);
+            }
+        }
+
 		this.enableDefaultContextMenu();
 		this.element.component = null;
 		this.element = null;
 		this.menuContent = null;
+        this.attachedTo = [];
 	},
 	
-	disableDefaultContextMenu: function (element, id, event, attachedToPerent)
-	{
+	disableDefaultContextMenu: function (element, id, event, attachedToPerent) {
 		if (event=="oncontextmenu") {
 			this.attachedToElementId = id;
 			this.attachedToParent = attachedToPerent;
@@ -34,9 +47,8 @@ Richfaces.ContextMenu.prototype = {
 		}	
 	},
 	
-	enableDefaultContextMenu: function ()
-	{
-		if (this.eventName=="contextmenu" && this.attachedToElementId) {
+	enableDefaultContextMenu: function () {
+		if (this.eventName == "contextmenu" && this.attachedToElementIds.length) {
 			var element = $(this.attachedToElementId);
 			if (!element && this.attachedToParent) {
 				element = this.element;
@@ -72,18 +84,28 @@ Richfaces.ContextMenu.prototype = {
 	
 	// attach contextMenu to specified element
 	attachToElement : function(element, event, context) {
-		if (element) {
+		if (!element) {
+            return;
+        }
+
 			this.applyDecoration(element);
 
-			//Strip 'on' here 
-			var evnName = event.substr(2);
+        var evnName = event.substr(2); //Strip 'on' here
 			// http://jira.jboss.com/jira/browse/RF-3419
 			if(evnName == 'contextmenu') {
 				Richfaces.enableDefaultHandler('click');
 			}
+
 			var listener = this.show.bindAsEventListener(this, context);
 			Event.observe(element, evnName, listener);
+        if (element.id) {
+            this.attachedTo[element.id] = {
+                'eventName' : evnName,
+                'listener' : listener
+            };
 		}
+
+
 	},
 	
 	hide: function() {
@@ -140,13 +162,7 @@ Richfaces.ContextMenu.prototype = {
 	},
 	
 	applyDecoration : function(element) {
-		
 		$(element).addClassName("rich-cm-attached");
-		
-		/*var f = this.options.applyDecorations;
-		if (f) {
-			f(element);
-		}*/
 	}
 };
 

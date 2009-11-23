@@ -99,6 +99,17 @@
 	text-align : center;
 	z-index : 1;
 }
+
+.rich-inslider-handler-selected-vertical{
+	background-color : transparent;
+	width : 7px;
+	height : 8px;
+	font-size : 1px;
+	position : absolute;
+	text-align : center;
+	z-index : 1;
+}
+
 .rich-inslider-track{
 	background-position: left top;
 	background-repeat: repeat-x;
