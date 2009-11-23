@@ -15,7 +15,7 @@
 			<rich:tab label="Extended Data Model" name="dataModel">
 				<ui:include src="/richfaces/dataTable/extended-data-model.xhtml"/>
 			</rich:tab>			 
-			<rich:tab label="Modifiable Data Model" name="modifiableDataModel">
+			<rich:tab actionListener="#{conversation.start()}" label="Modifiable Data Model" name="modifiableDataModel">
 				<ui:include src="/richfaces/dataTable/modifiableModel.xhtml"/>
 			</rich:tab>			 
 			<rich:tab label="Edit Table with ModalPanel" name="editDataTable">

@@ -60,6 +60,11 @@
 		<param-name>org.richfaces.LoadScriptStrategy</param-name>
 		<param-value>ALL</param-value>
 	</context-param>
+	<context-param>
+		<param-name>javax.faces.DISABLE_FACELET_JSF_VIEWHANDLER</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 
 	<listener>
 		<listener-class>
