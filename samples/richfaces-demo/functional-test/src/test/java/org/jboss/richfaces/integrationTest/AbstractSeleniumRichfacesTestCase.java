@@ -219,44 +219,36 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      *            an array of strings that should be in the snippet
      */
     protected void abstractTestSource(int fieldset, String linkLabel, String[] expected) {
-        final String xpathPrefix = String.format("//fieldset[%d]/div/div/span[contains(text(), '%s')]/..", fieldset,
-                linkLabel);
-        String text = null;
-
-        scrollIntoView(xpathPrefix, true);
-
-        text = selenium.getAttribute(xpathPrefix + "/div@style");
-        assertTrue(text.contains("display: none;"),
-                "Source should not be visible -- it has to contain 'display: none;'.");
-
+        final String prefix = format("jquery=fieldset:eq({0}) > div > div:has(span:textEndsWith({1}))", fieldset-1, linkLabel);
+        
+        scrollIntoView(prefix, true);
+        
+        assertFalse(isDisplayed(prefix + " > div"), "Source should not be visible -- it has to contain 'display: none;'.");
+        
         // click on 'View xxx Source'
-        waitForElement(xpathPrefix + "/span[2]");
-        selenium.click(xpathPrefix + "/span[2]");
+        waitForElement(prefix + " > span:eq(1)");
+        selenium.click(prefix + " > span:eq(1)");
 
-        waitForElement(xpathPrefix + "/div/div[2]");
+        waitForElement(prefix + " div[class*=viewsourcebody]");
 
-        text = selenium.getAttribute(xpathPrefix + "/div@id");
-        assertFalse(text.contains("display: none;"),
-                "Source should be visible -- it should not contain 'display: none;'");
-
-        text = selenium.getText(xpathPrefix + "/div/div[2]/div/div");
-
+        assertTrue(isDisplayed(prefix + " > div"), "Source should be visible -- it should not contain 'display: none;'.");
+        
+        String source = selenium.getText(prefix + " div.viewsourcediv");
         for (String str : expected) {
-            assertTrue(text.contains(str), "The code should contain \"" + str + "\".");
+            assertTrue(source.contains(str), "The code should contain \"" + str + "\".");
         }
 
         // click on 'Hide'
-        selenium.click(xpathPrefix + "/span[1]");
+        selenium.click(prefix + " > span:eq(0)");
 
         // wait while 'style' attribute changes
         Wait.until(new Condition() {
             public boolean isTrue() {
-                return selenium.getAttribute(xpathPrefix + "/div@style").contains("display: none;");
+                return !isDisplayed(prefix + " > div");
             }
         });
 
-        text = selenium.getAttribute(xpathPrefix + "/div@style");
-        assertTrue(text.contains("display: none;"), "Source should be hidden.");
+        assertFalse(isDisplayed(prefix + " > div"), "Source should be hidden.");
     }
 
     /**
