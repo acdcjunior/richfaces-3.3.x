@@ -66,7 +66,9 @@ public class QueueRendererTest extends AbstractAjax4JsfTestCase {
 		
 		form = (UIForm) application.createComponent(UIForm.COMPONENT_TYPE);
 		form.setId("theform");
-		form.getChildren().add(application.createComponent(UIInput.COMPONENT_TYPE));
+		UIComponent createComponent = application.createComponent(UIInput.COMPONENT_TYPE);
+		createComponent.getAttributes().put("onchange", "return true;");
+		form.getChildren().add(createComponent);
 		children.add(form);
 	}
 

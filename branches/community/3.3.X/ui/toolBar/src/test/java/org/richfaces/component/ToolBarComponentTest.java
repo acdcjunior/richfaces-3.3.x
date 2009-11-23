@@ -75,19 +75,23 @@ public class ToolBarComponentTest extends AbstractAjax4JsfTestCase {
 
         UICommand button = (UICommand) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBar.getChildren().add(button);
 
         button = (UICommand) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBar.getChildren().add(button);
 
         UIToolBarGroup toolBarGroup = (UIToolBarGroup) application.createComponent("org.richfaces.ToolBarGroup");
         toolBarGroup.setItemSeparator("disc");
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         toolBar.getChildren().add(toolBarGroup);
 
@@ -95,9 +99,11 @@ public class ToolBarComponentTest extends AbstractAjax4JsfTestCase {
         toolBarGroup.setItemSeparator("grid");
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         toolBar.getChildren().add(toolBarGroup);
 
@@ -105,9 +111,11 @@ public class ToolBarComponentTest extends AbstractAjax4JsfTestCase {
         toolBarGroup.setItemSeparator("line");
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         button = (HtmlCommandButton) application.createComponent(HtmlCommandButton.COMPONENT_TYPE);
         button.setValue("Change");
+        button.getAttributes().put("onclick", "return true;");
         toolBarGroup.getChildren().add(button);
         toolBar.getChildren().add(toolBarGroup);
     }

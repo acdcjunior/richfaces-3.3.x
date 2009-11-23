@@ -17,7 +17,6 @@
 			<classname>
 				org.richfaces.taglib.ColumnsTag
 			</classname>
-			<test/>
 		</tag>
 		<taghandler generate="false">
 			<classname>org.richfaces.taglib.ColumnsHandler</classname>

@@ -77,24 +77,28 @@ public class RichMessageRendererTest extends AbstractAjax4JsfTestCase {
 		
 		input1 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input1.setId("input1");
+		input1.getAttributes().put("onchange", "return true;");
 		
 		text1 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		text1.setValue("Error");
 			
 		input2 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input2.setId("input2");
+		input2.getAttributes().put("onchange", "return true;");
 
 		text2 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		text2.setValue("Warning");
 		
 		input3 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input3.setId("input3");
+		input3.getAttributes().put("onchange", "return true;");
 		
 		text3 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		text3.setValue("Fatal");
 		
 		input4 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input4.setId("input4");
+		input4.getAttributes().put("onchange", "return true;");
 		
 		text4 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		text4.setValue("Info");

@@ -64,6 +64,7 @@ public class RichMessagesRendererTest extends AbstractAjax4JsfTestCase {
 		
 		input1 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input1.setId("input1");
+		input1.getAttributes().put("onchange", "return true;");
 		
 		output1 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		output1.setId("output1");
@@ -71,6 +72,7 @@ public class RichMessagesRendererTest extends AbstractAjax4JsfTestCase {
 		
 		input2 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input2.setId("input2");
+		input2.getAttributes().put("onchange", "return true;");
 		
 		output2 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		output2.setId("output2");
@@ -78,6 +80,7 @@ public class RichMessagesRendererTest extends AbstractAjax4JsfTestCase {
 		
 		input3 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input3.setId("input3");
+		input3.getAttributes().put("onchange", "return true;");
 		
 		output3 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		output3.setId("output3");
@@ -85,6 +88,7 @@ public class RichMessagesRendererTest extends AbstractAjax4JsfTestCase {
 		
 		input4 = (HtmlInputText)application.createComponent("javax.faces.HtmlInputText");
 		input4.setId("input4");
+		input4.getAttributes().put("onchange", "return true;");
 		
 		output4 = (HtmlOutputText)application.createComponent("javax.faces.HtmlOutputText");
 		output4.setId("output4");

@@ -51,6 +51,7 @@ public class GraphValidatorComponentTest extends AbstractAjax4JsfTestCase {
 		validator.setId("validator");
 		input = (UIInput) application.createComponent(UIInput.COMPONENT_TYPE);
 		input.setId("input");
+		input.getAttributes().put("onchange", "return true;");
 		validator.getChildren().add(input);
 		form.getChildren().add(validator);
 		messages = (UIMessages) application

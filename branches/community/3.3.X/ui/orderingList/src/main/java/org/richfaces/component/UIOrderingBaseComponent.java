@@ -530,7 +530,14 @@ public abstract class UIOrderingBaseComponent extends UIDataAdaptor implements E
 		data.trimToSize();
 		return data;
 	}
-
+	
+	public void resetValue() {
+        this.setValue(null);
+        this.setSubmittedValue(null);
+        this.setLocalValueSet(false);
+        this.setValid(true);
+    }
+	
 	public abstract ItemState getItemState();
 	
 	public interface ItemState {

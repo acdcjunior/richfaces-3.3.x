@@ -23,6 +23,7 @@ package org.richfaces.renderkit.html;
 import java.util.Map;
 
 import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlPanelGroup;
 
 import org.ajax4jsf.tests.AbstractAjax4JsfTestCase;
 import org.richfaces.component.UIToolTip;
@@ -61,9 +62,8 @@ public class ToolTipRendererTest extends AbstractAjax4JsfTestCase{
         toolTipContent.setValue("ToolTip Conntent");
         toolTip.getChildren().add(toolTipContent);
         
-        HtmlOutputText parentComp = (HtmlOutputText) application.createComponent("javax.faces.HtmlOutputText");
+        HtmlPanelGroup parentComp = (HtmlPanelGroup) application.createComponent("javax.faces.HtmlPanelGroup");
         parentComp.setId("parentID");
-        parentComp.setValue("Text with tooltip");
         parentComp.getChildren().add(toolTip);
      
         blockToolTip = (UIToolTip)application.createComponent("org.richfaces.component.ToolTip");

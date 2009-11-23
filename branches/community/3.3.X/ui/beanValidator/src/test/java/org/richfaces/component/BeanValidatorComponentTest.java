@@ -63,6 +63,7 @@ public class BeanValidatorComponentTest extends AbstractAjax4JsfTestCase {
 		form.setId("form");
 		facesContext.getViewRoot().getChildren().add(form);
 		input = (HtmlInputText)application.createComponent(HtmlInputText.COMPONENT_TYPE);
+		input.getAttributes().put("onchange", "return true;");
 		validator = (UIAjaxValidator)application.createComponent(UIAjaxValidator.COMPONENT_TYPE);
 		validator.setId("validator");
 		
