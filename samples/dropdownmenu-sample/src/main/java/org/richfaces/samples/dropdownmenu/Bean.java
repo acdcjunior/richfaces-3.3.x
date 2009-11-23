@@ -22,7 +22,6 @@
 package org.richfaces.samples.dropdownmenu;
 
 import javax.faces.event.ActionEvent;
-import org.richfaces.component.UIMenuItem;
 
 /**
  * @author $Autor$
@@ -101,7 +100,7 @@ public class Bean {
     
     public void setHorizontalOffsets(String horizontalOffsets) {
         this.horizontalOffsets = horizontalOffsets;
-        setHorizontalOffset(new Integer(this.horizontalOffsets).intValue());        
+        setHorizontalOffset(Integer.parseInt(this.horizontalOffsets));
     }
 
     public String getHorizontalOffsets() {
@@ -110,7 +109,7 @@ public class Bean {
     
     public void setVerticalOffsets(String verticalOffsets) {
         this.verticalOffsets = verticalOffsets;
-        setVerticalOffset(new Integer(this.verticalOffsets).intValue());
+        setVerticalOffset(Integer.parseInt(this.verticalOffsets));
     }
 
     public String getVerticalOffsets() {

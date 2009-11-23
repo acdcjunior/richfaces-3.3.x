@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>samples</artifactId>
         <groupId>org.richfaces</groupId>
@@ -13,25 +14,34 @@
         <finalName>dropdownmenu-sample</finalName>
     </build>
     <dependencies>
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>dropdown-menu</artifactId>
-			<version>${project.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>menu-components</artifactId>
-			<version>${project.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.samples</groupId>
             <artifactId>skins</artifactId>
-			<version>${project.version}</version>
+            <version>${project.version}</version>
         </dependency>
+
+        <!-- for RF-7990 -->
+<!--
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>toolBar</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+-->
     </dependencies>
 </project>

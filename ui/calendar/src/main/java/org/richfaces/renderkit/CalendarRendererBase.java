@@ -21,32 +21,6 @@
 
 package org.richfaces.renderkit;
 
-import java.io.IOException;
-import java.text.DateFormatSymbols;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TimeZone;
-
-import javax.el.ValueExpression;
-import javax.faces.application.Application;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
-import javax.faces.convert.DateTimeConverter;
-import javax.faces.event.PhaseId;
-
 import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.event.AjaxEvent;
 import org.ajax4jsf.javascript.JSFunction;
@@ -57,11 +31,30 @@ import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.richfaces.component.TemplateComponent;
 import org.richfaces.component.UICalendar;
 import org.richfaces.component.util.ComponentUtil;
 import org.richfaces.component.util.MessageUtil;
 import org.richfaces.context.RequestContext;
 import org.richfaces.event.CurrentDateChangeEvent;
+import org.richfaces.json.JSONObject;
+
+import javax.el.ValueExpression;
+import javax.faces.application.Application;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
+import javax.faces.convert.DateTimeConverter;
+import javax.faces.event.PhaseId;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.text.DateFormatSymbols;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author Nick Belaevski - mailto:nbelaevski@exadel.com created 08.06.2007
@@ -187,7 +180,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
      * Returns hours and minutes from "defaultTime" attribute as a String with
      * special format: hours:"value_hours",minutes:"value_minutes"
      * 
-     * @param calendar - UICalendar
+     * @param component - UICalendar
      * 
      * @return hours and minutes from "defaultTime" attribute
      */
@@ -286,7 +279,6 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	
 	/**
 	 * Creates default <code>DateTimeConverter</code> for the calendar
-	 * @param calendar - calendar component
 	 * 
 	 * @return created converter
 	 */
@@ -317,6 +309,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	    return converter;
 	}
 
+	@Override
 	protected void doDecode(FacesContext context, UIComponent component) {
 		// TODO Auto-generated method stub
 		super.doDecode(context, component);
@@ -353,6 +346,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		}
 	}
 
+	@Override
 	public void encodeChildren(FacesContext context, UIComponent calendar)
 			throws IOException {
 
@@ -378,22 +372,52 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		}
 		
 		return null;
-	}	
-
-	public void writeMarkupScriptBody(FacesContext context,
-			UIComponent component, boolean children) throws IOException {
-		writeScriptBody(context, component, children);
 	}
 
-	public void writeOptionalFacetMarkupScriptBody(FacesContext context,
+    public String getMarkupScriptBody(FacesContext context, UIComponent component, boolean children)
+        throws IOException {
+
+        ResponseWriter writer = context.getResponseWriter();
+        Writer dumpingWriter = new StringWriter();
+        ResponseWriter clonedWriter = writer.cloneWithWriter(dumpingWriter);
+        context.setResponseWriter(clonedWriter);
+
+        TemplateComponent templateComponent = null;
+        if (component instanceof TemplateComponent) {
+            templateComponent = (TemplateComponent) component;
+	}
+
+        try {
+            if (templateComponent != null) {
+                templateComponent.startTemplateEncode();
+            }
+
+            if (children) {
+                this.renderChildren(context, component);
+            } else {
+                this.renderChild(context, component);
+            }
+        } finally {
+            if (templateComponent != null) {
+                templateComponent.endTemplateEncode();
+            }
+
+            clonedWriter.flush();
+            context.setResponseWriter(writer);
+        }
+
+        return dumpingWriter.toString();
+    }
+
+    public String getOptionalFacetMarkupScriptBody(FacesContext context,
 			UIComponent component, String facetName) throws IOException {
 
 		UIComponent facet = component.getFacet(facetName);
 		if (facet != null && facet.isRendered()) {
-			ResponseWriter writer = context.getResponseWriter();
-			writer.writeText(",\n " + facetName + MARKUP_SUFFIX + ": ", null);
-			writeMarkupScriptBody(context, facet, false);
+            return getMarkupScriptBody(context, facet, false);
 		}
+
+        return null;
 	}
 
 	public void dayCellClass(FacesContext context, UIComponent component)
@@ -443,16 +467,29 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		return null;
 	}
 
-	public void writeFacetMarkupScriptBody(FacesContext context,
-			UIComponent component, String facetName) throws IOException {
+    public void writeFacetMarkup(FacesContext context, UIComponent component) throws IOException {
+        Map<String, String> jsonMap = new HashMap();
+        if (component.getChildCount() != 0) {
+            jsonMap.put("dayListMarkup", getMarkupScriptBody(context, component, true));
+        }
 
-		UIComponent facet = component.getFacet(facetName);
-		if (facet != null && facet.isRendered()) {
-			ResponseWriter writer = context.getResponseWriter();
-			writer.writeText(",\n " + facetName + MARKUP_SUFFIX + ": ", null);
-			writeMarkupScriptBody(context, facet, false);
+        addFacetMarkupScriptBody(context, component, jsonMap, "optionalHeader");
+        addFacetMarkupScriptBody(context, component, jsonMap, "optionalFooter");
+
+        addFacetMarkupScriptBody(context, component, jsonMap, "weekDay");
+        addFacetMarkupScriptBody(context, component, jsonMap, "weekNumber");
+        addFacetMarkupScriptBody(context, component, jsonMap, "header");
+        addFacetMarkupScriptBody(context, component, jsonMap, "footer");
+
+        context.getResponseWriter().write(new JSONObject(jsonMap).toString());
 		}
+
+    private void addFacetMarkupScriptBody(FacesContext context, UIComponent component, Map<String, String> jsonMap, String facetName) throws IOException {
+        String res = getOptionalFacetMarkupScriptBody(context, component, facetName);
+        if (res != null) {
+            jsonMap.put(facetName, res);
 	}
+    }
 
 	public void writePreloadBody(FacesContext context, UICalendar calendar)
 			throws IOException {

@@ -31,15 +31,14 @@ import org.richfaces.event.CurrentDateChangeEvent;
 
 /**
  * 20/07/2007
- * 
+ *
  * @author Alexej Kushunin
  * @mailto: akushunin@exadel.com
- * 
  */
 public class CalendarBean {
 
-	private static final String[] WEEK_DAY_LABELS = new String[] { "Sun *",
-			"Mon +", "Tue +", "Wed +", "Thu +", "Fri +", "Sat *" };
+    private static final String[] WEEK_DAY_LABELS = new String[]{"Sun *",
+            "Mon +", "Tue +", "Wed +", "Thu +", "Fri +", "Sat *"};
 	private Locale locale;
 
 	private boolean popup;
@@ -55,15 +54,14 @@ public class CalendarBean {
 	private String direction;
 	private String boundary;
 	private String todayControlMode;
+    private boolean showApply;
 	private boolean showHeader;
 	private boolean showFooter;
 	private boolean resetTimeOnDateSelect;
 
 	private int counter;
-	
-	
-	
-	
+
+
 	private boolean useCustomDayLabels;
 
 	public Locale getLocale() {
@@ -87,7 +85,7 @@ public class CalendarBean {
 	}
 
 	public void setPattern(String pattern) {
-		
+
 		this.pattern = pattern;
 	}
 
@@ -106,16 +104,16 @@ public class CalendarBean {
 		jointPoint = "bottom-left";
 		direction = "bottom-right";
 		readonly = true;
-		enableManualInput=false;
-		showInput=true;
+        enableManualInput = false;
+        showInput = true;
 		boundary = "inactive";
 		disabled = false;
 		todayControlMode = "select";
 		resetTimeOnDateSelect = false;
-		
+
 	}
-	
-	
+
+
 	public boolean isShowInput() {
 		return showInput;
 	}
@@ -223,14 +221,16 @@ public class CalendarBean {
 	public void setBoundary(String boundary) {
 		this.boundary = boundary;
 	}
-	public void dcl(CurrentDateChangeEvent event){
+
+    public void dcl(CurrentDateChangeEvent event) {
 		System.out.println(event.getCurrentDateString());
 		System.out.println("ajvhckndskncs");
 	}
-	public void ddd(ValueChangeEvent event){
+
+    public void ddd(ValueChangeEvent event) {
 		System.out.println(event.getOldValue());
 		System.out.println(event.getNewValue());
-		
+
 	}
 
 	public int getCounter() {
@@ -284,4 +284,12 @@ public class CalendarBean {
 	public void setResetTimeOnDateSelect(boolean resetTimeOnDateSelect) {
 		this.resetTimeOnDateSelect = resetTimeOnDateSelect;
 	}
+
+    public boolean isShowApply() {
+        return showApply;
+    }
+
+    public void setShowApply(boolean showApply) {
+        this.showApply = showApply;
+    }
 }

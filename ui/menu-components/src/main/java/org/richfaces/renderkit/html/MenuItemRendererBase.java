@@ -49,6 +49,7 @@ import org.richfaces.component.MenuComponent;
 import org.richfaces.component.UIMenuItem;
 import org.richfaces.component.util.ViewUtil;
 import org.richfaces.renderkit.CompositeRenderer;
+import org.richfaces.json.JSONObject;
 
 
 public class MenuItemRendererBase extends CompositeRenderer {
@@ -354,4 +355,8 @@ public class MenuItemRendererBase extends CompositeRenderer {
 			ComponentsVariableResolver.getVariables(this, menuItem);
 		delegate.initializeStyles(context, menuItem, menuItem.isDisabled(), variables);
 	}
+
+    public static String toJson(Map map) {
+        return new JSONObject(map).toString();
+    }
 }
