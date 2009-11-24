@@ -36,6 +36,7 @@ import javax.faces.context.ResponseWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Map;
 
 
 /**
@@ -69,9 +70,12 @@ public class TabRendererBase extends RendererBase implements TabEncoder {
         UITab tab = (UITab) component;
         UITabPanel panel = tab.getPane();
 
+        Map<String, String> requestParameterMap = context.getExternalContext()
+                .getRequestParameterMap();
 
         if (AjaxRendererUtils.isAjaxRequest(context)
-                && panel.getSwitchType().equals(UISwitchablePanel.AJAX_METHOD)) {
+                && tab.getSwitchTypeOrDefault().equals(UISwitchablePanel.AJAX_METHOD)
+                && requestParameterMap.get(tab.getClientId(context)) != null) {
 
             // add toggle panel itself to rendered list of components
             AjaxRendererUtils.addRegionByName(context, panel, panel.getId());
