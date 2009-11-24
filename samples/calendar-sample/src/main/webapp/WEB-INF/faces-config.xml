@@ -17,6 +17,11 @@
         <managed-bean-class>org.richfaces.CalendarBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>rf8052</managed-bean-name>
+        <managed-bean-class>org.richfaces.RF8052</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     <validator>
     	<validator-id>org.richfaces.CalendarValidator</validator-id>
     	<validator-class>org.richfaces.CalendarValidator</validator-class>

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
-<%@ taglib uri="http://labs.jboss.com/jbossrichfaces/ui/ui/calendar" prefix="calendar" %>
+<%@ taglib uri="http://labs.jboss.com/jbossrichfaces/ui/calendar" prefix="calendar" %>
 <html>
 	<head>
 		<title></title>

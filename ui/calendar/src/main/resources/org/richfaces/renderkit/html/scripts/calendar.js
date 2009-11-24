@@ -599,7 +599,7 @@ Object.extend(Calendar.prototype, {
 		var value = options.labels || {};
 		var defaultLabels = {apply:'Apply', today:'Today', clean:'Clean', ok:'OK', cancel:'Cancel', close:'x'};
 
-		for (name in defaultLabels) {
+		for (var name in defaultLabels) {
 			if (!value[name]) value[name] = defaultLabels[name];
 		}
 		this.params.labels = value;
