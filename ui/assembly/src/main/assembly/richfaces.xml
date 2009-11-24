@@ -46,10 +46,11 @@
     <dependencySet>
       <outputDirectory>/lib</outputDirectory>
       <unpack>false</unpack>
-      <scope>runtime</scope>
+      <scope>compile</scope>
       <includes>
           <include>org.richfaces.framework:richfaces-api</include>
           <include>org.richfaces.framework:richfaces-impl</include>
+          <include>org.richfaces.framework:richfaces-impl:*:jsf2</include>
           <include>org.richfaces.framework:richfaces-test</include>
       </includes>
       <excludes>

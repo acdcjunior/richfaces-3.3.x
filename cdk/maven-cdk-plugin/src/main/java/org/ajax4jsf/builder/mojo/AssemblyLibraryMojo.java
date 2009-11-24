@@ -50,6 +50,7 @@ import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Parent;
+import org.apache.maven.model.Profile;
 import org.apache.maven.model.Resource;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
@@ -252,6 +253,11 @@ public class AssemblyLibraryMojo extends AbstractCDKMojo {
 	 */
 	private  String templateXpath;
 
+	/**
+	 * @parameter
+	 */
+	private boolean includeProjectDependencies = false;
+	
 	/**
 	 * 
 	 */
@@ -503,6 +509,9 @@ public class AssemblyLibraryMojo extends AbstractCDKMojo {
 	private void setupGeneratedProject(
 			Map<String, Dependency> projectsDependencies)
 			throws MojoExecutionException {
+		
+		Map localProjectDependencies = new HashMap();
+		
 		Model generatedProject;
 		try {
 			MavenXpp3Reader reader = new MavenXpp3Reader();
@@ -510,10 +519,48 @@ public class AssemblyLibraryMojo extends AbstractCDKMojo {
 		} catch (Exception e1) {
 			throw new MojoExecutionException("Unable to read local POM", e1);
 		}
+
+		if (includeProjectDependencies) {
+			Set activeProfilesIds = new HashSet();
+			List activeProfiles = project.getActiveProfiles();
+			if (activeProfiles != null) {
+				for (Iterator activeProfilesItr = activeProfiles.iterator(); activeProfilesItr.hasNext(); ) {
+					Profile activeProfile = (Profile) activeProfilesItr.next();
+					activeProfilesIds.add(activeProfile.getId());
+				}
+			}
+			
+			List dependencies = generatedProject.getDependencies();
+			if (dependencies != null) {
+				for (Iterator itr = dependencies.iterator(); itr.hasNext(); ) {
+					Dependency dependency = (Dependency) itr.next();
+					localProjectDependencies.put(dependency.getManagementKey(), dependency);
+				}
+			}
+			
+			List profiles = generatedProject.getProfiles();
+			if (profiles != null) {
+				for (Iterator profilesItr = profiles.iterator(); profilesItr.hasNext(); ) {
+					Profile profile = (Profile) profilesItr.next();
+					if (activeProfilesIds.contains(profile.getId())) {
+						List profileDependencies = profile.getDependencies();
+						if (profileDependencies != null) {
+							for (Iterator itr = profileDependencies.iterator(); itr.hasNext(); ) {
+								Dependency dependency = (Dependency) itr.next();
+								localProjectDependencies.put(dependency.getManagementKey(), dependency);
+							}
+						}
+					}
+				}
+			}
+		}
+
 		generatedProject.getDependencies()
 				.addAll(projectsDependencies.values());
 		writePom(generatedProject);
-		project.setDependencies(new ArrayList<Dependency>(projectsDependencies.values()));
+		
+		localProjectDependencies.putAll(projectsDependencies);
+		project.setDependencies(new ArrayList<Dependency>(localProjectDependencies.values()));
 		// project.setFile(generatedPom);
 	}
 
