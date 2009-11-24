@@ -64,6 +64,7 @@
 					-->
 					<excludeXcss>**/basic.xcss, **/basic_classes.xcss, **/basic_both.xcss, **/extended.xcss, **/extended_classes.xcss, **/extended_both.xcss, **/skin*.xcss, **/tiny_mce/**, **/org/richfaces/renderkit/html/css/simple.xcss, **/org/richfaces/renderkit/html/css/violetRays.xcss</excludeXcss>
 					<commonStyle>org/richfaces/skin.xcss</commonStyle>
+					<includeProjectDependencies>true</includeProjectDependencies>
 				</configuration>
 				<executions>
 					<execution>
@@ -430,6 +431,24 @@
 					</plugin>
 				</plugins>
 			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-api</artifactId>
+					<version>3.3.3-SNAPSHOT</version>
+				</dependency>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>3.3.3-SNAPSHOT</version>
+				</dependency>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>3.3.3-SNAPSHOT</version>
+					<classifier>jsf2</classifier>
+				</dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 	<dependencies />
