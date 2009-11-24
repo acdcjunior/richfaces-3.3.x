@@ -162,6 +162,12 @@
 			<build>
 				<plugins>
 					<plugin>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</plugin>
+					<plugin>
 						<artifactId>maven-jar-plugin</artifactId>
 						<configuration>
 							<classifier>jsf2</classifier>

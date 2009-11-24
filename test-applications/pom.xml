@@ -78,19 +78,14 @@
 	
 	<dependencies>
 		<dependency>
-    			<artifactId>richfaces-ui</artifactId>
-    			<groupId>org.richfaces.ui</groupId>
-	    		<version>${rfVersion}</version>
+			<artifactId>richfaces-ui</artifactId>
+			<groupId>org.richfaces.ui</groupId>
+			<version>${rfVersion}</version>
 		</dependency>
 		<dependency>
-    			<artifactId>richfaces-impl</artifactId>
-    			<groupId>org.richfaces.framework</groupId>
-	    		<version>${rfVersion}</version>
-		</dependency>
-		<dependency>
-    			<artifactId>richfaces-api</artifactId>
-    			<groupId>org.richfaces.framework</groupId>
-	    		<version>${rfVersion}</version>
+			<artifactId>richfaces-api</artifactId>
+			<groupId>org.richfaces.framework</groupId>
+			<version>${rfVersion}</version>
 		</dependency>
 		<dependency>
 			  <artifactId>servlet-api</artifactId>
@@ -98,10 +93,10 @@
 			  <version>2.5</version>
 		</dependency>
 		<dependency>
-		    	  <groupId>javax.el</groupId> 
- 		        <artifactId>el-api</artifactId> 
-			  <version>1.0</version> 
-		        <scope>provided</scope> 
+			<groupId>javax.el</groupId> 
+			<artifactId>el-api</artifactId> 
+			<version>1.0</version> 
+			<scope>provided</scope> 
 		</dependency>
 	    <dependency>
 	      <groupId>com.uwyn</groupId>
@@ -122,6 +117,30 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<id>jsf1_2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>${rfVersion}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>jsf2_0</id>			
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<version>${rfVersion}</version>
+					<classifier>jsf2</classifier>
+				</dependency>
+			</dependencies>
+		</profile>
 		<profile>
 			<id>myfaces</id>
 			<dependencies>

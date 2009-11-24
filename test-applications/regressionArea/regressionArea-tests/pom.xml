@@ -29,16 +29,6 @@
             <artifactId>richfaces-api</artifactId>
             <version>${richversion}</version>
         </dependency>
-     	<dependency>
-            <groupId>org.richfaces.framework</groupId>
-            <artifactId>richfaces-impl</artifactId>
-            <version>${richversion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.richfaces.ui</groupId>
-            <artifactId>richfaces-ui</artifactId>
-            <version>${richversion}</version>
-        </dependency>
         <dependency>
             <groupId>javax.faces</groupId>
             <artifactId>jsf-api</artifactId>
