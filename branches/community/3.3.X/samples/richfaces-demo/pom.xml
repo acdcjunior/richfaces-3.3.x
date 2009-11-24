@@ -277,7 +277,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -374,7 +373,7 @@
         	 <artifactId>dom4j</artifactId>
          	 <version>1.6.1</version>
 		</dependency>
-<dependency>
+	<dependency>
          <groupId>org.antlr</groupId>
          <artifactId>antlr</artifactId>
          <version>3.0</version>
@@ -410,7 +409,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
 			<version>1.0</version>

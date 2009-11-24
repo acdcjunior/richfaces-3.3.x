@@ -8,5 +8,21 @@
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>skins</artifactId>
 	<name>skins</name>
-	<dependencies />
+	<dependencies>
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl</artifactId>
+			<scope>provided</scope>
+		</dependency>    
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
