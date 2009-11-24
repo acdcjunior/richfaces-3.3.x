@@ -21,16 +21,21 @@
 
 package org.richfaces.renderkit;
 
+import org.ajax4jsf.context.AjaxContext;
+import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.RendererBase;
 import org.richfaces.component.TabEncoder;
 import org.richfaces.component.UISwitchablePanel;
 import org.richfaces.component.UITab;
+import org.richfaces.component.UITabPanel;
 
 import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -56,7 +61,34 @@ public class TabRendererBase extends RendererBase implements TabEncoder {
 
     	return tabHeaderRenderer;
     }
-    
+
+    @Override
+    protected void doDecode(FacesContext context, UIComponent component) {
+        super.doDecode(context, component);
+
+        UITab tab = (UITab) component;
+        UITabPanel panel = tab.getPane();
+
+
+        if (AjaxRendererUtils.isAjaxRequest(context)
+                && panel.getSwitchType().equals(UISwitchablePanel.AJAX_METHOD)) {
+
+            // add toggle panel itself to rendered list of components
+            AjaxRendererUtils.addRegionByName(context, panel, panel.getId());
+            AjaxRendererUtils.addRegionsFromComponent(tab, context);
+
+            AjaxContext ajaxContext = AjaxContext.getCurrentInstance(context);
+            Set<String> toProcess = ajaxContext.getAjaxAreasToProcess();
+            if (toProcess == null) {
+                toProcess = new HashSet<String>(1);
+                ajaxContext.setAjaxAreasToProcess(toProcess);
+            }
+            toProcess.add(panel.getClientId(context));
+
+            ajaxContext.addAreasToProcessFromComponent(context, tab);
+        }
+    }
+
     public TabRendererBase() {
         super();
     }
