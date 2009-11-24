@@ -22,7 +22,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<!-- 
 				-->
-				<version>6.1.5</version>
+				<version>6.1.18</version>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<connectors>
