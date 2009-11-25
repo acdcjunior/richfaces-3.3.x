@@ -21,23 +21,23 @@
 
 package org.richfaces.renderkit;
 
-import org.ajax4jsf.context.AjaxContext;
-import org.ajax4jsf.event.AjaxEvent;
-import org.ajax4jsf.javascript.JSFunction;
-import org.ajax4jsf.javascript.JSFunctionDefinition;
-import org.ajax4jsf.javascript.JSReference;
-import org.ajax4jsf.javascript.ScriptUtils;
-import org.ajax4jsf.renderkit.AjaxRendererUtils;
-import org.ajax4jsf.renderkit.RendererUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.richfaces.component.TemplateComponent;
-import org.richfaces.component.UICalendar;
-import org.richfaces.component.util.ComponentUtil;
-import org.richfaces.component.util.MessageUtil;
-import org.richfaces.context.RequestContext;
-import org.richfaces.event.CurrentDateChangeEvent;
-import org.richfaces.json.JSONObject;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.text.DateFormatSymbols;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TimeZone;
 
 import javax.el.ValueExpression;
 import javax.faces.application.Application;
@@ -48,19 +48,34 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.DateTimeConverter;
 import javax.faces.event.PhaseId;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.text.DateFormatSymbols;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
+import org.ajax4jsf.context.AjaxContext;
+import org.ajax4jsf.event.AjaxEvent;
+import org.ajax4jsf.javascript.JSFunction;
+import org.ajax4jsf.javascript.JSFunctionDefinition;
+import org.ajax4jsf.javascript.JSLiteral;
+import org.ajax4jsf.javascript.JSReference;
+import org.ajax4jsf.javascript.ScriptUtils;
+import org.ajax4jsf.renderkit.AjaxRendererUtils;
+import org.ajax4jsf.renderkit.RendererUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.richfaces.component.UICalendar;
+import org.richfaces.component.util.ComponentUtil;
+import org.richfaces.component.util.MessageUtil;
+import org.richfaces.context.RequestContext;
+import org.richfaces.event.CurrentDateChangeEvent;
 
 /**
  * @author Nick Belaevski - mailto:nbelaevski@exadel.com created 08.06.2007
  * 
  */
 public class CalendarRendererBase extends TemplateEncoderRendererBase {
+
+	/**
+	 * 
+	 */
+	private static final String MARKUP_PARAMETER_SUFFIX = "Markup";
 
 	protected static final String MONTH_LABELS_SHORT = "monthLabelsShort";
 
@@ -88,8 +103,6 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	public static final String CURRENT_DATE_INPUT = "InputCurrentDate";
 
 	public static final String CURRENT_DATE_PRELOAD = "PreloadCurrentDate";
-
-	protected static final String MARKUP_SUFFIX = "Markup";
 
 	public static final String CALENDAR_BUNDLE = "org.richfaces.renderkit.calendar";
 
@@ -449,9 +462,10 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	}
 
     public void writeFacetMarkup(FacesContext context, UIComponent component) throws IOException {
-        Map<String, String> jsonMap = new HashMap();
+        Map<String, JSLiteral> jsonMap = new HashMap<String, JSLiteral>();
         if (component.getChildCount() != 0) {
-            jsonMap.put("dayList", getMarkupScriptBody(context, component, true));
+            String markupScriptBody = getMarkupScriptBody(context, component, true);
+			jsonMap.put("dayList" + MARKUP_PARAMETER_SUFFIX, new JSLiteral(markupScriptBody));
         }
 
         addFacetMarkupScriptBody(context, component, jsonMap, "optionalHeader");
@@ -462,27 +476,14 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
         addFacetMarkupScriptBody(context, component, jsonMap, "header");
         addFacetMarkupScriptBody(context, component, jsonMap, "footer");
 
-        context.getResponseWriter().write("{");
-        boolean isFirst = true;
-        for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-            if (isFirst) {
-                isFirst = false;
-            } else {
-                context.getResponseWriter().write(",");
-            }
-            context.getResponseWriter().write(entry.getKey() + MARKUP_SUFFIX);
-            context.getResponseWriter().write(":");
-            context.getResponseWriter().write(entry.getValue());
-
-        }
-        context.getResponseWriter().write("}");
+        context.getResponseWriter().writeText(ScriptUtils.toScript(jsonMap), null);
     }
 
-    private void addFacetMarkupScriptBody(FacesContext context, UIComponent component, Map<String, String> jsonMap, String facetName) throws IOException {
+    private void addFacetMarkupScriptBody(FacesContext context, UIComponent component, Map<String, JSLiteral> jsonMap, String facetName) throws IOException {
         String res = getOptionalFacetMarkupScriptBody(context, component, facetName);
         if (res != null) {
-            jsonMap.put(facetName, res);
-	}
+            jsonMap.put(facetName + MARKUP_PARAMETER_SUFFIX, new JSLiteral(res));
+        }
     }
 
 	public void writePreloadBody(FacesContext context, UICalendar calendar)
@@ -490,7 +491,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 		Object preload = calendar.getPreload();
 		if (preload != null) {
 			ResponseWriter writer = context.getResponseWriter();
-			writer.write(ScriptUtils.toScript(preload));
+			writer.writeText(ScriptUtils.toScript(preload), null);
 		}
 	}
 
