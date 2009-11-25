@@ -451,7 +451,7 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
     public void writeFacetMarkup(FacesContext context, UIComponent component) throws IOException {
         Map<String, String> jsonMap = new HashMap();
         if (component.getChildCount() != 0) {
-            jsonMap.put("dayListMarkup", getMarkupScriptBody(context, component, true));
+            jsonMap.put("dayList", getMarkupScriptBody(context, component, true));
         }
 
         addFacetMarkupScriptBody(context, component, jsonMap, "optionalHeader");
@@ -462,7 +462,20 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
         addFacetMarkupScriptBody(context, component, jsonMap, "header");
         addFacetMarkupScriptBody(context, component, jsonMap, "footer");
 
-        context.getResponseWriter().write(new JSONObject(jsonMap).toString());
+        context.getResponseWriter().write("{");
+        boolean isFirst = true;
+        for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                context.getResponseWriter().write(",");
+            }
+            context.getResponseWriter().write(entry.getKey() + MARKUP_SUFFIX);
+            context.getResponseWriter().write(":");
+            context.getResponseWriter().write(entry.getValue());
+
+        }
+        context.getResponseWriter().write("}");
     }
 
     private void addFacetMarkupScriptBody(FacesContext context, UIComponent component, Map<String, String> jsonMap, String facetName) throws IOException {
