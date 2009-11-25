@@ -82,8 +82,8 @@
 	
 	<div id="#{clientId}" 
 		class="#{menuItemClass}"
-		onmouseout="RichFaces.Menu.Utils.itemMouseOut(event, this, #{this:toJson(onmouseoutClasses)});"
-		onmouseover="RichFaces.Menu.Utils.itemMouseOver(event, this, #{this:toJson(onmouseoverClasses)});"
+		onmouseout="RichFaces.Menu.Utils.itemMouseOut(event, this, #{this:toScript(onmouseoutClasses)});"
+		onmouseover="RichFaces.Menu.Utils.itemMouseOver(event, this, #{this:toScript(onmouseoverClasses)});"
 		onclick="#{onclick}"
 		style="#{menuItemStyle}">
 		<f:call name="utils.encodeAttributes">
