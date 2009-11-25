@@ -22,6 +22,10 @@
   <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
   <param-value>true</param-value>
  </context-param>
+	<context-param>
+		<param-name>javax.faces.DISABLE_FACELET_JSF_VIEWHANDLER</param-name>
+		<param-value>true</param-value>
+	</context-param>
  <filter>
   <display-name>RichFaces Filter</display-name>
   <filter-name>richfaces</filter-name>
