@@ -211,9 +211,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>net.sourceforge.nekohtml</groupId>
+			<groupId>nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-			<version>1.9.13</version>
+			<version>1.9.6</version>
 			<exclusions>
 				<exclusion>
 					<groupId>xerces</groupId>
