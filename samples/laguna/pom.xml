@@ -23,13 +23,35 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>jsf2_0</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<classifier>jsf2</classifier>
+					<scope>provided</scope>
+				</dependency>    
+			</dependencies>
+		</profile>
+		<profile>
+			<id>jsf1_2</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.richfaces.framework</groupId>
+					<artifactId>richfaces-impl</artifactId>
+					<scope>provided</scope>
+				</dependency>    
+			</dependencies>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.richfaces.framework</groupId>
-			<artifactId>richfaces-impl</artifactId>
-			<scope>provided</scope>
-		</dependency>    
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-api</artifactId>
