@@ -176,8 +176,6 @@
 											<filelist dir="${extensions.dir}"
 												files="jquery.js jbossqa-extensions.js rfqa-extensions.js" />
 										</concat>
-										<delete
-											dir="${project.build.directory}/test-classes/user-extensions" />
 									</tasks>
 								</configuration>
 							</execution>
