@@ -59,7 +59,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<properties>
-		<demo.classifier></demo.classifier>
+		<demo.classifier />
 		<demo.version>${project.version}</demo.version>
 		<resources.dir>${project.build.directory}/test-classes</resources.dir>
 		<extensions.dir>${resources.dir}/user-extensions</extensions.dir>
@@ -238,7 +238,14 @@
 					<groupId>org.richfaces.samples</groupId>
 					<artifactId>richfaces-demo</artifactId>
 					<version>${demo.version}</version>
-					<classifier>${demo.classifier}</classifier>
+					<type>war</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.richfaces.samples</groupId>
+					<artifactId>richfaces-demo</artifactId>
+					<version>${demo.version}</version>
+					<classifier>jsf2</classifier>
 					<type>war</type>
 					<scope>provided</scope>
 				</dependency>
