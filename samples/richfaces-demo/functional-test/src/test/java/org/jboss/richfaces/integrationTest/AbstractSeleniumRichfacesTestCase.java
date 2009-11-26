@@ -92,11 +92,11 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      *            specifies on which port should selenium server run
      */
     @BeforeClass
-    @Parameters( { "context.root", "context.path", "browser", "selenium.port" })
-    public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumPort) {
+    @Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port" })
+    public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumHost, String seleniumPort) {
         this.contextRoot = contextRoot;
         this.contextPath = contextPath;
-        selenium = new DefaultSelenium("localhost", Integer.valueOf(seleniumPort), browser, contextRoot);
+        selenium = new DefaultSelenium(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
         selenium.start();
         allowInitialXpath();
         loadCustomLocationStrategies();
