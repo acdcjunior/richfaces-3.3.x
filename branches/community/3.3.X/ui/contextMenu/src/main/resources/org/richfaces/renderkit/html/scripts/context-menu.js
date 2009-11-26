@@ -48,7 +48,7 @@ Richfaces.ContextMenu.prototype = {
 	},
 	
 	enableDefaultContextMenu: function () {
-		if (this.eventName == "contextmenu" && this.attachedToElementIds.length) {
+		if (this.eventName == "contextmenu" && this.attachedToElementId) {
 			var element = $(this.attachedToElementId);
 			if (!element && this.attachedToParent) {
 				element = this.element;
