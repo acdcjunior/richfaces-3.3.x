@@ -66,6 +66,7 @@
 		<context.root>http://localhost:8080/</context.root>
 		<context.path>/richfaces-demo</context.path>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<selenium.host>localhost</selenium.host>
 		<selenium.port>8444</selenium.port>
 		<firefoxProfileTemplate></firefoxProfileTemplate>
 	</properties>
@@ -119,9 +120,14 @@
 				</executions>
 			</plugin>
 		</plugins>
-
 	</build>
 	<profiles>
+		<profile>
+			<id>debug</id>
+			<properties>
+				<maven.surefire.debug>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -Xnoagent -Djava.compiler=NONE"</maven.surefire.debug>
+			</properties>
+		</profile>
 		<!--
 		  **********************
 		  ** Integration Test **
@@ -215,7 +221,7 @@
 									<suiteXmlFiles>
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
-									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.port='${selenium.port}'</argLine>
+									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}'</argLine>
 									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 								</configuration>
 							</execution>
