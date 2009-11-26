@@ -195,32 +195,48 @@
       </dependencies>
     </profile>
 	<profile>
-      <id>jsf2_0</id>
-	  <dependencies>
-	  <dependency>
-     <groupId>com.sun.faces</groupId>
-     <artifactId>jsf-api</artifactId>
-     <version>2.0.1</version>
-	 <exclusions>
-        <exclusion>
-          <artifactId>javax.el</artifactId>
-          <groupId>el-api</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-	<dependency>
-     <groupId>com.sun.faces</groupId>
-     <artifactId>jsf-impl</artifactId>
-     <version>2.0.1</version>
-	 <exclusions>
-        <exclusion>
-          <artifactId>javax.el</artifactId>
-          <groupId>el-api</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-	</dependencies>
-    </profile>
+		<id>jsf2_0</id>
+		<build>
+			<plugins>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>false</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<configuration>
+						<classifier>jsf2</classifier>
+					</configuration>
+				</plugin>
+			</plugins>
+		</build>
+		<dependencies>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>2.0.1</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>javax.el</artifactId>
+						<groupId>el-api</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+				<dependency>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
+					<version>2.0.1</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>javax.el</artifactId>
+						<groupId>el-api</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</profile>
   </profiles>
   <dependencies>
     <dependency>
