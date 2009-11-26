@@ -146,7 +146,7 @@ DragIndicator = {
 	initIFrame: function() {
 		if (DragIndicator.isIE6 && !this.iframe) {
 			var fakeElement = $(document.createElement("div"));
-			fakeElement.innerHTML = '<iframe class=\"rich-dragindicator-iframe\" src="" scrolling="no" frameborder="0" style="filter:Alpha(opacity=0);position:absolute;top:0px;left:0px;display:block"></iframe>';
+			fakeElement.innerHTML = '<iframe class=\"rich-dragindicator-iframe\" src=\"javascript:''\" scrolling="no" frameborder="0" style="filter:Alpha(opacity=0);position:absolute;top:0px;left:0px;display:block"></iframe>';
 			this.iframe = $(fakeElement.getElementsByTagName("iframe")[0]);
 			fakeElement.removeChild(this.iframe);
 			this.realParent.appendChild(this.iframe);
