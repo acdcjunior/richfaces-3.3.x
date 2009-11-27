@@ -69,6 +69,12 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      * to use it in cases of building absolute URLs.
      */
     protected String contextPath;
+    
+    /**
+     * Introduce some maven build properties
+     */
+    protected String mavenProjectBuildDirectory;	// usually ${project}/target
+    protected String mavenResourcesDir;				// usually ${project}/target/test-classes
 
     /**
      * predefined waitings to use in inheritors
@@ -76,30 +82,35 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected Waiting waitModelUpdate = Wait.interval(100).timeout(30000);
     protected Waiting waitGuiInteraction = Wait.interval(100).timeout(500);
 
-    /**
-     * Initializes context before each class run.
-     * 
-     * Parameters will be obtained from TestNG.
-     * 
-     * @param contextRoot
-     *            server's context root, e.g. http://localhost:8080/
-     * @param contextPath
-     *            context path to application in context of server's root (e.g.
-     *            /myapp)
-     * @param browser
-     *            used browser (e.g. "*firefox", see selenium reference API)
-     * @param seleniumPort
-     *            specifies on which port should selenium server run
-     */
-    @BeforeClass
-    @Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port" })
-    public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumHost, String seleniumPort) {
-        this.contextRoot = contextRoot;
-        this.contextPath = contextPath;
-        selenium = new DefaultSelenium(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
-        selenium.start();
-        allowInitialXpath();
-        loadCustomLocationStrategies();
+	/**
+	 * Initializes context before each class run.
+	 * 
+	 * Parameters will be obtained from TestNG.
+	 * 
+	 * @param contextRoot
+	 *            server's context root, e.g. http://localhost:8080/
+	 * @param contextPath
+	 *            context path to application in context of server's root (e.g.
+	 *            /myapp)
+	 * @param browser
+	 *            used browser (e.g. "*firefox", see selenium reference API)
+	 * @param seleniumPort
+	 *            specifies on which port should selenium server run
+	 */
+	@BeforeClass
+	@Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port", "maven.resources.dir",
+			"maven.project.build.directory" })
+	public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumHost,
+			String seleniumPort, String mavenResourcesDir, String mavenProjectBuildDirectory) {
+		this.contextRoot = contextRoot;
+		this.contextPath = contextPath;
+		this.mavenResourcesDir = mavenResourcesDir;
+		this.mavenProjectBuildDirectory = mavenProjectBuildDirectory;
+
+		selenium = new DefaultSelenium(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
+		selenium.start();
+		allowInitialXpath();
+		loadCustomLocationStrategies();
 	}
 
 	/**
