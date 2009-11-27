@@ -216,7 +216,7 @@
 									<suiteXmlFiles>
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
-									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}'</argLine>
+									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}'</argLine>
 									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 								</configuration>
 							</execution>
