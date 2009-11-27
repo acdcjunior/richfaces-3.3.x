@@ -8,9 +8,12 @@
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces.samples</groupId>
-  <artifactId>richfaces-demo</artifactId>
+  <artifactId>${classifiedArtifactId}</artifactId>
   <packaging>war</packaging>
   <name>richfaces-demo Maven Webapp</name>
+  <properties>
+	  <classifiedArtifactId>richfaces-demo</classifiedArtifactId>
+  </properties>
 
   <repositories>
     <repository>
@@ -204,12 +207,6 @@
 						<skip>false</skip>
 					</configuration>
 				</plugin>
-				<plugin>
-					<artifactId>maven-war-plugin</artifactId>
-					<configuration>
-						<classifier>jsf2</classifier>
-					</configuration>
-				</plugin>
 			</plugins>
 		</build>
 		<dependencies>
@@ -230,6 +227,9 @@
 				<version>2.0.1</version>
 			</dependency>
 		</dependencies>
+		<properties>
+			<classifiedArtifactId>richfaces-demo-jsf2</classifiedArtifactId>
+		</properties>
 	</profile>
   </profiles>
   <dependencies>

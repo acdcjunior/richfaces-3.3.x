@@ -59,7 +59,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<properties>
-		<demo.classifier />
+		<demo.artifactId.suffix />
 		<demo.version>${project.version}</demo.version>
 		<resources.dir>${project.build.directory}/test-classes</resources.dir>
 		<extensions.dir>${resources.dir}/user-extensions</extensions.dir>
@@ -225,6 +225,12 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>jsf2_0</id>
+			<properties>
+				<demo.artifactId.suffix>-jsf2</demo.artifactId.suffix>
+			</properties>
+		</profile>
 		<!--  Container Profile -->
 		<profile>
 			<id>container</id>
@@ -236,16 +242,8 @@
 			<dependencies>
 				<dependency>
 					<groupId>org.richfaces.samples</groupId>
-					<artifactId>richfaces-demo</artifactId>
+					<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
 					<version>${demo.version}</version>
-					<type>war</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.richfaces.samples</groupId>
-					<artifactId>richfaces-demo</artifactId>
-					<version>${demo.version}</version>
-					<classifier>jsf2</classifier>
 					<type>war</type>
 					<scope>provided</scope>
 				</dependency>
@@ -294,9 +292,8 @@
 								<deployables>
 									<deployable>
 										<groupId>org.richfaces.samples</groupId>
-										<artifactId>richfaces-demo</artifactId>
+										<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
 										<type>war</type>
-										<classifier>${demo.classifier}</classifier>
 										<properties>
 											<context>${context.path}</context>
 										</properties>

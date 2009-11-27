@@ -7,7 +7,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.framework</groupId>
-	<artifactId>richfaces-impl</artifactId>
+	<artifactId>${classifiedArtifactId}</artifactId>
 	<name>Java Server Faces AJAX framework implementation</name>
 	<version>3.3.3-SNAPSHOT</version>
 	<build>
@@ -167,12 +167,6 @@
 							<skip>false</skip>
 						</configuration>
 					</plugin>
-					<plugin>
-						<artifactId>maven-jar-plugin</artifactId>
-						<configuration>
-							<classifier>jsf2</classifier>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 			<dependencies>
@@ -184,6 +178,7 @@
 			</dependencies>
 			<properties>
 				<frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>
+				<classifiedArtifactId>richfaces-impl-jsf2</classifiedArtifactId>
 			</properties>
 		</profile>
 		<profile>
@@ -200,6 +195,7 @@
 			</dependencies>
 			<properties>
 				<frameworkAdditionalSourceFolder>src/main/java-jsf12</frameworkAdditionalSourceFolder>
+				<classifiedArtifactId>richfaces-impl</classifiedArtifactId>
 			</properties>
 		</profile>
 	</profiles>

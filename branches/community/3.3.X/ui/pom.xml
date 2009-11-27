@@ -97,9 +97,8 @@
 				</dependency>
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
+					<artifactId>richfaces-impl-jsf2</artifactId>
 					<version>${project.version}</version>
-					<classifier>jsf2</classifier>
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
