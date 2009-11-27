@@ -444,9 +444,8 @@
 				</dependency>
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
+					<artifactId>richfaces-impl-jsf2</artifactId>
 					<version>3.3.3-SNAPSHOT</version>
-					<classifier>jsf2</classifier>
 				</dependency>
 			</dependencies>
 		</profile>

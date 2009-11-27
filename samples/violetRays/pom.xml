@@ -34,8 +34,7 @@
 			<dependencies>
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
-					<classifier>jsf2</classifier>
+					<artifactId>richfaces-impl-jsf2</artifactId>
 					<scope>provided</scope>
 				</dependency>    
 			</dependencies>

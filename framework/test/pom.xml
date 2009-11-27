@@ -13,15 +13,14 @@
 	<url>https://ajax4jsf.dev.java.net</url>
 	
 	<profiles>
-			<profile>
+		<profile>
 			<id>jsf2_0</id>
 			<dependencies>
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
+					<artifactId>richfaces-impl-jsf2</artifactId>
 					<version>${project.version}</version>
 					<scope>provided</scope>
-					<classifier>jsf2</classifier>
 				</dependency>
 			</dependencies>
 		</profile>
