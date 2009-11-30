@@ -63,6 +63,166 @@
             </para>
          </listitem>
         </itemizedlist>
+      <para>
+		<emphasis role="bold"><property moreinfo="none">&lt;rich:scrollableDataTable&gt;</property></emphasis> includes the following attributes not included with <emphasis role="bold"><property moreinfo="none">&lt;rich:dataTable&gt;</property></emphasis>:
+      </para>
+	<itemizedlist>
+		<listitem>
+			<property moreinfo="none">activeClass</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">activeRowKey</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">bypassUpdates</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">data</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">eventsQueue</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">frozenColCount</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">height</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">hideWhenScrolling</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">ignoreDupResponses</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onselectionchange</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">requestDelay</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">scriptVar</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selectedClass</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selection</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">selectionMode</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">similarityGroupingId</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">sortOrder</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">status</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">timeout</property>
+		</listitem>
+	</itemizedlist>
+	<para>
+		<emphasis role="bold"><property moreinfo="none">&lt;rich:scrollableDataTable&gt;</property></emphasis> does <emphasis>not</emphasis> include the following attributes available with <emphasis role="bold"><property moreinfo="none">&lt;rich:dataTable&gt;</property></emphasis>:
+	</para>
+	<itemizedlist>
+		<listitem>
+			<property moreinfo="none">align</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">bgcolor</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">border</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">captionClass</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">captionStyle</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">cellpadding</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">cellspacing</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">columns</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">columnsWidth</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">dir</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">frame</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">lang</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onRowContextMenu</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onRowMouseMove</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onRowMouseOut</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onRowMouseOver</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onclick</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">ondblclick</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onkeydown</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onkeypress</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onkeyup</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onmousedown</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onmousemove</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onmouseout</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onmouseover</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">onmouseup</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">rules</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">sortPriority</property>
+		</listitem>
+		<listitem>
+			<property moreinfo="none">title</property>
+		</listitem>
+	</itemizedlist>
+	<note>
+		<title>Using <emphasis role="bold"><property>&lt;rich:column&gt;</property></emphasis></title>
+		<para>
+			The relative width of <emphasis role="bold"><property>&lt;rich:column&gt;</property></emphasis> is not supported by <emphasis role="bold"><property>&lt;rich:scrollableDataTable&gt;</property></emphasis>. It is, however, supported by <emphasis role="bold"><property>&lt;rich:dataTable&gt;</property></emphasis> and <emphasis role="bold"><property>&lt;rich:extendedDataTable&gt;</property></emphasis>.
+		</para>
+	</note>
     </section>
    <section>
                     <title>Details of Usage</title>
