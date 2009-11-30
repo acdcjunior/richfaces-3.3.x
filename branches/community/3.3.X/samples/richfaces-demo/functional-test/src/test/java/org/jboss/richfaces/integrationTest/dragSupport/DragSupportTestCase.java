@@ -43,7 +43,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String LOC_CLASS_DRAG_INDICATOR = getLoc("CLASS_DRAG_INDICATOR");
 	private final String LOC_IMGSRC_DRAG_INDICATOR = getLoc("IMGSRC_DRAG_INDICATOR");
 	private final String LOC_CHOICES_OF_DIV_TARGETS = getLoc("CHOICES_OF_DIV_TARGETS");
-	private final String LOC_DIV_FIRST_INSERTED_ITEM_RELATIVE = getLoc("DIV_FIRST_INSERTED_ITEM_RELATIVE");
+	private final String LOC_TBODY_TARGET_ITEMS_AREA_RELATIVE = getLoc("TBODY_TARGET_ITEMS_AREA_RELATIVE");
 	private final String LOC_DIV_DRAGGED_ITEM_PREFORMATTED = getLoc("DIV_DRAGGED_ITEM_PREFORMATTED");
 
 	private final String MSG_CHOICES_FRAMEWORKS = getMsg("CHOICES_FRAMEWORKS");
@@ -156,10 +156,11 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 					"The image source of indicator '{0}' doesn't match '{1}", actual, MSG_REGEXP_IMGSRC_OF_ACCEPTING));
 		}
 
-		String firstInsertedItem = format(LOC_DIV_FIRST_INSERTED_ITEM_RELATIVE, target);
+		final String locTargetItemsArea = format(LOC_TBODY_TARGET_ITEMS_AREA_RELATIVE, target);
+		
 		if (phase == 2) {
-			assertFalse(selenium.isElementPresent(firstInsertedItem),
-					"There was one item inserted to target, but there was expected no item");
+			assertEquals(selenium.getText(locTargetItemsArea), "",
+					"There was some text in target area which was expected to be empty");
 		}
 
 		drag.drop();
@@ -171,17 +172,15 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 				}
 			});
 
-			assertTrue(selenium.isElementPresent(firstInsertedItem),
-					"There was no item inserted in target after drop of accepting item");
-			assertFalse(selenium.getText(item).equals(itemText), "The dragged item was still in framework list after drop to accepting target");
-
-			String actual = selenium.getText(firstInsertedItem);
-			assertEquals(itemText, actual,
-					"The text of first inserted item to target and previously dragged item isn't same");
+			assertEquals(selenium.getText(locTargetItemsArea), itemText,
+					"There is no item in target or the first and only inserted item hasn't same text as dragged item");
+			assertFalse(selenium.getText(item).contains(itemText),
+					"The dragged item was probably still in framework list after drop to accepting target");
 		}
 	}
 
 	private void rejecting(int phase) {
+		String itemText = format(MSG_CHOICES_FRAMEWORKS, 1);
 		String item = format(LOC_DIV_DRAGGED_ITEM_PREFORMATTED, 1);
 		String target = format(LOC_CHOICES_OF_DIV_TARGETS, 1);
 
@@ -195,7 +194,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 					return "block".equals(getStyle(LOC_DIV_DRAG_INDICATOR, "display"));
 				}
 			});
-
+			
 			String actual = selenium.getAttribute(LOC_CLASS_DRAG_INDICATOR);
 			assertTrue(Pattern.matches(MSG_REGEXP_CLASS_OF_REJECTING, actual), format(
 					"The class of indicator '{0}' doesn't match '{1}'", actual, MSG_REGEXP_CLASS_OF_REJECTING));
@@ -205,11 +204,11 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 					"The image source of indicator '{0}' doesn't match '{1}", actual, MSG_REGEXP_IMGSRC_OF_REJECTING));
 		}
 
-		String firstInsertedItem = format(LOC_DIV_FIRST_INSERTED_ITEM_RELATIVE, target);
-
+		final String locTargetItemsArea = format(LOC_TBODY_TARGET_ITEMS_AREA_RELATIVE, target);
+		
 		if (phase == 2) {
-			assertFalse(selenium.isElementPresent(firstInsertedItem),
-					"There was one item inserted to target, but no item expected");
+			assertEquals(selenium.getText(locTargetItemsArea), "",
+					"There was some text in target area which was expected to be empty");
 		}
 
 		drag.drop();
@@ -220,10 +219,10 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 					return "none".equals(getStyle(LOC_DIV_DRAG_INDICATOR, "display"));
 				}
 			});
-
-			assertFalse(selenium.isElementPresent(firstInsertedItem),
+			
+			assertFalse(selenium.getText(locTargetItemsArea).contains(itemText),
 					"There was item inserted in target but no item expected when dropped to rejecting target");
-			assertTrue(selenium.isElementPresent(item),
+			assertTrue(selenium.getText(item).contains(itemText),
 					"The dragged item disappeared as not expected when dropped to rejecting target");
 		}
 	}
