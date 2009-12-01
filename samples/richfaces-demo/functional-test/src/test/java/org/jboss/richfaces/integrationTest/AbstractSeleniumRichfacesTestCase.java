@@ -27,8 +27,6 @@ import static org.testng.Assert.assertTrue;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 import org.jboss.test.selenium.AbstractSeleniumTestCase;
@@ -36,8 +34,6 @@ import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
 import org.jboss.test.selenium.waiting.Wait.Waiting;
 import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
 import org.testng.TestRunner;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -57,7 +53,7 @@ import com.thoughtworks.selenium.DefaultSelenium;
  */
 
 public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase {
-
+	
     /**
      * context root can be used to obtaining full URL paths, is set to actual
      * tested application's context root
@@ -82,6 +78,28 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected Waiting waitModelUpdate = Wait.interval(100).timeout(30000);
     protected Waiting waitGuiInteraction = Wait.interval(100).timeout(500);
 
+    /**
+     * Test listener used to logging to selenium's server.log
+     * via getEval() method (see {@link SeleniumLoggingTestListener})
+     *
+     * Don't forget to use SeleniumLoggingTestListener.setSelenium(Selenium)
+     * to initialize selenium-side logging properly
+     */
+    SeleniumLoggingTestListener loggingTestListener;
+    
+    /**
+     * Register test listener in test context
+     * 
+     * @param context
+     *            will be injected by TestNG
+     */
+    @BeforeTest
+    protected void addTestListeners(ITestContext context) {
+        TestRunner runner = (TestRunner) context;
+        loggingTestListener = new SeleniumLoggingTestListener();
+        runner.addTestListener(loggingTestListener);
+    }
+    
 	/**
 	 * Initializes context before each class run.
 	 * 
@@ -111,6 +129,8 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 		selenium.start();
 		allowInitialXpath();
 		loadCustomLocationStrategies();
+		// adding selenium-side logging facility
+		loggingTestListener.setSelenium(selenium);
 	}
 
 	/**
@@ -167,58 +187,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected Properties getMessagesProperties() {
         return getNamedPropertiesForClass(this.getClass(), "messages");
     }
-
-    /**
-     * Add test listener to get advanced logging and other possibilities.
-     * 
-     * @param context
-     *            will be injected by TestNG
-     */
-    @BeforeTest
-    protected void addTestListeners(ITestContext context) {
-        TestRunner runner = (TestRunner) context;
-        runner.addTestListener(testListener);
-    }
-
-    /**
-     * Implementation of listener, which will trigger each test run.
-     */
-    private ITestListener testListener = new ITestListener() {
-
-        /**
-         * Will print to log name of test before each test run.
-         */
-        public void onTestStart(ITestResult result) {
-            String methodName = result.getMethod().toString();
-            Matcher matcher = Pattern.compile(".*\\.(.*\\..*)").matcher(methodName);
-
-            if (matcher.lookingAt()) {
-                methodName = matcher.group(1);
-            }
-
-            String hashes = "##########";
-            System.out.println(String.format("%s %s %s", hashes, methodName, hashes));
-        }
-
-        public void onFinish(ITestContext context) {
-        }
-
-        public void onStart(ITestContext context) {
-        }
-
-        public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        }
-
-        public void onTestFailure(ITestResult result) {
-        }
-
-        public void onTestSkipped(ITestResult result) {
-        }
-
-        public void onTestSuccess(ITestResult result) {
-        }
-    };
-
+	
     /**
      * An abstract implementation of test for testing source code of examples.
      * 

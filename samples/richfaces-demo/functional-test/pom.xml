@@ -196,6 +196,9 @@
 									<debug>false</debug>
 									<port>${selenium.port}</port>
 									<userExtensions>${resources.dir}/custom-extensions.js</userExtensions>
+									<logOutput>true</logOutput>
+									<browserSideLog>true</browserSideLog>
+									<debug>true</debug>
 								</configuration>
 							</execution>
 						</executions>
@@ -218,6 +221,12 @@
 									</suiteXmlFiles>
 									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}'</argLine>
 									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
+									<properties>
+										<property>
+											<name>listener</name>
+											<value>org.jboss.richfaces.integrationTest.ConsoleStatusTestListener</value>
+										</property>
+									</properties>
 								</configuration>
 							</execution>
 						</executions>
