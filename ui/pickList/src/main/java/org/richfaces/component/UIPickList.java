@@ -75,6 +75,15 @@ public abstract class UIPickList extends UISelectMany {
 		return converter;
 	}
 	
+    @Override
+    protected void validateValue(FacesContext context, Object value) {
+    	if(UIRichInput.isEmpty(value)){
+    		UIRichInput.validateInput(context, this, value);
+    	}
+    	super.validateValue(context, value);
+    }
+
+	
 	private Converter getConverterForType(FacesContext context, Class <?> type) {
 		
 		if (!Object.class.equals(type) && type != null) {

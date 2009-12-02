@@ -29,7 +29,7 @@ import javax.faces.component.UIInput;
  */
 
 
-public abstract class UIInplaceInput extends UIInput {
+public abstract class UIInplaceInput extends UIRichInput {
 	
 	/**
      * <p>The standard component type for this component.</p>
