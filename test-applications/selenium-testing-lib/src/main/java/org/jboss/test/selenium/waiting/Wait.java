@@ -373,27 +373,7 @@ public class Wait {
 		}
 
 		/**
-		 * <p>Stars loop waiting to satisfy condition.</p>
-		 * 
-		 * <p>The condition will be tested</p>
-		 *  
-		 * <ul>
-		 * <li>on the start,</li>
-		 * <li>every time interval after last try</li>
-		 * <li>and also once after timeout when finishes interval since last try before timeout.</li>
-		 * </ul>
-		 * 
-		 * <p>Scheme:</p>
-		 * 
-		 * <p><pre>S ..int.. T ..int.. T ..int1..timeout..int2.. L</pre></p>
-		 * 
-		 * <p>
-		 * <div>S - starting try</div>
-		 * <div>T - try within intervals</div>
-		 * <div>L - last try after timeout</div>
-		 * <div>int - one interval</div>
-		 * <div>int = int1 + int2</div>
-		 * </p>
+		 * Stars loop waiting to satisfy condition.
 		 * 
 		 * @param condition
 		 *            what wait for to be satisfied
@@ -402,17 +382,13 @@ public class Wait {
 			long start = System.currentTimeMillis();
 			long end = start + timeout;
 			while (System.currentTimeMillis() < end) {
-				if (condition.isTrue())
-					return;
 				try {
 					Thread.sleep(interval);
 				} catch (InterruptedException e) {
 					throw new RuntimeException(e);
 				}
-				if (System.currentTimeMillis() >= end) {
-					if (condition.isTrue())
-						return;
-				}
+				if (condition.isTrue())
+					return;
 			}
 			fail();
 		}
