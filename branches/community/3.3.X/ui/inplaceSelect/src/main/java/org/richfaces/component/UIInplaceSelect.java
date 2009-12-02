@@ -21,6 +21,7 @@
 package org.richfaces.component;
 
 import javax.faces.component.UISelectOne;
+import javax.faces.context.FacesContext;
 
 /**
  * UI implementation of InplaceSelect component
@@ -34,4 +35,12 @@ public abstract class UIInplaceSelect extends UISelectOne{
     public static final String COMPONENT_FAMILY = "org.richfaces.InplaceSelect";
     public abstract boolean isShowValueInView(); 
     public abstract void setShowValueInView(boolean showValueInView);
+    
+    @Override
+    protected void validateValue(FacesContext context, Object value) {
+    	if(UIRichInput.isEmpty(value)){
+    		UIRichInput.validateInput(context, this, value);
+    	}
+    	super.validateValue(context, value);
+    }
 }

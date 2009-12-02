@@ -44,7 +44,7 @@ import org.ajax4jsf.renderkit.AjaxRendererUtils;
  * @author asmirnov
  * 
  */
-public class FacesBeanValidator implements Validator,Serializable, GraphValidator {
+public class FacesBeanValidator implements NullValueValidator,Serializable, GraphValidator {
 
 	/**
 	 * 

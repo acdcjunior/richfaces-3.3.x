@@ -64,7 +64,7 @@ import org.richfaces.renderkit.CalendarRendererBase;
  * JSF component class
  * 
  */
-public abstract class UICalendar extends UIInput implements AjaxComponent {
+public abstract class UICalendar extends UIRichInput implements AjaxComponent {
 
 	/**
 	 * firstWeekDay

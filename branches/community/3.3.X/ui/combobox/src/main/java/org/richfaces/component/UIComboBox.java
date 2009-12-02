@@ -29,7 +29,7 @@ import javax.faces.component.UIInput;
  */
 
 
-public abstract class UIComboBox extends UIInput {
+public abstract class UIComboBox extends UIRichInput {
 	
 	public abstract Object getSuggestionValues();
 	public abstract void  setSuggestionValues(Object value);	
