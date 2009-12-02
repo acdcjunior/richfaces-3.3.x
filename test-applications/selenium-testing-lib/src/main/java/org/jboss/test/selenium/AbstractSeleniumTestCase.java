@@ -811,11 +811,11 @@ public abstract class AbstractSeleniumTestCase {
     public String getTextOrNull(String locator) {
         try {
             return selenium.getEval(format("selenium.getTextOrNull(\"{0}\")", locator));
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             if ("ERROR: Threw an exception: element is not found".equals(e.getMessage())) {
                 return null;
             }
-            throw new SeleniumException(e);
+            throw e;
         }
     }
 
