@@ -1347,29 +1347,31 @@ RichFaces.Menu.Item = Class.create({
 		this.id = id;
 		this.menu = menu;
 		this.mouseOver = false;
-		
-		this.getElement().oncontextmenu = this.getIcon().oncontextmenu
-			= this.getLabel().oncontextmenu = function(event) {Event.stop(event); return false;};
 
-		var binding; 
 
-		binding = new RichFaces.Menu.Layer.Binding (
- 				id,
- 				"mouseover",
+        var oncontextmenu = function(event) {
+            if (event) {
+                Event.stop(event);
+            }
+
+            return false;
+        };
+
+        this.getElement().oncontextmenu = oncontextmenu;
+        this.getIcon().oncontextmenu = oncontextmenu;
+        this.getLabel().oncontextmenu = oncontextmenu;
+
+		var binding = new RichFaces.Menu.Layer.Binding(id, "mouseover",
  				this.onmouseover.bindAsEventListener(this));
  		menu.bindings.push(binding);
  		binding.refresh();
  		
- 		binding = new RichFaces.Menu.Layer.Binding (
- 				id,
- 				"mouseout",
+ 		binding = new RichFaces.Menu.Layer.Binding(id, "mouseout",
  				this.onmouseout.bindAsEventListener(this));
  		menu.bindings.push(binding);
  		binding.refresh();
 
- 		binding = new RichFaces.Menu.Layer.Binding (
- 				id,
- 				"click",
+ 		binding = new RichFaces.Menu.Layer.Binding(id, "click",
  				this.onclick.bindAsEventListener(this));
  		menu.bindings.push(binding);
  		binding.refresh();
