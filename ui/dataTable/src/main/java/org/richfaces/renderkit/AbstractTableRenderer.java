@@ -169,8 +169,8 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 		UIComponent header = table.getHeader();
 
 		boolean isEncodeHeaders = isColumnFacetPresent(table, "header") || 
-			isHeaderFactoryColumnAttributePresent(table, "sortBy") ||
-			isHeaderFactoryColumnAttributePresent(table, "comparator") ||
+//			isHeaderFactoryColumnAttributePresent(table, "sortBy") ||
+//			isHeaderFactoryColumnAttributePresent(table, "comparator") ||
 			isHeaderFactoryColumnAttributePresent(table, "filterBy");
 		
 		if (header != null || isEncodeHeaders) {
@@ -457,7 +457,6 @@ public abstract class AbstractTableRenderer extends AbstractRowsRenderer {
 	/**
 	 * Calculate total number of columns in table.
 	 * 
-	 * @param context
 	 * @param table
 	 * @return
 	 */
