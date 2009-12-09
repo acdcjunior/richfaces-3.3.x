@@ -7,7 +7,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.richfaces.integrationTest</groupId>
-	<artifactId>selenium-test</artifactId>
+	<artifactId>functional-test</artifactId>
 	<packaging>jar</packaging>
 	<name>selenium-test</name>
 	<url>http://maven.apache.org</url>
@@ -33,7 +33,7 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>openqa</id>
+			<id>archiva.openqa.org</id>
 			<name>OpenQA Repository</name>
 			<url>http://archiva.openqa.org/repository/releases</url>
 			<layout>default</layout>
@@ -61,6 +61,7 @@
 	<properties>
 		<demo.artifactId.suffix />
 		<demo.version>${project.version}</demo.version>
+		<demo.location></demo.location>
 		<resources.dir>${project.build.directory}/test-classes</resources.dir>
 		<extensions.dir>${resources.dir}/user-extensions</extensions.dir>
 		<browser></browser>
@@ -69,10 +70,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<selenium.host>localhost</selenium.host>
 		<selenium.port>8444</selenium.port>
+		<selenium.debug>false</selenium.debug>
+		<selenium.maximize>false</selenium.maximize>
 		<firefoxProfileTemplate></firefoxProfileTemplate>
 	</properties>
 	<build>
-		<finalName>seleniumTest</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
@@ -193,12 +196,12 @@
 								</goals>
 								<configuration>
 									<background>true</background>
-									<debug>false</debug>
 									<port>${selenium.port}</port>
 									<userExtensions>${resources.dir}/custom-extensions.js</userExtensions>
 									<logOutput>true</logOutput>
-									<browserSideLog>true</browserSideLog>
-									<debug>true</debug>
+									<logFile>${project.build.directory}/selenium/selenium-server.log</logFile>
+									<browserSideLog>${selenium.debug}</browserSideLog>
+									<debug>${selenium.debug}</debug>
 								</configuration>
 							</execution>
 						</executions>
@@ -219,7 +222,7 @@
 									<suiteXmlFiles>
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
-									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}'</argLine>
+									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dselenium.debug='${selenium.debug}' -Dselenium.maximize='${selenium.maximize}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}'</argLine>
 									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 									<properties>
 										<property>
@@ -303,6 +306,7 @@
 										<groupId>org.richfaces.samples</groupId>
 										<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
 										<type>war</type>
+										<location>${demo.location}</location>
 										<properties>
 											<context>${context.path}</context>
 										</properties>
@@ -314,7 +318,7 @@
 				</plugins>
 			</build>
 		</profile>
-		<!-- Container-type specifics: JBoss AS 5.X -->
+		<!-- Container: JBoss AS 5.X -->
 		<profile>
 			<id>container-jboss5x</id>
 			<activation>

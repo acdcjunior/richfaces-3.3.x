@@ -2,6 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
+                      
+    <activeProfiles>
+		<activeProfile>container-installation</activeProfile>
+	</activeProfiles>
+	
 	<profiles>
 		<!--  This is used by JBoss RichFaces QA -->
 		<profile>
@@ -26,6 +31,17 @@
 			</activation>
 			<properties>
 				<demo.version>${profile.demo.version}</demo.version>
+			</properties>
+		</profile>
+		<profile>
+			<id>demo-found-in-workspace</id>
+			<activation>
+				<file>
+					<exists>richfaces-demo.war</exists>
+				</file>
+			</activation>
+			<properties>
+				<demo.location>./richfaces-demo.war</demo.location>
 			</properties>
 		</profile>
 		<!-- INTERNET EXPLORER PROFILE -->
@@ -109,6 +125,26 @@
 				<browser.firefox>*firefox ${firefoxes.home}\firefox-${browser.version}\firefox.exe</browser.firefox>
 			</properties>
 		</profile>
+		<!-- CONTAINER INSTALLATION -->
+		<profile>
+			<id>container-installation</id>
+			<properties>
+				<jboss5x.version>5.1.0.GA</jboss5x.version>
+				<jboss5x.installer.url.unix>file:/qa/tools/src/jboss/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
+				<jboss5x.installer.url.windows>file:t:\src\jboss\jboss-5.1.0.GA.zip</jboss5x.installer.url.windows>
+				<tomcat6x.version>6.0.18</tomcat6x.version>
+				<tomcat6x.installer.url.unix>file:/qa/tools/src/apache/apache-tomcat-6.0.18.zip</tomcat6x.installer.url.unix>
+				<tomcat6x.installer.url.windows>file:t:\src\apache\apache-tomcat-6.0.18.zip</tomcat6x.installer.url.windows>
+			</properties>
+		</profile>
+		<profile>
+			<id>container-installation-jsf2</id>
+			<properties>
+				<jboss5x.version>6.0.0.M1</jboss5x.version>
+				<jboss5x.installer.url.unix>file:/qa/home/lfryc/jboss-jsf2/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
+				<jboss5x.installer.url.windows>file:h:\lfryc\jboss-jsf2\jboss-6.0.0.M1.zip</jboss5x.installer.url.windows>
+			</properties>
+		</profile>
 		<profile>
 			<id>container-tomcat6x-installation</id>
 			<activation>
@@ -118,9 +154,9 @@
 				</property>
 			</activation>
 			<properties>
-				<container.version>6.0.18</container.version>
-				<container.installer.url.unix>file:/qa/tools/src/apache/apache-tomcat-6.0.18.zip</container.installer.url.unix>
-				<container.installer.url.windows>file:t:\src\apache\apache-tomcat-6.0.18.zip</container.installer.url.windows>
+				<container.version>${tomcat6x.version}</container.version>
+				<container.installer.url.unix>${tomcat6x.installer.url.unix}</container.installer.url.unix>
+				<container.installer.url.windows>${tomcat6x.installer.url.windows}</container.installer.url.windows>
 			</properties>
 		</profile>
 		<profile>
@@ -132,9 +168,9 @@
 				</property>
 			</activation>
 			<properties>
-				<container.version>5.1.0.GA</container.version>
-				<container.installer.url.unix>file:/qa/tools/src/jboss/jboss-5.1.0.GA.zip</container.installer.url.unix>
-				<container.installer.url.windows>file:t:\src\jboss\jboss-5.1.0.GA.zip</container.installer.url.windows>
+				<container.version>${jboss5x.version}</container.version>
+				<container.installer.url.unix>${jboss5x.installer.url.unix}</container.installer.url.unix>
+				<container.installer.url.windows>${jboss5x.installer.url.windows}</container.installer.url.windows>
 			</properties>
 		</profile>
 		<profile>
@@ -158,6 +194,23 @@
 			<properties>
 				<container.installer.url>${container.installer.url.windows}</container.installer.url>
 			</properties>
+		</profile>
+		<!-- REPOSITORIES CONFIGURATION -->
+		<profile>
+			<id>repository-exadel</id>
+			<repositories>
+				<repository>
+					<!-- used for RichFaces release testing -->
+					<id>repository.exadel.com</id>
+					<url>http://repository.exadel.com</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
 		</profile>
 	</profiles>
 </profilesXml>
