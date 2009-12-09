@@ -36,6 +36,8 @@ cd $PROJECT_DIR/samples/violetRays
 mvn -s $settings -P local,docs,release clean deploy
 cd $PROJECT_DIR/samples/richfaces-demo
 mvn -s $settings -P local,docs,release clean deploy
+cd $PROJECT_DIR/samples/richfaces-demo,jsf2_0
+mvn -s $settings -P local,docs,release clean deploy
 cd $PROJECT_DIR/examples/photoalbum
 mvn -s $settings -P local,docs,release clean deploy
 cd $PROJECT_DIR/examples/photoalbum/assembly
