@@ -71,6 +71,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      */
     protected String mavenProjectBuildDirectory;	// usually ${project}/target
     protected String mavenResourcesDir;				// usually ${project}/target/test-classes
+    protected boolean seleniumDebug;					// if used specified debug mode of selenium testing
 
     /**
      * predefined waitings to use in inheritors
@@ -99,7 +100,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
         loggingTestListener = new SeleniumLoggingTestListener();
         runner.addTestListener(loggingTestListener);
     }
-    
+
 	/**
 	 * Initializes context before each class run.
 	 * 
@@ -116,23 +117,32 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 	 *            specifies on which port should selenium server run
 	 */
 	@BeforeClass
-	@Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port", "maven.resources.dir",
-			"maven.project.build.directory" })
+	@Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port", "selenium.debug",
+			"selenium.maximize", "maven.resources.dir", "maven.project.build.directory" })
 	public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumHost,
-			String seleniumPort, String mavenResourcesDir, String mavenProjectBuildDirectory) {
+			String seleniumPort, String seleniumDebug, String seleniumMaximize, String mavenResourcesDir,
+			String mavenProjectBuildDirectory) {
 		this.contextRoot = contextRoot;
 		this.contextPath = contextPath;
 		this.mavenResourcesDir = mavenResourcesDir;
 		this.mavenProjectBuildDirectory = mavenProjectBuildDirectory;
+		this.seleniumDebug = Boolean.valueOf(seleniumDebug);
 
 		selenium = new DefaultSelenium(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
 		selenium.start();
 		allowInitialXpath();
 		loadCustomLocationStrategies();
+		
 		// adding selenium-side logging facility
 		loggingTestListener.setSelenium(selenium);
+		
+		if (Boolean.valueOf(seleniumMaximize)) {
+			// focus and maximaze tested window
+			selenium.windowFocus();
+			selenium.windowMaximize();
+		}
 	}
-
+	
 	/**
 	 * Uses selenium.addLocationStrategy to implement own strategies to locate
 	 * items in the tested page
