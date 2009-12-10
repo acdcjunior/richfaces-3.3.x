@@ -13,7 +13,7 @@
         <para>
               The <emphasis role="bold">
             <property>&lt;rich:calendar&gt;</property>
-         </emphasis> component is used to create inputs for date and time and enter them inline or using pup-up calendar that allows to navigate through monthes and years.
+         </emphasis> component is used to create inputs for date and time and enter them inline or using pup-up calendar that allows to navigate through months and years.
         </para>
         <figure>
             <title>
@@ -264,47 +264,27 @@
                               </mediaobject>
                     </figure>
                     
-                    
-                    
-                   
                     <para>
-         <emphasis>
-                                        <property>"ondateselect"</property>
+                              The <emphasis><property>"onchanged"</property>
                               </emphasis> attribute is used to define an event that is triggered
-                              before date selection.</para>
-                    <para>
-         <emphasis>
-                                        The <property>"ondateselected"</property>
-                              </emphasis> attribute is used to define an event that is triggered
-                              after date selection. </para>
-                    <para>For example, to fire some event after date selection you should use
-                                        <emphasis role="bold">
-                                        <property>&lt;a4j:support&gt;</property>
-                              </emphasis>. And it should be bound to <emphasis>
-                                        <property>"ondateselected"</property>
-                              </emphasis> event as it's shown in the example below:</para>
+                              from date selection, as shown in the example below:</para>
    	<programlisting role="XML"><![CDATA[...
 <rich:calendar id="date" value="#{bean.dateTest}">
-          <a4j:support event="ondateselected" reRender="mainTable"/>
+          <a4j:support event="onchanged" reRender="mainTable"/>
 </rich:calendar>
 ...]]></programlisting>
-                    <note>
-                              <title>Note:</title>
-                              <para>
-                                        When a timePicker was fulfilled, the <emphasis>
-               <property>"ondateselected"</property>
-            </emphasis> attribute does not allow you to submit a selected date. It happens because this event rose when the date is selected but the input hasn't been updated with new value yet.
-                                        
-                              </para>
-                    </note>
                     <para>
-         <emphasis>
-                                        <property>"ondateselect"</property>
-                              </emphasis> could be used for possibility of date selection canceling.
+                              The <emphasis><property>"ondateselect"</property>
+                              </emphasis> attribute is used to define an event that is triggered
+                              before date selection. It could be used for possibility of date selection canceling.
                               See an example below:</para>
    	<programlisting role="XML"><![CDATA[...
 <rich:calendar id="date" value="#{bean.dateTest}" ondateselect="if (!confirm('Are you sure to change date?')){return false;}"/>
 ...]]></programlisting>
+                    <para>
+                              The <emphasis><property>"ondateselected"</property>
+                              </emphasis> attribute is used to define an event that is triggered
+                              after date selection. </para>
                     <para>
                               <emphasis>
                                         <property>"oncurrentdateselected"</property>
