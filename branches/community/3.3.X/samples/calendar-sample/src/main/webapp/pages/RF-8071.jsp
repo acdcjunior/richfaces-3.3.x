@@ -14,7 +14,8 @@
                 showFooter="false"
                 required="true"
                 requiredMessage="msg.error_validFromNotEmpty" 
-                enableManualInput="true" />
+                enableManualInput="true"
+                buttonIcon=""/>
     </h:form>
 </f:view>
 </body>

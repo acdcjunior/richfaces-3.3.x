@@ -85,8 +85,12 @@
 		</input> 
 		<jsp:scriptlet>
 		 <![CDATA[
-			String buttonIcon = org.richfaces.component.util.ViewUtil.getResourceURL((String) component.getAttributes().get("buttonIcon"),context);
-			String buttonIconDisabled = org.richfaces.component.util.ViewUtil.getResourceURL((String) component.getAttributes().get("buttonIconDisabled"),context);
+            String buttonIconAttr = (String) component.getAttributes().get("buttonIcon");
+			String buttonIcon = buttonIconAttr == null || buttonIconAttr.length() < 1 ? null :
+                    org.richfaces.component.util.ViewUtil.getResourceURL(buttonIconAttr, context);
+            String buttonIconDisabledAttr =(String) component.getAttributes().get("buttonIconDisabled");
+			String buttonIconDisabled = buttonIconDisabledAttr == null || buttonIconDisabledAttr.length() < 1 ? null :
+                    org.richfaces.component.util.ViewUtil.getResourceURL(buttonIconDisabledAttr, context);
 			String buttonLabel = (String) component.getAttributes().get("buttonLabel");
 			variables.setVariable("buttonLabel",buttonLabel);
 			variables.setVariable("buttonIconDisabled",buttonIconDisabled);
