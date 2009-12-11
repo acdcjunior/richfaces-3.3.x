@@ -878,6 +878,29 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 		return currentChildState;
 	}
 
+	private Map<String, Map<String, SavedState>> createChildStateCopy() {
+		Map<String, Map<String, SavedState>> childStateCopy = null;
+		
+		if (this.childState != null) {
+			childStateCopy = new HashMap<String, Map<String,SavedState>>();
+		
+			for (Entry<String, Map<String, SavedState>> entry : this.childState.entrySet()) {
+				String entryKey = entry.getKey();
+				Map<String, SavedState> entryValue = entry.getValue();
+				
+				Map<String, SavedState> entryValueCopy = null;
+				
+				if (entryValue != null) {
+					entryValueCopy = new HashMap<String, SavedState>(entryValue);
+				}
+				
+				childStateCopy.put(entryKey, entryValueCopy);
+			}
+		}
+		
+		return childStateCopy;
+	}
+	
 	/**
 	 * Save values of {@link EditableValueHolder} fields before change current
 	 * row.
@@ -1528,7 +1551,7 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 		state.ajaxKeys = this._ajaxKeys;
 		state.rowKeyVar = this._rowKeyVar;
 		state.stateVar = this._stateVar;
-		state.childStates = this.childState;
+		state.childStates = createChildStateCopy();
 		if (null != this._rowKeyConverter) {
 			state.rowKeyConverter = saveAttachedState(faces,this._rowKeyConverter);
 		}
