@@ -18,7 +18,7 @@ public class RegisterAction {
 	public void listener(ActionEvent event) {
 		//Check if the password fields are equals
 		if (bean.getConfirmPassword().equals(bean.getPassword())) {
-			FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "registered");
+			//FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "registered");
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					event.getComponent().getClientId(
