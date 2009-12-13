@@ -157,6 +157,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'Up' button
         selenium.click(LOC_BUTTON_UP);
 
+        waitFor(1000);
+
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
 
@@ -184,6 +186,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // click the 'Up' button (5,6,7 -> 6,7,5)
         selenium.click(LOC_BUTTON_UP);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
@@ -215,6 +219,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'Up' button (5,6,7 -> 6,7,5)
         selenium.click(LOC_BUTTON_UP);
 
+        waitFor(1000);
+
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
@@ -239,6 +245,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         // click the 'Down' button
         selenium.click(LOC_BUTTON_DOWN);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
@@ -267,6 +275,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // click the 'Down' button (5,6,7 -> 7,5,6)
         selenium.click(LOC_BUTTON_DOWN);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
@@ -298,6 +308,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'Down' button (5,6,7 -> 7,5,6)
         selenium.click(LOC_BUTTON_DOWN);
 
+        waitFor(1000);
+
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 4));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 5));
         after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 6));
@@ -325,6 +337,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'Last' button (1,2,..,last-1,last --> 2,..,last,1)
         selenium.click(LOC_BUTTON_LAST);
 
+        waitFor(1000);
+
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
         after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
@@ -339,7 +353,7 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testLastMultipleSongsShift() {
-        String[] before = new String[4];
+		String[] before = new String[4];
         String[] after = new String[4];
         int countOfLines = getJQueryCount(LOC_TABLE_LINES);
 
@@ -356,6 +370,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
 
         // click the 'Last' button (1,2,3,..,last --> 3,..,last,1,2)
         selenium.click(LOC_BUTTON_LAST);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
@@ -391,6 +407,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'Last' button (1,2,3,..,last --> 3,..,last,1,2)
         selenium.click(LOC_BUTTON_LAST);
 
+        waitFor(1000);
+
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-3));
         after[2] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-2));
@@ -419,6 +437,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(format(LOC_TABLE_LINE_PREFORMATTED, countOfLines-1));
         // click the 'First' button (1...last-1,last --> last,1...last-1)
         selenium.click(LOC_BUTTON_FIRST);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
@@ -452,6 +472,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'First' button (1...last-2,last-1,last -->
         // last-1,last,1...last-2)
         selenium.click(LOC_BUTTON_FIRST);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
@@ -487,6 +509,8 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
         // click the 'First' button (1...last-2,last-1,last -->
         // last-1,last,1...last-2)
         selenium.click(LOC_BUTTON_FIRST);
+
+        waitFor(1000);
 
         after[0] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 0));
         after[1] = selenium.getText(format(LOC_TABLE_LINE_PREFORMATTED, 1));
