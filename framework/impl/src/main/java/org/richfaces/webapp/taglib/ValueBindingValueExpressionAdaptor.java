@@ -20,9 +20,12 @@
  */
 package org.richfaces.webapp.taglib;
 
+import java.io.Serializable;
+
 import javax.el.ELException;
 import javax.el.ValueExpression;
 import javax.faces.component.StateHolder;
+import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
 import javax.faces.el.EvaluationException;
 import javax.faces.el.PropertyNotFoundException;
@@ -33,7 +36,12 @@ import javax.faces.el.ValueBinding;
  *
  */
 @SuppressWarnings("deprecation")
-public class ValueBindingValueExpressionAdaptor extends ValueBinding implements StateHolder {
+public class ValueBindingValueExpressionAdaptor extends ValueBinding implements StateHolder, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3242030160417022811L;
 
 	private ValueExpression expression;
 	private boolean tranzient;
@@ -105,11 +113,11 @@ public class ValueBindingValueExpressionAdaptor extends ValueBinding implements 
 	}
 	
 	public void restoreState(FacesContext context, Object state) {
-		expression = (ValueExpression) state;
+		expression = (ValueExpression) UIComponentBase.restoreAttachedState(context, state);
 	}
 	
 	public Object saveState(FacesContext context) {
-		return expression;
+		return UIComponentBase.saveAttachedState(context, expression);
 	}
 	
 	public void setTransient(boolean newTransientValue) {
