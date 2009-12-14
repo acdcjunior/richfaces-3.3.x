@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.ajax4jsf.Messages;
-import org.ajax4jsf.component.EventValueBinding;
+import org.ajax4jsf.component.EventValueExpression;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
@@ -139,7 +139,7 @@ public abstract class UIEffect extends UIComponentBase implements AjaxSupport {
 
    public void setParentProperties(UIComponent parent){
    	if (getFor() == "" && getEvent() !="" ) {
-	   	parent.setValueBinding(getEvent(), new EventValueBinding(this));
+	   	parent.setValueExpression(getEvent(), new EventValueExpression(this));
 	}
    }
 			   
