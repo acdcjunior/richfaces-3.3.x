@@ -23,16 +23,20 @@ package org.ajax4jsf.component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.el.MethodExpression;
 import javax.faces.FacesException;
 import javax.faces.FactoryFinder;
 import javax.faces.component.ContextCallback;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
@@ -51,6 +55,7 @@ import org.ajax4jsf.context.InvokerCallback;
 import org.ajax4jsf.context.ViewIdHolder;
 import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.event.EventsQueue;
+import org.ajax4jsf.model.KeepAlive;
 import org.ajax4jsf.renderkit.AjaxContainerRenderer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -690,4 +695,71 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 		return _brige;
 	}
 
+	protected Object getAdditionalState(FacesContext context) {
+		Map<String, Object> keepAliveBeans = new HashMap<String, Object>();
+		Map<String, Object> requestMap = context.getExternalContext()
+		.getRequestMap();
+		// Save all objects form request map wich marked by @KeepAlive
+		// annotations
+		for (Entry<String, Object> requestEntry : requestMap.entrySet()) {
+			Object bean = requestEntry.getValue();
+			// check value for a NULL -
+			// http://jira.jboss.com/jira/browse/RF-3576
+			if (null != bean
+					&& bean.getClass().isAnnotationPresent(KeepAlive.class)) {
+				keepAliveBeans.put(requestEntry.getKey(), bean);
+			}
+		}
+		if (keepAliveBeans.size() > 0) {
+			return UIComponentBase.saveAttachedState(context, keepAliveBeans);
+		} else {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void restoreAdditionalState(FacesContext context, Object state) {
+		if (null != state) {
+			boolean isAjax = AjaxContext.getCurrentInstance(context).isAjaxRequest();
+
+			// Append all saved beans to the request map.
+			Map beansMap = (Map) UIComponentBase.restoreAttachedState(context,
+					state);
+			Map<String, Object> requestMap = context.getExternalContext()
+			.getRequestMap();
+			for (Object key : beansMap.keySet()) {
+				Object bean = beansMap.get(key);
+				if (bean != null) {
+					KeepAlive annotation = bean.getClass().getAnnotation(KeepAlive.class);
+					if (annotation != null) {
+						if (!isAjax && annotation.ajaxOnly()) {
+
+							//skip ajax-only beans for non-ajax requests
+							continue;
+						}
+					}
+				}
+
+				requestMap.put((String) key, bean);
+			}
+		}
+	}
+	
+	@Override
+	public Object processSaveState(FacesContext context) {
+		Object[] state = new Object[2];
+		state[0] = super.processSaveState(context);
+		state[1] = getAdditionalState(context);
+		
+		return state;
+	}
+	
+	@Override
+	public void processRestoreState(FacesContext context, Object stateObject) {
+		Object[] state = (Object[]) stateObject;
+		
+		super.processRestoreState(context, state[0]);
+		restoreAdditionalState(context, state[1]);
+	}
+	
 }
