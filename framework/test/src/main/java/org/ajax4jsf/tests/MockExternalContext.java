@@ -61,6 +61,12 @@ public class MockExternalContext extends MockExternalContext12 {
 	private Iterator requestParameterNamesIterator = null;
 	private Set resourcePathsSet = null;
 	
+	private Map requestMap;
+	
+	private Map sessionMap;
+	
+	private Map applicationMap;
+	
 	public MockExternalContext(org.apache.shale.test.mock.MockExternalContext baseContext) {
 		super((ServletContext)baseContext.getContext(), 
 				(HttpServletRequest)baseContext.getRequest(), (HttpServletResponse)baseContext.getResponse());
@@ -318,5 +324,26 @@ public class MockExternalContext extends MockExternalContext12 {
 			Map<String, List<String>> parameters) {
 
 		return encodeUrl(baseUrl, parameters);
+	}
+	
+	public Map getRequestMap() {
+		if (requestMap == null) {
+			requestMap = new MockContextMap(super.getRequestMap());
+		}
+		return requestMap;
+	}
+	
+	public Map getSessionMap() {
+		if (sessionMap == null) {
+			sessionMap = new MockContextMap(super.getSessionMap());
+		}
+		return sessionMap;
+	}
+	
+	public Map getApplicationMap() {
+		if (applicationMap == null) {
+			applicationMap = new MockContextMap(super.getApplicationMap());
+		}
+		return applicationMap;
 	}
 }
