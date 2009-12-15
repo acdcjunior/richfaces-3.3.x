@@ -23,6 +23,9 @@
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
+			<properties>
+				<additionalTestFolder>src/test/java-jsf20</additionalTestFolder>
+			</properties>
 		</profile>
 		<profile>
 			<id>jsf1_2</id>
@@ -37,6 +40,9 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<additionalTestFolder>src/test/java-jsf12</additionalTestFolder>
+			</properties>
 		</profile>
 	</profiles>
 	
@@ -122,6 +128,25 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin> 
+		        <groupId>org.codehaus.mojo</groupId> 
+		        <artifactId>build-helper-maven-plugin</artifactId> 
+		        <version>1.4</version> 
+		        <executions> 
+	                <execution> 
+                        <id>add-test-source</id> 
+                        <phase>generate-sources</phase> 
+                        <goals> 
+                        	<goal>add-test-source</goal> 
+                        </goals> 
+                        <configuration> 
+                               <sources> 
+                                      <source>${additionalTestFolder}</source> 
+                               </sources>
+                        </configuration> 
+	                </execution> 
+		        </executions> 
+			</plugin> 
 		</plugins>
 	</build>
 </project>

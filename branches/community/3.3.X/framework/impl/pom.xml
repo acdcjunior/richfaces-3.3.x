@@ -39,7 +39,7 @@
                         <configuration> 
                                <sources> 
                                       <source>${frameworkAdditionalSourceFolder}</source> 
-                               </sources> 
+                               </sources>
                         </configuration> 
 	                </execution> 
 		        </executions> 
@@ -168,6 +168,11 @@
 						</configuration>
 					</plugin>
 				</plugins>
+				<resources>
+					<resource>
+						<directory>src/main/resources-jsf20</directory>
+					</resource>
+				</resources>
 			</build>
 			<dependencies>
 				<dependency>
