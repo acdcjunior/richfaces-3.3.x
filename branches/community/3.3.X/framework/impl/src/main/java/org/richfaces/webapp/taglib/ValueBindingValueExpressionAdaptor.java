@@ -117,7 +117,11 @@ public class ValueBindingValueExpressionAdaptor extends ValueBinding implements 
 	}
 	
 	public Object saveState(FacesContext context) {
-		return UIComponentBase.saveAttachedState(context, expression);
+		if (!tranzient) {
+			return UIComponentBase.saveAttachedState(context, expression);
+		} else {
+			return null;
+		}
 	}
 	
 	public void setTransient(boolean newTransientValue) {
