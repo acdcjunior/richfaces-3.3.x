@@ -108,13 +108,17 @@
             
             
             <para>
-                  The component can restore it's previous state (including position on the screen) after submitting and reloading. 
+                  The component can restore its previous state (including position on the screen) after submitting and reloading. 
                   Set <emphasis><property>&quot;keepVisualState&quot;</property></emphasis> to <code>true</code> to submit and pass <emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis> current parameters to a new page.
-                  The <emphasis><property>&quot;showWhenRendered&quot;</property></emphasis> bolean attribute is used in cases when component should be rendered after first page loading. 
+                  The <emphasis><property>&quot;showWhenRendered&quot;</property></emphasis> boolean attribute is used in cases when component should be rendered after first page loading. 
             </para>
             
             <para>
-                  To understand sence of the <emphasis><property>&quot;domElementAttachment&quot;</property></emphasis> attribute it is necessary to understand 
+                  The <emphasis><property>&quot;trimOverlayedElements&quot;</property></emphasis> boolean attribute can be used to determine if the modal panel will expand to show other components inside it. Set the attribute to <code>false</code> to ensure components are not cut off.
+            </para>
+            
+            <para>
+                  To understand sense of the <emphasis><property>&quot;domElementAttachment&quot;</property></emphasis> attribute it is necessary to understand 
                   what is <emphasis>stacking context</emphasis> and how it works in the HTML makeup. 
                   Since each <emphasis>positioned</emphasis> or <emphasis>z-indexed</emphasis> element (CSS <code>position:absolute</code> or <code>relative</code> and <code>z-index:*any integer different from 0*</code>) 
                   form their own stacking context the <emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis> rendered as a child of such element may be overlapped with an element 
@@ -123,7 +127,7 @@
                   To make the <emphasis role="bold"><property>&lt;rich:modalPanel&gt;</property></emphasis> rendered in &quot;closest&quot; to an observer layer and avoid such overlapping, 
                   the component was designed in way when it is always being automatically assimilated with <code>&lt;body&gt;</code> with a very high rendering layer (<code>z-index</code>). 
                   But our panel should be assimilated with <code>&lt;body&gt;</code> not always, because of some side effects that take place in this case.
-                  The <emphasis><property>&quot;domElementAttachment&quot;</property></emphasis> attribute helps to reassign the panel to it <emphasis>parent</emphasis> or <emphasis>form</emphasis> element. 
+                  The <emphasis><property>&quot;domElementAttachment&quot;</property></emphasis> attribute helps to reassign the panel to its <emphasis>parent</emphasis> or <emphasis>form</emphasis> element. 
                   If <emphasis>form</emphasis> is used and no parent form is available the panel is functioning as if it is assimilated with <code>&lt;body&gt;</code>.
             </para>
             
