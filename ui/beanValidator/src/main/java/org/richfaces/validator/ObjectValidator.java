@@ -49,17 +49,19 @@ public abstract class ObjectValidator {
 		// TODO - get instance class name from a "META-INF/service"
 		// If the Seam framework is active, org.jboss.seam.core.Validators
 		// component should be used.
-		ObjectValidator validator;
+		ObjectValidator validator = null;
 		try {
 			validator = new BeanValidator();
-		} catch (Throwable e) {
-			log.warn("Bean Validator could not be instantiated", e);
+		} catch (Exception e) {
 			try {
 				validator = new HibernateValidator();
 			} catch (Throwable e2) {
-				log.warn("Hibernate Validator could not be instantiated, use stub instead", e);
-				validator = new NullValidator();
+				//Hibernate-validators not available
 			}
+		}
+		if(validator == null){
+			log.warn("Validator implementations not found at classpath, default NullValidator will be used.");
+			validator = new NullValidator();
 		}
 		return validator;
 	}
