@@ -627,10 +627,15 @@ ExtendedDataTable.SelectionManager = Class.create({
 		  return;
 		}
 		var i = range[0];
-		range[1] = (range[1] + 1) % this.rowCount;
+		if((range[1] != this.rowCount-1)&& this.rowCount > 1){
+			range[1] = (range[1] + 1) % this.rowCount;
+		}
 		while (i != range[1]) {
 			this.addRowToSelection(i);
 			i = (i + 1) % this.rowCount;	
+		}
+		if((range[1] == this.rowCount-1)&& this.rowCount > 1){
+			this.addRowToSelection(this.rowCount-1);
 		}
 	},
 	
