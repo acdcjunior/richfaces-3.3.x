@@ -141,7 +141,7 @@
 			<id>container-installation-jsf2</id>
 			<properties>
 				<jboss5x.version>6.0.0.M1</jboss5x.version>
-				<jboss5x.installer.url.unix>file:/qa/home/lfryc/jboss-jsf2/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
+				<jboss5x.installer.url.unix>file:/qa/home/lfryc/jboss-jsf2/jboss-6.0.0.M1.zip</jboss5x.installer.url.unix>
 				<jboss5x.installer.url.windows>file:h:\lfryc\jboss-jsf2\jboss-6.0.0.M1.zip</jboss5x.installer.url.windows>
 			</properties>
 		</profile>
