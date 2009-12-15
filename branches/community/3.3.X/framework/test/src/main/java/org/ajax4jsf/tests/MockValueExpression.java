@@ -89,8 +89,7 @@ public class MockValueExpression extends ValueExpression {
      */
     @Override
     public void setValue(ELContext context, Object value) {
-		value = value;
-
+		this.value = value;
     }
 
     /* (non-Javadoc)

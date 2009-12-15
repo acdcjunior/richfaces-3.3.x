@@ -113,15 +113,24 @@ public class ValueBindingValueExpressionAdaptor extends ValueBinding implements 
 	}
 	
 	public void restoreState(FacesContext context, Object state) {
-		expression = (ValueExpression) UIComponentBase.restoreAttachedState(context, state);
+		if (state instanceof ValueExpression) {
+			expression = (ValueExpression) state;
+		} else {
+			expression = (ValueExpression) UIComponentBase.restoreAttachedState(context, state);
+		}
 	}
 	
 	public Object saveState(FacesContext context) {
+		Object result = null;
 		if (!tranzient) {
-			return UIComponentBase.saveAttachedState(context, expression);
-		} else {
-			return null;
+			if (expression instanceof StateHolder) {
+				result = UIComponentBase.saveAttachedState(context, expression);
+			} else {
+				result = expression;
+			}
 		}
+		
+		return result;
 	}
 	
 	public void setTransient(boolean newTransientValue) {
