@@ -20,9 +20,12 @@
  */
 package org.richfaces.webapp.taglib;
 
+import java.io.Serializable;
+
 import javax.el.ELException;
 import javax.el.MethodExpression;
 import javax.faces.component.StateHolder;
+import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
 import javax.faces.el.EvaluationException;
 import javax.faces.el.MethodBinding;
@@ -34,10 +37,17 @@ import javax.faces.el.MethodNotFoundException;
  *
  */
 @SuppressWarnings("deprecation")
-public class MethodBindingMethodExpressionAdaptor extends MethodBinding implements StateHolder{
+public class MethodBindingMethodExpressionAdaptor extends MethodBinding implements StateHolder, Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 225772153283234069L;
 	
 	private MethodExpression expression;
+	
 	private boolean tranzient;
+	
 	/* (non-Javadoc)
 	 * @see javax.faces.el.MethodBinding#getType(javax.faces.context.FacesContext)
 	 */
@@ -79,11 +89,24 @@ public class MethodBindingMethodExpressionAdaptor extends MethodBinding implemen
 	}
 	
 	public void restoreState(FacesContext context, Object state) {
-		expression = (MethodExpression) state;
+		if (state instanceof MethodExpression) {
+			expression = (MethodExpression) state;
+		} else {
+			expression = (MethodExpression) UIComponentBase.saveAttachedState(context, state);
+		}
 	}
 	
 	public Object saveState(FacesContext context) {
-		return expression;
+		Object result = null;
+		if (!tranzient) {
+			if (expression instanceof StateHolder) {
+				result = UIComponentBase.saveAttachedState(context, expression);
+			} else {
+				result = expression;
+			}
+		}
+		
+		return result;
 	}
 	
 	public void setTransient(boolean newTransientValue) {
