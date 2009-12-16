@@ -392,7 +392,9 @@ ExtendedDataTable.SelectionManager = Class.create({
 	},
 	
 	removeListeners: function(){
-		Event.stopObserving(document, "keydown", this.eventKeyPress);
+		if(this.eventKeyPress) { // added if to ensure that all keydown event listeners are not removed
+			Event.stopObserving(document, "keydown", this.eventKeyPress);
+		} 
 		if (document.selection) {
 			Event.stopObserving(this.gridElement, "click", this.eventResetSelection);
 		}
