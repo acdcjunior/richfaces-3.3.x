@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+<ui:composition template="/templates/template.xhtml">
+
+	<ui:define name="title">Menu Item - RF-7975</ui:define>
+
+	<ui:define name="body">
+		<h1>Menu Item</h1>
+		<h3><a href="https://jira.jboss.org/jira/browse/RF-7975">https://jira.jboss.org/jira/browse/RF-7975</a></h3>
+		
+		<h:form>
+		<a id="back1" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
+		<h:panelGrid columns="3" class="bug-table">
+			<h:outputText value="Component"/>
+			<h:outputText value="WRONG" style="color: red;"/>
+			<h:outputText value="Description"/>
+			
+			<rich:fileUpload allowFlash="true" maxFilesQuantity="3"/>
+			<h:graphicImage value="/images/rf7975/getflash.png"/>
+			<h:panelGroup>
+				<ol>
+				<li>Verify that there is no "Get Adobe Flash player" image (ensure flash works in your browser).</li>
+				<li>verify that it is possible to choose one file.</li>
+				<li>Verify that it is possible to choose three files.</li>
+				</ol>
+			</h:panelGroup>
+			
+						
+		</h:panelGrid>
+		<a id="back2" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
+</body>
+</html>
