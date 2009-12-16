@@ -61,6 +61,7 @@
 	<properties>
 		<demo.artifactId.suffix />
 		<demo.version>${project.version}</demo.version>
+		<demo.classifier></demo.classifier>
 		<demo.location></demo.location>
 		<resources.dir>${project.build.directory}/test-classes</resources.dir>
 		<extensions.dir>${resources.dir}/user-extensions</extensions.dir>
@@ -73,6 +74,9 @@
 		<selenium.debug>false</selenium.debug>
 		<selenium.maximize>false</selenium.maximize>
 		<firefoxProfileTemplate></firefoxProfileTemplate>
+		<demo.deployable>${demo.deployable.directory}/${demo.deployable.file}</demo.deployable>
+		<demo.deployable.directory>${project.build.directory}</demo.deployable.directory>
+		<demo.deployable.file>richfaces-demo.war</demo.deployable.file>
 	</properties>
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -251,15 +255,6 @@
 					<name>containerId</name>
 				</property>
 			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>org.richfaces.samples</groupId>
-					<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
-					<version>${demo.version}</version>
-					<type>war</type>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
 			<build>
 				<plugins>
 					<plugin>
@@ -303,10 +298,8 @@
 								<type>installed</type>
 								<deployables>
 									<deployable>
-										<groupId>org.richfaces.samples</groupId>
-										<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
 										<type>war</type>
-										<location>${demo.location}</location>
+										<location>${demo.deployable}</location>
 										<properties>
 											<context>${context.path}</context>
 										</properties>
@@ -314,6 +307,90 @@
 								</deployables>
 							</deployer>
 						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>container-demoapp-deployable-dependency</id>
+			<activation>
+				<file>
+					<missing>${demo.location}</missing>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-richfaces-demo-war-dependency</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.richfaces.samples</groupId>
+											<artifactId>richfaces-demo</artifactId>
+											<version>${demo.version}</version>
+											<classifier>${demo.classifier}</classifier>
+											<type>war</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${demo.deployable.directory}</outputDirectory>
+											<destFileName>${demo.deployable.file}</destFileName>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>delete-richfaces-demo-war</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							<configuration>
+								<tasks>
+									<delete file="${demo.location}" tofile="${demo.deployable}" verbose="true" />
+								</tasks>
+							</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>container-demoapp-deployable-location</id>
+			<activation>
+				<file>
+					<exists>${demo.location}</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-richfaces-demo-war-from-location</id>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<copy file="${demo.location}" tofile="${project.build.directory}/richfaces-demo.war" verbose="true" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
