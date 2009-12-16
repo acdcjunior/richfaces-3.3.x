@@ -33,17 +33,6 @@
 				<demo.version>${profile.demo.version}</demo.version>
 			</properties>
 		</profile>
-		<profile>
-			<id>demo-found-in-workspace</id>
-			<activation>
-				<file>
-					<exists>richfaces-demo.war</exists>
-				</file>
-			</activation>
-			<properties>
-				<demo.location>./richfaces-demo.war</demo.location>
-			</properties>
-		</profile>
 		<!-- INTERNET EXPLORER PROFILE -->
 		<profile>
 			<id>browser-internet-explorer</id>
@@ -139,6 +128,11 @@
 		</profile>
 		<profile>
 			<id>container-installation-jsf2</id>
+			<activation>
+				<property>
+					<name>jsf2</name>
+				</property>
+			</activation>
 			<properties>
 				<jboss5x.version>5.1.0.GA</jboss5x.version>
 				<jboss5x.installer.url.unix>file:/qa/home/hudson/lfryc/jboss-jsf2/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>

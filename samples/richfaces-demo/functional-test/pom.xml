@@ -243,6 +243,11 @@
 		</profile>
 		<profile>
 			<id>jsf2_0</id>
+			<activation>
+				<property>
+					<name>jsf2</name>
+				</property>
+			</activation>
 			<properties>
 				<demo.artifactId.suffix>-jsf2</demo.artifactId.suffix>
 			</properties>
@@ -333,7 +338,7 @@
 									<artifactItems>
 										<artifactItem>
 											<groupId>org.richfaces.samples</groupId>
-											<artifactId>richfaces-demo</artifactId>
+											<artifactId>richfaces-demo${demo.artifactId.suffix}</artifactId>
 											<version>${demo.version}</version>
 											<classifier>${demo.classifier}</classifier>
 											<type>war</type>
