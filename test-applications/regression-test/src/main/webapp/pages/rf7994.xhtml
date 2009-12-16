@@ -16,7 +16,7 @@
 		<h3><a href="https://jira.jboss.org/jira/browse/RF-7994">https://jira.jboss.org/jira/browse/RF-7994</a></h3>
 		
 		<h:form>
-		<h:commandLink id="back1" action="index" value="Back to main page"/>
+		<a id="back1" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
 		<h:panelGrid columns="3" class="bug-table">
 			<h:outputText value="Component"/>
 			<h:outputText value="WRONG" style="color: red;"/>
@@ -85,7 +85,7 @@
 			</h:panelGroup>
 			
 		</h:panelGrid>
-		<h:commandLink id="back2" action="index" value="Back to main page"/>
+		<a id="back2" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
 		</h:form>
 		
 	</ui:define>
