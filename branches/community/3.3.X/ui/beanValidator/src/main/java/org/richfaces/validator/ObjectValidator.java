@@ -52,7 +52,14 @@ public abstract class ObjectValidator {
 		ObjectValidator validator = null;
 		try {
 			validator = new BeanValidator();
-		} catch (Exception e) {
+		} catch (Exception e){
+			try {
+				validator = new HibernateValidator();
+			} catch (Throwable e2) {
+				//Hibernate-validators not available
+			}
+		}
+		catch (LinkageError le){
 			try {
 				validator = new HibernateValidator();
 			} catch (Throwable e2) {
