@@ -362,7 +362,7 @@
 								</goals>
 							<configuration>
 								<tasks>
-									<delete file="${demo.location}" tofile="${demo.deployable}" verbose="true" />
+									<delete file="${demo.location}" verbose="true" />
 								</tasks>
 							</configuration>
 							</execution>
