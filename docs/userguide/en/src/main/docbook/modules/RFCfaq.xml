@@ -43,12 +43,12 @@
 
         <section>
                 <?dbhtml filename="IstheredemoforRichFacescomponents.html"?>
-                <title>Where could I find a demo for RichFaces 3.1.0 components?</title>
+                <title>Where could I find a demo for RichFaces components?</title>
                 <para>Online demo Web applications that show the most important functionality of
                         RichFaces components are available on<ulink
                                 url="http://livedemo.exadel.com/richfaces-demo/">RichFaces Live Demo</ulink>.</para>
                 <para>War file of a nightly build can be found on the <ulink
-                        url="http://snapshots.jboss.org/maven2/org/richfaces/ui/richfaces-ui/3.3.0-SNAPSHOT/"
+                        url="http://snapshots.jboss.org/maven2/org/richfaces/ui/richfaces-ui/3.3.3-SNAPSHOT/"
                         >Snapshots repository</ulink>.</para>
                 <para>Source Code (SVN) can be found in<ulink
                                 url="http://anonsvn.jboss.org/repos/richfaces/trunk/samples/richfaces-demo/"
