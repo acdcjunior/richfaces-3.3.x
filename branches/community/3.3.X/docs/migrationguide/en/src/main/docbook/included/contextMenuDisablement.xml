@@ -44,8 +44,8 @@
     <section>
         <title>Workarounds</title>
         <para>
-        	Update to <property>RichFaces</property> 3.3.1. 
-        	By default, the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> in <property>RichFaces</property> 3.3.1 completely disables
+        	Update to <property>RichFaces</property> 3.3.3. 
+        	By default, the <emphasis role="bold"><property>&lt;rich:contextMenu&gt;</property></emphasis> in <property>RichFaces</property> 3.3.3 completely disables
         	right mouse click in the Context Menu area only.
         </para>
     </section>
