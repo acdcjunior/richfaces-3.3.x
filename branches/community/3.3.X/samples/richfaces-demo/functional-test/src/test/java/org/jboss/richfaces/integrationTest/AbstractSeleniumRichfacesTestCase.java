@@ -39,7 +39,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import com.thoughtworks.selenium.DefaultSelenium;
@@ -79,25 +79,20 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected Waiting waitModelUpdate = Wait.interval(100).timeout(30000);
     protected Waiting waitGuiInteraction = Wait.interval(100).timeout(500);
 
-    /**
-     * Test listener used to logging to selenium's server.log
-     * via getEval() method (see {@link SeleniumLoggingTestListener})
-     *
-     * Don't forget to use SeleniumLoggingTestListener.setSelenium(Selenium)
-     * to initialize selenium-side logging properly
-     */
-    SeleniumLoggingTestListener loggingTestListener;
-    
-    /**
-     * Register test listener in test context
-     * 
-     * @param context
-     *            will be injected by TestNG
-     */
-    @BeforeTest
-    protected void addTestListeners(ITestContext context) {
-        TestRunner runner = (TestRunner) context;
+	/**
+	 * Test listener used to logging to selenium's server.log via getEval()
+	 * method (see {@link SeleniumLoggingTestListener})
+	 * 
+	 * Don't forget to use SeleniumLoggingTestListener.setSelenium(Selenium) to
+	 * initialize selenium-side logging properly
+	 */
+	private static volatile SeleniumLoggingTestListener loggingTestListener;
+
+    @BeforeSuite
+    protected void registerSeleniumInListeners(ITestContext context) {
         loggingTestListener = new SeleniumLoggingTestListener();
+        
+        TestRunner runner = (TestRunner) context;
         runner.addTestListener(loggingTestListener);
     }
 
@@ -132,6 +127,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 		selenium.start();
 		allowInitialXpath();
 		loadCustomLocationStrategies();
+		loggingTestListener.setSelenium(selenium);
 		
 		// adding selenium-side logging facility
 		loggingTestListener.setSelenium(selenium);
@@ -167,16 +163,17 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
         selenium.allowNativeXpath("false");
     }
 
-    /**
-     * Finalize context after each class run.
-     */
-    @AfterClass
-    public void finalizeContext() {
-        selenium.close();
-        selenium.stop();
-        selenium = null;
-        contextPath = null;
-    }
+	/**
+	 * Finalize context after each class run.
+	 */
+	@AfterClass
+	public void finalizeContext() {
+		loggingTestListener.setSelenium(null);
+		selenium.close();
+		selenium.stop();
+		selenium = null;
+		contextPath = null;
+	}
 
     /**
      * Default implementation of obtaining properties for each class.
