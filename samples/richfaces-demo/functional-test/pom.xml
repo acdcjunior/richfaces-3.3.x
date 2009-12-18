@@ -463,7 +463,7 @@
 				</property>
 			</activation>
 			<properties>
-				<container.home>${project.build.directory}/installs/apache-tomcat-r.version}/apache-tomcat-${container.version}</container.home>
+				<container.home>${project.build.directory}/installs/apache-tomcat-${container.version}/apache-tomcat-${container.version}</container.home>
 			</properties>
 			<build>
 				<plugins>
