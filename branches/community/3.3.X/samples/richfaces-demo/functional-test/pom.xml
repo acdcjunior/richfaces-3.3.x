@@ -390,7 +390,7 @@
 								</goals>
 								<configuration>
 									<tasks>
-										<copy file="${demo.location}" tofile="${project.build.directory}/richfaces-demo.war" verbose="true" />
+										<copy file="${demo.location}" tofile="${project.build.directory}/richfaces-demo.war" overwrite="true" verbose="true" />
 									</tasks>
 								</configuration>
 							</execution>
@@ -463,7 +463,7 @@
 				</property>
 			</activation>
 			<properties>
-				<container.home>${project.build.directory}/installs/apache-tomcat-${container.version}/apache-tomcat-${container.version}</container.home>
+				<container.home>${project.build.directory}/installs/apache-tomcat-r.version}/apache-tomcat-${container.version}</container.home>
 			</properties>
 			<build>
 				<plugins>
