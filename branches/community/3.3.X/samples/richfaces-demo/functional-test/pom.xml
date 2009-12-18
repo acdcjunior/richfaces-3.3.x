@@ -1,13 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<parent>
-		<groupId>org.richfaces</groupId>
-		<artifactId>samples</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
-	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.richfaces.integrationTest</groupId>
 	<artifactId>functional-test</artifactId>
+	<version>3.3.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>selenium-test</name>
 	<url>http://maven.apache.org</url>
@@ -163,6 +159,8 @@
 									<includeArtifactIds>selenium</includeArtifactIds>
 									<includes>jbossqa-extensions.js</includes>
 									<outputDirectory>${extensions.dir}</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
 								</configuration>
 							</execution>
 						</executions>
@@ -192,6 +190,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>selenium-maven-plugin</artifactId>
+						<version>1.0</version>
 						<executions>
 							<execution>
 								<phase>pre-integration-test</phase>
