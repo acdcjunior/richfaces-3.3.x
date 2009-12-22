@@ -167,22 +167,25 @@
 				name="org.jboss.richfaces.integrationTest.dataTable.DataTableTestCase" />
 		</classes>
 	</test>
-	
-	<test name="org.jboss.richfaces.integrationTest.dataTable.EditTableWithModalPanelTestCase">
+
+	<test
+		name="org.jboss.richfaces.integrationTest.dataTable.EditTableWithModalPanelTestCase">
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.dataTable.EditTableWithModalPanelTestCase" />
 		</classes>
 	</test>
-	
-	<test name="org.jboss.richfaces.integrationTest.dataTable.ExtendedDataModelTestCase">
+
+	<test
+		name="org.jboss.richfaces.integrationTest.dataTable.ExtendedDataModelTestCase">
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.dataTable.ExtendedDataModelTestCase" />
 		</classes>
 	</test>
-	
-	<test name="org.jboss.richfaces.integrationTest.dataTable.ModifiableDataModelTestCase">
+
+	<test
+		name="org.jboss.richfaces.integrationTest.dataTable.ModifiableDataModelTestCase">
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.dataTable.ModifiableDataModelTestCase" />
@@ -227,7 +230,7 @@
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.DraggingTestCase" />
 		</classes>
 	</test>
-	
+
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.FilteringTestCase">
 		<classes>
@@ -235,7 +238,7 @@
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.FilteringTestCase" />
 		</classes>
 	</test>
-	
+
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.GroupingTestCase">
 		<classes>
@@ -243,7 +246,7 @@
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.GroupingTestCase" />
 		</classes>
 	</test>
-	
+
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase">
 		<classes>
@@ -251,7 +254,7 @@
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase" />
 		</classes>
 	</test>
-	
+
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.SortingTestCase">
 		<classes>
@@ -343,13 +346,13 @@
 		</classes>
 	</test>
 
-<!--	<test-->
-<!--		name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase">-->
-<!--		<classes>-->
-<!--			<class-->
-<!--				name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase" />-->
-<!--		</classes>-->
-<!--	</test>-->
+	<!--
+		<test
+		name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase">
+		<classes> <class
+		name="org.jboss.richfaces.integrationTest.mediaOutput.MediaOutputTestCase"
+		/> </classes> </test>
+	-->
 
 	<test
 		name="org.jboss.richfaces.integrationTest.modalPanel.ModalPanelTestCase">
@@ -375,11 +378,13 @@
 		</classes>
 	</test>
 
-<!--	<test name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase">-->
-<!--		<classes>-->
-<!--			<class name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase" />-->
-<!--		</classes>-->
-<!--	</test>-->
+	<!--
+		<test
+		name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase">
+		<classes> <class
+		name="org.jboss.richfaces.integrationTest.paint2d.Paint2DTestCase" />
+		</classes> </test>
+	-->
 
 	<test
 		name="org.jboss.richfaces.integrationTest.panel.PanelCustomizationTestCase">
@@ -488,11 +493,21 @@
 		</classes>
 	</test>
 
-<!--	<test name="org.jboss.richfaces.integrationTest.status.StatusTestCase">-->
-<!--		<classes>-->
-<!--			<class name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />-->
-<!--		</classes>-->
-<!--	</test>-->
+	<test
+		name="org.jboss.richfaces.integrationTest.stateManager.StateManagerTestCase">
+		<classes>
+			<class
+				name="org.jboss.richfaces.integrationTest.stateManager.StateManagerTestCase" />
+		</classes>
+	</test>
+
+	<!--
+		<test
+		name="org.jboss.richfaces.integrationTest.status.StatusTestCase">
+		<classes> <class
+		name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />
+		</classes> </test>
+	-->
 
 	<test name="org.jboss.richfaces.integrationTest.style.StyleTestCase">
 		<classes>
@@ -507,7 +522,7 @@
 				name="org.jboss.richfaces.integrationTest.suggestionBox.SuggestionBoxTestCase" />
 		</classes>
 	</test>
-	
+
 	<test
 		name="org.jboss.richfaces.integrationTest.tableFiltering.TableFilteringTestCase">
 		<classes>

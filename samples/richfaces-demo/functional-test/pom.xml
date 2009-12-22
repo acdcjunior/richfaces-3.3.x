@@ -73,6 +73,7 @@
 		<demo.deployable>${demo.deployable.directory}/${demo.deployable.file}</demo.deployable>
 		<demo.deployable.directory>${project.build.directory}</demo.deployable.directory>
 		<demo.deployable.file>richfaces-demo.war</demo.deployable.file>
+		<jsf.majorVersion>1</jsf.majorVersion>
 	</properties>
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -225,7 +226,7 @@
 									<suiteXmlFiles>
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
-									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dselenium.debug='${selenium.debug}' -Dselenium.maximize='${selenium.maximize}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}'</argLine>
+									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dselenium.debug='${selenium.debug}' -Dselenium.maximize='${selenium.maximize}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}' -Djsf.majorVersion='${jsf.majorVersion}'</argLine>
 									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 									<properties>
 										<property>
@@ -249,6 +250,7 @@
 			</activation>
 			<properties>
 				<demo.artifactId.suffix>-jsf2</demo.artifactId.suffix>
+				<jsf.majorVersion>2</jsf.majorVersion>
 			</properties>
 		</profile>
 		<!--  Container Profile -->
