@@ -261,8 +261,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param sortOrder -
 	 *            new value
 	 */
-	public void setSortOrder(ValueExpression __sortOrder) {
-		this._sortOrder = __sortOrder;
+	public void setSortOrder(ValueExpression sortOrder) {
+		this._sortOrder = sortOrder;
 	}
 
 	/**
@@ -272,8 +272,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param sortBy -
 	 *            new value
 	 */
-	public void setSortBy(ValueExpression __sortBy) {
-		this._sortBy = __sortBy;
+	public void setSortBy(ValueExpression sortBy) {
+		this._sortBy = sortBy;
 	}
 
 	/**
@@ -283,8 +283,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param style -
 	 *            new value
 	 */
-	public void setStyle(ValueExpression __style) {
-		this._style = __style;
+	public void setStyle(ValueExpression style) {
+		this._style = style;
 	}
 
 	/*
@@ -734,8 +734,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	/**
 	 * Create custom context with VariableMapper override.
 	 * 
-	 * @param context
-	 * @return
+	 * @param cont
+     * @return
 	 */
 	private ELContext getContext(final ELContext cont) {
 		return new ELContext() {
@@ -921,8 +921,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param value -
 	 *            new value
 	 */
-	public void setValue(ValueExpression __value) {
-		this.__value = __value;
+	public void setValue(ValueExpression value) {
+		this.__value = value;
 	}
 
 	/**
@@ -932,8 +932,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param var -
 	 *            new value
 	 */
-	public void setVar(ValueExpression __var) {
-		this.__var = __var;
+	public void setVar(ValueExpression var) {
+		this.__var = var;
 	}
 
 	/**
@@ -942,8 +942,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param colspan -
 	 *            new value
 	 */
-	public void setColspan(ValueExpression __colspan) {
-		this._colspan = __colspan;
+	public void setColspan(ValueExpression colspan) {
+		this._colspan = colspan;
 	}
 
 	/**
@@ -952,8 +952,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param styleClass -
 	 *            new value
 	 */
-	public void setStyleClass(ValueExpression __styleClass) {
-		this._styleClass = __styleClass;
+	public void setStyleClass(ValueExpression styleClass) {
+		this._styleClass = styleClass;
 	}
 
 	/**
@@ -963,8 +963,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param width -
 	 *            new value
 	 */
-	public void setWidth(ValueExpression __width) {
-		this._width = __width;
+	public void setWidth(ValueExpression width) {
+		this._width = width;
 	}
 
 	/**
@@ -973,8 +973,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param breakBefore -
 	 *            new value
 	 */
-	public void setBreakBefore(ValueExpression __breakBefore) {
-		this._breakBefore = __breakBefore;
+	public void setBreakBefore(ValueExpression breakBefore) {
+		this._breakBefore = breakBefore;
 	}
 
 	/**
@@ -984,8 +984,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param comparator -
 	 *            new value
 	 */
-	public void setComparator(ValueExpression __comparator) {
-		this._comparator = __comparator;
+	public void setComparator(ValueExpression comparator) {
+		this._comparator = comparator;
 	}
 
 	/**
@@ -1004,8 +1004,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterBy -
 	 *            new value
 	 */
-	public void setFilterBy(ValueExpression __filterBy) {
-		this._filterBy = __filterBy;
+	public void setFilterBy(ValueExpression filterBy) {
+		this._filterBy = filterBy;
 	}
 
 	/**
@@ -1015,8 +1015,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterDefaultLabel -
 	 *            new value
 	 */
-	public void setFilterDefaultLabel(ValueExpression __filterDefaultLabel) {
-		this._filterDefaultLabel = __filterDefaultLabel;
+	public void setFilterDefaultLabel(ValueExpression filterDefaultLabel) {
+		this._filterDefaultLabel = filterDefaultLabel;
 	}
 
 	/**
@@ -1026,8 +1026,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterEvent -
 	 *            new value
 	 */
-	public void setFilterEvent(ValueExpression __filterEvent) {
-		this._filterEvent = __filterEvent;
+	public void setFilterEvent(ValueExpression filterEvent) {
+		this._filterEvent = filterEvent;
 	}
 
 	/**
@@ -1037,8 +1037,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterExpression -
 	 *            new value
 	 */
-	public void setFilterExpression(ValueExpression __filterExpression) {
-		this._filterExpression = __filterExpression;
+	public void setFilterExpression(ValueExpression filterExpression) {
+		this._filterExpression = filterExpression;
 	}
 
 	/**
@@ -1048,8 +1048,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterMethod -
 	 *            new value
 	 */
-	public void setFilterMethod(MethodExpression __filterMethod) {
-		this._filterMethod = __filterMethod;
+	public void setFilterMethod(MethodExpression filterMethod) {
+		this._filterMethod = filterMethod;
 	}
 
 	/**
@@ -1059,8 +1059,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param filterValue -
 	 *            new value
 	 */
-	public void setFilterValue(ValueExpression __filterValue) {
-		this._filterValue = __filterValue;
+	public void setFilterValue(ValueExpression filterValue) {
+		this._filterValue = filterValue;
 	}
 
 	/**
@@ -1070,8 +1070,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param footerClass -
 	 *            new value
 	 */
-	public void setFooterClass(ValueExpression __footerClass) {
-		this._footerClass = __footerClass;
+	public void setFooterClass(ValueExpression footerClass) {
+		this._footerClass = footerClass;
 	}
 
 	/**
@@ -1081,8 +1081,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param headerClass -
 	 *            new value
 	 */
-	public void setHeaderClass(ValueExpression __headerClass) {
-		this._headerClass = __headerClass;
+	public void setHeaderClass(ValueExpression headerClass) {
+		this._headerClass = headerClass;
 	}
 
 	/**
@@ -1091,8 +1091,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param rowspan -
 	 *            new value
 	 */
-	public void setRowspan(ValueExpression __rowspan) {
-		this._rowspan = __rowspan;
+	public void setRowspan(ValueExpression rowspan) {
+		this._rowspan = rowspan;
 	}
 
 	/**
@@ -1102,8 +1102,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param selfSorted -
 	 *            new value
 	 */
-	public void setSelfSorted(ValueExpression __selfSorted) {
-		this._selfSorted = __selfSorted;
+	public void setSelfSorted(ValueExpression selfSorted) {
+		this._selfSorted = selfSorted;
 	}
 
 	/**
@@ -1113,8 +1113,8 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param sortable -
 	 *            new value
 	 */
-	public void setSortable(ValueExpression __sortable) {
-		this._sortable = __sortable;
+	public void setSortable(ValueExpression sortable) {
+		this._sortable = sortable;
 	}
 
 	/**
@@ -1124,18 +1124,18 @@ public class ColumnsTag extends UIComponentClassicTagBase implements
 	 * @param sortExpression -
 	 *            new value
 	 */
-	public void setSortExpression(ValueExpression __sortExpression) {
-		this._sortExpression = __sortExpression;
+	public void setSortExpression(ValueExpression sortExpression) {
+		this._sortExpression = sortExpression;
 	}
 	
 	/**
 	 * Attribute defines whether to render component or not
 	 * Setter for rendered
 	 * 
-	 * @param __rendered - new value
+	 * @param rendered - new value
 	 */
-	public void setRendered(ValueExpression __rendered) {
-		this._rendered = __rendered;
+	public void setRendered(ValueExpression rendered) {
+		this._rendered = rendered;
 	}
 	
 	/**

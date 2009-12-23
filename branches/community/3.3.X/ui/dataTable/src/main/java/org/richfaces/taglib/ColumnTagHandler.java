@@ -56,7 +56,9 @@ public class ColumnTagHandler extends ComponentHandler {
 			public Metadata applyRule(String name, final TagAttribute attribute, MetadataTarget metadataTarget) {
 				if (FILTER_METHOD.equals(name)) {
 					return new Metadata() {
-						public void applyMetadata(FaceletContext context, Object object) {
+
+                        @Override
+                        public void applyMetadata(FaceletContext context, Object object) {
 							FacesContext facesContext = context.getFacesContext();
 							
 							MethodExpression expression = facesContext.getApplication().getExpressionFactory().
