@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <style>
+        #ClientUI_Box0 {
+            height:0px;
+            font-size:0px;
+            display:none;
+        }
+
+        #ClientUI_Box1 {
+            height:0px;
+            font-size:0px;
+            display:none;
+        }
+    </style>
+
+    <h:form id="f">
+        <rich:extendedDataTable id="table" 
+                value="#{extendedTableBean.capitalsDataModel}" var="cap" 
+                width="300px" height="400px" 
+                >
+                
+            <rich:column sortable="true" sortBy="#{cap.state}" width="120px" filterBy="#{cap.state}" filterEvent="onkeyup">
+                <f:facet name="header">
+                    <h:outputText value="Make" />
+                </f:facet>
+                <h:outputText value="#{cap.state}" />
+            </rich:column>
+            
+            <rich:column width="120px">
+                <f:facet name="header">
+                    <h:outputText value="Model" />
+                </f:facet>
+                <h:outputText value="#{cap.name}" />
+            </rich:column>
+            
+            <rich:column width="120px">
+                <f:facet name="header">
+                    <h:outputText value="Price" />
+                </f:facet>
+                <h:outputText value="#{cap.timeZone}" />
+            </rich:column>
+        </rich:extendedDataTable> 
+    </h:form>
+</html>

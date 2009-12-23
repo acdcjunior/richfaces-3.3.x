@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <f:view>
+            <rich:modalPanel id="p" width="650" height="650">
+                <f:facet name="header">
+                    <h:panelGroup>Doc</h:panelGroup>
+                </f:facet>
+                <f:facet name="controls">
+                    <h:panelGroup>
+                        <h:graphicImage value="/img/break.gif" style="cursor: pointer;">
+                            <rich:componentControl for="p" operation="hide" event="onclick" />
+                        </h:graphicImage>
+                    </h:panelGroup>
+                </f:facet>
+                <h:form id="f">
+                    <rich:extendedDataTable value="#{extendedTableBean.capitalsDataModel}" 
+                        var="field1" id="ed">
+                        <rich:column>#{field1}</rich:column>
+                    </rich:extendedDataTable>
+                </h:form>
+            </rich:modalPanel>
+            
+            
+            <h:form id="f2">
+                <a4j:commandLink value="open panel" reRender="ed" oncomplete="Richfaces.showModalPanel('p');"/>
+            </h:form> 
+        </f:view>
+    </body>
+</html>
