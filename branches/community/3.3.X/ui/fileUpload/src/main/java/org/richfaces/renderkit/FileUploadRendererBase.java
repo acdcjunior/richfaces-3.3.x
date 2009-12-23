@@ -594,6 +594,7 @@ public abstract class FileUploadRendererBase extends
 		if (null == progressBar) {
 			progressBar = context.getApplication().createComponent(
 					UIProgressBar.COMPONENT_TYPE);
+            progressBar.setId(fileUpload.getId() + "_rich_progress");
 		}
 		fileUpload.getFacets().put("progress", progressBar);
 		return progressBar;
