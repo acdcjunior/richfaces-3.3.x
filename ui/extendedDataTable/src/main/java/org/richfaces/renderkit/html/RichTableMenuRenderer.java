@@ -155,6 +155,7 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
 
         UIMenuSeparator sep = (UIMenuSeparator) context.getApplication()
                 .createComponent(UIMenuSeparator.COMPONENT_TYPE);
+        sep.setId(getId("sep_1"));
         menu.getChildren().add(sep);
 
         // add menu item for grouping
@@ -162,11 +163,13 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
 
         sep = (UIMenuSeparator) context.getApplication().createComponent(
                 UIMenuSeparator.COMPONENT_TYPE);
+        sep.setId(getId("sep_2"));
         menu.getChildren().add(sep);
 
         // add menu items for changing column visibility
         UIMenuGroup group = (HtmlMenuGroup) context.getApplication()
                 .createComponent(UIMenuGroup.COMPONENT_TYPE);
+        group.setId(getId("visibility"));
         group.setValue(ComponentMessageUtil.getMessage(context, MSG_COLUMNS,
                 new Object[] {}).getSummary());
         group.setIcon(iconColumnsURI);
@@ -177,8 +180,12 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
 
         while (columns.hasNext()) {
             buildMenuItem(group, columns.next());
-        }// while
+        }
     }// buildMenu
+
+    private String getId(String str) {
+        return column.getId() +  "_rich_" + str;
+    }
 
     /**
      * Builds menu item for sorting.
@@ -195,6 +202,9 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
                 .createComponent(UIMenuItem.COMPONENT_TYPE);
 
         menuItem.setSubmitMode("none");
+
+        String ascStr = asc ? "asc" : "desc";
+        menuItem.setId(getId("sort_" + asc));
         String actionScript = null;
         StringBuilder actionScriptBuilder = new StringBuilder();
         if ((Boolean) column.getAttributes().get("sortable")) {
@@ -214,9 +224,9 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
                     actionScript = actionScript.replace("{columnId}",
                             columnClientId);
                 }
-                if (actionScript.contains("{sortDirection}"))
-                    actionScript = actionScript.replace("{sortDirection}",
-                            asc ? "asc" : "desc");
+                if (actionScript.contains("{sortDirection}")) {
+                    actionScript = actionScript.replace("{sortDirection}", ascStr);
+                }
             }
         } else {
             menuItem.setDisabled(true);
@@ -247,6 +257,7 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
                 .createComponent(UIMenuItem.COMPONENT_TYPE);
 
         menuItem.setSubmitMode("none");
+        menuItem.setId("group");
         String actionScript = null;
         StringBuilder actionScriptBuilder = new StringBuilder();
         boolean isGroupingColumn = column.getId().equalsIgnoreCase(
@@ -254,21 +265,18 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
         if ((Boolean) column.getAttributes().get("sortable")) {
             if (groupFunction != null) {
                 if (prepareFunction != null) {
-                    actionScriptBuilder.append(prepareFunction.toScript())
-                            .append("; ");
+                    actionScriptBuilder.append(prepareFunction.toScript()).append("; ");
                 }
                 actionScriptBuilder.append(groupFunction.toScript());
                 actionScript = actionScriptBuilder.toString();
                 if (actionScript.contains("{columnId}")) {
-                    String columnClientId = (String) column.getAttributes()
-                            .get("columnClientId");
+                    String columnClientId = (String) column.getAttributes().get("columnClientId");
                     if (columnClientId == null)
                         columnClientId = column.getClientId(context);
                     if (isGroupingColumn) {
                         columnClientId = "";
                     }
-                    actionScript = actionScript.replace("{columnId}",
-                            columnClientId);
+                    actionScript = actionScript.replace("{columnId}", columnClientId);
                 }
             }
         } else {
@@ -304,35 +312,32 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
         if (col.isRendered(false)) {
             UIMenuItem menuItem = (UIMenuItem) context.getApplication()
                     .createComponent(UIMenuItem.COMPONENT_TYPE);
-
+            menuItem.setId(parent.getId() + '_' + col.getId());
             menuItem.setSubmitMode("none");
-            boolean columnVisible = col.isVisible();
-            String actionScript = null;
-            StringBuilder actionScriptBuilder = new StringBuilder();
-
             menuItem.setStyle("text-align: left;");
 
-            if ((!columnVisible) || (visibleColumnsCount > 1)) {
-                if (changeColumnVisibilityFunction != null) {
-                    if (prepareFunction != null) {
-                        actionScriptBuilder.append(prepareFunction.toScript())
-                                .append("; ");
-                    }
-                    actionScriptBuilder.append(changeColumnVisibilityFunction
-                            .toScript());
-                    actionScript = actionScriptBuilder.toString();
-                    if (actionScript.contains("{columnId}"))
-                        actionScript = actionScript.replace("{columnId}",
-                        		col.getId());
-                }
-            }// if
             String label = (String)col.getAttributes().get("label");
             menuItem.setValue(label == null ? "" : label);
+
+            boolean columnVisible = col.isVisible();
+
+            String actionScript = null;
+            if (!columnVisible || (visibleColumnsCount > 1)) {
+                if (changeColumnVisibilityFunction != null) {
+                    StringBuilder actionScriptBuilder = new StringBuilder();
+                    if (prepareFunction != null) {
+                        actionScriptBuilder.append(prepareFunction.toScript()).append("; ");
+                    }
+                    actionScriptBuilder.append(changeColumnVisibilityFunction.toScript());
+                    actionScript = actionScriptBuilder.toString();
+                    if (actionScript.contains("{columnId}"))
+                        actionScript = actionScript.replace("{columnId}", col.getId());
+                }
+            }// if
+
             menuItem.setIcon(columnVisible ? iconCheckedURI : iconUncheckedURI);
             if (menuItem instanceof HtmlMenuItem) {
-                ((HtmlMenuItem) menuItem)
-                        .setOnclick(actionScript == null ? "return false;"
-                                : actionScript);
+                ((HtmlMenuItem) menuItem).setOnclick(actionScript == null ? "return false;" : actionScript);
             }
 
             // add item to menu
