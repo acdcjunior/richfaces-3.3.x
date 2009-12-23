@@ -15,7 +15,7 @@ Richfaces.ComboBox.prototype = {
 		this.comboValue = document.getElementById(id + "comboboxValue"); 
 		this.field = document.getElementById(id + "comboboxField");  
 		this.tempItem;
-		
+
 		this.BUTTON_WIDTH = 17; //px
 		this.BUTTON_LEFT_BORDER = 1; //px
 		this.BUTTON_RIGHT_BORDER = 1; //px
@@ -439,7 +439,10 @@ Richfaces.ComboBox.prototype = {
 			this.field.prevValue = newValue;
 			this.field.value = newValue;
 			Richfaces.invokeEvent(this.onchange, this.combobox, "onchange", {value:newValue});
-		}
+		} else if (newValue && (newValue != this.field.value)) {
+            // https://jira.jboss.org/jira/browse/RF-8200
+            this.field.value = newValue;
+        }
 	},
 	
 	applyDefaultText : function() {
