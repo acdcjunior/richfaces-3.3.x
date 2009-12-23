@@ -135,7 +135,7 @@ public abstract class UISuggestionBox extends UIData
      * Method calls an expression to get a collection of suggestion data
      * on request. It must have one parameter with a type of Object with
      * content of input component and must return any type allowed for
-     * <h:datatable>;
+     * &lt;h:datatable&gt;
      *
      * @return suggestionAction value from local variable or value bindings
      */
