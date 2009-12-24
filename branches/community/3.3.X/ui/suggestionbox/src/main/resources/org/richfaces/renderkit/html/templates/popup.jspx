@@ -32,6 +32,7 @@
                                         <f:parameter value="onclick,onselect,width,height,rows,border"/>
                                     </f:call>
                                     <tbody>
+                                        <tr style="display:none;"><td> </td></tr>
                                     </tbody>
                                 </table>
                             </div>
