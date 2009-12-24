@@ -47,6 +47,7 @@
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-impl</artifactId>
 			<version>3.3.3-SNAPSHOT</version>
+            <scope>provided</scope>
 		</dependency>
 
 		<!-- Required for JSF -->
@@ -58,10 +59,10 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>javax.faces</groupId>
+			<groupId>${jsf.groupId}</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>1.2_12</version>
+			<version>${jsf.version}</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 </project>
