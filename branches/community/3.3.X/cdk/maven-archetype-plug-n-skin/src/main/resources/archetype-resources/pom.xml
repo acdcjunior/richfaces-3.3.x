@@ -35,6 +35,7 @@
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-impl</artifactId>
 			<version>3.3.3-SNAPSHOT</version>
+            <scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
