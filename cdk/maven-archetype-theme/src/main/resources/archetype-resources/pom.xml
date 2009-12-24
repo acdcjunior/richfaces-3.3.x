@@ -59,9 +59,9 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>${jsf.groupId}</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>${jsf.version}</version>
+			<groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>1.2_12</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
