@@ -257,7 +257,7 @@ public class RichTableMenuRenderer extends TableMenuRenderer {
                 .createComponent(UIMenuItem.COMPONENT_TYPE);
 
         menuItem.setSubmitMode("none");
-        menuItem.setId("group");
+        menuItem.setId(getId("group"));
         String actionScript = null;
         StringBuilder actionScriptBuilder = new StringBuilder();
         boolean isGroupingColumn = column.getId().equalsIgnoreCase(
