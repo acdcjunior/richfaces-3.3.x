@@ -1,6 +1,8 @@
 package org.richfaces.demo.ajaxSamples;
 
-public class rsBean {
+import java.io.Serializable;
+
+public class rsBean implements Serializable{
 	private Integer addent1;
 	private Integer addent2;
 	private Integer sum;
