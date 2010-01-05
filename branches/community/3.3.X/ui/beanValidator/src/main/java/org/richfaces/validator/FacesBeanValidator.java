@@ -22,6 +22,7 @@ package org.richfaces.validator;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.Set;
 
@@ -101,7 +102,7 @@ public class FacesBeanValidator implements NullValueValidator,Serializable, Grap
 				ValueExpression valueExpression = component
 						.getValueExpression("value");
 				if (null != valueExpression) {
-					String[] messages = ObjectValidator.getInstance(context)
+					Collection<String> messages = ObjectValidator.getInstance(context)
 							.validate(context, valueExpression, convertedValue, getProfiles());
 					if (null != messages) {
 						input.setValid(false);
@@ -144,10 +145,10 @@ public class FacesBeanValidator implements NullValueValidator,Serializable, Grap
 		return label;
 	}
 
-	public String[] validateGraph(FacesContext context, UIComponent component,
+	public Collection<String> validateGraph(FacesContext context, UIComponent component,
 			Object value, Object profiles)  throws ValidatorException {
 		ObjectValidator beanValidator = ObjectValidator.getInstance(context);
-		String[] messages = beanValidator.validateGraph(context, value,AjaxRendererUtils.asSet(profiles));
+		Collection<String> messages = beanValidator.validateGraph(context, value,AjaxRendererUtils.asSet(profiles));
 		return messages;
 	}
 

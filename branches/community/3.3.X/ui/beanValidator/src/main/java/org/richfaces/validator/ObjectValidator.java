@@ -39,6 +39,8 @@ public abstract class ObjectValidator {
 	private static final Object MUTEX = new Object();
 	
 	private static final Log log = LogFactory.getLog(ObjectValidator.class);
+	
+	protected final ObjectValidator parent;
 
 	/**
 	 * Create BeanValidator instance. For a Junit tests only.
@@ -52,19 +54,13 @@ public abstract class ObjectValidator {
 		ObjectValidator validator = null;
 		try {
 			validator = new BeanValidator();
-		} catch (Exception e){
-			try {
-				validator = new HibernateValidator();
-			} catch (Throwable e2) {
-				//Hibernate-validators not available
-			}
+		} catch (Throwable e){
+			// JSR-303 is not avalable.
 		}
-		catch (LinkageError le){
-			try {
-				validator = new HibernateValidator();
-			} catch (Throwable e2) {
-				//Hibernate-validators not available
-			}
+		try {
+			validator = new HibernateValidator(validator);
+		} catch (Throwable e2) {
+			//Hibernate-validators not available
 		}
 		if(validator == null){
 			log.warn("Validator implementations not found at classpath, default NullValidator will be used.");
@@ -73,6 +69,13 @@ public abstract class ObjectValidator {
 		return validator;
 	}
 
+	ObjectValidator() {
+		this.parent = null;
+	}
+	
+	ObjectValidator(ObjectValidator parent){
+		this.parent = parent;
+	}
 	/**
 	 * Return BeanValidator object from a ServletContext attribute. Create new
 	 * instance if none is defined.
@@ -98,7 +101,7 @@ public abstract class ObjectValidator {
 		return instance;
 	}
 
-	public abstract String[] validateGraph(FacesContext context, Object value,
+	public abstract Collection<String> validateGraph(FacesContext context, Object value,
 			Set<String> profiles);
 
 	/**
@@ -116,12 +119,12 @@ public abstract class ObjectValidator {
 	 * @throws FacesException
 	 *             if locale or context not properly initialized
 	 */
-	public String[] validate(FacesContext context, ValueExpression target,
+	public Collection<String> validate(FacesContext context, ValueExpression target,
 			Object value, Set<String> profiles) {
 		if (null == context) {
 			throw new FacesException(INPUT_PARAMETERS_IS_NOT_CORRECT);
 		}
-		String[] validationMessages = null;
+		Collection<String> validationMessages = null;
 		if (null != target) {
 			ELContext elContext = context.getELContext();
 			ValidationResolver validationResolver = createValidationResolver(
@@ -135,6 +138,14 @@ public abstract class ObjectValidator {
 			}
 			if (!validationResolver.isValid()) {
 				validationMessages = validationResolver.getValidationMessages();
+			} 
+			if(null != parent){
+				Collection<String> parentMessages = parent.validate(context, target, value, profiles);
+				if(null != validationMessages){
+					validationMessages.addAll(parentMessages);
+				} else {
+					validationMessages = parentMessages;
+				}
 			}
 
 		}
@@ -155,7 +166,7 @@ public abstract class ObjectValidator {
 	 * @return null for a valid value, array of the validation messages
 	 *         othervise.
 	 */
-	protected abstract String[] validate(FacesContext facesContext, Object base,
+	protected abstract Collection<String> validate(FacesContext facesContext, Object base,
 			String property, Object value, Set<String> profiles);
 
 	static Locale calculateLocale(FacesContext context) {
@@ -323,7 +334,7 @@ public abstract class ObjectValidator {
 
 		private boolean valid = true;
 
-		private String[] validationMessages = null;
+		private Collection<String> validationMessages = null;
 
 		private Stack<BasePropertyPair> valuesStack;
 
@@ -445,7 +456,7 @@ public abstract class ObjectValidator {
 					validationMessages = validate(facesContext, base,
 							property.toString(), value, profiles);
 					valid = null == validationMessages
-							|| 0 == validationMessages.length;
+							|| 0 == validationMessages.size();
 
 				}
 			}
@@ -468,7 +479,7 @@ public abstract class ObjectValidator {
 		/**
 		 * @return the validationMessages
 		 */
-		public String[] getValidationMessages() {
+		public Collection<String> getValidationMessages() {
 			return validationMessages;
 		}
 
