@@ -3,6 +3,8 @@
  */
 package org.richfaces.validator;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.Set;
 
@@ -47,7 +49,7 @@ public class BeanValidator extends ObjectValidator {
 	 * java.lang.String, java.lang.Object, java.util.Locale)
 	 */
 	@Override
-	protected String[] validate(FacesContext facesContext, Object base, String property,
+	protected Collection<String> validate(FacesContext facesContext, Object base, String property,
 			Object value, Set<String> profiles) {
 		Class beanType = base.getClass();
 		Set<ConstraintViolation<Object>> constrains = getValidator(facesContext)
@@ -63,12 +65,20 @@ public class BeanValidator extends ObjectValidator {
 	 * .FacesContext, java.lang.Object, java.util.Set)
 	 */
 	@Override
-	public String[] validateGraph(FacesContext context, Object value,
+	public Collection<String> validateGraph(FacesContext context, Object value,
 			Set<String> profiles) {
 		Class<?>[] groups = getGroups(profiles);
 		Set<ConstraintViolation<Object>> violations = getValidator(
 				context).validate(value, groups);
-		String[] messages = extractMessages(violations);
+		Collection<String> messages = extractMessages(violations);
+		if(null != parent){
+			Collection<String> parentMessages = parent.validateGraph(context, value, profiles);
+			if(null != messages){
+				messages.addAll(parentMessages);
+			} else {
+				messages = parentMessages;
+			}
+		}
 		return messages;
 	}
 
@@ -98,13 +108,12 @@ public class BeanValidator extends ObjectValidator {
 		return groups;
 	}
 
-	private String[] extractMessages(Set<ConstraintViolation<Object>> violations) {
-		String[] messages = null;
+	private Collection<String> extractMessages(Set<ConstraintViolation<Object>> violations) {
+		Collection<String> messages = null;
 		if (null != violations && violations.size() > 0) {
-			messages = new String[violations.size()];
-			int i = 0;
+			messages = new ArrayList<String>(violations.size());
 			for (ConstraintViolation<? extends Object> constraintViolation : violations) {
-				messages[i++] = constraintViolation.getMessage();
+				messages.add(constraintViolation.getMessage());
 			}
 
 		}

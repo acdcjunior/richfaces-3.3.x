@@ -1,5 +1,6 @@
 package org.richfaces.validator;
 
+import java.util.Collection;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -26,12 +27,12 @@ public class ObjectValidatorTest extends AbstractAjax4JsfTestCase {
 	
 	public void testCreateInstance() {
 		ObjectValidator objectValidator = ObjectValidator.createInstance();
-		assertEquals(BeanValidator.class, objectValidator.getClass());
+		assertEquals(HibernateValidator.class, objectValidator.getClass());
 	}
 
 	public void testGetInstance() {
 		ObjectValidator objectValidator = ObjectValidator.getInstance(facesContext);
-		assertEquals(BeanValidator.class, objectValidator.getClass());
+		assertEquals(HibernateValidator.class, objectValidator.getClass());
 		ObjectValidator objectValidator2 = ObjectValidator.getInstance(facesContext);
 		assertSame(objectValidator, objectValidator2);
 	}
@@ -62,14 +63,14 @@ public class ObjectValidatorTest extends AbstractAjax4JsfTestCase {
 	private static class ObjectValidatorStub extends ObjectValidator {
 
 		@Override
-		protected String[] validate(FacesContext facesContext, Object base, String property,
+		protected Collection<String> validate(FacesContext facesContext, Object base, String property,
 				Object value, Set<String> profiles) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
-		public String[] validateGraph(FacesContext context, Object value,
+		public Collection<String> validateGraph(FacesContext context, Object value,
 				Set<String> profiles) {
 			// TODO Auto-generated method stub
 			return null;

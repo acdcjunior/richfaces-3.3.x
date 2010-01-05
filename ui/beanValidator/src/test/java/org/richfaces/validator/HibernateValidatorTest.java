@@ -118,7 +118,7 @@ public class HibernateValidatorTest extends AbstractAjax4JsfTestCase {
 		assertTrue(list instanceof List);
 		validationResolver.setValue(elContext, list, new Integer(0), "");
 		assertFalse(validationResolver.isValid());
-		assertEquals(1, validationResolver.getValidationMessages().length);
+		assertEquals(1, validationResolver.getValidationMessages().size());
 	}
 	public void testValidationResolverMap() throws Exception {
 		ValidableBean bean = new ValidableBean();
@@ -129,7 +129,7 @@ public class HibernateValidatorTest extends AbstractAjax4JsfTestCase {
 		assertTrue(list instanceof Map);
 		validationResolver.setValue(elContext, list, new Integer(0), "");
 		assertFalse(validationResolver.isValid());
-		assertEquals(1, validationResolver.getValidationMessages().length);
+		assertEquals(1, validationResolver.getValidationMessages().size());
 	}
 	
 	public void testHibernateMessages() throws Exception {

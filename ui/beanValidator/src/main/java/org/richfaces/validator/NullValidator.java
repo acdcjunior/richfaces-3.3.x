@@ -3,6 +3,7 @@
  */
 package org.richfaces.validator;
 
+import java.util.Collection;
 import java.util.Set;
 
 import javax.faces.context.FacesContext;
@@ -17,7 +18,7 @@ public class NullValidator extends ObjectValidator {
 	 * @see org.richfaces.validator.ObjectValidator#validate(java.lang.Object, java.lang.String, java.lang.Object, java.util.Locale)
 	 */
 	@Override
-	protected String[] validate(FacesContext facesContext, Object base, String property,
+	protected Collection<String> validate(FacesContext facesContext, Object base, String property,
 			Object value, Set<String> profiles) {
 		// do nothing.
 		return null;
@@ -27,7 +28,7 @@ public class NullValidator extends ObjectValidator {
 	 * @see org.richfaces.validator.ObjectValidator#validateGraph(javax.faces.context.FacesContext, java.lang.Object, java.util.Set)
 	 */
 	@Override
-	public String[] validateGraph(FacesContext context, Object value,
+	public Collection<String> validateGraph(FacesContext context, Object value,
 			Set<String> profiles) {
 		// do nothing
 		return null;

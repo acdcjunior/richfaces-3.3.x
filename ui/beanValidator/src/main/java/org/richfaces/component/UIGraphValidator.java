@@ -25,6 +25,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -226,7 +227,7 @@ public abstract class UIGraphValidator extends UIComponentBase {
 			Validator validator = context.getApplication().createValidator(getType());
 			if (validator instanceof GraphValidator) {
 				GraphValidator graphValidator = (GraphValidator) validator;
-				String[] messages = graphValidator.validateGraph(context,this, value,getProfiles());
+				Collection<String> messages = graphValidator.validateGraph(context,this, value,getProfiles());
 				if (null != messages) {
 					context.renderResponse();
 					// send all validation messages.

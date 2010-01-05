@@ -21,6 +21,7 @@
 package org.richfaces.validator;
 
 import java.beans.FeatureDescriptor;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EmptyStackException;
@@ -57,19 +58,27 @@ public class HibernateValidator extends ObjectValidator {
 	private Map<ValidatorKey, ClassValidator<? extends Object>> classValidators = new ConcurrentHashMap<ValidatorKey, ClassValidator<? extends Object>>();
 
 	HibernateValidator() {
+		super();
 		// This is a "singleton"-like class. Only factory methods allowed.
 		// Enforce class to load
 		ClassValidator.class.getName();
 	}
 
+	HibernateValidator(ObjectValidator parent){
+		super(parent);
+		// This is a "singleton"-like class. Only factory methods allowed.
+		// Enforce class to load
+		ClassValidator.class.getName();
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
-	public String[] validateGraph(FacesContext context, Object value,
+	public Collection<String> validateGraph(FacesContext context, Object value,
 			Set<String> profiles) {
 		if (null == context) {
 			throw new FacesException(INPUT_PARAMETERS_IS_NOT_CORRECT);
 		}
-		String validationMessages[] = null;
+		Collection<String> validationMessages = null;
 		if (null != value) {
 			ClassValidator<Object> validator = (ClassValidator<Object>) getValidator(
 					context, value.getClass());
@@ -77,14 +86,21 @@ public class HibernateValidator extends ObjectValidator {
 				InvalidValue[] invalidValues = validator
 						.getInvalidValues(value);
 				if (null != invalidValues && invalidValues.length > 0) {
-					validationMessages = new String[invalidValues.length];
+					validationMessages = new ArrayList<String>(invalidValues.length);
 					for (int i = 0; i < invalidValues.length; i++) {
 						InvalidValue invalidValue = invalidValues[i];
-						validationMessages[i] = invalidValue.getMessage();
+						validationMessages.add(invalidValue.getMessage());
 					}
 				}
 			}
-
+			if(null != parent){
+				Collection<String> parentMessages = parent.validateGraph(context, value, profiles);
+				if(null != validationMessages){
+					validationMessages.addAll(parentMessages);
+				} else {
+					validationMessages = parentMessages;
+				}
+			}
 		}
 		return validationMessages;
 	}
@@ -156,17 +172,17 @@ public class HibernateValidator extends ObjectValidator {
 	}
 
 	@Override
-	protected String[] validate(FacesContext facesContext, Object base, String property,
+	protected Collection<String> validate(FacesContext facesContext, Object base, String property,
 			Object value, Set<String> profiles) {
 				InvalidValue[] invalidValues = validateBean(facesContext, base, property,
 						value);
 				if (null == invalidValues) {
 					return null;
 				} else {
-					String[] result = new String[invalidValues.length];
+					Collection<String> result = new ArrayList<String>(invalidValues.length);
 					for (int i = 0; i < invalidValues.length; i++) {
 						InvalidValue invalidValue = invalidValues[i];
-						result[i] = invalidValue.getMessage();
+						result.add(invalidValue.getMessage());
 					}
 					return result;
 				}
