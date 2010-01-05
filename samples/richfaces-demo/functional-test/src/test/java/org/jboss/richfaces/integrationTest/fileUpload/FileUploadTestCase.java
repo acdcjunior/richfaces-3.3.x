@@ -272,7 +272,12 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         waitFor(3000);
         selenium.attachFile(LOC_ADD_BUTTON, "file://" + FILE_CYAN);
         
-        waitForElement(LOC_UPLOADED_LIST_TR);
+        Wait.failWith("Files were not uploaded.").until(new Condition() {
+            public boolean isTrue() {
+                return getJQueryCount(LOC_UPLOADED_LIST_TR) == 1;
+            }
+        });
+        
         count = getJQueryCount(LOC_UPLOADED_LIST_TR);
         assertEquals(count, 1, MSG_RIGHT_PANEL_NUMBER_OF_ITEMS);
     }
@@ -340,7 +345,11 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         assertFalse(isDisplayed(LOC_CLEAR_ALL_BUTTON_STYLE), MSG_CLEAR_ALL_BUTTON_NOT_VISIBLE);
 
         selenium.click(LOC_UPLOAD_BUTTON);
-        waitForElement(LOC_UPLOADED_LIST_TR);
+        Wait.failWith("Files were not uploaded.").until(new Condition() {
+            public boolean isTrue() {
+                return getJQueryCount(LOC_UPLOADED_LIST_TR) == 2;
+            }
+        });
 
         assertTrue(isDisplayed(LOC_CLEAR_ALL_BUTTON_STYLE), MSG_CLEAR_ALL_BUTTON_VISIBLE);
 
@@ -367,11 +376,19 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         assertFalse(selenium.isElementPresent(LOC_CLEAR_UPLOADED_DATA_BUTTON),
                 MSG_CLEAR_UPLOADED_DATA_BUTTON_NOT_VISIBLE);
 
-        waitFor(2000);
+        Wait.failWith("There should be 2 files in the list.").until(new Condition() {
+            public boolean isTrue() {
+                return getJQueryCount(LOC_NOT_UPLOADED_LIST_TR) == 2;
+            }
+        });
 
         selenium.click(LOC_UPLOAD_BUTTON);
-        waitForElement(LOC_UPLOADED_LIST_TR);
-
+        Wait.failWith("Files were not uploaded").until(new Condition() {
+            public boolean isTrue() {
+                return getJQueryCount(LOC_UPLOADED_LIST_TR) == 2;
+            }
+        });
+        
         assertTrue(selenium.isElementPresent(LOC_CLEAR_UPLOADED_DATA_BUTTON), MSG_CLEAR_UPLOADED_DATA_BUTTON_VISIBLE);
 
         selenium.click(LOC_CLEAR_UPLOADED_DATA_BUTTON);
