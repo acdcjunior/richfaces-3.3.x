@@ -258,7 +258,6 @@ ExtendedDataTable.SelectionManager = Class.create({
 				if(!$(this.prefix + ":n")) {
 					if(this.eventKeyPress)
 						Event.stopObserving(document, "keydown", this.eventKeyPress);
-} 
 				}
 			}.bind(this)
 		});
