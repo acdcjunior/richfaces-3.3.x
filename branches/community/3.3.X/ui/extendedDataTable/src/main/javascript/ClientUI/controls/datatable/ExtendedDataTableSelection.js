@@ -252,11 +252,13 @@ ExtendedDataTable.SelectionManager = Class.create({
 		if(this.options.selectionMode != "none") {
 			this.eventKeyPress = this.processKeyDown.bindAsEventListener(this);
 			Event.observe(document, "keydown", this.eventKeyPress);
-		}
+		} 
 		A4J.AJAX.AddListener({
 			onafterajax: function(req, event, data) {
 				if(!$(this.prefix + ":n")) {
-					Event.stopObserving(document, "keydown", this.eventKeyPress);		
+					if(this.eventKeyPress)
+						Event.stopObserving(document, "keydown", this.eventKeyPress);
+} 
 				}
 			}.bind(this)
 		});
