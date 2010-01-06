@@ -25,9 +25,12 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.faces.FactoryFinder;
 import javax.faces.application.ViewExpiredException;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -40,6 +43,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.ajax4jsf.Messages;
 import org.ajax4jsf.application.AjaxViewHandler;
+import org.ajax4jsf.component.AjaxRegionBrige;
+import org.ajax4jsf.component.UIDataAdaptor;
 import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.context.ContextInitParameters;
 import org.ajax4jsf.renderkit.AjaxContainerRenderer;
@@ -120,7 +125,30 @@ public abstract class BaseXMLFilter {
 		setNamespace((String) nz(config.getInitParameter(NAMESPACE_PARAMETER),
 				getNamespace()));
 		handleViewExpiredOnClient = Boolean.parseBoolean(config.getServletContext().getInitParameter(ContextInitParameters.HANDLE_VIEW_EXPIRED_ON_CLIENT));
-		
+		checkJSFVersion();
+	}
+
+	private void checkJSFVersion() {
+		boolean jsf2 = false;
+		try{
+			Object factory  = FactoryFinder.getFactory("javax.faces.context.PartialViewContextFactory");
+			jsf2 = true;
+		}catch(Exception e){
+			//It's normal situation
+		}
+		boolean jsf2compatible = false;
+	      try {
+	    	  Thread.currentThread().getContextClassLoader().loadClass("org.richfaces.JSF2Compatible");
+	    	  jsf2compatible = true;
+	      }catch (Throwable e) {
+	    	//It's normal situation
+	      }
+		if(jsf2compatible && !jsf2){
+			log.warn("This version of RichFaces implementation compatible for JSF2.0, but running under JSF1.2");
+		}
+		if(!jsf2compatible && jsf2){
+			log.warn("This version of RichFaces implementation compatible for JSF1.2, but running under JSF2.0");
+		}
 	}
 
 	private Boolean stringToBoolean(String s) {
