@@ -33,6 +33,7 @@ import org.ajax4jsf.context.AjaxContext;
 import org.ajax4jsf.event.AjaxEvent;
 import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.event.AjaxSource;
+import org.ajax4jsf.renderkit.RendererUtils;
 
 
 /**
@@ -45,6 +46,7 @@ import org.ajax4jsf.event.AjaxSource;
 public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSource, IterationStateHolder 
 {
     public static final String COMPONENT_TYPE = "org.ajax4jsf.Form";
+    public static final String FOCUS_DATA_ID = "_A4J.AJAX.focus";
 
     /* (non-Javadoc)
      * @see javax.faces.component.UIComponent#processDecodes(javax.faces.context.FacesContext)
@@ -122,10 +124,38 @@ public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSo
 	public void broadcast(FacesEvent event) throws AbortProcessingException {
 		// perform default
 		super.broadcast(event);
-		if (event instanceof AjaxEvent) {
+		/*if (event instanceof AjaxEvent) {
 			// complete re-Render fields. AjaxEvent deliver before render response.
 			setupReRender();
-		}
+		}*/
+		if (event instanceof AjaxEvent)
+        {
+            FacesContext context = this.getFacesContext();
+            // complete re-Render fields. AjaxEvent deliver before render
+            // response.
+            this.setupReRender(context);
+            // Put data for send in response
+            Object data = this.getData();
+            AjaxContext ajaxContext = AjaxContext.getCurrentInstance(context);
+            if (null != data)
+            {
+                ajaxContext.setResponseData(data);
+            }
+            String focus = this.getFocus();
+            if (null != focus)
+            {
+                // search for component in tree.
+                // XXX - use more pourful search, as in h:outputLabel
+                // component.
+                UIComponent focusComponent = RendererUtils.getInstance().findComponentFor(this, focus);
+                if (null != focusComponent)
+                {
+                    focus = focusComponent.getClientId(context);
+                }
+                ajaxContext.getResponseDataMap().put(FOCUS_DATA_ID, focus);
+            }
+            ajaxContext.setOncomplete(this.getOncomplete());
+        }
 	}
 
 
@@ -137,6 +167,10 @@ public abstract class UIAjaxForm extends UIForm implements AjaxComponent, AjaxSo
 		AjaxContext.getCurrentInstance(context).addRegionsFromComponent(this);
 	}
 
+	protected void setupReRender(final FacesContext facesContext){
+        AjaxContext.getCurrentInstance(facesContext).addRegionsFromComponent(this);
+        this.setupReRender();
+    }
 
 
 
