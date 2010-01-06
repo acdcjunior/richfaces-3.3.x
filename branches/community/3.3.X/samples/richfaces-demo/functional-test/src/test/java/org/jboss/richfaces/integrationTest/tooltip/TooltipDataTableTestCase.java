@@ -79,17 +79,21 @@ public class TooltipDataTableTestCase extends AbstractSeleniumRichfacesTestCase 
 	private void waitForElementAppears(final String locator) {
 		waitModelUpdate.until(new Condition() {
 			public boolean isTrue() {
-				return selenium.isElementPresent(locator);
+				return isElementPresent(locator);
 			}
 		});
 	}
-
+	
 	private void waitForElementDisappears(final String locator) {
 		waitModelUpdate.until(new Condition() {
 			public boolean isTrue() {
-				return !selenium.isElementPresent(locator);
+				return !isElementPresent(locator);
 			}
 		});
+	}
+	
+	private boolean isElementPresent(String locator) {
+		return !"0".equals(selenium.getEval(format("jqFind('{0}:visible').size()", locator.replaceFirst("^jquery=", "").trim())));
 	}
 
 	@SuppressWarnings("unused")

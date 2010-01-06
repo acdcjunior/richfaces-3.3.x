@@ -50,6 +50,17 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String MSG_OUTPUT_TOOLTIP_3_4_TEXT = getMsg("OUTPUT_TOOLTIP_3_4_TEXT");
 	private final Pattern MSG_REGEXP_TOOLTIPS_REQUESTED = Pattern.compile(getMsg("REGEXP_TOOLTIPS_REQUESTED"));
 
+	final String jqFindTooltip = "jqFind('{0}:visible:textEquals({1})')";
+	final String jqFindTooltipWait = format(jqFindTooltip, "strong", MSG_OUTPUT_TOOLTIP_3_4_WAITING);
+	final String jqFindTooltipText = format(jqFindTooltip, "span", MSG_OUTPUT_TOOLTIP_3_4_TEXT);
+
+	final String conditionTooltipWaitAppears = format("{0}.size() > 0", format(jqFindTooltip, "strong",
+			MSG_OUTPUT_TOOLTIP_3_4_WAITING));
+	final String conditionTooltipTextAppears = format("{0}.size() > 0", format(jqFindTooltip, "span",
+			MSG_OUTPUT_TOOLTIP_3_4_TEXT));
+	final String conditionTooltipTextDisappears = format("{0}.size() == 0", format(jqFindTooltip, "span",
+			MSG_OUTPUT_TOOLTIP_3_4_TEXT));
+
 	/**
 	 * Hover mouse at first panel and so invokes tooltip displaying. Checks that
 	 * the tooltip text will display and next hover mouse out of panel to close
@@ -108,17 +119,16 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 		Integer tooltipsRequested = null;
 
 		for (int i = 0; i < 3; i++) {
-			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_WAITING));
-			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_TEXT));
+			assertEquals(selenium.getEval(format("{0}.size()", jqFindTooltipWait)), "0");
+			assertEquals(selenium.getEval(format("{0}.size()", jqFindTooltipText)), "0");
 
 			if (i == 0)
 				selenium.mouseMoveAt(LOC_PANEL_SAMPLE_3, MSG_EVENT_COORDS_AT_PANEL);
 			mouseOverAt(LOC_PANEL_SAMPLE_3, MSG_EVENT_COORDS_AT_PANEL);
-
 			tooltipsRequested = waitForTooltipChanges(tooltipsRequested, i == 0);
 
 			selenium.mouseOut(LOC_PANEL_SAMPLE_3);
-			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
+			selenium.waitForCondition(conditionTooltipTextDisappears, "3000");
 		}
 	}
 
@@ -133,14 +143,14 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 		Integer tooltipsRequested = null;
 
 		for (int i = 0; i < 3; i++) {
-			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_WAITING));
-			assertFalse(selenium.isTextPresent(MSG_OUTPUT_TOOLTIP_3_4_TEXT));
+			assertEquals(selenium.getEval(format("{0}.size()", jqFindTooltipWait)), "0");
+			assertEquals(selenium.getEval(format("{0}.size()", jqFindTooltipText)), "0");
 
 			selenium.clickAt(LOC_PANEL_SAMPLE_4, MSG_EVENT_COORDS_AT_PANEL);
 			tooltipsRequested = waitForTooltipChanges(tooltipsRequested, i == 0);
 			
 			selenium.mouseOut(LOC_PANEL_SAMPLE_4);
-			waitForTextDisappears(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
+			selenium.waitForCondition(conditionTooltipTextDisappears, "3000");
 		}
 	}
 
@@ -148,16 +158,15 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 		Integer tooltipsRequested = null;
 
 		if (firstLoop) {
-			waitForText(MSG_OUTPUT_TOOLTIP_3_4_WAITING);
-			waitForText(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
+			selenium.waitForCondition(conditionTooltipWaitAppears, "3000");
+			selenium.waitForCondition(conditionTooltipTextAppears, "3000");
+
 			tooltipsRequested = retrieveRequestedTooltips.retrieve();
 		} else {
-			waitForText(MSG_OUTPUT_TOOLTIP_3_4_TEXT);
+			selenium.waitForCondition(conditionTooltipTextAppears, "3000");
+			
 			tooltipsRequested = Wait.waitForChangeAndReturn(tooltipsRequestedOld, retrieveRequestedTooltips);
-
-			if (tooltipsRequestedOld != null) {
-				assertEquals(tooltipsRequested, Integer.valueOf(tooltipsRequestedOld + 1));
-			}
+			assertEquals(tooltipsRequested, Integer.valueOf(tooltipsRequestedOld + 1));
 		}
 
 		return tooltipsRequested;
