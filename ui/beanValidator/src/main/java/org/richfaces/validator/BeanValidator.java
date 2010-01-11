@@ -73,8 +73,10 @@ public class BeanValidator extends ObjectValidator {
 		Collection<String> messages = extractMessages(violations);
 		if(null != parent){
 			Collection<String> parentMessages = parent.validateGraph(context, value, profiles);
-			if(null != messages){
-				messages.addAll(parentMessages);
+			if (null != messages) {
+				if (null != parentMessages) {
+					messages.addAll(parentMessages);
+				}
 			} else {
 				messages = parentMessages;
 			}

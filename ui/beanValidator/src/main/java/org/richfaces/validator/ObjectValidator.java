@@ -141,8 +141,10 @@ public abstract class ObjectValidator {
 			} 
 			if(null != parent){
 				Collection<String> parentMessages = parent.validate(context, target, value, profiles);
-				if(null != validationMessages){
-					validationMessages.addAll(parentMessages);
+				if (null != validationMessages) {
+					if (null != parentMessages) {
+						validationMessages.addAll(parentMessages);
+					}
 				} else {
 					validationMessages = parentMessages;
 				}
