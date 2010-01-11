@@ -96,7 +96,9 @@ public class HibernateValidator extends ObjectValidator {
 			if(null != parent){
 				Collection<String> parentMessages = parent.validateGraph(context, value, profiles);
 				if(null != validationMessages){
-					validationMessages.addAll(parentMessages);
+					if (null != parentMessages) {
+						validationMessages.addAll(parentMessages);
+					}
 				} else {
 					validationMessages = parentMessages;
 				}
