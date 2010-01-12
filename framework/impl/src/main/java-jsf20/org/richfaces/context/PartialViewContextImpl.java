@@ -75,6 +75,16 @@ public class PartialViewContextImpl extends PartialViewContextWrapper {
 	}
 
 	@Override
+	public boolean isAjaxRequest() {
+		if (partialViewContext.isAjaxRequest()) {
+			return true;
+		}
+		
+		/* Hack for Sun RI implementation of StateManager/ResponseStateManager */
+		return Boolean.TRUE.equals(getPartialViewContextIndicator(facesContext));
+	}
+	
+	@Override
 	public boolean isPartialRequest() {
 		if (partialViewContext.isPartialRequest()) {
 			return true;
@@ -88,4 +98,5 @@ public class PartialViewContextImpl extends PartialViewContextWrapper {
 	public void setPartialRequest(boolean isPartialRequest) {
 		partialViewContext.setPartialRequest(isPartialRequest);
 	}
+	
 }
