@@ -722,22 +722,18 @@ public abstract class AbstractSeleniumTestCase {
         selenium.getEval(evaluate);
     }
 
-    /**
-     * Returns the count of elements for given jQuery locator. 
-     * @param locator a jQuery locator that doesn't end with :eq(), :last, :first, :odd, etc.
-     * @return count of elements matching given locator
-     */
-    public int getJQueryCount(String locator) {
-        int count = 0;
-        for (int i = 0;; i++) {
-            if (selenium.isElementPresent(format(locator + ":eq({0})", i))) {
-                count++;
-            } else {
-                break;
-            }
-        }
-        return count;
-    }
+	/**
+	 * Returns the count of elements for given jQuery selector
+	 * 
+	 * @param selector
+	 *            jQuery selector
+	 * @return count of elements matching given selector
+	 */
+	public int getJQueryCount(String selector) {
+		String evaluate = format("selenium.getJQueryCount(\"{0}\")", selector.replaceFirst("^jquery=", ""));
+		String result = selenium.getEval(evaluate);
+		return Integer.parseInt(result);
+	}
 
     /**
      * Checks if element given by locator is member of CSS class given by

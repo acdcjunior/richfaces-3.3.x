@@ -166,6 +166,19 @@ Selenium.prototype.doMouseOverAt = function(locator, coordString) {
 }
 
 /**
+ * Returns the count of elements for given jQuery selector
+ * 
+ * @param selector
+ *            jQuery selector
+ * @return count of elements matching given selector
+ */
+Selenium.prototype.getJQueryCount = function(selector) {
+	var inDocument = this.browserbot.getDocument();
+	var found = $(inDocument).find(selector);
+	return found.length;
+}
+
+/**
  * Gets the text of an element. This works for any element that contains
  * text. This command uses either the textContent (Mozilla-like browsers) or
  * the innerText (IE-like browsers) of the element, which is the rendered
