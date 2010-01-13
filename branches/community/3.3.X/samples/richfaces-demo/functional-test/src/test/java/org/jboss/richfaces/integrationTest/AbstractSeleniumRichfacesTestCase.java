@@ -129,9 +129,6 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 		loadCustomLocationStrategies();
 		loggingTestListener.setSelenium(selenium);
 		
-		// adding selenium-side logging facility
-		loggingTestListener.setSelenium(selenium);
-		
 		if (Boolean.valueOf(seleniumMaximize)) {
 			// focus and maximaze tested window
 			selenium.windowFocus();
