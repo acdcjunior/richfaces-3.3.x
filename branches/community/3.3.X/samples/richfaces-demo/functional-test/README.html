@@ -85,7 +85,7 @@ h1 { color: darkblue; }
 	<h4>Changing host and port of SeleniumServer</h4>
 	<p>By default build uses local selenium (<tt>localhost:8444</tt>) started in <tt>pre-integration-test</tt> phase, but you can define other host and/or port too:</p>
 	<p class="indent"><tt>$ mvn ... <b>-Dselenium.host=remote.host -Dselenium.port=4444</b></tt></p>
-	<p>(note: despite of specifying other host for connecting remote SeleniumServer, the local instance of SeleniumServer is triggered automatically on the specified port <tt>${selenium.port}</tt> listening on <tt>0.0.0.0</tt> - so give a attention what port are you using)</p>
+	<p>(note: despite of specifying other host for connecting remote SeleniumServer, the local instance of SeleniumServer is triggered automatically on the specified port <tt>${selenium.port}</tt> listening on <tt>0.0.0.0</tt> - but you can turn the local Selenium session off by disabling it's profile: <tt>-P!local-selenium-session</tt>)</p>
 	<p>(note: build automatically prepares JavaScript extensions for SeleniumServer, so it is necessary to copy that extensions from <tt>target/test-classes/custom-extensions.js</tt> and start designated SeleniumServer with switch <tt>-userExtension</tt> pointed to that file - the <tt>custom-extensions.js</tt> are built in <tt>process-test-resources</tt> phase)</p>
 	
 	<h3>Which richfaces-demo artifact use?</h3>
