@@ -86,7 +86,7 @@ public class RepeatTestCase extends AbstractDataIterationTestCase {
 			}
 
 			// select some option in reason
-			int options = getJQueryCount(locSelectReason + "/*[@value]");
+			int options = getJQueryCount(locSelectReason + " *[value]");
 			assertTrue(options > 0);
 			selenium.select(locSelectReason, format("index={0}", row % options));
 
