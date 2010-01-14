@@ -234,6 +234,7 @@
 						<version>1.0</version>
 						<executions>
 							<execution>
+								<id>start-selenium-server</id>
 								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>start-server</goal>
@@ -246,6 +247,17 @@
 									<logFile>${project.build.directory}/selenium/selenium-server.log</logFile>
 									<browserSideLog>${selenium.debug}</browserSideLog>
 									<debug>${selenium.debug}</debug>
+								</configuration>
+							</execution>
+							<execution>
+								<id>stop-selenium-server</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop-server</goal>
+								</goals>
+								<configuration>
+									<background>true</background>
+									<port>${selenium.port}</port>
 								</configuration>
 							</execution>
 						</executions>
@@ -507,6 +519,30 @@
 				<container.version>6.0.20</container.version>
 				<container.installer.url>http://www.apache.org/dist/tomcat/tomcat-6/v${container.version}/bin/apache-tomcat-${container.version}.zip</container.installer.url>
 			</properties>
+		</profile>
+		<profile>
+			<id>press-key-to-shutdown-server</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>press-key-to-shutdown-server</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<input>Press key for shutdown server...</input>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 	<dependencies>

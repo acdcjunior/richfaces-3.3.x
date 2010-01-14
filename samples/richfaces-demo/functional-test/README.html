@@ -85,7 +85,7 @@ h1 { color: darkblue; }
 	<h4>Changing host and port of SeleniumServer</h4>
 	<p>By default build uses local selenium (<tt>localhost:8444</tt>) started in <tt>pre-integration-test</tt> phase, but you can define other host and/or port too:</p>
 	<p class="indent"><tt>$ mvn ... <b>-Dselenium.host=remote.host -Dselenium.port=4444</b></tt></p>
-	<p>(note: despite of specifying other host for connecting remote SeleniumServer, the local instance of SeleniumServer is triggered automatically on the specified port <tt>${selenium.port}</tt> listening on <tt>0.0.0.0</tt> - but you can turn the local Selenium session off by disabling it's profile: <tt>-P!local-selenium-session</tt>)</p>
+	<p>(note: despite of specifying other host for connecting remote SeleniumServer, the local instance of SeleniumServer is triggered automatically on the specified port <tt>${selenium.port}</tt> listening on <tt>0.0.0.0</tt> - but you can turn the local Selenium session off by disabling it's profile: <tt>-P '!local-selenium-session'</tt>)</p>
 	<p>(note: build automatically prepares JavaScript extensions for SeleniumServer, so it is necessary to copy that extensions from <tt>target/test-classes/custom-extensions.js</tt> and start designated SeleniumServer with switch <tt>-userExtension</tt> pointed to that file - the <tt>custom-extensions.js</tt> are built in <tt>process-test-resources</tt> phase)</p>
 	
 	<h3>Which richfaces-demo artifact use?</h3>
@@ -129,5 +129,20 @@ h1 { color: darkblue; }
 	<h2>Configuration by default</h2>
 	<p>All of the definitions above are configured with respect of configuration by default paragidm, so it is possible to achieve different behaviours with varying combinations.</p>
 	<p>All default values are specified in pom.xml in properties.</p>
+	
+	<h2>Special configurations</h2>
+	
+	<h3>Debugging</h3>
+	<p>If you want to use the selenium server or container without running the test suite (e.g. for debugging purposes), you may find the following examples useful:</p>
+	
+	<h4>Run container only</h4>
+	<p class="indent"><tt>$ mvn verify <b>-DcontainerId=tomcat6x -Dmaven.test.skip=true -P press-key-to-shutdown-server</b></tt></p>
+	
+	<h4>Run Selenium server only</h4>
+	<p class="indent"<tt>$ mvn verify <b>-P 'press-key-to-shutdown-server,local-selenim-session,!integration-test,!container-demoapp-deployable-dependency'</b></tt></p>
+	
+	<h4>Run integration test suite only</h4>
+	<p>If you have already running selenium server and container, you can just run a test suite:</p>
+	<p class="indent"<tt>$ mvn verify -Dbrowser="*firefox" <b>-P '!local-selenium-session,!container-demoapp-deployable-dependency'</b></tt></p>
 </body>
 </html>
