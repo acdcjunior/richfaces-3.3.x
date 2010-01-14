@@ -157,7 +157,7 @@
 								</goals>
 								<configuration>
 									<includeGroupIds>org.jboss.test</includeGroupIds>
-									<includeArtifactIds>selenium</includeArtifactIds>
+									<includeArtifactIds>richfaces-selenium</includeArtifactIds>
 									<includes>jbossqa-extensions.js</includes>
 									<outputDirectory>${extensions.dir}</outputDirectory>
 									<overWriteReleases>true</overWriteReleases>
@@ -525,7 +525,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.test</groupId>
-			<artifactId>selenium</artifactId>
+			<artifactId>richfaces-selenium</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
