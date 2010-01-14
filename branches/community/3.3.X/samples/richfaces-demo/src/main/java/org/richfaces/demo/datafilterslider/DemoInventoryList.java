@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.component.UIData;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.richfaces.component.UIDataFltrSlider;
+import org.richfaces.function.RichFunction;
 
 public class DemoInventoryList {
 
@@ -119,61 +121,31 @@ public class DemoInventoryList {
     public List getCarMakeIndex() {
         return carMakeIndex;
     }
-
+    
     public void setCarMakeIndex(List carMakeIndex) {
         this.carMakeIndex = carMakeIndex;
     }
 
-    private UIData carMakeIndexUIData;
+    List carInventory = null;
 
-
-    public UIData getCarMakeIndexUIData() {
-        return carMakeIndexUIData;
+    public void setCarInventory(List carInventory) {
+        this.carInventory = carInventory;
     }
 
-    public void setCarMakeIndexUIData(UIData carMakeIndexUIData) {
-        this.carMakeIndexUIData = carMakeIndexUIData;
-    }
-
-    public Object getCarInventory() {
-
-        if (uiData == null){
+    public List getCarInventory() {
+        if (carInventory == null){
             loadCarTable("1");
         }
-
-        return getUiData().getValue();
-
+        return carInventory;
     }
 
     protected void loadCarMakeIndex() {
-
         carMakeIndex = dataFilterSliderDao.getAllCarMakes();
     }
 
-    UIData uiData;
-
-
-    public UIData getUiData() {
-        if(uiData == null){
-            uiData = new UIData();
-        }
-        return uiData;
-    }
-
-    public void setUiData(UIData uiData) {
-        this.uiData = uiData;
-    }
-
     public void loadCarTable(String id) {
-       try{
-
-            getUiData().setValue(dataFilterSliderDao.getCarsById(id));
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+       setCarInventory(dataFilterSliderDao.getCarsById(id));
     }
-
 
     private static final String carMileageColumnName = "Mileage";
     private static final String carMileageMktAvgColumnName = "MktAvg";
@@ -218,24 +190,20 @@ public class DemoInventoryList {
          loadCarTable(filterValue);
     }
 
-    UIDataFltrSlider dataFilterSlider;
-
-
-    public UIDataFltrSlider getDataFilterSlider() {
-        return dataFilterSlider;
-    }
-
-    public void setDataFilterSlider(UIDataFltrSlider dataFilterSlider) {
-        this.dataFilterSlider = dataFilterSlider;
-    }
-
     public void filterCarList(ActionEvent event) {
+        String sliderId = FacesContext.getCurrentInstance().
+            getExternalContext().getRequestParameterMap().get("sliderId"); 
+        UIDataFltrSlider slider=null;
 
-    	UIDataFltrSlider slider = getDataFilterSlider();
-    	slider.resetDataTable();
-
+        if (sliderId!=null){
+    	    slider = (UIDataFltrSlider)RichFunction.findComponent(sliderId);
+    	    slider.resetDataTable();
+    	}
+        
         try{
-            filterValue = String.valueOf(carMakeIndexUIData.getRowIndex());
+            filterValue = FacesContext.getCurrentInstance().
+            getExternalContext().getRequestParameterMap().get("rowKey");
+            
             filterRule = getAttribute(event, "filterRule");
 
             if (filterRule.equals("showTable")){
@@ -244,8 +212,10 @@ public class DemoInventoryList {
         }catch(Exception e){
             e.printStackTrace();
         }
-
-        slider.filterDataTable(slider.getHandleValue());
+        
+        if (slider!=null){
+            slider.filterDataTable(slider.getHandleValue());
+        }
     }
 
     private static String getAttribute(ActionEvent event, String name) {
@@ -258,7 +228,7 @@ public class DemoInventoryList {
     public int getGenRandom() {
         return dataFilterSliderDao.genRand();
     }
-
+ 
     public void setGenRandom(int genRandom) {
         this.genRandom = genRandom;
     }
