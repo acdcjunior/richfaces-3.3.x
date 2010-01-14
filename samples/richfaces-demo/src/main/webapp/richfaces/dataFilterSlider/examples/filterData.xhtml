@@ -14,31 +14,31 @@
 	<h:form id="form1">
 		<a4j:queue />
 
-		<rich:dataFilterSlider sliderListener="#{dfsBean.doSlide}"
-			binding="#{inventoryList.dataFilterSlider}" for="carList"
+		<rich:dataFilterSlider for="carList"
 			forValRef="inventoryList.carInventory" filterBy="getMileage"
 			manualInput="true" onSlide="true" onChange="true" storeResults="true"
 			width="200px" startRange="10000" endRange="60000" increment="10000"
-			trailer="true" handleValue="60000"/>
+			trailer="true" handleValue="60000" id="slider"/>
 
 		<rich:spacer height="15" />
 
-		<h:dataTable id="carIndex" rows="10"
-			binding="#{inventoryList.carMakeIndexUIData}"
+		<rich:dataTable id="carIndex" rows="10"
+			rowKeyVar="rowKey"
 			value="#{inventoryList.carMakeIndex}" var="category"
 			styleClass="list-table1" columnClasses="column-index"
 			rowClasses="list-row3">
 
-			<h:column>
+			<rich:column>
 				<a4j:commandLink actionListener="#{inventoryList.filterCarList}"
 					reRender="carList">
 					<h:outputText value="#{category}" />
 					<f:attribute name="filterRule" value="showTable" />
-
+					<f:param name="sliderId" value="slider"/>
+					<f:param name="rowKey" value="#{rowKey}"/>
 				</a4j:commandLink>
-			</h:column>
+			</rich:column>
 
-		</h:dataTable>
+		</rich:dataTable>
 		<rich:spacer height="15" />
 
 		<rich:dataTable width="300" id="carList" rows="10"
