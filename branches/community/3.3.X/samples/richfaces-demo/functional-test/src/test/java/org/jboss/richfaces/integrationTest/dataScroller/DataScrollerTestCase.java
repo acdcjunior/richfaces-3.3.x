@@ -25,6 +25,7 @@ import static org.testng.Assert.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractDataIterationTestCase;
+import org.jboss.test.selenium.waiting.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -66,19 +67,26 @@ public class DataScrollerTestCase extends AbstractDataIterationTestCase {
 	 * the second page.
 	 */
 	@Test(dependsOnMethods = "testNumberedPage")
-	public void testRemembersActivePage() {
+	public void testDoesntRememberActivePage() {
 		gotoFirstPage();
 
-		Integer page = 2;
+		int page = 2;
+		
+		Condition firstPageIsActive = new Condition() {
+			public boolean isTrue() {
+				return 1 == getActivePage();
+			}
+		};
 
 		gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, page));
 
 		selenium.refresh();
-		assertTrue(page.equals(getActivePage()));
+		Wait.until(firstPageIsActive);
+		
+		gotoPage(format(LOC_BUTTON_NUMBERED_PAGE_PREFORMATTED, page));
 
-		// TODO cannot just do openPage
-		// openPage();
-		// assertTrue(page.equals(getActivePage()));
+		loadPage();
+		Wait.until(firstPageIsActive);
 	}
 
 	/**
