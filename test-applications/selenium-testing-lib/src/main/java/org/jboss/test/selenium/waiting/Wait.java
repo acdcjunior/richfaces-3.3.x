@@ -186,6 +186,30 @@ public class Wait {
 	}
 
 	/**
+	 * Constructs preset instance of waiting (@see Waiting) with no delay by
+	 * interval between start waiting and first test for conditions.
+	 * 
+	 * @return Waiting instance initialized with no delay
+	 */
+	public static Waiting noDelay() {
+		return getDefault().withDelay(false);
+	}
+
+	/**
+	 * Constructs preset instance of waiting (@see Waiting) and set that testing
+	 * condition should or shouldn't be delayed of one interval after the start
+	 * of waiting.
+	 * 
+	 * @param isDelayed
+	 *            true if condition testing should be delayed; false otherwise
+	 * @return Waiting instance initialized with delay if isDelayed is set to
+	 *         true; with no delay otherwise
+	 */
+	public static Waiting withDelay(boolean isDelayed) {
+		return getDefault().withDelay(isDelayed);
+	}
+
+	/**
 	 * Will wait for default amount of time. Default timeout specified in
 	 * Wait.DEFAULT_TIMEOUT
 	 */
@@ -261,6 +285,12 @@ public class Wait {
 		 * Timeout of whole waiting procedure
 		 */
 		private long timeout = DEFAULT_TIMEOUT;
+
+		/**
+		 * Indicates when the first test for the condition should be delayed
+		 * after waiting starts.
+		 */
+		public boolean isDelayed = true;
 
 		/**
 		 * Failure indicates waiting timeout.
@@ -371,6 +401,35 @@ public class Wait {
 		public Waiting dontFail() {
 			return failWith((Throwable) null);
 		}
+		
+		/**
+		 * Sets no delay by interval between start waiting and first test for
+		 * conditions.
+		 * 
+		 * @return Waiting instance initialized with no delay
+		 */
+		public Waiting noDelay() {
+			return withDelay(false);
+		}
+
+		/**
+		 * Set if testing condition should be delayed of one interval after the
+		 * start of waiting.
+		 * 
+		 * @param isDelayed
+		 *            true if condition testing should be delayed; false
+		 *            otherwise
+		 * @return Waiting instance initialized with delay if isDelayed is set
+		 *         to true; with no delay otherwise
+		 */
+		public Waiting withDelay(boolean isDelayed) {
+			if (isDelayed == this.isDelayed) {
+				return this;
+			}
+			Waiting copy = this.copy();
+			copy.isDelayed = isDelayed;
+			return copy;
+		}
 
 		/**
 		 * Stars loop waiting to satisfy condition.
@@ -380,15 +439,22 @@ public class Wait {
 		 */
 		public void until(Condition condition) {
 			long start = System.currentTimeMillis();
-			long end = start + timeout;
+			long end = start + this.timeout;
+			boolean delay = this.isDelayed;
 			while (System.currentTimeMillis() < end) {
+				if (!delay && condition.isTrue())
+					return;
+				delay = false;
 				try {
-					Thread.sleep(interval);
+					Thread.sleep(this.interval);
 				} catch (InterruptedException e) {
 					throw new RuntimeException(e);
 				}
-				if (condition.isTrue())
-					return;
+				if (System.currentTimeMillis() >= end) {
+					if (condition.isTrue()) {
+						return;
+					}
+				}
 			}
 			fail();
 		}
@@ -475,6 +541,7 @@ public class Wait {
 			copy.interval = this.interval;
 			copy.timeout = this.timeout;
 			copy.failure = this.failure;
+			copy.isDelayed = this.isDelayed;
 			return copy;
 		}
 	}
