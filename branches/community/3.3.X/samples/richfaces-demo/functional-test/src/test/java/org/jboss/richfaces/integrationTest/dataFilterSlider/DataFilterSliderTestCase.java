@@ -65,7 +65,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 
 	/**
 	 * Use slider to change input price and checks that all prices in table is
-	 * lowe than price selected by slider and given in text-input next to the
+	 * lower than price selected by slider and given in text-input next to the
 	 * slider
 	 */
 	@Test
@@ -78,7 +78,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 	 * step is contained all values defined in all steps with lesser selected
 	 * value of price
 	 */
-	@Test
+	@Test(dependsOnMethods = "testSimpleSlider")
 	public void testComplexSlider() {
 		List<Integer> lowMileages = testSlider(format(MSG_CHOICES_OF_SLIDER_PERCENTAGES, 0));
 		List<Integer> highMileages = testSlider(format(MSG_CHOICES_OF_SLIDER_PERCENTAGES, 1));
@@ -104,7 +104,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 	 * checks that only given brand is in table. Then repeat this process once
 	 * with another input data.
 	 */
-	@Test
+	@Test(dependsOnMethods = { "testSimpleSlider", "testSimpleBrand" })
 	public void testMethodInterleaving() {
 		testSlider(format(MSG_CHOICES_OF_SLIDER_PERCENTAGES_FOR_INTERLEAVING, 0));
 		testBrand(format(MSG_CHOICES_OF_BRANDS, 0));
