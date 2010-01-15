@@ -48,8 +48,6 @@ public class DataTableScrollerBean {
 
 	private SimpleSelection selection = new SimpleSelection();
 
-	private UIScrollableDataTable table;
-
 	private SortOrder order = new SortOrder();
 
 
@@ -220,11 +218,8 @@ public class DataTableScrollerBean {
 			Iterator<Object> iterator = getSelection().getKeys();
 			while (iterator.hasNext()) {
 				Object key = iterator.next();
-				table.setRowKey(key);
-				if (table.isRowAvailable()) {
-					getSelectedCars().add(
-							(DemoInventoryItem) table.getRowData());
-				}
+				getSelectedCars().add(allCars.get((Integer)key));
+				
 			}
 		}
 		return null;
@@ -236,14 +231,6 @@ public class DataTableScrollerBean {
 
 	public void setSelectedCars(ArrayList<DemoInventoryItem> selectedCars) {
 		this.selectedCars = selectedCars;
-	}
-
-	public UIScrollableDataTable getTable() {
-		return table;
-	}
-
-	public void setTable(UIScrollableDataTable table) {
-		this.table = table;
 	}
 
 	public void initColumnsHeaders() {
