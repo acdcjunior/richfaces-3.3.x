@@ -37,7 +37,7 @@ import org.jboss.test.selenium.waiting.Retrieve;
 import org.jboss.test.selenium.waiting.Wait;
 import org.testng.Assert;
 
-import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.SeleniumException;
 
 /**
@@ -51,7 +51,7 @@ public abstract class AbstractSeleniumTestCase {
 
     protected Properties locatorsProperties;
     protected Properties messagesProperties;
-    protected DefaultSelenium selenium;
+    protected Selenium selenium;
     /**
      * Generic timeout in miliseconds used in every selenium function
      * waitForPageToLoad()
