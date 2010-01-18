@@ -21,16 +21,19 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.status;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.fail;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.dom.Event;
-import org.jboss.test.selenium.waiting.Condition;
-import static org.testng.Assert.*;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.thoughtworks.selenium.SeleniumException;
 
 /**
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
@@ -45,7 +48,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	private final String LOC_INPUT_JOB = getLoc("INPUT_JOB");
 	private final String LOC_OUTPUT_TEXT = getLoc("OUTPUT_TEXT");
 
-	private final String MSG_STYLE_DISPLAY = getMsg("STYLE_DISPLAY");
 	private final String MSG_PATTERN_NAME_JOB = getMsg("PATTERN_NAME_JOB");
 	
 	/**
@@ -59,8 +61,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 * This version using text like a status message for user.
 	 * </p>
 	 */
-	// TODO investigate JavaScript injecting to fix this, see
-	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testTextStatus() {
 		doStatusTesting(0);
@@ -75,8 +75,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 * This version using image like a status message for user.
 	 * </p>
 	 */
-	// TODO investigate JavaScript injecting to fix this, see
-	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testImageStatus() {
 		doStatusTesting(1);
@@ -98,29 +96,21 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 		final String locButtonRequest = format(LOC_BUTTON_REQUEST_PREFORMATTED, testNumber);
 
 		assertFalse(isDisplayed(locOutputStatusMessage), "Status message should not be visible at start.");
-		
-		// prepare both needed conditions for waiting so that it will be faster
-	    Condition styleCondition = new Condition() {
-	        public boolean isTrue() {
-	            return isDisplayed(locOutputStatusMessage);
-	        }
-	    };
-	    
-	    Condition styleConditionNot = new Condition() {
-	        public boolean isTrue() {
-	            return !isDisplayed(locOutputStatusMessage);
-	        }
-	    };
-	    
-		selenium.click(locButtonRequest);
-        
-		// wait for style is changed to "processing" state indicates that
-		// request is in progress
-		waitModelUpdate.interval(0).failWith("Test timeouted when waiting for request moves to processing state.").until(styleCondition);
 
-		// wait for style is changed back to initial state after request is
-		// complete
-		waitModelUpdate.interval(0).failWith("Timeout when waiting for request moves to complete state.").until(styleConditionNot);
+		for (int i = 0; i < 20; i++) {
+			selenium.click(locButtonRequest);
+			try {
+				selenium.waitForCondition(format("jqFind('{0}').is(':visible')", locOutputStatusMessage.replaceFirst(
+						"^jquery=", "")), "500");
+			} catch (SeleniumException e) {
+				if (e.getMessage().startsWith("Timed out")) {
+					continue;
+				}
+				throw e;
+			}
+			selenium.waitForCondition(format("jqFind('{0}').is(':hidden')", locOutputStatusMessage.replaceFirst("^jquery=", "")), "5000");
+			break;
+		}
 	}
 
 	/**
@@ -133,8 +123,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 	 * Watches the correct output value.
 	 * </p>
 	 */
-	// TODO investigate JavaScript injecting to fix testInputsStatus, see
-	// https://jira.jboss.org/jira/browse/JBQA-2606
 	@Test
 	public void testInputsStatus() {
 		scrollIntoView(format(LOC_FIELDSET_PAGE_PART_PREFORMATTED, 2), true);
@@ -151,19 +139,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 		
 		assertFalse(isDisplayed(locOutputStatusMessage), "Status message should not be visible at start.");
 		
-		// prepare both needed conditions for waiting so that it will be faster
-	    Condition styleCondition = new Condition() {
-	        public boolean isTrue() {
-	            return isDisplayed(locOutputStatusMessage);
-	        }
-	    };
-	    
-	    Condition styleConditionNot = new Condition() {
-	        public boolean isTrue() {
-	            return !isDisplayed(locOutputStatusMessage);
-	        }
-	    };
-		
 		// cycle over 30 chars and alternating between two inputs
 		for (int counter = 1; counter <= 15; counter++) {
 			// select input and it's buffered text by state of counter
@@ -175,15 +150,24 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 
 			selenium.type(selectedInput, selectedText.toString());
 			selenium.fireEvent(selectedInput, Event.KEYUP);
-			
-			// wait for style is changed to "processing" state indicates that
-	        // request is in progress
-	        waitModelUpdate.interval(0).failWith("Test timeouted when waiting for request moves to processing state.").until(styleCondition);
 
-	        // wait for style is changed back to initial state after request is
-	        // complete
-			waitModelUpdate.interval(0).failWith("Timeout when waiting for request moves to complete state.").until(styleConditionNot);
-			
+			try {
+				// wait for style is changed to "processing" state indicates
+				// that request is in progress
+				selenium.waitForCondition(format("jqFind('{0}').is(':visible')", locOutputStatusMessage.replaceFirst(
+						"^jquery=", "")), "500");
+			} catch (SeleniumException e) {
+				// we can found that the request is so fast we cannot catch the
+				// element in visible state
+				if (!e.getMessage().startsWith("Timed out")) {
+					throw e;
+				}
+			}
+			// wait for element is back to hidden state after request is
+			// complete
+			selenium.waitForCondition(format("jqFind('{0}').is(':hidden')", locOutputStatusMessage.replaceFirst(
+					"^jquery=", "")), "5000");
+
 			String outputText = selenium.getText(LOC_OUTPUT_TEXT);
 
 			// matches output to pattern declared above?
@@ -201,29 +185,6 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	/**
-	 * Wait for display-style changes to specified initial (resp. other than
-	 * initial) value depending on what we want.
-	 * 
-	 * @param locator
-	 *            of element we want watch
-	 * @param initialStyle
-	 *            initial display-style value
-	 * @param shouldEqualOldValue
-	 *            if true, wait for element's display-style became initialStyle;
-	 *            if false, wait for element's display-style became other than
-	 *            initialStyle
-	 */
-	private void waitForDisplayChanges(final String locator, final String initialStyle,
-			final boolean shouldEqualOldValue) {
-		waitModelUpdate.interval(0).until(new Condition() {
-			public boolean isTrue() {
-				String actualStyle = getStyle(locator, MSG_STYLE_DISPLAY);
-				return !shouldEqualOldValue ^ initialStyle.equals(actualStyle);
-			}
-		});
-	}
-	
 	@SuppressWarnings("unused")
 	@BeforeMethod
 	private void loadPage() {
