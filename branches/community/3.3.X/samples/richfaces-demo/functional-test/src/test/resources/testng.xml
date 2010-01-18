@@ -501,13 +501,11 @@
 		</classes>
 	</test>
 
-	<!--
-		<test
-		name="org.jboss.richfaces.integrationTest.status.StatusTestCase">
-		<classes> <class
-		name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />
-		</classes> </test>
-	-->
+	<test name="org.jboss.richfaces.integrationTest.status.StatusTestCase">
+		<classes>
+			<class name="org.jboss.richfaces.integrationTest.status.StatusTestCase" />
+		</classes>
+	</test>
 
 	<test name="org.jboss.richfaces.integrationTest.style.StyleTestCase">
 		<classes>
