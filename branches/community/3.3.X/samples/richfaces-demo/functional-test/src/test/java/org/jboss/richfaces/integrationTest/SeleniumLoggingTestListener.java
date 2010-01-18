@@ -29,14 +29,14 @@ import org.apache.commons.lang.StringUtils;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
 
 /**
  * Class determined to logging into Selenium Server's logs server.log via the
- * DefaultSelenium.getEval(String) method which will evaluate JavaScript
+ * Selenium.getEval(String) method which will evaluate JavaScript
  * comment.
  * 
- * You must rewrite the DefaultSelenium selenium property to allow logging
+ * You must rewrite the Selenium selenium property to allow logging
  * facility.
  * 
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
@@ -48,13 +48,13 @@ public class SeleniumLoggingTestListener extends TestListenerAdapter {
 	/**
 	 * Must be specified to allow the logging facility
 	 */
-	private DefaultSelenium selenium;
+	private Selenium selenium;
 
-	public void setSelenium(DefaultSelenium selenium) {
+	public void setSelenium(Selenium selenium) {
 		this.selenium = selenium;
 	}
 
-	public DefaultSelenium getSelenium() {
+	public Selenium getSelenium() {
 		return selenium;
 	}
 
@@ -80,7 +80,7 @@ public class SeleniumLoggingTestListener extends TestListenerAdapter {
 
 	/**
 	 * This method will output method name and status into Selenium Server's log
-	 * server.log via the DefaultSelenium.getEval(String) method which will
+	 * server.log via the Selenium.getEval(String) method which will
 	 * evaluate JavaScript comment
 	 * 
 	 * @param result
