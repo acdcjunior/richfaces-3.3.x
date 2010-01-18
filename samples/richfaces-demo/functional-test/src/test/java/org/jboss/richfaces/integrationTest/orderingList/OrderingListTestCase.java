@@ -549,9 +549,7 @@ public class OrderingListTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing needed component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Ordering List");
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }

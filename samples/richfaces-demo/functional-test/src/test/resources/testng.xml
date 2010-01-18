@@ -80,6 +80,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.colorPicker.ColorPickerTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.colorPicker.ColorPickerTestCase" />
@@ -194,6 +195,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.dragSupport.DragSupportTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.dragSupport.DragSupportTestCase" />
@@ -210,6 +212,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.editor.AdvancedEditorTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.editor.AdvancedEditorTestCase" />
@@ -217,6 +220,7 @@
 	</test>
 
 	<test name="org.jboss.richfaces.integrationTest.editor.SimpleEditorTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.editor.SimpleEditorTestCase" />
@@ -225,6 +229,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.DraggingTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.DraggingTestCase" />
@@ -249,6 +254,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.extendedDataTable.SelectingTestCase" />
@@ -265,6 +271,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.fileUpload.FileUploadTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.fileUpload.FileUploadTestCase" />
@@ -303,6 +310,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.inplaceSelect.InplaceSelectTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.inplaceSelect.InplaceSelectTestCase" />
@@ -372,6 +380,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.orderingList.OrderingListTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.orderingList.OrderingListTestCase" />
@@ -560,6 +569,7 @@
 
 	<test
 		name="org.jboss.richfaces.integrationTest.tooltip.TooltipDataTableTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class
 				name="org.jboss.richfaces.integrationTest.tooltip.TooltipDataTableTestCase" />
@@ -567,6 +577,7 @@
 	</test>
 
 	<test name="org.jboss.richfaces.integrationTest.tooltip.TooltipTestCase">
+		<parameter name="internet-explorer-enabled" value="false"></parameter>
 		<classes>
 			<class name="org.jboss.richfaces.integrationTest.tooltip.TooltipTestCase" />
 		</classes>

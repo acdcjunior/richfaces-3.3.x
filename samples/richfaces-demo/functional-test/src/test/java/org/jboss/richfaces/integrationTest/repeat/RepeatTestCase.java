@@ -118,9 +118,7 @@ public class RepeatTestCase extends AbstractDataIterationTestCase {
 		return Double.parseDouble(string);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Repeat");
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 		selenium.allowNativeXpath("true");

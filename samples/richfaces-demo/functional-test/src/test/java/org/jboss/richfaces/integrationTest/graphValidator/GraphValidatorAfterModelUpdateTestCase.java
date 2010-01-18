@@ -117,9 +117,7 @@ public class GraphValidatorAfterModelUpdateTestCase extends AbstractSeleniumRich
 		assertEquals(selenium.getText(LOC_OUTPUT_VALIDATION_MESSAGE), text, "Given validation message isn't expected");
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Graph Validator");
 
 		scrollIntoView(LOC_FIELDSET_HEADER_ACTIVITIES, true);

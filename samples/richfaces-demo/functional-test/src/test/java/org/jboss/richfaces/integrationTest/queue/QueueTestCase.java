@@ -60,9 +60,7 @@ public class QueueTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Queue");
 		openTab("Usage");
 	}

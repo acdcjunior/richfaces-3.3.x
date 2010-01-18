@@ -171,9 +171,7 @@ public class ContextMenuImageTestCase extends AbstractSeleniumRichfacesTestCase 
     /**
      * Loads the needed page.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Context Menu");
 
         // XXX: context menu opens in top left corner so it isn't visible if it

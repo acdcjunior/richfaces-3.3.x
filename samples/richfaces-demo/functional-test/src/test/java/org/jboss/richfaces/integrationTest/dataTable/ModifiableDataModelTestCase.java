@@ -125,9 +125,7 @@ public class ModifiableDataModelTestCase extends AbstractDataIterationTestCase {
 		assertTrue(assigneeName.contains(MSG_INPUT_ASSIGNEE));
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Table");
 		openTab(MSG_TAB_TO_OPEN);
 		scrollIntoView(LOC_TABLE_COMMON, true);

@@ -116,9 +116,7 @@ public class ExtendedDataModelTestCase extends AbstractDataIterationTestCase {
 		assertEquals(yourBid, highestBidString);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Table");
 		openTab(MSG_TAB_TO_OPEN);
 

@@ -23,9 +23,12 @@
 package org.jboss.richfaces.integrationTest.separator;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.utils.URLUtils;
@@ -80,10 +83,10 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
         String text = getStyle(format(LOC_SEPARATOR_N, 1), "height");
         assertEquals(text, MSG_SECOND_HEIGHT, "Height of the separator.");
 
-        double widthFull = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 0), "width").replace("px", ""));
-        double width75 = Double.parseDouble(getStyle(format(LOC_SEPARATOR_N, 1), "width").replace("px", ""));
+        long widthFull = selenium.getElementWidth(format(LOC_SEPARATOR_N, 0)).longValue();
+        long width75 = selenium.getElementWidth(format(LOC_SEPARATOR_N, 1)).longValue();
 
-        assertEquals(width75, widthFull * 0.75, "Width of the separator.");
+        assertTrue(Math.abs(width75 - widthFull * 0.75) < 1, "Width of the second separator isn't 75% of first");
 
         text = getSeparatorHash(format(LOC_SEPARATOR_N, 1));
         assertEquals(text, MSG_SECOND_HASH, "Hash code of the image that makes the separator.");
@@ -167,7 +170,12 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
     private String getSeparatorHash(String locator) {
         // create URL of the image
         String url = getStyle(locator, "background-image");
-        url = url.replace("url(", "").replace(")", "");
+        Matcher matcher = Pattern.compile("url\\(\"?([^\"\\)]+)\"?\\)").matcher(url);
+        if (matcher.matches()) {
+        	url = matcher.group(1);
+        } else {
+        	fail("Url '" + url + "' doesn't match url pattern");
+        }
 
         String hash = null;
         try {
@@ -183,9 +191,7 @@ public class SeparatorTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Separator");
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }

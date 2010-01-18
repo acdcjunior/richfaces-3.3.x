@@ -27,6 +27,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertEqualsNoOrder;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.dom.Event;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -105,32 +106,39 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.click(LOC_FIRST_COMBO_BUTTON);
         waitForElement(format(LOC_FIRST_COMBO_SUGGESTIONS, 0));
         int count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS,-1));
-        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
+        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1, "Number of suggestions after clicking on button.");
 
-        selenium.click(LOC_FIRST_COMBO_INPUT);
-        selenium.typeKeys(LOC_FIRST_COMBO_INPUT, "su");
-        selenium.typeKeys(LOC_FIRST_COMBO_INPUT, " ");
-
-        count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS, -1));
-        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_2, "Number of suggestions after typing 'su'.");
-
-        String[] suggestions = new String[5];
-        for (int i = 0; i < 5; i++) {
-            suggestions[i] = selenium.getText(format(LOC_FIRST_COMBO_SUGGESTIONS, i));
-        }
-
-        String[] expected = new String[] { "suggestion 1", "suggestion 2", "suggestion 3", "suggestion 4", "suggestion 5", };
-
-        assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'sa'.");
-
+        // verify selecting item by mouse
         try {
             selenium.clickAt(format(LOC_FIRST_COMBO_SUGGESTIONS, 2), "");
         } catch (Exception ex) {
-            // why the exception is thrown?
+            // TODO: why the exception is thrown?
         }
         waitFor(1000);
         String text = selenium.getValue(LOC_FIRST_COMBO_INPUT);
         assertEquals(text, MSG_SUGGESTIONS_FIRST_COMBO_INPUT, "Third suggestion was chosen.");
+        
+        // verify filtering
+        selenium.type(LOC_FIRST_COMBO_INPUT, "suggestion ");
+        selenium.fireEvent(LOC_FIRST_COMBO_INPUT, Event.KEYUP);
+
+        count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS, -1));
+        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_1, "Number of suggestions after typing 'sugestion '.");
+        
+        selenium.type(LOC_FIRST_COMBO_INPUT, "suggestion 1");
+        selenium.fireEvent(LOC_FIRST_COMBO_INPUT, Event.KEYUP);
+
+        count = getJQueryCount(format(LOC_FIRST_COMBO_SUGGESTIONS, -1));
+        assertEquals(count, MSG_SUGGESTIONS_FIRST_COMBO_COUNT_2, "Number of suggestions after typing 'suggestion 1'.");
+
+        String[] suggestions = new String[count];
+        for (int i = 0; i < count; i++) {
+            suggestions[i] = selenium.getText(format(LOC_FIRST_COMBO_SUGGESTIONS, i));
+        }
+
+        String[] expected = new String[] { "suggestion 1" };
+
+        assertEqualsNoOrder(suggestions, expected, "Suggestions after typing 'suggestion 1'.");
     }
 
     /**
@@ -149,8 +157,8 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
         selenium.click(LOC_SECOND_COMBO_INPUT);
-        selenium.typeKeys(LOC_SECOND_COMBO_INPUT, "sa");
-        selenium.typeKeys(LOC_SECOND_COMBO_INPUT, " ");
+        selenium.type(LOC_SECOND_COMBO_INPUT, "sa");
+        selenium.fireEvent(LOC_SECOND_COMBO_INPUT, Event.KEYUP);
 
         count = getJQueryCount(format(LOC_SECOND_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_SECOND_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
@@ -167,7 +175,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         try {
             selenium.clickAt(format(LOC_SECOND_COMBO_SUGGESTIONS, 2), "");
         } catch (Exception ex) {
-            // why the exception is thrown?
+            // TODO: why the exception is thrown?
         }
 
         waitFor(1000);
@@ -190,8 +198,8 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_1, "Number of suggestions after after clicking on button.");
 
         selenium.click(LOC_THIRD_COMBO_INPUT);
-        selenium.typeKeys(LOC_THIRD_COMBO_INPUT, "sa");
-        selenium.typeKeys(LOC_THIRD_COMBO_INPUT, " ");
+        selenium.type(LOC_THIRD_COMBO_INPUT, "sa");
+        selenium.fireEvent(LOC_THIRD_COMBO_INPUT, Event.KEYUP);
 
         count = getJQueryCount(format(LOC_THIRD_COMBO_SUGGESTIONS, -1));
         assertEquals(count, MSG_SUGGESTIONS_THIRD_COMBO_COUNT_2, "Number of suggestions after typing 'sa'.");
@@ -208,7 +216,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         try {
             selenium.clickAt(format(LOC_THIRD_COMBO_SUGGESTIONS, 3), "");
         } catch (Exception ex) {
-            // why the exception is thrown?
+            // TODO: why the exception is thrown?
         }
 
         waitFor(1000);
@@ -268,9 +276,7 @@ public class ComboBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Combo Box");
     }
 

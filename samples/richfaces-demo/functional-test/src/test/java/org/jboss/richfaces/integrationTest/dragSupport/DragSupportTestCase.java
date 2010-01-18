@@ -227,9 +227,7 @@ public class DragSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Drag Support");
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 		selenium.allowNativeXpath("true");

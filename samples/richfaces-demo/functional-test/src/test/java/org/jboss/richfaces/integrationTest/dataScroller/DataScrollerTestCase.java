@@ -215,9 +215,7 @@ public class DataScrollerTestCase extends AbstractDataIterationTestCase {
 		return tableText;
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Scroller");
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 		selenium.allowNativeXpath("true");

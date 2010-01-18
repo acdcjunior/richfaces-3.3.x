@@ -201,9 +201,7 @@ public class QueueSettingsTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	};
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Queue");
 		openTab("Queue Settings");
 

@@ -148,9 +148,7 @@ public class ScriptTestCase extends AbstractSeleniumRichfacesTestCase {
 		});
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Script");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

@@ -207,9 +207,7 @@ public class IncludeTestCase extends AbstractSeleniumRichfacesTestCase {
 				&& (nextPresent == selenium.isElementPresent(LOC_BUTTON_NEXT));
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Include");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

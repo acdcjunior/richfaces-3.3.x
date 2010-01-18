@@ -48,9 +48,7 @@ public class DataListTestCase extends AbstractSeleniumRichfacesTestCase {
 				MSG_OUTPUT_PRESENT_TEXT_2));
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data List");
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 	}

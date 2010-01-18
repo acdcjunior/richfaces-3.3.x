@@ -85,9 +85,7 @@ public class MediaOutputTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Media Output");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

@@ -287,9 +287,7 @@ public class ToolBarTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Tool Bar");
     }
 }

@@ -348,9 +348,7 @@ public class SimpleEditorTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing needed component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Editor");
         // wait for iframe to load
         waitFor(1000);

@@ -96,9 +96,7 @@ public class TooltipDataTableTestCase extends AbstractSeleniumRichfacesTestCase 
 		return !"0".equals(selenium.getEval(format("jqFind('{0}:visible').size()", locator.replaceFirst("^jquery=", "").trim())));
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("ToolTip");
 		openTab("Use ToolTip with DataTable");
 		scrollIntoView(LOC_FIELDSET_HEADER_2, true);

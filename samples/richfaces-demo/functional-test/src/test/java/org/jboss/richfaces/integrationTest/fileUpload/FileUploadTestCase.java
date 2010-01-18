@@ -523,16 +523,16 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
         return new Color(red, green, blue);
     }
 
-    @SuppressWarnings("unused")
-    @BeforeClass
-    private void createImages() {
-        createImage(Color.RED, 128, 128);
-        createImage(Color.BLUE, 128, 128);
-        createImage(Color.CYAN, 128, 128);
-        createImage(Color.YELLOW, 128, 128);
-        createImage(Color.ORANGE, 128, 128);
-        createImage(Color.GREEN, 2000, 3500);
-    }
+	@SuppressWarnings("unused")
+	@BeforeClass(dependsOnMethods = "initializeBrowser")
+	private void createImages() {
+		createImage(Color.RED, 128, 128);
+		createImage(Color.BLUE, 128, 128);
+		createImage(Color.CYAN, 128, 128);
+		createImage(Color.YELLOW, 128, 128);
+		createImage(Color.ORANGE, 128, 128);
+		createImage(Color.GREEN, 2000, 3500);
+	}
 
     @SuppressWarnings("unused")
     @AfterClass
@@ -547,9 +547,7 @@ public class FileUploadTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("File Upload");
         openTab("Usage");
 

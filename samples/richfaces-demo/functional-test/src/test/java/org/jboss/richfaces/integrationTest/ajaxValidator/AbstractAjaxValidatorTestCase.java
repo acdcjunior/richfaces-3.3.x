@@ -36,7 +36,6 @@ public class AbstractAjaxValidatorTestCase extends AbstractSeleniumRichfacesTest
 	/**
 	 * Opens specified component's page before each test method
 	 */
-	@BeforeMethod
 	protected void loadPage() {
 		openComponent("Ajax Validator");
 	}

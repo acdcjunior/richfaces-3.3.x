@@ -81,9 +81,7 @@ public class AjaxSupportTestCase extends AbstractSeleniumRichfacesTestCase {
 		waitForTextEquals(LOC_INPUT_TEXT, "");
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Ajax Support");
 
 		scrollIntoView(LOC_INPUT_TEXT, true);

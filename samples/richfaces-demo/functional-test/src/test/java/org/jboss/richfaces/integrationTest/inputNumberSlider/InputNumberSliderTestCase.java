@@ -79,16 +79,16 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testFirstSliderMouse() {
-		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE + "@style") - 75) < DELTA, format(MSG_HANDLE_N_PX, 75));
-		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP + "@style") - 75) < DELTA, format(MSG_TIP_N_PX, 75));
+		assertTrue(Math.abs(getOffset(LOC_FIRST_HANDLE) - 75) < DELTA, format(MSG_HANDLE_N_PX, 75));
+		assertTrue(Math.abs(getOffset(LOC_FIRST_TIP) - 75) < DELTA, format(MSG_TIP_N_PX, 75));
 		assertFalse(isDisplayed(LOC_FIRST_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_FIRST, "20,3");
 		assertTrue(isDisplayed(LOC_FIRST_TIP), MSG_TIP_SHOULD_BE_VISIBLE);
 		selenium.mouseUp(LOC_FIRST);
 
-		int tipOffset = getOffset(LOC_FIRST_TIP + "@style");
-		int handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
+		int tipOffset = getOffset(LOC_FIRST_TIP);
+		int handleOffset = getOffset(LOC_FIRST_HANDLE);
 		int value = Integer.parseInt(selenium.getValue(LOC_FIRST_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
@@ -107,16 +107,16 @@ public class InputNumberSliderTestCase extends
 	@Test
 	public void testFirstSliderKeyboard() {
 		selenium.type(LOC_FIRST_INPUT, "10");
-		int tipOffset = getOffset(LOC_FIRST_TIP + "@style");
-		int handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
+		int tipOffset = getOffset(LOC_FIRST_TIP);
+		int handleOffset = getOffset(LOC_FIRST_HANDLE);
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
 		assertTrue(Math.abs(tipOffset - 10 * 1.5) < DELTA, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 
 		selenium.type(LOC_FIRST_INPUT, "90");
-		tipOffset = getOffset(LOC_FIRST_TIP + "@style");
-		handleOffset = getOffset(LOC_FIRST_HANDLE + "@style");
+		tipOffset = getOffset(LOC_FIRST_TIP);
+		handleOffset = getOffset(LOC_FIRST_HANDLE);
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
 		assertTrue(Math.abs(tipOffset - 90 * 1.5) < DELTA, MSG_TIP_SECOND_HALF);
@@ -151,8 +151,8 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testSecondSlider() {
-		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE + "@style") - 96) < DELTA, format(MSG_HANDLE_N_PX, 96));
-		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP + "@style") - 96) < DELTA, format(MSG_TIP_N_PX, 96));
+		assertTrue(Math.abs(getOffset(LOC_SECOND_HANDLE) - 96) < DELTA, format(MSG_HANDLE_N_PX, 96));
+		assertTrue(Math.abs(getOffset(LOC_SECOND_TIP) - 96) < DELTA, format(MSG_TIP_N_PX, 96));
 		assertFalse(isDisplayed(LOC_SECOND_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_SECOND, "20,3");
@@ -160,8 +160,8 @@ public class InputNumberSliderTestCase extends
 		assertFalse(isDisplayed(LOC_SECOND_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 		selenium.mouseUp(LOC_SECOND);
 
-		int tipOffset = getOffset(LOC_SECOND_TIP + "@style");
-		int handleOffset = getOffset(LOC_SECOND_HANDLE + "@style");
+		int tipOffset = getOffset(LOC_SECOND_TIP);
+		int handleOffset = getOffset(LOC_SECOND_HANDLE);
 		int value = Integer.parseInt(selenium.getValue(LOC_SECOND_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
@@ -177,8 +177,8 @@ public class InputNumberSliderTestCase extends
 	 */
 	@Test
 	public void testThirdSliderMouse() {
-		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE + "@style") - 225) < DELTA, format(MSG_HANDLE_N_PX, 225));
-		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP + "@style") - 225) < DELTA, format(MSG_TIP_N_PX, 225));
+		assertTrue(Math.abs(getOffset(LOC_THIRD_HANDLE) - 225) < DELTA, format(MSG_HANDLE_N_PX, 225));
+		assertTrue(Math.abs(getOffset(LOC_THIRD_TIP) - 225) < DELTA, format(MSG_TIP_N_PX, 225));
 		assertFalse(isDisplayed(LOC_THIRD_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 
 		selenium.mouseDownAt(LOC_THIRD, "20,3");
@@ -186,8 +186,8 @@ public class InputNumberSliderTestCase extends
 		assertFalse(isDisplayed(LOC_THIRD_TIP), MSG_TIP_SHOULD_NOT_BE_VISIBLE);
 		selenium.mouseUp(LOC_THIRD);
 
-		int tipOffset = getOffset(LOC_THIRD_TIP + "@style");
-		int handleOffset = getOffset(LOC_THIRD_HANDLE + "@style");
+		int tipOffset = getOffset(LOC_THIRD_TIP);
+		int handleOffset = getOffset(LOC_THIRD_HANDLE);
 		int value = Integer.parseInt(selenium.getValue(LOC_THIRD_INPUT));
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
@@ -207,16 +207,16 @@ public class InputNumberSliderTestCase extends
 	@Test
 	public void testThirdSliderKeyboard() {
 		selenium.type(LOC_THIRD_INPUT, "10"); // 10 -> 0
-		int tipOffset = getOffset(LOC_THIRD_TIP + "@style");
-		int handleOffset = getOffset(LOC_THIRD_HANDLE + "@style");
+		int tipOffset = getOffset(LOC_THIRD_TIP);
+		int handleOffset = getOffset(LOC_THIRD_HANDLE);
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
 		assertTrue(tipOffset < 5, MSG_TIP_FIRST_HALF);
 		assertTrue(handleOffset < 75, MSG_HANDLE_FIRST_HALF);
 
 		selenium.type(LOC_THIRD_INPUT, "690"); // 690 -> 700
-		tipOffset = getOffset(LOC_THIRD_TIP + "@style");
-		handleOffset = getOffset(LOC_THIRD_HANDLE + "@style");
+		tipOffset = getOffset(LOC_THIRD_TIP);
+		handleOffset = getOffset(LOC_THIRD_HANDLE);
 
 		assertEquals(tipOffset, handleOffset, MSG_OFFSETS_SHOULD_BE_THE_SAME);
 		assertTrue(Math.abs(tipOffset - 0.69 * 450) < DELTA, MSG_TIP_SECOND_HALF);
@@ -269,27 +269,25 @@ public class InputNumberSliderTestCase extends
         };
 
         abstractTestSource(1, "View Source", strings);
-    }
-    
-	/**
-	 * Returns the offset of the element. It requires a locator for an
-	 * attribute, e.g. //div@style. It returns the 'left' attribute, e.g. for
-	 * style="visibility: visible; left: 51px;" would return 51.
-	 */
-	private int getOffset(String locator) {
-		StringBuilder attr = new StringBuilder(selenium.getAttribute(locator));
-		attr = attr.delete(0, attr.indexOf("left: "));
-		attr = attr.delete(0, 6);
-		attr = attr.delete(attr.indexOf("px;"), attr.length());
-		return Integer.parseInt(attr.toString());
 	}
 
 	/**
-     * Loads the page containing needed component.
-     */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+	 * Returns the offset of the element for given locator. It returns the
+	 * 'left' attribute.
+	 */
+	private int getOffset(String locator) {
+		String jquery = locator.replaceAll("^jquery=", "");
+		String eval = "var inDocument = this.browserbot.getCurrentWindow().document;"
+				+ "var handle = $('{0}', inDocument); var hidden = handle.css('display') === 'none';"
+				+ "hidden ? handle.css('display', '') : true;" + "var result = handle.position().left;"
+				+ "hidden ? handle.css('display','none') : true;" + "result";
+		return Integer.parseInt(selenium.getEval(format(eval, jquery)));
+	}
+
+	/**
+	 * Loads the page containing needed component.
+	 */
+    protected void loadPage() {
         openComponent("Input Number Slider");
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }

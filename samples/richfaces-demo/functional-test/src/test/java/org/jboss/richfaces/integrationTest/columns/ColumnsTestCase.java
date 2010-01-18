@@ -149,9 +149,7 @@ public class ColumnsTestCase extends AbstractSeleniumRichfacesTestCase {
 		});
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Columns");
 		scrollIntoView(LOC_TABLE, true);
 		selenium.allowNativeXpath("true");

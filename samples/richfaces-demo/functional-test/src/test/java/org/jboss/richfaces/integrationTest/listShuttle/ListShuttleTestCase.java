@@ -458,9 +458,7 @@ public class ListShuttleTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the needed page.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("List Shuttle");
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }

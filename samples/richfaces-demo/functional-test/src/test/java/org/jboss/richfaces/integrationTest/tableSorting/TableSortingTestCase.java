@@ -144,9 +144,7 @@ public class TableSortingTestCase extends AbstractDataIterationTestCase {
 		checkSortingForColumnOrder(LOC_LIST_OF_TD_PREFORMATTED);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Table Sorting");
 
 		selenium.allowNativeXpath("true");

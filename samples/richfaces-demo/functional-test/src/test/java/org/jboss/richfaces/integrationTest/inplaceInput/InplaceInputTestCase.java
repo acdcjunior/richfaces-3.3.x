@@ -289,9 +289,7 @@ public class InplaceInputTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
      * Loads the page containing needed component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Inplace Input");
     }
 }

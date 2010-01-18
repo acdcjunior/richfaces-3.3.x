@@ -104,9 +104,7 @@ public class OutputPanelTestCase extends AbstractSeleniumRichfacesTestCase {
                 errorMessageShouldAppear ? "Error message should appear" : "No error message should appear");
     }
 
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Output Panel");
 
         scrollIntoView(LOC_FIELDSET_HEADER, true);
