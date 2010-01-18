@@ -264,9 +264,7 @@ public class PanelMenuTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
 	 * Loads the page containing the component.
 	 */
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 	    openComponent("Panel Menu");
 	    scrollIntoView(LOC_EXAMPLE_HEADER, true);
 	}

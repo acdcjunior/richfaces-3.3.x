@@ -29,20 +29,21 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.jboss.test.selenium.AbstractSeleniumTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
 import org.jboss.test.selenium.waiting.Wait.Waiting;
 import org.testng.ITestContext;
+import org.testng.SkipException;
 import org.testng.TestRunner;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-
-import com.thoughtworks.selenium.DefaultSelenium;
 
 /**
  * 
@@ -52,7 +53,7 @@ import com.thoughtworks.selenium.DefaultSelenium;
  * 
  */
 
-public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase {
+public abstract class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase {
 	
     /**
      * context root can be used to obtaining full URL paths, is set to actual
@@ -72,6 +73,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected String mavenProjectBuildDirectory;	// usually ${project}/target
     protected String mavenResourcesDir;				// usually ${project}/target/test-classes
     protected boolean seleniumDebug;					// if used specified debug mode of selenium testing
+    protected String browser;
 
     /**
      * predefined waitings to use in inheritors
@@ -96,6 +98,19 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
         runner.addTestListener(loggingTestListener);
     }
 
+	@BeforeClass
+	@Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port", "selenium.debug",
+			"selenium.maximize", "maven.resources.dir", "maven.project.build.directory" })
+	public void initializeParameters(String contextRoot, String contextPath, String browser, String seleniumDebug,
+			String mavenResourcesDir, String mavenProjectBuildDirectory) {
+		this.contextRoot = contextRoot;
+		this.contextPath = contextPath;
+		this.mavenResourcesDir = mavenResourcesDir;
+		this.mavenProjectBuildDirectory = mavenProjectBuildDirectory;
+		this.seleniumDebug = Boolean.valueOf(seleniumDebug);
+		this.browser = browser;
+	}
+
 	/**
 	 * Initializes context before each class run.
 	 * 
@@ -111,19 +126,10 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 	 * @param seleniumPort
 	 *            specifies on which port should selenium server run
 	 */
-	@BeforeClass
-	@Parameters( { "context.root", "context.path", "browser", "selenium.host", "selenium.port", "selenium.debug",
-			"selenium.maximize", "maven.resources.dir", "maven.project.build.directory" })
-	public void initializeContext(String contextRoot, String contextPath, String browser, String seleniumHost,
-			String seleniumPort, String seleniumDebug, String seleniumMaximize, String mavenResourcesDir,
-			String mavenProjectBuildDirectory) {
-		this.contextRoot = contextRoot;
-		this.contextPath = contextPath;
-		this.mavenResourcesDir = mavenResourcesDir;
-		this.mavenProjectBuildDirectory = mavenProjectBuildDirectory;
-		this.seleniumDebug = Boolean.valueOf(seleniumDebug);
-
-		selenium = new DefaultSelenium(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
+	@BeforeClass(dependsOnMethods = { "initializeParameters", "isTestBrowserEnabled" })
+	@Parameters( { "selenium.host", "selenium.port", "selenium.maximize" })
+	public void initializeBrowser(String seleniumHost, String seleniumPort, String seleniumMaximize) {
+		selenium = RichfacesSelenium.getInstance(seleniumHost, Integer.valueOf(seleniumPort), browser, contextRoot);
 		selenium.start();
 		allowInitialXpath();
 		loadCustomLocationStrategies();
@@ -164,13 +170,57 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
 	 * Finalize context after each class run.
 	 */
 	@AfterClass
-	public void finalizeContext() {
+	public void finalizeBrowser() {
 		loggingTestListener.setSelenium(null);
 		selenium.close();
 		selenium.stop();
 		selenium = null;
-		contextPath = null;
 	}
+
+	@Parameters( { "internet-explorer-enabled", "firefox-enabled" })
+	@BeforeClass(dependsOnMethods="initializeParameters")
+	public void isTestBrowserEnabled(@Optional("true") String internetExplorerEnabled, @Optional("true") String firefoxEnabled) {
+		boolean isTestBrowserEnabled = false;
+
+		if (Boolean.valueOf(internetExplorerEnabled) && browserIsInternetExplorer()) {
+			isTestBrowserEnabled = true;
+		}
+
+		if (Boolean.valueOf(firefoxEnabled) && browserIsFirefox()) {
+			isTestBrowserEnabled = true;
+		}
+
+		if (!isTestBrowserEnabled) {
+			throw new SkipException("The test isn't enabled for current browser");
+		}
+	}
+
+	@BeforeMethod(alwaysRun = true)
+	public void callLoadPage() {
+		loadPage();
+	}
+	
+	protected abstract void loadPage();
+
+    private final String[] INTERNET_EXPLORER_PREFIXES = new String[] { "*iexplore", "*piiexplore", "*iehta" };
+    private final String[] FIREFOX_PREFIXES = new String[] { "*firefox", "*pifirefox", "*chrome" };
+    
+    public boolean browserIsInternetExplorer() {
+		return containsBrowserOneOfPrefixes(browser, INTERNET_EXPLORER_PREFIXES);
+	}
+    
+    public boolean browserIsFirefox() {
+		return containsBrowserOneOfPrefixes(browser, FIREFOX_PREFIXES);
+	}
+    
+    private boolean containsBrowserOneOfPrefixes(String browser, String[] prefixes) {
+    	for (String prefix : prefixes) {
+			if (StringUtils.defaultString(browser).startsWith(prefix)) {
+				return true;
+			}
+		}
+		return false;
+    }
 
     /**
      * Default implementation of obtaining properties for each class.
@@ -181,7 +231,7 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
     protected Properties getLocatorsProperties() {
         return getNamedPropertiesForClass(this.getClass(), "locators");
     }
-
+    
     /**
      * Default implementation of obtaining properties for each class.
      * 
@@ -254,36 +304,36 @@ public class AbstractSeleniumRichfacesTestCase extends AbstractSeleniumTestCase 
      *            name of component given from components' menu on the left of
      *            RF Live Demo application
      */
-    protected void openComponent(final String componentName) {
+	protected void openComponent(final String componentName) {
 
 		final String LOC_MENU_ITEM = format("jquery=table.left_menu td.text a > span:textEquals('{0}')", componentName);
 
 		// TODO needs to open clean page, see {@link
-        // https://jira.jboss.org/jira/browse/RF-7640}
-        selenium.getEval("selenium.doDeleteAllVisibleCookies()");
+		// https://jira.jboss.org/jira/browse/RF-7640}
+		selenium.getEval("selenium.doDeleteAllVisibleCookies()");
 
-        // open context path of application
+		// open context path of application
         selenium.open(contextPath);
 
-        // wait for new page is opened
-        selenium.waitForPageToLoad("5000");
+		// wait for new page is opened
+		selenium.waitForPageToLoad("5000");
 
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return selenium.isElementPresent(LOC_MENU_ITEM);
-            }
-        });
-        
-        // click the menu item
-        selenium.click(LOC_MENU_ITEM);
+		Wait.until(new Condition() {
+			public boolean isTrue() {
+				return selenium.isElementPresent(LOC_MENU_ITEM);
+			}
+		});
 
-        // wait for component's page opened
-        waitModelUpdate.until(new Condition() {
-            public boolean isTrue() {
-                return isComponentPageActive(componentName);
-            }
-        });
-    }
+		// click the menu item
+		selenium.click(LOC_MENU_ITEM);
+
+		// wait for component's page opened
+		waitModelUpdate.until(new Condition() {
+			public boolean isTrue() {
+				return isComponentPageActive(componentName);
+			}
+		});
+	}
 
     private boolean isComponentPageActive(String componentName) {
         final String LOC_OUTPUT_COMPONENT_NAME = "jquery=body table.left_menu *.panel_documents strong";

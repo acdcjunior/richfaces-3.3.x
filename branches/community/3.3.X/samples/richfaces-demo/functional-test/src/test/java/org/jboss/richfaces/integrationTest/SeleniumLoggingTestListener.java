@@ -97,7 +97,12 @@ public class SeleniumLoggingTestListener extends TestListenerAdapter {
 
 		if (selenium != null) {
 			String eval = String.format("/*\n%s\n%s\n%s\n*/", line, message, line);
-			selenium.getEval(eval);
+			try {
+				selenium.selectFrame("relative=top");
+				selenium.getEval(eval);
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

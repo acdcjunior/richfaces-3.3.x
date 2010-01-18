@@ -150,9 +150,7 @@ public class PanelTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Panel");
     }
 }

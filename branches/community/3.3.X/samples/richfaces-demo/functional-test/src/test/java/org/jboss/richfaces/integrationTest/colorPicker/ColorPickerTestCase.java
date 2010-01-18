@@ -39,6 +39,8 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import static org.jboss.test.selenium.utils.ColorUtils.convertToAWTColor;
+import org.jboss.test.selenium.utils.URLUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -128,22 +130,16 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
     @Test
     public void testInitialState() {
         // get color from the input field
-        Color inputColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
+        Color inputColor = convertToAWTColor(selenium.getValue(LOC_COLOR_INPUT));
 
         Map<Color, Integer> histogram = getHistogram();
         assertTrue(histogram.containsKey(inputColor),
                 "Image should have the same color as the one defined in input field.");
 
         // get color of the button
-        String attr = getStyle(LOC_COLOR_BUTTON, "background-color").replace("rgb(", "").replace(")", "");
+        Color colorButton = convertToAWTColor(getStyle(LOC_COLOR_BUTTON, "background-color"));
 
-        int[] values = new int[3];
-        for (int i = 0; i < 3; i++) {
-            values[i] = Integer.parseInt(attr.split(",")[i].trim());
-        }
-
-        assertTrue(histogram.containsKey(new Color(values[0], values[1], values[2])),
-                "Image should have the same color as the button.");
+        assertTrue(histogram.containsKey(colorButton), "Image should have the same color as the button.");
     }
 
     /**
@@ -158,7 +154,7 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         waitFor(1500);
 
         Map<Color, Integer> histogram = getHistogram();
-        Color inputColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
+        Color inputColor = convertToAWTColor(selenium.getValue(LOC_COLOR_INPUT));
 
         assertTrue(histogram.containsKey(inputColor),
                 "Image should have the same color as the one defined in input field.");
@@ -358,7 +354,7 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testCancelButton() {
-        Color original = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
+        Color original = convertToAWTColor(selenium.getValue(LOC_COLOR_INPUT));
         selenium.click(LOC_COLOR_BUTTON);
 
         selenium.type(LOC_RED_VALUE, "100");
@@ -366,7 +362,7 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.type(LOC_BLUE_VALUE, "100");
 
         selenium.click(LOC_CANCEL_BUTTON);
-        Color newColor = createColor(selenium.getValue(LOC_COLOR_INPUT).substring(1));
+        Color newColor = convertToAWTColor(selenium.getValue(LOC_COLOR_INPUT));
         assertEquals(newColor, original, "Color in input should not change after clicking on \"Cancel\"");
 
         Map<Color, Integer> histogram = getHistogram();
@@ -444,14 +440,8 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testLeftColorBox() {
-        String attr = getStyle(LOC_CURRENT_COLOR_BOX, "background-color").replace("rgb(", "").replace(")", "");
-
-        int red = Integer.parseInt(attr.split(",")[0].trim());
-        int green = Integer.parseInt(attr.split(",")[1].trim());
-        int blue = Integer.parseInt(attr.split(",")[2].trim());
-
-        Color leftBoxColor = new Color(red, green, blue);
-        Color expectedColor = createColor(selenium.getValue(LOC_HEX_COLOR));
+        Color leftBoxColor = convertToAWTColor(getStyle(LOC_CURRENT_COLOR_BOX, "background-color"));
+        Color expectedColor = convertToAWTColor("#" + selenium.getValue(LOC_HEX_COLOR));
 
         assertEquals(leftBoxColor, expectedColor, "At the beginning box should be of color from input field.");
 
@@ -459,14 +449,8 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.type(LOC_GREEN_VALUE, "100");
         selenium.type(LOC_BLUE_VALUE, "100");
 
-        attr = getStyle(LOC_CURRENT_COLOR_BOX, "background-color").replace("rgb(", "").replace(")", "");
-
-        red = Integer.parseInt(attr.split(",")[0].trim());
-        green = Integer.parseInt(attr.split(",")[1].trim());
-        blue = Integer.parseInt(attr.split(",")[2].trim());
-
-        leftBoxColor = new Color(red, green, blue);
-        expectedColor = createColor(selenium.getValue(LOC_HEX_COLOR));
+        leftBoxColor = convertToAWTColor(getStyle(LOC_CURRENT_COLOR_BOX, "background-color"));
+        expectedColor = convertToAWTColor("#" + selenium.getValue(LOC_HEX_COLOR));
 
         assertEquals(leftBoxColor, expectedColor, "Color of the box should change afted a color was chosen.");
     }
@@ -477,14 +461,8 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
      */
     @Test
     public void testRightColorBox() {
-        String attr = getStyle(LOC_ORIGINAL_COLOR_BOX, "background-color").replace("rgb(", "").replace(")", "");
-
-        int red = Integer.parseInt(attr.split(",")[0].trim());
-        int green = Integer.parseInt(attr.split(",")[1].trim());
-        int blue = Integer.parseInt(attr.split(",")[2].trim());
-
-        Color rightBoxColor = new Color(red, green, blue);
-        Color expectedColor = createColor(selenium.getValue(LOC_HEX_COLOR));
+        Color rightBoxColor = convertToAWTColor(getStyle(LOC_ORIGINAL_COLOR_BOX, "background-color"));
+        Color expectedColor = convertToAWTColor("#" + selenium.getValue(LOC_HEX_COLOR));
 
         assertEquals(rightBoxColor, expectedColor, "At the beginning box should be of color from input field.");
 
@@ -492,14 +470,8 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
         selenium.type(LOC_GREEN_VALUE, "100");
         selenium.type(LOC_BLUE_VALUE, "100");
 
-        attr = getStyle(LOC_ORIGINAL_COLOR_BOX, "background-color").replace("rgb(", "").replace(")", "");
-
-        red = Integer.parseInt(attr.split(",")[0].trim());
-        green = Integer.parseInt(attr.split(",")[1].trim());
-        blue = Integer.parseInt(attr.split(",")[2].trim());
-
-        rightBoxColor = new Color(red, green, blue);
-        expectedColor = createColor(selenium.getValue(LOC_HEX_COLOR));
+        rightBoxColor = convertToAWTColor(getStyle(LOC_ORIGINAL_COLOR_BOX, "background-color"));
+        expectedColor = convertToAWTColor("#" + selenium.getValue(LOC_HEX_COLOR));
 
         assertNotSame(rightBoxColor, expectedColor, "Color of the box should change afted a color was chosen.");
     }
@@ -527,10 +499,15 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
      *         that color
      */
     private Map<Color, Integer> getHistogram() {
-        String url = selenium.getAttribute(LOC_IMAGE + "@src");
-        // the index of first '/' not counting http://
-        int index = selenium.getLocation().indexOf('/', 7);
-        url = selenium.getLocation().substring(0, index) + url;
+        final String src = selenium.getAttribute(LOC_IMAGE + "@src");
+        final String location = selenium.getLocation();
+        String url = null;
+        try {
+        	url = URLUtils.buildUrl(location, src);
+        } catch (MalformedURLException e) {
+        	e.printStackTrace();
+        	fail(format("Could not build an URL from location '{0}' and src '{1}'", location, src));
+        }
 
         BufferedImage image = null;
         try {
@@ -571,32 +548,9 @@ public class ColorPickerTestCase extends AbstractSeleniumRichfacesTestCase {
     }
 
     /**
-     * Creates a Color object from the string. The string has to contain
-     * hexadecimal representation of an RGB color without leading hash
-     * character, e.g. ffffff, 0ab3c4.
-     * 
-     * @param color
-     *            hexadecimal representation of an RGB color
-     * @return a Color object
-     */
-    private Color createColor(String color) {
-        if (color.length() != 6) {
-            throw new IllegalArgumentException("color");
-        }
-
-        int red = Integer.parseInt(color.substring(0, 2), 16);
-        int green = Integer.parseInt(color.substring(2, 4), 16);
-        int blue = Integer.parseInt(color.substring(4, 6), 16);
-
-        return new Color(red, green, blue);
-    }
-
-    /**
      * Loads the page containing the color picker component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Color Picker");
         scrollIntoView(LOC_COMPONENT_HEADER, true);
     }

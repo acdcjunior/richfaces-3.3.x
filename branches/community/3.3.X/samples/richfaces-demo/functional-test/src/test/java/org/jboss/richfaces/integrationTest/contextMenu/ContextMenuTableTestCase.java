@@ -205,9 +205,7 @@ public class ContextMenuTableTestCase extends AbstractSeleniumRichfacesTestCase 
     /**
      * Loads the needed page.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Context Menu");
         scrollIntoView(LOC_SECOND_EXAMPLE_HEADER, true);
     }

@@ -116,9 +116,7 @@ public class PanelCustomizationTestCase extends AbstractSeleniumRichfacesTestCas
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Panel");
         openTab("Look Customization");
     }

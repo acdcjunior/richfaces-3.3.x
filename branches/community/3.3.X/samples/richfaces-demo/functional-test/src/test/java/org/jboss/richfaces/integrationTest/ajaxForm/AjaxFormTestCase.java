@@ -100,9 +100,7 @@ public class AjaxFormTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
 	 * Opens specific component's page
 	 */
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Ajax Form");
 
 		scrollIntoView(LOC_LEGEND_HEADER, true);

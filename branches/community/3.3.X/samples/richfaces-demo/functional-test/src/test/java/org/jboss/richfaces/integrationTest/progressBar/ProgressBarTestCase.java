@@ -64,7 +64,7 @@ public class ProgressBarTestCase extends AbstractSeleniumRichfacesTestCase {
         }
 
         public boolean isTrue() {
-            newValue = (int) Double.parseDouble(getStyle(locator, "width").replace("px", ""));
+            newValue = (int) Double.parseDouble(getStyle(locator, "width").replaceAll("(px|%)$", ""));
             return newValue > oldValue;
         }
     }
@@ -187,9 +187,7 @@ public class ProgressBarTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Progress Bar");
     }
 }

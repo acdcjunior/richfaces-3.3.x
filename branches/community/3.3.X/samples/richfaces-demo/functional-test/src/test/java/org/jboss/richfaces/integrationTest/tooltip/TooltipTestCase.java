@@ -196,9 +196,7 @@ public class TooltipTestCase extends AbstractSeleniumRichfacesTestCase {
 		});
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("ToolTip");
 		openTab("Usage");
 		scrollIntoView(LOC_FIELDSET_HEADER_1, true);

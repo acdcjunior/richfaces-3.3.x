@@ -188,9 +188,7 @@ public class EditTableWithModalPanelTestCase extends AbstractDataIterationTestCa
 		});
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Table");
 		openTab(MSG_TAB_TO_OPEN);
 

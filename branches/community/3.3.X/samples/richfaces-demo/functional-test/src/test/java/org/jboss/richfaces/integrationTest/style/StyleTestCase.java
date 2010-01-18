@@ -21,12 +21,14 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.style;
 
+import java.awt.Color;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.testng.Assert.*;
 
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.utils.ColorUtils;
 import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -69,14 +71,14 @@ public class StyleTestCase extends AbstractSeleniumRichfacesTestCase {
 			selenium.waitForPageToLoad(Long.toString(Wait.DEFAULT_TIMEOUT));
 			scrollIntoView(LOC_FIELDSET_HEADER, true);
 
-			assertEquals(msgColor, getStyle(LOC_PANEL, "background-color"), format(
-					"background-color for '{0}' skin does not match", selenium.getText(locLink)));
+			Color expected = ColorUtils.convertToAWTColor(msgColor);
+			Color actual = ColorUtils.convertToAWTColor(getStyle(LOC_PANEL, "background-color"));
+			assertEquals(actual, expected, format("background-color for '{0}' skin does not match", selenium
+					.getText(locLink)));
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Style");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

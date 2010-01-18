@@ -270,9 +270,7 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Calendar");
         openTab("Organizer Creation");
         scrollIntoView(LOC_FIELDSET, true);

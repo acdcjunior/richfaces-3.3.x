@@ -223,9 +223,7 @@ public class AjaxRegionTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
 	 * Opens specific component's page
 	 */
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Ajax Region");
 	}
 }

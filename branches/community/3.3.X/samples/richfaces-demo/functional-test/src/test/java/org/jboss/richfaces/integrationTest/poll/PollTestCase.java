@@ -125,9 +125,7 @@ public class PollTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Poll");
 
 		scrollIntoView(LOC_OUTPUT_POLL_STATUS, true);

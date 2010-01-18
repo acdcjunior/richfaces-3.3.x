@@ -123,9 +123,7 @@ public class StateManagerTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the needed page.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("State Manager API");
     }
 }

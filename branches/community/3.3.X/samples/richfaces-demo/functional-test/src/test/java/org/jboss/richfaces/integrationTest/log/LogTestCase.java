@@ -125,9 +125,7 @@ public class LogTestCase extends AbstractSeleniumRichfacesTestCase {
 				});
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Log");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

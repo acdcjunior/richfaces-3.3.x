@@ -66,12 +66,7 @@ public class KeepAliveTestCase extends AbstractSeleniumRichfacesTestCase {
 		selenium.fireEvent(LOC_INPUT_INCORRECT2, Event.KEYUP);
 
 		// wait for "equal sign" button became enabled (lost disabled status)
-		Wait.failWith("Button \"=\" never became enabled").until(new Condition() {
-			public boolean isTrue() {
-				return !selenium.isElementPresent(format("{0}/@disabled", LOC_BUTTON_INCORRECT));
-
-			}
-		});
+		Wait.failWith("Button \"=\" never became enabled").until(new ButtonDisabled(LOC_BUTTON_INCORRECT));
 
 		// try to count result
 		selenium.click(LOC_BUTTON_INCORRECT);
@@ -101,11 +96,7 @@ public class KeepAliveTestCase extends AbstractSeleniumRichfacesTestCase {
 		selenium.fireEvent(LOC_INPUT_CORRECT2, Event.KEYUP);
 
 		// wait for "equal sign" button became enabled (lost disabled status)
-		Wait.failWith("Button \"=\" never became enabled").until(new Condition() {
-			public boolean isTrue() {
-				return !selenium.isElementPresent(format("{0}/@disabled", LOC_BUTTON_CORRECT));
-			}
-		});
+		Wait.failWith("Button \"=\" never became enabled").until(new ButtonDisabled(LOC_BUTTON_CORRECT));
 
 		// try to count result
 		selenium.click(LOC_BUTTON_CORRECT);
@@ -119,10 +110,27 @@ public class KeepAliveTestCase extends AbstractSeleniumRichfacesTestCase {
 			}
 		});
 	}
+	
+	private class ButtonDisabled implements Condition {
+		private String locButton;
+		
+		public ButtonDisabled(String locButton) {
+			this.locButton = locButton;
+		}
+		
+		public boolean isTrue() {
+			final String attrDisabled = format("{0} @disabled", locButton);
+			
+			if (!selenium.isElementPresent(attrDisabled)) {
+				return true;
+			}
+			
+			return "false".equals(selenium.getValue(attrDisabled));
+		}
+		
+	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Keep Alive");
 	}
 }

@@ -30,7 +30,7 @@ import static org.testng.Assert.*;
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
  * @version $Revision$
  */
-public class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTestCase {
+public abstract class AbstractDataIterationTestCase extends AbstractSeleniumRichfacesTestCase {
 
 	protected final String LOC_TABLE_COMMON = getLoc("data-table-common--table");
 	protected final String LOC_BUTTON_FIRST_PAGE = getLoc("data-scroller--button--first-page");

@@ -23,6 +23,7 @@ package org.jboss.richfaces.integrationTest.dataTable;
 
 import static org.testng.Assert.*;
 
+import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractDataIterationTestCase;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -47,12 +48,12 @@ public class DataTableTestCase extends AbstractDataIterationTestCase {
 		openTab(MSG_TAB_TO_OPEN);
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 
-		assertEquals(selenium.getText(LOC_TABLE), MSG_TABLE_TEXT_CONTENT, "Table doesn't contain expected text");
+		String tableText = selenium.getText(LOC_TABLE);
+		tableText = StringUtils.deleteWhitespace(tableText);
+		assertEquals(tableText, MSG_TABLE_TEXT_CONTENT, "Table doesn't contain expected text");
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Table");
 		openTab("Usage");
 	}

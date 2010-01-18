@@ -227,9 +227,7 @@ public class GraphValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 		return format(LOC_VALIDATION_MESSAGE_RELATIVE, locator);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Graph Validator");
 
 		scrollIntoView(LOC_FIELDSET_HEADER_USEF_INFO, true);

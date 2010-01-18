@@ -158,9 +158,7 @@ public class HorizontalMenuTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing needed component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Drop Down Menu");
         scrollIntoView(LOC_FIRST_EXAMPLE_HEADER, true);
     }

@@ -84,9 +84,7 @@ public class DataGridTestCase extends AbstractDataIterationTestCase {
 		}
 	}
 	
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Grid");
 		scrollIntoView(LOC_TABLE_COMMON, true);
 		selenium.allowNativeXpath("true");

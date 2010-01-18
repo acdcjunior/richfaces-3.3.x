@@ -137,9 +137,7 @@ public class ActionParameterTestCase extends AbstractSeleniumRichfacesTestCase {
 	/**
 	 * Loads a specific component's page
 	 */
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Action Parameter");
 	}
 }

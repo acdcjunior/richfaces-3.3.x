@@ -179,7 +179,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
 		waitTableTextStabilizes.until(conditionTableTextStabilizes);
 	}
 	
-	private Waiting waitTableTextStabilizes = Wait.interval(100).timeout(10000).failWith("Table text never got stabilized");
+	private Waiting waitTableTextStabilizes = Wait.interval(1000).timeout(15000).failWith("Table text never got stabilized");
 	
 	private Condition conditionTableTextStabilizes = new Condition() {
         String memory;
@@ -199,7 +199,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
                         count = 0;
                 }
 
-                if (count >= 10) {
+                if (count >= 3) {
                         return true;
                 }
 
@@ -209,9 +209,7 @@ public class DataFilterSliderTestCase extends AbstractDataIterationTestCase {
         }
 };
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Data Filter Slider");
 		scrollIntoView(LOC_FIELDSET_HEADER, true);
 		selenium.allowNativeXpath("true");

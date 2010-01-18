@@ -227,9 +227,7 @@ public class BeanValidatorTestCase extends AbstractSeleniumRichfacesTestCase {
 		return format(LOC_VALIDATION_MESSAGE_RELATIVE, locator);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Bean Validator");
 
 		scrollIntoView(LOC_FIELDSET_HEADER, true);

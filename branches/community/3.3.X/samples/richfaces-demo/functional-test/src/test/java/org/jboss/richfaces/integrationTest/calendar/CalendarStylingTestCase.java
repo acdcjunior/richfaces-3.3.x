@@ -87,9 +87,7 @@ public class CalendarStylingTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing the calendar component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Calendar");
         openTab("Client Side Disable/Styling");
         scrollIntoView(LOC_STYLING_FIELDSET, true);

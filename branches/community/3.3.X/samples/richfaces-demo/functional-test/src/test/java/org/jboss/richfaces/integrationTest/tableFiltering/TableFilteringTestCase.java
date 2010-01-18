@@ -177,9 +177,7 @@ public class TableFilteringTestCase extends AbstractDataIterationTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Table Filtering");
 		
 		selenium.allowNativeXpath("true");

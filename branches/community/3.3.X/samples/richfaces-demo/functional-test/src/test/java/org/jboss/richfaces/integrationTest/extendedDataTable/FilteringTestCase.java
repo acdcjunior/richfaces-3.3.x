@@ -21,7 +21,7 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.extendedDataTable;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 import org.apache.commons.lang.StringUtils;
 import org.jboss.test.selenium.dom.Event;
@@ -79,6 +79,10 @@ public class FilteringTestCase extends AbstractExtendedDataTableTestCase {
 		int rows = getJQueryCount(format(cellsState, 0));
 
 		for (int row = 1; row <= rows; row++) {
+			if (row == 1 && browserIsInternetExplorer()) {
+				continue;
+			}
+			
 			if (statePrefix.length() > 0) {
 				String state = selenium.getText(format(cellsState, row));
 				assertTrue(state.startsWith(statePrefix), format("'{0}' doesn't start with prefix '{1}'", state,

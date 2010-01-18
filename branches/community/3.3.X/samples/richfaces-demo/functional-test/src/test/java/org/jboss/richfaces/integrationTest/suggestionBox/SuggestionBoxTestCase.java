@@ -24,7 +24,9 @@ package org.jboss.richfaces.integrationTest.suggestionBox;
 
 import static org.testng.Assert.assertEquals;
 
+import org.apache.commons.lang.math.Range;
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
+import org.jboss.test.selenium.dom.Event;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
 import org.testng.annotations.BeforeMethod;
@@ -33,7 +35,8 @@ import org.testng.annotations.Test;
 /**
  * Test case that tests the suggestion box.
  * 
- * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>
+ * @author <a href="mailto:ppitonak@redhat.com">Pavol Pitonak</a>, <a
+ *         href="mailto:lfryc@redhat.com">Lukas Fryc</a>
  * @version $Revision$
  */
 public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
@@ -85,15 +88,18 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         // select Atlanta
-        selenium.typeKeys(LOC_FIRST_INPUT, "at");
+        selenium.type(LOC_FIRST_INPUT, "at");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+        
         waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
         selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
         // select Madison
-        selenium.typeKeys(LOC_FIRST_INPUT, ",ma");
+        selenium.type(LOC_FIRST_INPUT, selenium.getValue(LOC_FIRST_INPUT) + ",ma");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
 
-        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "MadisonWisconsin");
+        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "Wisconsin");
         selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
         String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 0));
@@ -130,17 +136,23 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         // select Atlanta
-        selenium.typeKeys(LOC_FIRST_INPUT, "[at");
+        selenium.type(LOC_FIRST_INPUT, "[at");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+        
         waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
 
         selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
-        selenium.typeKeys(LOC_FIRST_INPUT, "]");
+        selenium.type(LOC_FIRST_INPUT, selenium.getValue(LOC_FIRST_INPUT) + "]");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
 
         // select Madison
-        selenium.typeKeys(LOC_FIRST_INPUT, "[ma");
-        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "MadisonWisconsin");
+        selenium.type(LOC_FIRST_INPUT, selenium.getValue(LOC_FIRST_INPUT) + "[ma");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+        
+        waitForTextEquals(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0), "Wisconsin");
         selenium.click(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
-        selenium.typeKeys(LOC_FIRST_INPUT, "]");
+        selenium.type(LOC_FIRST_INPUT, selenium.getValue(LOC_FIRST_INPUT) + "]");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
 
         String text = selenium.getText(format(LOC_FIRST_TOWN_TABLE_PREFORMATTED, 1, 0));
         assertEquals(text, "Georgia", format(MSG_TABLE_PREFORMATTED, 1, 0));
@@ -176,7 +188,8 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
         // select aaa
-        selenium.typeKeys(LOC_FIRST_INPUT, "aaa");
+        selenium.type(LOC_FIRST_INPUT, "aaa");
+        selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
 
         waitForElement(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
         String text = selenium.getText(format(LOC_FIRST_SUGGESTION_BOX_PREFORMATTED, 0));
@@ -184,242 +197,106 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     }
 
     /**
-     * Tests the "Border" slider. It tests values 3, 5, and 7.
+     * Tests the "Border" slider. It tests values 5, 0, 3, 7, 1
      */
-    @Test
-    public void testBorder() {
-        scrollIntoView(LOC_FIRST_INPUT, true);
+	@Test
+	public void testBorder() {
+		scrollIntoView(LOC_FIRST_INPUT, true);
 
-        selenium.type(LOC_FIRST_BORDER_INPUT, "3");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 3;
-            }
-        });
-
-        int width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
-        assertEquals(width, 3, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 3));
-
-        selenium.type(LOC_FIRST_BORDER_INPUT, "5");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 5;
-            }
-        });
-
-        width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
-        assertEquals(width, 5, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 5));
-
-        selenium.type(LOC_FIRST_BORDER_INPUT, "7"); // 7 -> 5
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_BORDER_STYLE, "border-width") == 5;
-            }
-        });
-
-        width = getValue(LOC_FIRST_BORDER_STYLE, "border-width");
-        assertEquals(width, 5, format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, 7));
-    }
+		StepRange range = new StepRange(1, 5, 1);
+		for (int i : new int[] { 5, 0, 3, 7, 1 }) {
+			selenium.type(LOC_FIRST_BORDER_INPUT, String.valueOf(i));
+			selenium.fireEvent(LOC_FIRST_BORDER_INPUT, Event.BLUR);
+			String result = range.getRoundedValue(i).toString();
+			Wait.failWith(format(MSG_SUGGESTION_BOX_BORDER_PREFORMATTED, String.valueOf(i))).until(
+					new StyleCondition(LOC_FIRST_BORDER_STYLE, "border-top-width", result));
+			assertEquals(getStyleValue(LOC_FIRST_BORDER_STYLE, "border-right-width"), result);
+			assertEquals(getStyleValue(LOC_FIRST_BORDER_STYLE, "border-bottom-width"), result);
+			assertEquals(getStyleValue(LOC_FIRST_BORDER_STYLE, "border-left-width"), result);
+			assertEquals(selenium.getValue(LOC_FIRST_BORDER_INPUT), result);
+		}
+	}
 
     /**
-     * Tests the "Width" slider. It tests values 150, 350, 400, and 176.
+     * Tests the "Width" slider. It tests values 350, 149, 176, 351, 200, 150, 500
      */
     @Test
     public void testWidth() {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
-        selenium.type(LOC_FIRST_WIDTH_INPUT, "150");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 150;
-            }
-        });
-
-        int width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
-        assertEquals(width, 150, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 150));
-
-        selenium.type(LOC_FIRST_WIDTH_INPUT, "350");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 350;
-            }
-        });
-
-        width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
-        assertEquals(width, 350, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 350));
-
-        selenium.type(LOC_FIRST_WIDTH_INPUT, "400"); // 400 -> 350
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 350;
-            }
-        });
-
-        width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
-        assertEquals(width, 350, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 400));
-
-        selenium.type(LOC_FIRST_WIDTH_INPUT, "176"); // 176 -> 200
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_WIDTH_STYLE, "width") == 200;
-            }
-        });
-
-        width = getValue(LOC_FIRST_WIDTH_STYLE, "width");
-        assertEquals(width, 200, format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, 176));
+        StepRange range = new StepRange(150, 350, 50);
+        final String locInput = LOC_FIRST_WIDTH_INPUT;
+		for (int i : new int[] { 350, 149, 176, 351, 200, 150, 500 }) {
+			selenium.type(locInput, String.valueOf(i));
+			selenium.fireEvent(locInput, Event.BLUR);
+			String result = range.getRoundedValue(i).toString();
+			Wait.failWith(format(MSG_SUGGESTION_BOX_WIDTH_PREFORMATTED, String.valueOf(i))).until(
+					new StyleCondition(LOC_FIRST_WIDTH_STYLE, "width", result));
+			assertEquals(selenium.getValue(locInput), result);
+		}
     }
 
     /**
-     * Tests the "Height" slider. It tests values 100, 300, 400, and 176.
+     * Tests the "Height" slider. It tests values 300, 99, 176, 301, 200, 100, 400
      */
     @Test
     public void testHeight() {
         scrollIntoView(LOC_FIRST_INPUT, true);
 
-        selenium.type(LOC_FIRST_HEIGHT_INPUT, "100");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 100;
-            }
-        });
-
-        int height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
-        assertEquals(height, 100, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 100));
-
-        selenium.type(LOC_FIRST_HEIGHT_INPUT, "300");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 300;
-            }
-        });
-
-        height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
-        assertEquals(height, 300, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 300));
-
-        selenium.type(LOC_FIRST_HEIGHT_INPUT, "400"); // 400 -> 300
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 300;
-            }
-        });
-
-        height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
-        assertEquals(height, 300, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 400));
-
-        selenium.type(LOC_FIRST_HEIGHT_INPUT, "176"); // 176 -> 200
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_HEIGHT_STYLE, "height") == 200;
-            }
-        });
-
-        height = getValue(LOC_FIRST_HEIGHT_STYLE, "height");
-        assertEquals(height, 200, format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, 176));
+        StepRange range = new StepRange(100, 300, 50);
+        final String locInput = LOC_FIRST_HEIGHT_INPUT;
+		for (int i : new int[] { 300, 99, 176, 301, 200, 100, 400 }) {
+			selenium.type(locInput, String.valueOf(i));
+			selenium.fireEvent(locInput, Event.BLUR);
+			String result = range.getRoundedValue(i).toString();
+			Wait.failWith(format(MSG_SUGGESTION_BOX_HEIGHT_PREFORMATTED, String.valueOf(i))).until(
+					new StyleCondition(LOC_FIRST_HEIGHT_STYLE, "height", result));
+			assertEquals(selenium.getValue(locInput), result);
+		}
     }
 
     /**
-     * Tests the "Shadow Depth" slider. It tests values 3, 5, 6, and 7. It test
+     * Tests the "Shadow Depth" slider. It tests values 7, 4, 2, 6, 3, 0, 8. It test
      * both top and left offset.
      */
-    @Test
-    public void testShadowDepth() {
-        scrollIntoView(LOC_FIRST_INPUT, true);
+	@Test
+	public void testShadowDepth() {
+		scrollIntoView(LOC_FIRST_INPUT, true);
 
-        selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "3");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 3;
-            }
-        });
-
-        int top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
-        assertEquals(top, 3, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 3));
-        int left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
-        assertEquals(left, 3, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 3));
-
-        selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "5");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 5;
-            }
-        });
-
-        top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
-        assertEquals(top, 5, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 5));
-        left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
-        assertEquals(left, 5, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 5));
-
-        selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "6");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 6;
-            }
-        });
-
-        top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
-        assertEquals(top, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 6));
-        left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
-        assertEquals(left, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 6));
-
-        selenium.type(LOC_FIRST_SHADOW_DEPTH_INPUT, "7"); // 7 -> 6
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top") == 6;
-            }
-        });
-
-        top = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "top");
-        assertEquals(top, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 7));
-        left = getValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left");
-        assertEquals(left, 6, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, 7));
+		StepRange range = new StepRange(3, 6, 1);
+		final String locInput = LOC_FIRST_SHADOW_DEPTH_INPUT;
+		for (int i : new int[] { 7, 4, 2, 6, 3, 0, 8 }) {
+			selenium.type(locInput, String.valueOf(i));
+			selenium.fireEvent(locInput, Event.BLUR);
+			selenium.type(LOC_FIRST_INPUT, String.valueOf(i));
+			selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+			String result = range.getRoundedValue(i).toString();
+			Wait.failWith(format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, String.valueOf(i))).until(
+					new StyleCondition(LOC_FIRST_SHADOW_DEPTH_STYLE, "top", result));
+			assertEquals(getStyleValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left"), result);
+			assertEquals(selenium.getValue(locInput), result);
+		}
     }
 
     /**
-     * Tests the "Shadow Opacity" slider. It tests values 1, 5, 9, and 11.
+     * Tests the "Shadow Opacity" slider. It tests values 10, 5, 0, 9, 1, -1, 12.
      */
     @Test
     public void testShadowOpacity() {
         scrollIntoView(LOC_FIRST_INPUT, true);
-
-        selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "1");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.1;
-            }
-        });
-
-        double opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
-        assertEquals(opacity, 0.1, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 1));
-
-        selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "5");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.5;
-            }
-        });
-
-        opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
-        assertEquals(opacity, 0.5, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 5));
-
-        selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "9");
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.9;
-            }
-        });
-
-        opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
-        assertEquals(opacity, 0.9, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 9));
-
-        selenium.type(LOC_FIRST_SHADOW_OPACITY_INPUT, "11"); // 11 -> 9
-        Wait.until(new Condition() {
-            public boolean isTrue() {
-                return getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE) == 0.9;
-            }
-        });
-
-        opacity = getOpacity(LOC_FIRST_SHADOW_OPACITY_STYLE);
-        assertEquals(opacity, 0.9, format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, 11));
+        
+        StepRange range = new StepRange(1, 9, 1);
+		final String locInput = LOC_FIRST_SHADOW_OPACITY_INPUT;
+		for (int i : new int[] { 10, 5, 0, 9, 1, -1, 12 }) {
+			selenium.type(locInput, String.valueOf(i));
+			selenium.fireEvent(locInput, Event.BLUR);
+			selenium.type(LOC_FIRST_INPUT, String.valueOf(i));
+			selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+			String result = range.getRoundedValue(i).toString();
+			Wait.failWith(format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, String.valueOf(i))).until(
+					new StyleCondition(LOC_FIRST_SHADOW_OPACITY_STYLE, "opacity", format("0.{0}", result)));
+			assertEquals(selenium.getValue(locInput), result);
+		}
     }
 
     /**
@@ -494,7 +371,9 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondExampleOneCity() {
         scrollIntoView(LOC_SECOND_INPUT, true);
 
-        selenium.typeKeys(LOC_SECOND_INPUT, "a");
+        selenium.type(LOC_SECOND_INPUT, "a");
+        selenium.fireEvent(LOC_SECOND_INPUT, Event.KEYDOWN);
+        
         waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1));
         selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1)); // Augusta
 
@@ -512,11 +391,15 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     public void testSecondExampleMoreCities() {
         scrollIntoView(LOC_SECOND_INPUT, true);
 
-        selenium.typeKeys(LOC_SECOND_INPUT, "a");
+        selenium.type(LOC_SECOND_INPUT, "a");
+        selenium.fireEvent(LOC_SECOND_INPUT, Event.KEYDOWN);
+        
         waitForElement(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1));
         selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 1)); // Augusta
 
-        selenium.typeKeys(LOC_SECOND_INPUT, ",m");
+        selenium.type(LOC_SECOND_INPUT, selenium.getValue(LOC_SECOND_INPUT) + ",m");
+        selenium.fireEvent(LOC_SECOND_INPUT, Event.KEYDOWN);
+        
         waitForTextEquals(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2), "Madison");
         selenium.click(format(LOC_SECOND_SUGGESTION_BOX_PREFORMATTED, 2)); // Madison
 
@@ -587,44 +470,107 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
         abstractTestSource(2, "View Source", strings);
     }
 
-    /**
-     * Pulls out the value of the specified attribute from the specified
-     * location.
-     * 
-     * @param loc
-     *            an attribute locator
-     * @param attr
-     *            an 'subattribute' whose value we want (e.g. <div
-     *            style="left: 4px;"/>, then loc=//div@style and attr=left
-     * @return the value of the subattribute
-     */
-    private int getValue(String loc, String attr) {
-        String tmp = selenium.getAttribute(loc);
-        int firstIdx = tmp.indexOf(attr) + 2 + attr.length();
-        int secondIdx = tmp.indexOf("px;", firstIdx);
-        return Integer.parseInt(tmp.substring(firstIdx, secondIdx));
-    }
+    
+	/**
+	 * Condition for Wait.until(Condition) which waits for the item specified by
+	 * locator becomes in given style given value
+	 */
+	private class StyleCondition implements Condition {
+		private String locator;
+		private String style;
+		private String value;
 
-    /**
-     * Pulls out opacity from the specified attribute.
-     * 
-     * @param loc
-     *            an attribute locator
-     * @return the value of opacity
-     */
-    private double getOpacity(String loc) {
-        String tmp = selenium.getAttribute(loc);
-        int firstIdx = tmp.indexOf("opacity") + 9;
-        int secondIdx = tmp.indexOf(";", firstIdx);
-        return Double.parseDouble(tmp.substring(firstIdx, secondIdx));
-    }
+		/**
+		 * @param locator
+		 *            locator of item which we will be testing for becoming
+		 *            given style in given value
+		 * @param style
+		 *            tested on item given by locator to equality with given
+		 *            value
+		 * @param value
+		 *            of given style which we are testing on item specified by
+		 *            locator
+		 */
+		public StyleCondition(String locator, String style, String value) {
+			this.locator = locator;
+			this.style = style;
+			this.value = value;
+		}
 
-    /**
-     * Loads the page containing the calendar component.
-     */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+		public boolean isTrue() {
+			return getStyleValue(locator, style).equals(value);
+		}
+	}
+
+	/**
+	 * Pulls out the value of the specified attribute from the specified
+	 * location.
+	 * 
+	 * @param loc
+	 *            an attribute locator
+	 * @param attr
+	 *            an style value what we want to pull out
+	 * @return the value of the subattribute
+	 */
+	private String getStyleValue(String loc, String attr) {
+		return getStyle(loc, attr).replaceFirst("px", "");
+	}
+	
+	/**
+	 * Class representing Range of numbers with defined offset between them (step)
+	 * 
+	 * Can test the number for presence in range and round the number into number, which is in the range.
+	 */
+	private class StepRange extends Range {
+
+		private int minimum;
+		private int maximum;
+		private int step;
+		
+		public StepRange(int minimum, int maximum, int step) {
+			this.minimum = minimum;
+			this.maximum = maximum;
+			this.step = step;
+		}
+		
+		@Override
+		public boolean containsNumber(Number number) {
+			return number.intValue() == getRoundedValue(number).intValue();
+		}
+
+		@Override
+		public Number getMaximumNumber() {
+			return maximum;
+		}
+
+		@Override
+		public Number getMinimumNumber() {
+			return minimum;
+		}
+		
+		public Number getRoundedValue(Number number) {
+			if (number.intValue() < minimum)
+				return minimum;
+			if (number.intValue() > maximum)
+				return maximum;
+			int delta = number.intValue() % step;
+			if (delta != 0) {
+				if (delta > (step / 2)) {
+					return number.intValue() - delta + step;
+				} else {
+					return number.intValue() - delta;
+				}
+			}
+			return number;
+		}
+	}
+
+	/**
+	 * Loads the page containing the calendar component.
+	 */
+    protected void loadPage() {
         openComponent("Suggestion Box");
     }
+    
+    
 }

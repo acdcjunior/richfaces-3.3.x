@@ -21,9 +21,12 @@
  *******************************************************************************/
 package org.jboss.richfaces.integrationTest.extendedDataTable;
 
+import org.apache.commons.lang.StringUtils;
 import org.jboss.richfaces.integrationTest.AbstractDataIterationTestCase;
 import org.jboss.test.selenium.waiting.Condition;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 /**
  * @author <a href="mailto:lfryc@redhat.com">Lukas Fryc</a>
@@ -47,7 +50,6 @@ public class AbstractExtendedDataTableTestCase extends AbstractDataIterationTest
 
 	private final String MSG_OPTION_SELECTION_MODE_PREFORMATTED = getMsg("OPTION_SELECTION_MODE_PREFORMATTED");
 
-	@BeforeMethod
 	protected void loadPage() {
 		openComponent("Extended Data Table");
 		openTab("Usage");

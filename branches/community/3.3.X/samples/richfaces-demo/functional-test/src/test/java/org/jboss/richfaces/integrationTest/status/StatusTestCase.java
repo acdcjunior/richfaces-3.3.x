@@ -185,9 +185,7 @@ public class StatusTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Status");
 		openTab("Usage");
 		

@@ -58,6 +58,10 @@ public class GroupingTestCase extends AbstractExtendedDataTableTestCase {
 		String expectedGroup = null;
 
 		for (int row = 1; row <= rows; row++) {
+			if (row == 1 && browserIsInternetExplorer()) {
+				continue;
+			}
+			
 		    if (belongsClass(MSG_TR_CLASS, format(LOC_TR_PREFORMATTED, row))) {
 				// table row is type group
 				expectedGroup = selenium.getText(format(LOC_TD_GROUP_PREFORMATTED, row)).replace("State Name: ", "").replace("(1)", "");

@@ -87,9 +87,7 @@ public class CommandButtonTestCase extends AbstractSeleniumRichfacesTestCase {
 		waitForTextEquals(LOC_OUTPUT_TEXT, expectedOutputText);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Command Button");
 
 		scrollIntoView(LOC_BUTTON_SAY_HELLO, true);

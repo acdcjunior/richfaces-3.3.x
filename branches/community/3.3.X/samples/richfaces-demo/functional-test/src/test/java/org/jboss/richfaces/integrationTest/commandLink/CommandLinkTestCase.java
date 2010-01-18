@@ -87,9 +87,7 @@ public class CommandLinkTestCase extends AbstractSeleniumRichfacesTestCase {
 		waitForTextEquals(LOC_OUTPUT_TEXT, expectedOutputText);
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Command Link");
 
 		scrollIntoView(LOC_LINK_SAY_HELLO, true);

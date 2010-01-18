@@ -145,9 +145,7 @@ public class PushTestCase extends AbstractSeleniumRichfacesTestCase {
 		return !MSG_OUTPUT_PUSH_INACTIVE.equals(selenium.getText(LOC_OUTPUT_TEXT));
 	}
 
-	@SuppressWarnings("unused")
-	@BeforeMethod
-	private void loadPage() {
+	protected void loadPage() {
 		openComponent("Push");
 
 		scrollIntoView(LOC_BUTTON_POLL_CONTROL, true);

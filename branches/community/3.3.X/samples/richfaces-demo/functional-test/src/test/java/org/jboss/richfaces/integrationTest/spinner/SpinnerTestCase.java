@@ -301,9 +301,7 @@ public class SpinnerTestCase extends AbstractSeleniumRichfacesTestCase {
     /**
      * Loads the page containing needed component.
      */
-    @SuppressWarnings("unused")
-    @BeforeMethod
-    private void loadPage() {
+    protected void loadPage() {
         openComponent("Input Number Spinner");
         scrollIntoView(LOC_EXAMPLE_HEADER, true);
     }
