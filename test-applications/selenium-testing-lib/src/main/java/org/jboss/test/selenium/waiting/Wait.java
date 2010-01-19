@@ -25,6 +25,8 @@ package org.jboss.test.selenium.waiting;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static org.jboss.test.selenium.AbstractSeleniumTestCase.format;
+
 /**
  * <p>
  * Implementation of waiting to satisfy condition.
@@ -147,31 +149,38 @@ public class Wait {
 	}
 
 	/**
-	 * Constructs preset instance of waiting (@see Waiting) with given throwable
-	 * failure, which indicates timeout.
+	 * Constructs preset instance of waiting (@see Waiting) with given subject
+	 * of failure. It can be a Throwable (in that case it will be used as cause)
+	 * or it can be any other object (it will be converted to String and used as
+	 * exception message).
+	 * 
+	 * @param failureSubject
+	 *            Throwable (used in cause) or any other object (will be
+	 *            converted to expection message by its string value)
+	 * @return Waiting instance initialized with given failure subject
+	 */
+	public static Waiting failWith(Object failureSubject) {
+		return getDefault().failWith(failureSubject);
+	}
+	
+	/**
+	 * Constructs preset instance of waiting (@see Waiting) with given failure
+	 * message parametrized by given objects
 	 * 
 	 * If failure is set to null, timeout will not result to failure!
 	 * 
-	 * @param failure
-	 *            throwable that will be thrown in case of waiting timeout or
-	 *            null if waiting timeout shouldn't result to failure
-	 * @return Waiting instance initialized with given failure
+	 * @param failureMessage
+	 *            character sequence that will be used as message of exception
+	 *            thrown in case of waiting timeout or null if waiting timeout
+	 *            shouldn't result to failure
+	 * @param args
+	 *            arguments to failureMessage which will be use to
+	 *            parametrization of failureMessage
+	 * @return Waiting instance initialized with given failureMessage and
+	 *         arguments
 	 */
-	public static Waiting failWith(Throwable failure) {
-		return getDefault().failWith(failure);
-	}
-
-	/**
-	 * Constructs preset instance of waiting (@see Waiting) with failures
-	 * initialized to AssertionError with given message.
-	 * 
-	 * @param failMessage
-	 *            message which will be set to thrown AssertionError
-	 * @return Waiting instance initialized with failures using AssertionError
-	 *         with given message
-	 */
-	public static Waiting failWith(String failMessage) {
-		return getDefault().failWith(failMessage);
+	public static Waiting failWith(CharSequence failureMessage, Object... args) {
+		return getDefault().failWith(failureMessage, args);
 	}
 
 	/**
@@ -297,7 +306,12 @@ public class Wait {
 		 * 
 		 * If is set to null, no failure will be thrown after timeout.
 		 */
-		private Throwable failure = new AssertionError();
+		private Object failure = new AssertionError();
+		
+		/**
+		 * Arguments to format failure if it is string value and should be formatted
+		 */
+		private Object[] failureArgs;
 
 		/**
 		 * Singleton
@@ -355,40 +369,100 @@ public class Wait {
 		}
 
 		/**
-		 * Sets failure of timeout to given throwable and return it.
+		 * Returns Waiting object initialized with given subject of failure. It
+		 * can be a Throwable (in that case it will be used as cause) or it can
+		 * be any other object (it will be converted to String and used as
+		 * exception message).
 		 * 
-		 * If failure is set to null, timeout will not result to failure!
-		 * 
-		 * @param failure
-		 *            throwable that will be thrown in case of waiting timeout
-		 *            or null if waiting timeout shouldn't result to failure
-		 * @return Waiting instance initialized with given failure
+		 * @param failureSubject
+		 *            Throwable (used in cause) or any other object (will be
+		 *            converted to expection message by its string value)
+		 * @return Waiting instance initialized with given failure subject
 		 */
-		public Waiting failWith(Throwable failure) {
-			if (failure == null) {
+		public Waiting failWith(Object failureSubject) {
+			if (failureSubject == null) {
 				if (this.failure == null) {
-					return this;
-				}
-			} else {
-				if (failure.equals(this.failure)) {
 					return this;
 				}
 			}
 			Waiting copy = this.copy();
-			copy.failure = failure;
+			copy.failure = failureSubject;
+			copy.failureArgs = null;
+			return copy;
+		}
+		
+		/**
+		 * Returns preset instance of waiting (@see Waiting) with given failure
+		 * message parametrized by given objects
+		 * 
+		 * If failure is set to null, timeout will not result to failure!
+		 * 
+		 * @param failureMessage
+		 *            character sequence that will be used as message of exception
+		 *            thrown in case of waiting timeout or null if waiting timeout
+		 *            shouldn't result to failure
+		 * @param args
+		 *            arguments to failureMessage which will be use to
+		 *            parametrization of failureMessage
+		 * @return Waiting instance initialized with given failureMessage and
+		 *         arguments
+		 */
+		public Waiting failWith(CharSequence failureMessage, Object... args) {
+			Waiting copy = this.copy();
+			copy.failure = failureMessage;
+			copy.failureArgs = args;
 			return copy;
 		}
 
 		/**
-		 * Sets failure of timeout to AssertionError with given failMessage.
+		 * Prepares a exception for failing the waiting
 		 * 
-		 * @param failMessage
-		 *            message which will be set to thrown AssertionError
-		 * @return Waiting instance initialized with failures using
-		 *         AssertionError with given message
+		 * @return runtime exception
 		 */
-		public Waiting failWith(String failMessage) {
-			return failWith(new AssertionError(failMessage));
+		protected RuntimeException processFailure() {
+			if (failure instanceof RuntimeException) {
+				return (RuntimeException) failure;
+			}
+			
+			if (failure instanceof CharSequence) {
+				return new WaitTimeoutException((CharSequence)failure, failureArgs);
+			}
+			
+			return new WaitTimeoutException(failure);
+		}
+
+		protected static class WaitTimeoutException extends RuntimeException {
+			private static final long serialVersionUID = 6056785264760499779L;
+
+			// failure subject - cannot be null
+			private Object failure = "Waiting timed out";
+
+			public WaitTimeoutException(Object failure) {
+				if (failure != null) {
+					this.failure = failure;
+				}
+			}
+
+			public WaitTimeoutException(CharSequence message, Object... args) {
+				this.failure = format(message.toString(), args);
+			}
+
+			@Override
+			public Throwable getCause() {
+				if (failure instanceof Throwable) {
+					return ((Throwable) failure);
+				}
+
+				return super.getCause();
+			}
+
+			@Override
+			public String getMessage() {
+				if (failure instanceof Throwable) {
+					return ((Throwable) failure).getMessage();
+				}
+				return failure.toString();
+			}
 		}
 
 		/**
@@ -399,7 +473,7 @@ public class Wait {
 		 * @return Waiting instance initialized with no failure
 		 */
 		public Waiting dontFail() {
-			return failWith((Throwable) null);
+			return failWith(null);
 		}
 		
 		/**
@@ -523,11 +597,7 @@ public class Wait {
 		 */
 		private void fail() {
 			if (failure != null) {
-				if (failure instanceof RuntimeException) {
-					throw (RuntimeException) failure;
-				} else {
-					throw new RuntimeException(failure);
-				}
+				throw processFailure();
 			}
 		}
 
@@ -541,6 +611,7 @@ public class Wait {
 			copy.interval = this.interval;
 			copy.timeout = this.timeout;
 			copy.failure = this.failure;
+			copy.failureArgs = this.failureArgs;
 			copy.isDelayed = this.isDelayed;
 			return copy;
 		}
