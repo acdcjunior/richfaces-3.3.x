@@ -120,6 +120,7 @@ public abstract class AbstractDataIterationTestCase extends AbstractSeleniumRich
 	 * @return number of active page
 	 */
 	protected Integer getActivePage() {
+		selenium.waitForCondition(format("selenium.isElementPresent('{0}')", LOC_OUTPUT_ACTIVE_PAGE), "5000");
 		return Integer.valueOf(selenium.getText(LOC_OUTPUT_ACTIVE_PAGE));
 	}
 
