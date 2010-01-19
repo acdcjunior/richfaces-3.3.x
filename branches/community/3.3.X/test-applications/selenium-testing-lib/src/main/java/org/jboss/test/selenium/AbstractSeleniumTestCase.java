@@ -314,7 +314,7 @@ public abstract class AbstractSeleniumTestCase {
      *            used to formatting given format string
      * @return string formatted using given arguments
      */
-    public String format(String format, Object... args) {
+    public static String format(String format, Object... args) {
         String message = preformat(format);
         return MessageFormat.format(message, args);
     }
@@ -326,7 +326,7 @@ public abstract class AbstractSeleniumTestCase {
      *            prepared to use in Message.format()
      * @return message prepared to use in Message.format()
      */
-    private String preformat(String message) {
+    private static String preformat(String message) {
         return message.replace("'", "''").replace("\\''", "'");
     }
 
@@ -859,5 +859,22 @@ public abstract class AbstractSeleniumTestCase {
 			return;
 		}
 		selenium.getEval(format("selenium.addScriptLocally('{0}', '{1}')", id, escapedScript));
+	}
+
+	/**
+	 * Remove *jquery= prefix of locators given by jQuery selector
+	 * 
+	 * @param jqueryLocator locator in jQuery selector's syntax
+	 * @return jQuery selector without ^jquery= locator prefix
+	 */
+	public String removeJQueryPrefix(String jqueryLocator) {
+		final String prefix = "jquery=";
+
+		if (jqueryLocator.startsWith(prefix)) {
+			return jqueryLocator.replaceFirst(prefix, "");
+		}
+
+		throw new IllegalArgumentException(format(
+				"Given locator '{0}' isn't valid jQuery locator (doesn't start with '{1}')", jqueryLocator, prefix));
 	}
 }
