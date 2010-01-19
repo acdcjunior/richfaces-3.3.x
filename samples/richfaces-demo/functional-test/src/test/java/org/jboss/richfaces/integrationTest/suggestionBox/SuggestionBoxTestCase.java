@@ -24,13 +24,15 @@ package org.jboss.richfaces.integrationTest.suggestionBox;
 
 import static org.testng.Assert.assertEquals;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.Range;
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.dom.Event;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.thoughtworks.selenium.SeleniumException;
 
 /**
  * Test case that tests the suggestion box.
@@ -69,8 +71,8 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_FIRST_BORDER_STYLE = getLoc("FIRST_BORDER_STYLE");
     private final String LOC_FIRST_WIDTH_STYLE = getLoc("FIRST_WIDTH_STYLE");
     private final String LOC_FIRST_HEIGHT_STYLE = getLoc("FIRST_HEIGHT_STYLE");
-    private final String LOC_FIRST_SHADOW_DEPTH_STYLE = getLoc("FIRST_SHADOW_DEPTH_STYLE");
-    private final String LOC_FIRST_SHADOW_OPACITY_STYLE = getLoc("FIRST_SHADOW_OPACITY_STYLE");
+    private final String LOC_FIRST_SHADOW = getLoc("FIRST_SHADOW");
+    private final String LOC_FIRST_NOTHING_FOUND = getLoc("FIRST_NOTHING_FOUND");
     private final String LOC_FIRST_CELLPADDING = getLoc("FIRST_CELLPADDING");
 
     private final String LOC_SECOND_INPUT = getLoc("SECOND_INPUT");
@@ -268,15 +270,28 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 		for (int i : new int[] { 7, 4, 2, 6, 3, 0, 8 }) {
 			selenium.type(locInput, String.valueOf(i));
 			selenium.fireEvent(locInput, Event.BLUR);
-			selenium.type(LOC_FIRST_INPUT, String.valueOf(i));
-			selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+			for (int j = 1; j <= 5; j++) {
+				try {
+					selenium.type(LOC_FIRST_INPUT, StringUtils.repeat(String.valueOf(i), j));
+					selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
+					selenium.waitForCondition(format("jqFind('{0}').is(':visible')", removeJQueryPrefix(LOC_FIRST_SHADOW)), "5000");
+					break;
+				} catch (SeleniumException e) {
+					if (j < 5 && e.getMessage().startsWith("Timed out")) {
+						continue;
+					}
+					throw e;
+				}
+			}
 			String result = range.getRoundedValue(i).toString();
-			Wait.failWith(format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, String.valueOf(i))).until(
-					new StyleCondition(LOC_FIRST_SHADOW_DEPTH_STYLE, "top", result));
-			assertEquals(getStyleValue(LOC_FIRST_SHADOW_DEPTH_STYLE, "left"), result);
+			assertEquals(getStyleValue(LOC_FIRST_SHADOW, "top"), result, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, i));
+			assertEquals(getStyleValue(LOC_FIRST_SHADOW, "left"), result, format(MSG_SUGGESTION_BOX_SHADOW_DEPTH_PREFORMATTED, i));
 			assertEquals(selenium.getValue(locInput), result);
+			selenium.click(LOC_FIRST_NOTHING_FOUND);
+			selenium.waitForCondition(format("jqFind('{0}').is(':hidden')", removeJQueryPrefix(LOC_FIRST_SHADOW)), "5000");
+			Wait.timeout(500).waitForTimeout();
 		}
-    }
+	}
 
     /**
      * Tests the "Shadow Opacity" slider. It tests values 10, 5, 0, 9, 1, -1, 12.
@@ -294,7 +309,7 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 			selenium.fireEvent(LOC_FIRST_INPUT, Event.KEYDOWN);
 			String result = range.getRoundedValue(i).toString();
 			Wait.failWith(format(MSG_SUGGESTION_BOX_SHADOW_OPACITY_PREFORMATTED, String.valueOf(i))).until(
-					new StyleCondition(LOC_FIRST_SHADOW_OPACITY_STYLE, "opacity", format("0.{0}", result)));
+					new StyleCondition(LOC_FIRST_SHADOW, "opacity", format("0.{0}", result)));
 			assertEquals(selenium.getValue(locInput), result);
 		}
     }
@@ -479,6 +494,7 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 		private String locator;
 		private String style;
 		private String value;
+		private String actualValue;
 
 		/**
 		 * @param locator
@@ -498,7 +514,13 @@ public class SuggestionBoxTestCase extends AbstractSeleniumRichfacesTestCase {
 		}
 
 		public boolean isTrue() {
-			return getStyleValue(locator, style).equals(value);
+			actualValue = getStyleValue(locator, style);
+			return actualValue.equals(value);
+		}
+		
+		@Override
+		public String toString() {
+			return actualValue;
 		}
 	}
 
