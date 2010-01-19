@@ -1629,7 +1629,7 @@ Object.extend(Calendar.prototype, {
 				// TODO: fix:  there is no weekNumber in dataobj if showWeeksBar == false;
 				if (weekflag && currentMonth==11 &&
 				   (k==5||k==6) &&
-				   (dataobj._month==1 || (currentMonthDays-dataobj.day+1)<this.params.minDaysInFirstWeek) )
+				   (dataobj._month==1 || (7 - (currentMonthDays - dataobj.day + 1)) >= this.params.minDaysInFirstWeek) )
 				{
 					wn=1;
 					weekflag=false;
