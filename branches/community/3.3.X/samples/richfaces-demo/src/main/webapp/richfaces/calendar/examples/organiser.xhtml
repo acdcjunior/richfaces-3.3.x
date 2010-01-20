@@ -11,6 +11,12 @@
 		.rich-calendar-header{
 			text-align:center;
 		}
+		
+		.organizer-cell {
+			width: 90px;
+			height: 90px;
+			overflow: hidden;
+		}
 	</style>
 
 	<h:form id="form">
@@ -26,12 +32,10 @@
 					<h:outputText value="Current Month" styleClass="header"/>
 				</h:panelGroup>
 			</f:facet>
-			<a4j:outputPanel layout="block" id="cell" onclick="#{rich:component('organizer')}.resetSelectedDate()" style="height: 100%;">
-				<h:panelGrid columns="1">
-					<h:outputText value="{day}" style="align:center"/>
-					<h:outputText value="{data.shortDescription.escapeHTML()}"/>
-					<h:outputText value="{data.description.escapeHTML()}"/>
-				</h:panelGrid>
+			<a4j:outputPanel layout="block" id="cell" onclick="#{rich:component('organizer')}.resetSelectedDate()" style="height: 100%;" styleClass="organizer-cell">
+				<h:outputText value="{day}" style="align:center"/><br />
+				<h:outputText value="{data.shortDescription.escapeHTML()}" /><br />
+				<h:outputText value="{data.description.escapeHTML()}"/>
 			</a4j:outputPanel>
 		</rich:calendar>
 	</h:form>
