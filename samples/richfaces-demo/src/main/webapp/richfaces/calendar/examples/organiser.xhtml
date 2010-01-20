@@ -33,9 +33,16 @@
 				</h:panelGroup>
 			</f:facet>
 			<a4j:outputPanel layout="block" id="cell" onclick="#{rich:component('organizer')}.resetSelectedDate()" style="height: 100%;" styleClass="organizer-cell">
-				<h:outputText value="{day}" style="align:center"/><br />
-				<h:outputText value="{data.shortDescription.escapeHTML()}" /><br />
-				<h:outputText value="{data.description.escapeHTML()}"/>
+				<div>
+					<h:outputText value="{day}" style="align:center"/>
+				</div>
+				<div>&#xA0;</div>
+				<div>
+					<h:outputText value="{data.shortDescription.escapeHTML()}" />
+				</div>
+				<div>
+					<h:outputText value="{data.description.escapeHTML()}"/>
+				</div>
 			</a4j:outputPanel>
 		</rich:calendar>
 	</h:form>
