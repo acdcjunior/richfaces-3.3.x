@@ -129,10 +129,13 @@ public class FacesBeanValidator implements NullValueValidator,Serializable, Grap
 
 	static String formatMessage(String msg, Locale locale, Object... messageParams) {
 		if (msg.contains("{")) {
+			try {
 			MessageFormat messageFormat = new MessageFormat(
 					msg, locale);
 			msg = messageFormat.format(messageParams);
-
+			} catch (IllegalArgumentException e) {
+				// Do nothing, use original string unchanged.
+			}
 		}
 		return msg;
 	}
