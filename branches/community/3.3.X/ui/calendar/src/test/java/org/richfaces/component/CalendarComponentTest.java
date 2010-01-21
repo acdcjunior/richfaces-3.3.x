@@ -94,7 +94,7 @@ public class CalendarComponentTest extends AbstractAjax4JsfTestCase {
 				.createComponent(UICalendar.COMPONENT_TYPE);
 		calendar.setLocale(Locale.UK);
 		calendar.setDatePattern("d/MM/yyyy");
-		calendar.setTimeZone(TimeZone.getTimeZone("GMT-4:00"));
+		//calendar.setTimeZone(TimeZone.getTimeZone("GMT-1:00"));
 		
 		calendar.setButtonLabel("PopUp");
 		// XXX test popup false
