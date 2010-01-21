@@ -31,7 +31,6 @@ import java.util.Calendar;
 import org.jboss.richfaces.integrationTest.AbstractSeleniumRichfacesTestCase;
 import org.jboss.test.selenium.waiting.Condition;
 import org.jboss.test.selenium.waiting.Wait;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -57,84 +56,84 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
     private final String LOC_DIALOG_CANCEL_BUTTON = getLoc("DIALOG_CANCEL_BUTTON");
     private final String LOC_DIALOG_CROSS_BUTTON = getLoc("DIALOG_CROSS_BUTTON");
 
-//    /**
-//     * Tests that today's cell is highlighted. It goes through the table until
-//     * it finds today's date.
-//     */
-//    @Test
-//    public void testTodayIsHighlighted() {
-//        String today = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-//        String text = null;
-//
-//        int fromLine = 1;
-//        if (Integer.parseInt(today) > 15) {
-//            fromLine = 3;
-//        }
-//
-//        for (int i = fromLine; i < 6; i++) {
-//            for (int j = 0; j < 7; j++) {
-//                text = selenium.getText(format(LOC_CELL_DATE_PREFORMATTED, i, j));
-//                if (today.equals(text)) {
-//                    assertTrue(belongsClass("rich-calendar-today", format(LOC_CELL_PREFORMATTED, i, j)),
-//                            "Class attribute of the cell with today's date should contain \"rich-calendar-today\".");
-//                    return;
-//                }
-//            }
-//        }
-//    }
-//
-//    /**
-//     * Tests the last cell of the table. The last line is usually empty and the
-//     * last cell of the last row has to be disabled.
-//     */
-//    @Test
-//    public void testLastDayIsGrey() {
-//        assertTrue(belongsClass("rich-calendar-boundary-dates", format(LOC_CELL_PREFORMATTED, 6, 6)),
-//                "Class attribute of the last cell should contain \"rich-calendar-boundary-dates\".");
-//    }
-//
-//    /**
-//     * Tests adding a new note to the organizer. First it checks the text of the
-//     * selected cell (2nd week, 3rd day), checks that the dialog is hidden,
-//     * clicks into the cell, and checks that the dialog is shown. Then it enters
-//     * values into description and note fields and clicks the store button. In
-//     * the end it checks that the organizer was changed.
-//     */
-//    @Test
-//    public void testSaveNote() {
-//        String text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
-//        assertEquals(text, "Nothing planned", "The description in the cell (week 2, day 3).");
-//
-//        assertFalse(isDisplayed(LOC_DIALOG), "Dialog should not be visible.");
-//
-//        selenium.click(format(LOC_CELL_PREFORMATTED, 4, 3));
-//
-//        // wait for JavaScript to show the dialog
-//        Wait.until(new Condition() {
-//            public boolean isTrue() {
-//                return isDisplayed(LOC_DIALOG);
-//            }
-//        });
-//
-//        assertTrue(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
-//
-//        selenium.type(LOC_DIALOG_DESCRIPTION, "some description");
-//        selenium.type(LOC_DIALOG_NOTE, "note note note note note");
-//        selenium.click(LOC_DIALOG_STORE_BUTTON);
-//
-//        // wait for JavaScript to change the organizer
-//        Wait.until(new Condition() {
-//            public boolean isTrue() {
-//                return !"Nothing planned".equals(selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3)));
-//            }
-//        });
-//
-//        text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
-//        assertEquals(text, "some description", "The description in the cell (week 2, day 3).");
-//
-//        text = selenium.getText(format(LOC_CELL_NOTE_PREFORMATTED, 4, 3));
-//        assertEquals(text, "note note note note note", "The note in the cell (week 2, day 3).");
-//    }
+    /**
+     * Tests that today's cell is highlighted. It goes through the table until
+     * it finds today's date.
+     */
+    @Test
+    public void testTodayIsHighlighted() {
+        String today = Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        String text = null;
+
+        int fromLine = 1;
+        if (Integer.parseInt(today) > 15) {
+            fromLine = 3;
+        }
+
+        for (int i = fromLine; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                text = selenium.getText(format(LOC_CELL_DATE_PREFORMATTED, i, j));
+                if (today.equals(text)) {
+                    assertTrue(belongsClass("rich-calendar-today", format(LOC_CELL_PREFORMATTED, i, j)),
+                            "Class attribute of the cell with today's date should contain \"rich-calendar-today\".");
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
+     * Tests the last cell of the table. The last line is usually empty and the
+     * last cell of the last row has to be disabled.
+     */
+    @Test
+    public void testLastDayIsGrey() {
+        assertTrue(belongsClass("rich-calendar-boundary-dates", format(LOC_CELL_PREFORMATTED, 6, 6)),
+                "Class attribute of the last cell should contain \"rich-calendar-boundary-dates\".");
+    }
+
+    /**
+     * Tests adding a new note to the organizer. First it checks the text of the
+     * selected cell (2nd week, 3rd day), checks that the dialog is hidden,
+     * clicks into the cell, and checks that the dialog is shown. Then it enters
+     * values into description and note fields and clicks the store button. In
+     * the end it checks that the organizer was changed.
+     */
+    @Test
+    public void testSaveNote() {
+        String text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
+        assertEquals(text, "Nothing planned", "The description in the cell (week 2, day 3).");
+
+        assertFalse(isDisplayed(LOC_DIALOG), "Dialog should not be visible.");
+
+        selenium.click(format(LOC_CELL_PREFORMATTED, 4, 3));
+
+        // wait for JavaScript to show the dialog
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return isDisplayed(LOC_DIALOG);
+            }
+        });
+
+        assertTrue(isDisplayed(LOC_DIALOG), "Dialog should be visible.");
+
+        selenium.type(LOC_DIALOG_DESCRIPTION, "some description");
+        selenium.type(LOC_DIALOG_NOTE, "note note note note note");
+        selenium.click(LOC_DIALOG_STORE_BUTTON);
+
+        // wait for JavaScript to change the organizer
+        Wait.until(new Condition() {
+            public boolean isTrue() {
+                return !"Nothing planned".equals(selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3)));
+            }
+        });
+
+        text = selenium.getText(format(LOC_CELL_DESC_PREFORMATTED, 4, 3));
+        assertEquals(text, "some description", "The description in the cell (week 2, day 3).");
+
+        text = selenium.getText(format(LOC_CELL_NOTE_PREFORMATTED, 4, 3));
+        assertEquals(text, "note note note note note", "The note in the cell (week 2, day 3).");
+    }
 
     /**
      * Tests the cancel button. First it checks the content of the cell in the
@@ -212,44 +211,44 @@ public class OrganizerTestCase extends AbstractSeleniumRichfacesTestCase {
         assertEquals(text, "", "The note in the cell (week 3, day 5).");
     }
 
-//    /**
-//     * Tests the "View Source". It checks that the source code is not visible,
-//     * clicks on the link, and checks 8 lines of source code.
-//     */
-//    @Test
-//    public void testPageSource() {
-//        String[] strings = new String[] {
-//                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
-//                "<rich:messages/>",
-//                "<a4j:jsFunction name=\"ajaxSubmit\" oncomplete=\"#{rich:component('panel')}.show()\" reRender=\"editContent\" />",
-//                "<rich:calendar value=\"#{calendarBean.selectedDate}\"",
-//                "cellWidth=\"100px\" cellHeight=\"100px\"",
-//                "dataModel=\"#{calendarDataModel}\" onchanged=\"if (event.rich.date) {ajaxSubmit();}\" oncurrentdateselect=\"return false\"",
-//                "<a4j:outputPanel layout=\"block\" id=\"cell\" onclick=\"#{rich:component('organizer')}.resetSelectedDate()\" style=\"height: 100%;\">",
-//                "<rich:modalPanel id=\"panel\" resizeable=\"false\">", };
-//
-//        abstractTestSource(1, "View Source", strings);
-//    }
-//
-//    /**
-//     * Tests the source of CalendarDataModelImpl.java. It checks that the source
-//     * code is not visible, clicks on the link, and checks 8 lines of source
-//     * code.
-//     */
-//    @Test
-//    public void testDataModelSource() {
-//        String[] strings = new String[] {
-//                "package org.richfaces.demo.calendar.modelImpl;",
-//                "import org.richfaces.model.CalendarDataModelItem;",
-//                "private CalendarDataModelItem[] items;",
-//                "public CalendarDataModelItem[] getData(Date[] dateArray) {",
-//                "protected CalendarDataModelItem createDataModelItem(Date date) {",
-//                "item.setDay(c.get(Calendar.DAY_OF_MONTH));",
-//                "setCurrentDescription((String)((HashMap)items[calendar.get(Calendar.DAY_OF_MONTH)-1].getData()).get(\"description\"));",
-//                "public String getCurrentShortDescription() {", };
-//
-//        abstractTestSource(1, "CalendarDataModelImpl.java", strings);
-//    }
+    /**
+     * Tests the "View Source". It checks that the source code is not visible,
+     * clicks on the link, and checks 8 lines of source code.
+     */
+    @Test
+    public void testPageSource() {
+        String[] strings = new String[] {
+                "<ui:composition xmlns=\"http://www.w3.org/1999/xhtml\"",
+                "<rich:messages/>",
+                "<a4j:jsFunction name=\"ajaxSubmit\" oncomplete=\"#{rich:component('panel')}.show()\" reRender=\"editContent\" />",
+                "<rich:calendar value=\"#{calendarBean.selectedDate}\"",
+                "cellWidth=\"100px\" cellHeight=\"100px\"",
+                "dataModel=\"#{calendarDataModel}\" onchanged=\"if (event.rich.date) {ajaxSubmit();}\" oncurrentdateselect=\"return false\"",
+                "<a4j:outputPanel layout=\"block\" id=\"cell\" onclick=\"#{rich:component('organizer')}.resetSelectedDate()\"",
+                "<rich:modalPanel id=\"panel\" resizeable=\"false\">", };
+
+        abstractTestSource(1, "View Source", strings);
+    }
+
+    /**
+     * Tests the source of CalendarDataModelImpl.java. It checks that the source
+     * code is not visible, clicks on the link, and checks 8 lines of source
+     * code.
+     */
+    @Test
+    public void testDataModelSource() {
+        String[] strings = new String[] {
+                "package org.richfaces.demo.calendar.modelImpl;",
+                "import org.richfaces.model.CalendarDataModelItem;",
+                "private CalendarDataModelItem[] items;",
+                "public CalendarDataModelItem[] getData(Date[] dateArray) {",
+                "protected CalendarDataModelItem createDataModelItem(Date date) {",
+                "item.setDay(c.get(Calendar.DAY_OF_MONTH));",
+                "setCurrentDescription((String)((HashMap)items[calendar.get(Calendar.DAY_OF_MONTH)-1].getData()).get(\"description\"));",
+                "public String getCurrentShortDescription() {", };
+
+        abstractTestSource(1, "CalendarDataModelImpl.java", strings);
+    }
 
     /**
      * Tests the source of CalendarDataModelItemImpl.java. It checks that the
