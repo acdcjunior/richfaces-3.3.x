@@ -26,9 +26,9 @@
 	  </attribute>
 	#if( $prop.alias )
 	  <attribute>
+	  <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
 	   <name>${prop.alias}</name>
 	   <rtexprvalue>false</rtexprvalue>
-	   <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
 	  </attribute>
 	#end
 	#end

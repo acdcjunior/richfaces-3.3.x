@@ -31,18 +31,18 @@ ${taglib.includeContent}
   #foreach( $prop in ${component.properties} )
 	#if( !${prop.hidden} && !${prop.disabled} )
   <attribute>
+  <description>${prop.xmlEncodedDescription}</description>
    <name>${prop.name}</name>
    #if(${prop.required})
 	<required>true</required>
    #end
    <rtexprvalue>false</rtexprvalue>
-   <description>${prop.xmlEncodedDescription}</description>
   </attribute>
 	#if( $prop.alias )
   <attribute>
+  <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
    <name>${prop.alias}</name>
    <rtexprvalue>false</rtexprvalue>
-   <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
   </attribute>
 	#end
 	#end
@@ -70,18 +70,18 @@ ${taglib.includeContent}
   #foreach( $prop in ${validator.properties} )
 	#if( !${prop.hidden} && !${prop.disabled} )
   <attribute>
+  <description>${prop.xmlEncodedDescription}</description>
    <name>${prop.name}</name>
    #if(${prop.required})
 	<required>true</required>
    #end
    <rtexprvalue>false</rtexprvalue>
-   <description>${prop.xmlEncodedDescription}</description>
   </attribute>
 	#if( $prop.alias )
   <attribute>
+  <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
    <name>${prop.alias}</name>
    <rtexprvalue>false</rtexprvalue>
-   <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
   </attribute>
 	#end
 	#end
@@ -109,18 +109,18 @@ ${taglib.includeContent}
   #foreach( $prop in ${converter.properties} )
 	#if( !${prop.hidden} && !${prop.disabled} )
   <attribute>
+  <description>${prop.xmlEncodedDescription}</description>
    <name>${prop.name}</name>
    #if(${prop.required})
 	<required>true</required>
    #end
    <rtexprvalue>false</rtexprvalue>
-   <description>${prop.xmlEncodedDescription}</description>
   </attribute>
 	#if( $prop.alias )
   <attribute>
+  <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
    <name>${prop.alias}</name>
    <rtexprvalue>false</rtexprvalue>
-   <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
   </attribute>
 	#end
 	#end
@@ -151,37 +151,37 @@ ${taglib.includeContent}
   #end
 
   <attribute>
-   <name>type</name>
-   <rtexprvalue>false</rtexprvalue>
-   <description>
+  <description>
    Attribute defines the fully qualified Java class name for listener
    </description>
+   <name>type</name>
+   <rtexprvalue>false</rtexprvalue>
   </attribute>
   
   <attribute>
-   <name>binding</name>
-   <rtexprvalue>false</rtexprvalue>
-   <description>
+  <description>
    The attribute takes a value-binding expression for a component property of a backing bean
    </description>
+   <name>binding</name>
+   <rtexprvalue>false</rtexprvalue>
   </attribute>
 
 
   #foreach( $prop in ${listener.properties} )
 	#if( !${prop.hidden} && !${prop.disabled} )
   <attribute>
+  <description>${prop.xmlEncodedDescription}</description>
    <name>${prop.name}</name>
    #if(${prop.required})
 	<required>true</required>
    #end
    <rtexprvalue>false</rtexprvalue>
-   <description>${prop.xmlEncodedDescription}</description>
   </attribute>
 	#if( $prop.alias )
   <attribute>
+  <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
    <name>${prop.alias}</name>
    <rtexprvalue>false</rtexprvalue>
-   <description>Alias for ${prop.name} : ${prop.xmlEncodedDescription}</description>
   </attribute>
 	#end
 	#end
