@@ -243,6 +243,7 @@ public abstract class BaseXMLFilter {
 		String characterEncoding = servletResponseWrapper
 				.getCharacterEncoding();
 		Writer output;
+		int responseStatus = servletResponseWrapper.getStatus();
 		if (null != redirectLocation) {
 			if (isAjaxRequest(request)) {
 				// Special handling of redirect - client-side script must
@@ -274,118 +275,121 @@ public abstract class BaseXMLFilter {
 		
 			return;
 		
+		} else if (HttpServletResponse.SC_NO_CONTENT == responseStatus || HttpServletResponse.SC_NOT_MODIFIED == responseStatus) {
+				// https://jira.jboss.org/jira/browse/RF-8277 - no content response.
+			return;
 		} else {
-			if ("true".equals(servletResponseWrapper.getHeaders().get(
-				AjaxContainerRenderer.AJAX_FLAG_HEADER))) {
-				if (log.isDebugEnabled()) {
-					log
-							.debug("Process response to well-formed XML for AJAX XMLHttpRequest parser");
-				}
-				// Not caching AJAX request
-				response.setHeader("Cache-Control",
-						"no-cache, must-revalidate, max_age=0, no-store");
-				response.setHeader("Expires", "0");
-				response.setHeader("Pragma", "no-cache");
-				// response.setCharacterEncoding(servletResponseWrapper
-				// .getCharacterEncoding()); //
-				// JSContentHandler.DEFAULT_ENCODING);
-				// Set the content-type. For AJAX responses default encoding -
-				// UTF8.
-				// TODO - for null encoding, setup only Output encoding for
-				// filter ?
-				String outputEncoding = "UTF-8";
-				String contentType = getMimetype() + ";charset=" + outputEncoding;
-				response.setContentType(contentType);
-				parser = getParser(getMimetype(), true, viewId);
-				if (null == parser) {
-					throw new ServletException(Messages.getMessage(
-							Messages.PARSER_NOT_INSTANTIATED_ERROR, contentType));
-				}
-				output = createOutputWriter(response, outputEncoding);
-				parser.setDoctype(getPublicid());
-				parser.setInputEncoding(characterEncoding);
-				parser.setOutputEncoding(outputEncoding);
-				parser.setViewState((String) request
-						.getAttribute(AjaxViewHandler.SERIALIZED_STATE_KEY));
-			} else {
-				// setup conversion reules for output contentType, send directly
-				// if content not
-				// supported by tidy.
-				String contentType = servletResponseWrapper.getContentType();
-				String contentTypeCharset = contentType;
-				if (log.isDebugEnabled()) {
-					log.debug("create HTML/XML parser for content type: "
-							+ contentType);
-				}
-				// if(contentType == null){
-				// contentType = request.getContentType();
-				// }
-				boolean forcenotrf = isForcenotrf();
-				
-				if (forcenotrf || !servletResponseWrapper.isError()) {
-					if (forcenotrf || (headEvents != null && headEvents.length != 0)) {
-						if (contentTypeCharset != null) {
-							if (contentTypeCharset.indexOf("charset") < 0
-									&& null != characterEncoding) {
-							    contentTypeCharset += ";charset=" + characterEncoding;
-							}
-							parser = getParser(contentTypeCharset, false, viewId);
-							if (null == parser) {
-								if (log.isDebugEnabled()) {
-									log
-											.debug("Parser not have support for the such content type, send response as-is");
+				if ("true".equals(servletResponseWrapper.getHeaders().get(
+					AjaxContainerRenderer.AJAX_FLAG_HEADER))) {
+					if (log.isDebugEnabled()) {
+						log
+								.debug("Process response to well-formed XML for AJAX XMLHttpRequest parser");
+					}
+					// Not caching AJAX request
+					response.setHeader("Cache-Control",
+							"no-cache, must-revalidate, max_age=0, no-store");
+					response.setHeader("Expires", "0");
+					response.setHeader("Pragma", "no-cache");
+					// response.setCharacterEncoding(servletResponseWrapper
+					// .getCharacterEncoding()); //
+					// JSContentHandler.DEFAULT_ENCODING);
+					// Set the content-type. For AJAX responses default encoding -
+					// UTF8.
+					// TODO - for null encoding, setup only Output encoding for
+					// filter ?
+					String outputEncoding = "UTF-8";
+					String contentType = getMimetype() + ";charset=" + outputEncoding;
+					response.setContentType(contentType);
+					parser = getParser(getMimetype(), true, viewId);
+					if (null == parser) {
+						throw new ServletException(Messages.getMessage(
+								Messages.PARSER_NOT_INSTANTIATED_ERROR, contentType));
+					}
+					output = createOutputWriter(response, outputEncoding);
+					parser.setDoctype(getPublicid());
+					parser.setInputEncoding(characterEncoding);
+					parser.setOutputEncoding(outputEncoding);
+					parser.setViewState((String) request
+							.getAttribute(AjaxViewHandler.SERIALIZED_STATE_KEY));
+				} else {
+					// setup conversion reules for output contentType, send directly
+					// if content not
+					// supported by tidy.
+					String contentType = servletResponseWrapper.getContentType();
+					String contentTypeCharset = contentType;
+					if (log.isDebugEnabled()) {
+						log.debug("create HTML/XML parser for content type: "
+								+ contentType);
+					}
+					// if(contentType == null){
+					// contentType = request.getContentType();
+					// }
+					boolean forcenotrf = isForcenotrf();
+					
+					if (forcenotrf || !servletResponseWrapper.isError()) {
+						if (forcenotrf || (headEvents != null && headEvents.length != 0)) {
+							if (contentTypeCharset != null) {
+								if (contentTypeCharset.indexOf("charset") < 0
+										&& null != characterEncoding) {
+								    contentTypeCharset += ";charset=" + characterEncoding;
 								}
+								parser = getParser(contentTypeCharset, false, viewId);
+								if (null == parser) {
+									if (log.isDebugEnabled()) {
+										log
+												.debug("Parser not have support for the such content type, send response as-is");
+									}
+								}
+							}
+						} else {
+							if (log.isDebugEnabled()) {
+								log.debug("No resource inclusions detected, send response as-is");
 							}
 						}
 					} else {
 						if (log.isDebugEnabled()) {
-							log.debug("No resource inclusions detected, send response as-is");
+							log.debug("Servlet error occured, send response as-is");
 						}
-					}
-				} else {
-					if (log.isDebugEnabled()) {
-						log.debug("Servlet error occured, send response as-is");
-					}
-				}
-				
-				
-				// null or unsupported content type
-				if (null == parser) {
-					try {
-						if (servletResponseWrapper.isUseWriter()) {
-							if (contentTypeCharset != null) {
-							    response.setContentType(contentTypeCharset);
-							}
-	
-							output = createOutputWriter(response,
-									characterEncoding);
-							servletResponseWrapper.sendContent(output);
-						} else if (servletResponseWrapper.isUseStream()) {
-							if (contentType != null) {
-							    response.setContentType(contentType);
-							}
-	
-							ServletOutputStream out = response.getOutputStream();
-							servletResponseWrapper.sendContent(out);
-						}
-					} finally {
-						// reuseWrapper(servletResponseWrapper);
 					}
 					
 					
-					return;
+					// null or unsupported content type
+					if (null == parser) {
+						try {
+							if (servletResponseWrapper.isUseWriter()) {
+								if (contentTypeCharset != null) {
+								    response.setContentType(contentTypeCharset);
+								}
+
+								output = createOutputWriter(response,
+										characterEncoding);
+								servletResponseWrapper.sendContent(output);
+							} else if (servletResponseWrapper.isUseStream()) {
+								if (contentType != null) {
+								    response.setContentType(contentType);
+								}
+
+								ServletOutputStream out = response.getOutputStream();
+								servletResponseWrapper.sendContent(out);
+							}
+						} finally {
+							// reuseWrapper(servletResponseWrapper);
+						}
+						
+						
+						return;
+					}
+
+					if (contentTypeCharset != null) {
+					    response.setContentType(contentTypeCharset);
+					}
+					
+					output = createOutputWriter(response, characterEncoding);
+
+					parser.setInputEncoding(characterEncoding);
+					parser.setOutputEncoding(characterEncoding);
 				}
-	
-				if (contentTypeCharset != null) {
-				    response.setContentType(contentTypeCharset);
-				}
-				
-				output = createOutputWriter(response, characterEncoding);
-	
-				parser.setInputEncoding(characterEncoding);
-				parser.setOutputEncoding(characterEncoding);
 			}
-		}
 		
 		try {
 			// Setup scripts and styles
