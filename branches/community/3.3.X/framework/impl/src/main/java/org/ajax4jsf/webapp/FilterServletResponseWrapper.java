@@ -100,6 +100,8 @@ public class FilterServletResponseWrapper extends HttpServletResponseWrapper {
     
     private List<Cookie> cookies = new ArrayList<Cookie>();
 
+	private int status;
+
     public FilterServletResponseWrapper(HttpServletResponse response) {
         super(response);
     }
@@ -630,6 +632,18 @@ public class FilterServletResponseWrapper extends HttpServletResponseWrapper {
 	public Collection<Cookie> getCookies() {
 	    return cookies;
 	}
+	
+	@Override
+	public void setStatus(int sc) {
+		this.status = sc;
+		super.setStatus(sc);
+	}
+	
+	@Override
+	public void setStatus(int sc, String sm) {
+		this.status = sc;
+		super.setStatus(sc, sm);
+	}
 
 	public void sendError(int sc) throws IOException {
 		this.error = true;
@@ -643,5 +657,12 @@ public class FilterServletResponseWrapper extends HttpServletResponseWrapper {
 	
 	public boolean isError() {
 		return error;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
 	}
 }
