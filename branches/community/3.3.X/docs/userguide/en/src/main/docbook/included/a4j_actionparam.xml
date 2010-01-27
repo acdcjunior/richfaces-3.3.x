@@ -69,7 +69,15 @@
                         <property>&quot;assignTo&quot;</property>
                     </emphasis>
                     defines updatable bean property. This property will be updated if the parent
-                    command component performs an actionEvent during the &quot;Process Request&quot; phase.
+                    command component performs an actionEvent. The update occurs in the same phase as the actionEvent is processed (<literal>INVOKE_APPLICATION</literal>, <literal>PROCESS_VALIDATIONS</literal>, or <literal>APPLY_REQUEST_VALUES</literal>, depending on the values of the
+                    <emphasis>
+                        <property>&quot;immediate&quot;</property>
+                    </emphasis>
+                    and
+                    <emphasis>
+                        <property>&quot;bypassUpdates&quot;</property>
+                    </emphasis>
+                    attributes).
                 </para>
             </listitem>
         </itemizedlist>
