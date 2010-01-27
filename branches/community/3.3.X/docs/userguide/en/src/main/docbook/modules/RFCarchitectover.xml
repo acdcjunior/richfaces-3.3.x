@@ -1942,18 +1942,20 @@ onsubmit="if (mynosendfunct()==false){return false}"
 		<para> The third possible value is &quot;NONE&quot;. You have no a special reason to use it
 			unless you obtain the newest (or modified) version of the script and want to include it
 			manually in a page header. </para>
+			<!--
 		<note>
 			<title>Note:</title>
 			<para> If you use <property>ALL</property> value of Scripts Load Strategy, the
 				JavaScript files compression turns off! </para>
-			<!--programlisting role="XML"><![CDATA[...
+			programlisting role="XML"><![CDATA[...
 				<context-param>
 				<param-name>org.ajax4jsf.COMPRESS_SCRIPT</param-name>
 				<param-value>false</param-value>
 				</context-param>
 				...
-				]]></programlisting-->
+				]]></programlisting
 		</note>
+		-->
 		<para>
 			<emphasis role="bold">org.richfaces.LoadStyleStrategy</emphasis>
 		</para>
