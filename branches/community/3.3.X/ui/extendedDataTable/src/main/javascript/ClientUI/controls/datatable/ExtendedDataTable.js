@@ -39,7 +39,8 @@ ExtendedDataTable.DataTable = Class.create({
 	destroy: function() {
         
         //remove listeners
-        this.selectionManager.removeListeners();
+        this.selectionManager.destroy();
+        
         if (this.header) {
             this.header.removeListeners();
         }
@@ -55,7 +56,6 @@ ExtendedDataTable.DataTable = Class.create({
         }
         
         //null all references to DOM elements
-        delete this.selectionManager;
         delete this.header;
         delete this.footer;
         
@@ -71,6 +71,7 @@ ExtendedDataTable.DataTable = Class.create({
 		this.scrollingDiv = null;
 		this.groupRows = null;
 		this.groups = null;
+		this.selectionManager = null;
 		Event.stopObserving(window, 'resize', this.eventContainerResize);
 	},
 	

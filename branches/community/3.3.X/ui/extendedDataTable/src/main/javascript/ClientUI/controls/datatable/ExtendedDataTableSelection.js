@@ -246,7 +246,10 @@ ExtendedDataTable.SelectionManager = Class.create({
 		
 
 	},
-	
+	destroy: function(){
+		this.removeListeners();
+		this.gridElement = null;
+	},
 	refreshEvents: function() {
 		this.setListeners();
 		if(this.options.selectionMode != "none") {
