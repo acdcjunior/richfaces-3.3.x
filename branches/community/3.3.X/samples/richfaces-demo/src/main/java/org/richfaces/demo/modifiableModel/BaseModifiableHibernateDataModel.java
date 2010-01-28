@@ -17,6 +17,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.richfaces.model.ExtendedFilterField;
 import org.richfaces.model.FilterField;
@@ -144,7 +145,8 @@ public abstract class BaseModifiableHibernateDataModel<T> extends ExtendedDataMo
 	public int getRowCount() {
 		Criteria criteria = createCriteria();
 		appendFilters(FacesContext.getCurrentInstance(), criteria);
-		return (Integer) criteria.list().size();
+		criteria.setProjection(Projections.rowCount());
+		return ((Integer)criteria.list().get(0)).intValue();
 	}
 
 	@Override
