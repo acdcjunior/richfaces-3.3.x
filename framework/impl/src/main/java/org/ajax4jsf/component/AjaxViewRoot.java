@@ -250,7 +250,7 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 						for (String areaId : areasToProcess) {
 							boolean areaProcessed = invokeOnComponent(context, areaId, invokerCallback);
 							if(!areaProcessed){
-								_log.warn("No component found to process for clientId "+ajaxSingleClientId);
+								_log.warn("No component found to process for clientId "+areaId);
 							}
 						}
 					}
