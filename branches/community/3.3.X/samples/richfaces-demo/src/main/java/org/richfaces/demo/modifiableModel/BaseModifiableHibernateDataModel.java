@@ -86,7 +86,7 @@ public abstract class BaseModifiableHibernateDataModel<T> extends ExtendedDataMo
 					Order order = Ordering.ASCENDING.equals(ordering) ? 
 							Order.asc(propertyName) : Order.desc(propertyName);
 							
-					criteria.addOrder(order.ignoreCase());
+					criteria.addOrder(order);
 				}
 			}
 		}
