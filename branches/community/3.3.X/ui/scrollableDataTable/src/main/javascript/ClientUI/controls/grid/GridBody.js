@@ -63,6 +63,7 @@ ClientUI.controls.grid.GridBody = Class.create(ClientUI.common.box.Box, {
 				this.container = new ClientUI.common.box.Box(childs[i], null, true);
 				this.container.makeAbsolute();
 				this.container.setStyle({'z-index' : 20});
+				this.container.moveTo(0, 0);
 				if(!ClientUILib.isIE) this.container.setStyle({overflow: 'hidden'});
 				break;
 			}
@@ -103,6 +104,7 @@ ClientUI.controls.grid.GridBody = Class.create(ClientUI.common.box.Box, {
 			if(ch.tagName && ch.tagName.toLowerCase()=="table") {
 				this.templFrozen = new ClientUI.common.box.Box($(ch), null, true);
 				this.templFrozen.makeAbsolute();
+				this.templFrozen.moveTo(0, 0);
 				break;
 			}
 			ch = ch.nextSibling;
