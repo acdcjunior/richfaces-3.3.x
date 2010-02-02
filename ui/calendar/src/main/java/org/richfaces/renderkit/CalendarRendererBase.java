@@ -325,6 +325,9 @@ public class CalendarRendererBase extends TemplateEncoderRendererBase {
 	@Override
 	protected void doDecode(FacesContext context, UIComponent component) {
 		// TODO Auto-generated method stub
+		if (((UICalendar)component).isDisabled()){
+			return;
+		}
 		super.doDecode(context, component);
 
 		String clientId = component.getClientId(context);

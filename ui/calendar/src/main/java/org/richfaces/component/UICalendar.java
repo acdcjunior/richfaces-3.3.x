@@ -253,13 +253,6 @@ public abstract class UICalendar extends UIRichInput implements AjaxComponent {
 	// TODO onclick add users onclick
 
 	// currentDate processing -------------------------------------------------
-	@Override
-	public void processDecodes(FacesContext context) {
-		if (this.isDisabled()){
-			return;
-		}
-		super.decode(context);
-	}
 	
 	public Calendar getCalendar() {
 		return Calendar.getInstance(getTimeZone(), getAsLocale(getLocale()));
