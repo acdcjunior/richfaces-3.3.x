@@ -12,10 +12,20 @@
 			<classname>org.richfaces.component.html.HtmlDndParamComponentTest</classname>
 			<superclassname>org.ajax4jsf.tests.AbstractAjax4JsfTestCase</superclassname>
 		</test>
+		
 		<description>
 			<![CDATA[A component is used for parameters transmission in Drag and Drop operations. It's also used for dragIndicator elements definition with transmitting some values for rendering in it. 
     ]]>
 		</description>
+		<renderer generate="false" override="false">
+			<name>org.richfaces.DnDParamRenderer</name>
+			<classname>
+				org.richfaces.renderkit.html.DnDParamRenderer
+			</classname>
+			<description>test renderer description</description>
+			<displayname>renderer for DND param</displayname>
+			<icon>icon</icon>
+		</renderer>
 		<!-- renderer generate="false" override="true">
 		</renderer -->
 		<tag>
