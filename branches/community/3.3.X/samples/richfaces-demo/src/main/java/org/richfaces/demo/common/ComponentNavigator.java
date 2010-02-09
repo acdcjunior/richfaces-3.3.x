@@ -18,6 +18,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.HttpServletRequest;
 
+import org.ajax4jsf.model.KeepAlive;
+@KeepAlive
 public class ComponentNavigator {
     private String lastCompId = null;
 
