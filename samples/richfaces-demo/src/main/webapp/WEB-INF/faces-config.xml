@@ -194,7 +194,7 @@
  <managed-bean>
   <managed-bean-name>componentNavigator</managed-bean-name>
   <managed-bean-class>org.richfaces.demo.common.ComponentNavigator</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>report</managed-bean-name>
