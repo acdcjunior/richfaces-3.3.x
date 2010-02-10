@@ -956,11 +956,14 @@ RichFaces.Menu.Layer.prototype = {
 
     ClickInput: function(event){
          //alert("event rabotaet dsds ");
-         Event.stop(event || window.event);
-        return false;
+         var fixedEvent = event || window.event;
+         Event.extend(fixedEvent);
+      	 fixedEvent.stopPropagation();
+      	 fixedEvent.stopped = true;
+         return false;
     },
 
-
+	
     MouseoutInInput: function(event){
           var ClickInputb = this.ClickInput.bindAsEventListener(this);
           Event.stopObserving(Event.element(event), "click", this.ClickInput);
