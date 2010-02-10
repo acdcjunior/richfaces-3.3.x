@@ -81,13 +81,13 @@
     <title>Supported JavaServer Faces Implementations and Frameworks</title>
 
     <itemizedlist>
-      <listitem><para>Sun JSF-RI - 1.2_12</para></listitem>
+      <listitem><para>Sun JSF-RI - 1.2_x (1.2_14 recommended), 2.x</para></listitem>
 
-      <listitem><para>MyFaces 1.2.5</para></listitem>
+      <listitem><para>MyFaces 1.2.x (1.2.5 recommended), 2.x</para></listitem>
 
-      <listitem><para>Facelets 1.1.1 - 1.2</para></listitem>
+      <listitem><para>Facelets 1.1.x</para></listitem>
       
-      <listitem><para>Seam 1.2. - 2.1.0</para></listitem>
+      <listitem><para>Seam 2.x</para></listitem>
     </itemizedlist>
   </section>
 
@@ -101,13 +101,13 @@
 
     <listitem><para>BEA WebLogic 9.1 - 10.0</para></listitem>
 
-    <listitem><para>Resin 3.1</para></listitem>
+    <listitem><para>Resin 3.1.x</para></listitem>
 
      <listitem><para>Jetty 6.1.x</para></listitem>
 
-     <listitem><para>Sun Application Server 9 (J2EE 1.5)</para></listitem>
+     <listitem><para>Sun Application Server 9 (J5EE)</para></listitem>
 
-      <listitem><para>Glassfish (J2EE 5)</para></listitem>
+      <listitem><para>Glassfish V2, V3</para></listitem>
 
       <listitem><para>JBoss 4.2.x - 5</para></listitem>
       
@@ -130,7 +130,7 @@
       
       <listitem><para>Firefox 3.0 and higher</para></listitem>
 
-      <listitem><para>Opera 8.5 and higher</para></listitem>
+      <listitem><para>Opera 9.5 and higher</para></listitem>
 
     </itemizedlist>
     
@@ -138,15 +138,15 @@
     
       <title>Windows environments</title>
       
+      <listitem><para>Firefox 3.0 and higher</para></listitem>
+      
+      <listitem><para>Google Chrome</para></listitem>
+      
       <listitem><para>Internet Explorer 6.0 and higher</para></listitem>
 
-      <listitem><para>Firefox 3.0 and higher</para></listitem>
-
-      <listitem><para>Opera 8.5 and higher</para></listitem>
+      <listitem><para>Opera 9.5 and higher</para></listitem>
    
       <listitem><para>Safari 3.0 and higher</para></listitem>
-
-      <listitem><para>Google Chrome</para></listitem>
 
     </itemizedlist>
     
