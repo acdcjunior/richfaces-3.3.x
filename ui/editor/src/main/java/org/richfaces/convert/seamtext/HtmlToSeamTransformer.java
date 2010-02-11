@@ -137,7 +137,7 @@ public class HtmlToSeamTransformer {
                 case '*': case '|': case '^' : case '+':
                 case '=': case '#': case '\\': case '~':
                 case '[': case ']': case '`' : case '_':
-                case '<': case '>': case '&':
+                case '<': case '>': case '&': case '"':
                     if (localStart != -1) {
                         out(text, localStart, start - localStart);
                         localStart = -1;
