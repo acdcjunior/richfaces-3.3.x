@@ -1360,8 +1360,8 @@ RichFaces.Menu.Item = Class.create({
             return false;
         };
 
-        this.getElement().oncontextmenu = oncontextmenu;
-        this.getIcon().oncontextmenu = oncontextmenu;
+        //this.getElement().oncontextmenu = oncontextmenu;
+        //this.getIcon().oncontextmenu = oncontextmenu;
         this.getLabel().oncontextmenu = oncontextmenu;
 
 		var binding = new RichFaces.Menu.Layer.Binding(id, "mouseover",
