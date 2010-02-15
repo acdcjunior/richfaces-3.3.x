@@ -368,6 +368,8 @@
 											<classifier>${demo.classifier}</classifier>
 											<type>war</type>
 											<overWrite>true</overWrite>
+											<overWriteReleases>true</overWriteReleases>
+											<overWriteSnapshots>true</overWriteSnapshots>
 											<outputDirectory>${demo.deployable.directory}</outputDirectory>
 											<destFileName>${demo.deployable.file}</destFileName>
 										</artifactItem>
