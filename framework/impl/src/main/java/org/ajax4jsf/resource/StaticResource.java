@@ -22,10 +22,16 @@
 package org.ajax4jsf.resource;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
 
 import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.resource.ResourceContext;
+
+import com.sun.facelets.FaceletException;
 
 /**
  * @author asmirnov@exadel.com (latest modification by $Author: nick_belaevski $)
@@ -52,6 +58,27 @@ public class StaticResource extends InternetResourceBase {
 	}
 
 
+	@Override
+	public Date getLastModified(ResourceContext resourceContext) {
+		InputStream is = null;
+		try {
+			URL url = resourceContext.getResource(path);
+			URLConnection conn = url.openConnection();
+			is = conn.getInputStream();
+			long atl = conn.getLastModified();
+			return new Date(atl);
+		} catch (Exception e) {
+			return super.getLastModified(resourceContext);
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (Exception e) {
+					// do nothing
+				}
+			}
+		}
+	}
 	
 	/* (non-Javadoc)
 	 * @see org.ajax4jsf.resource.InternetResourceBase#getResourceAsStream(javax.faces.context.FacesContext, javax.faces.component.UIComponent)
@@ -71,11 +98,11 @@ public class StaticResource extends InternetResourceBase {
 
 
 
-	public String getUri(FacesContext context, Object data) {
-		// perform all encodings, suitable for JSF specification.
-		String src = context.getApplication().getViewHandler().getResourceURL(context,path);		
-		return context.getExternalContext().encodeResourceURL(src);
-	}
+//	public String getUri(FacesContext context, Object data) {
+//		// perform all encodings, suitable for JSF specification.
+//		String src = context.getApplication().getViewHandler().getResourceURL(context,path);		
+//		return context.getExternalContext().encodeResourceURL(src);
+//	}
 
 
 
