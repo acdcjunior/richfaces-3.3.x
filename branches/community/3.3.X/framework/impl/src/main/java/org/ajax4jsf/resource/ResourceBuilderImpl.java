@@ -30,7 +30,9 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
@@ -443,21 +445,19 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 			throws ResourceNotFoundException, FacesException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (null != context) {
-			if (context.getExternalContext().getContext() instanceof ServletContext) {
-				ServletContext servletContext = (ServletContext) context
-						.getExternalContext().getContext();
-				InputStream in = servletContext.getResourceAsStream(path);
+			try {
+				URL in = context.getExternalContext().getResource(path);
 				if (null != in) {
 					InternetResourceBase res = new StaticResource(path);
 					setRenderer(res, path);
+					// Detect last modification time.
 					res.setLastModified(new Date(getStartTime()));
 					addResource(path, res);
-					try {
-						in.close();
-					} catch (IOException e) {
-					}
 					return res;
 				}
+			} catch (MalformedURLException e) {
+				throw new ResourceNotFoundException(Messages.getMessage(
+						Messages.STATIC_RESOURCE_NOT_FOUND_ERROR, path),e);
 			}
 		}
 		throw new ResourceNotFoundException(Messages.getMessage(
