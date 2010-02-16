@@ -528,7 +528,7 @@
 					<para> You can also programmatically enable/disable the global queue on a single
 						view using the following:</para>
 					<programlisting role="XML"><![CDATA[...
-<a4j:queue name="org.richfaces.global_queue" disabled="true"... />
+<a4j:queue name="org.richfaces.queue.global" disabled="true"... />
 ...]]></programlisting>
 					<para>Hence, to enable the queue for a single view page you need to define the
 							<property>&quot;disable&quot;</property> attribute with
@@ -543,7 +543,7 @@
 						<emphasis role="bold">Example:</emphasis>
 					</para>
 					<programlisting role="XML"><![CDATA[...
-<a4j:queue name="org.richfaces.global_queue" requestDelay="1000" />
+<a4j:queue name="org.richfaces.queue.global" requestDelay="1000" />
 ...]]></programlisting>
 					<para> View scoped queue can be also added by just definition of the queue
 						without name specified. In this case it should be placed anywhere outside
