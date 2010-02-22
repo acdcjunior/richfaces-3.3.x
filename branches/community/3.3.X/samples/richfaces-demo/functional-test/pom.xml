@@ -163,7 +163,6 @@
 										<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 									</suiteXmlFiles>
 									<argLine>-Dbrowser='${browser}' -Dcontext.root='${context.root}' -Dcontext.path='${context.path}' -Dselenium.host='${selenium.host}' -Dselenium.port='${selenium.port}' -Dselenium.debug='${selenium.debug}' -Dselenium.maximize='${selenium.maximize}' -Dmaven.resources.dir='${resources.dir}' -Dmaven.project.build.directory='${project.build.directory}' -Djsf.majorVersion='${jsf.majorVersion}'</argLine>
-									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 									<properties>
 										<property>
 											<name>listener</name>
@@ -243,6 +242,7 @@
 									<background>true</background>
 									<port>${selenium.port}</port>
 									<userExtensions>${resources.dir}/custom-extensions.js</userExtensions>
+									<firefoxProfileTemplate>${firefoxProfileTemplate}</firefoxProfileTemplate>
 									<logOutput>true</logOutput>
 									<logFile>${project.build.directory}/selenium/selenium-server.log</logFile>
 									<browserSideLog>${selenium.debug}</browserSideLog>
