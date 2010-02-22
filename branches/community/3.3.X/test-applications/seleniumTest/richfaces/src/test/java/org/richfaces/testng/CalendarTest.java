@@ -348,27 +348,26 @@ public class CalendarTest extends SeleniumTestBase {
     }
     
     void _testModelDataAppliedToClient(Calendar c) {
-    	 String currentDate = selenium.getText(dateSelectionXpath);
-         selenium.click("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '13']");
-         
-         if (!selenium.getText(dateSelectionXpath).equals(currentDate)) {
-         	Assert.fail("Enabled attribute of data model was not applied for client data. 13th day should disabled and should force date change after click.");
-         }
-         
-         int currentMonth = c.get(Calendar.MONTH);
-         
-         String cellDay7StyleClass = selenium.getAttribute("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '7']/@class");
-         String cellDay7ModelClass = "styleClass"+currentMonth+"7";
-         if (cellDay7StyleClass == null || cellDay7StyleClass.indexOf(cellDay7ModelClass) == -1) {
-         	Assert.fail("Style class was not applied from data model to cell days. Style class for 7th day should contain [" + cellDay7ModelClass + "]. But has only + [" + cellDay7StyleClass +"]");
-         }
-         
-         String cellDay5StyleClass = selenium.getAttribute("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '5']/@class");
-         String cellDay5ModelClass = "styleClass"+currentMonth+"5";
-         if (cellDay5StyleClass == null || cellDay5StyleClass.indexOf(cellDay5ModelClass) == -1) {
-         	Assert.fail("Style class was not applied from data model to cell days. Style class for 5th day should contain [" + cellDay5ModelClass + "]. But has only + [" + cellDay5StyleClass +"]");
-         }
-    }
+   	 String currentDate = selenium.getText(dateSelectionXpath);
+        selenium.click("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '13']");
+        
+        if (!selenium.getText(dateSelectionXpath).equals(currentDate)) {
+        	Assert.fail("Enabled attribute of data model was not applied for client data. 13th day should disabled and should force date change after click.");
+        }
+        
+        int currentMonth = c.get(Calendar.MONTH);
+        
+        String cellDay8StyleClass = selenium.getAttribute("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '8']/@class");
+        String cellDay8ModelClass = "styleClass"+currentMonth+"8";
+        if (cellDay8StyleClass == null || cellDay8StyleClass.indexOf(cellDay8ModelClass) == -1) {
+        	Assert.fail("Style class was not applied from data model to cell days. Style class for 8th day should contain [" + cellDay8ModelClass + "]. But has only + [" + cellDay8StyleClass +"]");
+        }
+        String cellDay5StyleClass = selenium.getAttribute("//table[@id='"+calendarId+"']/tbody/tr/td[text() = '5']/@class");
+        String cellDay5ModelClass = "styleClass"+currentMonth+"5";
+        if (cellDay5StyleClass == null || cellDay5StyleClass.indexOf(cellDay5ModelClass) == -1) {
+        	Assert.fail("Style class was not applied from data model to cell days. Style class for 5th day should contain [" + cellDay5ModelClass + "]. But has only + [" + cellDay5StyleClass +"]");
+        }
+   }
     
     void testInternatialization(String prefix) {
     	String label = selenium.getText(todayControlXpath);
