@@ -28,32 +28,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>archiva.openqa.org</id>
-			<name>OpenQA Repository</name>
-			<url>http://archiva.openqa.org/repository/releases</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus.org</id>
-			<name>CodeHaus Plugin Snapshots</name>
-			<url>http://snapshots.repository.codehaus.org</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 	<properties>
 		<demo.artifactId.suffix />
 		<demo.version>${project.version}</demo.version>
