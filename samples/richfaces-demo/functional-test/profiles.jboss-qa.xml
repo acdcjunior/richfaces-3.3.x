@@ -119,15 +119,15 @@
 			<id>container-installation</id>
 			<properties>
 				<jboss5x.version>5.1.0.GA</jboss5x.version>
-				<jboss5x.installer.url.unix>file:/qa/tools/src/jboss/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
-				<jboss5x.installer.url.windows>file:t:\src\jboss\jboss-5.1.0.GA.zip</jboss5x.installer.url.windows>
+				<jboss5x.installer.url.unix>file:/qa/tools/src/jboss/jboss-${jboss5x.version}.zip</jboss5x.installer.url.unix>
+				<jboss5x.installer.url.windows>file:t:\src\jboss\jboss-${jboss5x.version}.GA.zip</jboss5x.installer.url.windows>
 				<jboss6x.version>6.0.0.M2</jboss6x.version>
-				<jboss6x.unflatted.dir>jboss-6.0.0.M2</jboss6x.unflatted.dir>
-				<jboss6x.installer.url.unix>file:/qa/tools/src/jboss/jboss-6.0.0.M2.zip</jboss6x.installer.url.unix>
-				<jboss6x.installer.url.windows>file:t:\src\jboss\jboss-6.0.0.M2.zip</jboss6x.installer.url.windows>
-				<tomcat6x.version>6.0.18</tomcat6x.version>
-				<tomcat6x.installer.url.unix>file:/qa/tools/src/apache/apache-tomcat-6.0.18.zip</tomcat6x.installer.url.unix>
-				<tomcat6x.installer.url.windows>file:t:\src\apache\apache-tomcat-6.0.18.zip</tomcat6x.installer.url.windows>
+				<jboss6x.unflatted.dir>jboss-${jboss6x.version}</jboss6x.unflatted.dir>
+				<jboss6x.installer.url.unix>file:/qa/tools/src/jboss/jboss-${jboss6x.version}.zip</jboss6x.installer.url.unix>
+				<jboss6x.installer.url.windows>file:t:\src\jboss\jboss-${jboss6x.version}.zip</jboss6x.installer.url.windows>
+				<tomcat6x.version>6.0.24</tomcat6x.version>
+				<tomcat6x.installer.url.unix>file:/qa/tools/src/apache/apache-tomcat-${tomcat6x.version}.zip</tomcat6x.installer.url.unix>
+				<tomcat6x.installer.url.windows>file:t:\src\apache\apache-tomcat-${tomcat6x.version}.zip</tomcat6x.installer.url.windows>
 			</properties>
 		</profile>
 		<profile>
@@ -139,8 +139,8 @@
 			</activation>
 			<properties>
 				<jboss5x.version>5.1.0.GA</jboss5x.version>
-				<jboss5x.installer.url.unix>file:/qa/home/hudson/lfryc/jboss-jsf2/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
-				<jboss5x.installer.url.windows>file:h:\hudson\lfryc\jboss-jsf2\jboss-5.1.0.GA.zip</jboss5x.installer.url.windows>
+				<jboss5x.installer.url.unix>file:/qa/home/hudson/lfryc/jboss-jsf2/jboss-${jboss5x.version}.zip</jboss5x.installer.url.unix>
+				<jboss5x.installer.url.windows>file:h:\hudson\lfryc\jboss-jsf2\jboss-${jboss5x.version}.zip</jboss5x.installer.url.windows>
 			</properties>
 		</profile>
 		<profile>
