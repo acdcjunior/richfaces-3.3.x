@@ -56,6 +56,17 @@ public class UIMessagesTest extends AbstractAjax4JsfTestCase {
 		public void setMinLevel(String level) {
 			this.minLevel = level;
 		}
+
+		@Override
+		public boolean isAjaxRendered() {
+			return true;
+		}
+
+		@Override
+		public void setAjaxRendered(boolean ajaxRendered) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 	private static final String INPUT_ID = "input";

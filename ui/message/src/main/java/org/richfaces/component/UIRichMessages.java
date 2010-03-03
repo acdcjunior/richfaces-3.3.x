@@ -52,7 +52,6 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 
 	private String forVal = null;
 	private boolean updated = false;
-	private boolean ajaxRendered = true;
 	private List<FacesMessageWithId> renderedMessages;
 
 	/**
@@ -97,14 +96,6 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 
 	public boolean isUpdated() {
 		return updated;
-	}
-
-	public boolean isAjaxRendered() {
-		return ajaxRendered;
-	}
-	
-	public void setAjaxRendered(boolean ajaxRendered) {
-		this.ajaxRendered = ajaxRendered;
 	}
 
 	public Iterator<FacesMessage> getMessages(FacesContext context) {
@@ -181,8 +172,7 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	    Iterator<FacesMessage> messages = context.getMessages(forId);
 		while (messages.hasNext()) {
 			FacesMessage message = messages.next();
-			if (severenities.size() == 0 || severenities.contains("ALL")
-					|| isApplicableMessage(severenities, message)) {
+			if (isApplicableMessage(severenities, message)) {
 				renderedMessages.add(new FacesMessageWithId(forId, message));
 			}
 		}
@@ -198,10 +188,11 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		if (severenities.size() == 0 || severenities.contains("ALL")) {
 			return true;
 		}
-		AjaxContext ac = AjaxContext.getCurrentInstance(FacesContext.getCurrentInstance());
-		if(ac.isAjaxRequest() && !this.isAjaxRendered()){
-			return false;
-		}
+//		AjaxContext ac = AjaxContext.getCurrentInstance(FacesContext.getCurrentInstance());
+		// https://jira.jboss.org/jira/browse/RF-8432
+//		if(ac.isAjaxRequest() && !this.isAjaxRendered()){
+//			return false;
+//		}
 		Severity severity = message.getSeverity();
 		for (Object key : FacesMessage.VALUES_MAP.keySet()) {
 			Severity sev = (Severity) FacesMessage.VALUES_MAP.get(key);
@@ -220,6 +211,10 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		super.encodeBegin(context);
 	}
 
+	public abstract boolean isAjaxRendered();
+
+	public abstract void setAjaxRendered(boolean ajaxRendered);
+
 	public abstract String getLevel();
 
 	public abstract void setLevel(String level);
@@ -237,13 +232,12 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 	public Object saveState(FacesContext context) {
 
 		if (values == null) {
-			values = new Object[4];
+			values = new Object[3];
 		}
 
 		values[0] = super.saveState(context);
 		values[1] = this.forVal;
-		values[2] = this.ajaxRendered;
-		values[3] = saveAttachedState(context, getRenderedMessages());
+		values[2] = saveAttachedState(context, getRenderedMessages());
 		return (values);
 
 	}
@@ -254,9 +248,8 @@ public abstract class UIRichMessages extends UIMessages implements AjaxOutput {
 		values = (Object[]) state;
 		super.restoreState(context, values[0]);
 		forVal = (String) values[1];
-		ajaxRendered = (Boolean) values[2];
 		setRenderedMessages((List<FacesMessageWithId>) restoreAttachedState(
-				context, values[3]));
+				context, values[2]));
 	}
 
 	/**

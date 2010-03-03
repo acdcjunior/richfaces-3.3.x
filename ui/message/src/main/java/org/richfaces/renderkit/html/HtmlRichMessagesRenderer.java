@@ -44,23 +44,11 @@ public class HtmlRichMessagesRenderer extends RichMessageBaseRenderer {
 		UIRichMessages uiMessages = (UIRichMessages)component;
 		
 		String layout = null;
-		String forIds = null;
-		String forClientId = uiMessages.getFor();
-		if(null != forClientId){
-			forIds = forClientId;
-		}
-		if(uiMessages.isGlobalOnly()){
-			if(null == forClientId){
-				forIds = "";
-			}else{
-				throw new FacesException("The rich:messages component must specify only one of 'for' or 'globalOnly' atribbute");
-			}
-		}
 		Iterator<FacesMessage> messagesIter = uiMessages.getMessages(context); 
 		boolean isDisplayNone = !messagesIter.hasNext();
 		boolean isWroteTable = false;				
 		layout = (String)uiMessages.getAttributes().get("layout");
-		if((layout != null) && (layout.equals("table"))){
+		if("table".equals(layout)){
 			 
 			writer.startElement("table", uiMessages);
 			getUtils().writeAttribute(writer,HTML.id_ATTRIBUTE ,uiMessages.getClientId(context));
@@ -70,13 +58,15 @@ public class HtmlRichMessagesRenderer extends RichMessageBaseRenderer {
 			writer.startElement("tbody", uiMessages);
 			isWroteTable = true;
 
-		}else if((layout != null) && (layout.equals("list"))){
+		} else if("list".equals(layout)){
 			
 			isWroteTable = false;
 			writer.startElement(HTML.DL_ELEMENT, uiMessages);
 			getUtils().writeAttribute(writer,HTML.id_ATTRIBUTE ,uiMessages.getClientId(context));
 			renderComponentOuterStyles(uiMessages, context, writer, isDisplayNone);
 		
+		} else {
+			throw new FacesException("unknown messages layout "+layout);
 		}
 		
 //		messagesIter = getMessageIterator(context, forIds, component);
