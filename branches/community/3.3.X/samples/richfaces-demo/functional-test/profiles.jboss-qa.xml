@@ -121,6 +121,10 @@
 				<jboss5x.version>5.1.0.GA</jboss5x.version>
 				<jboss5x.installer.url.unix>file:/qa/tools/src/jboss/jboss-5.1.0.GA.zip</jboss5x.installer.url.unix>
 				<jboss5x.installer.url.windows>file:t:\src\jboss\jboss-5.1.0.GA.zip</jboss5x.installer.url.windows>
+				<jboss6x.version>6.0.0.M2</jboss6x.version>
+				<jboss6x.unflatted.dir>jboss-6.0.0.M2</jboss6x.unflatted.dir>
+				<jboss6x.installer.url.unix>file:/qa/tools/src/jboss/jboss-6.0.0.M2.zip</jboss6x.installer.url.unix>
+				<jboss6x.installer.url.windows>file:t:\src\jboss\jboss-6.0.0.M2.zip</jboss6x.installer.url.windows>
 				<tomcat6x.version>6.0.18</tomcat6x.version>
 				<tomcat6x.installer.url.unix>file:/qa/tools/src/apache/apache-tomcat-6.0.18.zip</tomcat6x.installer.url.unix>
 				<tomcat6x.installer.url.windows>file:t:\src\apache\apache-tomcat-6.0.18.zip</tomcat6x.installer.url.windows>
@@ -165,6 +169,21 @@
 				<container.version>${jboss5x.version}</container.version>
 				<container.installer.url.unix>${jboss5x.installer.url.unix}</container.installer.url.unix>
 				<container.installer.url.windows>${jboss5x.installer.url.windows}</container.installer.url.windows>
+			</properties>
+		</profile>
+		<profile>
+			<id>container-jboss6x-installation</id>
+			<activation>
+				<property>
+					<name>containerId</name>
+					<value>jboss6x</value>
+				</property>
+			</activation>
+			<properties>
+				<container.version>${jboss6x.version}</container.version>
+				<container.unflatted.dir>${jboss6x.unflatted.dir}</container.unflatted.dir>
+				<container.installer.url.unix>${jboss6x.installer.url.unix}</container.installer.url.unix>
+				<container.installer.url.windows>${jboss6x.installer.url.windows}</container.installer.url.windows>
 			</properties>
 		</profile>
 		<profile>

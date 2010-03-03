@@ -426,6 +426,61 @@
 				</plugins>
 			</build>
 		</profile>
+		<!-- Container: JBoss AS 6.X -->
+		<profile>
+			<id>container-jboss6x</id>
+			<activation>
+				<property>
+					<name>containerId</name>
+					<value>jboss6x</value>
+				</property>
+			</activation>
+			<properties>
+				<container.home>${project.build.directory}/installs/jboss-${container.version}/${container.unflatted.dir}</container.home>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<version>1.0.1-alpha-2</version>
+						<executions>
+							<execution>
+								<id>undeploy-container</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<configuration>
+								<home>${container.home}/server/default</home>
+								<type>existing</type>
+								<properties>
+									<cargo.jboss.configuration>default</cargo.jboss.configuration>
+									<cargo.rmi.port>1099</cargo.rmi.port>
+								</properties>
+							</configuration>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>container-jboss6x-installation</id>
+			<activation>
+				<property>
+					<name>containerId</name>
+					<value>jboss6x</value>
+				</property>
+			</activation>
+			<properties>
+				<container.version>6.0.0.M2</container.version>
+				<container.unflatted.dir>jboss-6.0.0.20100216-M2</container.unflatted.dir>
+				<container.installer.url>http://downloads.sourceforge.net/project/jboss/JBoss/JBoss-${container.version}/jboss-${container.version}.zip</container.installer.url>
+			</properties>
+		</profile>
 		<!-- Container: JBoss AS 5.X -->
 		<profile>
 			<id>container-jboss5x</id>
