@@ -69,7 +69,6 @@
 		<selenium.port>8444</selenium.port>
 		<selenium.debug>false</selenium.debug>
 		<selenium.maximize>false</selenium.maximize>
-		<firefoxProfileTemplate></firefoxProfileTemplate>
 		<demo.deployable>${demo.deployable.directory}/${demo.deployable.file}</demo.deployable>
 		<demo.deployable.directory>${project.build.directory}</demo.deployable.directory>
 		<demo.deployable.file>richfaces-demo.war</demo.deployable.file>
