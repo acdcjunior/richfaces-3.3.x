@@ -1205,10 +1205,10 @@ A4J.AJAX.replaceViewState = function(inputs,newinputs){
         	  				LOG.debug("Input in response: "+newinput.getAttribute("name"));
         	  				for(var j = 0 ; j < inputs.length; j++){
         	  					var input = inputs[j];
-        	  					input.setAttribute("autocomplete", "off");
         	  					
         	  					if(input.name == newinput.getAttribute("name")){
 	        	  				LOG.debug("Found same input on page with type: "+input.type);
+	        	  					input.setAttribute("autocomplete", "off");
         	  						input.value = newinput.getAttribute("value");
         	  					}
         	  				}
