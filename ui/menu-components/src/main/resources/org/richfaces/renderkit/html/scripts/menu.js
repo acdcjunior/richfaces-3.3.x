@@ -1362,7 +1362,7 @@ RichFaces.Menu.Item = Class.create({
 
         //this.getElement().oncontextmenu = oncontextmenu;
         //this.getIcon().oncontextmenu = oncontextmenu;
-        this.getLabel().oncontextmenu = oncontextmenu;
+        //this.getLabel().oncontextmenu = oncontextmenu;
 
 		var binding = new RichFaces.Menu.Layer.Binding(id, "mouseover",
  				this.onmouseover.bindAsEventListener(this));
