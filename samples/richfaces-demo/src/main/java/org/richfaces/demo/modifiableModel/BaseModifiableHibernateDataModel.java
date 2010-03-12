@@ -146,7 +146,9 @@ public abstract class BaseModifiableHibernateDataModel<T> extends ExtendedDataMo
 		Criteria criteria = createCriteria();
 		appendFilters(FacesContext.getCurrentInstance(), criteria);
 		criteria.setProjection(Projections.rowCount());
-		return ((Integer)criteria.list().get(0)).intValue();
+		//There are cast to Number object, related to http://opensource.atlassian.com/projects/hibernate/browse/HHH-3497.
+		//Such kind of implementation should work undependent on what Hibernate library version used.
+		return ((Number)criteria.list().get(0)).intValue();
 	}
 
 	@Override
