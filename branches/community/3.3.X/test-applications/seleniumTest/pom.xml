@@ -30,7 +30,7 @@
 				<enabled>true</enabled>
 			</releases>
 		</repository>
-		<repository>
+		 <repository>
 			<id>nexus-openqa-snapshots</id>
 			<name>OpenQA Snapshots Repository</name>
 			<url>http://nexus.openqa.org/content/repositories/snapshots</url>
@@ -116,7 +116,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>selenium-maven-plugin</artifactId>
-						<version>1.0-beta-2</version>
+						<version>1.0-rc-1</version>
 						<executions>
 							<!--execution>
 								<id>xvfb</id>
@@ -160,7 +160,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>selenium-maven-plugin</artifactId>
-						<version>1.0</version>
+						<version>1.0-rc-1</version>
 						<executions>
 						<!-- 
 							<execution>
@@ -209,19 +209,19 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium.core</groupId>
 			<artifactId>selenium-core</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-beta-2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium.client-drivers</groupId>
 			<artifactId>selenium-java-client-driver</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-beta-2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium.server</groupId>
 			<artifactId>selenium-server-coreless</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-beta-2</version>
 			<scope>test</scope>
 			<!--exclusions>
 				<exclusion>
