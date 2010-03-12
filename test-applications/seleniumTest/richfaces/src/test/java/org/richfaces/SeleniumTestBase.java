@@ -131,7 +131,7 @@ public abstract class SeleniumTestBase implements RichSeleniumTest {
         	config.setFirefoxProfileTemplate(new File(getFirefoxTemplate()));
         }
         config.setUserExtensions(new File(getClass().getClassLoader().getResource("script/selenium/user-extensions.js").toURI()));
-        config.setSingleWindow(true);
+        config.setMultiWindow(false);
         //TODO only for test
         config.setPort(16334);
         seleniumServer = new SeleniumServer(false, config);
