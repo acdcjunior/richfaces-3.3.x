@@ -351,6 +351,10 @@
 					<artifactId>servlet-api</artifactId>
 					<groupId>javax.servlet</groupId>
 				</exclusion>
+				<exclusion>
+          			<groupId>org.jboss.seam</groupId>
+          			<artifactId>jboss-seam-jul</artifactId>
+        		</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -402,6 +406,10 @@
 					<artifactId>jsf-impl</artifactId>
 					<groupId>javax.faces</groupId>
 				</exclusion>
+				<exclusion>
+          			<groupId>org.jboss.seam</groupId>
+          			<artifactId>jboss-seam-jul</artifactId>
+        		</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -417,6 +425,10 @@
 					<artifactId>jsf-impl</artifactId>
 					<groupId>javax.faces</groupId>
 				</exclusion>
+				<exclusion>
+          			<groupId>org.jboss.seam</groupId>
+          			<artifactId>jboss-seam-jul</artifactId>
+        		</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
