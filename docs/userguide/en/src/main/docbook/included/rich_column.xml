@@ -209,14 +209,7 @@
                     <title>Sorting and Filtering</title>
                     <section id="sort">
                               <title>Sorting</title>
-                              <para> In order to sort the columns you should use the <emphasis>
-                                                  <property>&quot;sortBy&quot;</property>
-                                        </emphasis> attribute that indicates what values to be
-                                        sorted. This attribute can be used only with the <emphasis role="bold">
-               <property>&lt;rich:dataTable&gt;</property>
-            </emphasis> component. 
-                                        In order to sort the column you should click on its
-                                        header. See the following example. </para>
+                              <para> In order to sort the columns you should use the <emphasis><property>&quot;sortBy&quot;</property></emphasis> attribute that indicates what values to be sorted. This attribute can be used only with the <emphasis role="bold"><property>&lt;rich:dataTable&gt;</property></emphasis> component. Expressions in the <emphasis><property>&quot;sortBy&quot;</property></emphasis> attribute can refer only to the variable declared with the <emphasis><property>&quot;var&quot;</property></emphasis> attribute, not to those declared with other attributes such as the <emphasis><property>&quot;rowKeyVar&quot;</property></emphasis> attribute. In order to sort the column you should click on its header. See the following example. </para>
                               <para>
                                         <emphasis role="bold">Example:</emphasis>
                               </para>
@@ -454,7 +447,7 @@
                                                   </emphasis> attribute at a column you want
                                                   to be filterable. This attribute defines
                                                   iterable object property which is used
-                                                  when filtering performed. </para>
+                                                  when filtering performed. Expressions in the <emphasis><property>&quot;filterBy&quot;</property></emphasis> attribute can refer only to the variable declared with the <emphasis><property>&quot;var&quot;</property></emphasis> attribute, not to those declared with other attributes such as the <emphasis><property>&quot;rowKeyVar&quot;</property></emphasis> attribute.</para>
                                                   <para> The <emphasis>
                                                   <property>"filterValue"</property>
                                                   </emphasis> attribute is used to get or
