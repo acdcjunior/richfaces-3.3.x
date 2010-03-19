@@ -43,7 +43,6 @@ import org.ajax4jsf.javascript.ScriptUtils;
 import org.ajax4jsf.renderkit.AjaxComponentRendererBase;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.ajax4jsf.renderkit.RendererUtils;
-import org.ajax4jsf.renderkit.RendererUtils.ScriptHashVariableWrapper;
 import org.ajax4jsf.resource.InternetResource;
 import org.richfaces.component.UIToolTip;
 import org.richfaces.skin.Skin;
@@ -52,6 +51,8 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
     
     private static final String DIRECTION_AUTO = "auto";
     private static final String DIRECTION_BOTTOM_RIGHT = "bottom-right";
+    private ToolTipRenderer blockRenderer;
+    private ToolTipRenderer nonblockRenderer;
 
     private static final String AJAX_MODE = "ajax";
 
@@ -391,15 +392,21 @@ public class ToolTipRenderer extends AjaxComponentRendererBase {
     }
     
     private ToolTipRenderer getRenderer(UIToolTip toolTip) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-        Class<?> rendererClass;
-        if ("block".equals(toolTip.getLayout())) {
-            rendererClass = Class.forName("org.richfaces.renderkit.html.HtmlToolTipRendererBlock");
-        } else {
-            rendererClass = Class.forName("org.richfaces.renderkit.html.HtmlToolTipRenderer");
+        synchronized (this) {
+            if ("block".equals(toolTip.getLayout())) {
+                    if (blockRenderer==null){
+                        blockRenderer = (ToolTipRenderer)Class.forName("org.richfaces.renderkit.html.HtmlToolTipRendererBlock").newInstance();
+                    }
+                    return blockRenderer;
+                
+            } else {
+                if (nonblockRenderer==null){
+                    nonblockRenderer = (ToolTipRenderer)Class.forName("org.richfaces.renderkit.html.HtmlToolTipRenderer").newInstance();
+                }
+                return nonblockRenderer;
+
+            }
         }
-        
-        return (ToolTipRenderer) rendererClass.newInstance();
-        
     }
     
 }
