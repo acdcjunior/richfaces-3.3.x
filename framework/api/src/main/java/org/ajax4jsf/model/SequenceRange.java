@@ -21,13 +21,20 @@
 
 package org.ajax4jsf.model;
 
+import java.io.Serializable;
+
 /**
  * @author shura
  *
  */
-public class SequenceRange implements Range {
+public class SequenceRange implements Range, Serializable {
 	
-	private int firstRow = 0;
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 7376192091922085690L;
+
+    private int firstRow = 0;
 	
 	private int rows = -1;
 
