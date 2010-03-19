@@ -104,6 +104,10 @@ public class ComboBoxBaseRenderer extends HeaderResourcesRendererBase {
 		return values;
     }
     
+    public String getReadOnlyValue(Object enableManualInput){
+        return (Boolean)enableManualInput ? "readonly" : "";
+    }
+    
     public List<Object> encodeSuggestionValues(FacesContext context, UIComboBox combobox) throws IOException, IllegalArgumentException {
 	
 	    List<Object> values = new ArrayList<Object>();
