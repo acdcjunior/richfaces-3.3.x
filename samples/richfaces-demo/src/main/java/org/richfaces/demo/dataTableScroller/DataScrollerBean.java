@@ -21,7 +21,7 @@ public class DataScrollerBean {
 	
 	public List<SelectItem> getPagesToScroll() {
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		for (int i = 1; i <= size / getRows(); i++) {
+		for (int i = 1; i <= Math.ceil(size / getRows()); i++) {
 			if (Math.abs(i - scrollerPage) < 5) {
 				SelectItem item = new SelectItem(i);
 				list.add(item);
