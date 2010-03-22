@@ -23,6 +23,7 @@ package org.richfaces.renderkit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -270,25 +271,43 @@ public abstract class FileUploadRendererBase extends
 	private void initLabels(Map<String, String> map, ResourceBundle bundle1,
 			ResourceBundle bundle2, UIFileUpload fileUpload) {
 		int i = 0;
+        String key = null;
+        String value = null;
 		for (String name : bundlesLables) {
 			boolean found = false;
 			if (labelAttribues[i] != null) {
 				String attributeName = labelAttribues[i];
 				if (fileUpload.getAttributes().get(attributeName) != null) {
-					map.put(name, (String) fileUpload.getAttributes().get(
-							attributeName));
+				    String attribbuteValue = (String) fileUpload.getAttributes().get(
+                        attributeName);
+				    key = attributeName;
+                    value = attribbuteValue;
 					found = true;
 				}
 			}
 			if (!found && (bundle1 != null || bundle2 != null)) {
 				String label = getFromBundle(name, bundle1, bundle2);
 				if (label != null) {
-					map.put(name, getFromBundle(name, bundle1, bundle2));
+					key = name;
+					value = label;
 					found = true;
 				}
 			}
 			if (!found) {
-				map.put(name, defaultLables[i]);
+			    key = name;
+			    value = defaultLables[i];
+			}
+			if(key != null && value != null){
+			    try {
+			        ResponseWriter writer = FacesContext.getCurrentInstance().getResponseWriter();
+			        StringWriter dumpingWriter = new StringWriter();
+			        ResponseWriter clonedWriter = writer.cloneWithWriter(dumpingWriter);
+		            clonedWriter.writeText(value, null);
+		            value = dumpingWriter.toString();
+		            map.put(key, value);
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
 			}
 			i++;
 		}
