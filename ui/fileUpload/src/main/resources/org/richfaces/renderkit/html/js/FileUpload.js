@@ -13,6 +13,14 @@ FileUploadEntry.UPLOAD_SERVER_ERROR = "server_error";
 FileUploadEntry.UPLOAD_SIZE_ERROR = "size_error";
 FileUploadEntry.UPLOAD_FORBIDDEN = "forbidden";
 
+FileUploadEntry.UPLOAD_IN_PROGRESS_CLASS = "";
+FileUploadEntry.UPLOAD_SUCCESS_CLASS = "rich-fileupload-bold-label";
+FileUploadEntry.UPLOAD_TRANSFER_ERROR_CLASS = "";
+FileUploadEntry.UPLOAD_SIZE_ERROR_CLASS = "";
+FileUploadEntry.ENTRY_CANCEL_LABEL_CLASS="";
+FileUploadEntry.ENTRY_CLEAR_LABEL_CLASS="";
+FileUploadEntry.ENTRY_STOP_LABEL_CLASS="";
+
 FileUploadEntry.LABELS = {};
 FileUploadEntry.LABELS[FileUploadEntry.INITIALIZED] = '';
 FileUploadEntry.LABELS[FileUploadEntry.READY] = '';
@@ -26,7 +34,7 @@ FileUploadEntry.clearControlTemplate =
 			{
 				'style':'', 
 				'onclick': function (context) { return 'var entry = FileUploadEntry.getComponent(this); entry.uploadObject.clear(entry); return false;';}, 
-				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("className", context); },
+				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("labelClassName", context) + Richfaces.evalMacro("className", context); },
 				'href':'#'
 			},
 		    [
@@ -40,7 +48,7 @@ FileUploadEntry.stopControlTemplate =
 			{
 				'style':'', 
 				'onclick': function (context) { return 'FileUploadEntry.getComponent(this).uploadObject.stop(); return false;';}, 
-				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("className", context); }, 
+				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("labelClassName", context)  + Richfaces.evalMacro("className", context); }, 
 				'href':'#'
 			},
 		    [
@@ -54,7 +62,7 @@ FileUploadEntry.cancelControlTemplate =
 			{
 				'style':'', 
 				'onclick': function (context) { return 'var entry = FileUploadEntry.getComponent(this); entry.uploadObject.clear(entry, true); return false;';}, 
-				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("className", context); }, 
+				'className':function (context) { return 'rich-fileupload-anc ' + Richfaces.evalMacro("labelClassName", context) + Richfaces.evalMacro("className", context); }, 
 				'href':'#'
 			},
 		    [
@@ -173,6 +181,8 @@ Object.extend(FileUploadEntry.prototype, {
 			var p = this.uploadObject.progressBar.getValue();
 			if (p) {
 				var content = this.uploadObject.labelMarkup.invoke('getContent', this.uploadObject.progressData.getContext(p)).join('');
+				var className = this.getClassByState(FileUploadEntry.UPLOAD_IN_PROGRESS);
+				Element.addClassName(this.statusLabel, className);
 				this.statusLabel.innerHTML = content;
 		
 			}
@@ -208,15 +218,17 @@ Object.extend(FileUploadEntry.prototype, {
 		
 		Element.clearChildren(this.statusLabel);
 		Element.clearChildren(this.controlArea);
-
+		
+		var className = this.getClassByState(newState);
+		Element.addClassName(this.statusLabel, className);
 		Element.insert(this.statusLabel, FileUploadEntry.LABELS[newState]);
 
 		if (newState == FileUploadEntry.UPLOAD_IN_PROGRESS) {
-			Element.update(this.controlArea, FileUploadEntry.stopControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_stop'],'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
+			Element.update(this.controlArea, FileUploadEntry.stopControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_stop'],'labelClassName' : FileUploadEntry.ENTRY_STOP_LABEL_CLASS, 'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
 		} else if (newState == FileUploadEntry.UPLOAD_SUCCESS) {
-			Element.update(this.controlArea, FileUploadEntry.clearControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_clear'],'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
+			Element.update(this.controlArea, FileUploadEntry.clearControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_clear'],'labelClassName' : FileUploadEntry.ENTRY_CLEAR_LABEL_CLASS,'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
 		} else {
-			Element.update(this.controlArea, FileUploadEntry.cancelControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_cancel'],'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
+			Element.update(this.controlArea, FileUploadEntry.cancelControlTemplate.invoke('getContent',{'controlLink': FileUploadEntry.LABELS['entry_cancel'],'labelClassName' : FileUploadEntry.ENTRY_CANCEL_LABEL_CLASS,'className': this.uploadObject.classes.FILE_ENTRY_CONTROL.ENABLED}).join(''));
 		}
 		
 		if (newState == FileUploadEntry.UPLOAD_SUCCESS) {
@@ -224,6 +236,18 @@ Object.extend(FileUploadEntry.prototype, {
 		}
 		
 		this.uploadObject.notifyStateChange(this, oldState);
+	},
+	
+	getClassByState: function(state){
+		if (state == FileUploadEntry.UPLOAD_SUCCESS) {
+			return FileUploadEntry.UPLOAD_SUCCESS_CLASS;
+		}else if(state == FileUploadEntry.UPLOAD_IN_PROGRESS){
+			return FileUploadEntry.UPLOAD_IN_PROGRESS_CLASS;
+		}else if(state == FileUploadEntry.UPLOAD_TRANSFER_ERROR){
+			return FileUploadEntry.UPLOAD_TRANSFER_ERROR_CLASS;
+		}else if(state == FileUploadEntry.UPLOAD_SIZE_ERROR){
+			return FileUploadEntry.UPLOAD_SIZE_ERROR_CLASS;
+		}else return '';
 	}
 	
 });
@@ -460,8 +484,8 @@ Object.extend(FileUpload.prototype, {
 				DISABLED : 'rich-fileupload-button-content rich-fileupload-font rich-fileupload-ico rich-fileupload-ico-start-dis '
 			},
 			STOP : {
-				ENABLED  : 'rich-fileupload-button rich-fileupload-font ',
-				DISABLED : 'rich-fileupload-button-dis rich-fileupload-font '
+				ENABLED  : 'rich-fileupload-button rich-fileupload-font',
+				DISABLED : 'rich-fileupload-button-dis rich-fileupload-font'
 			},
 			STOP_CONTENT : {
 				ENABLED  : 'rich-fileupload-button-content rich-file-upload-font rich-fileupload-ico rich-fileupload-ico-stop ',
@@ -486,6 +510,27 @@ Object.extend(FileUpload.prototype, {
 			UPLOAD_LIST : {
 				ENABLED : '',
 				DISABLED : ''
+			},
+			SIZE_ERROR_LABEL : {
+				ENABLED : ''
+			},
+			TRANSFER_ERROR_LABEL : {
+				ENABLED : ''
+			},
+			DONE_LABEL : {
+				ENABLED : 'rich-fileupload-bold-label'
+			},
+			PROGRESS_LABEL : {
+				ENABLED : ''
+			},
+			ENTRY_CANCEL_LABEL : {
+				ENABLED : ''
+			},
+			ENTRY_STOP_LABEL : {
+				ENABLED : ''
+			},
+			ENTRY_CLEAR_LABEL : {
+				ENABLED : ''
 			}
 		};		
 		this.events = {};
@@ -493,7 +538,23 @@ Object.extend(FileUpload.prototype, {
 		
 		var classes = options.classes;
 		for (var obj in classes) {
-			var value = classes[obj];
+			var value = obj;
+			if (value == "DONE_LABEL"){
+				FileUploadEntry.UPLOAD_SUCCESS_CLASS = classes.DONE_LABEL.ENABLED;
+			}else if(value == "SIZE_ERROR_LABEL"){
+				FileUploadEntry.UPLOAD_SIZE_ERROR_CLASS = classes.SIZE_ERROR_LABEL.ENABLED;
+			}else if(value == "TRANSFER_ERROR_LABEL"){
+				FileUploadEntry.UPLOAD_TRANSFER_ERROR_CLASS = classes.TRANSFER_ERROR_LABEL.ENABLED;
+			}else if(value == "PROGRESS_LABEL"){
+				FileUploadEntry.UPLOAD_IN_PROGRESS_CLASS = classes.PROGRESS_LABEL.ENABLED;
+			}else if(value == "ENTRY_CANCEL_LABEL"){
+				FileUploadEntry.ENTRY_CANCEL_LABEL_CLASS = classes.ENTRY_CANCEL_LABEL.ENABLED;
+			}else if(value == "ENTRY_STOP_LABEL"){
+				FileUploadEntry.ENTRY_STOP_LABEL_CLASS = classes.ENTRY_STOP_LABEL.ENABLED;
+			}else if(value == "ENTRY_CLEAR_LABEL"){
+				FileUploadEntry.ENTRY_CLEAR_LABEL_CLASS = classes.ENTRY_CLEAR_LABEL.ENABLED;
+			}
+			value = classes[obj];
 			for (var property in value) {
 				this.classes[obj][property] += value[property];
 				if (this.classes[obj + "_CONTENT"]) {

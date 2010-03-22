@@ -92,9 +92,9 @@ public abstract class FileUploadRendererBase extends
 			"size_error", "transfer_error","progress" };
 
 	/** Default labels values */
-	private static final String[] defaultLables = { "Add...", "<b>Upload</b>",
-			"<b>Stop</b>", "Clear All", "Cancel", "Clear", "Stop",
-			"<b>Done</b>", "File size restricted", "Transfer error occurred","uploading"};
+	private static final String[] defaultLables = { "Add...", "Upload",
+			"Stop", "Clear All", "Cancel", "Clear", "Stop",
+			"Done", "File size restricted", "Transfer error occurred","uploading"};
 
 	/** Set of attributes that can define label's value */
 	private static final String[] labelAttribues = { "addControlLabel",
