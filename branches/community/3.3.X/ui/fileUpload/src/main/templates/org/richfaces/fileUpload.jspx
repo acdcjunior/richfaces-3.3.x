@@ -159,8 +159,29 @@
 			<c:scriptOption name="ENABLED"  value="#{component.attributes['uploadListClass']}" />
 			<c:scriptOption name="DISABLED"  value="#{component.attributes['uploadListClassDisabled']}" />
 		</c:scriptObject>
+		<c:scriptObject var="DONE_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['doneLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="SIZE_ERROR_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['sizeErrorLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="TRANSFER_ERROR_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['transferErrorLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="PROGRESS_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['progressLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="ENTRY_CANCEL_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['entryCancelLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="ENTRY_STOP_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['entryStopLabelClass']}" />
+		</c:scriptObject>
+		<c:scriptObject var="ENTRY_CLEAR_LABEL">
+			<c:scriptOption name="ENABLED"  value="#{component.attributes['entryClearLabelClass']}" />
+		</c:scriptObject>
 		<c:scriptObject var="classes">
-			<c:scriptOption variables="ADD, UPDATE, STOP, CLEAN, FILE_ENTRY, FILE_ENTRY_CONTROL, UPLOAD_LIST" />
+			<c:scriptOption variables="ADD, UPDATE, STOP, CLEAN, FILE_ENTRY, FILE_ENTRY_CONTROL, UPLOAD_LIST, DONE_LABEL, SIZE_ERROR_LABEL, TRANSFER_ERROR_LABEL, PROGRESS_LABEL, ENTRY_CANCEL_LABEL, ENTRY_STOP_LABEL, ENTRY_CLEAR_LABEL" />
 		</c:scriptObject>
 		<c:scriptObject var="events">
 			<c:scriptOption attributes="onupload, onuploadcomplete, onuploadcanceled, onerror, ontyperejected, onsizerejected, onclear, onadd, onfileuploadcomplete" wrapper="eventHandler"/>

@@ -116,21 +116,25 @@ Here's an example:
 			<name>uploadButtonClass</name>
 			<classname>java.lang.String</classname>
 			<description>Assigns one or more space-separated CSS class names to the component &apos;Upload&apos; button</description>
+			<defaultvalue>"rich-fileupload-bold-label"</defaultvalue>
 		</property>
 		<property>
 			<name>uploadButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
 			<description>Assigns one or more space-separated CSS class names to the component &apos;Upload&apos; button disabled</description>
+			<defaultvalue>"rich-fileupload-bold-label"</defaultvalue>
 		</property>
 		<property>
 			<name>stopButtonClass</name>
 			<classname>java.lang.String</classname>
 			<description>Assigns one or more space-separated CSS class names to the component &apos;Cancel&apos; button</description>
+			<defaultvalue>"rich-fileupload-bold-label"</defaultvalue>
 		</property>
 		<property>
 			<name>stopButtonClassDisabled</name>
 			<classname>java.lang.String</classname>
 			<description>Assigns one or more space-separated CSS class names to the component &apos;Cancel&apos; button disabled</description>
+			<defaultvalue>"rich-fileupload-bold-label"</defaultvalue>
 		</property>
 		<property>
 			<name>cleanButtonClass</name>
@@ -171,6 +175,41 @@ Here's an example:
 			<name>fileEntryControlClassDisabled</name>
 			<classname>java.lang.String</classname>
 			<description>Assigns one or more space-separated CSS class names to the disabled controls of the file entries</description>
+		</property>
+		<property>
+			<name>doneLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Done&apos; label</description>
+		</property>
+		<property>
+			<name>sizeErrorLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Size error&apos; label</description>
+		</property>
+		<property>
+			<name>transferErrorLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Transfer error&apos; label</description>
+		</property>
+		<property>
+			<name>progressLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Progress&apos; label</description>
+		</property>
+		<property>
+			<name>entryCancelLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Cancel entry&apos; label in fileUpload list</description>
+		</property>
+		<property>
+			<name>entryStopLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Stop entry&apos; label in fileUpload list</description>
+		</property>
+		<property>
+			<name>entryClearLabelClass</name>
+			<classname>java.lang.String</classname>
+			<description>Assigns one or more space-separated CSS class names to the component &apos;Clear entry&apos; label in fileUpload list</description>
 		</property>
 		<property>
 			<name>fileUploadListener</name>
