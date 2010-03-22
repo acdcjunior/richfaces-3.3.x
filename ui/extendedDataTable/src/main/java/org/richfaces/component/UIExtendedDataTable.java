@@ -392,6 +392,11 @@ public abstract class UIExtendedDataTable extends UIDataTable implements
 		}
 	}
 	
+	public void resetState(){
+	    state = null;
+	    setTableState(null); 
+	}
+	
 	@SuppressWarnings("unchecked")
 	public Iterator<UIComponent> fixedChildren() {
 		IteratorChain chain = new IteratorChain(getFacets().values().iterator());
