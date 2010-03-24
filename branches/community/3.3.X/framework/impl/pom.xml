@@ -26,11 +26,6 @@
 		        <version>2.3</version> 
 			</plugin>
 			<plugin>
-				<!-- Necessary due to http://jira.codehaus.org/browse/MINSTALL-41 -->
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.3</version>
-			</plugin>
-			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.2</version>
 				<executions>
@@ -42,6 +37,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
+							<delimiters>
+								<delimiter>\${classifiedArtifactId}</delimiter>
+								<delimiter>@</delimiter>
+							</delimiters>
 							<outputDirectory>${project.build.directory}</outputDirectory>
 							<resources>
 								<resource>
@@ -56,65 +55,38 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-				<executions>
-					<execution>
-						<!--
-							Replaces the pom (with placeholders) in the repository with the
-							pom without placeholders
-						-->
-						<id>overwrite-pom</id>
-						<phase>install</phase>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-						<configuration>
-							<file>${project.build.directory}/pom.xml</file>
-							<pomFile>${project.build.directory}/pom.xml</pomFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<executions>
-					<execution>
-						<!--
-							Replaces the pom (with placeholders) in the repository with the
-							pom without placeholders
-						-->
-						<id>deploy-pom</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy-file</goal>
-						</goals>
-						<configuration>
-						    <url>${project.distributionManagementArtifactRepository.url}</url>
-						    <repositoryId>${project.distributionManagementArtifactRepository.id}</repositoryId>
-							<file>${project.build.directory}/pom.xml</file>
-							<pomFile>${project.build.directory}/pom.xml</pomFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin> 
-		        <groupId>org.codehaus.mojo</groupId> 
-		        <artifactId>build-helper-maven-plugin</artifactId> 
-		        <version>1.4</version> 
-		        <executions> 
-	                <execution> 
-                        <id>add-source</id> 
-                        <phase>generate-sources</phase> 
-                        <goals> 
-                        	<goal>add-source</goal> 
-                        </goals> 
-                        <configuration> 
-                               <sources> 
-                                      <source>${frameworkAdditionalSourceFolder}</source> 
-                               </sources>
-                        </configuration> 
-	                </execution> 
+				<groupId>org.codehaus.mojo</groupId> 
+				<artifactId>build-helper-maven-plugin</artifactId> 
+				<version>1.4</version> 
+				<executions> 
+					<execution> 
+						<id>add-source</id> 
+						<phase>generate-sources</phase> 
+						<goals> 
+							<goal>add-source</goal> 
+						</goals> 
+						<configuration> 
+							<sources> 
+								<source>${frameworkAdditionalSourceFolder}</source> 
+							</sources>
+						</configuration> 
+					</execution> 
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>${project.build.directory}/pom.xml</file>
+									<type>pom</type>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
 		        </executions> 
 			</plugin> 
 			<plugin>
