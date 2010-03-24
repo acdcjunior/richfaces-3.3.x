@@ -107,11 +107,12 @@ var swfobject = function() {
 		addDomLoadEvent(main);
 		if (ua.ie && ua.win) {
 			try {	 // Avoid a possible Operation Aborted error
-				doc.write("<scr" + "ipt id=__ie_ondomload defer=true src=//:></scr" + "ipt>"); // String is split into pieces to avoid Norton AV to add code that can cause errors 
-				script = getElementById("__ie_ondomload");
-				if (script) {
-					addListener(script, "onreadystatechange", checkReadyState);
-				}
+				var head = doc.getElementsByTagName("head")[0]||document.documentElement;
+				script = doc.createElement("script");
+				script.setAttribute("defer","defer");
+				script.setAttribute("src","//:");
+				head.appendChild(script);
+				addListener(script, "onreadystatechange", checkReadyState);
 			}
 			catch(e) {}
 		}
@@ -126,7 +127,7 @@ var swfobject = function() {
 	
 	function checkReadyState() {
 		if (script.readyState == "complete") {
-			script.parentNode.removeChild(script);
+			if(script.parentNode){script.parentNode.removeChild(script);};
 			callDomLoadFunctions();
 		}
 	}
