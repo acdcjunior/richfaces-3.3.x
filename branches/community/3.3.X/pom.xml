@@ -143,7 +143,7 @@
     </pluginRepositories>	
 	<distributionManagement>
 		<downloadUrl>
-			http://labs.jboss.com/portal/jbossrichfaces/downloads
+			http://www.jboss.org/richfaces/download
 		</downloadUrl>
 		<repository>
 			<id>repository.jboss.org</id>
@@ -168,11 +168,12 @@
 			<id>jbalunas</id>
 			<name>Jay Balunas</name>
 			<email>jbalunas@redhat.com</email>
-			<organization>RedHat Inc.</organization>
+			<organization>JBoss, by RedHat Inc.</organization>
+			<organizationUrl>http://www.jboss.org</organizationUrl>
 			<roles>
 				<role>lead</role>
 			</roles>
-			<timezone>+5</timezone>
+			<timezone>-5</timezone>
 		</developer>
 		<developer>
 			<id>alexsmirnov</id>
@@ -184,7 +185,7 @@
 				<role>architect</role>
 				<role>developer</role>
 			</roles>
-			<timezone>-3</timezone>
+			<timezone>-8</timezone>
 		</developer>
 		<developer>
 			<id>nbelayevsky</id>
@@ -196,7 +197,7 @@
 				<role>architect</role>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>kmishin</id>
@@ -207,7 +208,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>abelevich</id>
@@ -218,7 +219,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>pyaschenko</id>
@@ -229,7 +230,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>amarkhel</id>
@@ -240,7 +241,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>akolonitsky</id>
@@ -251,7 +252,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 		<developer>
 			<id>ishaikovsky</id>
@@ -262,7 +263,7 @@
 			<roles>
 				<role>developer</role>
 			</roles>
-			<timezone>-2</timezone>
+			<timezone>+2</timezone>
 		</developer>
 	</developers>
 	<licenses>
@@ -276,9 +277,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/trunk</connection>
-		<developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/trunk</developerConnection>
-		<url>https://svn.jboss.org/repos/richfaces/trunk</url>
+		<connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/branches/community/3.3.X</connection>
+		<developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</developerConnection>
+		<url>https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</url>
 	</scm>
 	<profiles>
 		<profile>
