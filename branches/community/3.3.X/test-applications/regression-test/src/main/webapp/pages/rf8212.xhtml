@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+<ui:composition template="/templates/template.xhtml">
+
+    <ui:define name="title">Extended Data Table - RF-8212</ui:define>
+
+    <ui:define name="body">
+        <h1>Extended Data Table</h1>
+        <h3><a href="https://jira.jboss.org/jira/browse/RF-8212">https://jira.jboss.org/jira/browse/RF-8212</a></h3>
+
+
+        <a id="back1" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
+        
+        
+        <h:form>
+
+
+            <fieldset><legend>Extended DataTable example 1</legend>
+
+            <h:panelGrid columns="2">
+                <rich:extendedDataTable value="#{extendedTableBean.capitalsDataModel}" var="cap" id="table1"
+                    width="580px" height="400px" sortMode="#{extendedTableBean.sortMode}"
+                    selectionMode="#{extendedTableBean.selectionMode}" tableState="#{extendedTableBean.tableState}"
+                    selection="#{extendedTableBean.selection}">
+                    <rich:column sortable="true" sortBy="#{cap.state}" id="col1_1" filterBy="#{cap.state}"
+                        filterEvent="onkeyup" width="170px" label="State Name">
+                        <f:facet name="header">
+                            <h:outputText value="State Name" id="stateName1" />
+                        </f:facet>
+                        <h:outputText value="#{cap.state}" id="capState" />
+                    </rich:column>
+                    <rich:column sortable="true" sortBy="#{cap.name}" id="col2_1" filterBy="#{cap.name}"
+                        filterEvent="onkeyup" width="170px" label="State Capital">
+                        <f:facet name="header">
+                            <h:outputText value="State Capital" id="stateCapital1" />
+                        </f:facet>
+                        <h:outputText value="#{cap.name}" id="capName1" />
+                    </rich:column>
+                    <a4j:support reRender="table2" id="extendedTableBeanTakeSelection"
+                        action="#{extendedTableBean.takeSelection}" event="onselectionchange" />
+                </rich:extendedDataTable>
+                <h:panelGroup layout="block" style="width:250px">
+                    <rich:panel>
+                        <f:facet name="header">
+                            <h:outputText value="Sort/Selection modes changing" />
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Sort Mode:" />
+                            <h:selectOneMenu value="#{extendedTableBean.sortMode}">
+                                <f:selectItem itemLabel="Single" itemValue="single" />
+                                <f:selectItem itemLabel="Multi" itemValue="multi" />
+                                <a4j:support event="onchange" ajaxSingle="true" reRender="table1"
+                                    id="supportSortOnchange1" />
+                            </h:selectOneMenu>
+                            <h:outputText value="Selection Mode:" />
+                            <h:selectOneMenu value="#{extendedTableBean.selectionMode}">
+                                <a4j:support ajaxSingle="true" event="onchange" reRender="table1"
+                                    id="supportSelectOnchange1" />
+                                <f:selectItem itemLabel="Single" itemValue="single" />
+                                <f:selectItem itemLabel="Multi" itemValue="multi" />
+                                <f:selectItem itemLabel="None" itemValue="none" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </rich:panel>
+                    <rich:panel>
+                        <f:facet name="header">
+                            <h:outputText value="Currently selected rows:" />
+                        </f:facet>
+                        <rich:dataTable value="#{extendedTableBean.selectedCapitals}" var="sel" id="selectionTable1">
+                            <rich:column>
+                                <h:outputText value="#{sel.state}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{sel.name}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{sel.timeZone}" />
+                            </rich:column>
+                        </rich:dataTable>
+                    </rich:panel>
+                </h:panelGroup>
+            </h:panelGrid>
+            </fieldset>
+            <rich:spacer height="20" />
+
+
+
+            <fieldset><legend>Extended Data Table example 2 - none</legend> <h:panelGrid columns="2"
+                columnClasses="top , top">
+                <rich:extendedDataTable value="#{extendedTableBean2.capitalsDataModel}" var="cap" id="table2"
+                    width="580px" height="400px" sortMode="#{extendedTableBean2.sortMode}"
+                    selectionMode="#{extendedTableBean2.selectionMode}" tableState="#{extendedTableBean2.tableState}"
+                    selection="#{extendedTableBean2.selection}">
+                    <rich:column sortable="true" sortBy="#{cap.state}" id="col1_2" filterBy="#{cap.state}"
+                        filterEvent="onkeyup" width="170px" label="State Name">
+                        <f:facet name="header">
+                            <h:outputText value="State Name" id="stateName2" />
+                        </f:facet>
+                        <h:outputText value="#{cap.state}" id="capState2" />
+                    </rich:column>
+                    <rich:column sortable="true" sortBy="#{cap.name}" id="col2_2" filterBy="#{cap.name}"
+                        filterEvent="onkeyup" width="170px" label="State Capital">
+                        <f:facet name="header">
+                            <h:outputText value="State Capital" id="stateCapital2" />
+                        </f:facet>
+                        <h:outputText value="#{cap.name}" id="capName2" />
+                    </rich:column>
+                </rich:extendedDataTable>
+                <h:panelGroup layout="block" style="width:250px">
+                    <rich:panel>
+                        <f:facet name="header">
+                            <h:outputText value="Sort/Selection modes changing" />
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Sort Mode:" />
+                            <h:selectOneMenu value="#{extendedTableBean2.sortMode}">
+                                <f:selectItem itemLabel="Single" itemValue="single" />
+                                <f:selectItem itemLabel="Multi" itemValue="multi" />
+                                <a4j:support event="onchange" ajaxSingle="true" reRender="table2"
+                                    id="supportSortOnchange2" />
+                            </h:selectOneMenu>
+                            <h:outputText value="Selection Mode:" />
+                            <h:selectOneMenu value="#{extendedTableBean2.selectionMode}">
+                                <a4j:support ajaxSingle="true" event="onchange" reRender="table2"
+                                    id="supportSelectOnchange2" />
+                                <f:selectItem itemLabel="Single" itemValue="single" />
+                                <f:selectItem itemLabel="Multi" itemValue="multi" />
+                                <f:selectItem itemLabel="None" itemValue="none" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </rich:panel>
+                    <rich:panel>
+                        <f:facet name="header">
+                            <h:outputText value="Currently selected rows:" />
+                        </f:facet>
+                        <rich:dataTable value="#{extendedTableBean2.selectedCapitals}" var="sel" id="selectionTable2">
+                            <rich:column>
+                                <h:graphicImage value="#{sel.stateFlag}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{sel.state}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{sel.name}" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{sel.timeZone}" />
+                            </rich:column>
+                        </rich:dataTable>
+                    </rich:panel>
+                </h:panelGroup>
+            </h:panelGrid></fieldset>
+
+        </h:form>
+        <a id="back2" href="#{facesContext.externalContext.requestContextPath}">Back to main page</a>
+
+    </ui:define>
+
+</ui:composition>
+</body>
+</html>
