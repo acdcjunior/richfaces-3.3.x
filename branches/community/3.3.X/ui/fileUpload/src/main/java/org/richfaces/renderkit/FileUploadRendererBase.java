@@ -280,7 +280,7 @@ public abstract class FileUploadRendererBase extends
 				if (fileUpload.getAttributes().get(attributeName) != null) {
 				    String attribbuteValue = (String) fileUpload.getAttributes().get(
                         attributeName);
-				    key = attributeName;
+				    key = name;
                     value = attribbuteValue;
 					found = true;
 				}
