@@ -10,7 +10,7 @@
 	<a4j:outputPanel id="flashPanelDynamic">
 		
 		<a4j:mediaOutput element="a" id="swfLink" style="display: none;" cacheable="false" session="true"
-			createContent="#{mediaBean.paintFlash}" value="#{mediaData}" />
+			createContent="#{mediaBean.paintFlash}" value="#{mediaData}" mimeType="application/x-shockwave-flash"/>
 
 		<a4j:outputPanel layout="block" id="myFlashContent" style="width: 200px; height: 200px">
 			<a href="http://www.adobe.com/go/getflashplayer">
