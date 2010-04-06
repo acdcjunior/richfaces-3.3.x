@@ -871,8 +871,10 @@ public class AjaxRendererUtils {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 //			httpResponse.setHeader(AjaxContainerRenderer.AJAX_UPDATE_HEADER,
 //					senderString.toString());
-			httpResponse.setHeader(AjaxContainerRenderer.AJAX_FLAG_HEADER,
-					"true");
+			if(!httpResponse.containsHeader(AjaxContainerRenderer.AJAX_FLAG_HEADER)){
+				httpResponse.setHeader(AjaxContainerRenderer.AJAX_FLAG_HEADER,
+				"true");
+			}
 		} else {
 			try {
 				Method setHeadergMethod = response.getClass()
