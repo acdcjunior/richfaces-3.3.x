@@ -35,6 +35,11 @@ import org.richfaces.component.util.MessageUtil;
  */
 public abstract class UIRangedNumberInput extends UIInput {
 
+	private static final String MSG_MAXMIN_IS_NULL = "org.richfaces.component.UIRangedNumberInput.MaxMinIsNull";
+	private static final String MSG_VALUE_IS_NULL = "org.richfaces.component.UIRangedNumberInput.ValueIsNull";
+	private static final String MSG_LT_MINIMAL = "org.richfaces.component.UIRangedNumberInput.LessThatMinimal";
+	private static final String MSG_GT_MAXIMAL = "org.richfaces.component.UIRangedNumberInput.GreaterThanMaximal";
+
     public abstract String getMaxValue();
     public abstract void setMaxValue(String value);
 
@@ -68,29 +73,30 @@ public abstract class UIRangedNumberInput extends UIInput {
         		context.addMessage(this.getClientId(context), mess);
             	}
 
-    		if (value != null) {
-        		if (null == minValue || null == maxValue) {
-            			setValid(false);
-        			FacesMessage mess = new FacesMessage(label + ": conversation error, maxValue or minValue is null!");
-        			mess.setSeverity(FacesMessage.SEVERITY_ERROR);
-        			context.addMessage(this.getClientId(context), mess);
-        		} else if (minValue.doubleValue() > value.doubleValue()) {
-        			setValid(false);
-        			FacesMessage mess = new FacesMessage(label + ": input value is less than minimal value!");
-        			mess.setSeverity(FacesMessage.SEVERITY_ERROR);
-        			context.addMessage(this.getClientId(context), mess);
-        		} else if (maxValue.doubleValue() < value.doubleValue()) {
-        		    	setValid(false);
-        			FacesMessage mess = new FacesMessage(label + ": input value is more than maximum value!");
-        			mess.setSeverity(FacesMessage.SEVERITY_ERROR);
-        			context.addMessage(this.getClientId(context), mess);
-        		}
-    		} else {
-            		setValid(false);
-        		FacesMessage mess = new FacesMessage(label + ": input value can't be null!");
-        		mess.setSeverity(FacesMessage.SEVERITY_ERROR);
-        		context.addMessage(this.getClientId(context), mess);
-    		}
+            	if (value != null) {
+            	     if (null == minValue || null == maxValue) {
+            	          setValid(false);
+            	          FacesMessage mess = ComponentMessageUtil.getMessage(context, (MSG_MAXMIN_IS_NULL), new Object[] { label });
+            	          mess.setSeverity(FacesMessage.SEVERITY_ERROR);
+            	          context.addMessage(this.getClientId(context), mess);
+            	     } else if (minValue.doubleValue() > value.doubleValue()) {
+            	          setValid(false);
+            	          FacesMessage mess = ComponentMessageUtil.getMessage(context, (MSG_LT_MINIMAL), new Object[] { label });
+            	          mess.setSeverity(FacesMessage.SEVERITY_ERROR);
+            	          context.addMessage(this.getClientId(context), mess);
+            	     } else if (maxValue.doubleValue() < value.doubleValue()) {
+            	          setValid(false);
+            	          FacesMessage mess = ComponentMessageUtil.getMessage(context, (MSG_GT_MAXIMAL), new Object[] { label });
+            	          mess.setSeverity(FacesMessage.SEVERITY_ERROR);
+            	          context.addMessage(this.getClientId(context), mess);
+            	     }
+            	} else {
+            	     setValid(false);
+            	     FacesMessage mess = ComponentMessageUtil.getMessage(context, (MSG_VALUE_IS_NULL), new Object[] { label });
+            	     mess.setSeverity(FacesMessage.SEVERITY_ERROR);
+            	     context.addMessage(this.getClientId(context), mess);
+            	}
+
     	}
 
     	super.validateValue(context, newValue);
