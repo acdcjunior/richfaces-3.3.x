@@ -30,7 +30,7 @@
 	<f:call name="initButtonLabels" />
 
 	<span id="#{clientId}" class="rich-color-picker-span"	x:passThruWithExclusions="value,name,type,id,styleClass,class,style">
-		<input readonly="readonly" type="text" name="#{clientId}" value="#{value}" size="#{component.attributes['inputSize']}"/>
+		<input class="rich-color-picker-input" readonly="readonly" type="text" name="#{clientId}" value="#{value}" size="#{component.attributes['inputSize']}"/>
 		<jsp:scriptlet><![CDATA[
             if(component.getFacet("icon")!=null && component.getFacet("icon").isRendered()) {
         ]]></jsp:scriptlet>        
