@@ -11,7 +11,7 @@
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.3-SNAPSHOT</version>
+				<version>3.3.4-SNAPSHOT</version>
 				<configuration>
 					<library>
 						<prefix>${groupId}</prefix>
@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-impl</artifactId>
-			<version>3.3.3-SNAPSHOT</version>
+			<version>3.3.4-SNAPSHOT</version>
             <scope>provided</scope>
 		</dependency>
 	</dependencies>

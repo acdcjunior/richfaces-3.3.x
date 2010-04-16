@@ -204,7 +204,7 @@
 
         <artifactId>richfaces-api</artifactId>
 
-        <version>3.3.3-SNAPSHOT</version>
+        <version>3.3.4-SNAPSHOT</version>
 
     </dependency>
 
@@ -214,7 +214,7 @@
 
         <artifactId>richfaces-impl</artifactId>
 
-        <version>3.3.3-SNAPSHOT</version>
+        <version>3.3.4-SNAPSHOT</version>
 
     </dependency>
 
@@ -224,7 +224,7 @@
 
         <artifactId>richfaces-ui</artifactId>
 
-        <version>3.3.3-SNAPSHOT</version>
+        <version>3.3.4-SNAPSHOT</version>
 
     </dependency>
 

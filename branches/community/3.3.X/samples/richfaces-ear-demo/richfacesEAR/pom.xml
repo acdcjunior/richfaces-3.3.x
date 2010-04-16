@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>richfaces-ear-demo</artifactId>
 		<groupId>org.richfaces.samples</groupId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.samples.richfaces-ear-demo</groupId>

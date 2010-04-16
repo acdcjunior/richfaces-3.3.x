@@ -3839,7 +3839,7 @@ mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=
 				<listitem>
 					<para>
 						<code>archetypeVersion</code> indicates the RichFaces version. For example,
-							<code>&quot;3.3.3-SNAPSHOT&quot;</code>
+							<code>&quot;3.3.4-SNAPSHOT&quot;</code>
 					</para>
 				</listitem>
 				<listitem>
@@ -4080,7 +4080,7 @@ mvn clean install
 					follow the steps described in the previous section.</para>
 				<para>This command will be used to create a template of the new skin project. </para>
 				<programlisting role="XML"><![CDATA[
-mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-plug-n-skin -DarchetypeVersion=3.3.3-SNAPSHOT -DartifactId=P-n-S -DgroupId=GROUPID -Dversion=1.0.-SNAPSHOT 
+mvn archetype:create -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-plug-n-skin -DarchetypeVersion=3.3.4-SNAPSHOT -DartifactId=P-n-S -DgroupId=GROUPID -Dversion=1.0.-SNAPSHOT 
 ]]></programlisting>
 				<para> Now you can browse the &quot;P-n-S&quot; folder to view what files and
 					folders were created there. </para>

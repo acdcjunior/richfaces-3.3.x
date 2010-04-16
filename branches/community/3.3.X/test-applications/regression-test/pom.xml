@@ -5,7 +5,7 @@
 	<artifactId>regression-test</artifactId>
 	<name>Regression test application</name>
 	<packaging>war</packaging>
-	<version>3.3.3-SNAPSHOT</version>
+	<version>3.3.4-SNAPSHOT</version>
 	<description>Application for manual testing of regressions.</description>
 	<url>http://www.jboss.org/richfaces</url>
 	<inceptionYear>2009</inceptionYear>

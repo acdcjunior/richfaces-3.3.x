@@ -335,7 +335,7 @@ For Facelets you should add the following lines for tag
                     
                     <para>Now  you have everything to create the project using the &quot;maven-archetype-jsfwebapp&quot; archetype. Create a folder that will house your project and run the this command in it:</para>
           <programlisting role="XML" ><![CDATA[...
-mvn archetype:generate -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-jsfwebapp -DarchetypeVersion=3.3.3-SNAPSHOT -DgroupId=org.docs.richfaces -DartifactId=jsf-app
+mvn archetype:generate -DarchetypeGroupId=org.richfaces.cdk -DarchetypeArtifactId=maven-archetype-jsfwebapp -DarchetypeVersion=3.3.4-SNAPSHOT -DgroupId=org.docs.richfaces -DartifactId=jsf-app
 ...]]></programlisting> 
                   
                   
@@ -461,17 +461,17 @@ jsf-app
 	<dependency>
 		<groupId>org.richfaces.framework</groupId>
 		<artifactId>richfaces-api</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.richfaces.framework</groupId>
 		<artifactId>richfaces-impl</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.richfaces.ui</groupId>
 		<artifactId>richfaces-ui</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</dependency>
 </dependencies>
 ...]]></programlisting>    
