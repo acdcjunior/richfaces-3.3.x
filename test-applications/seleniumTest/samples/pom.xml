@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>seleniumTest</groupId>
 		<artifactId>seleniumTest</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>seleniumTest</groupId>
 	<artifactId>samples</artifactId>
 	<name>Samples</name>
-	<version>3.3.3-SNAPSHOT</version>
+	<version>3.3.4-SNAPSHOT</version>
 	<build>
 		<finalName>seleniumTest</finalName>
 		<plugins>

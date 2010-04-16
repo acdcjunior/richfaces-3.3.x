@@ -74,7 +74,7 @@
                         <para><code>mvn archetype:generate </code></para>
                         <para><code>-DarchetypeGroupId=org.richfaces.cdk </code></para>
                         <para><code>-DarchetypeArtifactId=maven-archetype-seam-app </code></para>
-                        <para><code>-DarchetypeVersion=3.3.3-SNAPSHOT </code></para>
+                        <para><code>-DarchetypeVersion=3.3.4-SNAPSHOT </code></para>
                         <para><code>-DgroupId=[Your_project_group_id] </code></para>
                         <para><code>-DartifactId=[Your_project_name] </code></para>
                         <para>Some project preferences such as <property>RichFaces</property> components version or Jboss server version and others could be customized in the root <code>.pom</code> file </para>

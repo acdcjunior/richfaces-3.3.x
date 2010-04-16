@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>cdk</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.cdk</groupId>
 	<artifactId>maven-javascript-plugin</artifactId>

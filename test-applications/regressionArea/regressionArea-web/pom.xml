@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.richfaces.test-applications</groupId>
         <artifactId>regressionArea</artifactId>
-        <version>3.3.3-SNAPSHOT</version>
+        <version>3.3.4-SNAPSHOT</version>
     </parent>
 	<groupId>org.richfaces.test-applications.regressionArea</groupId>
     <artifactId>regressionArea-web</artifactId>

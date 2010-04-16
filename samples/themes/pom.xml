@@ -4,18 +4,18 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>themes</artifactId>
-	<version>3.3.3-SNAPSHOT</version>
+	<version>3.3.4-SNAPSHOT</version>
 	<name>themes</name>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.3-SNAPSHOT</version>
+				<version>3.3.4-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<id>generate-sources</id>

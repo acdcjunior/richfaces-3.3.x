@@ -5,11 +5,11 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.3-SNAPSHOT</version>
+    <version>3.3.4-SNAPSHOT</version>
   </parent>
   <groupId>org.richfaces</groupId>
   <artifactId>mediaOutput</artifactId>
-  <version>3.3.3-SNAPSHOT</version>
+  <version>3.3.4-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>mediaOutput Maven Webapp</name>
   <build>

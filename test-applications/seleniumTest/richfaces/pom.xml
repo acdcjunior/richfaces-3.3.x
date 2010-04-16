@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>seleniumTest</groupId>
 		<artifactId>seleniumTest</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.4-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>seleniumTest</groupId>
 	<artifactId>richfaces</artifactId>
 	<packaging>war</packaging>
 	<name>seleniumTest Maven Webapp</name>
-	<version>3.3.3-SNAPSHOT</version>
+	<version>3.3.4-SNAPSHOT</version>
 	<build>
 		<finalName>richfaces</finalName>
 	</build>
