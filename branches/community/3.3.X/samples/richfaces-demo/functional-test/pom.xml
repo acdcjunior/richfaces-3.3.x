@@ -249,7 +249,45 @@
 			<properties>
 				<demo.artifactId.suffix>-jsf2</demo.artifactId.suffix>
 				<jsf.majorVersion>2</jsf.majorVersion>
+				<jsf.version>2.0.2</jsf.version>
+				<jsf.libs.target>${project.build.directory}/installs/jsf-libs</jsf.libs.target>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-jsf-libs</id>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<phase>package</phase>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>com.sun.faces</groupId>
+											<artifactId>jsf-api</artifactId>
+											<version>${jsf.version}</version>
+											<overWrite>true</overWrite>
+											<outputDirectory>${jsf.libs.target}</outputDirectory>
+											<destFileName>jsf-api.jar</destFileName>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.sun.faces</groupId>
+											<artifactId>jsf-impl</artifactId>
+											<version>${jsf.version}</version>
+											<overWrite>true</overWrite>
+											<outputDirectory>${jsf.libs.target}</outputDirectory>
+											<destFileName>jsf-impl.jar</destFileName>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<!--  Container Profile -->
 		<profile>
@@ -266,6 +304,13 @@
 						<artifactId>cargo-maven2-plugin</artifactId>
 						<version>1.0-beta-2</version>
 						<executions>
+							<execution>
+								<id>install-container</id>
+								<phase>process-test-resources</phase>
+								<goals>
+									<goal>install</goal>
+								</goals>
+							</execution>
 							<execution>
 								<id>start-container</id>
 								<phase>pre-integration-test</phase>
@@ -412,6 +457,8 @@
 			</activation>
 			<properties>
 				<container.home>${project.build.directory}/installs/jboss-${container.version}/${container.unflatted.dir}</container.home>
+				<container.configuration>default</container.configuration>
+				<container.configuration.home>${container.home}/server/${container.configuration}</container.configuration.home>
 			</properties>
 			<build>
 				<plugins>
@@ -430,10 +477,10 @@
 						</executions>
 						<configuration>
 							<configuration>
-								<home>${container.home}/server/default</home>
+								<home>${container.configuration.home}</home>
 								<type>existing</type>
 								<properties>
-									<cargo.jboss.configuration>default</cargo.jboss.configuration>
+									<cargo.jboss.configuration>${container.configuration}</cargo.jboss.configuration>
 									<cargo.rmi.port>1099</cargo.rmi.port>
 								</properties>
 							</configuration>
@@ -467,6 +514,9 @@
 			</activation>
 			<properties>
 				<container.home>${project.build.directory}/installs/jboss-${container.version}/jboss-${container.version}</container.home>
+				<container.configuration>default</container.configuration>
+				<container.configuration.home>${container.home}/server/${container.configuration}</container.configuration.home>
+				<jsf.libs.target>${container.configuration.home}/deploy/jbossweb.sar/jsf-libs</jsf.libs.target>
 			</properties>
 			<build>
 				<plugins>
@@ -485,10 +535,10 @@
 						</executions>
 						<configuration>
 							<configuration>
-								<home>${container.home}/server/default</home>
+								<home>${container.configuration.home}</home>
 								<type>existing</type>
 								<properties>
-									<cargo.jboss.configuration>default</cargo.jboss.configuration>
+									<cargo.jboss.configuration>${container.configuration}</cargo.jboss.configuration>
 									<cargo.rmi.port>1099</cargo.rmi.port>
 								</properties>
 							</configuration>

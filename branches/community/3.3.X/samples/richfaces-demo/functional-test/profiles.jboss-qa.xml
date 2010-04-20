@@ -131,19 +131,6 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>container-installation-jsf2</id>
-			<activation>
-				<property>
-					<name>jsf2</name>
-				</property>
-			</activation>
-			<properties>
-				<jboss5x.version>5.1.0.GA</jboss5x.version>
-				<jboss5x.installer.url.unix>file:/qa/home/hudson/lfryc/hudson-dependencies--keep/jboss-jsf2/jboss-${jboss5x.version}.zip</jboss5x.installer.url.unix>
-				<jboss5x.installer.url.windows>file:h:\hudson\lfryc\hudson-dependencies--keep\jboss-jsf2\jboss-${jboss5x.version}.zip</jboss5x.installer.url.windows>
-			</properties>
-		</profile>
-		<profile>
 			<id>container-tomcat6x-installation</id>
 			<activation>
 				<property>
