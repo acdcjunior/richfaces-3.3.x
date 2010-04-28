@@ -101,9 +101,11 @@
 	                }else{
 	                ]]></jsp:scriptlet>
 	                    <td class="#{buttonClass} rich-datascr-button" onclick="#{onclick}">
-	                    <jsp:scriptlet><![CDATA[                    
-	                      writer.write("&#171;&#171;");                      
-	                    ]]></jsp:scriptlet>    
+		                    <a class="rich-datascr-button-content" href="javascript:void(0)">
+		                    <jsp:scriptlet><![CDATA[                    
+		                      writer.write("&#171;&#171;");                      
+		                    ]]></jsp:scriptlet>
+		                    </a>
 	                    </td>                              
 	                <jsp:scriptlet><![CDATA[
 	                } 
@@ -147,9 +149,11 @@
 	                }else{
 	                ]]></jsp:scriptlet>
 	                    <td class="#{buttonClass} rich-datascr-button" onclick="#{onclick}">
-	                    <jsp:scriptlet><![CDATA[                    
-	                      writer.write("&#171;");                      
-	                    ]]></jsp:scriptlet>    
+		                    <a class="rich-datascr-button-content" href="javascript:void(0)">
+		                    <jsp:scriptlet><![CDATA[                    
+		                      writer.write("&#171;");                      
+		                    ]]></jsp:scriptlet>
+		                    </a>
 	                    </td>                              
 	                <jsp:scriptlet><![CDATA[
 	                }
@@ -294,9 +298,11 @@
 	                }else{
 	                ]]></jsp:scriptlet>
 	                    <td class="#{buttonClass} rich-datascr-button" onclick="#{onclick}">
-	                    <jsp:scriptlet><![CDATA[                    
-	                      writer.write("&#187;");                      
-	                    ]]></jsp:scriptlet>                               
+	                    <a class="rich-datascr-button-content" href="javascript:void(0)">
+		                    <jsp:scriptlet><![CDATA[                    
+		                      writer.write("&#187;");                      
+		                    ]]></jsp:scriptlet>
+	                    </a>                         
 	                    </td>                              
 	                <jsp:scriptlet><![CDATA[
 	                }
@@ -341,9 +347,11 @@
 	                }else{
 	                ]]></jsp:scriptlet>
 	                     <td class="#{buttonClass} rich-datascr-button" onclick="#{onclick}">
+	                     	<a class="rich-datascr-button-content" href="javascript:void(0)">
 	                        <jsp:scriptlet><![CDATA[                    
 	                          writer.write("&#187;&#187;");                      
-	                        ]]></jsp:scriptlet>                               
+	                        ]]></jsp:scriptlet>
+	                        </a>
 	                     </td>                              
 	                     <jsp:scriptlet><![CDATA[
 	                }
