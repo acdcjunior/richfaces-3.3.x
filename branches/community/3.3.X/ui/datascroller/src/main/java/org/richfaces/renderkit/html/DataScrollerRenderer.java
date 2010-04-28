@@ -219,7 +219,11 @@ public class DataScrollerRenderer extends HeaderResourcesRendererBase {
                 out.writeAttribute("onclick", getOnClick(Integer.toString(i + 1)), null);
             }
             if (null != style) out.writeAttribute("style", style, null);
+            out.startElement("a", component);
+            out.writeAttribute("class", "rich-datascr-button-content", null);
+            out.writeAttribute("href", "javascript:void(0)", null);
             out.writeText(Integer.toString(i + 1), null);
+            out.endElement("a");
             //renderChild(context, link);
             out.endElement("td");
         }

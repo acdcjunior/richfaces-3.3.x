@@ -16,6 +16,10 @@
 	text-align: center;
 }
 
+.rich-datascr-button-content {
+	text-decoration:none;
+}
+
 .rich-datascr-button-dsbld {
 	cursor: default;
 }
@@ -45,11 +49,13 @@
     <u:style name="font-size" skin="generalSizeFont" />
 </u:selector>
 
-<u:selector name=".rich-datascr-button-dsbld">
+<u:selector name=".rich-datascr-button-dsbld,
+	.rich-datascr-button-dsbld .rich-datascr-button-content, .rich-datascr-button-dsbld a.rich-datascr-button-content:hover,
+	.rich-datascr-inact .rich-datascr-button-content, .rich-datascr-inact a.rich-datascr-button-content:hover">
     <u:style name="color" skin="panelBorderColor" default="gray" />
 </u:selector>
 
-<u:selector name=".rich-datascr-act">
+<u:selector name=".rich-datascr-act, .rich-datascr-button-content, a.rich-datascr-button-content:hover">
     <u:style name=" border-top-color" skin="generalTextColor" />
     <u:style name="color" skin="generalTextColor" />
     <u:style name="font-family" skin="generalFamilyFont" />
