@@ -69,6 +69,8 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 	
 	private boolean createTempFiles;
 
+	private String tempFilesDirectory;
+
 	private String uid;
 
 	private String encoding = null;
@@ -106,10 +108,11 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 	private boolean shouldStop = false;
 	private boolean canceled;
 
-	public MultipartRequest(HttpServletRequest request,
-			boolean createTempFiles, int maxRequestSize, String uid) {
+	public MultipartRequest(HttpServletRequest request, boolean createTempFiles,
+			String tempFilesDirectory, int maxRequestSize, String uid) {
 		super(request);
 		this.createTempFiles = createTempFiles;
+		this.tempFilesDirectory = tempFilesDirectory;
 		this.uid = uid;
 
 		String contentLength = request.getHeader("Content-Length");
@@ -227,7 +230,7 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 				this.keys.add(paramName);
 
 				if (createTempFiles) {
-					fp.createTempFile();
+					fp.createTempFile(tempFilesDirectory);
 				}
 				fp.setContentType(headers.get(PARAM_CONTENT_TYPE));
 				fp.setFilename(decodeFileName(headers.get(PARAM_FILENAME)));

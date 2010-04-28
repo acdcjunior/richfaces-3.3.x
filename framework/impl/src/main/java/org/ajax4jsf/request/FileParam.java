@@ -81,10 +81,14 @@ class FileParam extends Param {
 		return fileSize;
 	}
 
-	public File createTempFile() {
+	public File createTempFile(String tempFilesDirectory) {
 		try {
+			File dir = null;
+			if (tempFilesDirectory != null) {
+				dir = new File(tempFilesDirectory);
+			}
 			tempFile = File.createTempFile(new UID().toString().replace(
-					":", "-"), ".upload");
+					":", "-"), ".upload", dir);
 			fOut = new FileOutputStream(tempFile);
 		} catch (IOException ex) {
 			if (fOut != null) {
