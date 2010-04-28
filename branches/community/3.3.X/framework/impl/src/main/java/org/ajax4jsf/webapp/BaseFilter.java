@@ -126,6 +126,8 @@ public abstract class BaseFilter implements Filter {
 	 */
 	private boolean createTempFiles = false;
 
+	private String tempFilesDirectory;
+	
 	/**
 	 * The maximum size of a file upload request. 0 means no limit.
 	 */
@@ -179,6 +181,9 @@ public abstract class BaseFilter implements Filter {
 		} else {
 			this.createTempFiles = true;
 		}
+		
+		this.tempFilesDirectory = filterConfig.getInitParameter("tempFilesDirectory");
+		
 		param = filterConfig.getInitParameter("maxRequestSize");
 		if (param != null) {
 			this.maxRequestSize = Integer.parseInt(param);
@@ -343,7 +348,7 @@ public abstract class BaseFilter implements Filter {
 		if (uid != null) {
 
 			if (isMultipartRequest(httpRequest)) {
-				MultipartRequest multipartRequest = new MultipartRequest(httpRequest, createTempFiles, maxRequestSize, uid);
+				MultipartRequest multipartRequest = new MultipartRequest(httpRequest, createTempFiles, tempFilesDirectory, maxRequestSize, uid);
 
 				Object oldAttributeValue = httpRequest.getAttribute(FileUploadConstants.FILE_UPLOAD_REQUEST_ATTRIBUTE_NAME);
 				httpRequest.setAttribute(FileUploadConstants.FILE_UPLOAD_REQUEST_ATTRIBUTE_NAME, multipartRequest);
