@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<head>
+	<a4j:loadScript src="resource:///org.ajax4jsf.javascript.AjaxScript" />
+	<a4j:loadScript src="/jquery.js" />
+	<a4j:loadScript src="/ui.core.js" />
+	<a4j:loadScript src="/ui.dragable.js" />
+	<a4j:loadScript src="/ui.resizeable.js" />
+	<a4j:loadScript src="/fullcalendar.js" />
+	<a4j:loadScript src="/richfaces.fullcalendar.js" />
+
+	<style type='text/css'>
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	}
+	
+	.rich-fullc-loading {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	
+	.rich-fullc {
+		width: 900px;
+		margin: 0 auto;
+	}
+	</style>
+</head>
+
+<body>
+
+	<h:form>
+		<ui:fragment binding="#{componentBean.component}">
+			<f:facet name="loading">
+				wait: loading...
+			</f:facet>
+		</ui:fragment>
+	</h:form>
+
+</body>
+
+
+</html>
