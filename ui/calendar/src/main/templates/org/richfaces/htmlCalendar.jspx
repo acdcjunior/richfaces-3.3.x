@@ -175,6 +175,7 @@
 		<c:scriptOption attributes="boundaryDatesMode" defaultValue="inactive" />
 		<c:scriptOption attributes="horizontalOffset" defaultValue="0" />
 		<c:scriptOption attributes="verticalOffset" defaultValue="0" />
+		<c:scriptOption attributes="hidePopupOnScroll" defaultValue="true" />
 		
 		<c:scriptOption name="currentDate"  value="#{this:getCurrentDate(context, component, currentDate)}" />
 		<c:scriptOption name="selectedDate"  value="#{this:getSelectedDate(context, component)}" />

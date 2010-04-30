@@ -183,6 +183,14 @@
 			<defaultvalue>false</defaultvalue>
 		</property>
 		<property>
+			<name>hidePopupOnScroll</name>
+			<classname>boolean</classname>
+			<description>
+				Hide popup when user scrolls content. If false opened popup wouldn't be closed on scroll but component should be placed into a relative container, otherwise popup wouldn't be scrolled. Does not affect on document body scroll. Default value is &quot;true&quot;.
+			</description>
+			<defaultvalue>true</defaultvalue>
+		</property>
+		<property>
 			<name>jointPoint</name>
 			<classname>java.lang.String</classname>
 			<description>
