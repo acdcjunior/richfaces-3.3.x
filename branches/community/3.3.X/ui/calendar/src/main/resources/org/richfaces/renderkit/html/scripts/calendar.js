@@ -1221,7 +1221,9 @@ Object.extend(Calendar.prototype, {
 			Event.observe(window.document, "click", this.eventOnCollapse, false);
 			
 			Richfaces.removeScrollEventHandlers(this.scrollElements, this.eventOnScroll);
-			this.scrollElements = Richfaces.setupScrollEventHandlers(element, this.eventOnScroll);
+			if (this.params.hidePopupOnScroll) {
+				this.scrollElements = Richfaces.setupScrollEventHandlers(element, this.eventOnScroll);
+			}
 		}
 	},
 
@@ -2409,7 +2411,8 @@ Richfaces.Calendar.defaultOptions = {
 		showApplyButton: false,
 		selectedDate: null,
 		currentDate: null,
-		defaultTime: {hours:12,minutes:0}
+		defaultTime: {hours:12,minutes:0},
+		hidePopupOnScroll: true
 };
 
 // must be :defaultTime, minDaysInFirstWeek, firstWeekday, weekDayLabels, weekDayLabelsShort, monthLabels, monthLabelsShort
