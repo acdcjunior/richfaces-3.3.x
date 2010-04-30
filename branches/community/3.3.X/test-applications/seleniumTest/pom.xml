@@ -17,36 +17,6 @@
 	<properties>
 		<http.port>8085</http.port>
 	</properties>
-	<repositories>
-		<repository>
-			<id>nexus-openqa</id>
-			<name>OpenQA Repository</name>
-			<url>http://nexus.openqa.org/content/repositories/releases</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-		 <repository>
-			<id>nexus-openqa-snapshots</id>
-			<name>OpenQA Snapshots Repository</name>
-			<url>http://nexus.openqa.org/content/repositories/snapshots</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
-		<repository>
-			<id>maven-2-repository.dev.java.net</id>
-			<url>http://download.java.net/maven/2</url>
-		</repository>
-	</repositories>
 	<build>
 		<plugins>
 			<plugin>
