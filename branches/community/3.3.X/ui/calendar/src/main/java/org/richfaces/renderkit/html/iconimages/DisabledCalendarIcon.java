@@ -21,25 +21,29 @@
 
 package org.richfaces.renderkit.html.iconimages;
 
+import java.awt.Transparency;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorConvertOp;
+import java.awt.image.ComponentColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.WritableRaster;
 
 /**
  * @author Maksim Kaszynski
  *
  */
 public class DisabledCalendarIcon extends CalendarIcon {
-	
-	/* (non-Javadoc)
-	 * @see org.richfaces.renderkit.html.iconimages.CalendarIcon#paintImage(java.lang.Object[])
-	 */
-	protected BufferedImage paintImage(Object[] colors) {
-		
-		BufferedImage image = super.paintImage(colors);
-		
-		image = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null).filter(image, null);
-		
-		return image;
+
+	@Override
+	protected BufferedImage createImage(int width, int height) {
+		ColorSpace gsColorSpace = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+
+		ComponentColorModel ccm = new ComponentColorModel(gsColorSpace, true, false,
+				Transparency.TRANSLUCENT, DataBuffer.TYPE_BYTE);
+
+		WritableRaster raster = ccm.createCompatibleWritableRaster(width, height);
+
+		return new BufferedImage(ccm, raster, ccm.isAlphaPremultiplied(), null);
 	}
+
 }
