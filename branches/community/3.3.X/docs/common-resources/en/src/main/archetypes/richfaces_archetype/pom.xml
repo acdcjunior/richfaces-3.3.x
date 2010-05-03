@@ -34,12 +34,12 @@
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
-      <id>repository.jboss.org</id>
+      <id>jboss-releases-repository</id>
       <url>${releaseRepository}</url>
     </repository>
     <snapshotRepository>
-      <id>snapshots.jboss.org</id>
-      <url>dav:https://snapshots.jboss.org/maven2</url>
+      <id>jboss-snapshots-repository</id>
+      <url>${snapshotRepository}</url>
     </snapshotRepository>
     <downloadUrl>http://labs.jboss.com/portal/jbossrichfaces/downloads</downloadUrl>
   </distributionManagement>

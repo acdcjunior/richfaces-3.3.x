@@ -146,17 +146,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!--pluginRepositories>
-    	<pluginRepository>
-      		 	<id>exadel-repository</id>
-      	 		<name>Exadel Maven Repository Manager</name>
-         		<url>http://maven.eltegra.by:8099/repository</url>
-    	</pluginRepository>
-    	<pluginRepository>
-        	    <id>eltegra-maven-proxy</id>
-            	<name>Exadel Maven Repository Manager</name>
-            	<url>http://maven.eltegra.by:8099/repository</url>
-        </pluginRepository>  
-  </pluginRepositories-->
  </project>

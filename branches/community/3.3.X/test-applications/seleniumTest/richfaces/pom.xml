@@ -168,23 +168,9 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<releases/>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-			<id>repository.jboss.org</id>
-			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>snapshots.jboss.org</id>
-			<url>http://snapshots.jboss.org/maven2</url>
+			<id>jboss-public-repository-group</id>
+            <name>Jboss Repository for Maven</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 </project>

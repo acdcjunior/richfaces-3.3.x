@@ -104,7 +104,7 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		
-			<id>repository.jboss.org</id>
+			<id>jboss-public-repository-group</id>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 		<repository>
@@ -119,12 +119,12 @@
 			http://www.jboss.org/richfaces/download
 		</downloadUrl>
 		<repository>
-			<id>repository.jboss.org</id>
+			<id>jboss-releases-repository</id>
 			<uniqueVersion>false</uniqueVersion>
 			<url>${releaseRepository}</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshots.jboss.org</id>
+			<id>jboss-snapshots-repository</id>
 			<uniqueVersion>true</uniqueVersion>
 			<url>${snapshotRepository}</url>
 		</snapshotRepository>

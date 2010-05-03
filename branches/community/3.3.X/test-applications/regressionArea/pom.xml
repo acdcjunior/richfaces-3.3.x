@@ -18,7 +18,7 @@
 				<enabled>false</enabled>
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
-			<id>repository.jboss.org</id>
+			<id>jboss-public-repository-group</id>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
