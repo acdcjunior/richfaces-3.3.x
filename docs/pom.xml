@@ -20,9 +20,9 @@
 				<enabled>false</enabled>
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
-			<id>repository.jboss.com</id>
-			<name>Jboss Repository for Maven</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<id>jboss-public-repository-group</id>
+            <name>Jboss Repository for Maven</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -35,9 +35,9 @@
 				<enabled>false</enabled>
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
-			<id>repository.jboss.com</id>
-			<name>Jboss Repository for Maven</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<id>jboss-public-repository-group</id>
+            <name>Jboss Repository for Maven</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
 			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
