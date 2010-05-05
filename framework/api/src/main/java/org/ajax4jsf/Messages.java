@@ -365,7 +365,8 @@ public class Messages {
 	public static final String DATASCROLLER_PAGE_MISSING = "DATASCROLLER_PAGE_MISSING";
 	public static final String DATASCROLLER_PAGES_DIFFERENT = "DATASCROLLER_PAGES_DIFFERENT";
 	public static final String COMPONENT_CONVERSION_ERROR = "COMPONENT_CONVERSION_ERROR";
-
+	public static final String JAVASCRIPT_CIRCULAR_REFERENCE = "JAVASCRIPT_CIRCULAR_REFERENCE";
+	
 	public static void main(String[] args) {
 		String m = getMessage(INVALID_ATTRIBUTE_VALUE, "A", "B");
 		System.out.println(m);
