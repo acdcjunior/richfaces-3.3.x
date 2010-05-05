@@ -22,14 +22,18 @@
 package org.ajax4jsf.javascript;
 
 import static org.easymock.EasyMock.capture;
+import static org.easymock.EasyMock.eq;
+import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.isNull;
 import static org.easymock.classextension.EasyMock.createNiceMock;
 import static org.easymock.classextension.EasyMock.replay;
-import static org.easymock.classextension.EasyMock.*;
+import static org.easymock.classextension.EasyMock.verify;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,11 +58,11 @@ public class ScriptUtilsTest extends TestCase {
 	 *
 	 */
 	public static class Bean {
-		
+
 		int _integer;
 		boolean _bool;
 		Object _foo;
-		
+
 		public Bean() {
 		}
 		/**
@@ -109,6 +113,56 @@ public class ScriptUtilsTest extends TestCase {
 		}
 	}
 
+	public static class ReferencedBean {
+
+		private String name;
+
+		private ReferenceHolderBean parent;
+
+		public ReferencedBean(String name, ReferenceHolderBean parent) {
+			super();
+			this.name = name;
+			this.parent = parent;
+		}
+
+		public ReferenceHolderBean getParent() {
+			return parent;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+
+	public static class ReferenceHolderBean {
+
+		private String name;
+
+		private Object reference;
+
+		public ReferenceHolderBean(String name) {
+			super();
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public Object getReference() {
+			return reference;
+		}
+
+		public void setReference(Object reference) {
+			this.reference = reference;
+		}
+
+	}
+
+	private static String dehydrate(String s) {
+		return s != null ? s.replaceAll("\\s", "") : s;
+	}
+
 	/**
 	 * @param name
 	 */
@@ -139,7 +193,7 @@ public class ScriptUtilsTest extends TestCase {
 	    java.sql.Date obj1 = new java.sql.Date(1);
 	    assertNotNull(ScriptUtils.toScript(obj1));
 	}
-	
+
 	/**
 	 * Test method for {@link org.ajax4jsf.javascript.ScriptUtils#toScript(java.lang.Object)}.
 	 */
@@ -200,7 +254,7 @@ public class ScriptUtilsTest extends TestCase {
 		List<Bean> obj = Arrays.asList(array);
 		assertEquals("[{'bool':true,'foo':'foo',\'integer\':1} ,{'bool':false,'foo':'bar','integer':2} ] ", ScriptUtils.toScript(obj));
 	}
-	
+
 	/**
 	 * Test method for {@link org.ajax4jsf.javascript.ScriptUtils#toScript(java.lang.Object)}.
 	 */
@@ -235,30 +289,30 @@ public class ScriptUtilsTest extends TestCase {
 	public void testNull() throws Exception {
 		assertEquals("null", ScriptUtils.toScript(null));
 	}
-	
+
 	/**
 	 * Test method for {@link ScriptUtils#toScript(Object)}
 	 */
 	public void testScriptString() throws Exception {
 		assertEquals("alert(x<y);", ScriptUtils.toScript(new JSLiteral("alert(x<y);")));
 	}
-	
+
 	private static enum TestEnum {
 		A, B, C;
-		
+
 		@Override
 		public String toString() {
 			return "TestEnum: " + super.toString();
 		}
 	}
-	
+
 	/**
 	 * Test method for {@link ScriptUtils#toScript(Object)}
 	 */
 	public void testEnum() throws Exception {
 		assertEquals("'TestEnum: B'", ScriptUtils.toScript(TestEnum.B));
 	}
-	
+
 	private void assertCaptureEquals(Capture<? extends Object> capture, String expected) {
 		StringBuilder sb = new StringBuilder();
 		List<? extends Object> list = capture.getValues();
@@ -266,10 +320,10 @@ public class ScriptUtilsTest extends TestCase {
 			assertNotNull(o);
 			sb.append(o);
 		}
-		
+
 		assertEquals(expected, sb.toString().trim());
 	}
-	
+
 	/**
 	 * Test method for {@link ScriptUtils#writeToStream(javax.faces.context.ResponseWriter, Object)}
 	 */
@@ -277,7 +331,7 @@ public class ScriptUtilsTest extends TestCase {
 		ResponseWriter mockWriter = createNiceMock(ResponseWriter.class);
 		Capture<? extends Object> capture = new Capture<Object>(CaptureType.ALL) {
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = -4915440411892856583L;
 
@@ -291,17 +345,70 @@ public class ScriptUtilsTest extends TestCase {
 				}
 			}
 		};
-		
-		
+
+
 		mockWriter.writeText(capture(capture), (String) isNull());
 		expectLastCall().anyTimes();
 		mockWriter.writeText((char[])capture(capture), eq(0), eq(1));
 		expectLastCall().anyTimes();
-		
+
 		replay(mockWriter);
 		ScriptUtils.writeToStream(mockWriter, Collections.singletonMap("delay", Integer.valueOf(1500)));
 		verify(mockWriter);
-		
+
 		assertCaptureEquals(capture, "{'delay':1500}");
 	}
+
+	public void testCircularReferenceBeans() throws Exception {
+		ReferenceHolderBean parent = new ReferenceHolderBean("parent");
+		ReferencedBean child = new ReferencedBean("child", parent);
+
+		assertEquals(dehydrate("{'name': 'child', 'parent': {'name': 'parent', 'reference': null}}"),
+				dehydrate(ScriptUtils.toScript(child)));
+	}
+
+	public void testCircularReferenceViaProperty() throws Exception {
+		ReferenceHolderBean parent = new ReferenceHolderBean("parent");
+		ReferencedBean child = new ReferencedBean("child", parent);
+
+		parent.setReference(child);
+
+		assertEquals(dehydrate("{'name': 'parent', 'reference': {'name': 'child', 'parent': null}}"),
+				dehydrate(ScriptUtils.toScript(parent)));
+	}
+
+	public void testCircularReferenceViaArray() throws Exception {
+		ReferenceHolderBean parent = new ReferenceHolderBean("parent");
+		ReferencedBean child = new ReferencedBean("child", parent);
+
+		parent.setReference(new Object[] {child});
+
+		assertEquals(dehydrate("{'name': 'parent', 'reference': [{'name': 'child', 'parent': null}]}"),
+				dehydrate(ScriptUtils.toScript(parent)));
+	}
+
+	public void testCircularReferenceViaCollection() throws Exception {
+		ReferenceHolderBean parent = new ReferenceHolderBean("parent");
+		ReferencedBean child = new ReferencedBean("child", parent);
+
+		Collection<Object> set = new ArrayList<Object>();
+		set.add(child);
+		parent.setReference(set);
+
+		assertEquals(dehydrate("{'name': 'parent', 'reference': [{'name': 'child', 'parent': null}]}"),
+				dehydrate(ScriptUtils.toScript(parent)));
+	}
+
+	public void testCircularReferenceViaMap() throws Exception {
+		ReferenceHolderBean parent = new ReferenceHolderBean("parent");
+		ReferencedBean child = new ReferencedBean("child", parent);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("key", child);
+		parent.setReference(map);
+
+		assertEquals(dehydrate("{'name': 'parent', 'reference': {'key': {'name': 'child', 'parent': null}}}"),
+				dehydrate(ScriptUtils.toScript(parent)));
+	}
+
 }

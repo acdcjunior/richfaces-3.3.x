@@ -26,31 +26,54 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Array;
+import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.MissingResourceException;
 
 import javax.faces.FacesException;
 import javax.faces.context.ResponseWriter;
 
+import org.ajax4jsf.Messages;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
  * @version $Revision: 1.1.2.3 $ $Date: 2007/01/24 13:22:31 $
- * 
+ *
  */
 public class ScriptUtils {
 
-	/**
+    private static final Log LOG = LogFactory.getLog(ScriptUtils.class);
+
+    /**
 	 * This is utility class, don't instantiate.
 	 */
 	private ScriptUtils() {
 
 	}
 
-	private static void writeScriptToStream(Writer writer, Object obj) throws IOException {
-		if (null == obj) {
+	private static void writeScriptToStream(Writer writer, Object obj, Map<Object, Boolean> cycleBusterMap) throws IOException {
+        Boolean cycleBusterValue = cycleBusterMap.put(obj, Boolean.TRUE);
+
+        if (cycleBusterValue != null) {
+        	if (LOG.isDebugEnabled()) {
+        		String formattedMessage;
+        		try {
+        			formattedMessage = Messages.getMessage(Messages.JAVASCRIPT_CIRCULAR_REFERENCE, obj);
+        		} catch (MissingResourceException e) {
+        			//ignore exception: workaround for unit tests
+        			formattedMessage = MessageFormat.format("Circular reference serializing object to JS: {0}", obj);
+        		}
+
+        		LOG.debug(formattedMessage);
+        	}
+			writer.write("null");
+        } else if (null == obj) {
 			writer.write("null");
 		} else if (obj instanceof ScriptString) {
 			writer.write(((ScriptString) obj).toScript());
@@ -62,17 +85,17 @@ public class ScriptUtils {
 				if (!first) {
 					writer.write(',');
 				}
-				writeScriptToStream(writer, element);
+				writeScriptToStream(writer, element, cycleBusterMap);
 				first = false;
 			}
-			
+
 			writer.write("] ");
-		} else if (obj instanceof Collection) {
+		} else if (obj instanceof Collection<?>) {
 			// Collections put as JavaScript array.
-			
+
 			@SuppressWarnings("unchecked")
 			Collection<Object> collection = (Collection<Object>) obj;
-			
+
 			writer.write("[");
 			boolean first = true;
 			for (Iterator<Object> iter = collection.iterator(); iter.hasNext();) {
@@ -80,12 +103,12 @@ public class ScriptUtils {
 				if (!first) {
 					writer.write(',');
 				}
-				writeScriptToStream(writer, element);
+				writeScriptToStream(writer, element, cycleBusterMap);
 				first = false;
 			}
 			writer.write("] ");
-		} else if (obj instanceof Map) {
-			
+		} else if (obj instanceof Map<?, ?>) {
+
 			// Maps put as JavaScript hash.
 			@SuppressWarnings("unchecked")
 			Map<Object, Object> map = (Map<Object, Object>) obj;
@@ -96,10 +119,10 @@ public class ScriptUtils {
 				if (!first) {
 					writer.write(',');
 				}
-				
+
 				writeEncodedString(writer, entry.getKey());
 				writer.write(":");
-				writeScriptToStream(writer, entry.getValue());
+				writeScriptToStream(writer, entry.getValue(), cycleBusterMap);
 				first = false;
 			}
 			writer.write("} ");
@@ -109,13 +132,13 @@ public class ScriptUtils {
 		} else if (obj instanceof String) {
 			// all other put as encoded strings.
 			writeEncodedString(writer, obj);
-        } else if (obj instanceof Enum) {
+        } else if (obj instanceof Enum<?>) {
             // all other put as encoded strings.
             writeEncodedString(writer, obj);
         } else if (obj.getClass().getName().startsWith("java.sql.")) {
             writer.write("{");
             boolean first = true;
-            for (PropertyDescriptor propertyDescriptor : 
+            for (PropertyDescriptor propertyDescriptor :
                                 PropertyUtils.getPropertyDescriptors(obj)) {
                 String key = propertyDescriptor.getName();
                 if ("class".equals(key)) {
@@ -131,11 +154,11 @@ public class ScriptUtils {
                 if (!first) {
                     writer.write(',');
                 }
-                
+
                 writeEncodedString(writer, key);
                 writer.write(":");
-                writeScriptToStream(writer, value);
-                
+                writeScriptToStream(writer, value, cycleBusterMap);
+
                 first = false;
             }
             writer.write("} ");
@@ -162,7 +185,7 @@ public class ScriptUtils {
                 }
                 writeEncodedString(writer, key);
                 writer.write(":");
-                
+
                 Object propertyValue;
                 try{
                 	propertyValue = PropertyUtils.getProperty(obj, key);
@@ -170,27 +193,32 @@ public class ScriptUtils {
                 	throw new FacesException(
                         "Error in conversion Java Object to JavaScript", e);
                 }
-                
-				writeScriptToStream(writer, propertyValue);
+
+				writeScriptToStream(writer, propertyValue, cycleBusterMap);
                 first = false;
             }
 
             writer.write("} ");
         }
+
+        if (cycleBusterValue == null) {
+        	cycleBusterMap.remove(obj);
+        }
 	}
-	
+
 	/**
-	 * Convert any Java Object to JavaScript representation ( as possible ) and write it to 
+	 * Convert any Java Object to JavaScript representation ( as possible ) and write it to
 	 * writer immediately
-	 * 
+	 *
 	 * @param responseWriter
 	 * @param obj
 	 * @throws IOException
 	 */
 	public static void writeToStream(final ResponseWriter responseWriter, Object obj) throws IOException {
-		writeScriptToStream(new ResponseWriterWrapper(responseWriter), obj);
+		Map<Object, Boolean> cycleBusterMap = new IdentityHashMap<Object, Boolean>();
+		writeScriptToStream(new ResponseWriterWrapper(responseWriter), obj, cycleBusterMap);
 	}
-	
+
 	/**
 	 * Convert any Java Object to JavaScript representation ( as possible ).
 	 * @param obj
@@ -199,7 +227,8 @@ public class ScriptUtils {
 	public static String toScript(Object obj) {
 		StringBuilder sb = new StringBuilder();
 		try {
-			writeScriptToStream(new StringBuilderWriter(sb), obj);
+			Map<Object, Boolean> cycleBusterMap = new IdentityHashMap<Object, Boolean>();
+			writeScriptToStream(new StringBuilderWriter(sb), obj, cycleBusterMap);
 		} catch (IOException e) {
 			//ignore
 		}
@@ -211,7 +240,7 @@ public class ScriptUtils {
 		writeEncoded(w, obj);
 		w.write("'");
 	}
-	
+
 	public static void addEncodedString(StringBuilder buff, Object obj) {
 		try {
 			writeEncodedString(new StringBuilderWriter(buff), obj);
@@ -232,7 +261,7 @@ public class ScriptUtils {
 			}
 		}
 	}
-	
+
 	public static void addEncoded(StringBuilder buff, Object obj) {
 		try {
 			writeEncoded(new StringBuilderWriter(buff), obj);
@@ -242,11 +271,11 @@ public class ScriptUtils {
 	}
 
 	public static String getValidJavascriptName(String s) {
-	
+
 		StringBuffer buf = null;
 		for (int i = 0, len = s.length(); i < len; i++) {
 			char c = s.charAt(i);
-	
+
 			if (Character.isLetterOrDigit(c)||c=='_' ) {
 				// allowed char
 				if (buf != null)
@@ -256,13 +285,13 @@ public class ScriptUtils {
 					buf = new StringBuffer(s.length() + 10);
 					buf.append(s.substring(0, i));
 				}
-	
+
 				buf.append('_');
 				if (c < 16) {
 					// pad single hex digit values with '0' on the left
 					buf.append('0');
 				}
-	
+
 				if (c < 128) {
 					// first 128 chars match their byte representation in UTF-8
 					buf.append(Integer.toHexString(c).toUpperCase());
@@ -273,7 +302,7 @@ public class ScriptUtils {
 					} catch (UnsupportedEncodingException e) {
 						throw new RuntimeException(e);
 					}
-	
+
 					for (int j = 0; j < bytes.length; j++) {
 						int intVal = bytes[j];
 						if (intVal < 0) {
@@ -287,9 +316,9 @@ public class ScriptUtils {
 					}
 				}
 			}
-	
+
 		}
-	
+
 		return buf == null ? s : buf.toString();
 	}
 }
