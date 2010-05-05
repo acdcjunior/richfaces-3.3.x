@@ -878,29 +878,39 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 		return currentChildState;
 	}
 
-	private Map<String, Map<String, SavedState>> createChildStateCopy() {
-		Map<String, Map<String, SavedState>> childStateCopy = null;
-		
-		if (this.childState != null) {
-			childStateCopy = new HashMap<String, Map<String,SavedState>>();
-		
-			for (Entry<String, Map<String, SavedState>> entry : this.childState.entrySet()) {
+	private Map<String, Map<String, SavedState>> createChildStateCopy(
+			Map<String, Map<String, SavedState>> originalChildState) {
+		Map<String, Map<String, SavedState>> copiedChildState = null;
+
+		if (originalChildState != null) {
+			int originalMapSize = originalChildState.size();
+
+			// formula copied from HashMap implementation code
+			int copiedMapCapacity = Math.max(
+					(int) (originalMapSize / 0.75) + 1, 16);
+
+			copiedChildState = new HashMap<String, Map<String, SavedState>>(
+					copiedMapCapacity);
+
+			for (Entry<String, Map<String, SavedState>> entry : originalChildState
+					.entrySet()) {
 				String entryKey = entry.getKey();
 				Map<String, SavedState> entryValue = entry.getValue();
-				
-				Map<String, SavedState> entryValueCopy = null;
-				
+
+				Map<String, SavedState> copiedEntryValue = null;
+
 				if (entryValue != null) {
-					entryValueCopy = new HashMap<String, SavedState>(entryValue);
+					copiedEntryValue = new HashMap<String, SavedState>(
+							entryValue);
 				}
-				
-				childStateCopy.put(entryKey, entryValueCopy);
+
+				copiedChildState.put(entryKey, copiedEntryValue);
 			}
 		}
-		
-		return childStateCopy;
+
+		return copiedChildState;
 	}
-	
+
 	/**
 	 * Save values of {@link EditableValueHolder} fields before change current
 	 * row.
@@ -1509,7 +1519,7 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 
 		private SerializableDataModel model;
 	}
-
+	
 	public void restoreState(FacesContext faces, Object object) {
 		DataState state = (DataState) object;
 		super.restoreState(faces, state.superState);
@@ -1517,7 +1527,7 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 		this._statesMap = new HashMap<String, DataComponentState>();
 		this._rowKeyVar = state.rowKeyVar;
 		this._stateVar = state.stateVar;
-		this.childState = state.childStates;
+		this.childState = createChildStateCopy(state.childStates);
 		if (null != state.rowKeyConverter) {
 			this._rowKeyConverter = (Converter) restoreAttachedState(faces,
 					state.rowKeyConverter);
@@ -1551,7 +1561,7 @@ public abstract class UIDataAdaptorBase extends UIData implements AjaxDataEncode
 		state.ajaxKeys = this._ajaxKeys;
 		state.rowKeyVar = this._rowKeyVar;
 		state.stateVar = this._stateVar;
-		state.childStates = createChildStateCopy();
+		state.childStates = this.childState;
 		if (null != this._rowKeyConverter) {
 			state.rowKeyConverter = saveAttachedState(faces,this._rowKeyConverter);
 		}
