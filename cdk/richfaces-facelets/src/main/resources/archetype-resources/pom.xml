@@ -30,6 +30,11 @@
 			<artifactId>richfaces-ui</artifactId>
 			<version>3.3.4-SNAPSHOT</version>
 		</dependency>
+                <dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl</artifactId>
+			<version>3.3.4-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>com.sun.facelets</groupId>
 			<artifactId>jsf-facelets</artifactId>
