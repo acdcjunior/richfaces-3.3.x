@@ -204,6 +204,12 @@ input.rich-inplace-select-field {
 		<u:style name="background-color" skin="editBackgroundColor"/>
 		<u:style name="border-color" skin="panelBorderColor"/>
 	</u:selector>
+	
+	<u:selector name=".rich-inplace-select-font">
+		<u:style name="color" skin="generalTextColor"/>
+		<u:style name="font-size" skin="generalSizeFont"/>
+		<u:style name="font-family" skin="generalFamilyFont"/>
+	</u:selector>
 		
 	<u:selector name=".rich-inplace-select-control">
 		<u:style name="background-image">
