@@ -7,16 +7,15 @@ Richfaces.InplaceSelectList = Class.create(Richfaces.ComboBoxList, {
 		$super(id, null, classes, options, fieldElemIdSuffix);
 		this.wrappingItems(value);
 		this.isListOpened = false;
+		if (Richfaces.browser.isIE6 && !this.iframe) {
+			this.createIframe(this.listParent.parentNode, this.listWidth, this.list.id, "");
+		}
 	},
 	
 	setPosition : function($super, fieldTop, fieldLeft, fieldHeight) {
 		var field = this.fieldElem;
 		
 		field.show();
-		if (Richfaces.browser.isIE6 && !this.iframe) {
-			this.createIframe(this.listParent.parentNode, this.listWidth, this.list.id, "");
-		}
-					
 		$super(fieldTop, fieldLeft, field.offsetHeight);
 	},
 	
