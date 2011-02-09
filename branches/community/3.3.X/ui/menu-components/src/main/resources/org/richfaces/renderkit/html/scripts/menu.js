@@ -301,6 +301,25 @@ RichFaces.Menu.Layers = {
 		this.detectWidth();
         this.LMPopUp(menuName, false);
 		this.setLMTO(4);
+	},
+	
+	bindMouseMove: function (layerId) {
+		if (typeof this.mouseMoveHandler == "function") {
+			Event.stopObserving(document.body, "mousemove", this.mouseMoveHandler);
+		}
+		this.mouseMoveHandler = function () {
+			if (typeof RichFaces.Menu.Layers.mouseMoveHandler == "function") {
+				Event.stopObserving(document.body, "mousemove", RichFaces.Menu.Layers.mouseMoveHandler);
+				RichFaces.Menu.Layers.mouseMoveHandler = undefined;
+			}
+	    	var layer = RichFaces.Menu.Layers.layers[layerId];
+	    	if (layer) {
+	    		RichFaces.Menu.Layers.setLMTO(layer.hideDelay);
+	    	} else {
+	    		RichFaces.Menu.Layers.shutdown();
+	    	}
+		};
+        Event.observe(document.body, "mousemove", this.mouseMoveHandler);
 	}
 };
 
@@ -407,6 +426,9 @@ RichFaces.Menu.DelayedContextMenu = function(layer, e) {
 		
 		RichFaces.Menu.Layers.LMPopUp(this.layer.id, false,e);
         RichFaces.Menu.Layers.clearLMTO();
+        
+        RichFaces.Menu.Layers.bindMouseMove(this.layer.id);
+        
     }.bind(this);
 }
 
