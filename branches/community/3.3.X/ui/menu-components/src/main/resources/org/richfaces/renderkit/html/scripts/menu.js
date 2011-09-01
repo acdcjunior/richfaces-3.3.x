@@ -544,6 +544,7 @@ RichFaces.Menu.DelayedDropDown = function(layer, elementId, e) {
 
 		var parOffset = Position.cumulativeOffset(this.element);
 		var divOffset = Position.cumulativeOffset(innerDiv);
+		var scrollOffset = Position.realOffset(this.element);
 		var deltaX = divOffset[0] - parOffset[0];
 		var deltaY = divOffset[1] - parOffset[1];
 
@@ -594,8 +595,8 @@ RichFaces.Menu.DelayedDropDown = function(layer, elementId, e) {
 		if (!foundPos) {
 			layerPos = this.calcPosition(listPos[0].jointPoint, listPos[0].direction)
 		}
-		this.layer.style.left = layerPos.left + hOffset - deltaX - this.left + "px";
-		this.layer.style.top = layerPos.top + vOffset - deltaY - this.top + "px";
+		this.layer.style.left = layerPos.left + hOffset - deltaX - this.left - scrollOffset[0] + "px";
+		this.layer.style.top = layerPos.top + vOffset - deltaY - this.top - scrollOffset[1] + "px";
 
 	    this.layer.style.width = this.layer.clientWidth + "px";
 
