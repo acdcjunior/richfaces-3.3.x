@@ -61,7 +61,7 @@
 
     <filelist id="prototype"
 		          dir="${basedir}/src/main/javascript/prototype"
-		          files="prototype-1.6.0.3.js,../memory.js,patches.js">
+		          files="prototype-1.7.js,../memory.js,patches.js">
 	</filelist>
 
 
