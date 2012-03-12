@@ -1,0 +1,36 @@
+<profilesXml xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<profiles>
+		<profile>
+			<id>localEnvironment</id>
+			<!-- set local environment specific properties here -->
+			<properties>
+				<!-- *** browser: the type of web browser (and path to its binary if needed) -->
+				<!--<browser>*firefox</browser>-->
+				<!--<browser>*firefox /usr/lib/firefox-3.5.2/firefox</browser>-->
+				<!--<browser>*chrome</browser>-->
+				<!--<browser>*chrome /usr/lib/firefox-3.5.2/firefox</browser>-->
+				<!--<browser>*iexplore</browser>-->
+				<!--<browser>*iexplore c:\\program files\\internet explorer\\iexplore.exe</browser>-->
+				<!--<browser>*konqueror /usr/bin/konqueror</browser>-->
+				<!--<browser>*safari</browser>-->
+				
+				<!--*** context.root: HTTP protocol URL to testing server ***-->
+				<!--<context.root>http://localhost:8080/</context.root>-->
+				
+				<!--*** context.path: Context root of application in context of server ***-->
+				<!--<context.path>/richfaces-demo</context.path>-->
+				
+				<!--*** selenium.port: specifies on which port should run selenium server (default: 8444) ***-->
+				<!--<selenium.port>8446</selenium.port>-->
+				
+				<!--*** firefoxProfileTemplate: specifies path to firefox's profile which should be used as template to create new session -->
+				<!--<firefoxProfileTemplate>/home/qa/.mozilla/firefox/87nmklfc.Testing</firefoxProfileTemplate>-->
+			</properties>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>localEnvironment</activeProfile>
+	</activeProfiles>
+</profilesXml>
