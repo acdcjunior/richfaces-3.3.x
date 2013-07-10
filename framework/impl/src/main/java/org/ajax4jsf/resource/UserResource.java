@@ -23,7 +23,6 @@ package org.ajax4jsf.resource;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.el.ELContext;
@@ -163,7 +162,7 @@ public class UserResource extends InternetResourceBase {
 		return true;
 	}
 	
-	public static class UriData implements Serializable {
+	public static class UriData implements SerializableResource {
 
 		/**
 		 * 
