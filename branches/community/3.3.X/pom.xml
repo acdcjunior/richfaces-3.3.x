@@ -5,6 +5,7 @@
 	<packaging>pom</packaging>
 	<name>RichFaces project</name>
 	<version>3.3.4-SNAPSHOT</version>
+  <description>RichFaces project root</description>
 	<url>http://labs.jboss.com/jbossrichfaces</url>
 	<dependencies />
 	<build>

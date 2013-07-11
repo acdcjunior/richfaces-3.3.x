@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 	<name>${appName}</name>
 	<version>3.3.4-SNAPSHOT</version>
+  <url>http://labs.jboss.com/jbossrichfaces</url>
 
     <distributionManagement>
 		<downloadUrl>
