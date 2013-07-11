@@ -26,7 +26,6 @@ import java.io.InputStream;
 import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectStreamClass;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -42,7 +41,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LookAheadObjectInputStream extends ObjectInputStream {
     private static final Map<String, Class<?>> PRIMITIVE_TYPES = new HashMap<String, Class<?>>(9, 1.0F);
     private static Set<Class> whitelistBaseClasses = new HashSet<Class>();
-    private static Set<String> whitelistClassNameCache = Collections.newSetFromMap(new ConcurrentHashMap<String, Boolean>());
+    private static Map<String, Boolean> whitelistClassNameCache = new ConcurrentHashMap<String, Boolean>();
 
     static {
         PRIMITIVE_TYPES.put("bool", Boolean.TYPE);
@@ -55,17 +54,17 @@ public class LookAheadObjectInputStream extends ObjectInputStream {
         PRIMITIVE_TYPES.put("double", Double.TYPE);
         PRIMITIVE_TYPES.put("void", Void.TYPE);
 
-        whitelistClassNameCache.add(new Object[0].getClass().getName());
-        whitelistClassNameCache.add(new String[0].getClass().getName());
-        whitelistClassNameCache.add(new Boolean[0].getClass().getName());
-        whitelistClassNameCache.add(new Byte[0].getClass().getName());
-        whitelistClassNameCache.add(new Character[0].getClass().getName());
-        whitelistClassNameCache.add(new Short[0].getClass().getName());
-        whitelistClassNameCache.add(new Integer[0].getClass().getName());
-        whitelistClassNameCache.add(new Long[0].getClass().getName());
-        whitelistClassNameCache.add(new Float[0].getClass().getName());
-        whitelistClassNameCache.add(new Double[0].getClass().getName());
-        whitelistClassNameCache.add(new Void[0].getClass().getName());
+        whitelistClassNameCache.put(new Object[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new String[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Boolean[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Byte[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Character[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Short[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Integer[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Long[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Float[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Double[0].getClass().getName(), Boolean.TRUE);
+        whitelistClassNameCache.put(new Void[0].getClass().getName(), Boolean.TRUE);
 
         whitelistBaseClasses.add(String.class);
         whitelistBaseClasses.add(Boolean.class);
@@ -99,14 +98,14 @@ public class LookAheadObjectInputStream extends ObjectInputStream {
      * Determine if the given requestedClassName is allowed by the whitelist
      */
     boolean isClassValid(String requestedClassName) {
-        if (whitelistClassNameCache.contains(requestedClassName)) {
+        if (whitelistClassNameCache.containsKey(requestedClassName)) {
             return true;
         }
         try {
             Class<?> requestedClass = Class.forName(requestedClassName);
             for (Class baseClass : whitelistBaseClasses ) {
                 if (baseClass.isAssignableFrom(requestedClass)) {
-                    whitelistClassNameCache.add(requestedClassName);
+                    whitelistClassNameCache.put(requestedClassName, Boolean.TRUE);
                     return true;
                 }
             }
