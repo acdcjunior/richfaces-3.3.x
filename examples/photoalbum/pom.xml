@@ -39,5 +39,21 @@
 			</build>
 		</profile>
 	</profiles>
+
+  <distributionManagement>
+    <downloadUrl>
+      http://labs.jboss.com/portal/jbossrichfaces/downloads
+    </downloadUrl>
+    <repository>
+      <id>repository.jboss.org</id>
+      <uniqueVersion>false</uniqueVersion>
+      <url>${releaseRepository}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots.jboss.org</id>
+      <uniqueVersion>true</uniqueVersion>
+      <url>${snapshotRepository}</url>
+    </snapshotRepository>
+  </distributionManagement>
 	
 </project>
