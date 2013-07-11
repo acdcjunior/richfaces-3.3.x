@@ -6,6 +6,8 @@
     <packaging>pom</packaging>
     <version>3.3.4-SNAPSHOT</version>
  	<name>Photoalbum Demo Application Root</name>
+  <description>Photoalbum Demo Application Root</description>
+  <url>http://labs.jboss.com/jbossrichfaces</url>
    
 	<modules>
         <module>source</module>
@@ -40,6 +42,23 @@
 		</profile>
 	</profiles>
 
+  <developers>
+      <developer>
+          <name>RichFaces committers</name>
+      </developer>
+  </developers>
+
+ <licenses>
+   <license>
+     <name>LGPL 2.1</name>
+     <url>http://www.gnu.org/licenses/lgpl.html</url>
+     <distribution>repo</distribution>
+     <comments>
+       GNU LESSER GENERAL PUBLIC LICENSE Version 2.1
+     </comments>
+   </license>
+ </licenses>
+
   <distributionManagement>
     <downloadUrl>
       http://labs.jboss.com/portal/jbossrichfaces/downloads
@@ -55,5 +74,11 @@
       <url>${snapshotRepository}</url>
     </snapshotRepository>
   </distributionManagement>
+
+  <scm>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/branches/community/3.3.X</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</developerConnection>
+    <url>https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</url>
+  </scm>
 	
 </project>
